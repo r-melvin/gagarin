@@ -151507,5 +151507,23 @@
   "name": "Obj_00523350::FUN_00523350",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/Techno.cpp",
+  "addr": "0x70D8F0",
+  "sym": "?FUN_0070D8F0@TechnoClass@@QAE_NXZ",
+  "len": "0x8e",
+  "name": "TechnoClass::FUN_0070D8F0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Techno.cpp",
+  "addr": "0x7106E0",
+  "sym": "?FUN_7106E0@Obj_7106E0@@QAEPAXI@Z",
+  "len": "0x1e",
+  "name": "Obj_7106E0::FUN_7106E0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

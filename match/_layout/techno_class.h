@@ -226,6 +226,11 @@ public:
     void FUN_0070FEE0(bool clearTarget);
     // FUNCTION: GAMEMD 0x701900 (decl; reloc) -- the TechnoClass body of slot 91 (ReceiveDamage), called non-virtually.
     int FUN_00701900(int* damage, int distance, void* warhead, void* source, bool a5, bool a6, void* house);
+    // FUNCTION: GAMEMD 0x703590 (decl; reloc) -- the cell nearest the object that the argument could move to.
+    CellStruct NearbyLocation(TechnoClass* object);
+    bool FUN_0070D7E0();
+    // FUNCTION: GAMEMD 0x70D8F0 -- send this object towards the nearby cell of the one it is queued behind.
+    bool FUN_0070D8F0();
     // FUNCTION: GAMEMD 0x708080 (decl; reloc) -- one stack argument (the attacker).
     void FUN_00708080(TechnoClass* attacker);
     // CALLEE: GAMEMD 0x710000 -- thiscall, RawBlock10 by value plus AbstractClass*, RET 0x14.

@@ -605,6 +605,7 @@ extern void* DAT_00B77F60;
 
 
 #include "trivial_tu237_methods.h"
+#include "deleting_dtor_sweep.h"
 
 #include <windows.h>
 #include <imm.h>
@@ -5048,6 +5049,71 @@ void TechnoClass::FUN_0070D7A0()
     }
 }
 
+static inline bool IsTechnoObject_0070D7E0(AbstractClass* object)
+{
+    return object && object->Flags.IsTechno;
+}
+
+// Unclaimed (below partial bar, 7.7%: retail re-tests the queued pointer for null after the alive
+// test, which VC6 folds away in every spelling tried), GAMEMD 0x70D7E0
+// Settle the queue behind another object: when radio contact with a live techno is established
+// (command 2) the queue is resolved one way or the other and true is returned; a building ahead
+// that is a plain gate is asked for command 14 instead. The link is dropped when the object is dead.
+bool TechnoClass::FUN_0070D7E0()
+{
+    TechnoClass* ahead = (TechnoClass*)QueueUpToEnter;
+    if (ahead) {
+        if (ahead->IsAlive) {
+            if (IsTechnoObject_0070D7E0(ahead)) {
+                if (vf_158(2, ahead) == 1) {
+                    if (vf_158(15, ahead) == 1) {
+                        vf_122(7, true);
+                        SetDestination(ahead, true);
+                        QueueUpToEnter = 0;
+                        return true;
+                    }
+                    vf_122(-1, false);
+                    SetDestination(0, true);
+                    QueueUpToEnter = 0;
+                    vf_158(3, ahead);
+                    return true;
+                }
+                if (ahead->vf_11() == 6 && vf_11() == 2) {
+                    BuildingTypeClass* type = ((BuildingClass*)ahead)->Type;
+                    if (type->bools_16A4[6] && !type->bools_16A4[5]) {
+                        vf_158(14, ahead);
+                        return false;
+                    }
+                }
+            }
+        } else {
+            QueueUpToEnter = 0;
+        }
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x70D8F0
+// While the object it queues behind is a live techno, walk to that one's nearby cell (unless it is
+// the invalid cell) and mission 2; otherwise drop the queue link.
+bool TechnoClass::FUN_0070D8F0()
+{
+    TechnoClass* ahead = (TechnoClass*)QueueUpToEnter;
+    if (ahead) {
+        if (ahead->Flags.IsTechno && ahead->IsAlive) {
+            CellStruct cell = NearbyLocation(ahead);
+            if (cell.X != DAT_00B0EA50.X || cell.Y != DAT_00B0EA50.Y) {
+                SetDestination(DAT_0087F7E8.FUN_005657A0(&cell), true);
+                vf_122(2, false);
+                return true;
+            }
+            return false;
+        }
+        QueueUpToEnter = 0;
+    }
+    return false;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70D980
 // Empty function. Vtable slot 184 of TechnoClass (RTTI) and 4 derived vtable(s).
@@ -6422,6 +6488,18 @@ void TechnoClass::vf_229(FootClass* passenger)
         CoordStruct where = Location;
         FUN_00750E20(vf_33()->EnterTransportSound, &where, 0);
     }
+}
+
+// FUNCTION: GAMEMD 0x7106E0
+// Scalar deleting destructor of the object whose destructor body is at 0x6F4500.
+struct Obj_7106E0 { void* FUN_7106E0(unsigned int flags); };
+void* Obj_7106E0::FUN_7106E0(unsigned int flags)
+{
+    FUN_006F4500(this);
+    if (flags & 1) {
+        FUN_007C8B3D(this);
+    }
+    return this;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
