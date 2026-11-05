@@ -19,6 +19,8 @@ public:
 
     // FUNCTION: GAMEMD 0x40E320
     GenericNode();
+    // The same construction expanded in place; generic_list_ctor_first_inline.h uses it for the head sentinel.
+    explicit GenericNode(int) : NextNode(0), PrevNode(0) {}
     // Scalar deleting destructor: 0x40E390.
     virtual ~GenericNode() { Unlink(); }
     bool IsValid() const

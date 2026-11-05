@@ -1518,7 +1518,9 @@ int FUN_005E64C0(int index)
 #include "session_entry.h"
 #include "ccfile_class.h"
 #include "_layout/ini_class.h"
-#include "_layout/generic_list_ctor_inline.h"
+#include "_layout/generic_list.h"
+// Retail 0x5E6520 expands the list constructor but calls GenericNode (0x40E320) for both sentinels.
+inline GenericList::GenericList() { FirstNode.Link(&LastNode); }
 // GLOBAL: GAMEMD 0xA8B8C8 (Items 0xA8B8CC, Count 0xA8B8D8).
 extern DynamicVectorClass<MultiMission*> DAT_00A8B8C8;
 

@@ -36,7 +36,7 @@
 #include "vector_cursor.h"
 #include "house_class_can_ally_methods.h"
 #include "_layout/ini_class.h"
-#include "_layout/generic_list_ctor_inline.h"
+#include "_layout/generic_list_ctor_first_inline.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
