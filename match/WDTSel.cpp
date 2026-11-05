@@ -33,6 +33,8 @@
 
 #include "_layout/wdt_selection.h"
 #include "_layout/ini_class.h"
+#include "scenario_session_globals.h"
+#include "house_type_arrays_globals.h"
 #include "_layout/theme_class.h"
 #include "msanim_family_methods.h"
 #include "input_manager_class_methods.h"
@@ -114,6 +116,8 @@ extern WDTDisplay_00887640* DAT_00887640_WDT;
 extern WDTScreenSurface* DAT_0088730C;
 // GLOBAL: GAMEMD 0x887310
 extern WDTScreenSurface* DAT_00887310;
+// GLOBAL: GAMEMD 0x887308
+extern WDTScreenSurface* DAT_00887308_WDT;
 // GLOBAL: GAMEMD 0x87F770
 extern InputManagerClass* DAT_0087F770;
 // GLOBAL: GAMEMD 0xA83D10
@@ -237,6 +241,24 @@ void __fastcall FUN_0076ECD0(const rc_ptr<WorldDominationTour::Campaign>& campai
     DAT_0087F770->DoSomething();
     Selection screen(campaign, seed);
     screen.FUN_0076E750(seed);
+}
+
+// FUNCTION: GAMEMD 0x76EEB0
+void Selection::FUN_0076EEB0()
+{
+    DAT_00A8ED9C = 0;
+    if (unknown_490.FUN_007B47F0(0)) {
+        DAT_00A83D10.PlaySong(DAT_00A83D10.FindIndex(unknown_490.FUN_007B5400()));
+        DAT_00A83D20 = 1;
+    }
+    DAT_00887640_WDT->vf_3();
+    DAT_00887310->vf_6(0);
+    DAT_0088730C->vf_6(0);
+    DAT_00887308_WDT->vf_1(DAT_0088730C, 0, 1);
+    DAT_0087F770->DoSomething();
+    MapRef->FUN_007692F0(this, &Voices);
+    while (DAT_00887640_WDT->vf_10() < 0)
+        DAT_00887640_WDT->vf_4();
 }
 
 // FUNCTION: GAMEMD 0x76EF80

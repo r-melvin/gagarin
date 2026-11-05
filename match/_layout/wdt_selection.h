@@ -33,7 +33,7 @@ struct SelectionQueue
 
 
 // The 0x354-byte block at +0x58 (built by 0x770270). Only the INI reader 0x770550 is called from this unit.
-struct SelectionVoices
+struct SelectionVoices : public WDTMapArg
 {
     // FUNCTION: GAMEMD 0x770550 (decl; reloc) -- RET 8.
     void FUN_00770550(INIClass* ini, const Wstring& section);
@@ -65,6 +65,8 @@ public:
     void FUN_0076DFD0();
     // FUNCTION: GAMEMD 0x76E090 (decl; reloc)
     void FUN_0076E090();
+    // FUNCTION: GAMEMD 0x76EEB0 (decl; reloc)
+    void FUN_0076EEB0();
     // FUNCTION: GAMEMD 0x76E180 (decl; reloc)
     void FUN_0076E180();
     // FUNCTION: GAMEMD 0x76E290 (decl; reloc)
@@ -107,7 +109,8 @@ public:
     char           unknown_46C[0x47C - 0x46C];
     MSBitPrintAnim* unknown_47C;          // +0x47C
     MSBitPrintAnim* unknown_480;          // +0x480
-    char           unknown_484[0x494 - 0x484];
+    char           unknown_484[0x490 - 0x484];
+    Wstring        unknown_490;           // +0x490
     DynamicVectorClass<MSSfxEntry*> Sfxs; // +0x494
     int            unknown_4AC;           // +0x4AC
 };

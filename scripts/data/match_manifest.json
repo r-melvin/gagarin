@@ -151916,5 +151916,14 @@
   "name": "Obj_007B66D0::FUN_007B7A60",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/WDTSel.cpp",
+  "addr": "0x76EEB0",
+  "sym": "?FUN_0076EEB0@Selection@WorldDominationTour@@QAEXXZ",
+  "len": "0xc3",
+  "name": "?FUN_0076EEB0@Selection@WorldDominationTour@@QAEXXZ",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
