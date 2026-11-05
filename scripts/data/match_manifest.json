@@ -154164,5 +154164,34 @@
   "pct": 84.7,
   "best_pct": 84.7,
   "best_at": "f851e2b7"
+ },
+ {
+  "tu": "match/progress_screen_class.cpp",
+  "addr": "0x642E80",
+  "sym": "?FUN_00642E80@@YIXPAH0@Z",
+  "len": "0x61",
+  "name": "?FUN_00642E80@@YIXPAH0@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/progress_screen_class.cpp",
+  "addr": "0x6435B0",
+  "sym": "?FUN_006435B0@@YGXHHPAVSurface@@@Z",
+  "len": "0xb8",
+  "name": "?FUN_006435B0@@YGXHHPAVSurface@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/progress_screen_class.cpp",
+  "addr": "0x643670",
+  "sym": "?FUN_00643670@@YGXVPoint2D@@PBGPAVColorScheme@@H@Z",
+  "len": "0xa3",
+  "name": "?FUN_00643670@@YGXVPoint2D@@PBGPAVColorScheme@@H@Z",
+  "status": "partial",
+  "pct": 96.5,
+  "best_pct": 96.5,
+  "best_at": "f851e2b7"
  }
 ]

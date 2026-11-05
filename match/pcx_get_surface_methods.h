@@ -20,6 +20,9 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
+struct RectangleStruct;
+class Surface;
+
 // A heap-copied string key (one pointer). Constructed and destroyed through
 // explicit calls so that no EH frame is registered under /GX.
 struct PCXKey_006BA140
@@ -86,6 +89,8 @@ struct PCX
 
     // GAMEMD 0x6BA140 (declaration only)
     void* GetSurface(const char* filename, BytePalette_006BA140* palette);
+    // FUNCTION: GAMEMD 0x6BA580 (decl; reloc) -- ECX = the table at 0xAC4848 (0x6435B0), four stack words, RET 0x10.
+    bool FUN_006BA580(const RectangleStruct* area, Surface* dst, Surface* src, unsigned short transparent);
 };
 GG_STATIC_ASSERT(offsetof(PCX, Count) == 0x04);
 GG_STATIC_ASSERT(offsetof(PCX, Bits) == 0x0C);

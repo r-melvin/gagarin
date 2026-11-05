@@ -184,6 +184,8 @@ private:
 public:
     // FUNCTION: GAMEMD 0x4BACF0
     void* FUN_004BACF0();
+    // FUNCTION: GAMEMD 0x4BAFE0 (decl; reloc) -- ECX = the surface (0x6435B0 calls it on the 0x88730C display).
+    bool FUN_004BAFE0();
     // FUNCTION: GAMEMD 0x4BB000
     bool FUN_004BB000();
 };
