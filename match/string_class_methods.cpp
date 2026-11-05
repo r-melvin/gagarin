@@ -200,31 +200,6 @@ Wstring& Wstring::operator=(const Wstring& other)
     return *this;
 }
 
-// FUNCTION: GAMEMD 0x7B4A10
-// Appends the whole text, reallocating the buffer; null text changes nothing.
-bool Wstring::FUN_007B4A10(const char* text)
-{
-    if (!text) {
-        return true;
-    }
-    char* old = unknown_00;
-    unsigned int total = strlen(text) + 1;
-    if (old) {
-        total += strlen(old);
-    }
-    unknown_00 = new char[total];
-    if (old) {
-        strcpy(unknown_00, old);
-    } else {
-        unknown_00[0] = 0;
-    }
-    strcat(unknown_00, text);
-    if (old) {
-        delete old;
-    }
-    return true;
-}
-
 // FUNCTION: GAMEMD 0x7B4AC0
 // Appends up to `count` characters of the text, reallocating the buffer.
 bool Wstring::FUN_007B4AC0(int count, const char* text)
@@ -800,6 +775,27 @@ Wstring* FUN_007B6320(Wstring* out, int value, int width)
     sprintf(format, "%%0%dd", width);
     sprintf(text, format, value);
     InitText(out, text);
+    return out;
+}
+
+// FUNCTION: GAMEMD 0x7B63C0
+// Builds `prefix` followed by `suffix` into `out`.
+Wstring* FUN_007B63C0(Wstring* out, const char* prefix, const Wstring* suffix)
+{
+    Wstring head(prefix);
+    Wstring joined(head);
+    const char* text;
+    if (suffix->unknown_00 == 0) {
+        text = GLOBAL_00889F64;
+    } else {
+        text = suffix->unknown_00;
+    }
+    joined.FUN_007B4A10(text);
+    out->unknown_00 = 0;
+    if (joined.unknown_00 != 0) {
+        out->unknown_00 = new char[strlen(joined.unknown_00) + 1];
+        strcpy(out->unknown_00, joined.unknown_00);
+    }
     return out;
 }
 

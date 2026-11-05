@@ -59279,7 +59279,7 @@
   "len": "0x336",
   "name": "TabClass::vf_10",
   "status": "partial",
-  "pct": 49.4,
+  "pct": 96.9,
   "best_pct": 96.9,
   "best_at": "cf203011"
  },
@@ -144368,13 +144368,13 @@
   "pct": 100
  },
  {
-  "tu": "match/string_class_methods.cpp",
+  "tu": "match/wstring_append_007B4A10.cpp",
   "addr": "0x7B4A10",
   "sym": "?FUN_007B4A10@Wstring@@QAE_NPBD@Z",
   "len": "0xaf",
   "name": "Wstring::FUN_007B4A10",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/string_class_methods.cpp",
@@ -150101,7 +150101,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/sidebar_tab_class.cpp",
+  "tu": "match/sidebar_tab_add_buttons_006D04D0.cpp",
   "addr": "0x6D04D0",
   "sym": "?FUN_006D04D0@TabClass@@QAEXXZ",
   "len": "0x1f",
@@ -152338,5 +152338,34 @@
   "name": "??1MSFont@@UAE@XZ",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/wdt_voice_ctor_00770270.cpp",
+  "addr": "0x770270",
+  "sym": "??0Obj_00770430@@QAE@H@Z",
+  "len": "0x1b2",
+  "name": "Obj_00770430::Obj_00770430",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/voice_line_name_00770CE0.cpp",
+  "addr": "0x770CE0",
+  "sym": "?FUN_00770CE0@@YI_NHHPAVWstring@@@Z",
+  "len": "0x82",
+  "name": "FUN_00770CE0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/string_class_methods.cpp",
+  "addr": "0x7B63C0",
+  "sym": "?FUN_007B63C0@@YIPAVWstring@@PAV1@PBDPBV1@@Z",
+  "len": "0x11d",
+  "name": "FUN_007B63C0",
+  "status": "partial",
+  "pct": 81.4,
+  "best_pct": 81.4,
+  "best_at": "e7787dd4"
  }
 ]
