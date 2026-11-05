@@ -96686,15 +96686,13 @@
   "best_at": "cf203011"
  },
  {
-  "tu": "match/Scenario.cpp",
+  "tu": "match/scenario_class_ctor_00683560.cpp",
   "addr": "0x683560",
   "sym": "??0ScenarioClass@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0xab",
   "name": "ScenarioClass::ScenarioClass",
-  "status": "partial",
-  "pct": 0,
-  "best_pct": 0,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Scenario.cpp",
@@ -152815,6 +152813,15 @@
   "sym": "?vf_43@MPCooperative@@UAEXXZ",
   "len": "0x1e9",
   "name": "MPCooperative::vf_43",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/table_00626C60_ctor.cpp",
+  "addr": "0x628070",
+  "sym": "??0Table_00626C60@@QAE@HHP6IHPAX@Z@Z",
+  "len": "0x9d",
+  "name": "Table_00626C60::Table_00626C60",
   "status": "matched",
   "pct": 100.0
  }

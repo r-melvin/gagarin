@@ -661,19 +661,6 @@ ScenarioClass::ScenarioClass()
     memset(&unknown_348E, 0, 16);
 }
 
-// FUNCTION: GAMEMD 0x683560
-ScenarioClass::ScenarioClass(const AbstractNoInit& noInit)
-    : unknown_0218(0), unknown_0614(noInit), unknown_11F8(noInit)
-{
-    // The incoming one-word argument is unused in retail; the existing tag
-    // expresses the observed selective preservation, not a recovered type name.
-    if (unknown_11F8.unknown_00[0])
-        unknown_11F4 = FUN_00734E60(unknown_11F8.unknown_00, 0, STR_0083D838, 0x158);
-    else
-        unknown_11F4 = EmptyName_00887734;
-}
-
-
 // Declaration: GAMEMD 0x6886B0
 void __fastcall FUN_006886B0(bool value);
 // Declaration: GAMEMD 0x68C050
