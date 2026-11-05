@@ -47,8 +47,9 @@ struct MPTeam;
 
 // The by-value vector argument of slots 21, 22 and 45. The callee owns the
 // copy: each body is only the inlined destructor (free Items when
-// IsAllocated, `MOV CL,[ESP+n+0xD]`). The element type is not visible.
-typedef DynamicVectorClass<void*> MPGameModeArgVector;
+// IsAllocated, `MOV CL,[ESP+n+0xD]`). The element type is int: 0x5C2040 copies it
+// with 0x4779E0 and resets it to vtable 0x7E4DB8, whose RTTI is VectorClass<int>.
+typedef DynamicVectorClass<int> MPGameModeArgVector;
 
 // VTABLE: GAMEMD 0x7EED60
 class MultiplayerGameMode

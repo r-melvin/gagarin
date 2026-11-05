@@ -72402,7 +72402,7 @@
  {
   "tu": "match/mp_game_mode_inline_virtuals.cpp",
   "addr": "0x5C0E90",
-  "sym": "?vf_22@MultiplayerGameMode@@UAE_NHV?$DynamicVectorClass@PAX@@HH@Z",
+  "sym": "?vf_22@MultiplayerGameMode@@UAE_NHV?$DynamicVectorClass@H@@HH@Z",
   "len": "0x1e",
   "name": "MultiplayerGameMode::vt_entry_58",
   "status": "matched",
@@ -72411,7 +72411,7 @@
  {
   "tu": "match/mp_game_mode_inline_virtuals.cpp",
   "addr": "0x5C0EB0",
-  "sym": "?vf_21@MultiplayerGameMode@@UAE_NHV?$DynamicVectorClass@PAX@@@Z",
+  "sym": "?vf_21@MultiplayerGameMode@@UAE_NHV?$DynamicVectorClass@H@@@Z",
   "len": "0x1e",
   "name": "MultiplayerGameMode::vt_entry_54",
   "status": "matched",
@@ -72537,7 +72537,7 @@
  {
   "tu": "match/mp_game_mode_inline_virtuals.cpp",
   "addr": "0x5C0FA0",
-  "sym": "?vf_45@MultiplayerGameMode@@UAE_NV?$DynamicVectorClass@PAX@@H@Z",
+  "sym": "?vf_45@MultiplayerGameMode@@UAE_NV?$DynamicVectorClass@H@@H@Z",
   "len": "0x1e",
   "name": "MultiplayerGameMode::vt_entry_B4",
   "status": "matched",
@@ -153094,7 +153094,7 @@
  {
   "tu": "match/MPCoop.cpp",
   "addr": "0x5C2040",
-  "sym": "?vf_22@MPCooperative@@UAE_NHV?$DynamicVectorClass@PAX@@HH@Z",
+  "sym": "?vf_22@MPCooperative@@UAE_NHV?$DynamicVectorClass@H@@HH@Z",
   "len": "0xb6",
   "name": "MPCooperative::vf_22",
   "status": "matched",
