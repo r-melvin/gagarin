@@ -478,6 +478,14 @@ inline Owner_00626C60::Owner_00626C60() throw()
 {
 }
 
+inline Owner_00626C60::Owner_00626C60(int nStep) throw()
+    : At_00(-1),
+      VecA(new VecA_00626C60()),
+      VecB(new VecB_00626C60()),
+      Table(new Table_00626C60(nStep, 31, FUN_00626660))
+{
+}
+
 #include "control_id_predicate_methods.h"
 
 #include "dialog_control_group_lookup.h"
@@ -4029,7 +4037,7 @@ static inline unsigned Inline_DockMargin(bool bFills, int nParent, int nDesign)
     return nMargin;
 }
 
-// Unclaimed (below partial bar), GAMEMD 0x60B1D0  FUN_0060B1D0 (__fastcall)
+// FUNCTION: GAMEMD 0x0060B1D0  FUN_0060B1D0 (__fastcall)
 // Docks a control against the right edge of its parent and re-centres it
 // vertically between the parent's centring margin and the design rectangle's.
 void FUN_0060B1D0(GG_HWND hWnd, RectangleStruct* pRect)
@@ -4142,10 +4150,10 @@ void FUN_0060B420(GG_HWND hWnd)
         nInset = (DAT_007F5BF8 - nWidth) / 2;
 
     int nBottom;
-    if (!bFills)
-        nBottom = DAT_00B0FC28->Y;
-    else
+    if (bFills)
         nBottom = DAT_00B0FC50->Y;
+    else
+        nBottom = DAT_00B0FC28->Y;
 
     MoveWindow(hWnd, (((rcParent.right - nInset) - nWidth) - nMarginX) - rcParent.left,
                nBottom - (rcSelf.bottom - rcSelf.top), nWidth, rcSelf.bottom - rcSelf.top, 0);
@@ -4193,7 +4201,6 @@ void FUN_0060B610(GG_HWND hWnd)
     unsigned nMarginX = Inline_DockMargin(bFills, rcParent.right - rcParent.left, DAT_007F5BE4);
 
     int nWidth = rcSelf.right - rcSelf.left;
-    int nHeight = rcSelf.bottom - rcSelf.top;
     int nInset;
     MapValue_00602B90* value = Inline_00600CA0((int)hWnd);
 
@@ -4202,9 +4209,8 @@ void FUN_0060B610(GG_HWND hWnd)
     else
         nInset = (DAT_007F5BF8 - nWidth) / 2;
 
-    RectangleStruct* pLayout = DAT_00B0FC50;
-    if (!bFills)
-        pLayout = DAT_00B0FC28;
+    int nHeight = rcSelf.bottom - rcSelf.top;
+    RectangleStruct* pLayout = bFills ? DAT_00B0FC50 : DAT_00B0FC28;
 
     MoveWindow(hWnd, (((rcParent.right - nInset) - nWidth) - nMarginX) - rcParent.left,
                (pLayout->Height + pLayout->Y) - nHeight, nWidth, nHeight, 0);
@@ -4773,9 +4779,88 @@ void FUN_00612910()
     gg_free(block);
 }
 
-// Unclaimed, GAMEMD 0x612A60: subclass window procedure (WM_CTLCOLOREDIT 0x133, else CallWindowProcA).
-// Blocked on the canonical hash-table find/insert inline: retail probes 0xAC1B48 and 0xAC1B00 with the
-// key taken by reference (the address of the argument slot is hashed).
+// IAT 0x7E106C / 0x7E1074 / 0x7E1094 / 0x7E1488: GDI32 SetTextColor, SetBkMode, GetStockObject;
+// USER32 CallWindowProcA.
+extern "C" __declspec(dllimport) unsigned long __stdcall SetTextColor(void* hdc, unsigned long crColor);
+extern "C" __declspec(dllimport) int __stdcall SetBkMode(void* hdc, int nMode);
+extern "C" __declspec(dllimport) void* __stdcall GetStockObject(int nObject);
+extern "C" __declspec(dllimport) long __stdcall CallWindowProcA(void* pProc, GG_HWND hWnd, unsigned nMsg,
+                                                                 unsigned nWParam, long nLParam);
+
+struct SubNode_00612A60
+{
+    int Key;
+    void* Proc;
+    SubNode_00612A60* Next;
+};
+
+struct SubTable_00612A60
+{
+    SubNode_00612A60** Buckets;
+    int Count;
+    int unknown_08;
+    int Shift;
+    int unknown_10;
+    int unknown_14;
+    unsigned (* Hash)(const int* pKey);
+};
+extern SubTable_00612A60 DAT_00AC1B48;
+
+// FUNCTION: GAMEMD 0x00612A60  FUN_00612A60 (__stdcall)
+// Subclass window procedure: edit controls answer WM_CTLCOLOREDIT with the
+// text colour and a transparent background, everything else goes to the
+// saved original procedure.
+long __stdcall FUN_00612A60(int hWnd, unsigned nMsg, unsigned nWParam, long nLParam)
+{
+    GG_RECT rcWindow;
+    GG_RECT rcClient;
+    void* pProc = 0;
+
+    if (DAT_00AC1B48.Count != 0)
+    {
+        unsigned hash = DAT_00AC1B48.Hash(&hWnd);
+        SubNode_00612A60* node = DAT_00AC1B48.Buckets[hash & ((1u << DAT_00AC1B48.Shift) - 1u)];
+
+        while (node != 0)
+        {
+            if (node->Key == hWnd)
+            {
+                void** pValue = node ? &node->Proc : 0;
+                if (pValue)
+                    pProc = *pValue;
+                break;
+            }
+
+            node = node->Next;
+        }
+    }
+
+    FUN_00775690((GG_HWND)hWnd, &rcWindow);
+    GetClientRect((GG_HWND)hWnd, &rcClient);
+
+    if (DAT_00AC1B00.Count != 0)
+    {
+        unsigned hash = DAT_00AC1B00.Hash(&hWnd);
+        MapNode_00602B90* node = DAT_00AC1B00.Buckets[hash & ((1u << DAT_00AC1B00.Shift) - 1u)];
+
+        while (node != 0)
+        {
+            if (node->Key == hWnd)
+                break;
+
+            node = node->Next;
+        }
+    }
+
+    if (nMsg == 0x133)
+    {
+        SetTextColor((void*)nWParam, DAT_00AC18A4);
+        SetBkMode((void*)nWParam, 1);
+        return (long)GetStockObject(5);
+    }
+
+    return CallWindowProcA(pProc, (GG_HWND)hWnd, nMsg, nWParam, nLParam);
+}
 
 // FUNCTION: GAMEMD 0x620050 (decl; reloc) -- line between two points.
 void __fastcall FUN_00620050(void* pSurface, const Point2D* pFrom, const Point2D* pTo, int nColorA, int nColorB);
@@ -6509,6 +6594,25 @@ DynamicVectorClass<Obj_0068C8D0*>* __fastcall GetPaletteSchemesFromIterator(Pale
         return 0;
     }
     return (*value)->unknown_100;
+}
+
+// FUNCTION: GAMEMD 0x006269A0  FUN_006269A0
+// Builds the palette-table owner when it does not exist yet, then frees the
+// entries of its first scheme vector and clears both scheme vectors.
+void FUN_006269A0()
+{
+    if (DAT_00AC48F0 == 0)
+    {
+        DAT_00AC48F0 = new Owner_00626C60(10);
+    }
+
+    int nCount = DAT_00AC48F0->VecA->Count;
+
+    for (int i = 0; i < nCount; i++)
+        delete ((void**)DAT_00AC48F0->VecA->Items)[i];
+
+    DAT_00AC48F0->VecA->Slot3();
+    DAT_00AC48F0->VecB->Slot3();
 }
 
 // FUNCTION: GAMEMD 0x626FF0  FUN_00626FF0

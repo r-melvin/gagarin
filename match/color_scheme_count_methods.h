@@ -49,6 +49,9 @@ struct VecBaseA_00626C60
     // items).
     VecBaseA_00626C60(int capacity, void* items) throw();
     virtual void Slot0();             // vtable at +0x0000
+    virtual void Slot1();             // +0x0004
+    virtual void Slot2();             // +0x0008
+    virtual void Slot3();             // +0x000C  Clear (called by 0x6269A0)
 };
 GG_STATIC_ASSERT(sizeof(VecBaseA_00626C60) == 0x10);
 
@@ -64,6 +67,9 @@ struct VecBaseB_00626C60
     // items).
     VecBaseB_00626C60(int capacity, void* items) throw();
     virtual void Slot0();             // vtable at +0x0000
+    virtual void Slot1();             // +0x0004
+    virtual void Slot2();             // +0x0008
+    virtual void Slot3();             // +0x000C  Clear (called by 0x6269A0)
 };
 GG_STATIC_ASSERT(sizeof(VecBaseB_00626C60) == 0x10);
 
@@ -162,6 +168,8 @@ struct Table_00626C60
     int              At_0C;           // +0x000C
 
     Table_00626C60(HashFn_00626C60 hash, int numBuckets) throw();
+    // FUNCTION: GAMEMD 0x628070 (decl; reloc) -- the out-of-line constructor: growth step, bucket count, hash.
+    Table_00626C60(int nStep, int numBuckets, HashFn_00626C60 hash) throw();
 
     // The lookup 0x627A10 expands inline: hash to a bucket, then scan its
     // entries from the last one down. Answers the value slot, or null.
@@ -200,6 +208,8 @@ struct Owner_00626C60
     Table_00626C60*  Table;           // +0x000C
 
     Owner_00626C60() throw();
+    // Same construction with the table built by the out-of-line constructor 0x628070 (0x6269A0).
+    Owner_00626C60(int nStep) throw();
     // FUNCTION: GAMEMD 0x6272A0 (decl; reloc) -- the out-of-line destructor.
     ~Owner_00626C60();
     // FUNCTION: GAMEMD 0x627590 (decl; reloc) -- builds the scheme list for a palette name.

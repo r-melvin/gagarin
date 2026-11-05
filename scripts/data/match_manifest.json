@@ -151534,5 +151534,34 @@
   "name": "?FUN_005A1F60@@YIDXZ",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ownrdraw.cpp",
+  "addr": "0x60B1D0",
+  "sym": "?FUN_0060B1D0@@YIXPAXPAURectangleStruct@@@Z",
+  "len": "0x172",
+  "name": "?FUN_0060B1D0@@YIXPAXPAURectangleStruct@@@Z",
+  "status": "partial",
+  "pct": 90.4,
+  "best_pct": 90.4,
+  "best_at": "2eeee861"
+ },
+ {
+  "tu": "match/ownrdraw.cpp",
+  "addr": "0x612A60",
+  "sym": "?FUN_00612A60@@YGJHIIJ@Z",
+  "len": "0x108",
+  "name": "?FUN_00612A60@@YGJHIIJ@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ownrdraw.cpp",
+  "addr": "0x6269A0",
+  "sym": "?FUN_006269A0@@YIXXZ",
+  "len": "0x10c",
+  "name": "?FUN_006269A0@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
