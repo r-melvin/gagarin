@@ -126,6 +126,8 @@ class Rebase:
             # it into a new file must not have that file merged back
             windows = self.tree.tu_windows_after(self.diffs)
             for path in new_cpps:
+                if any(t.startswith("// TUSPLIT: GAMEMD 0x") for _, t in new_cpps[path].added_lines()):
+                    continue        # a measured split out of a migrated window (AGENTS.md): keep the file
                 dests = {}
                 for r in self.rows:
                     if r.get("tu") == path:
