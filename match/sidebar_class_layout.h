@@ -130,14 +130,24 @@ struct SidebarButton : public DisplayGadget
     void TurnOff();
     // FUNCTION: GAMEMD 0x4E1460 (decl; reloc) -- GadgetClass::Disable.
     void Disable();
-    // FUNCTION: GAMEMD 0x4E1A20 (decl; reloc) -- GadgetClass::SetPosition(x, y); RET 8.
-    void SetPosition(int x, int y);
+    // Slots after DisplayGadget's last one (0x5C): 0x60 .. 0x88 (retail: GadgetClass/ShapeButtonClass vtable 0x7E8088).
+    virtual void vf_24();                       // 0x60
+    // FUNCTION: GAMEMD 0x4E1A20 (decl; reloc) -- GadgetClass::SetPosition(x, y); RET 8; slot 25 (+0x64).
+    virtual void SetPosition(int x, int y);
+    virtual void vf_26();                       // 0x68
+    virtual void vf_27();                       // 0x6C
+    virtual void vf_28();                       // 0x70
+    virtual void vf_29();                       // 0x74
+    virtual void vf_30();                       // 0x78
+    virtual void vf_31();                       // 0x7C
+    virtual void vf_32();                       // 0x80
+    virtual void vf_33();                       // 0x84
     // FUNCTION: GAMEMD 0x4E1A40 (decl; reloc) -- GadgetClass::SetDimension(w, h); RET 8.
     void SetDimension(int w, int h);
     // FUNCTION: GAMEMD 0x4E1960 (decl; reloc) -- GadgetClass::MarkRedraw.
     void MarkRedraw();
-    // FUNCTION: GAMEMD 0x69DE00 (decl; reloc) -- set the shape; RET 0xC.
-    void FUN_0069DE00(SidebarShapeFile* shape, int a, int b);
+    // FUNCTION: GAMEMD 0x69DE00 (decl; reloc) -- set the shape; RET 0xC; slot 34 (+0x88).
+    virtual void FUN_0069DE00(SidebarShapeFile* shape, int a, int b);
     // FUNCTION: GAMEMD 0x69DE70 (decl; reloc) -- ShapeButtonClass::ClearShape.
     void ClearShape();
     // FUNCTION: GAMEMD 0x69DEA0 (decl; reloc) -- ShapeButtonClass::SetLoadedStatus.

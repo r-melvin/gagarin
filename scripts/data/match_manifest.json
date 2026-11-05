@@ -153924,5 +153924,99 @@
   "name": "?FUN_004a4130@@YIIXZ",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/sidebar_tab_class.cpp",
+  "addr": "0x6CFD60",
+  "sym": "?FUN_006CFD60@@YIPAUSidebarTabRect@@PAU1@H@Z",
+  "len": "0x47",
+  "name": "?FUN_006CFD60@@YIPAUSidebarTabRect@@PAU1@H@Z",
+  "status": "partial",
+  "pct": 84.0,
+  "best_pct": 84.0,
+  "best_at": "03a0c69f"
+ },
+ {
+  "tu": "match/sidebar_tab_class.cpp",
+  "addr": "0x6D04A0",
+  "sym": "?FUN_006D04A0@TabClass@@QAEXXZ",
+  "len": "0x26",
+  "name": "TabClass::FUN_006D04A0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/sidebar_tab_class.cpp",
+  "addr": "0x6D0E60",
+  "sym": "?FUN_006D0E60@@YIXXZ",
+  "len": "0x5a",
+  "name": "?FUN_006D0E60@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/sidebar_tab_class.cpp",
+  "addr": "0x6D0EC0",
+  "sym": "?FUN_006D0EC0@TabClass@@QAEXXZ",
+  "len": "0x35",
+  "name": "TabClass::FUN_006D0EC0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/sidebar_tab_class.cpp",
+  "addr": "0x6D0FD0",
+  "sym": "?FUN_006D0FD0@TabClass@@QAEXXZ",
+  "len": "0x159",
+  "name": "TabClass::FUN_006D0FD0",
+  "status": "partial",
+  "pct": 86.5,
+  "best_pct": 86.5,
+  "best_at": "03a0c69f"
+ },
+ {
+  "tu": "match/sidebar_tab_class.cpp",
+  "addr": "0x6D1130",
+  "sym": "?FUN_006D1130@TabClass@@QAEXXZ",
+  "len": "0xcc",
+  "name": "TabClass::FUN_006D1130",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/sidebar_tab_class.cpp",
+  "addr": "0x6D14F0",
+  "sym": "?FUN_006D14F0@TabClass@@QAEXXZ",
+  "len": "0x74",
+  "name": "TabClass::FUN_006D14F0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/sidebar_tab_class.cpp",
+  "addr": "0x6D1570",
+  "sym": "?FUN_006D1570@TabClass@@QAEXXZ",
+  "len": "0x74",
+  "name": "TabClass::FUN_006D1570",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/sidebar_tab_class.cpp",
+  "addr": "0x6D1610",
+  "sym": "?FUN_006D1610@TabClass@@QAEXXZ",
+  "len": "0x47",
+  "name": "TabClass::FUN_006D1610",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/sidebar_tab_class.cpp",
+  "addr": "0x6D1660",
+  "sym": "?FUN_006D1660@TabClass@@QAEXXZ",
+  "len": "0x10e",
+  "name": "TabClass::FUN_006D1660",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

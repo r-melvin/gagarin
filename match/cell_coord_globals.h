@@ -28,6 +28,8 @@ extern int ButtonIndexTable[25];
 extern bool CommandShapeOwned_00B0CBDC[25];
 // GLOBAL: GAMEMD 0xB0CC20
 extern int DAT_00B0CC20;
+// GLOBAL: GAMEMD 0xB0CC28
+extern int DAT_00B0CC28;
 // GLOBAL: GAMEMD 0xB0CD28
 extern int DAT_00B0CD28;
 

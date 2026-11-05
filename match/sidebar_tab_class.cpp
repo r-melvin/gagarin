@@ -12,19 +12,6 @@
 #include "cell_coord_globals.h"
 #include "palette_screen_globals.h"
 
-// FUNCTION: GAMEMD 0x6D0270
-void TabClass::vf_50()
-{
-    SidebarClass::vf_50();
-    for (int i = 0; i < 25; ++i) {
-        if (CommandShapeOwned_00B0CBDC[i]) {
-            delete CommandShapes_00B0C148[i];
-            CommandShapeOwned_00B0CBDC[i] = false;
-        }
-        CommandShapes_00B0C148[i] = 0;
-    }
-}
-
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 
 // Command-bar layout state written by the setup at 0x6D02B0.
@@ -51,6 +38,34 @@ struct SidebarTabRecord
 extern SidebarTabRecord* BarRecord_00B0FC58;
 // GLOBAL: GAMEMD 0xB0CC24 -- copy of BarRecord->At_04.
 extern int BarRecordValue_00B0CC24;
+
+// PARTIAL (84.0%, 21/25 aligned). Same instruction multiset as retail. Retail sums the slot offset into the
+// register that held `slot * width` and keeps the loaded X in ECX; cl adds into the register holding the loaded X.
+// Variants tried: `rect.X += ...` (kept); `rect.X = ... + rect.X`; Y assigned before X (72%); field-wise stores
+// through `out` (the struct copy and its dead Y store vanish, 60%).
+// FUNCTION: GAMEMD 0x6CFD60
+// Writes the command-bar rectangle of the slot reached through `index`.
+SidebarTabRect* FUN_006CFD60(SidebarTabRect* out, int index)
+{
+    SidebarTabRect rect = *BarRect_00B0FC68;
+    rect.X += ButtonIndexTable[index] * OuterWidth_00B0CC38;
+    rect.Y = BarRecordValue_00B0CC24;
+    *out = rect;
+    return out;
+}
+
+// FUNCTION: GAMEMD 0x6D0270
+void TabClass::vf_50()
+{
+    SidebarClass::vf_50();
+    for (int i = 0; i < 25; ++i) {
+        if (CommandShapeOwned_00B0CBDC[i]) {
+            delete CommandShapes_00B0C148[i];
+            CommandShapeOwned_00B0CBDC[i] = false;
+        }
+        CommandShapes_00B0C148[i] = 0;
+    }
+}
 
 // Slot 53: loads the 25 command-bar button shapes and computes the bar geometry.
 //
@@ -164,6 +179,16 @@ inline bool AnyCommandButtonDirty()
     return false;
 }
 
+// FUNCTION: GAMEMD 0x6D04A0
+void TabClass::FUN_006D04A0()
+{
+    for (int index = 0; index < 25; ++index) {
+        SidebarButton* button = &CommandButtons_00B0C1C0[index];
+        button->vf_08();
+        AddButton(button);
+    }
+}
+
 // FUNCTION: GAMEMD 0x6D04F0
 bool TabClass::vf_54(int control)
 {
@@ -268,7 +293,7 @@ inline int TimeLeft(int start, int delay)
 // FUNCTION: GAMEMD 0x6D0680
 void TabClass::vf_10(int* key, Point2D* mouse)
 {
-    if (TimeLeft(At_5538, At_5540) == 1) {
+    if (TimeLeft(At_5538.Start, At_5538.Delay) == 1) {
         At_5545 = true;
         FlagToRedraw(0);
     }
@@ -378,7 +403,7 @@ extern Point2D* ButtonPointB_00B0FC64;
 extern SidebarBarArea* SlotArea_00B0FC68;
 extern int* EndX_00B0FC6C;
 // GLOBAL: GAMEMD 0xB0FB08 / 0xB0FA3C / 0xB0FA90 / 0xB0FAA8 / 0xB0FABC -- shapes drawn by the bar.
-extern SidebarShapeFile* BarShapeBackdrop_00B0FB08;
+extern SidebarShapeFile* DAT_00B0FB08;
 extern SidebarShapeFile* BarShapeTop_00B0FA3C;
 extern SidebarShapeFile* BarShapeSlot_00B0FAA8;
 extern SidebarShapeFile* BarShapeEnd_00B0FABC;
@@ -461,7 +486,7 @@ void TabClass::vf_16(bool forced)
         origin.Y = 0;
         SidebarAreaRect scratch;
         Point2D offset(0, 0);
-        SidebarDrawShape(SidebarSurface_00887300, ConvertA_0087F6CC, BarShapeBackdrop_00B0FB08, 0,
+        SidebarDrawShape(SidebarSurface_00887300, ConvertA_0087F6CC, DAT_00B0FB08, 0,
                          &origin, (SidebarSurface_00887300->*SidebarSurface_00887300->Vtbl->At_78)(&scratch),
                          0, 0, 0, 0, 0x3E8, 0, 0, 0, offset);
         DAT_00B0B518 = 1;
@@ -524,6 +549,141 @@ void TabClass::vf_16(bool forced)
         }
     }
     SidebarClass::vf_16(forced);
+}
+
+// FUNCTION: GAMEMD 0x6D0E60
+void FUN_006D0E60()
+{
+    SidebarShapeFile* shape = DAT_00B0FB08;
+    Point2D offset(0, 0);
+    Point2D origin(0, 0);
+    SidebarAreaRect scratch;
+    SidebarDrawShape(SidebarSurface_00887300, ConvertA_0087F6CC, shape, 0,
+                     &origin, (SidebarSurface_00887300->*SidebarSurface_00887300->Vtbl->At_78)(&scratch),
+                     0, 0, 0, 0, 0x3E8, 0, 0, 0, offset);
+    DAT_00B0B518 = 1;
+}
+
+// FUNCTION: GAMEMD 0x6D0EC0
+void TabClass::FUN_006D0EC0()
+{
+    At_5545 = true;
+    FlagToRedraw(0);
+    TabCountdown timer;
+    timer.Start = CurrentFrame_00A8ED84;
+    timer.Delay = 7;
+    At_5538 = timer;
+}
+
+// PARTIAL (86.5%, 99/111 aligned). Same instruction multiset as retail. The inlined 0x6CFD60 sum lands in the
+// other register of the pair (see there), which shifts the zero register and the store order of the button setup.
+// Variants tried: limit kept as a rect compared per slot (19.8% before the virtual slots were typed); limit as a
+// local sum (37.8%); virtual slots +0x64 / +0x88 typed on the button view (kept).
+// FUNCTION: GAMEMD 0x6D0FD0
+void TabClass::FUN_006D0FD0()
+{
+    for (int first = 0; first < 25; ++first) {
+        CommandButtons_00B0C1C0[first].FUN_0069DE00(0, 0, 0);
+    }
+    SidebarTabRect area = *ButtonRectB_00B0FC64;
+    int right = area.X + area.Width;
+    for (int index = 0; index < 25; ++index) {
+        SidebarButton* button = GetCommandButton(index);
+        if (button != 0) {
+            SidebarTabRect rect;
+            FUN_006CFD60(&rect, index);
+            if (rect.X + rect.Width <= right) {
+                button->ID = index + 0xD6;
+                button->At_50 = ConvertA_0087F6CC;
+                button->IsOn = 0;
+                button->At_30 = 0;
+                button->At_20 = 5;
+                button->SetPosition(rect.X, rect.Y);
+                button->FUN_0069DE00(CommandShapes_00B0C148[index], 0, 0);
+            }
+        }
+    }
+    SidebarButton* active = GetCommandButton(ActiveCommandIndex_00B0CC1C);
+    if (active != 0) {
+        active->At_30 = 1;
+        active->At_40 = 1;
+    }
+    for (int team = DAT_00B0CC20; team <= DAT_00B0CD28; ++team) {
+        SidebarButton* button = GetCommandButton(team);
+        if (button != 0) {
+            button->At_20 = 0x55;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6D1130
+void TabClass::FUN_006D1130()
+{
+    SidebarShapeFile* shape = DAT_00B0FA90;
+    CommandButtonA_00B0CCB0.ID = 0xF0;
+    CommandButtonA_00B0CCB0.At_50 = ConvertA_0087F6CC;
+    CommandButtonA_00B0CCB0.IsOn = 0;
+    CommandButtonA_00B0CCB0.At_30 = 0;
+    CommandButtonA_00B0CCB0.At_20 = 5;
+    SidebarTabRect rectA = *ButtonRectA_00B0FC60;
+    CommandButtonA_00B0CCB0.SetPosition(rectA.X, rectA.Y);
+    CommandButtonA_00B0CCB0.FUN_0069DE00(shape, 0, 0);
+    CommandButtonB_00B0CC40.ID = 0xF1;
+    CommandButtonB_00B0CC40.At_50 = ConvertA_0087F6CC;
+    CommandButtonB_00B0CC40.IsOn = 0;
+    CommandButtonB_00B0CC40.At_30 = 0;
+    CommandButtonB_00B0CC40.At_20 = 5;
+    SidebarTabRect rectB = *ButtonRectB_00B0FC64;
+    CommandButtonB_00B0CC40.SetPosition(rectB.X, rectB.Y);
+    CommandButtonB_00B0CC40.FUN_0069DE00(shape, 0, 0);
+}
+
+// FUNCTION: GAMEMD 0x6D14F0
+void TabClass::FUN_006D14F0()
+{
+    for (int index = 0; index < 25; ++index) {
+        vf_13(&CommandButtons_00B0C1C0[index]);
+    }
+    vf_13(&CommandButtonA_00B0CCB0);
+    for (int tip = 0; tip < 25; ++tip) {
+        SidebarButton* button = GetCommandButton(tip);
+        if (button != 0) {
+            ToolTipManager_Instance->Remove(button->ID);
+        }
+    }
+    ToolTipManager_Instance->Remove(0xF0);
+}
+
+// FUNCTION: GAMEMD 0x6D1570
+void TabClass::FUN_006D1570()
+{
+    AddButton(&CommandButtonB_00B0CC40);
+    SetButtonToolTip(&CommandButtonB_00B0CC40, "Tip:ThumbClosed");
+}
+
+// FUNCTION: GAMEMD 0x6D1610
+void TabClass::FUN_006D1610()
+{
+    if (!At_5544) {
+        vf_13(&CommandButtonB_00B0CC40);
+        ToolTipManager_Instance->Remove(0xF1);
+        At_5544 = true;
+        FUN_006D1200();
+        At_5545 = true;
+        FlagToRedraw(0);
+    }
+}
+
+// FUNCTION: GAMEMD 0x6D1660
+void TabClass::FUN_006D1660()
+{
+    if (At_5544) {
+        FUN_006D14F0();
+        At_5544 = false;
+        FUN_006D1570();
+        At_5545 = true;
+        FlagToRedraw(0);
+    }
 }
 
 // INoticeSink slot 0 of TabClass (table 0x7EDFAC at +0x5518; RET 8). The body does not use `this`.

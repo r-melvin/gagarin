@@ -1219,6 +1219,14 @@ struct TabNoticeData
     void FUN_004A2600(int arg);
 };
 
+// The countdown triple at TabClass +0x5538.
+struct TabCountdown
+{
+    int Start;
+    int Accum;
+    int Delay;
+};
+
 // VTABLE: GAMEMD 0x7EDFB4 (55 slots; INoticeSink table 0x7EDFAC at +0x5518)
 class TabClass : public SidebarClass, public INoticeSink
 {
@@ -1241,17 +1249,21 @@ public:
 
     // FUNCTION: GAMEMD 0x6D04D0 (decl; reloc)
     void FUN_006D04D0();
-    // FUNCTION: GAMEMD 0x6D0FD0 (decl; reloc)
-    void FUN_006D0FD0();
+    void FUN_006D04A0();   // 0x6D04A0
+    void FUN_006D0EC0();   // 0x6D0EC0
+    void FUN_006D0FD0();   // 0x6D0FD0
+    void FUN_006D1130();   // 0x6D1130
     // FUNCTION: GAMEMD 0x6D1200 (decl; reloc)
     void FUN_006D1200();
+    void FUN_006D14F0();   // 0x6D14F0
+    void FUN_006D1570();   // 0x6D1570
+    void FUN_006D1610();   // 0x6D1610
+    void FUN_006D1660();   // 0x6D1660
 
     TabNoticeData unknown_551C;           // +0x551C
     int At_5520;                          // +0x5520
     char unknown_5524[0x5538 - 0x5524];   // +0x5524 (the constructor stores the frame counter at +0x552C)
-    int At_5538;                          // +0x5538
-    char unknown_553C[4];                 // +0x553C
-    int At_5540;                          // +0x5540
+    TabCountdown At_5538;                 // +0x5538 (start frame, accumulated, delay)
     bool At_5544;                         // +0x5544
     bool At_5545;                         // +0x5545
     bool At_5546;                         // +0x5546
@@ -1260,7 +1272,8 @@ public:
 GG_STATIC_ASSERT(offsetof(TabClass, unknown_551C) == 0x551C);
 GG_STATIC_ASSERT(offsetof(TabClass, At_5520) == 0x5520);
 GG_STATIC_ASSERT(offsetof(TabClass, At_5538) == 0x5538);
-GG_STATIC_ASSERT(offsetof(TabClass, At_5540) == 0x5540);
+GG_STATIC_ASSERT(offsetof(TabClass, At_5538.Accum) == 0x553C);
+GG_STATIC_ASSERT(offsetof(TabClass, At_5538.Delay) == 0x5540);
 GG_STATIC_ASSERT(offsetof(TabClass, At_5544) == 0x5544);
 GG_STATIC_ASSERT(offsetof(TabClass, At_5545) == 0x5545);
 GG_STATIC_ASSERT(offsetof(TabClass, At_5546) == 0x5546);
