@@ -153373,5 +153373,88 @@
   "name": "?FUN_006ACE80@@YIXPAUHWND__@@H@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ModemGst.cpp",
+  "addr": "0x5B5AD0",
+  "sym": "?FUN_005B5AD0@WolScenarioColorDlgClass@@QAEXPBGHH@Z",
+  "len": "0xe5",
+  "name": "WolScenarioColorDlgClass::FUN_005B5AD0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ModemGst.cpp",
+  "addr": "0x5B5EF0",
+  "sym": "?FUN_005B5EF0@WolScenarioColorDlgClass@@QAEX_N@Z",
+  "len": "0x121",
+  "name": "WolScenarioColorDlgClass::FUN_005B5EF0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ModemGst.cpp",
+  "addr": "0x5B6DA0",
+  "sym": "?FUN_005B6DA0@Obj_005B6DA0@@QAEXPBG@Z",
+  "len": "0x108",
+  "name": "Obj_005B6DA0::FUN_005B6DA0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ModemGst.cpp",
+  "addr": "0x5B6F30",
+  "sym": "?FUN_005B6F30@Obj_005B6F30@@QAEXXZ",
+  "len": "0x152",
+  "name": "Obj_005B6F30::FUN_005B6F30",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ModemHst.cpp",
+  "addr": "0x5B9550",
+  "sym": "?FUN_005B9550@Obj_005B9550@@QAEXPBGHH@Z",
+  "len": "0xf8",
+  "name": "Obj_005B9550::FUN_005B9550",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ModemHst.cpp",
+  "addr": "0x5B9F30",
+  "sym": "?FUN_005B9F30@WolScenarioColorDlgClass@@QAEX_N@Z",
+  "len": "0x121",
+  "name": "WolScenarioColorDlgClass::FUN_005B9F30",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ModemHst.cpp",
+  "addr": "0x5BA970",
+  "sym": "?FUN_005BA970@Obj_005BA970@@QAEXPBG@Z",
+  "len": "0x108",
+  "name": "Obj_005BA970::FUN_005BA970",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ModemHst.cpp",
+  "addr": "0x5BAB00",
+  "sym": "?FUN_005BAB00@Obj_005BAB00@@QAEXXZ",
+  "len": "0x152",
+  "name": "Obj_005BAB00::FUN_005BAB00",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/wwmous.cpp",
+  "addr": "0x7B9690",
+  "sym": "?FUN_007B9690@WWMouseClass@@QAEXXZ",
+  "len": "0xb2",
+  "name": "WWMouseClass::FUN_007B9690",
+  "status": "partial",
+  "pct": 87.3,
+  "best_pct": 87.3,
+  "best_at": "883219f5"
  }
 ]

@@ -43,6 +43,7 @@ extern "C" __declspec(dllimport) long __stdcall SendMessageA(HWND_ wnd,
 #define GG_CB_SETCURSEL 0x14E
 #define GG_CBM_SETCOLOR 0x498
 #define GG_CB_GETITEMDATA 0x150
+#define GG_CBM_SETTEXT 0x4B2
 
 // GLOBAL: GAMEMD 0x7EEF44 — the RGB value used when the index is out of range.
 extern const unsigned long DefaultSchemeColor;
@@ -60,11 +61,29 @@ struct WolScenarioColorDlgClass
     char  unknown_04[4];    // +0x04
     bool  unknown_08;       // +0x08  second dirty byte, always set with +0x09
     bool  OptionsChanged;   // +0x09
-    char  unknown_0A[0x3E]; // +0x0A
+    char  unknown_0A[2];    // +0x0A
+    unsigned int LastSendTime;   // +0x0C  `MOV [ESI+0xC],EDI` at 0x5B5F6A
+    char  unknown_10[0xC];  // +0x10
+    unsigned int LastPingTime;   // +0x1C  `MOV [ESI+0x1C],EDI` at 0x5B6002
+    wchar_t Handle[20];     // +0x20  wcscpy target at 0x5B5AE8 (`LEA ECX,[ESI+0x20]`)
     int   ColorIndex;       // +0x48
+    int   SlotIndex;        // +0x4C  `MOV [ESI+0x4C],EDI` at 0x5B5B3E
+    int   unknown_50;       // +0x50  read at 0x5B6CEC
+    int   unknown_54;       // +0x54  read at 0x5B6CE7
+    int   unknown_58;       // +0x58  read at 0x5B6CEF
 
     // FUNCTION: GAMEMD 0x5B59B0
     void FUN_005B59B0();
+    // FUNCTION: GAMEMD 0x5B9F30
+    void FUN_005B9F30(bool force);
+    // FUNCTION: GAMEMD 0x5BA660 (decl; reloc)
+    void FUN_005BA660();
+    // FUNCTION: GAMEMD 0x5B5EF0
+    void FUN_005B5EF0(bool force);
+    // FUNCTION: GAMEMD 0x5B6CD0
+    void FUN_005B6CD0();
+    // FUNCTION: GAMEMD 0x5B5AD0
+    void FUN_005B5AD0(const wchar_t* handle, int color, int slot);
     // FUNCTION: GAMEMD 0x5B9450
     void OnColorSelChanged();
     // FUNCTION: GAMEMD 0x5B5960
@@ -79,6 +98,11 @@ struct WolScenarioColorDlgClass
 GG_STATIC_ASSERT(offsetof(WolScenarioColorDlgClass, Dialog) == 0x00);
 GG_STATIC_ASSERT(offsetof(WolScenarioColorDlgClass, unknown_08) == 0x08);
 GG_STATIC_ASSERT(offsetof(WolScenarioColorDlgClass, OptionsChanged) == 0x09);
+GG_STATIC_ASSERT(offsetof(WolScenarioColorDlgClass, LastSendTime) == 0x0C);
+GG_STATIC_ASSERT(offsetof(WolScenarioColorDlgClass, LastPingTime) == 0x1C);
+GG_STATIC_ASSERT(offsetof(WolScenarioColorDlgClass, Handle) == 0x20);
+GG_STATIC_ASSERT(offsetof(WolScenarioColorDlgClass, unknown_58) == 0x58);
 GG_STATIC_ASSERT(offsetof(WolScenarioColorDlgClass, ColorIndex) == 0x48);
+GG_STATIC_ASSERT(offsetof(WolScenarioColorDlgClass, SlotIndex) == 0x4C);
 
 #endif  // GG_MATCH_UI_WOL_SCENARIO_COLOR_METHODS_H

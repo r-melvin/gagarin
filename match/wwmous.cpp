@@ -550,6 +550,21 @@ void WWMouseClass::DrawCachedOnto(MouseSurfaceView* surface, bool useCache2)
     UnlockMouse();
 }
 
+// FUNCTION: GAMEMD 0x7B9690
+// Copy the screen area under the cursor into the Under surface, when there is one.
+void WWMouseClass::FUN_007B9690()
+{
+    LockMouse();
+    if (UnderRect.IsPositive() && Screen && Under) {
+        RectangleStruct src = UnderRect;
+        src.X += Bounds.X;
+        src.Y += Bounds.Y;
+        RectangleStruct dest = { 0, 0, src.Width, src.Height };
+        Screen->Blt(dest, Under, src, 0, 1);
+    }
+    UnlockMouse();
+}
+
 // FUNCTION: GAMEMD 0x7B9750
 void WWMouseClass::vf_4()
 {
