@@ -24,6 +24,14 @@
 #include "_layout/elapsed_timer.h"
 #include "event_queue.h"
 #include "menus_graphic_menu.h"
+#include "_layout/graphic_menu.h"
+#include "_layout/load_options_class.h"
+#include "_layout/session_class.h"
+#include "scenario_session_globals.h"
+#include "game_options_class_methods.h"
+#include "dialog_enable_methods.h"
+#include "ccfile_class.h"
+#include "_layout/ini_class.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -149,6 +157,45 @@ void __cdecl FUN_004F1710()
 {
 }
 
+// USER32 SendMessageA (IAT 0x7E14A4).
+extern "C" __declspec(dllimport) long __stdcall SendMessageA(HWND_ hWnd, unsigned uMsg, unsigned wParam, long lParam);
+
+// GLOBAL: GAMEMD 0xA8DB9C
+extern int DAT_00A8DB9C;
+// GLOBAL: GAMEMD 0xA8EB60
+extern GameOptionsClass DAT_00A8EB60;
+
+// FUNCTION: GAMEMD 0x4F1720
+// Refresh the dialog controls from the session state: the load-game controls in
+// a campaign or mode-5 session, the two slider controls in a mode-4 session.
+void FUN_004F1720(HWND_ dlg)
+{
+    int mode = Session_00A8B238.GameMode;
+    if (mode == 0 || mode == 5) {
+        bool found = LoadOptionsClass().FUN_00559C20();
+        HWND_ item = GetDlgItem(dlg, 0x51E);
+        if (item != 0) {
+            EnableWindow(item, found);
+        }
+        item = GetDlgItem(dlg, 0x520);
+        if (item != 0) {
+            EnableWindow(item, found);
+        }
+    } else if (mode == 4 && DAT_00A8B538 == 0) {
+        HWND_ item = GetDlgItem(dlg, 0x3EF);
+        if (item != 0) {
+            int pos = 3 - DAT_00A8DB9C;
+            SendMessageA(item, 0x406, 1, 0x30000);
+            SendMessageA(item, 0x405, 1, pos);
+        }
+        item = GetDlgItem(dlg, 0x529);
+        if (item != 0) {
+            SendMessageA(item, 0x406, 1, 0x60000);
+            SendMessageA(item, 0x405, 1, 6 - DAT_00A8EB60.GameSpeed);
+        }
+    }
+}
+
 // WinMM import: GAMEMD 0x007E1530 (timeGetTime).
 extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
 
@@ -178,6 +225,7 @@ ScenarioElapsedTimer* ScenarioElapsedTimer::FUN_004F1B00(int ticks)
     return this;
 }
 
+
 // FUNCTION: GAMEMD 0x4F1B20
 // Ticks remaining: the stored duration, less the time elapsed since the start
 // tick unless the timer is paused (start tick -1).
@@ -193,6 +241,14 @@ int ScenarioElapsedTimer::FUN_004F1B20()
         return 0;
     }
     return left;
+}
+
+
+// FUNCTION: GAMEMD 0x4F2140
+// Build the screen engine, the two default names and an empty item list.
+GraphicMenu::GraphicMenu()
+    : Engine(), Background("Title.PCX"), Name("Intro"), unknown_54(0), Items(0, 0)
+{
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

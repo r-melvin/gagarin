@@ -153292,5 +153292,23 @@
   "name": "StripClass::FUN_006ABB60",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/GOptions.cpp",
+  "addr": "0x4F1720",
+  "sym": "?FUN_004F1720@@YIXPAUHWND__@@@Z",
+  "len": "0x11c",
+  "name": "FUN_004F1720",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/GOptions.cpp",
+  "addr": "0x4F2140",
+  "sym": "??0GraphicMenu@@QAE@XZ",
+  "len": "0x52",
+  "name": "GraphicMenu::GraphicMenu",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
