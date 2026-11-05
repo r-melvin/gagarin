@@ -6,6 +6,7 @@
 
 #include "wol_scenario_color_methods.h"
 #include "wol_request_queue.h"
+#include "netshare_common.h"
 #include <string.h>
 #include "house_type_class_find_methods.h"
 #include "message_list_class_manage_methods.h"
@@ -16,6 +17,11 @@
 #include "_rt/gg_static_assert.h"
 #include "shared_constants_globals.h"
 #include "scenario_session_globals.h"
+#include "_layout/node_name_type.h"
+#include "scenario_class_methods.h"
+#include "vector_class.h"
+#include "vector_class_operations.h"
+#include "vector_add_item_free.h"
 
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;
@@ -48,6 +54,41 @@ struct Obj_005B6DA0 {
 
 // GLOBAL: GAMEMD 0xA8B3AC -- the value the list control at 0x667 hands back for its selection.
 extern int DAT_00A8B3AC;
+
+// FUNCTION: GAMEMD 0x735090 (decl; reloc) -- __fastcall, narrow output in ECX, wide input in EDX.
+void __fastcall FUN_00735090(char* output, const unsigned short* input, int maximum);
+// GLOBAL: GAMEMD 0xA8B380 -- the local player's handle, ANSI.
+extern char DAT_00A8B380[];
+// FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- the debug log printf.
+extern "C" int __cdecl FUN_004068E0(const char* format, ...);
+
+// FUNCTION: GAMEMD 0x5B56F0
+//
+// Read the dialog back into the globals: the handle from the edit control 0x5C1 (a 20-character
+// buffer filled by a private message), the colour from combo 0x405 and the list value from 0x667.
+// Each step is logged.
+void WolScenarioColorDlgClass::FUN_005B56F0()
+{
+    FUN_004068E0("ModemGuest.ReadDialog(enter)\n");
+    HWND_ control = GetDlgItem(this->Dialog, 0x5C1);
+    if (control != 0) {
+        unsigned short text[20];
+        SendMessageA(control, 0x4B3, 0x14, (long)text);
+        FUN_00735090(DAT_00A8B380, text, -1);
+    }
+    FUN_004068E0("Name: %s\n", DAT_00A8B380);
+    control = GetDlgItem(this->Dialog, 0x405);
+    if (control != 0) {
+        PlayerColor = SendMessageA(control, GG_CB_GETCURSEL, 0, 0);
+    }
+    FUN_004068E0("Color: %d\n", PlayerColor);
+    control = GetDlgItem(this->Dialog, 0x667);
+    if (control != 0) {
+        unsigned int selection = SendMessageA(control, GG_CB_GETCURSEL, 0, 0);
+        DAT_00A8B3AC = SendMessageA(control, GG_CB_GETITEMDATA, selection, 0);
+    }
+    FUN_004068E0("ModemGuest.ReadDialog(exit)\n");
+}
 
 // FUNCTION: GAMEMD 0x5B5960
 //
@@ -82,11 +123,6 @@ void WolScenarioColorDlgClass::FUN_005B5E90()
     block.Code = 0x74;
     DAT_00A8EA70.FUN_005F1BF0(&block, 0xFA, 1);
 }
-
-// FUNCTION: GAMEMD 0x735090 (decl; reloc) -- __fastcall, narrow output in ECX, wide input in EDX.
-void __fastcall FUN_00735090(char* output, const unsigned short* input, int maximum);
-// GLOBAL: GAMEMD 0xA8B380 -- the local player's handle, ANSI.
-extern char DAT_00A8B380[];
 
 // FUNCTION: GAMEMD 0x5B5A50
 //
@@ -303,6 +339,91 @@ void Obj_005B6F30::FUN_005B6F30()
     if (dialog != 0) {
         UI_EndDialog(dialog);
     }
+}
+
+// FUNCTION: GAMEMD 0x735060 (decl; reloc) -- __fastcall: narrow text to a wide name.
+void FUN_00735060(wchar_t* out, const char* text, int length);
+// GLOBAL: GAMEMD 0xA8DA74 -- the lobby's node vector (DynamicVectorClass<NodeNameType*>, vtable 0x7EE370).
+extern DynamicVectorClass<NodeNameType*> DAT_00A8DA74;
+// GLOBAL: GAMEMD 0xA8B54C -- the number of nodes mirrored.
+extern int DAT_00A8B54C;
+// GLOBAL: GAMEMD 0xA8B230 -- ScenarioClass::Instance.
+extern ScenarioClass* DAT_00A8B230;
+// GLOBAL: GAMEMD 0xA8B254 -- the selected entry index.
+extern int DAT_00A8B254;
+// GLOBAL: GAMEMD 0xA8B260 / 0xA8B31D -- two lobby option bytes (bit 0 is read).
+extern unsigned char DAT_00A8B260;
+extern unsigned char DAT_00A8B31D;
+// GLOBAL: GAMEMD 0xA8ED84
+extern int DAT_00A8ED84;
+// GLOBAL: GAMEMD 0xA8B24C
+extern int DAT_00A8B24C;
+// The object at 0xA8E960: a flags dword at +0x00 and the empty member 0x6B8B10.
+// FUNCTION: GAMEMD 0x5B7090
+// PARTIAL: best 98.5% (197 of 200 instructions). Identical instruction multiset; retail loads the scenario pointer
+// before the selected-map index for the +0x1254 store, this build loads the index first. Tried: the stores in
+// the opposite order (91.0%).
+//
+// The guest presses go: read the dialog, put the local player's node and the dialog's own node
+// into the lobby vector, then wait up to 60 ticks for the queue to drain (at least 0x708 ticks
+// of waiting while it is busy), publish the match options and start. Returns false when the
+// argument is 1 or when the two nodes did not both get in.
+bool WolScenarioColorDlgClass::FUN_005B7090(char skip)
+{
+    if (skip == 1) {
+        return false;
+    }
+    FUN_005B56F0();
+    DAT_00A8B54C = 0;
+    NodeNameType* local = new NodeNameType;
+    if (local != 0) {
+        FUN_00735060(local->Name, DAT_00A8B380, -1);
+        local->unknown_4B = DAT_00A8B3AC;
+        local->unknown_53 = PlayerColor;
+        local->unknown_73 = -1;
+        DynamicVectorAddItemFree(&DAT_00A8DA74, local);
+        DAT_00A8B54C++;
+    }
+    NodeNameType* own = new NodeNameType;
+    if (own != 0) {
+        wcscpy(own->Name, this->Handle);
+        own->unknown_4B = this->SlotIndex;
+        own->unknown_53 = this->ColorIndex;
+        own->unknown_73 = -1;
+        DynamicVectorAddItemFree(&DAT_00A8DA74, own);
+        DAT_00A8B54C++;
+    }
+    if (DAT_00A8B54C != 2) {
+        return false;
+    }
+    HWND_ dialog = (HWND_)FUN_00623230((long)FUN_00734E60("TXT_SENDING_GO_ACK", 0, "D:\\ra2mdpost\\ModemGst.cpp", 0x6F3), 0, 0);
+    if (dialog != 0) {
+        UI_FocusOnWindow(dialog);
+    }
+    unsigned int start = MessageTimer.GetValue();
+    while (true) {
+        if (DAT_00A8EA70.FUN_005F1EA0() == 0 || (unsigned int)(MessageTimer.GetValue() - start) >= 0x708) {
+            if ((unsigned int)(MessageTimer.GetValue() - start) >= 0x3C) {
+                break;
+            }
+        }
+        Unsorted_CallBack();
+        FUN_005D4D50();
+        DAT_00A8EA70.FUN_005F1C60();
+    }
+    if (dialog != 0) {
+        UI_EndDialog(dialog);
+    }
+    DAT_00A8EA70.FUN_005F19C0();
+    InhibitFlag = 0;
+    DAT_00A8B230->unknown_1254 = DAT_00A8B254;
+    DAT_00A8ED84 = 0;
+    DAT_00A8B54C = DAT_00A8DA74.Count;
+    DAT_00A8B24C = 2;
+    DAT_00A8E960.unknown_00 = (((DAT_00A8B260 & 1) << 4 | (DAT_00A8B31D & 1)) << 11) |
+                              (DAT_00A8E960.unknown_00 & 0xFFFF77FF) | 0xC0;
+    DAT_00A8E960.FUN_006B8B10();
+    return true;
 }
 
 // BEGIN defined globals (define_globals.py)

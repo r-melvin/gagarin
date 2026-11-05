@@ -37,6 +37,17 @@ int __cdecl iswgraph(unsigned short ch);
 
 // FUNCTION: GAMEMD 0x7A2730 (decl; reloc) -- no arguments.
 void __cdecl FUN_007A2730();
+// The object at 0xA8E960: a flags dword at +0x00, and the empty member 0x6B8B10
+// reached as a tail jump with ECX = its address.
+struct Obj_00A8E960
+{
+    unsigned int unknown_00;  // +0x00
+    // FUNCTION: GAMEMD 0x6B8B10 (decl; reloc) -- __thiscall, no arguments.
+    void FUN_006B8B10();
+};
+// GLOBAL: GAMEMD 0xA8E960
+extern Obj_00A8E960 DAT_00A8E960;
+
 // The lobby message sent to each remote player. 0x1C7 bytes, byte-packed (the
 // send length pushed at every call site is 0x1C7 and the buffer is cleared as
 // 0x71 dwords, a word and a byte). Member offsets are the displacements the

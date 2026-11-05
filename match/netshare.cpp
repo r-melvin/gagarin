@@ -270,17 +270,6 @@ extern const char DAT_00831A60[];
 #include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
-// The object at 0xA8E960: a flags dword at +0x00, and the empty member 0x6B8B10
-// reached as a tail jump with ECX = its address.
-struct Obj_00A8E960
-{
-    unsigned int unknown_00;  // +0x00
-    // FUNCTION: GAMEMD 0x6B8B10 (decl; reloc) -- __thiscall, no arguments.
-    void FUN_006B8B10();
-};
-// GLOBAL: GAMEMD 0xA8E960
-extern Obj_00A8E960 DAT_00A8E960;
-
 // FUNCTION: GAMEMD 0x52FEC0 (decl; reloc) -- __fastcall (null, flag).
 void FUN_0052FEC0(void* unused, unsigned char flag);
 

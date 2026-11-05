@@ -10,7 +10,7 @@
 #include "_rt/gg_static_assert.h"
 
 // FUNCTION: GAMEMD 0x5DAFE0 (declaration)
-void FUN_005DAFE0(unsigned char, int);
+void FUN_005DAFE0(unsigned char);
 
 
 // FUNCTION: GAMEMD 0x5DAF10

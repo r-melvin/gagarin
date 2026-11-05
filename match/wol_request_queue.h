@@ -29,6 +29,8 @@ struct WolRequestQueue_00A8EA70 {
     int FUN_005F1EE0();
     // FUNCTION: GAMEMD 0x5F1EA0 (decl; reloc)
     int FUN_005F1EA0();
+    // FUNCTION: GAMEMD 0x5F19C0 (decl; reloc)
+    int FUN_005F19C0();
     // FUNCTION: GAMEMD 0x5F1C30 (decl; reloc)
     int FUN_005F1C30(void* buffer, int* length);
     void FUN_005F1BF0(struct WolRequest_005B6F30* block, int size, int flag);

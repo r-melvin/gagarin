@@ -153456,5 +153456,61 @@
   "pct": 87.3,
   "best_pct": 87.3,
   "best_at": "883219f5"
+ },
+ {
+  "tu": "match/ModemGst.cpp",
+  "addr": "0x5B56F0",
+  "sym": "?FUN_005B56F0@WolScenarioColorDlgClass@@QAEXXZ",
+  "len": "0xd2",
+  "name": "WolScenarioColorDlgClass::FUN_005B56F0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ModemGst.cpp",
+  "addr": "0x5B7090",
+  "sym": "?FUN_005B7090@WolScenarioColorDlgClass@@QAE_ND@Z",
+  "len": "0x2c1",
+  "name": "WolScenarioColorDlgClass::FUN_005B7090",
+  "status": "partial",
+  "pct": 98.5,
+  "best_pct": 98.5,
+  "best_at": "c188add4"
+ },
+ {
+  "tu": "match/netdlg2.cpp",
+  "addr": "0x5DAF30",
+  "sym": "?FUN_005DAF30@@YIXXZ",
+  "len": "0x98",
+  "name": "?FUN_005DAF30@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/netdlg2.cpp",
+  "addr": "0x5DB9B0",
+  "sym": "?FUN_005DB9B0@@YIXXZ",
+  "len": "0x1a9",
+  "name": "?FUN_005DB9B0@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/netdlg2.cpp",
+  "addr": "0x5DBE20",
+  "sym": "?FUN_005DBE20@@YIXPBDH@Z",
+  "len": "0x9b",
+  "name": "?FUN_005DBE20@@YIXPBDH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/netdlg2.cpp",
+  "addr": "0x5DF180",
+  "sym": "?FUN_005DF180@@YGHPAUHWND__@@IIJ@Z",
+  "len": "0x288",
+  "name": "?FUN_005DF180@@YGHPAUHWND__@@IIJ@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

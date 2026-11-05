@@ -94,6 +94,10 @@ struct WolScenarioColorDlgClass
     void FUN_005B5E90();
     // FUNCTION: GAMEMD 0x5B5A50
     void FUN_005B5A50(char mode);
+    // FUNCTION: GAMEMD 0x5B56F0
+    void FUN_005B56F0();
+    // FUNCTION: GAMEMD 0x5B7090
+    bool FUN_005B7090(char skip);
 };
 GG_STATIC_ASSERT(offsetof(WolScenarioColorDlgClass, Dialog) == 0x00);
 GG_STATIC_ASSERT(offsetof(WolScenarioColorDlgClass, unknown_08) == 0x08);
