@@ -35,6 +35,10 @@ const double DAT_007EE268 = 60.0;
 
 
 #include "mp_cooperative.h"
+#include "_layout/ini_class.h"
+#include "ccfile_class.h"
+#include "_layout/house_type_class.h"
+#include "_layout/node_name_type.h"
 #include "mp_game_mode_class_methods.h"
 #include "house_class_accessor_methods.h"
 
@@ -47,12 +51,17 @@ extern "C" int __cdecl _strnicmp(const char* a, const char* b, size_t n);
 // Count +0x10).
 struct Rec_0049E3B0
 {
-    char  unknown_00[0x0C];   // +0x00
+    int   unknown_00;         // +0x00
+    void* unknown_04;         // +0x04
+    char  unknown_08[4];      // +0x08
     char (*Names)[0x104];     // +0x0C three MAX_PATH-sized strings
-    DynamicVectorClassLayout Lists;   // +0x10 (Items +0x14, Count +0x20)
+    DynamicVectorClassLayoutOf<DynamicVectorClassLayoutOf<const char*>*> Lists;   // +0x10 (Items +0x14, Count +0x20)
+    DynamicVectorClassLayoutOf<DynamicVectorClassLayoutOf<const char*>*> Lists2;  // +0x28 (Items +0x2c, Count +0x38)
 };
+GG_STATIC_ASSERT(offsetof(Rec_0049E3B0, unknown_04) == 0x04);
 GG_STATIC_ASSERT(offsetof(Rec_0049E3B0, Names) == 0x0C);
 GG_STATIC_ASSERT(offsetof(Rec_0049E3B0, Lists) == 0x10);
+GG_STATIC_ASSERT(offsetof(Rec_0049E3B0, Lists2) == 0x28);
 
 
 // Retail PAUMPlayerScoreType RTTI identifies mutable struct pointers and
@@ -353,12 +362,56 @@ bool FUN_005E8760();
 // vtable constant: 0x7EE3B0
 GG_VECTOR_CTOR_POD_BODY(VectorClass_005C5A80, PodElem4, 0x7EE3B0)
 
-// LIBRARY: GAMEMD 0x7C8EF4 -- CRT sprintf.
-extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 // STRING: GAMEMD 0x82DC64 -- "NAME:COOPDESC%d%d".
 extern const char STR_0082DC64[];
 // GLOBAL: GAMEMD 0xA8EB68 -- the value posted with message 0x405.
 extern LPARAM DAT_00A8EB68;
+
+// FUNCTION: GAMEMD 0x5E6520 (decl; reloc) -- __fastcall, the slot count of the selected entry.
+int FUN_005E6520(int entry);
+// GLOBAL: GAMEMD 0xA8B274 -- the number of AI players being added.
+extern int DAT_00A8B274;
+
+// FUNCTION: GAMEMD 0x5E2700 (decl; reloc) -- cdecl (id, text).
+void __cdecl FUN_005E2700(int id, const wchar_t* text);
+// GLOBAL: GAMEMD 0xA8DA74 -- the lobby's player node vector (also MPGameModeArray below).
+extern DynamicVectorClass<NodeNameType*> DAT_00A8DA74;
+// FUNCTION: GAMEMD 0x5C6120 (decl; reloc) -- __fastcall: delete every item of the vector, then its slot 3.
+void FUN_005C6120(DynamicVectorClass<NodeNameType*>* vector);
+// LIBRARY: GAMEMD 0x7DD0F8 -- CRT _wcsicmp.
+extern "C" int __cdecl _wcsicmp(const wchar_t* a, const wchar_t* b);
+// LIBRARY: GAMEMD 0x7CA489 -- CRT wcscpy.
+extern "C" wchar_t* __cdecl wcscpy(wchar_t* dst, const wchar_t* src);
+// GLOBAL: GAMEMD 0xA8B54C -- the number of nodes mirrored by 0x5C4CA0.
+extern int DAT_00A8B54C;
+// GLOBAL: GAMEMD 0x89E04C -- a flag read and cleared by 0x5C42D0.
+extern bool DAT_0089E04C;
+// LIBRARY: GAMEMD 0x7C9CC2 -- CRT strtok.
+extern "C" char* __cdecl strtok(char* str, const char* delim);
+// LIBRARY: GAMEMD 0x7C9B72 (decl; reloc) -- a CRT text-to-int parser (not the 0x7C9BFD one).
+extern "C" int __cdecl FUN_007C9B72(const char* text);
+// FUNCTION: GAMEMD 0x5E3720 (decl; reloc) -- __fastcall (text).
+void FUN_005E3720(const char* text);
+// FUNCTION: GAMEMD 0x775940 (decl; reloc) -- __fastcall (id): a dialog handle, or null.
+HWND FUN_00775940(int id);
+// GLOBAL: GAMEMD 0x8316A4 -- set to -1 by 0x5C1A10.
+extern int DAT_008316A4;
+// FUNCTION: GAMEMD 0x775B10 (decl; reloc) -- the current dialog window.
+HWND __cdecl FUN_00775B10();
+// LIBRARY: GAMEMD 0x7C8D20 -- CRT _stricmp.
+extern "C" int __cdecl _stricmp(const char* a, const char* b);
+// FUNCTION: GAMEMD 0x5E7BF0 (decl; reloc) -- __fastcall (index).
+void FUN_005E7BF0(int index);
+// FUNCTION: GAMEMD 0x5E2EF0 (decl; reloc) -- __fastcall (dialog, mode).
+void FUN_005E2EF0(HWND dialog, struct MPCooperative* mode);
+// FUNCTION: GAMEMD 0x5E2F60 (decl; reloc) -- __fastcall (dialog).
+void FUN_005E2F60(HWND dialog);
+// FUNCTION: GAMEMD 0x5E74E0 (decl; reloc) -- __fastcall (dialog); EDX is left over.
+void FUN_005E74E0(HWND dialog);
+// FUNCTION: GAMEMD 0x5E32D0 (decl; reloc) -- __fastcall (force, poll).
+void FUN_005E32D0(char force, char poll);
+// GLOBAL: GAMEMD 0x887734 -- the object both arguments of 0x49B760 name.
+extern char DAT_00887734[];
 
 // FUNCTION: GAMEMD 0x4E37D0 (decl; reloc) -- the control id for slot `index`.
 int FUN_004E37D0(int index);
@@ -402,8 +455,23 @@ struct Entry_00A8B8CC
 };
 // GLOBAL: GAMEMD 0xA8B8CC -- that vector's Items.
 extern Entry_00A8B8CC** DAT_00A8B8CC;
+// FUNCTION: GAMEMD 0x5E66D0 (decl; reloc) -- the selected index.
+int FUN_005E66D0();
+// FUNCTION: GAMEMD 0x775B20 (decl; reloc) -- the current dialog's template id.
+int __cdecl FUN_00775B20();
+// GLOBAL: GAMEMD 0xA8B8D8 -- that vector's Count.
+extern int DAT_00A8B8D8;
 // GLOBAL: GAMEMD 0xA8B254 -- the selected entry index (0 = none).
 extern int DAT_00A8B254;
+
+// FUNCTION: GAMEMD 0x688380 (decl; reloc) -- the start cells for a map.
+DynamicVectorClass<Cell> FUN_00688380(bool flag);
+// GLOBAL: GAMEMD 0xA8B27C -- the per-slot choice tables lie back to back, eight ints each
+// (0xA8B27C AI difficulty, 0xA8B29C start position, 0xA8B2BC, 0xA8B2DC colour, 0xA8B2FC team);
+// retail addresses them from the one base with a single induction pointer (`[esi+0x20]`,
+// `[eax-0x40]`), so they are indexed here as rows of eight from DAT_00A8B27C (declared
+// extern int[8] in scenario_session_globals.h).
+enum { SLOT_ROW = 8, ROW_START = 1 * SLOT_ROW, ROW_UNKNOWN = 2 * SLOT_ROW, ROW_COLOUR = 3 * SLOT_ROW, ROW_TEAM = 4 * SLOT_ROW };
 
 // GLOBAL: GAMEMD 0xABF460 -- eight per-entry values (`MOV ECX,8; REP STOSD`).
 int DAT_00ABF460[8];
@@ -414,6 +482,9 @@ extern double DAT_00ABF490;
 // GLOBAL: GAMEMD 0xABF458
 extern double DAT_00ABF458;
 
+
+// LIBRARY: GAMEMD 0x7C8EF4 -- CRT sprintf.
+extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 
 // FUNCTION: GAMEMD 0x5C1470
 // The base gets `false` for its fifth argument. Then empty the campaign list
@@ -480,6 +551,73 @@ MPCooperative::~MPCooperative()
     unknown_04 = false;
 }
 
+// FUNCTION: GAMEMD 0x5C17B0
+// Whether the current campaign's record at +0x33C accepts `a`: true when the
+// record is absent, when the position at +0x40 is past its list, for -3, and
+// for -2 with more than one name; otherwise true when one of the position's
+// names resolves to `a`.
+bool MPCooperative::FUN_005C17B0(int a)
+{
+    int cur = 0;
+    Rec_0049E3B0* rec;
+    DAT_0089F518.FUN_0049E3B0(unknown_33C, &rec);
+    if (rec == 0) {
+        return true;
+    }
+    if (unknown_40 != 0) {
+        if (!unknown_40->FUN_0049BCC0(&cur)) {
+            cur = 0;
+        }
+    } else {
+        cur = 0;
+    }
+    if (cur >= rec->Lists.Count) {
+        return true;
+    }
+    if (a == -2) {
+        if (rec->Lists.Items[cur]->Count > 1) {
+            return true;
+        }
+    } else if (a == -3) {
+        return true;
+    }
+    bool found = false;
+    for (int i = 0; i < rec->Lists.Items[cur]->Count; i++) {
+        if (FUN_0049D9F0(rec->Lists.Items[cur]->Items[i]) == a) {
+            found = true;
+            break;
+        }
+    }
+    return found;
+}
+
+// FUNCTION: GAMEMD 0x5C18A0
+// Empty the campaign list (keeping its capacity) and refill it with one
+// campaign per record of the 0x89F518 list, as the constructor does. Always true.
+//
+// PARTIAL (84.7%). Same instructions as retail; register naming differs: retail keeps `this` in
+// EBX, the loop index in EDI and the element in ESI, then reuses ESI as &Campaigns (LEA); cl keeps
+// `this` in ESI and ends with ADD ESI,0x324. Tried: GetCount() against Count for the loop start, a
+// `while (--i >= 0)` loop, a named element local (all 84.7%).
+bool MPCooperative::FUN_005C18A0()
+{
+    for (int i = Campaigns.Count - 1; i >= 0; i--) {
+        delete Campaigns.Items[i];
+    }
+    int capacity = Campaigns.Capacity;
+    Campaigns.Clear();
+    Campaigns.SetCapacity(capacity, 0);
+
+    int count;
+    DAT_0089F518.FUN_0049E4F0(&count);
+    for (int n = 0; n < count; n++) {
+        CoopCampaignClass* campaign = new CoopCampaignClass;
+        campaign->FUN_0049CAF0(n);
+        Campaigns.AddItem(campaign);
+    }
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x5C1980
 // The last record one of whose three names prefixes-matches (case-blind, for
 // the name's own length) the selected entry's name, or -1.
@@ -511,6 +649,124 @@ int FUN_005C1980()
 void MPCooperative::vf_9()
 {
     unknown_340 = 1;
+}
+
+// FUNCTION: GAMEMD 0x5C1CC0
+// Make sure the campaign helper exists, reset it to the first record and find
+// the map entry whose name begins with the helper's name. Returns its index;
+// when none matches, calls virtual slot 4 and returns -1. -1 when the list is empty.
+//
+// PARTIAL (88.0%). Identical instruction multiset (75). Retail loads the 0xA8B8CC items pointer
+// before the name pointer; cl loads the name first. Tried: the loop index declared at the top
+// (2.7%), an entry local (88.0%, kept), strlen into a local (88.0%).
+int MPCooperative::FUN_005C1CC0()
+{
+    int i = 0;
+    int count = 0;
+    const char* name = 0;
+    DAT_0089F518.FUN_0049E4F0(&count);
+    if (count != 0) {
+        if (unknown_40 == 0) {
+            unknown_40 = new CoopCampaignClass;
+        }
+        unknown_40->FUN_0049CAF0(0);
+        unknown_40->FUN_0049D070(&name, 0);
+        for (; i < DAT_00A8B8D8; i++) {
+            Entry_00A8B8CC* entry = DAT_00A8B8CC[i];
+            if (_strnicmp(entry->Name, name, strlen(name)) == 0) {
+                return i;
+            }
+        }
+        vf_4();
+    }
+    return -1;
+}
+
+// FUNCTION: GAMEMD 0x5C1DC0
+// Apply the selected campaign index. Past the record count, send the helper
+// to the game modes and flag it; on the dialog case swap in a fresh campaign
+// at the index. Then, for the helper's position, mark every game-mode entry
+// that slot 7 rejects with -2 (several names) or its first name's index.
+// False when the helper, or the record, is missing.
+bool MPCooperative::FUN_005C1DC0()
+{
+    if (unknown_40 == 0) {
+        return false;
+    }
+    int count;
+    DAT_0089F518.FUN_0049E4F0(&count);
+    int index = FUN_005E66D0();
+    if (index >= count) {
+        if (MPGameModeArray.Count == 2) {
+            unknown_40->FUN_0049B760(((void**)MPGameModeArray.Items)[0],
+                                     ((void**)MPGameModeArray.Items)[1]);
+        }
+        if (!unknown_40->FUN_0049C0D0()) {
+            return false;
+        }
+        unknown_48 = true;
+    } else if (FUN_00775B20() == 0x6B) {
+        delete unknown_40;
+        unknown_40 = Campaigns.Items[index];
+        Campaigns.Items[index] = new CoopCampaignClass;
+        Campaigns.Items[index]->FUN_0049CAF0(index);
+        unknown_4C = index;
+        if (MPGameModeArray.Count == 2) {
+            unknown_40->FUN_0049B760(((void**)MPGameModeArray.Items)[0],
+                                     ((void**)MPGameModeArray.Items)[1]);
+        }
+    }
+
+    int cur = 0;
+    Rec_0049E3B0* rec;
+    DAT_0089F518.FUN_0049E3B0(unknown_33C, &rec);
+    if (rec == 0) {
+        return false;
+    }
+    if (unknown_40 == 0 || !unknown_40->FUN_0049BCC0(&cur)) {
+        cur = 0;
+    }
+    if (cur >= rec->Lists.Count) {
+        return false;
+    }
+    if (rec->Lists.Count == 0) {
+        return false;
+    }
+    int names = rec->Lists.Items[cur]->Count;
+    FUN_005C2500(FUN_005E26C0());
+    for (int i = 0; i < MPGameModeArray.Count; i++) {
+        if (!vf_7(((MPGameModeEntry**)MPGameModeArray.Items)[i]->Classify())) {
+            if (names > 1) {
+                ((MPGameModeEntry**)MPGameModeArray.Items)[i]->FUN_00696F90(-2);
+            } else {
+                ((MPGameModeEntry**)MPGameModeArray.Items)[i]->FUN_00696F90(
+                    FUN_0049D9F0(rec->Lists.Items[cur]->Items[0]));
+            }
+        }
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x5C2100
+// Hand both campaign copies of `pair` to the helper at +0x40 with the two
+// indices; when its position changed, or a refresh is pending, redraw the
+// dialog and clear the pending flag. False when there is no helper.
+bool MPCooperative::FUN_005C2100(int a, int b, CoopCampaignClass* pair)
+{
+    if (unknown_40 == 0) {
+        return false;
+    }
+    int cur;
+    unknown_40->FUN_0049BCC0(&cur);
+    bool result = unknown_40->FUN_0049CC50(a, b, pair[0], pair[1]);
+    if (cur != a || unknown_340) {
+        HWND dialog = FUN_005E26C0();
+        if (dialog != 0) {
+            FUN_005C2500(dialog);
+            unknown_340 = false;
+        }
+    }
+    return result;
 }
 
 // FUNCTION: GAMEMD 0x5C21D0
@@ -753,6 +1009,131 @@ void MPCooperative::FUN_005C2D00(int house, DynamicVectorClassLayout* spots, boo
     MPCoopScenario_00A8B230->StartHouse[spot] = house;
 }
 
+// FUNCTION: GAMEMD 0x5C30C0
+// Fill the AI slots after the human start spots: as many as the selected
+// entry has slots beyond the humans get a difficulty (2 when the posted
+// value is 0, else 1 only for the value 1) and -2 for position, colour and
+// team; the rest are cleared to -1. False when there is nothing to add or the
+// record or its position is missing.
+bool MPCooperative::FUN_005C30C0()
+{
+    int ai = FUN_005E6520(DAT_00A8B254) - MPCoopScenario_00A8B230->NumCoopHumanStartSpots;
+    FUN_004068E0("@@@@ Adding %d AI players\n", ai);
+    if (ai <= 0) {
+        return false;
+    }
+    int added = 0;
+    int cur = 0;
+    DAT_00A8B274 = ai;
+    Rec_0049E3B0* rec;
+    DAT_0089F518.FUN_0049E3B0(unknown_33C, &rec);
+    if (rec == 0) {
+        return false;
+    }
+    if (rec->Lists2.Count == 0) {
+        return false;
+    }
+    if (unknown_40 == 0 || !unknown_40->FUN_0049BCC0(&cur)) {
+        cur = 0;
+    }
+    if (cur >= rec->Lists2.Count) {
+        return false;
+    }
+    for (int n = MPCoopScenario_00A8B230->NumCoopHumanStartSpots; n < 8; n++) {
+        if (added < ai) {
+            FUN_004068E0("@@@@ Setting slot %d for AI\n", n);
+            if (DAT_00A8EB68 == 0) {
+                DAT_00A8B27C[n] = 2;
+            } else {
+                DAT_00A8B27C[n] = DAT_00A8EB68 == 1;
+            }
+            FUN_004068E0("@@@@     AI difficulty: %d\n", DAT_00A8B27C[n]);
+            DAT_00A8B27C[ROW_START + n] = -2;
+            DAT_00A8B27C[ROW_UNKNOWN + n] = -2;
+            DAT_00A8B27C[ROW_COLOUR + n] = -2;
+            DAT_00A8B27C[ROW_TEAM + n] = -2;
+            added++;
+        } else {
+            DAT_00A8B27C[n] = -1;
+            DAT_00A8B27C[ROW_START + n] = -1;
+            DAT_00A8B27C[ROW_UNKNOWN + n] = -1;
+            DAT_00A8B27C[ROW_COLOUR + n] = -1;
+            DAT_00A8B27C[ROW_TEAM + n] = -1;
+        }
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x5C34F0
+// Pick a random map entry that the current position's first list of the
+// record at the helper's index names, and return its index. 0 when the
+// record or position is missing. MPCooperative vtable slot 27.
+int MPCooperative::vf_27()
+{
+    int count = DAT_00A83CA8;
+    bool found = false;
+    int index = 0;
+    unknown_40->FUN_0049BC80(&index);
+    int cur = 0;
+    Rec_0049E3B0* rec;
+    DAT_0089F518.FUN_0049E3B0(index, &rec);
+    if (rec == 0) {
+        return 0;
+    }
+    if (unknown_40 == 0 || !unknown_40->FUN_0049BCC0(&cur)) {
+        cur = 0;
+    }
+    if (cur >= rec->Lists.Count) {
+        return 0;
+    }
+    int pick;
+    do {
+        pick = MPCoopScenario_00A8B230->Random.FUN_0065C7E0(0, count - 1);
+        for (int i = 0; i < rec->Lists.Items[cur]->Count; i++) {
+            if (pick == FUN_0049D9F0(rec->Lists.Items[cur]->Items[i])) {
+                found = true;
+            }
+        }
+    } while (!found);
+    FUN_004068E0("@@@@ Choosing a random player house: %d(%s)\n", pick,
+                 NarrowName_007350C0(DAT_00A83C9C[pick]->unknown_60));
+    return pick;
+}
+
+// FUNCTION: GAMEMD 0x5C35F0
+// The same for the record's second list. MPCooperative vtable slot 28.
+int MPCooperative::vf_28()
+{
+    int count = DAT_00A83CA8;
+    bool found = false;
+    int index = 0;
+    unknown_40->FUN_0049BC80(&index);
+    int cur = 0;
+    Rec_0049E3B0* rec;
+    DAT_0089F518.FUN_0049E3B0(index, &rec);
+    if (rec == 0) {
+        return 0;
+    }
+    if (unknown_40 == 0 || !unknown_40->FUN_0049BCC0(&cur)) {
+        cur = 0;
+    }
+    if (cur >= rec->Lists2.Count) {
+        return 0;
+    }
+    int pick;
+    do {
+        pick = MPCoopScenario_00A8B230->Random.FUN_0065C7E0(0, count - 1);
+        for (int i = 0; i < rec->Lists2.Items[cur]->Count; i++) {
+            if (pick == FUN_0049D9F0(rec->Lists2.Items[cur]->Items[i])) {
+                found = true;
+            }
+        }
+    } while (!found);
+    FUN_004068E0("@@@@ Choosing a random AI house: %d(%s)\n", pick,
+                 NarrowName_007350C0(DAT_00A83C9C[pick]->unknown_60));
+    return pick;
+}
+
 // FUNCTION: GAMEMD 0x5C36F0
 // Tail-forwards to another function. Vtable slot 35 of MPCooperative (RTTI).
 bool MPCooperative::vf_35()
@@ -786,12 +1167,165 @@ bool MPCooperative::FUN_005C3EC0()
     return unknown_40 ? true : false;
 }
 
+// FUNCTION: GAMEMD 0x5C3F80
+// Refresh the lobby after a change. On the dialog with id 0x6B, while the
+// pending flag at +0x49 is set, drop the last entry of control 0x553 (also
+// the one before it when that one is selected) and clear the flag. On any
+// other dialog, when the helper is flagged at +0x48, reset it to the
+// current position, find the map named after the helper's entry and select
+// it, then redraw the dialog. Either way hand the helper its two default
+// arguments last. MPCooperative vtable slot 36.
+void MPCooperative::vf_36()
+{
+    if (FUN_00775B20() == 0x6B) {
+        if (unknown_49) {
+            HWND control = GetDlgItem(FUN_00775B10(), 0x553);
+            int last = SendMessageA(control, 0x18B, 0, 0);
+            if (last == -1) {
+                if (unknown_40 != 0) {
+                    unknown_40->FUN_0049B760(DAT_00887734, DAT_00887734);
+                }
+                return;
+            }
+            if (SendMessageA(control, 0x188, 0, 0) == last - 1) {
+                SendMessageA(control, 0x186, last - 2, 0);
+            }
+            SendMessageA(control, 0x182, last - 1, 0);
+            unknown_49 = false;
+        }
+    } else {
+        if (unknown_40 != 0 && unknown_48) {
+            if (unknown_4C != 0) {
+                unknown_40->FUN_0049CAF0(0);
+                unknown_40->FUN_0049CAF0(unknown_4C);
+            } else {
+                unknown_40->FUN_0049CAF0(1);
+                unknown_40->FUN_0049CAF0(unknown_4C);
+            }
+            const char* name;
+            unknown_40->FUN_0049D070(&name, -1);
+            int count = DAT_00A8B8D8;
+            char file[0x104];
+            sprintf(file, "%s.MAP", name);
+            int i = 0;
+            for (; i < count; i++) {
+                Entry_00A8B8CC* entry = DAT_00A8B8CC[i];
+                if (_stricmp(entry->Name, file) == 0) {
+                    break;
+                }
+            }
+            DAT_00A8B254 = i;
+            MPCoopScenario_00A8B230->unknown_1254 = i;
+            FUN_005E7BF0(i);
+        }
+        HWND dialog = FUN_005E26C0();
+        if (dialog != 0) {
+            FUN_005E2EF0(dialog, this);
+            FUN_005E2F60(dialog);
+            FUN_005E74E0(dialog);
+        }
+        FUN_005E32D0(1, 1);
+    }
+    if (unknown_40 != 0) {
+        unknown_40->FUN_0049B760(DAT_00887734, DAT_00887734);
+    }
+}
+
+// FUNCTION: GAMEMD 0x5C4110
+// Offer the saved campaign map: make sure the helper exists, give it the two
+// game modes, run virtual slot 24, and when the helper accepts, on the dialog
+// 0x6B (with the offer not yet shown) find the map named `<helper name>.MAP`
+// and insert the "use saved game" line for it into control 0x553. On any
+// other dialog show the "save campaign available" notice. MPCooperative
+// vtable slot 37.
+void MPCooperative::vf_37()
+{
+    if (unknown_40 == 0) {
+        unknown_40 = new CoopCampaignClass;
+        unknown_40->FUN_0049CAF0(0);
+    }
+    if (unknown_40 != 0) {
+        if (MPGameModeArray.Count == 2) {
+            unknown_40->FUN_0049B760(((void**)MPGameModeArray.Items)[0],
+                                     ((void**)MPGameModeArray.Items)[1]);
+        }
+        vf_24();
+        if (unknown_40->FUN_0049D120()) {
+            if (FUN_00775B20() == 0x6B) {
+                if (!unknown_49) {
+                    char file[0x104];
+                    unknown_40->FUN_0049D390(file);
+                    strcat(file, ".MAP");
+                    Entry_00A8B8CC* found = 0;
+                    int count = DAT_00A8B8D8;
+                    for (int i = 0; i < count && found == 0; i++) {
+                        Entry_00A8B8CC* entry = DAT_00A8B8CC[i];
+                        if (_stricmp(entry->Name, file) == 0) {
+                            found = DAT_00A8B8CC[i];
+                        }
+                    }
+                    if (found != 0) {
+                        HWND control = GetDlgItem(FUN_00775B10(), 0x553);
+                        int last = SendMessageA(control, 0x18B, 0, 0);
+                        if (last != -1) {
+                            SendMessageA(control, 0x4CD, 0,
+                                (LPARAM)StringTable_LoadString("TXT_COOP_USE_SAVE", 0, STR_0082DC4C, 0x77A));
+                            SendMessageA(control, 0x19A, last, (LPARAM)found);
+                            unknown_49 = true;
+                        }
+                    }
+                }
+            } else {
+                FUN_005E2700(-1, StringTable_LoadString("TXT_SAVE_CAMP_AVAILABLE", 0, STR_0082DC4C, 0x780));
+            }
+        }
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5C42C0
 // Returns a constant. Vtable slot 38 of MPCooperative (RTTI).
 int MPCooperative::vf_38()
 {
     return 2;
+}
+
+// FUNCTION: GAMEMD 0x5C4CA0
+// Rebuild the lobby's node vector from this mode's own nodes: for every node
+// whose name matches a house, stamp the house index on the node and append a
+// fresh copy of it (name, flags, address and the chosen values) to the lobby
+// vector, counting each. MPCooperative vtable slot 43.
+void MPCooperative::vf_43()
+{
+    FUN_005C6120(&DAT_00A8DA74);
+    DAT_00A8B54C = 0;
+    for (int n = 0; n < Nodes.Count; n++) {
+        for (int h = 0; h < HouseClass_Array.Count; h++) {
+            if (_wcsicmp(HouseClass_Array.Items[h]->UIName, Nodes.Items[n]->Name) == 0) {
+                Nodes.Items[n]->unknown_6F = h;
+                NodeNameType* copy = new NodeNameType;
+                wcscpy(copy->Name, Nodes.Items[n]->Name);
+                copy->unknown_7B = Nodes.Items[n]->unknown_7B;
+                copy->unknown_4B = Nodes.Items[n]->unknown_4B;
+                copy->unknown_53 = Nodes.Items[n]->unknown_53;
+                strcpy((char*)copy->unknown_34, (const char*)Nodes.Items[n]->unknown_34);
+                copy->unknown_4F = Nodes.Items[n]->unknown_4F;
+                copy->unknown_57 = Nodes.Items[n]->unknown_57;
+                copy->unknown_6B = Nodes.Items[n]->unknown_6B;
+                copy->unknown_73 = Nodes.Items[n]->unknown_73;
+                copy->unknown_77 = Nodes.Items[n]->unknown_77;
+                copy->unknown_7B = Nodes.Items[n]->unknown_7B;
+                NetworkNumberType network;
+                NodeAddressType node;
+                unsigned short port;
+                Nodes.Items[n]->Address.FUN_0053ED60(&network, &node, &port);
+                copy->Address.FUN_0053ED20(&network, &node, port);
+                DAT_00A8DA74.AddItem(copy);
+                DAT_00A8B54C++;
+                break;
+            }
+        }
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

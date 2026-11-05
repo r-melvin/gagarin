@@ -152714,5 +152714,108 @@
   "name": "?FUN_004E6190@@YAHXZ",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/MPCoop.cpp",
+  "addr": "0x5C17B0",
+  "sym": "?FUN_005C17B0@MPCooperative@@QAE_NH@Z",
+  "len": "0xec",
+  "name": "MPCooperative::FUN_005C17B0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MPCoop.cpp",
+  "addr": "0x5C18A0",
+  "sym": "?FUN_005C18A0@MPCooperative@@QAE_NXZ",
+  "len": "0xd7",
+  "name": "MPCooperative::FUN_005C18A0",
+  "status": "partial",
+  "pct": 84.7,
+  "best_pct": 84.7,
+  "best_at": "e7787dd4"
+ },
+ {
+  "tu": "match/MPCoop.cpp",
+  "addr": "0x5C1CC0",
+  "sym": "?FUN_005C1CC0@MPCooperative@@QAEHXZ",
+  "len": "0xba",
+  "name": "MPCooperative::FUN_005C1CC0",
+  "status": "partial",
+  "pct": 88.0,
+  "best_pct": 88.0,
+  "best_at": "e7787dd4"
+ },
+ {
+  "tu": "match/MPCoop.cpp",
+  "addr": "0x5C1DC0",
+  "sym": "?FUN_005C1DC0@MPCooperative@@QAE_NXZ",
+  "len": "0x1db",
+  "name": "MPCooperative::FUN_005C1DC0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MPCoop.cpp",
+  "addr": "0x5C2100",
+  "sym": "?FUN_005C2100@MPCooperative@@QAE_NHHPAVCoopCampaignClass@@@Z",
+  "len": "0x91",
+  "name": "MPCooperative::FUN_005C2100",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MPCoop.cpp",
+  "addr": "0x5C30C0",
+  "sym": "?FUN_005C30C0@MPCooperative@@QAE_NXZ",
+  "len": "0x157",
+  "name": "MPCooperative::FUN_005C30C0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MPCoop.cpp",
+  "addr": "0x5C34F0",
+  "sym": "?vf_27@MPCooperative@@UAEHXZ",
+  "len": "0xfe",
+  "name": "MPCooperative::vf_27",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MPCoop.cpp",
+  "addr": "0x5C35F0",
+  "sym": "?vf_28@MPCooperative@@UAEHXZ",
+  "len": "0xfe",
+  "name": "MPCooperative::vf_28",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MPCoop.cpp",
+  "addr": "0x5C3F80",
+  "sym": "?vf_36@MPCooperative@@UAEXXZ",
+  "len": "0x18c",
+  "name": "MPCooperative::vf_36",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MPCoop.cpp",
+  "addr": "0x5C4110",
+  "sym": "?vf_37@MPCooperative@@UAEXXZ",
+  "len": "0x1aa",
+  "name": "MPCooperative::vf_37",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MPCoop.cpp",
+  "addr": "0x5C4CA0",
+  "sym": "?vf_43@MPCooperative@@UAEXXZ",
+  "len": "0x1e9",
+  "name": "MPCooperative::vf_43",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
