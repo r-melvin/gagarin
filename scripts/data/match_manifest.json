@@ -153662,5 +153662,119 @@
   "pct": 94.5,
   "best_pct": 94.5,
   "best_at": "b5fdffd7"
+ },
+ {
+  "tu": "match/WOLPersonaInformation.cpp",
+  "addr": "0x778F30",
+  "sym": "?FUN_00778F30@@YIXABVWstring@@AAVObj_007B66D0@@@Z",
+  "len": "0x2fc",
+  "name": "?FUN_00778F30@@YIXABVWstring@@AAVObj_007B66D0@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/WOLPersonaInformation.cpp",
+  "addr": "0x779690",
+  "sym": "??0PlayerProfile@@QAE@ABVMember_7B46F0@@HEHHHHHHHHEABVObj_007B66D0@@1@Z",
+  "len": "0x91",
+  "name": "??0PlayerProfile@@QAE@ABVMember_7B46F0@@HEHHHHHHHHEABVObj_007B66D0@@1@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/WOLPersonaInformation.cpp",
+  "addr": "0x779730",
+  "sym": "?FUN_00779730@@YA_NXZ",
+  "len": "0xf6",
+  "name": "?FUN_00779730@@YA_NXZ",
+  "status": "partial",
+  "pct": 88.7,
+  "best_pct": 88.7,
+  "best_at": "03a0c69f"
+ },
+ {
+  "tu": "match/WOLPersonaInformation.cpp",
+  "addr": "0x779830",
+  "sym": "?FUN_00779830@@YIX_N@Z",
+  "len": "0x10f",
+  "name": "?FUN_00779830@@YIX_N@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/WOLPersonaInformation.cpp",
+  "addr": "0x779940",
+  "sym": "?FUN_00779940@@YA_NXZ",
+  "len": "0xf6",
+  "name": "?FUN_00779940@@YA_NXZ",
+  "status": "partial",
+  "pct": 88.7,
+  "best_pct": 88.7,
+  "best_at": "03a0c69f"
+ },
+ {
+  "tu": "match/WOLPersonaInformation.cpp",
+  "addr": "0x779A40",
+  "sym": "?FUN_00779A40@@YIX_N@Z",
+  "len": "0x10f",
+  "name": "?FUN_00779A40@@YIX_N@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/WOLPersonaInformation.cpp",
+  "addr": "0x779B50",
+  "sym": "?FUN_00779B50@@YI?AVWstring@@XZ",
+  "len": "0x13e",
+  "name": "?FUN_00779B50@@YI?AVWstring@@XZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/WOLPersonaInformation.cpp",
+  "addr": "0x779C90",
+  "sym": "?FUN_00779C90@@YIXABVWstring@@@Z",
+  "len": "0x13d",
+  "name": "?FUN_00779C90@@YIXABVWstring@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/WOLPersonaInformation.cpp",
+  "addr": "0x779DD0",
+  "sym": "?FUN_00779DD0@@YI?AVWstring@@XZ",
+  "len": "0x13e",
+  "name": "?FUN_00779DD0@@YI?AVWstring@@XZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/WOLPersonaInformation.cpp",
+  "addr": "0x779F10",
+  "sym": "?FUN_00779F10@@YIXABVWstring@@@Z",
+  "len": "0x13d",
+  "name": "?FUN_00779F10@@YIXABVWstring@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/WOLPersonaInformation.cpp",
+  "addr": "0x77A4D0",
+  "sym": "?FUN_0077A4D0@PlayerProfile@@QAEXXZ",
+  "len": "0x22e",
+  "name": "PlayerProfile::FUN_0077A4D0",
+  "status": "partial",
+  "pct": 89.2,
+  "best_pct": 89.2,
+  "best_at": "03a0c69f"
+ },
+ {
+  "tu": "match/WOLPersonaInformation.cpp",
+  "addr": "0x77A8D0",
+  "sym": "?FUN_0077A8D0@@YIXPAUHWND__@@_N@Z",
+  "len": "0x117",
+  "name": "?FUN_0077A8D0@@YIXPAUHWND__@@_N@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

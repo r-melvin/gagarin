@@ -31,6 +31,9 @@ public:
     {
         // FUNCTION: GAMEMD 0x49EA10 (decl; reloc) -- zero all five fields.
         SectionIndexClass();
+        // The inline construction (five zero stores) the wolinfoMD.ini accessors at 0x779730..0x77A04C expand.
+        struct InlineIndex {};
+        SectionIndexClass(InlineIndex) {}
         // FUNCTION: GAMEMD 0x52B390 (decl; reloc) -- IsPresent, the out-of-line copy the lookups call. Declared here
         // as well as on the template: Ini.cpp defines the template's copy, and a body the TU can see is expanded
         // inline at the call sites, where retail calls.
@@ -40,6 +43,8 @@ public:
     // 0x5D5C07: +0x04/+0x08 zeroed, the list (0x49E8E0) and index (0x49EA10)
     // constructors called, +0x3C zeroed.
     INIClass() : unknown_04(0), unknown_08(0), unknown_3C(0) {}
+    // The same with the index construction expanded inline (0x779730).
+    INIClass(SectionIndexClass::InlineIndex tag) : unknown_04(0), unknown_08(0), SectionIndex(tag), unknown_3C(0) {}
     // FUNCTION: GAMEMD 0x5256F0
     virtual ~INIClass();
     // Declaration: GAMEMD 0x525A10 -- file and full DWORD options, RET8; EAX ABI view.
@@ -95,6 +100,8 @@ public:
     int FUN_00529160(const char* section, const char* key, wchar_t* output, int size);
     // Declaration: GAMEMD 0x528E00 -- boolAL, three arguments, RET0C.
     bool FUN_00528E00(const char* section, const char* key, const wchar_t* value);
+    // Declaration: GAMEMD 0x5289E0 -- writes a string under Wstring section, key and value, RET 0xC.
+    void FUN_005289E0(const Wstring& section, const Wstring& key, const Wstring& value);
     // FUNCTION: GAMEMD 0x529560
     bool WriteBool(const char* section, const char* key, bool value);
     // FUNCTION: GAMEMD 0x5295F0 (decl; reloc) -- read a bool, RET 0xC.

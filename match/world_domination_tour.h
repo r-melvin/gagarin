@@ -199,10 +199,24 @@ GG_STATIC_ASSERT(sizeof(WorldDominationTour::Conflict) == 0x10);
 class PlayerProfile : public ReferenceCounted
 {
 public:
+    // 0x779690: 14 stack arguments (RET 0x38).
+    PlayerProfile(const Member_7B46F0& name, int a2, unsigned char a3, int a4, int a5, int a6, int a7, int a8,
+                  int a9, int a10, int a11, unsigned char a12, const Obj_007B66D0& a13, const Obj_007B66D0& a14);
     ~PlayerProfile();   // 0x77A050
-    int unknown_08;            // +0x08
+    void FUN_0077A4D0();   // refreshes the date text (+0x40) and the time text (+0x3C)
+    unsigned char unknown_08;  // +0x08 (cleared by the constructor with a byte store)
     Member_7B46F0 Member_0C;   // +0x0C
-    char unknown_10[0x2C];     // +0x10
+    int unknown_10;            // +0x10
+    unsigned char unknown_14;  // +0x14
+    int unknown_18;            // +0x18
+    int unknown_1C;            // +0x1C
+    int unknown_20;            // +0x20
+    int unknown_24;            // +0x24
+    int unknown_28;            // +0x28
+    int unknown_2C;            // +0x2C
+    int unknown_30;            // +0x30
+    int unknown_34;            // +0x34
+    unsigned char unknown_38;  // +0x38
     Obj_007B66D0 Member_3C;   // +0x3C
     Obj_007B66D0 Member_40;   // +0x40
 };
@@ -215,7 +229,11 @@ GG_STATIC_ASSERT(offsetof(WorldDominationTour::Territory, unknown_2C) == 0x2C);
 GG_STATIC_ASSERT(sizeof(WorldDominationTour::Territory) == 0x30);
 GG_STATIC_ASSERT(offsetof(WorldDominationTour::FlagGameOption, Member_14) == 0x14);
 GG_STATIC_ASSERT(offsetof(WorldDominationTour::FlagGameOption, Member_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(PlayerProfile, unknown_08) == 0x08);
 GG_STATIC_ASSERT(offsetof(PlayerProfile, Member_0C) == 0x0C);
+GG_STATIC_ASSERT(offsetof(PlayerProfile, unknown_14) == 0x14);
+GG_STATIC_ASSERT(offsetof(PlayerProfile, unknown_34) == 0x34);
+GG_STATIC_ASSERT(offsetof(PlayerProfile, unknown_38) == 0x38);
 GG_STATIC_ASSERT(offsetof(PlayerProfile, Member_3C) == 0x3C);
 GG_STATIC_ASSERT(offsetof(PlayerProfile, Member_40) == 0x40);
 
