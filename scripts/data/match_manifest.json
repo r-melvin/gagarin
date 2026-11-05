@@ -151525,5 +151525,14 @@
   "name": "Obj_7106E0::FUN_7106E0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/MapGen.cpp",
+  "addr": "0x5A1F60",
+  "sym": "?FUN_005A1F60@@YIDXZ",
+  "len": "0x4c",
+  "name": "?FUN_005A1F60@@YIDXZ",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

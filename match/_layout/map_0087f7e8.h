@@ -45,6 +45,8 @@ struct Map_0087F7E8
     void FUN_00568BB0(char a1);
     // FUNCTION: GAMEMD 0x578290 (declaration)
     CellClass* FUN_00578290();
+    // FUNCTION: GAMEMD 0x579010 (declaration) -- thiscall, a cell and an int (RET 8); status in AL.
+    char FUN_00579010(CellClass* cell, int a2);
     // FUNCTION: GAMEMD 0x578350 (declaration)
     void FUN_00578350();
     // FUNCTION: GAMEMD 0x578460 (declaration)
