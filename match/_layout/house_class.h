@@ -135,6 +135,14 @@ public:
     unsigned char unknown_54[0x20];
     HouseClass* unknown_74; // 0x6869DB writes containing House at +0x5774
     int FailedToPlaceNode(class BaseNodeClass* Node);   // GAMEMD 0x42F380
+    // FUNCTION: GAMEMD 0x42E780 -- RET 4, AL result.
+    bool FUN_0042E780(int index);
+    // FUNCTION: GAMEMD 0x42E820 (decl; reloc) -- RET 4.
+    BuildingClass* FUN_0042E820(int index);
+    // FUNCTION: GAMEMD 0x42EA30 -- RET 4.
+    BaseNodeClass* FUN_0042EA30(BuildingClass* building);
+    // FUNCTION: GAMEMD 0x42EB50 -- RET 4.
+    int FUN_0042EB50(int type);
     // FUNCTION: GAMEMD 0x42F260 -- one stack argument (RET 4); BuildingClass 0x440580 passes itself (decl; reloc).
     void FUN_0042F260(BuildingClass* building);
     // FUNCTION: GAMEMD 0x42EBE0 (decl; reloc) -- reads the base layout of a house's section, RET 8.

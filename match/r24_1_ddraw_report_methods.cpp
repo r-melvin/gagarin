@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "_rt/gg_static_assert.h"
+#include "dsurface_class.h"
 
 extern "C" __declspec(dllimport) int __stdcall MessageBoxA(void* window, char const* text,
                                                            char const* caption, unsigned type);
@@ -43,7 +44,8 @@ struct IDDrawRelease_004A40C0
         void* unknown_0C[8];
         long (__stdcall* GetCaps)(IDDrawRelease_004A40C0* self, void* driverCaps,
                                   void* helCaps);                                      // +0x2C
-        void* unknown_30[8];
+        long (__stdcall* GetDisplayMode)(IDDrawRelease_004A40C0* self, void* desc);   // +0x30
+        void* unknown_34[7];
         long (__stdcall* SetCooperativeLevel)(IDDrawRelease_004A40C0* self, void* window,
                                               unsigned long flags);                    // +0x50
         void* unknown_54;
@@ -54,8 +56,17 @@ struct IDDrawRelease_004A40C0
 };
 GG_STATIC_ASSERT(offsetof(IDDrawRelease_004A40C0::Vtbl, Release) == 0x08);
 GG_STATIC_ASSERT(offsetof(IDDrawRelease_004A40C0::Vtbl, GetCaps) == 0x2C);
+GG_STATIC_ASSERT(offsetof(IDDrawRelease_004A40C0::Vtbl, GetDisplayMode) == 0x30);
 GG_STATIC_ASSERT(offsetof(IDDrawRelease_004A40C0::Vtbl, SetCooperativeLevel) == 0x50);
 GG_STATIC_ASSERT(offsetof(IDDrawRelease_004A40C0::Vtbl, WaitForVerticalBlank) == 0x58);
+
+// FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- printf-style log sink, caller cleans the stack.
+extern "C" int __cdecl FUN_004068E0(const char* fmt, ...);
+// FUNCTION: GAMEMD 0x4A4AC0 (decl; reloc) -- variadic progress logger, caller cleans the stack.
+extern "C" void __cdecl FUN_004A4AC0(const char* fmt, ...);
+
+// GLOBAL: GAMEMD 0x8205D5 -- the overlapped-blit probe verdict.
+extern "C" unsigned char DAT_008205D5;
 
 // GLOBAL: GAMEMD 0x81FC6C -- cleared once the driver reports the vertical-blank wait unimplemented.
 extern bool DAT_0081FC6C;
@@ -85,6 +96,73 @@ void __fastcall FUN_004a3dd0(long hr, int notifyOk)
     }
 }
 
+// FUNCTION: GAMEMD 0x4A3E40
+//
+// Probe two blitter features on a scratch 64x64 surface and log the verdicts: a region fill
+// (a pixel written by Fill must read back as the filler) and an overlapped copy (a pixel
+// copied one row down must land there).
+void FUN_004a3e40()
+{
+    DSurface surface(0x40, 0x40, false, false);
+    FUN_004068E0("Checking hardware region fill capability... ");
+    DAT_008205D4 = 1;
+    surface.Fill(0);
+    {
+        Point2D probe;
+        probe.X = 5;
+        probe.Y = 5;
+        if (surface.GetPixel(&probe) != 0)
+        {
+            DAT_008205D4 = 0;
+        }
+        else
+        {
+            surface.Fill(1);
+            probe.X = 5;
+            probe.Y = 5;
+            if (surface.GetPixel(&probe) != 1)
+            {
+                DAT_008205D4 = 0;
+            }
+        }
+    }
+    FUN_004A4AC0("%s\n", DAT_008205D4 != 0 ? "OK" : "Failed!");
+    FUN_004068E0("Checking overlapped blit capability... ");
+    DAT_008205D5 = 1;
+    surface.Fill(0);
+    {
+        Point2D corner;
+        corner.X = 0;
+        corner.Y = 0;
+        surface.PutPixel(&corner, 0xFF);
+    }
+    {
+        RectangleStruct from;
+        RectangleStruct to;
+        from.X = 0;
+        from.Y = 0;
+        from.Width = 0x40;
+        from.Height = 0x3F;
+        to.X = 0;
+        to.Y = 1;
+        to.Width = 0x40;
+        to.Height = 0x3F;
+        surface.CopyFromPart(&to, &surface, &from, false, false);
+    }
+    {
+        Point2D landed;
+        landed.X = 0;
+        landed.Y = 5;
+        if (surface.GetPixel(&landed) != 0)
+        {
+            FUN_004A4AC0("Failed!\n");
+            DAT_008205D5 = 0;
+            return;
+        }
+    }
+    FUN_004A4AC0("OK\n");
+}
+
 // FUNCTION: GAMEMD 0x4A40C0
 //
 // Release the DirectDraw object if there is one, reporting a nonzero result
@@ -110,14 +188,102 @@ void FUN_004a40c0()
     }
 }
 
-// The driver capability block: size word, the capability flags, then the rest.
+// The driver capability block: size word, the capability flags, the video memory total, then the rest.
 struct DDrawCaps_004A4620
 {
     unsigned long dwSize;           // +0x0000
     unsigned long dwCaps;           // +0x0004
-    char          unknown_08[0x13C - 8];
+    char          unknown_08[0x3C - 8];
+    unsigned long dwVidMemTotal;    // +0x003C
+    char          unknown_40[0x13C - 0x40];
 };
+GG_STATIC_ASSERT(offsetof(DDrawCaps_004A4620, dwVidMemTotal) == 0x3C);
 GG_STATIC_ASSERT(sizeof(DDrawCaps_004A4620) == 0x13C);
+
+// The display-mode descriptor (0x6C bytes) the display-mode query fills.
+struct DDrawModeDesc_004A4130
+{
+    unsigned long dwSize;           // +0x00
+    char          unknown_04[4];
+    unsigned long dwHeight;         // +0x08
+    unsigned long dwWidth;          // +0x0C
+    long          lPitch;           // +0x10
+    char          unknown_14[0x54 - 0x14];
+    unsigned long dwRGBBitCount;    // +0x54
+    char          unknown_58[0x6C - 0x58];
+};
+GG_STATIC_ASSERT(offsetof(DDrawModeDesc_004A4130, lPitch) == 0x10);
+GG_STATIC_ASSERT(offsetof(DDrawModeDesc_004A4130, dwRGBBitCount) == 0x54);
+GG_STATIC_ASSERT(sizeof(DDrawModeDesc_004A4130) == 0x6C);
+
+extern "C" long __stdcall DirectDrawCreate(void* guid, IDDrawRelease_004A40C0** out, void* outer);
+
+// The nonzero result of a DirectDraw call goes to the error callback or a message box.
+inline bool DDrawResultOk_004A4130(long hr)
+{
+    if (hr == 0)
+    {
+        return true;
+    }
+    if (DAT_008A00B0 != 0)
+    {
+        DAT_008A00B0(hr);
+        return false;
+    }
+    char text[0x50];
+    sprintf(text, STR_0081FC7C, hr);
+    MessageBoxA(DAT_00B73550, text, STR_0081FC70, 0x30);
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x4A4130
+//
+// Size the video memory: create the DirectDraw object when there is none, ask the
+// driver for its total, add the current display mode's frame, round up to a whole
+// megabyte, then release an object this call created.
+unsigned FUN_004a4130()
+{
+    DDrawCaps_004A4620 caps;
+    DDrawModeDesc_004A4130 mode;
+    bool created = false;
+    if (DAT_008A0094 == 0)
+    {
+        if (DDrawResultOk_004A4130(DirectDrawCreate(0, &DAT_008A0094, 0)))
+        {
+            created = true;
+        }
+        else
+        {
+            DAT_008A0094 = 0;
+        }
+    }
+    unsigned vram = 0;
+    if (DAT_008A0094 != 0)
+    {
+        caps.dwSize = 0x13C;
+        if (DAT_008A0094->lpVtbl->GetCaps(DAT_008A0094, &caps, 0) == 0)
+        {
+            vram = caps.dwVidMemTotal;
+            FUN_004068E0("DDraw returnded actual VRAM of %d bytes (%dMb)\n", vram, vram >> 20);
+            memset(&mode, 0, sizeof(mode));
+            mode.dwSize = 0x6C;
+            if (DAT_008A0094->lpVtbl->GetDisplayMode(DAT_008A0094, &mode) == 0)
+            {
+                FUN_004068E0("Current display size is %dx%dx%d. Pitch is %d\n", mode.dwWidth, mode.dwHeight,
+                             mode.dwRGBBitCount, mode.lPitch);
+                vram += (mode.dwRGBBitCount >> 3) * mode.dwWidth * mode.dwHeight;
+            }
+            vram = (vram + 0x20000) & 0xFFF00000;
+            FUN_004068E0("Adjusted VRAM size is %d bytes (%dMb)\n", vram, vram >> 20);
+        }
+    }
+    if (created && DAT_008A0094 != 0)
+    {
+        DDrawResultOk_004A4130(DAT_008A0094->lpVtbl->Release(DAT_008A0094));
+        DAT_008A0094 = 0;
+    }
+    return vram;
+}
 
 // FUNCTION: GAMEMD 0x4A4620
 //

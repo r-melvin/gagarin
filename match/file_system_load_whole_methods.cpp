@@ -4,6 +4,8 @@
 
 #include "file_system_load_whole_methods.h"
 #include "shared_constants_globals.h"
+#include "_layout/ms_anim.h"
+#include "string_class.h"
 
 // FUNCTION: GAMEMD 0x4A38D0
 //
@@ -43,4 +45,41 @@ void* FileSystem_LoadWholeFileEx(const char* fileName, bool* allocated)
     FUN_00431B80(&file);
 
     return data;
+}
+
+// FUNCTION: GAMEMD 0x4A3970
+//
+// Fetch a shape file by name, the same way: a MIX cache hit is returned with the
+// ownership flag clear, otherwise the file is read into a freshly allocated block
+// and the flag says it was allocated.
+MSShapeFile* __fastcall MSLoadShape(const Wstring& name, bool* owned)
+{
+    const char* fileName = name.FUN_007B5440();
+    *owned = false;
+
+    void* data = FUN_005B40B0(fileName, 0);
+    if (data != 0) {
+        return (MSShapeFile*)data;
+    }
+
+    File_004A38D0 file;
+    file.FUN_004739F0(fileName);
+
+    data = 0;
+    if ((file.*file.Vtbl->At_14)(0)) {
+        int size = (file.*file.Vtbl->At_2C)();
+        data = FUN_007C8E17(size);
+        if (data != 0) {
+            (file.*file.Vtbl->At_24)(data, size);
+        }
+    }
+    *owned = data != 0;
+
+    file.Vtbl    = (Vtbl_004A38D0*)&VT_007E16B0;
+    file.Reset64 = 0;
+    reinterpret_cast<MemoryBuffer*>(file.Sub58)->Clear();
+    file.Vtbl    = (Vtbl_004A38D0*)&DAT_007E1668;
+    FUN_00431B80(&file);
+
+    return (MSShapeFile*)data;
 }

@@ -153850,5 +153850,79 @@
   "name": "MSVQAnim::Update",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/base_class_methods.cpp",
+  "addr": "0x42E780",
+  "sym": "?FUN_0042E780@BaseClass@@QAE_NH@Z",
+  "len": "0x7b",
+  "name": "BaseClass::FUN_0042E780",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/base_class_methods.cpp",
+  "addr": "0x42EA30",
+  "sym": "?FUN_0042EA30@BaseClass@@QAEPAVBaseNodeClass@@PAVBuildingClass@@@Z",
+  "len": "0x91",
+  "name": "BaseClass::FUN_0042EA30",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/base_class_methods.cpp",
+  "addr": "0x42EB50",
+  "sym": "?FUN_0042EB50@BaseClass@@QAEHH@Z",
+  "len": "0x8e",
+  "name": "BaseClass::FUN_0042EB50",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/cstream_forward_methods.cpp",
+  "addr": "0x4A2CD0",
+  "sym": "?Write@CStreamClass@@UAGJPBXKPAK@Z",
+  "len": "0x12e",
+  "name": "CStreamClass::Write",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/d3d_texture_methods.cpp",
+  "addr": "0x4A3660",
+  "sym": "?Draw@Batch_004A3660@@QAEIPAUBoundTexture_004A3660@@@Z",
+  "len": "0x1dc",
+  "name": "Batch_004A3660::Draw",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/file_system_load_whole_methods.cpp",
+  "addr": "0x4A3970",
+  "sym": "?MSLoadShape@@YIPAUMSShapeFile@@ABVWstring@@PA_N@Z",
+  "len": "0x9e",
+  "name": "?MSLoadShape@@YIPAUMSShapeFile@@ABVWstring@@PA_N@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/r24_1_ddraw_report_methods.cpp",
+  "addr": "0x4A3E40",
+  "sym": "?FUN_004a3e40@@YIXXZ",
+  "len": "0x183",
+  "name": "?FUN_004a3e40@@YIXXZ",
+  "status": "partial",
+  "pct": 97.2,
+  "best_pct": 97.2,
+  "best_at": "03a0c69f"
+ },
+ {
+  "tu": "match/r24_1_ddraw_report_methods.cpp",
+  "addr": "0x4A4130",
+  "sym": "?FUN_004a4130@@YIIXZ",
+  "len": "0x1b7",
+  "name": "?FUN_004a4130@@YIIXZ",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

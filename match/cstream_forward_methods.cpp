@@ -127,6 +127,80 @@ HRESULT __stdcall CStreamClass::Read(void* pv, ULONG cb, ULONG* read)
     return 0;
 }
 
+// FUNCTION: GAMEMD 0x4A2CD0
+HRESULT __stdcall CStreamClass::Write(const void* pv, ULONG cb, ULONG* written)
+{
+    long left = cb;
+    if (pv == 0)
+    {
+        return 0x80004003;   // E_POINTER
+    }
+    if (left < 0)
+    {
+        return 0x80070057;   // E_INVALIDARG
+    }
+    if (Stream == 0)
+    {
+        return 0x80004005;   // E_FAIL
+    }
+    if (Reading)
+    {
+        return 0x80004005;
+    }
+    Writing = true;
+    if (left == 0)
+    {
+        return 0;
+    }
+    if (written != 0)
+    {
+        *written = 0;
+    }
+    int pending = Remaining;
+    if (pending > 0)
+    {
+        int n = left;
+        int room = 0x10000 - pending;
+        if (left >= room)
+        {
+            n = room;
+        }
+        memmove(OutBuffer + Remaining, pv, n);
+        pv = (const char*)pv + n;
+        left -= n;
+        Remaining += n;
+        if (Remaining == 0x10000)
+        {
+            HRESULT hr = FUN_004A3020(OutBuffer, 0x10000);
+            if (hr < 0)
+            {
+                return hr;
+            }
+            Remaining = 0;
+        }
+    }
+    while (left >= 0x10000)
+    {
+        HRESULT hr = FUN_004A3020((char*)pv, 0x10000);
+        if (hr < 0)
+        {
+            return hr;
+        }
+        left -= 0x10000;
+        pv = (const char*)pv + 0x10000;
+    }
+    if (left > 0)
+    {
+        memmove(OutBuffer, pv, left);
+        Remaining = left;
+    }
+    if (written != 0)
+    {
+        *written = cb;
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x4A2E00
 HRESULT __stdcall CStreamClass::Seek(LARGE_INTEGER dlibMove, DWORD dwOrigin, ULARGE_INTEGER* plibNewPosition)
 {

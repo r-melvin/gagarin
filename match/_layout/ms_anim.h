@@ -57,6 +57,9 @@ GG_STATIC_ASSERT(offsetof(MSShapeFile, Width) == 2 && offsetof(MSShapeFile, Fram
 // FUNCTION: GAMEMD 0x4A3970 (decl; reloc) -- load a shape by name; the ownership flag arrives in EDX and is
 // cleared before the lookup.
 MSShapeFile* __fastcall MSLoadShape(const char* name, bool* owned);
+// FUNCTION: GAMEMD 0x4A3970 -- the same entry typed as its body reads it: the name is a Wstring, turned into text
+// by Wstring::FUN_007B5440 before the lookup.
+MSShapeFile* __fastcall MSLoadShape(const Wstring& name, bool* owned);
 
 // The three dwords MSAnim carries at +0x10..+0x18. The constructor stamps the clock and banks nothing.
 struct MSTimer
