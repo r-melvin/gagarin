@@ -151889,5 +151889,14 @@
   "name": "FUN_005A1190",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ownrdraw.cpp",
+  "addr": "0x625560",
+  "sym": "?FUN_00625560@Obj_00625560@@QAEPAU1@E@Z",
+  "len": "0x8a",
+  "name": "Obj_00625560::FUN_00625560",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

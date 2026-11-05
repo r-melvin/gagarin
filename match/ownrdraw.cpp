@@ -6112,6 +6112,64 @@ bool Vector20_006254D0::FUN_006254D0()
     return true;
 }
 
+// List link of Obj_00625560: the next link at +0x00.
+struct Link_00625560
+{
+    Link_00625560* Next;   // +0x00
+};
+GG_STATIC_ASSERT(offsetof(Link_00625560, Next) == 0x00);
+
+// The node released by the caller at 0x61C16C. Retail never reads a vptr from it.
+struct Obj_00625560
+{
+    char           unknown_00[0x2C];
+    void*          Data;     // +0x2C
+    char           unknown_30[0x08];
+    Link_00625560* Links;    // +0x38
+    char           unknown_3C[0x04];
+    Obj_007B66D0*  Text;     // +0x40
+
+    // FUNCTION: GAMEMD 0x625560 (__thiscall)
+    Obj_00625560* FUN_00625560(unsigned char flags);
+};
+GG_STATIC_ASSERT(offsetof(Obj_00625560, Data) == 0x2C);
+GG_STATIC_ASSERT(offsetof(Obj_00625560, Links) == 0x38);
+GG_STATIC_ASSERT(offsetof(Obj_00625560, Text) == 0x40);
+
+// FUNCTION: GAMEMD 0x625560  Obj_00625560::FUN_00625560 (__thiscall)
+// Deleting destructor of the node: frees the data block, unlinks and frees every list link, deletes
+// the text, then frees the node itself when bit 0 of the flag is set.
+Obj_00625560* Obj_00625560::FUN_00625560(unsigned char flags)
+{
+    // NOVPTR: GAMEMD 0x625560
+    if (Data) {
+        ::operator delete(Data);
+        Data = 0;
+    }
+    while (Links) {
+        Link_00625560* target = Links;
+        Link_00625560* link = Links;
+        Link_00625560* previous = 0;
+        while (link) {
+            if (target == link)
+                break;
+            previous = link;
+            link = link->Next;
+        }
+        if (link) {
+            if (previous)
+                previous->Next = link->Next;
+            else
+                Links = link->Next;
+            ::operator delete(link);
+        }
+    }
+    delete Text;
+    if (flags & 1)
+        ::operator delete(this);
+    return this;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6255F0
 EntryRecord_006255F0::EntryRecord_006255F0(const EntryRecord_006255F0& other) :
