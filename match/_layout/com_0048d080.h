@@ -18,7 +18,9 @@ struct Vtbl_00AC116C
 {
     char unknown_00[0x0C];
     void (__stdcall* At_0C)(Obj_00AC116C* self); // 0x48D19E, result ignored
-    char unknown_10[0x14];
+    char unknown_10[0x08];
+    long (__stdcall* At_18)(Obj_00AC116C* self, int value, int flag);   // 0x77EFBC
+    char unknown_1C[0x08];
     long (__stdcall* At_24)(Obj_00AC116C* self);
     char unknown_28[4];
     long (__stdcall* At_2C)(Obj_00AC116C* self, const char* text);
@@ -27,7 +29,9 @@ struct Vtbl_00AC116C
     long (__stdcall* At_3C)(Obj_00AC116C* self, const char* text);
     char unknown_40[0x14];
     long (__stdcall* At_54)(Obj_00AC116C* self, void* record);
-    char unknown_58[0x10];
+    char unknown_58[0x08];
+    long (__stdcall* At_60)(Obj_00AC116C* self, void* message);   // 0x79C512
+    char unknown_64[0x04];
     long (__stdcall* At_68)(Obj_00AC116C* self, int a, int b);
     char unknown_6C[0x10];
     long (__stdcall* At_7C)(Obj_00AC116C* self, int value);
@@ -85,6 +89,7 @@ GG_STATIC_ASSERT(sizeof(Vtbl_00AC116C) == 0xF8);
 GG_STATIC_ASSERT(sizeof(Vtbl_00AC1170) == 0x30);
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_0C) == 0x0C);
 GG_STATIC_ASSERT(sizeof(((Vtbl_00AC116C*)0)->At_0C) == 4);
+GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_18) == 0x18);
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_24) == 0x24);
 GG_STATIC_ASSERT(sizeof(((Vtbl_00AC116C*)0)->At_24) == 4);
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_2C) == 0x2C);
@@ -95,6 +100,7 @@ GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_3C) == 0x3C);
 GG_STATIC_ASSERT(sizeof(((Vtbl_00AC116C*)0)->At_3C) == 4);
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_54) == 0x54);
 GG_STATIC_ASSERT(sizeof(((Vtbl_00AC116C*)0)->At_54) == 4);
+GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_60) == 0x60);
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_68) == 0x68);
 GG_STATIC_ASSERT(sizeof(((Vtbl_00AC116C*)0)->At_68) == 4);
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_7C) == 0x7C);

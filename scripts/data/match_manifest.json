@@ -152021,5 +152021,38 @@
   "name": "?FUN_007B64E0@@YIPAVWstring@@PAV1@PBV1@1@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/wonline.cpp",
+  "addr": "0x77EF90",
+  "sym": "?FUN_0077EF90@@YI_NHE@Z",
+  "len": "0x18f",
+  "name": "?FUN_0077EF90@@YI_NHE@Z",
+  "status": "partial",
+  "pct": 94.2,
+  "best_pct": 94.2,
+  "best_at": "380dea26"
+ },
+ {
+  "tu": "match/wonline.cpp",
+  "addr": "0x793BB0",
+  "sym": "?FUN_00793BB0@@YIXXZ",
+  "len": "0x117",
+  "name": "?FUN_00793BB0@@YIXXZ",
+  "status": "partial",
+  "pct": 87.4,
+  "best_pct": 87.4,
+  "best_at": "380dea26"
+ },
+ {
+  "tu": "match/wonline.cpp",
+  "addr": "0x79C3A0",
+  "sym": "?FUN_0079C3A0@@YIXXZ",
+  "len": "0x17c",
+  "name": "?FUN_0079C3A0@@YIXXZ",
+  "status": "partial",
+  "pct": 88.4,
+  "best_pct": 88.4,
+  "best_at": "380dea26"
  }
 ]

@@ -2085,6 +2085,59 @@ Wstring& FUN_0077E820(char* text, int* a, int* b, int* c, int* d, int* e, Wstrin
     return *name = strtok(NULL, DAT_00817F70);
 }
 
+// STRING: GAMEMD 0x84A554
+extern const char DAT_0084A554[];
+// LIBRARY: GAMEMD 0x7CA090 -- CRT memmove.
+extern "C" void* __cdecl memmove(void* dest, const void* src, size_t count);
+
+// FUNCTION: GAMEMD 0x77EF90
+//   Not exact (94.2% positional): retail reloads the vector data into EBX after the shift and keeps the slot pointer in ECX; the epilogue pops are scheduled differently.
+bool __fastcall FUN_0077EF90(int value, unsigned char flag)
+{
+    FUN_004068E0(DAT_0084A554, value, (int)flag);
+    if (DAT_00AC116C->Vtbl->At_18(DAT_00AC116C, value, (int)flag) != 0)
+        return false;
+    int index = DAT_00B76520.count;
+    if (index > DAT_00B76520.count)
+        index = DAT_00B76520.count;
+    int* items;
+    if (index >= DAT_00B76520.unknown_04 && DAT_00B76520.count >= DAT_00B76520.unknown_04) {
+        int size = DAT_00B76520.count * 2;
+        if (size < 10)
+            size = 10;
+        int* block = (int*)operator new(size * 4);
+        memset(block, 0, size * 4);
+        if (DAT_00B76520.data != NULL)
+            memcpy(block, DAT_00B76520.data, DAT_00B76520.count * 4);
+        operator delete(DAT_00B76520.data);
+        DAT_00B76520.data = block;
+        DAT_00B76520.unknown_04 = size;
+        items = block;
+    } else {
+        items = (int*)DAT_00B76520.data;
+    }
+    if (DAT_00B76520.count >= DAT_00B76520.unknown_04) {
+        int size = DAT_00B76520.count * 2;
+        if (size < 10)
+            size = 10;
+        int* block = (int*)operator new(size * 4);
+        memset(block, 0, size * 4);
+        if (DAT_00B76520.data != NULL)
+            memcpy(block, DAT_00B76520.data, DAT_00B76520.count * 4);
+        operator delete(DAT_00B76520.data);
+        DAT_00B76520.data = block;
+        DAT_00B76520.unknown_04 = size;
+        items = block;
+    }
+    if (index < DAT_00B76520.count) {
+        memmove(items + index + 1, items + index, (DAT_00B76520.count + index * 0x3FFFFFFF) * 4);
+        items = (int*)DAT_00B76520.data;
+    }
+    new ((int*)DAT_00B76520.data + index) int(value);
+    DAT_00B76520.count++;
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x780D90
 // The description of a map by name.
 Obj_007B66D0 FUN_00780D90(Wstring* name)
@@ -3045,6 +3098,43 @@ void FUN_00793B30(int digit, const char* text)
     DAT_00AC116C->Vtbl->At_3C(DAT_00AC116C, buffer);
 }
 
+#include "connman_class.h"
+
+// STRING: GAMEMD 0x84BED8
+extern const char DAT_0084BED8[];
+// GLOBAL: GAMEMD 0xA8E224 / 0xA8DA90 -- see Registry_00A8E1A4; the slot name array.
+extern unsigned short* DAT_00A8DA90[8];
+const char* __fastcall FUN_007350C0(const unsigned short* name);
+
+// A 0x1C7-byte message: a kind dword at +0 and the stored login at +4.
+#pragma pack(push, 1)
+struct Message_00793BB0
+{
+    int Kind;           // +0x00
+    char Text[0x1C3];   // +0x04
+};
+#pragma pack(pop)
+GG_STATIC_ASSERT(sizeof(Message_00793BB0) == 0x1C7);
+
+// FUNCTION: GAMEMD 0x793BB0
+//   Not exact (87.4% positional): the slot and timer induction pointers are assigned to EBX/EBP the other way round.
+void FUN_00793BB0()
+{
+    for (int i = 0; i < DAT_00A8E1A4.Count; i++) {
+        void* owner = DAT_00A8E1A4.Owners[i];
+        ScenarioElapsedTimer* timer = &DAT_00A8E1A4.Timers[i];
+        if (timer->GetTimeLeft() == 0) {
+            Message_00793BB0 message;
+            memset(&message, 0, sizeof(message));
+            message.Kind = 0xD;
+            strcpy(message.Text, DAT_00B73E40.FUN_007B5400());
+            FUN_004068E0(DAT_0084BED8, FUN_007350C0(DAT_00A8DA90[(int)DAT_00A8E1A4.Owners[i]]));
+            Manager_00A8E9C0.FUN_00541260(&message, 0x2F, 0, (const wchar_t*)DAT_00A8DA90[(int)DAT_00A8E1A4.Owners[i]]);
+            *timer = ScenarioElapsedTimer(0x4B0);
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x793CD0
 void Obj_00793CD0::FUN_00793CD0()
 {
@@ -3302,6 +3392,56 @@ void __fastcall FUN_0079BF50(HWND dialog)
 
 // FUNCTION: GAMEMD 0x623F60 (decl; reloc) -- __fastcall: read list item `index` of the list box into the string.
 void FUN_00623F60(HWND window, int index, Obj_007B66D0* out);
+
+// GLOBAL: GAMEMD 0xB779D0
+extern int DAT_00B779D0;
+// LIBRARY: GAMEMD 0x7CA67F -- CRT time.
+extern "C" long __cdecl time(long* timer);
+// LIBRARY: GAMEMD 0x7CA090 -- CRT memmove.
+extern "C" void* __cdecl memmove(void* dest, const void* src, size_t count);
+
+// FUNCTION: GAMEMD 0x79C3A0
+//   Not exact (88.4% positional): retail loads the count into EBX before the data pointer for the shift size.
+void FUN_0079C3A0()
+{
+    if (FUN_007B54B0(&DAT_00B73ACC) > 0) {
+        if ((unsigned int)(time(NULL) - DAT_00B779D0) < 5)
+            return;
+        DAT_00B73ACC.FUN_007B5340();
+    }
+    if (DAT_00B76980.count != 0) {
+        if (DAT_00B76980.count > 0) {
+            DAT_00B73ACC = *(Wstring*)DAT_00B76980.data;
+            int index = 0;
+            if (DAT_00B76980.count != 0) {
+                if (DAT_00B76980.count <= 0)
+                    index = DAT_00B76980.count - 1;
+                ((Wstring*)DAT_00B76980.data + index)->~Wstring();
+                memmove(DAT_00B76980.data + index * 4, DAT_00B76980.data + (index + 1) * 4,
+                        (DAT_00B76980.count - (index + 1)) * 4);
+                DAT_00B76980.count--;
+                if (DAT_00B76980.count * 3 <= DAT_00B76980.unknown_04) {
+                    int size = DAT_00B76980.unknown_04 / 2;
+                    if (size < 10)
+                        size = 10;
+                    if (size < DAT_00B76980.unknown_04) {
+                        unsigned char* block = (unsigned char*)operator new(size * 4);
+                        if (DAT_00B76980.data != NULL)
+                            memcpy(block, DAT_00B76980.data, DAT_00B76980.count * 4);
+                        operator delete(DAT_00B76980.data);
+                        DAT_00B76980.unknown_04 = size;
+                        DAT_00B76980.data = block;
+                    }
+                }
+            }
+        }
+        DAT_00B779D0 = time(NULL);
+        char message[0x6C];
+        memset(message, 0, 0x6C);
+        strcpy(message + 0x24, DAT_00B73ACC.FUN_007B5400());
+        DAT_00AC116C->Vtbl->At_60(DAT_00AC116C, message);
+    }
+}
 
 // FUNCTION: GAMEMD 0x79C520
 // Whether `name` may be used as a lobby name: not empty, not the login, free of the separators and not
