@@ -22423,7 +22423,7 @@
  {
   "tu": "match/factory_class_abandon_methods.cpp",
   "addr": "0x4C9FF0",
-  "sym": "?AbandonProduction@Factory_004C9FF0@@QAE_NXZ",
+  "sym": "?AbandonProduction@FactoryClass@@QAE_NXZ",
   "len": "0x12d",
   "name": "FactoryClass::AbandonProduction",
   "status": "matched",
@@ -154332,7 +154332,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/building_light_class_tu033_methods.cpp",
+  "tu": "match/building_light_class.cpp",
   "addr": "0x436950",
   "sym": "?Load@BuildingLightClass@@UAGJPAUIStream@@@Z",
   "len": "0x6b",
@@ -154341,7 +154341,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/building_light_class_tu033_methods.cpp",
+  "tu": "match/building_light_class.cpp",
   "addr": "0x4370C0",
   "sym": "??_GBuildingLightClass@@UAEPAXI@Z",
   "len": "0x9a",

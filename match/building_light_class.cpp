@@ -2,10 +2,14 @@
 // Provenance: own-binary-via-Ghidra
 //   Constructor body read from the entry-bounded retail function at 0x435820
 //   (0x330 bytes, RET 4). Helper ABIs and globals are read from its call and
-//   load operands.
+//   load operands. IPersistStream::Load at 0x436950 and the scalar deleting destructor at 0x4370C0 (slot 8, the
+//   destructor expanded) come from the same image; offsets read numerically.
+#include <new.h>
 #include "FUNCTION.H"
 #include "rules_class.h"
 #include "quaternion_matrix_methods.h"
+#include "_layout/layer_class.h"
+#include "_layout/swizzle_manager_class.h"
 
 // GLOBAL: GAMEMD 0x89C510 -- a CoordStruct used as the initial value of both light positions.
 extern CoordStruct DAT_0089C510;
@@ -73,4 +77,27 @@ BuildingLightClass::BuildingLightClass(BuildingClass* sourceBuilding)
         }
     }
     unknown_D8 = index % 2 != 0;
+}
+
+// FUNCTION: GAMEMD 0x436950
+// Loads the object prefix, rebuilds the object around the loaded bytes and registers the two
+// building pointers for swizzling.
+HRESULT __stdcall BuildingLightClass::Load(IStream* pStm)
+{
+    HRESULT hr = ObjectClass::Load(pStm);
+    if (hr >= 0) {
+        new(this) BuildingLightClass(AbstractNoInit());
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&source);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_E0);
+    }
+    return hr;
+}
+
+// SYNTHETIC: GAMEMD 0x4370C0
+// Scalar deleting destructor (primary slot 8), the destructor expanded in place.
+BuildingLightClass::~BuildingLightClass()
+{
+    if (vf_53())
+        DAT_0087F778.RemoveObject(this);
+    DAT_008B4190.RemoveItem(this);
 }
