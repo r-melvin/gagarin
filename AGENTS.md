@@ -101,7 +101,10 @@ against an instruction in the binary before it lands as a repo fact.
   using it. That out-of-line copy is the evidence the original source tested `this`; inline expansions of the same
   idiom then use the one canonical helper (`AbstractClass::KindCast_00459F40`), not a literal test. pktlint
   (`thisnull`) rejects unannotated tests and citations that are not matched rows; the `thisnull` land gate
-  checks the cited bytes.
+  checks the cited bytes. Exception: a literal test stays allowed, with the same `THISNULL` annotation, where the
+  function's own retail instructions test `this` and branch in a form the helper cannot produce (the helper yields
+  only its mask form). The row's comment must name the retail branch that proves it, and the helper must have been
+  tried first.
 
 - Target the 32-bit MSVC6 ABI: `__thiscall` (ECX = `this`) for methods,
   `__stdcall` for COM/WinAPI virtuals, 4-byte pointers. Do not assume `/Gz`;

@@ -19,6 +19,8 @@ enforces; nothing here needs a compiler except --strict.
                  function, check_stack), a cast of a literal image address, constant conditions; volatile on a non-declaration
                W goto, #pragma intrinsic, a bare literal in the image address range, `(char*)p + 0x1c` pointer-offset casts
                W volatile on a declaration without thread/callback evidence beside it
+  sdd          (Longhand on a placeholder Obj_ view with no recovered vtable shape is accepted until the class is
+               recovered, as deleting_dtor_sweep.h documents; convert it then.)
   sdd          E a hand-written scalar deleting destructor (a function body that tests a flags bit with `& 1` and
                  deletes `this`, or one named like one); the compiler emits ??_G from the declared virtual destructor.
                  E/W a FUNCTION annotation on a ??_G-like method inside an Obj_/view struct
