@@ -11,13 +11,14 @@
 // compiler output: the out-of-line destructors below make cl emit the tables and
 // the wrappers, and /Ob2 expands the destructor bodies into them as retail has it.
 
-#include "FUNCTION.H"
+#include <windows.h>
 #include "trivial_tu286_methods.h"
 #include <stddef.h>
 #include <time.h>
 #include "_rt/gg_static_assert.h"
 #include "ccfile_class.h"
 #include "_layout/ini_class.h"
+#include "_layout/generic_list_ctor_inline.h"
 #include "string_class.h"
 #include "world_domination_tour.h"
 

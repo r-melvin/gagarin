@@ -8,7 +8,6 @@
 #ifndef GG_MATCH_LAYOUT_GENERIC_LIST_INLINE_H
 #define GG_MATCH_LAYOUT_GENERIC_LIST_INLINE_H
 #include "generic_list.h"
-inline GenericNode::GenericNode() : NextNode(0), PrevNode(0) {}
 inline void GenericNode::Link(GenericNode* node)
 {
     node->Unlink();
@@ -19,5 +18,5 @@ inline void GenericNode::Link(GenericNode* node)
     }
     NextNode = node;
 }
-inline GenericList::GenericList() { FirstNode.Link(&LastNode); }
+#include "generic_list_ctor_inline.h"
 #endif
