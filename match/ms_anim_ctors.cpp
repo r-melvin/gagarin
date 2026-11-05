@@ -14,7 +14,7 @@ MSAnim::~MSAnim()
 
 // FUNCTION: GAMEMD 0x5CB6D0
 // Load the shape, start at frame zero and remember the last frame.
-MSShapeAnim::MSShapeAnim(const char* name, int x, int y, int field20, int field24, bool field34,
+MSShapeAnim::MSShapeAnim(const Wstring& name, int x, int y, int field20, int field24, bool field34,
                          unsigned int flags)
     : MSAnim(x, y), Field20(field20), Field24(field24), Frame(0), Field34(field34), Flags(flags), OwnsBuffer(false)
 {
@@ -37,14 +37,15 @@ MSShapeAnim::~MSShapeAnim()
 
 // FUNCTION: GAMEMD 0x5CBD20
 // A shape animation with two extra numbers.
-MSFadeAnim::MSFadeAnim(const char* name, int x, int y, int field20, int field24, int field38, int field44)
+MSFadeAnim::MSFadeAnim(const Wstring& name, int x, int y, int field20, int field24, int field38,
+                       MSAnimVector* field44)
     : MSShapeAnim(name, x, y, field20, field24, false, field38), unknown_40(0), unknown_44(field44)
 {
 }
 
 // FUNCTION: GAMEMD 0x5CC250
 // A fade animation with a type byte, a start frame and a "quick" switch.
-MSOverlayAnim::MSOverlayAnim(const char* name, int x, int y, int field20, int field24, int field44,
+MSOverlayAnim::MSOverlayAnim(const Wstring& name, int x, int y, int field20, int field24, MSAnimVector* field44,
                              unsigned char field48, int frame, bool quick)
     : MSFadeAnim(name, x, y, field20, field24, 0, field44)
 {

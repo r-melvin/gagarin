@@ -139554,7 +139554,7 @@
  {
   "tu": "match/ms_anim_ctors.cpp",
   "addr": "0x5CB6D0",
-  "sym": "??0MSShapeAnim@@QAE@PBDHHHH_NI@Z",
+  "sym": "??0MSShapeAnim@@QAE@ABVWstring@@HHHH_NI@Z",
   "len": "0x77",
   "name": "MSShapeAnim::MSShapeAnim",
   "status": "matched",
@@ -139563,7 +139563,7 @@
  {
   "tu": "match/ms_anim_ctors.cpp",
   "addr": "0x5CBD20",
-  "sym": "??0MSFadeAnim@@QAE@PBDHHHHHH@Z",
+  "sym": "??0MSFadeAnim@@QAE@ABVWstring@@HHHHHPAVMSAnimVector@@@Z",
   "len": "0x7a",
   "name": "MSFadeAnim::MSFadeAnim",
   "status": "matched",
@@ -139572,7 +139572,7 @@
  {
   "tu": "match/ms_anim_ctors.cpp",
   "addr": "0x5CC250",
-  "sym": "??0MSOverlayAnim@@QAE@PBDHHHHHEH_N@Z",
+  "sym": "??0MSOverlayAnim@@QAE@ABVWstring@@HHHHPAVMSAnimVector@@EH_N@Z",
   "len": "0x93",
   "name": "MSOverlayAnim::MSOverlayAnim",
   "status": "matched",
@@ -139639,7 +139639,7 @@
  {
   "tu": "match/msanim_early_methods.cpp",
   "addr": "0x5CCC30",
-  "sym": "??0MSVQAnim@@QAE@PAVMSStringClass@@PAVMSSurface@@H_N@Z",
+  "sym": "??0MSVQAnim@@QAE@PAVMSStringClass@@PAVMSSurface@@PAVMSAnimVector@@_N@Z",
   "len": "0x206",
   "name": "MSVQAnim::MSVQAnim",
   "status": "matched",
@@ -153836,7 +153836,7 @@
  {
   "tu": "match/msanim_early_methods.cpp",
   "addr": "0x5CCA20",
-  "sym": "??0MSVQAnim@@QAE@PAVMSStringClass@@PAVMSSurface@@HPBURectangleStruct@@_N@Z",
+  "sym": "??0MSVQAnim@@QAE@PAVMSStringClass@@PAVMSSurface@@PAVMSAnimVector@@PBURectangleStruct@@_N@Z",
   "len": "0x201",
   "name": "MSVQAnim::MSVQAnim",
   "status": "matched",
@@ -153901,7 +153901,7 @@
   "addr": "0x4A3970",
   "sym": "?MSLoadShape@@YIPAUMSShapeFile@@ABVWstring@@PA_N@Z",
   "len": "0x9e",
-  "name": "?MSLoadShape@@YIPAUMSShapeFile@@ABVWstring@@PA_N@Z",
+  "name": "MSLoadShape",
   "status": "matched",
   "pct": 100.0
  },

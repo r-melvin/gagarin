@@ -10428,7 +10428,6 @@
  "?MPCoopScenario_00A8B230@@3PAUMPCoopScenario@@A": "0x00A8B230",
  "?MPGameModeArray@@3UDynamicVectorClassLayout@@A": "0x00A8DA74",
  "?MSAnimCounts@@3UMSAnimCounters@@A": "0x00ABFBB0",
- "?MSLoadShape@@YIPAUMSShapeFile@@PBDPA_N@Z": "0x004A3970",
  "?MSReadPCXFile@@YIPAVMSImageSurface@@PAUMSFileClass@@PADPAXJ@Z": "0x00630310",
  "?MSRectIntersectOut@@YIPAURectangleStruct@@PAU1@PBU1@1PAH2@Z": "0x00421B60",
  "?MSScreenSurface@@3PAVMSSurface@@A": "0x00887310",

@@ -39,6 +39,7 @@ GG_STATIC_ASSERT(sizeof(MSClockClass) == 4);
 // The animations pass the engine's RectangleStruct (X, Y, Width, Height) around by value.
 class MouseSurfaceView;
 class Wstring;
+class MSAnimVector;
 
 // The decoded shape file MSShapeAnim owns at +0x1C: a short header carrying the frame size and count.
 struct MSShapeFile
@@ -54,11 +55,8 @@ struct MSShapeFile
 };
 GG_STATIC_ASSERT(offsetof(MSShapeFile, Width) == 2 && offsetof(MSShapeFile, Frames) == 6);
 
-// FUNCTION: GAMEMD 0x4A3970 (decl; reloc) -- load a shape by name; the ownership flag arrives in EDX and is
-// cleared before the lookup.
-MSShapeFile* __fastcall MSLoadShape(const char* name, bool* owned);
-// FUNCTION: GAMEMD 0x4A3970 -- the same entry typed as its body reads it: the name is a Wstring, turned into text
-// by Wstring::FUN_007B5440 before the lookup.
+// FUNCTION: GAMEMD 0x4A3970 -- load a shape by name; the ownership flag arrives in EDX and is cleared before the
+// lookup. The name is a Wstring, turned into text by Wstring::FUN_007B5440 first.
 MSShapeFile* __fastcall MSLoadShape(const Wstring& name, bool* owned);
 
 // The three dwords MSAnim carries at +0x10..+0x18. The constructor stamps the clock and banks nothing.
@@ -134,9 +132,7 @@ class MSShapeAnim : public MSAnim
 {
 public:
     // FUNCTION: GAMEMD 0x5CB6D0
-    MSShapeAnim(const char* name, int x, int y, int field20, int field24, bool field34, unsigned int flags);
-    // FUNCTION: GAMEMD 0x5CB6D0 (decl; reloc) -- the same entry point typed as retail's callers pass the name: the callee
-    // reads it with Wstring::FUN_007B5440 (0x4A3970), so the argument is a pointer to a Wstring.
+    // The name is a pointer to a Wstring: the callee 0x4A3970 reads it with Wstring::FUN_007B5440.
     MSShapeAnim(const Wstring& name, int x, int y, int field20, int field24, bool field34, unsigned int flags);
     // slot 0, 0x5CEB80 (scalar deleting), out of line 0x5CB750: hand the decoded buffer back only when this object owns it.
     virtual ~MSShapeAnim();
@@ -173,7 +169,7 @@ class MSFadeAnim : public MSShapeAnim
 {
 public:
     // FUNCTION: GAMEMD 0x5CBD20
-    MSFadeAnim(const char* name, int x, int y, int field20, int field24, int field38, int field44);
+    MSFadeAnim(const Wstring& name, int x, int y, int field20, int field24, int field38, MSAnimVector* field44);
     // FUNCTION: GAMEMD 0x5CC690 -- clear +0x40.
     void FUN_005CC690();
     // FUNCTION: GAMEMD 0x5CC6A0 -- clear +0x40 and set the frame.
@@ -183,7 +179,7 @@ public:
     virtual void Draw(MouseSurfaceView* context, RectangleStruct* area);          // slot 5, 0x5CC110
 
     unsigned int unknown_40;   // +0x40
-    int unknown_44;            // +0x44
+    MSAnimVector* unknown_44;  // +0x44 the sibling list redrawn over the fade (slot 4 IndexOf, count +0x10)
 };
 GG_STATIC_ASSERT(offsetof(MSFadeAnim, unknown_40) == 0x40
               && offsetof(MSFadeAnim, unknown_44) == 0x44
@@ -194,7 +190,7 @@ class MSOverlayAnim : public MSFadeAnim
 {
 public:
     // FUNCTION: GAMEMD 0x5CC250
-    MSOverlayAnim(const char* name, int x, int y, int field20, int field24, int field44,
+    MSOverlayAnim(const Wstring& name, int x, int y, int field20, int field24, MSAnimVector* field44,
                   unsigned char field48, int frame, bool quick);
     virtual ~MSOverlayAnim() {}                            // slot 0, 0x5CEC20 (scalar deleting)
     virtual bool Update(MouseSurfaceView* context, RectangleStruct* out);         // slot 4, 0x5CC330

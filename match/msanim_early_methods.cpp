@@ -321,11 +321,11 @@ bool MSOverlayAnim::Update(MouseSurfaceView* context, RectangleStruct* out)
         }
 
         if (unknown_44 != 0) {
-            int skip = ((MSAnimVector*)unknown_44)->IndexOf(this);
+            int skip = unknown_44->IndexOf(this);
 
-            for (int i = 0; i < ((MSAnimVector*)unknown_44)->Count; ++i) {
+            for (int i = 0; i < unknown_44->Count; ++i) {
                 if (i != skip) {
-                    ((MSAnimVector*)unknown_44)->Vector[i]->Draw(context, out);
+                    unknown_44->Vector[i]->Draw(context, out);
                 }
             }
         }
@@ -459,7 +459,7 @@ void MSBinkAnim::Attach(void* target)
 // FUNCTION: GAMEMD 0x5CCA20
 // The same build with the movie's source box taken from the caller; the destination box is still centred on the
 // caller's surface, at the display mode's size.
-MSVQAnim::MSVQAnim(MSStringClass* name, MSSurface* surface, int field24, const RectangleStruct* source,
+MSVQAnim::MSVQAnim(MSStringClass* name, MSSurface* surface, MSAnimVector* field24, const RectangleStruct* source,
                    bool field2c)
     : Player(0), Surface(surface), Field24(field24), Movie(0), Field2C(field2c), Finished(false)
 {
@@ -508,7 +508,7 @@ MSVQAnim::MSVQAnim(MSStringClass* name, MSSurface* surface, int field24, const R
 // the volume scale, its destination box is centred (640x400) on the caller's surface and its source box on
 // the screen surface; the backdrop is then looked up as "<stem>.PCX" through a stack file object which is
 // torn down inline.
-MSVQAnim::MSVQAnim(MSStringClass* name, MSSurface* surface, int field24, bool field2c)
+MSVQAnim::MSVQAnim(MSStringClass* name, MSSurface* surface, MSAnimVector* field24, bool field2c)
     : Player(0), Surface(surface), Field24(field24), Movie(0), Field2C(field2c), Finished(false)
 {
     if (name->FUN_007B47F0(0) && surface != 0) {
@@ -582,11 +582,11 @@ bool MSVQAnim::Update(MouseSurfaceView* context, RectangleStruct* out)
                 Draw(context, 0);
                 *out = Player->Source;
 
-                int skip = ((MSAnimVector*)Field24)->IndexOf(this);
+                int skip = Field24->IndexOf(this);
 
-                for (int i = 0; i < ((MSAnimVector*)Field24)->Count; ++i) {
+                for (int i = 0; i < Field24->Count; ++i) {
                     if (i != skip) {
-                        ((MSAnimVector*)Field24)->Vector[i]->Draw(context, &Player->Source);
+                        Field24->Vector[i]->Draw(context, &Player->Source);
                     }
                 }
             }
@@ -600,11 +600,11 @@ bool MSVQAnim::Update(MouseSurfaceView* context, RectangleStruct* out)
                     Draw(context, 0);
                     *out = Player->Source;
 
-                    int skip = ((MSAnimVector*)Field24)->IndexOf(this);
+                    int skip = Field24->IndexOf(this);
 
-                    for (int i = 0; i < ((MSAnimVector*)Field24)->Count; ++i) {
+                    for (int i = 0; i < Field24->Count; ++i) {
                         if (i != skip) {
-                            ((MSAnimVector*)Field24)->Vector[i]->Draw(context, &Player->Source);
+                            Field24->Vector[i]->Draw(context, &Player->Source);
                         }
                     }
                 }
@@ -623,11 +623,11 @@ bool MSVQAnim::Update(MouseSurfaceView* context, RectangleStruct* out)
             Draw(context, 0);
             *out = area;
 
-            int skip = ((MSAnimVector*)Field24)->IndexOf(this);
+            int skip = Field24->IndexOf(this);
 
-            for (int i = 0; i < ((MSAnimVector*)Field24)->Count; ++i) {
+            for (int i = 0; i < Field24->Count; ++i) {
                 if (i != skip) {
-                    ((MSAnimVector*)Field24)->Vector[i]->Draw(context, &area);
+                    Field24->Vector[i]->Draw(context, &area);
                 }
             }
         }
