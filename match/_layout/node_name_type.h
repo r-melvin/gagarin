@@ -30,6 +30,12 @@ struct NodeNameType
     int unknown_7F;                   // +0x7F  stored by 0x5E3A36 (0 = no map, 2 = map transfer)
     unsigned char unknown_83[0x02];   // +0x83
 
+    // Declaration: GAMEMD 0x5E93F0 (decl; reloc) -- __thiscall, no arguments, byte result:
+    // the node is a human player (0x46FA20 tests AL).
+    bool FUN_005E93F0();
+    // Declaration: GAMEMD 0x5E9440 (decl; reloc) -- __thiscall, no arguments, byte result:
+    // the node is an AI (0x46FAC0 tests AL).
+    bool FUN_005E9440();
     // Declaration: GAMEMD 0x696F10 (decl; reloc) -- __thiscall, no arguments: the start-position
     // reader (the fallback of 0x5EA920).
     int FUN_00696F10();

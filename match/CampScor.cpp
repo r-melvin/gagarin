@@ -12,7 +12,11 @@
 // Campaign score classes: constructors, empty destructors and the compiler-emitted
 // scalar deleting destructors (0x471500, 0x471520).
 
+// FUNCTION.H brings in <windows.h>, whose Win32 LocalHandle clashes with the global of that name in
+// netshare_slot_nodes.h (0xA8B380). This unit never calls the Win32 one.
+#define LocalHandle LocalHandle_Win32
 #include "FUNCTION.H"
+#undef LocalHandle
 #include "house_index_lookup_methods.h"
 #include "mathtbl_init_shapes.h"
 #include <math.h>
@@ -27,6 +31,14 @@
 #include "dialog_enable_methods.h"
 
 #include "format_duration_methods.h"
+#include "pcx_get_surface_methods.h"
+#include "netshare_slot_nodes.h"
+#include "_layout/session_class.h"
+#include "connman_class.h"
+#include "multiplayer_game_mode.h"
+#include "netshare_common.h"
+#include "command_packet_layouts.h"
+#include <string.h>
 #include "scenario_session_globals.h"
 
 // VTABLE: GAMEMD 0x7E4AAC
@@ -190,6 +202,21 @@ unsigned char Obj_0046D490::FUN_0046D490() const
     return unknown_89E000;
 }
 
+// FUNCTION: GAMEMD 0x46D810
+void FUN_0046D810()
+{
+    Payload_0046D810 packet;
+    packet.unknown_00 = 0x33;
+    strcpy(packet.unknown_04, LocalHandle);
+    packet.unknown_2F = Players_00A8DA78[0]->FUN_00696F50();
+    packet.unknown_33 = Players_00A8DA78[0]->FUN_00696F10();
+    packet.unknown_37 = Players_00A8DA78[0]->FUN_00696F20();
+    if (Session_00A8B238.unknown_2858[0]) {
+        Manager_00A8E9C0.FUN_00541260(&packet, 0x1C7, 1, Session_00A8B238.unknown_2858[0]->Name);
+        Manager_00A8E9C0.Service();
+    }
+}
+
 struct Entry_0046DC50
 {
     char unknown_00[0x60];
@@ -232,6 +259,123 @@ int __cdecl FUN_0046DC90(const void* a, const void* b)
         return 0;
     }
     return first->unknown_60 > second->unknown_60 ? -1 : 1;
+}
+
+// FUNCTION: GAMEMD 0x4E41D0 (decl; reloc) -- the house control of a slot index.
+int FUN_004E41D0(int index);
+// FUNCTION: GAMEMD 0x4E49A0 (decl; reloc) -- set the house control, RET 4.
+void FUN_004E49A0(HWND_ dialog, int control, int value);
+// FUNCTION: GAMEMD 0x4E4E60 (decl; reloc) -- the colour control of a slot index.
+int FUN_004E4E60(int index);
+// FUNCTION: GAMEMD 0x4E5480 (decl; reloc) -- set the colour control, RET 4.
+void FUN_004E5480(HWND_ dialog, int control, int value);
+// GLOBAL: GAMEMD 0xA8DA8C -- the seat the local player holds.
+extern int DAT_00A8DA8C;
+
+// FUNCTION: GAMEMD 0x4E37D0 (decl; reloc) -- the start-position control of a slot index.
+int FUN_004E37D0(int index);
+
+// FUNCTION: GAMEMD 0x46DCC0
+void FUN_0046DCC0(HWND_ dialog, unsigned char enable)
+{
+    for (int i = 0; i < 8; i++) {
+        NodeNameType* node = Session_00A8B238.unknown_2858[i];
+        if (node->FUN_005E93F0() && i != DAT_00A8DA8C) {
+            int id;
+            if (i == 0)
+                id = 0x411;
+            else if (i == 1)
+                id = 0x412;
+            else
+                id = -1;
+            HWND_ item = GetDlgItem(dialog, id);
+            EnableWindow(item, enable);
+            item = GetDlgItem(dialog, FUN_004E37D0(i));
+            EnableWindow(item, enable);
+            item = GetDlgItem(dialog, FUN_004E41D0(i));
+            EnableWindow(item, enable);
+            item = GetDlgItem(dialog, FUN_004E4E60(i));
+            EnableWindow(item, enable);
+        }
+    }
+}
+
+// USER32 imports used by the dialog fills below.
+extern "C" __declspec(dllimport) int __stdcall ShowWindow(HWND_ wnd, int command);
+extern "C" __declspec(dllimport) long __stdcall SendDlgItemMessageA(HWND_ dialog, int id, unsigned message, unsigned wparam, long lparam);
+// IAT 0x7E14A4: USER32!SendMessageA.
+extern "C" __declspec(dllimport) long __stdcall SendMessageA(HWND_ hWnd, unsigned uMsg, unsigned wParam, long lParam);
+
+// FUNCTION: GAMEMD 0x46F600
+void FUN_0046F600(HWND_ dialog)
+{
+    for (int i = 0; i < 8; i++) {
+        int id;
+        if (i == 0)
+            id = 0x411;
+        else if (i == 1)
+            id = 0x412;
+        else
+            continue;
+        HWND_ first = GetDlgItem(dialog, id);
+        if (ShowWindow(first, 0)) {
+            if (id != -1) {
+                HWND_ combo = GetDlgItem(dialog, id);
+                NodeNameType* node = Session_00A8B238.unknown_2858[i];
+                if (node == 0)
+                    continue;
+                SendDlgItemMessageA(dialog, id, 0x14B, 0, 0);
+                int index = SendMessageA(combo, 0x4C2, 0, (long)node);
+                SendMessageA(combo, 0x151, index, (long)node);
+                SendMessageA(combo, 0x14E, index, 0);
+            }
+            ShowWindow(first, 5);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x4E3F70 (decl; reloc) -- set the start-position control, RET 4.
+void FUN_004E3F70(HWND_ dialog, int control, int value);
+
+// FUNCTION: GAMEMD 0x46F6D0
+void FUN_0046F6D0(HWND_ dialog)
+{
+    for (int i = 0; i < 8; i++) {
+        int control = FUN_004E37D0(i);
+        HWND_ item = GetDlgItem(dialog, control);
+        if (ShowWindow(item, 0)) {
+            NodeNameType* node = Session_00A8B238.unknown_2858[i];
+            int position = -2;
+            MultiplayerGameMode* mode = Session_00A8B238.unknown_04;
+            if (mode != 0 && (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4)) {
+                position = mode->vf_10();
+            }
+            int value;
+            if (node->FUN_005E9440()) {
+                value = Session_00A8B238.unknown_18.unknown_4C[i];
+            } else if (node == OpenNode) {
+                value = position;
+            } else if (node == ClosedNode) {
+                value = position;
+            } else if (node == WaitingNode) {
+                value = position;
+            } else if (node == ObserverNode) {
+                value = -3;
+            } else {
+                value = node->FUN_00696F10();
+            }
+            if (Session_00A8B238.unknown_04 != 0 && !Session_00A8B238.unknown_04->vf_7(value)) {
+                value = position;
+                if (node->FUN_005E9440()) {
+                    Session_00A8B238.unknown_18.unknown_4C[i] = position;
+                } else if (node->FUN_005E93F0()) {
+                    Session_00A8B238.unknown_2858[i]->FUN_00696F90(position);
+                }
+            }
+            FUN_004E3F70(dialog, control, value);
+            ShowWindow(item, 5);
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x46F810
@@ -295,6 +439,76 @@ int FUN_0046F880(int index)
     }
 
     return entry->FUN_00696F50();
+}
+
+// FUNCTION: GAMEMD 0x46F8F0
+void FUN_0046F8F0(HWND_ dialog)
+{
+    int local = DAT_00A8DA8C;
+    if (local != -1) {
+        int control = FUN_004E41D0(local);
+        NodeNameType* node = Session_00A8B238.unknown_2858[local];
+        int value;
+        if (node->FUN_005E9440()) {
+            value = Session_00A8B238.unknown_18.unknown_6C[local];
+        } else if (node == OpenNode) {
+            value = -2;
+        } else if (node == ClosedNode) {
+            value = -2;
+        } else if (node == WaitingNode) {
+            value = -2;
+        } else if (node == ObserverNode) {
+            value = -2;
+        } else {
+            value = node->FUN_00696F20();
+        }
+        FUN_004E49A0(dialog, control, value);
+    }
+    for (int i = 0; i < 8; i++) {
+        if (i != local) {
+            int control = FUN_004E41D0(i);
+            NodeNameType* node = Session_00A8B238.unknown_2858[i];
+            int value;
+            if (node->FUN_005E9440()) {
+                value = Session_00A8B238.unknown_18.unknown_6C[i];
+            } else if (node == OpenNode) {
+                value = -2;
+            } else if (node == ClosedNode) {
+                value = -2;
+            } else if (node == WaitingNode) {
+                value = -2;
+            } else if (node == ObserverNode) {
+                value = -2;
+            } else {
+                value = node->FUN_00696F20();
+            }
+            FUN_004E49A0(dialog, control, value);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x46FAC0
+void FUN_0046FAC0(HWND_ dialog)
+{
+    for (int i = 0; i < 8; i++) {
+        int control = FUN_004E4E60(i);
+        NodeNameType* node = Session_00A8B238.unknown_2858[i];
+        int value;
+        if (node->FUN_005E9440()) {
+            value = Session_00A8B238.unknown_18.unknown_8C[i];
+        } else if (node == OpenNode) {
+            value = -2;
+        } else if (node == ClosedNode) {
+            value = -2;
+        } else if (node == WaitingNode) {
+            value = -2;
+        } else if (node == ObserverNode) {
+            value = -2;
+        } else {
+            value = node->FUN_00696F50();
+        }
+        FUN_004E5480(dialog, control, value);
+    }
 }
 
 // FUNCTION: GAMEMD 0x46FB50
@@ -383,8 +597,6 @@ CampaignEndScoreClass::~CampaignEndScoreClass()
 
 // SYNTHETIC: GAMEMD 0x471520 -- CampaignEndScoreClass::`scalar deleting destructor'
 
-// IAT 0x7E14A4: USER32!SendMessageA.
-extern "C" __declspec(dllimport) long __stdcall SendMessageA(HWND_ hWnd, unsigned uMsg, unsigned wParam, long lParam);
 // 0x7CA564: the CRT swprintf (cdecl, varargs).
 extern "C" int __cdecl swprintf(wchar_t* pszBuffer, const wchar_t* pszFormat, ...);
 

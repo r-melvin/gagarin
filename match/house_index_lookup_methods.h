@@ -17,6 +17,8 @@ struct Entry_0046F810
     // FUNCTION: GAMEMD 0x5E9440 (decl; reloc) — the gate, __thiscall, byte
     // result. Its body is matched in match/economy/netshare_slot_nodes.cpp.
     bool FUN_005E9440();
+    // FUNCTION: GAMEMD 0x5E93F0 (decl; reloc) -- is a player node, __thiscall, byte result.
+    bool FUN_005E93F0();
     // FUNCTION: GAMEMD 0x696F20 (decl; reloc) — the fallback. Declared as a member so the
     // tail position stays a `CALL` rather than becoming a `JMP`.
     int FUN_00696F20();
@@ -25,11 +27,11 @@ struct Entry_0046F810
 };
 
 // GLOBAL: GAMEMD 0xA8DA90 — the object array, indexed by the argument.
-extern Entry_0046F810* DAT_00A8DA90[];
+extern Entry_0046F810* DAT_00A8DA90[8];
 // GLOBAL: GAMEMD 0xA8B2BC — the parallel table 0x46F810 answers from.
-extern int DAT_00A8B2BC[];
+extern int DAT_00A8B2BC[8];
 // GLOBAL: GAMEMD 0xA8B2DC — the parallel table 0x46F880 answers from.
-extern int DAT_00A8B2DC[];
+extern int DAT_00A8B2DC[8];
 
 // The four rejected identities. They are not contiguous (0xAC11A4..0xAC11AC is
 // skipped), so they are four separate globals rather than an array.

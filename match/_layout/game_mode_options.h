@@ -29,7 +29,7 @@ struct GameModeOptionsClass_Opt
     int   UnitCount;         // +0x20
     int   AIPlayers;         // +0x24
     int   AIDifficulty;      // +0x28
-    char  unknown_2C[0x4C - 0x2C];
+    int   unknown_2C[8]; // Session+0x44: the AI difficulty per slot (0xA8B27C)
     int   unknown_4C[8]; // native 0x69B540; Session+0x64
     int   unknown_6C[8]; // native 0x69B540; Session+0x84
     int   unknown_8C[8]; // Session+0xA4: the colour choice per slot (0x5EADA0 reads it)
@@ -71,6 +71,8 @@ GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, unknown_00) == 0x0);
 GG_STATIC_ASSERT(sizeof(((GameModeOptionsClass_Opt*)0)->unknown_00) == 0x4);
 GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, unknown_04) == 0x4);
 GG_STATIC_ASSERT(sizeof(((GameModeOptionsClass_Opt*)0)->unknown_04) == 0x4);
+GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, unknown_2C) == 0x2C);
+GG_STATIC_ASSERT(sizeof(((GameModeOptionsClass_Opt*)0)->unknown_2C) == 0x20);
 GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, unknown_4C) == 0x4C);
 GG_STATIC_ASSERT(sizeof(((GameModeOptionsClass_Opt*)0)->unknown_4C) == 0x20);
 GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, unknown_6C) == 0x6C);

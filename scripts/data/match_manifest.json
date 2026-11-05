@@ -153310,5 +153310,68 @@
   "name": "GraphicMenu::GraphicMenu",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/CampScor.cpp",
+  "addr": "0x46D810",
+  "sym": "?FUN_0046D810@@YIXXZ",
+  "len": "0x9b",
+  "name": "?FUN_0046D810@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/CampScor.cpp",
+  "addr": "0x46DCC0",
+  "sym": "?FUN_0046DCC0@@YIXPAUHWND__@@E@Z",
+  "len": "0xa6",
+  "name": "?FUN_0046DCC0@@YIXPAUHWND__@@E@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/CampScor.cpp",
+  "addr": "0x46F600",
+  "sym": "?FUN_0046F600@@YIXPAUHWND__@@@Z",
+  "len": "0xcd",
+  "name": "?FUN_0046F600@@YIXPAUHWND__@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/CampScor.cpp",
+  "addr": "0x46F6D0",
+  "sym": "?FUN_0046F6D0@@YIXPAUHWND__@@@Z",
+  "len": "0x13d",
+  "name": "?FUN_0046F6D0@@YIXPAUHWND__@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/CampScor.cpp",
+  "addr": "0x46F8F0",
+  "sym": "?FUN_0046F8F0@@YIXPAUHWND__@@@Z",
+  "len": "0x121",
+  "name": "?FUN_0046F8F0@@YIXPAUHWND__@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/CampScor.cpp",
+  "addr": "0x46FAC0",
+  "sym": "?FUN_0046FAC0@@YIXPAUHWND__@@@Z",
+  "len": "0x8f",
+  "name": "?FUN_0046FAC0@@YIXPAUHWND__@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Skirmish.cpp",
+  "addr": "0x6ACE80",
+  "sym": "?FUN_006ACE80@@YIXPAUHWND__@@H@Z",
+  "len": "0x5e",
+  "name": "?FUN_006ACE80@@YIXPAUHWND__@@H@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

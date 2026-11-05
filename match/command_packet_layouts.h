@@ -98,6 +98,23 @@ GG_STATIC_ASSERT(offsetof(Payload_0069AF45, unknown_04) == 4);
 GG_STATIC_ASSERT(offsetof(Payload_0069AF45, unknown_2F) == 0x2F);
 GG_STATIC_ASSERT(sizeof(Payload_0069AF45) == 0x1C7);
 
+// The lobby slot announcement sent by 0x46D810: command 0x33 at +0, the local handle
+// copied to +4, then three choice dwords at +0x2F, +0x33 and +0x37.
+#pragma pack(push, 1)
+struct Payload_0046D810
+{
+    int unknown_00;
+    char unknown_04[0x2F - 4];
+    int unknown_2F;
+    int unknown_33;
+    int unknown_37;
+    unsigned char unknown_3B[0x1C7 - 0x3B];
+};
+#pragma pack(pop)
+GG_STATIC_ASSERT(offsetof(Payload_0046D810, unknown_2F) == 0x2F);
+GG_STATIC_ASSERT(offsetof(Payload_0046D810, unknown_37) == 0x37);
+GG_STATIC_ASSERT(sizeof(Payload_0046D810) == 0x1C7);
+
 GG_STATIC_ASSERT(sizeof(((Payload_0069B08C*)0)->unknown_00) == 4);
 GG_STATIC_ASSERT(sizeof(((Payload_0069B08C*)0)->unknown_18) == 1);
 GG_STATIC_ASSERT(sizeof(((Payload_0069B08C*)0)->unknown_19) == 4);
