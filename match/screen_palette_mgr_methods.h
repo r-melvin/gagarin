@@ -54,8 +54,13 @@ extern "C" void __cdecl FUN_007C8B3D(void* block);
 // `delete p` for a class with a non-virtual destructor).
 struct WholeFileBlock
 {
+    short unknown_00;
+    short Width;    // +0x02  movsx at 0x72EC70 (shape header width)
+    short Height;   // +0x04  movsx at 0x72EC70 (shape header height)
     void FUN_0069E500();
 };
+GG_STATIC_ASSERT(offsetof(WholeFileBlock, Width) == 0x02);
+GG_STATIC_ASSERT(offsetof(WholeFileBlock, Height) == 0x04);
 
 // FUNCTION: GAMEMD 0x4A38D0 (decl; reloc) — FileSystem::LoadWholeFileEx,
 // __fastcall, name in ECX and the "allocated" out-flag in EDX. Modelled

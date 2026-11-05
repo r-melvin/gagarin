@@ -154247,5 +154247,88 @@
   "name": "?FUN_006C99D0@@YIPAUunknown_Player_6C9C60@@PBD@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x72DB00",
+  "sym": "?FUN_0072DB00@@YIXXZ",
+  "len": "0xb1",
+  "name": "?FUN_0072DB00@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x72DDB0",
+  "sym": "?FUN_0072DDB0@@YIXXZ",
+  "len": "0x13c",
+  "name": "?FUN_0072DDB0@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x72DFB0",
+  "sym": "?FUN_0072DFB0@@YIXXZ",
+  "len": "0x1f1",
+  "name": "?FUN_0072DFB0@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x72E920",
+  "sym": "?FUN_0072E920@@YIXPAVSurface@@PAURectangleStruct@@@Z",
+  "len": "0x68",
+  "name": "?FUN_0072E920@@YIXPAVSurface@@PAURectangleStruct@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x72EC70",
+  "sym": "?FUN_0072EC70@@YIXHH@Z",
+  "len": "0x2e4",
+  "name": "?FUN_0072EC70@@YIXHH@Z",
+  "status": "partial",
+  "pct": 91.3,
+  "best_pct": 91.3,
+  "best_at": "775d06c0"
+ },
+ {
+  "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x72EF60",
+  "sym": "?FUN_0072EF60@@YIXXZ",
+  "len": "0x1dd",
+  "name": "?FUN_0072EF60@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x72FA10",
+  "sym": "?FUN_0072FA10@@YAXXZ",
+  "len": "0x1a6",
+  "name": "?FUN_0072FA10@@YAXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x72FBC0",
+  "sym": "?FUN_0072FBC0@@YIXXZ",
+  "len": "0x9f",
+  "name": "?FUN_0072FBC0@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x730100",
+  "sym": "?FUN_00730100@@YIXXZ",
+  "len": "0x2f7",
+  "name": "?FUN_00730100@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
