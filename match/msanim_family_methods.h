@@ -261,10 +261,24 @@ public:
 class MSSurface;
 struct MSShapeFile;
 
+// The object the font owns at +0x18; its slot 0 deletes it (0x5D2E6A).
+class MSFontOwned
+{
+public:
+    virtual ~MSFontOwned();
+};
+
+// VTABLE: GAMEMD 0x7EEC64
 class MSFont
 {
 public:
-    virtual void Slot00();
+    // FUNCTION: GAMEMD 0x5D2E00 -- clears the three flag bytes, loads the font through 0x5D2E90, counts the instance.
+    MSFont(int unknown_arg);
+    // Slot 0: the scalar deleting destructor 0x5D3450 runs the body 0x5D2E30 (the last live font empties the static
+    // table at 0xABFBE8 and releases the shape buffer and the owned object).
+    virtual ~MSFont();
+    // Declaration: GAMEMD 0x5D2E90 -- loads the font shape and palette files.
+    void FUN_005D2E90(int unknown_arg);
     virtual int  CharWidth(wchar_t ch);          // slot 1
     virtual void Slot02();
     virtual void Slot03();
@@ -294,15 +308,24 @@ public:
     // seed of the centring measurement.
     int  Lead;            // +0x04
     int  LineHeight;      // +0x08
-    int  unknown_0C;      // +0x0C
+    char unknown_0C;      // +0x0C
+    char unknown_0D;      // +0x0D
+    char unknown_0E;      // +0x0E
+    char unknown_0F;      // +0x0F
     int  unknown_10;      // +0x10
     MSShapeFile* Glyphs;  // +0x14 the glyph shape, three frames per character
+    MSFontOwned* unknown_18;  // +0x18
+    bool unknown_1C;      // +0x1C whether Glyphs is a heap buffer this font frees
 
     // FUNCTION: GAMEMD 0x5D3170 -- the widest line of a text, in pixels.
     int  LineWidth(const wchar_t* text);
 };
 GG_STATIC_ASSERT(offsetof(MSFont, LineHeight) == 0x08);
 GG_STATIC_ASSERT(offsetof(MSFont, Glyphs) == 0x14);
+GG_STATIC_ASSERT(offsetof(MSFont, unknown_0C) == 0x0C);
+GG_STATIC_ASSERT(offsetof(MSFont, unknown_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(MSFont, unknown_1C) == 0x1C);
+GG_STATIC_ASSERT(sizeof(MSFont) == 0x20);  // operator new(0x20) at 0x5AE327 before the constructor call
 
 // The drawing surface the PCX animation holds at +0x1C. Only slot 2 is
 // reached (`CALL [EDI+8]` at 0x5CEA74, 0x5CE819 and 0x5CE900): blit a frame

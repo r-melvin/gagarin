@@ -20,10 +20,10 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "vector_class.h"
+#include "_layout/hsv_class.h"
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
-class HSVClass;
 // Assignment at 0x6260D0 copies 0xC0 dwords; no vptr is accessed.
 struct PaletteClass
 {
@@ -52,7 +52,9 @@ struct ColorScheme
     // passes it straight to _stricmp. Modelling it as an array makes VC6 emit
     // `ADD EAX,0x304` (taking the address) instead of the load.
     const char* Name;                  // +0x0304
-    unsigned char unknown_308[3];
+    // +0x308 HSV colour: 0x68C710 copies its HSVClass* argument here (word + byte at 0x68C74C-0x68C755) and
+    // 0x4A6022 passes this address as `this` to the HSV-to-RGB conversion 0x517440.
+    HSVClass unknown_308;
     char unknown_30B;
     void* unknown_30C;
     int         unknown_310;           // +0x0310  matched alongside the name
@@ -72,6 +74,7 @@ GG_STATIC_ASSERT(offsetof(ColorScheme, unknown_310) == 0x310);
 GG_STATIC_ASSERT(offsetof(ColorScheme, unknown_000) == 0x000);
 GG_STATIC_ASSERT(offsetof(ColorScheme, unknown_004) == 0x004);
 GG_STATIC_ASSERT(offsetof(ColorScheme, unknown_308) == 0x308);
+GG_STATIC_ASSERT(sizeof(((ColorScheme*)0)->unknown_308) == 3);
 GG_STATIC_ASSERT(offsetof(ColorScheme, unknown_30C) == 0x30C);
 GG_STATIC_ASSERT(offsetof(ColorScheme, unknown_314) == 0x314);
 GG_STATIC_ASSERT(sizeof(ColorScheme) == 0x33C);

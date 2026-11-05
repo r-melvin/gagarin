@@ -88,6 +88,8 @@ public:
     void          FUN_00433CA0(const BitFontBounds* bounds);  // GAMEMD 0x433CA0: +0x30..+0x3C, 0 clears
     void          FUN_00433CF0(const unsigned short* text, int* width, int* height,
                                int wrapWidth);         // GAMEMD 0x433CF0: measure text
+    int            FUN_00433ED0(const unsigned short* text, int flag);  // GAMEMD 0x433ED0, RET 8: the measured width
+    int            FUN_004349B0(unsigned short glyph);  // GAMEMD 0x4349B0, RET 4: glyph width through the symbol table
     unsigned char* GetCharacterBitmap(wchar_t wch);  // GAMEMD 0x4346C0
     int            UnLock(Surface* pSurface);        // GAMEMD 0x434990
 

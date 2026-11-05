@@ -174,6 +174,8 @@ public:
     // out-of-line form); callers in netshare.cpp (0x5E2670) reach it with a
     // plain CALL.
     unsigned int FUN_007B71B0() const;
+    // FUNCTION: GAMEMD 0x7B7D80 (decl; reloc) -- __thiscall, no arguments: the integer value of the text.
+    int FUN_007B7D80();
     void Resize(int count);                                    // 0x7B7060
     wchar_t FUN_007B7110(unsigned int index) const;            // 0x7B7110
     wchar_t FUN_007B7180(unsigned int index) const;            // 0x7B7180

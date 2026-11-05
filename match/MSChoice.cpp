@@ -531,6 +531,111 @@ Wstring* MapStageList::FindTitle(Wstring* key)
     return 0;
 }
 
+// FUNCTION: GAMEMD 0x5D0070
+MapStage::~MapStage()
+{
+    for (int i = 0; i < unknown_3C.Count; ++i)
+        delete unknown_3C.Items[i];
+    for (int j = 0; j < unknown_54.Count; ++j)
+        delete unknown_54.Items[j];
+}
+
+// FUNCTION: GAMEMD 0x5D0190
+MapSelection* MapStage::FUN_005D0190(const char* key)
+{
+    Wstring wanted(key);
+    wanted.FUN_007B5B30();
+    for (int i = 0; i < unknown_54.Count; ++i) {
+        if (unknown_54.Items[i]->Name.FUN_007B47F0(0)) {
+            Wstring name(unknown_54.Items[i]->Name);
+            name.FUN_007B5B30();
+            if (wanted == name)
+                return unknown_54.Items[i];
+        }
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x5D0240
+Wstring MapStage::FUN_005D0240(unsigned char flag)
+{
+    for (int i = 0; i < unknown_54.Count; ++i) {
+        if (flag == unknown_54.Items[i]->unknown_04)
+            return Wstring(unknown_54.Items[i]->Name);
+    }
+    return Wstring((const char*)0);
+}
+
+// FUNCTION: GAMEMD 0x5D0290
+MSTextEntry::MSTextEntry(const Obj_007B66D0* fields)
+    : unknown_00(0), unknown_04(0), unknown_08(0), unknown_0C((const wchar_t*)0)
+{
+    Obj_007B66D0 token;
+    int cursor = fields->FUN_007B7A60(0, L",", &token);
+    if (token.FUN_007B71B0() > 0)
+        unknown_00 = token.FUN_007B7D80();
+    cursor = fields->FUN_007B7A60(cursor, L",", &token);
+    if (token.FUN_007B71B0() > 0)
+        unknown_04 = token.FUN_007B7D80();
+    cursor = fields->FUN_007B7A60(cursor, L",", &token);
+    if (token.FUN_007B71B0() > 0)
+        unknown_08 = token.FUN_007B7D80();
+    fields->FUN_007B7A60(cursor, L",", &token);
+    if (token.FUN_007B71B0() > 0)
+        unknown_0C = token;
+}
+
+// FUNCTION: GAMEMD 0x5D0380
+MSAnimEntry::MSAnimEntry(Wstring* text)
+    : Name((const char*)0)
+{
+    unknown_04 = 0;
+    unknown_08 = 0;
+    unknown_0C = 0;
+    Wstring token;
+    int cursor = text->FUN_007B5F10(0, ",", &token);
+    unsigned int length = token.Length();
+    if (length > 0)
+        Name = token;
+    cursor = text->FUN_007B5F10(cursor, ",", &token);
+    length = token.Length();
+    if (length > 0)
+        unknown_04 = token.FUN_007B6280();
+    cursor = text->FUN_007B5F10(cursor, ",", &token);
+    length = token.Length();
+    if (length > 0)
+        unknown_08 = token.FUN_007B6280();
+    text->FUN_007B5F10(cursor, ",", &token);
+    length = token.Length();
+    if (length > 0)
+        unknown_0C = token.FUN_007B6280();
+}
+
+// FUNCTION: GAMEMD 0x5D0470
+MSSfxEntry::MSSfxEntry(Wstring* name, Wstring* fields)
+    : Name((const char*)0)
+{
+    unknown_04 = 0;
+    unknown_08 = 0;
+    unknown_0C = 0xFF;
+    if (name->FUN_007B47F0(0) && SessionExists()) {
+        Wstring first;
+        int cursor = fields->FUN_007B5F10(0, ",", &first);
+        Wstring second;
+        fields->FUN_007B5F10(cursor, ",", &second);
+        if (second.FUN_007B47F0(0)) {
+            unknown_0C = second.FUN_007B6280();
+            if (unknown_0C > 100)
+                unknown_0C = 100;
+            else if (unknown_0C < 0)
+                unknown_0C = 0;
+            unknown_0C = unknown_0C * 255 / 100;
+        }
+        if (unknown_0C > 0 && first.FUN_007B47F0(0))
+            Name = *name;
+    }
+}
+
 // FUNCTION: GAMEMD 0x5D0580
 void FUN_005D0580(void* self)
 {
@@ -832,6 +937,45 @@ void MSEngine::Draw(MouseSurfaceView* surface)
             Anims.Delete(j);
         }
         AddDirtyRect(touched);
+    }
+}
+
+// FUNCTION: GAMEMD 0x5D2260
+void MSEngine::FlushDirtyRects(MouseSurfaceView* surface)
+{
+    if (DirtyRectCount > 0) {
+        RECT client;
+        GetClientRect(DAT_00B73550, &client);
+        ClientToScreen(DAT_00B73550, (LPPOINT)&client);
+        if (WWMouseClassInstance != 0)
+            WWMouseClassInstance->DrawMouseOnto(surface, false);
+        for (int i = 0; i < DirtyRectCount; i++) {
+            RectangleStruct dest = Rects.Items[i];
+            dest.X += client.left;
+            dest.Y += client.top;
+            DAT_00887308->Blt(dest, surface, Rects.Items[i], 0, 1);
+        }
+        DirtyRectCount = 0;
+        if (WWMouseClassInstance != 0)
+            WWMouseClassInstance->DrawCachedOnto(surface, false);
+    }
+}
+
+// FUNCTION: GAMEMD 0x5D2350
+void MSEngine::PresentRect(MouseSurfaceView* surface, const RectangleStruct& rect)
+{
+    if (rect.Width > 0 && rect.Height > 0) {
+        RECT client;
+        GetClientRect(DAT_00B73550, &client);
+        ClientToScreen(DAT_00B73550, (LPPOINT)&client);
+        if (WWMouseClassInstance != 0)
+            WWMouseClassInstance->DrawMouseOnto(surface, false);
+        RectangleStruct dest = rect;
+        dest.X += client.left;
+        dest.Y += client.top;
+        DAT_00887308->Blt(dest, surface, rect, 0, 1);
+        if (WWMouseClassInstance != 0)
+            WWMouseClassInstance->DrawCachedOnto(surface, false);
     }
 }
 

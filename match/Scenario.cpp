@@ -2645,11 +2645,8 @@ ConvertClass* __fastcall FUN_0068C500(const ScenarioHSVRecord* hsv,
 // Empty colour scheme: zeroed palette records, no name, no converter, shade 1; registers itself
 // in the global scheme list and records its index.
 ColorScheme::ColorScheme() throw()
+    : Name(0)
 {
-    Name = 0;
-    unknown_308[0] = 0;
-    unknown_308[1] = 0;
-    unknown_308[2] = 0;
     unknown_30C = 0;
     unknown_310 = 1;
     DynamicVectorAddItemFree(&ColorSchemeArray, this);
@@ -2659,9 +2656,8 @@ ColorScheme::ColorScheme() throw()
 // FUNCTION: GAMEMD 0x68C710
 ColorScheme::ColorScheme(const char* name, HSVClass* hsv, PaletteClass* pal1,
                          PaletteClass* pal2, int shade, bool flag) throw()
+    : Name(FUN_007D5408(name)), unknown_308(*hsv)
 {
-    Name = FUN_007D5408(name);
-    memcpy(unknown_308, hsv, 3);
     unknown_30C = 0;
     unknown_310 = shade;
     unknown_314[0] = 16;
@@ -2674,7 +2670,7 @@ ColorScheme::ColorScheme(const char* name, HSVClass* hsv, PaletteClass* pal1,
     unknown_314[7] = 16;
     unknown_314[8] = 16;
     unknown_314[9] = 21;
-    unknown_30C = FUN_0068C3B0(unknown_308, pal1, pal2, unknown_004,
+    unknown_30C = FUN_0068C3B0(&unknown_308, pal1, pal2, unknown_004,
                                DAT_00887308, shade, 1000, 1000, 1000, DAT_0083E1AC);
     if (flag) {
         DynamicVectorAddItemFree(&ColorSchemeArray, this);

@@ -152194,5 +152194,149 @@
   "name": "?FUN_006CA6A0@@YIXPAGPAUunknown_Parsed_6CA6A0@@@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/text_print_4a59e0.cpp",
+  "addr": "0x4A5E50",
+  "sym": "?FUN_004A5E50@@YIHPBGHHPAH1@Z",
+  "len": "0x58",
+  "name": "?FUN_004A5E50@@YIHPBGHHPAH1@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/text_print_4a59e0.cpp",
+  "addr": "0x4A6010",
+  "sym": "?FUN_004A6010@@YI?AVPoint2D@@PBGPAVSurface@@PAURectangleStruct@@PAV1@PAUColorScheme@@HHH@Z",
+  "len": "0xbb",
+  "name": "?FUN_004A6010@@YI?AVPoint2D@@PBGPAVSurface@@PAURectangleStruct@@PAV1@PAUColorScheme@@HHH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/text_print_4a59e0.cpp",
+  "addr": "0x4A60E0",
+  "sym": "?FUN_004A60E0@@YA?AVPoint2D@@PBGPAVSurface@@PAURectangleStruct@@PAV1@HHHZZ",
+  "len": "0xd4",
+  "name": "?FUN_004A60E0@@YA?AVPoint2D@@PBGPAVSurface@@PAURectangleStruct@@PAV1@HHHZZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/text_print_4a59e0.cpp",
+  "addr": "0x4A6360",
+  "sym": "?FUN_004A6360@@YI?AVPoint2D@@PBGPAVSurface@@PAURectangleStruct@@PAV1@HHHIPAI@Z",
+  "len": "0x194",
+  "name": "?FUN_004A6360@@YI?AVPoint2D@@PBGPAVSurface@@PAURectangleStruct@@PAV1@HHHIPAI@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/text_print_4a59e0.cpp",
+  "addr": "0x4A6500",
+  "sym": "?FUN_004A6500@@YI?AVPoint2D@@PBGPAVSurface@@PAURectangleStruct@@PAV1@PAUColorScheme@@HHIPAI@Z",
+  "len": "0xc0",
+  "name": "?FUN_004A6500@@YI?AVPoint2D@@PBGPAVSurface@@PAURectangleStruct@@PAV1@PAUColorScheme@@HHIPAI@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/text_print_4a59e0.cpp",
+  "addr": "0x4A66D0",
+  "sym": "?FUN_004A66D0@@YI?AVPoint2D@@PBGPAVSurface@@PAURectangleStruct@@PAV1@HHHHH@Z",
+  "len": "0x10b",
+  "name": "?FUN_004A66D0@@YI?AVPoint2D@@PBGPAVSurface@@PAURectangleStruct@@PAV1@HHHHH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MSChoice.cpp",
+  "addr": "0x5D0070",
+  "sym": "??1MapStage@@QAE@XZ",
+  "len": "0x119",
+  "name": "??1MapStage@@QAE@XZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MSChoice.cpp",
+  "addr": "0x5D0190",
+  "sym": "?FUN_005D0190@MapStage@@QAEPAVMapSelection@@PBD@Z",
+  "len": "0xa3",
+  "name": "MapStage::FUN_005D0190",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MSChoice.cpp",
+  "addr": "0x5D0240",
+  "sym": "?FUN_005D0240@MapStage@@QAE?AVWstring@@E@Z",
+  "len": "0x50",
+  "name": "MapStage::FUN_005D0240",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MSChoice.cpp",
+  "addr": "0x5D0290",
+  "sym": "??0MSTextEntry@@QAE@PBVObj_007B66D0@@@Z",
+  "len": "0xed",
+  "name": "??0MSTextEntry@@QAE@PBVObj_007B66D0@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MSChoice.cpp",
+  "addr": "0x5D0380",
+  "sym": "??0MSAnimEntry@@QAE@PAVWstring@@@Z",
+  "len": "0xe8",
+  "name": "??0MSAnimEntry@@QAE@PAVWstring@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MSChoice.cpp",
+  "addr": "0x5D0470",
+  "sym": "??0MSSfxEntry@@QAE@PAVWstring@@0@Z",
+  "len": "0x10f",
+  "name": "??0MSSfxEntry@@QAE@PAVWstring@@0@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MSChoice.cpp",
+  "addr": "0x5D2260",
+  "sym": "?FlushDirtyRects@MSEngine@@QAEXPAVMouseSurfaceView@@@Z",
+  "len": "0xe2",
+  "name": "MSEngine::FlushDirtyRects",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MSChoice.cpp",
+  "addr": "0x5D2350",
+  "sym": "?PresentRect@MSEngine@@QAEXPAVMouseSurfaceView@@ABURectangleStruct@@@Z",
+  "len": "0xb3",
+  "name": "MSEngine::PresentRect",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ms_font_methods.cpp",
+  "addr": "0x5D2E00",
+  "sym": "??0MSFont@@QAE@H@Z",
+  "len": "0x2f",
+  "name": "??0MSFont@@QAE@H@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ms_font_methods.cpp",
+  "addr": "0x5D2E30",
+  "sym": "??1MSFont@@UAE@XZ",
+  "len": "0x5d",
+  "name": "??1MSFont@@UAE@XZ",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

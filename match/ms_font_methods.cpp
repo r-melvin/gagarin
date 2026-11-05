@@ -1,13 +1,46 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Evidence: retail gamemd.exe v1.001 disassembly at 0x5D30C0, 0x5D3170 and 0x5D31D0
-//   (the font's character-width slot and its two text measuring helpers).
+//   Evidence: retail gamemd.exe v1.001 disassembly at 0x5D2E00, 0x5D2E30 (constructor and destructor body, vtable
+//   0x7EEC64), 0x5D30C0, 0x5D3170 and 0x5D31D0 (the font's character-width slot and its two text measuring helpers).
 //
-// Address index: 0x5D30C0 0x5D3170 0x5D31D0
+// Address index: 0x5D2E00 0x5D2E30 0x5D30C0 0x5D3170 0x5D31D0
 
 #include <windows.h>
 #include <string.h>
 #include "msanim_family_methods.h"
+
+// GLOBAL: GAMEMD 0xABFBE0 -- how many fonts are alive.
+extern int DAT_00ABFBE0;
+// GLOBAL: GAMEMD 0xABFBE8 -- the three-entry static table the last font empties.
+struct MSFontSlot { void* p; char f; };
+extern MSFontSlot DAT_00ABFBE8[3];
+
+// FUNCTION: GAMEMD 0x5D2E00
+MSFont::MSFont(int unknown_arg)
+{
+    unknown_0E = unknown_0D = unknown_0C = 0;
+    FUN_005D2E90(unknown_arg);
+    ++DAT_00ABFBE0;
+}
+
+// FUNCTION: GAMEMD 0x5D2E30
+MSFont::~MSFont()
+{
+    if (--DAT_00ABFBE0 == 0) {
+        for (int i = 0; i < 3; ++i) {
+            if (DAT_00ABFBE8[i].p != 0) {
+                DAT_00ABFBE8[i].p = 0;
+                DAT_00ABFBE8[i].f = 0;
+            }
+        }
+        if (unknown_18 != 0)
+            delete unknown_18;
+        if (Glyphs != 0 && unknown_1C == true)
+            delete Glyphs;
+        Glyphs = 0;
+        unknown_1C = 0;
+    }
+}
 
 // FUNCTION: GAMEMD 0x5D31D0 (partial 86.4%: retail folds the glyph offset as ADD -0x21 and builds the frame index in ECX ahead of the rectangle pointer)
 // Width of one character: a space is eight, anything printable is its glyph's

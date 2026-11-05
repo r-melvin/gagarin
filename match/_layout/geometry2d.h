@@ -73,14 +73,11 @@ GG_STATIC_ASSERT(sizeof(LTRBStruct) == 0x10);
 // RectangleStruct. The empty constructor and member-wise compare are what the
 // VectorClass<TRect<int>> bodies (SetCapacity 0x5ACD30, FindItemIndex
 // 0x5ACE50) expand.
-template<class T> class TRect
+template<class T> class TRect : public RectangleStruct
 {
 public:
-    T X;       // +0x00
-    T Y;       // +0x04
-    T Width;   // +0x08
-    T Height;  // +0x0C
-
+    // X, Y, Width and Height (T is always int) are RectangleStruct's four ints, so the dirty-rectangle vector's
+    // elements (0x5D2260) are passed straight to the surface blit as source rectangles.
     TRect() {}
     bool operator==(const TRect<T>& o) const
     {
