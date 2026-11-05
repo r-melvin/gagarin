@@ -109,6 +109,8 @@ extern double DAT_00B0E688;
 #include <new.h>
 #include "_layout/object_class.h"
 #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "locomotion_load_support.h"
 #include "vector_class_operations.h"
 #include "frame_counter.h"
@@ -598,6 +600,24 @@ MathTblCoord DAT_00B0E6C8;
 // GLOBAL: GAMEMD 0xB0E670
 MathTblZero4 DAT_00B0E670;
 
+// FUNCTION: GAMEMD 0x6DD000
+// Construct an empty action and register it in the three action registries.
+TActionClass::TActionClass()
+    : unknown_24(-1), unknown_28(0), unknown_2C(0), unknown_30(0), unknown_44(0), unknown_48(0), unknown_4C(0), unknown_50(0)
+{
+    unknown_34.unknown_00 = 0;
+    unknown_34.unknown_04 = 0;
+    unknown_34.unknown_08 = 0;
+    unknown_34.unknown_0C = 0;
+    unknown_54[0] = 0;
+    DAT_00B0E658.AddItem(this);
+    unknown_24 = DAT_00B0E658.FindItemIndex(this);
+    DAT_00B0F670.AddItem(this);
+    DAT_00B0F658.AddItem(this);
+    unknown_6D[0] = 0;
+    unknown_90 = 0;
+}
+
 // FUNCTION: GAMEMD 0x6DD1B0
 TActionClass::~TActionClass()
 {
@@ -622,6 +642,225 @@ void TActionClass::vf_10(void* target, bool removed)
     }
     if (unknown_4C == target) {
         unknown_4C = 0;
+    }
+}
+
+#include "_layout/theme_class.h"
+// FUNCTION: GAMEMD 0x752460 / 0x751590 (decl; reloc) -- name of a type from its array index; one register argument.
+const char* __fastcall FUN_00752460(int index);
+const char* __fastcall FUN_00751590(int index);
+// FUNCTION: GAMEMD 0x763610 (decl; reloc) -- name of a waypoint index; one register argument.
+const char* __fastcall FUN_00763610(int index);
+// STRING: GAMEMD 0x842BF4 -- the empty string.
+extern const char DAT_00842BF4[];
+
+// GLOBAL: GAMEMD 0xA8ECA4 / 0x8B417C / 0xB0E784 -- the items of the team type, trigger type and tag type arrays.
+extern TeamTypeClass** DAT_00A8ECA4;
+extern TriggerTypeClass** DAT_008B417C;
+extern TagTypeClass** DAT_00B0E784;
+// FUNCTION: GAMEMD 0x6F1920 (decl; reloc) -- the team type of that name, allocated when it is missing; one register argument.
+TeamTypeClass* __fastcall FUN_006F1920(const char* id);
+// FUNCTION: GAMEMD 0x753250 / 0x7514D0 (decl; reloc) -- the index of a name; one register argument.
+int __fastcall FUN_00753250(const char* name);
+int __fastcall FUN_007514D0(const char* name);
+// FUNCTION: GAMEMD 0x763690 (decl; reloc) -- the waypoint index of a name; one register argument.
+int __fastcall FUN_00763690(const char* name);
+
+#include "_layout/theme_class.h"
+// FUNCTION: GAMEMD 0x752460 / 0x751590 (decl; reloc) -- name of a type from its array index; one register argument.
+const char* __fastcall FUN_00752460(int index);
+const char* __fastcall FUN_00751590(int index);
+// FUNCTION: GAMEMD 0x763610 (decl; reloc) -- name of a waypoint index; one register argument.
+const char* __fastcall FUN_00763610(int index);
+// STRING: GAMEMD 0x842BF4 -- the empty string.
+extern const char DAT_00842BF4[];
+
+// FUNCTION: GAMEMD 0x6DD300
+// Write the action's parameters as a comma-separated record, appended to the buffer.
+void TActionClass::FUN_006DD300(char* buffer)
+{
+    int mode = TActionClass_006E3B60::GetMode(unknown_2C);
+    int param = unknown_90;
+    int kind = 0;
+    const char* name = 0;
+    int extra14 = 0;
+    int extra10 = 0;
+    if (mode == 0x2f) {
+        kind = 9;
+        name = unknown_54;
+    } else if (mode == 0x2e) {
+        kind = 0xb;
+        extra14 = param;
+        extra10 = unknown_48;
+    } else if (mode == 0x2b) {
+        kind = 9;
+        name = unknown_54;
+    } else if (mode == 0x2d) {
+        kind = 10;
+        name = unknown_54;
+    } else {
+        if (unknown_30 && mode == 0x28) {
+            param = unknown_30->ArrayIndex;
+            kind = 5;
+            name = unknown_30->ID;
+        } else if (unknown_30 && (mode == 0xc || mode == 0x22)) {
+            param = unknown_30->ArrayIndex;
+            kind = 1;
+            name = unknown_30->ID;
+        } else if (unknown_50 && mode == 0xb) {
+            param = unknown_50->ArrayIndex;
+            kind = 2;
+            name = unknown_50->ID;
+        } else if (unknown_4C && mode == 0x1a) {
+            param = unknown_4C->unknown_98;
+            kind = 3;
+            name = unknown_4C->ID;
+        } else if (mode == 0x27) {
+            kind = 4;
+            name = unknown_6D;
+            if (unknown_6D[0] == 0 || name == 0)
+                name = DAT_00842BF4;
+        } else if (mode == 4) {
+            kind = 6;
+            name = FUN_00752460(param);
+        } else if (mode == 3 || mode == 0x26) {
+            kind = 7;
+            name = FUN_00751590(param);
+        } else if (mode == 1) {
+            kind = 8;
+            name = ((ThemeClass*)DAT_00A83D10)->GetID(param);
+        }
+    }
+    buffer += strlen(buffer);
+    if (kind == 0xb) {
+        sprintf(buffer, "%d,%d,%d,%d,%d,%d,%d,%d", unknown_2C, kind, extra14, unknown_34.unknown_00, unknown_34.unknown_04,
+                unknown_34.unknown_08, unknown_34.unknown_0C, extra10);
+        return;
+    }
+    if (kind == 10) {
+        sprintf(buffer, "%d,%d,%s,%d,%d,%d,%d,%s", unknown_2C, kind, name, unknown_34.unknown_00, unknown_34.unknown_04,
+                unknown_34.unknown_08, unknown_34.unknown_0C, FUN_00763610(unknown_44));
+        return;
+    }
+    if (kind != 5 && kind != 9) {
+        if (kind != 0) {
+            sprintf(buffer, "%d,%d,%s,%d,%d,%d,%d,%s", unknown_2C, kind, name, unknown_34.unknown_00,
+                    unknown_34.unknown_04, unknown_34.unknown_08, unknown_34.unknown_0C, FUN_00763610(unknown_44));
+            return;
+        }
+        sprintf(buffer, "%d,%d,%d,%d,%d,%d,%d,%s", unknown_2C, 0, param, unknown_34.unknown_00, unknown_34.unknown_04,
+                unknown_34.unknown_08, unknown_34.unknown_0C, FUN_00763610(unknown_44));
+        return;
+    }
+    sprintf(buffer, "%d,%d,%s,%d,%d,%d,%d,%d", unknown_2C, kind, name, unknown_34.unknown_00, unknown_34.unknown_04,
+            unknown_34.unknown_08, unknown_34.unknown_0C, unknown_90);
+}
+
+// FUNCTION: GAMEMD 0x6DD5B0
+// Read the action's parameters back from the comma-separated record.
+void TActionClass::FUN_006DD5B0()
+{
+    unknown_90 = 0;
+    unknown_2C = atoi(strtok(0, ","));
+    int kind = atoi(strtok(0, ","));
+    char* token = strtok(0, ",");
+    int value = atoi(token);
+    switch (kind) {
+    case 0:
+    case 0xb:
+        unknown_90 = value;
+        break;
+    case 1:
+    case 5:
+        if (value == -1) {
+            unknown_30 = 0;
+        } else if (strlen(token) < 3) {
+            unknown_30 = DAT_00A8ECA4[value];
+        } else {
+            unknown_30 = FUN_006F1920(token);
+        }
+        break;
+    case 2:
+        if (value == -1) {
+            unknown_50 = 0;
+        } else if (strlen(token) < 3) {
+            unknown_50 = DAT_008B417C[value];
+        } else {
+            unknown_50 = TriggerTypeClass::FindOrAllocate(token);
+        }
+        break;
+    case 3:
+        if (value == -1) {
+            unknown_4C = 0;
+        } else if (strlen(token) < 3) {
+            unknown_4C = DAT_00B0E784[value];
+        } else {
+            unknown_4C = TagTypeClass::FindOrAllocate(token);
+        }
+        break;
+    case 4:
+        if (value == -1) {
+            unknown_6D[0] = 0;
+        } else {
+            char* text = unknown_6D;
+            char* p = token;
+            *text = 0;
+            if (token) {
+                while (*p && (unsigned char)*p <= ' ')
+                    p++;
+                if (*p) {
+                    strncpy(text, p, 0x1f);
+                    unknown_6D[0x1f] = 0;
+                    int i = (int)strlen(text);
+                    while (i != 0 && (unsigned char)unknown_6D[i - 1] <= ' ')
+                        i--;
+                    unknown_6D[i] = 0;
+                }
+            }
+        }
+        break;
+    case 6:
+        unknown_90 = FUN_00753250(token);
+        break;
+    case 7:
+        unknown_90 = FUN_007514D0(token);
+        break;
+    case 8:
+        unknown_90 = ((ThemeClass*)DAT_00A83D10)->FindIndex(token);
+        break;
+    case 9:
+    case 10: {
+        char name[0x19];
+        if (token == 0) {
+            name[0] = 0;
+        } else {
+            strncpy(name, token, 0x18);
+            name[0x18] = 0;
+        }
+        if (name != unknown_54)
+            memcpy(unknown_54, name, 0x19);
+        break;
+    }
+    }
+    unknown_34.unknown_00 = atoi(strtok(0, ","));
+    unknown_34.unknown_04 = atoi(strtok(0, ","));
+    unknown_34.unknown_08 = atoi(strtok(0, ","));
+    unknown_34.unknown_0C = atoi(strtok(0, ","));
+    token = strtok(0, ",");
+    if (token) {
+        if (kind == 5) {
+            unknown_90 = atoi(token);
+            return;
+        }
+        if (kind == 9) {
+            unknown_90 = atoi(token);
+            return;
+        }
+        if (kind == 0xb) {
+            unknown_48 = atoi(token);
+            return;
+        }
+        unknown_44 = FUN_00763690(token);
     }
 }
 
@@ -1034,6 +1273,38 @@ bool Obj_006E0FC0::FUN_006E0FC0(int a1, int a2, int a3, int a4)
     return true;
 }
 
+// The lower corner of the square of side `height` centred on a cell, as a coordinate at the height's level.
+static __inline CoordStruct CornerCoord(const CellStruct& where, int height)
+{
+    Cell half((short)(height / 2), (short)(height / 2));
+    CellStruct corner = where - half;
+    CoordStruct at;
+    at.X = corner.X * 256 + 128;
+    at.Y = corner.Y * 256 + 128;
+    at.Z = DAT_00B0E6E0 * height;
+    return at;
+}
+
+// FUNCTION: GAMEMD 0x6E0FE0
+// Reveal the area around a waypoint (two passes), unless the local player already sees everything.
+bool TActionClass::FUN_006E0FE0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    if (DAT_00A83D4C->Visionary == 0) {
+        CellStruct where = DAT_00A8B230->GetWaypointCoords(unknown_90);
+        int extra;
+        if ((MapInstance.FUN_005657A0(&where)->Flags & 0x100) != 0
+            || (MapInstance.FUN_005657A0(&where)->Flags & 0x400) != 0) {
+            extra = 4;
+        } else {
+            extra = 0;
+        }
+        int height = MapInstance.FUN_005657A0(&where)->Level + extra;
+        MapInstance.FUN_005678E0(CornerCoord(where, height), DAT_008871E0->RevealTriggerRadius, DAT_00A83D4C, false, 0, false, true, false);
+        MapInstance.FUN_005678E0(CornerCoord(where, height), DAT_008871E0->RevealTriggerRadius, DAT_00A83D4C, false, 0, false, true, true);
+    }
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x6E1180
 bool TActionClass::FUN_006E1180(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1221,6 +1492,26 @@ bool TActionClass::FUN_006E1A40(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// FUNCTION: GAMEMD 0x6E1A70
+// Reveal the area around a waypoint in one pass, unless the local player already sees everything.
+bool TActionClass::FUN_006E1A70(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    if (DAT_00A83D4C->Visionary == 0) {
+        CellStruct where = DAT_00A8B230->GetWaypointCoords(unknown_90);
+        int extra;
+        if ((MapInstance.FUN_005657A0(&where)->Flags & 0x100) != 0
+            || (MapInstance.FUN_005657A0(&where)->Flags & 0x400) != 0) {
+            extra = 4;
+        } else {
+            extra = 0;
+        }
+        int height = MapInstance.FUN_005657A0(&where)->Level + extra;
+        MapInstance.FUN_00567F70(CornerCoord(where, height), DAT_008871E0->RevealTriggerRadius);
+        MapInstance.FUN_00578100();
+    }
+    return true;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1B90
@@ -1396,6 +1687,46 @@ bool TActionClass::FUN_006E1FF0(HouseClass* house, ObjectClass* object, TriggerC
     if (!target) return false;
     target->IHouse_vf_14();
     return true;
+}
+
+// FUNCTION: GAMEMD 0x6E2050
+// Kill every live tagged object carrying this trigger, then scroll the view to the given cell.
+bool TActionClass::FUN_006E2050(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    bool killed = false;
+    bool again;
+    do {
+        again = false;
+        for (int i = 0; i < DAT_00A8EC88; i++) {
+            TechnoClass* t = DAT_00A8EC7C[i];
+            if (t->Health > 0 && t->IsAlive && t->IsOnMap && !t->InLimbo && t->AttachedTag
+                && t->AttachedTag->ContainsTrigger(trigger)) {
+                int damage = t->Health;
+                t->vf_91(&damage, 0, DAT_008871E0->C4Warhead, 0, true, false, 0);
+                killed = true;
+                again = true;
+                i--;
+            }
+        }
+    } while (again);
+    if (cell->X != DAT_00B0E680.X || cell->Y != DAT_00B0E680.Y) {
+        bool ok = MapInstance.FUN_00587180(cell);
+        int tries = 3;
+        while (!ok && tries-- > 0) {
+            ok = MapInstance.FUN_00587180(cell);
+        }
+        CoordStruct where = TActionR16_CellToCoord(*cell);
+        where.Z = DAT_00B0E6D4;
+        Point2D screen;
+        DAT_00887324->FUN_006D2140(&where, &screen);
+        RectangleStruct area;
+        area.X = screen.X - 128;
+        area.Y = screen.Y - 128;
+        area.Width = 256;
+        area.Height = 256;
+        DAT_00887324->FUN_006D2790(area, false);
+    }
+    return killed;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -2088,6 +2419,37 @@ bool TActionClass::FUN_006E35F0(HouseClass* house, ObjectClass* object, TriggerC
     return false;
 }
 
+#include "_layout/cell_offset.h"
+// GLOBAL: GAMEMD 0x7ED3D0 -- the first cell-offset index of each ring (entry 1 is the nine-cell block's end).
+extern const int DAT_007ED3D0[];
+// GLOBAL: GAMEMD 0xABD490 -- the cell offsets, ring after ring.
+extern CellOffset DAT_00ABD490[369];
+
+static __inline CoordStruct RaisedCoord(const CoordStruct& c, int dz)
+{
+    CoordStruct result;
+    result.X = c.X;
+    result.Y = c.Y;
+    result.Z = c.Z + dz;
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x6E36E0
+// Invoke the iron-curtain animation over the waypoint's cell and curtain everything in the surrounding cells.
+bool TActionClass::FUN_006E36E0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    CellStruct at = DAT_00A8B230->GetWaypointCoords(unknown_44);
+    CoordStruct center = DAT_0087F7E8.FUN_005657A0(&at)->vf_18();
+    new AnimClass(DAT_008871E0->IronCurtainInvokeAnim, RaisedCoord(center, 5), 0, 1, 0x600, 0, false);
+    const CellOffset* offset = DAT_00ABD490;
+    for (int n = DAT_007ED3D0[1]; n > 0; n--, offset++) {
+        CellStruct adjacent = *offset + at;
+        for (ObjectClass* o = DAT_0087F7E8.FUN_005657A0(&adjacent)->FirstObject; o; o = (ObjectClass*)o->NextObject)
+            o->vf_85(DAT_008871E0->IronCurtainDuration, 0, false);
+    }
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x6E37F0
 // Store the action's parameter on the entry whose name matches the action's text, then flag
 // every house for a tech-tree recheck.
@@ -2634,8 +2996,7 @@ int TActionClass::vf_11()
 // Member getter (dword). Vtable slot 16 of TActionClass (RTTI).
 int TActionClass::vf_16()
 {
-    // Retail 0x6E4650 loads a dword at [ECX+0x24]; interpret the four-byte storage as that field.
-    return *(int*)unknown_24;
+    return unknown_24;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

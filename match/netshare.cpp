@@ -2831,6 +2831,70 @@ unsigned char FUN_005EB660(HWND dialog)
     return changed;
 }
 
+// FUNCTION: GAMEMD 0x4E3320 (decl; reloc) -- the name control of a slot index.
+int FUN_004E3320(int index);
+
+// FUNCTION: GAMEMD 0x5EBC00
+//
+// Hide every control of slots count .. 7, except the slot NoExtraSlot names.
+void FUN_005EBC00(HWND dialog, int count)
+{
+    for (int i = count; i < 8; i++) {
+        if (i == NoExtraSlot) {
+            continue;
+        }
+        int picture;
+        int control;
+        if (i == 0) {
+            picture = 0x6D2;
+            control = 0x411;
+        } else if (i == 1) {
+            picture = 0x6D3;
+            control = 0x412;
+        } else if (i == 2) {
+            picture = 0x6D4;
+            control = 0x413;
+        } else if (i == 3) {
+            picture = 0x6D5;
+            control = 0x414;
+        } else if (i == 4) {
+            picture = 0x6D6;
+            control = 0x415;
+        } else if (i == 5) {
+            picture = 0x6D7;
+            control = 0x416;
+        } else if (i == 6) {
+            picture = 0x6D8;
+            control = 0x417;
+        } else if (i == 7) {
+            picture = 0x6D9;
+            control = 0x418;
+        } else {
+            picture = -1;
+            control = -1;
+        }
+        int nameControl = FUN_004E3320(i);
+        int startControl = FUN_004E37D0(i);
+        int houseControl = FUN_004E41D0(i);
+        int colourControl = FUN_004E4E60(i);
+        int teamControl = FUN_004E5940(i);
+        HWND pictureWindow = GetDlgItem(dialog, picture);
+        HWND controlWindow = GetDlgItem(dialog, control);
+        HWND nameWindow = GetDlgItem(dialog, nameControl);
+        HWND startWindow = GetDlgItem(dialog, startControl);
+        HWND houseWindow = GetDlgItem(dialog, houseControl);
+        HWND colourWindow = GetDlgItem(dialog, colourControl);
+        HWND teamWindow = GetDlgItem(dialog, teamControl);
+        ShowWindow(pictureWindow, SW_HIDE);
+        ShowWindow(controlWindow, SW_HIDE);
+        ShowWindow(nameWindow, SW_HIDE);
+        ShowWindow(startWindow, SW_HIDE);
+        ShowWindow(houseWindow, SW_HIDE);
+        ShowWindow(colourWindow, SW_HIDE);
+        ShowWindow(teamWindow, SW_HIDE);
+    }
+}
+
 // FUNCTION: GAMEMD 0x5EBDD0
 //
 // Move the lobby from `from` open slots to `to`, each end clamped by the slot

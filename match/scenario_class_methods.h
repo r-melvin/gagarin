@@ -68,6 +68,14 @@ struct MapInstanceClass
     // FUNCTION: GAMEMD 0x5657a0 (decl; reloc)
     // ?FUN_005657A0@MapInstanceClass@@QAEPAVCellClass@@PBUCellStruct@@@Z
     CellClass* FUN_005657A0(const CellStruct* cell);
+    // FUNCTION: GAMEMD 0x587180 (decl; reloc) -- __thiscall (cell), AL result, RET 4.
+    bool FUN_00587180(const CellStruct* cell);
+    // FUNCTION: GAMEMD 0x5678e0 (decl; reloc) -- reveal around a coordinate, __thiscall, RET 0x20.
+    void FUN_005678E0(const CoordStruct& where, int sight, HouseClass* house, bool a, int b, bool c, bool d, bool e);
+    // FUNCTION: GAMEMD 0x567f70 (decl; reloc) -- __thiscall (coordinate, sight), RET 8.
+    void FUN_00567F70(const CoordStruct& where, int sight);
+    // FUNCTION: GAMEMD 0x578100 (decl; reloc) -- __thiscall, no stack arguments.
+    void FUN_00578100();
     // Declaration: GAMEMD 0x565730, two-int world position, CellClass* result, RET4.
     CellClass* FUN_00565730(const Point2D* location);
     // Same native entry565730: callers6D6DCF/6D72A2 pass a12-byte coordinate;

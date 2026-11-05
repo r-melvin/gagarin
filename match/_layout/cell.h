@@ -24,6 +24,13 @@ struct CellStruct
         ret.Y = Y + a.Y;
         return ret;
     }
+    CellStruct operator-(CellStruct const& a) const
+    {
+        CellStruct ret;
+        ret.X = X - a.X;
+        ret.Y = Y - a.Y;
+        return ret;
+    }
     // FUNCTION: GAMEMD 0x453240 (decl; reloc) -- thiscall on the cell value.
     void FUN_00453240();
     // FUNCTION: GAMEMD 0x660B80 (decl; reloc) -- thiscall on the cell value.

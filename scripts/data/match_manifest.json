@@ -153165,5 +153165,83 @@
   "pct": 80.9,
   "best_pct": 80.9,
   "best_at": "39303f83"
+ },
+ {
+  "tu": "match/netshare.cpp",
+  "addr": "0x5EBC00",
+  "sym": "?FUN_005EBC00@@YIXPAUHWND__@@H@Z",
+  "len": "0x1d0",
+  "name": "?FUN_005EBC00@@YIXPAUHWND__@@H@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/TAction.cpp",
+  "addr": "0x6DD000",
+  "sym": "??0TActionClass@@QAE@XZ",
+  "len": "0x17b",
+  "name": "??0TActionClass@@QAE@XZ",
+  "status": "partial",
+  "pct": 87.1,
+  "best_pct": 87.1,
+  "best_at": "39303f83"
+ },
+ {
+  "tu": "match/TAction.cpp",
+  "addr": "0x6DD300",
+  "sym": "?FUN_006DD300@TActionClass@@QAEXPAD@Z",
+  "len": "0x2a5",
+  "name": "TActionClass::FUN_006DD300",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/TAction.cpp",
+  "addr": "0x6DD5B0",
+  "sym": "?FUN_006DD5B0@TActionClass@@QAEXXZ",
+  "len": "0x2cd",
+  "name": "TActionClass::FUN_006DD5B0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/TAction.cpp",
+  "addr": "0x6E0FE0",
+  "sym": "?FUN_006E0FE0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x192",
+  "name": "TActionClass::FUN_006E0FE0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/TAction.cpp",
+  "addr": "0x6E1A70",
+  "sym": "?FUN_006E1A70@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x111",
+  "name": "TActionClass::FUN_006E1A70",
+  "status": "partial",
+  "pct": 86.8,
+  "best_pct": 86.8,
+  "best_at": "39303f83"
+ },
+ {
+  "tu": "match/TAction.cpp",
+  "addr": "0x6E2050",
+  "sym": "?FUN_006E2050@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x172",
+  "name": "TActionClass::FUN_006E2050",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/TAction.cpp",
+  "addr": "0x6E36E0",
+  "sym": "?FUN_006E36E0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x107",
+  "name": "TActionClass::FUN_006E36E0",
+  "status": "partial",
+  "pct": 92.9,
+  "best_pct": 92.9,
+  "best_at": "39303f83"
  }
 ]

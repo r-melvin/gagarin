@@ -97,6 +97,14 @@ public:
     bool FUN_006E0DF0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x6E0E60
     bool FUN_006E0E60(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x6DD5B0
+    void FUN_006DD5B0();
+    // FUNCTION: GAMEMD 0x6DD300
+    void FUN_006DD300(char* buffer);
+    // FUNCTION: GAMEMD 0x6E0FE0
+    bool FUN_006E0FE0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x6E1A70
+    bool FUN_006E1A70(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x6E1180
     bool FUN_006E1180(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x6E13A0
@@ -119,6 +127,10 @@ public:
     bool FUN_006E1F00(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x6E1FF0
     bool FUN_006E1FF0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x6E2050
+    bool FUN_006E2050(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x6E36E0
+    bool FUN_006E36E0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x6E26D0
     bool FUN_006E26D0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x6E2790
@@ -238,7 +250,7 @@ public:
     // FUNCTION: GAMEMD 0x006E21E0
     bool FUN_006E21E0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
 
-    unsigned char unknown_24[4];     // +0x24
+    int           unknown_24;        // +0x24 index in the registry, -1 until added
     TActionClass* unknown_28;        // +0x28
     int           unknown_2C;        // +0x2C
     TeamTypeClass* unknown_30;       // +0x30
