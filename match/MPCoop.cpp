@@ -747,6 +747,32 @@ bool MPCooperative::FUN_005C1DC0()
     return true;
 }
 
+// FUNCTION: GAMEMD 0x5C2040
+// Make sure the helper exists, note when its position changes, and hand the
+// new position and the vector to the helper. MPCooperative vtable slot 22.
+//
+// Exact (100%) now that 0x5C3EC0 lives in coop_helper_reset_005C3EC0.cpp (TUSPLIT; 9.4% when it
+// shares this file, where cl expands its body inline). The vector argument is passed by value
+// through 0x4779E0 as retail does.
+bool MPCooperative::vf_22(int a, MPGameModeArgVector v, int b, int c)
+{
+    if (unknown_40 == 0) {
+        FUN_005C3EC0();
+        unknown_340 = true;
+    }
+    if (unknown_40 == 0) {
+        return false;
+    }
+    int cur;
+    unknown_40->FUN_0049BC80(&cur);
+    if (cur != a) {
+        unknown_340 = true;
+    }
+    unknown_40->FUN_0049CCF0(a, v, b, c);
+    unknown_33C = a;
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x5C2100
 // Hand both campaign copies of `pair` to the helper at +0x40 with the two
 // indices; when its position changed, or a refresh is pending, redraw the
@@ -1146,25 +1172,6 @@ bool MPCooperative::vf_35()
 bool MPCooperative::vf_15()
 {
     return false;
-}
-
-// FUNCTION: GAMEMD 0x5C3EC0
-// Replace the helper at +0x40 with a fresh one, run its 0x49CAF0(0), and with
-// exactly two entries in the game-mode array hand both to 0x49B760. True when
-// the helper exists.
-bool MPCooperative::FUN_005C3EC0()
-{
-    if (unknown_40 != 0) {
-        delete unknown_40;
-    }
-    unknown_40 = 0;
-    unknown_40 = new CoopCampaignClass;
-    unknown_40->FUN_0049CAF0(0);
-    if (MPGameModeArray.Count == 2) {
-        unknown_40->FUN_0049B760(((void**)MPGameModeArray.Items)[0],
-                                 ((void**)MPGameModeArray.Items)[1]);
-    }
-    return unknown_40 ? true : false;
 }
 
 // FUNCTION: GAMEMD 0x5C3F80

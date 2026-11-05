@@ -1,4 +1,5 @@
 {
+ "??0?$DynamicVectorClass@PAX@@QAE@ABV0@@Z": "0x004779E0",
  "??0?$DynamicVectorClass@PBVSmudgeTypeClass@@@@QAE@HPAPBVSmudgeTypeClass@@@Z": "0x0067AFF0",
  "??0?$HashObject@VHashString@@PAVSchemeNode@@@@QAE@XZ": "0x004F4C20",
  "??0?$ParticleVector@PAVParticleClass@@@@QAE@HPAPAVParticleClass@@@Z": "0x006302A0",
@@ -844,6 +845,7 @@
  "??_7?$VectorClass@PAVWaveClass@@@@6B@": "0x007E9D04",
  "??_7?$VectorClass@PAVWaypointPathClass@@@@6B@": "0x007F6E24",
  "??_7?$VectorClass@PAVWeaponTypeClass@@@@6B@": "0x007E1EF4",
+ "??_7?$VectorClass@PAX@@6B@": "0x007E4DB8",
  "??_7?$VectorClass@PBD@@6B@": "0x007EE0D4",
  "??_7?$VectorClass@PBG@@6B@": "0x007ED1FC",
  "??_7?$VectorClass@PBVAircraftTypeClass@@@@6B@": "0x007EAC68",
@@ -8537,6 +8539,7 @@
  "?FUN_0049CAF0@CoopCampaignClass@@QAEXH@Z": "0x0049CAF0",
  "?FUN_0049CAF0@CoopCampaignClass@@QAE_NH@Z": "0x0049CAF0",
  "?FUN_0049CC50@CoopCampaignClass@@QAE_NHHV1@0@Z": "0x0049CC50",
+ "?FUN_0049CCF0@CoopCampaignClass@@QAEXHV?$DynamicVectorClass@PAX@@HH@Z": "0x0049CCF0",
  "?FUN_0049D070@CoopCampaignClass@@QAEXPAPBDH@Z": "0x0049D070",
  "?FUN_0049D680@Sub_0049BC80@@QAEDXZ": "0x0049D680",
  "?FUN_0049D9F0@@YIHPBD@Z": "0x0049D9F0",

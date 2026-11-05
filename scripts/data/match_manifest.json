@@ -72687,13 +72687,13 @@
   "best_at": "cf203011"
  },
  {
-  "tu": "match/MPCoop.cpp",
+  "tu": "match/coop_helper_reset_005C3EC0.cpp",
   "addr": "0x5C3EC0",
   "sym": "?FUN_005C3EC0@MPCooperative@@QAE_NXZ",
   "len": "0x6f",
   "name": "MPCooperative::FUN_005C3EC0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/header_init_5c5ad0.cpp",
@@ -153088,6 +153088,15 @@
   "sym": "?FUN_00538CC0@@YIXPBD@Z",
   "len": "0x71",
   "name": "?FUN_00538CC0@@YIXPBD@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MPCoop.cpp",
+  "addr": "0x5C2040",
+  "sym": "?vf_22@MPCooperative@@UAE_NHV?$DynamicVectorClass@PAX@@HH@Z",
+  "len": "0xb6",
+  "name": "MPCooperative::vf_22",
   "status": "matched",
   "pct": 100.0
  }

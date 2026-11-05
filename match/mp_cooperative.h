@@ -168,6 +168,9 @@ public:
     // FUNCTION: GAMEMD 0x5C1CB0 (declaration; slot 9)
     virtual void vf_9();
 
+    // FUNCTION: GAMEMD 0x5C2040 (declaration; slot 22)
+    virtual bool vf_22(int a, MPGameModeArgVector v, int b, int c);
+
     // FUNCTION: GAMEMD 0x5C3F80 (declaration; slot 36)
     virtual void vf_36();
 
