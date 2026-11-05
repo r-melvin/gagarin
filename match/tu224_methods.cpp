@@ -67,6 +67,11 @@ struct unknown_Player_6C9C60 {
     // FUNCTION: GAMEMD 0x6C9B40 (decl; reloc) -- the loader, defined on the leading-field view below.
     bool FUN_006C9B40(const char* name);
 };
+// 0x6C99D0 allocates 0x34 bytes, zeroes +0x00..+0x10 and the rectangle at +0x14; 0x6C9C60 copies it to +0x24.
+GG_STATIC_ASSERT(offsetof(unknown_Player_6C9C60, Surface_10) == 0x10);
+GG_STATIC_ASSERT(offsetof(unknown_Player_6C9C60, Pending_14) == 0x14);
+GG_STATIC_ASSERT(offsetof(unknown_Player_6C9C60, Done_24) == 0x24);
+GG_STATIC_ASSERT(sizeof(unknown_Player_6C9C60) == 0x34);
 
 extern "C" void __cdecl _splitpath(const char* path, char* drive, char* dir, char* fname, char* ext);
 

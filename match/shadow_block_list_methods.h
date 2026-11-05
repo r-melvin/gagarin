@@ -64,12 +64,12 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "vector_class_operations.h"
+#include "_layout/coord_struct.h"
 
 // CRT/game-heap (de)allocators. Declared, never reimplemented in this TU.
 void* __cdecl operator new(unsigned int size);      // GAMEMD 0x7C8E17 (LIBRARY)
 void  __cdecl operator delete(void* p);             // GAMEMD 0x7C8B3D (LIBRARY)
 
-struct CoordStruct;
 class SpotLightClass;
 
 // GLOBAL: GAMEMD 0xAC1678 — SpotLightClass::Array, one
@@ -77,24 +77,14 @@ class SpotLightClass;
 // and RemoveItem at 0x5FF2D1 and again inside the sweep at 0x5FF3BC.
 extern DynamicVectorClass<SpotLightClass*> SpotlightArray;
 
-// The 12-byte by-value payload the constructor copies into +0x00..+0x0B.
-struct Payload_005FF250
-{
-    int Field0;   // +0x00
-    int Field4;   // +0x04
-    int Field8;   // +0x08
-};
-GG_STATIC_ASSERT(sizeof(Payload_005FF250) == 0x0C);
-
 // The registered 0x18-byte entry. The source spelling follows the registry's
 // pointer-element RTTI and direct constructor/destructor/draw uses above;
 // it is not a claim of independently recovered standalone class RTTI.
 class SpotLightClass
 {
 public:
-    // FUNCTION: GAMEMD 0x5FF250 (__thiscall)
-    SpotLightClass(Payload_005FF250 payload, int nFlags) throw();
-    // FUNCTION: GAMEMD 0x5FF250 (decl; reloc) -- the same entry point, the payload read as a coordinate.
+    // FUNCTION: GAMEMD 0x5FF250 (__thiscall) -- all four callers pass a coordinate by value: the +0x9C location
+    // of the object at 0x435CA3, 0x62E32A and 0x62EC3D, and 0x48A620's own coordinate argument.
     SpotLightClass(CoordStruct where, int nFlags) throw();
 
     // FUNCTION: GAMEMD 0x5FF2D0 (__thiscall) — the unregistering destructor.
@@ -107,7 +97,7 @@ public:
     // FUNCTION: GAMEMD 0x5FF320 (__thiscall) -- age one step; retire the entry when it is old.
     void AgeStep();
 
-    Payload_005FF250 Payload;      // +0x00
+    CoordStruct      Where;        // +0x00
     int              Age;          // +0x0C  zeroed by the ctor, +8 per sweep
     int              Flags;        // +0x10
     int              unknown_14;   // +0x14  zeroed by the ctor; blend-mode bits read by Draw()

@@ -46,8 +46,9 @@ extern PCX DAT_00AC4848;
 // FUNCTION: GAMEMD 0x52FF90 (decl; reloc)
 void __fastcall FUN_0052FF90(const char* name, bool refresh);
 
-// GLOBAL: GAMEMD 0x88730C -- the primary surface.
-extern Surface* DAT_0088730C;
+// GLOBAL: GAMEMD 0x88730C -- the primary surface: every non-null store is a `new DSurface` (0x24 bytes, constructor
+// 0x4BA5A0) at 0x53410D and 0x534391.
+extern DSurface* DAT_0088730C;
 
 // FUNCTION: GAMEMD 0x642A60  (__thiscall, RET 0x10)
 // Start a screen: store the two leading words, clear the slot pairs, raise the flag, and
@@ -141,7 +142,7 @@ void __stdcall FUN_006435B0(int x, int y, Surface* picture)
     unsigned int key = (0xFF >> gg_b_translucent_pixel_format.loss0 << gg_b_translucent_pixel_format.pos0)
                      | (0 >> gg_b_translucent_pixel_format.loss1 << gg_b_translucent_pixel_format.pos1)
                      | (0xFF >> gg_b_translucent_pixel_format.loss2 << gg_b_translucent_pixel_format.pos2);
-    if (DAT_0088730C != 0 && !static_cast<DSurface*>(DAT_0088730C)->FUN_004BAFE0()) {
+    if (DAT_0088730C != 0 && !DAT_0088730C->FUN_004BAFE0()) {
         DAT_00AC4848.FUN_006BA580(&area, DAT_0088730C, picture, key);
     }
 }

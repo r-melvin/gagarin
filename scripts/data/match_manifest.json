@@ -28720,7 +28720,7 @@
  {
   "tu": "match/shadow_block_list_methods.cpp",
   "addr": "0x5FF250",
-  "sym": "??0SpotLightClass@@QAE@UPayload_005FF250@@H@Z",
+  "sym": "??0SpotLightClass@@QAE@UCoordStruct@@H@Z",
   "len": "0x7f",
   "name": "SpotLightClass::SpotLightClass",
   "status": "matched",
@@ -92029,10 +92029,10 @@
   "len": "0x5e9",
   "name": "BuildingLightClass::FUN_00435BE0",
   "status": "partial",
-  "pct": 8.3,
-  "best_pct": 8.3,
-  "best_at": "cf203011",
-  "note": "Aligned diff_retail pct over the full 0x5E9 span; multiset 440 vs 458 instructions. The new-expression allocates before the Payload copy in retail; the compiled order differs, shifting the whole prefix."
+  "pct": 11.6,
+  "best_pct": 11.6,
+  "best_at": "d4e3843e",
+  "note": "Aligned diff_retail pct over the full 0x5E9 span; 53 of 456 instructions. The SpotLightClass allocation and coordinate copy now follow retail's order; the rest of the body still differs."
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -129962,8 +129962,17 @@
   "pct": 100
  },
  {
-  "tu": "match/zero_quad_statics.cpp",
+  "tu": "match/wwmous.cpp",
   "addr": "0x7b84b0",
+  "sym": "_$E2",
+  "len": "0x17",
+  "name": "dynamic initializer (zero rectangle)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/zero_quad_statics.cpp",
+  "addr": "0x7ba5c0",
   "sym": "_$E296",
   "len": "0x17",
   "name": "dynamic initializer (zeroed int quad)",
@@ -129972,17 +129981,8 @@
  },
  {
   "tu": "match/zero_quad_statics.cpp",
-  "addr": "0x7ba5c0",
-  "sym": "_$E299",
-  "len": "0x17",
-  "name": "dynamic initializer (zeroed int quad)",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/zero_quad_statics.cpp",
   "addr": "0x7bc950",
-  "sym": "_$E302",
+  "sym": "_$E299",
   "len": "0x17",
   "name": "dynamic initializer (zeroed int quad)",
   "status": "matched",

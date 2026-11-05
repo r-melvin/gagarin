@@ -64,8 +64,7 @@ void BuildingLightClass::FUN_00435BE0(int, int)
             return;
     }
 
-    Payload_005FF250 payload = { Location.X, Location.Y, Location.Z };
-    SpotLightClass* spot = new SpotLightClass(payload, 0x10);
+    SpotLightClass* spot = new SpotLightClass(Location, 0x10);
 
     CoordStruct sourcePosition = building->vf_18();
     CoordStruct ownPosition = vf_18();

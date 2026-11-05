@@ -39,7 +39,7 @@ public:
         // inline at the call sites, where retail calls.
         bool FUN_0052B390(const int& id);
     };
-    // Retail's out-of-line copy is 0x535AA0 (defined in Init.cpp, with the list and index constructors expanded
+    // Retail's out-of-line copy is 0x535AA0 (ini_class_ctor_535aa0.cpp, with the list and index constructors expanded
     // inside it). The units that expand the construction themselves, as CCINIClass's constructor does at
     // 0x5D5C07 (+0x04/+0x08 zeroed, the list 0x49E8E0 and index 0x49EA10 constructors called, +0x3C zeroed), include
     // ini_class_default_ctor.h for the inline body.

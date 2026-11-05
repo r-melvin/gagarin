@@ -82,6 +82,8 @@ public:
 struct CursorRect : public RectangleStruct
 {
     CursorRect() {}
+    // All four fields one value: the zero rectangle's initialiser 0x7B84B0 stores them inline.
+    explicit CursorRect(int v) { X = v; Y = v; Width = v; Height = v; }
     // FUNCTION: GAMEMD 0x42E410 (decl; reloc)
     CursorRect(int x, int y, int width, int height);
     bool IsPositive() const { return Width > 0 && Height > 0; }

@@ -27,9 +27,6 @@
 #include "scenario_session_globals.h"
 #include "wide_string_scratch.h"
 
-// GLOBAL: GAMEMD 0xB78128 -- the zero rectangle the members start from.
-extern CursorRect DAT_00B78128;
-
 // The save-under restore that vf_3, vf_5 and SetCursor share: copy the saved background back onto the
 // screen at the cursor rectangle.
 inline void WWMouseClass::RestoreUnder()
@@ -293,6 +290,11 @@ Obj_007B66D0 FUN_007B83E0(const Wstring& text)
 }
 
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// SYNTHETIC: GAMEMD 0x7B84B0
+// GLOBAL: GAMEMD 0xB78128 -- the zero rectangle: only the constructor 0x7B8730 reads it, copying it into each of
+// its rectangle members.
+CursorRect DAT_00B78128(0);
+
 // FUNCTION: GAMEMD 0x7B84D0
 // Branching.
 void FUN_007B84D0(int a1, int a2)

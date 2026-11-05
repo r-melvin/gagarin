@@ -26,12 +26,12 @@
 #include "shadow_block_list_methods.h"
 
 // FUNCTION: GAMEMD 0x5FF250  SpotLightClass::SpotLightClass (__thiscall)
-// Build one entry from its 12-byte payload and its flag word, start it at age
+// Build one entry from its coordinate and its flag word, start it at age
 // zero, and register it in the global list so the periodic sweep can retire it.
 // Retail ignores the append's success, which is why no boolean survives.
-SpotLightClass::SpotLightClass(Payload_005FF250 payload, int nFlags) throw()
+SpotLightClass::SpotLightClass(CoordStruct where, int nFlags) throw()
 {
-    Payload = payload;
+    Where = where;
     Age = 0;
     unknown_14 = 0;
     Flags = nFlags;
