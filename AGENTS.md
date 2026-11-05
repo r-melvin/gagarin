@@ -106,6 +106,10 @@ against an instruction in the binary before it lands as a repo fact.
   only its mask form). The row's comment must name the retail branch that proves it, and the helper must have been
   tried first.
 
+- Prefer a declared virtual destructor to a hand-written scalar deleting destructor. Longhand is accepted on a
+  placeholder view until its class is recovered, and where retail shows the class has no vptr; the latter carries
+  `// NOVPTR: GAMEMD 0xADDR` in the body.
+
 - Target the 32-bit MSVC6 ABI: `__thiscall` (ECX = `this`) for methods,
   `__stdcall` for COM/WinAPI virtuals, 4-byte pointers. Do not assume `/Gz`;
   determine the convention from the disassembly for each function.

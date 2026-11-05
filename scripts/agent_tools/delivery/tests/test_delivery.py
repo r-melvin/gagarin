@@ -247,6 +247,10 @@ class LintRules(unittest.TestCase):
                "match/x/b.cpp": HEADER + "// GLOBAL: GAMEMD 0x00FFFF00\nlong DAT_00FFFF00;\n"}
         self.assertEqual(len(self.rules(two, [], {"dupaddr"})), 2)
 
+    def test_sdd_novptr(self):
+        hand = "struct N { void* F(unsigned f); };\nvoid* N::F(unsigned f)\n{\n    // NOVPTR: GAMEMD 0x625560\n    if (f & 1) { delete this; }\n    return this;\n}\n"
+        self.assertEqual(self.rules({"match/x/n.cpp": hand}, [], {"sdd"}), [])
+
     def test_sdd_rule(self):
         hand = HEADER + textwrap.dedent("""
             // FUNCTION: GAMEMD 0x401000

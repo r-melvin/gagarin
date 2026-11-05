@@ -21,6 +21,7 @@ enforces; nothing here needs a compiler except --strict.
                W volatile on a declaration without thread/callback evidence beside it
   sdd          (Longhand on a placeholder Obj_ view with no recovered vtable shape is accepted until the class is
                recovered, as deleting_dtor_sweep.h documents; convert it then.)
+               (Longhand is also accepted where retail shows the class has no vptr: `// NOVPTR: GAMEMD 0xADDR` in the body.)
   sdd          E a hand-written scalar deleting destructor (a function body that tests a flags bit with `& 1` and
                  deletes `this`, or one named like one); the compiler emits ??_G from the declared virtual destructor.
                  E/W a FUNCTION annotation on a ??_G-like method inside an Obj_/view struct
@@ -328,6 +329,8 @@ class Lint:
         for d, text, added in self._added_post():
             for header, body, l0, l1 in cppscan.function_bodies(text):
                 if not any(l0 <= ln <= l1 for ln in added):
+                    continue
+                if "// NOVPTR: GAMEMD 0x" in body:      # retail shows no vptr: no virtual destructor can emit this
                     continue
                 if SDD_DELETE.search(body) and SDD_FLAG.search(body):
                     self.err("sdd", "hand-written scalar deleting destructor shape (%s%s-test, delete this): declare the virtual destructor "
