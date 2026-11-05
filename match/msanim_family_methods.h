@@ -210,6 +210,10 @@ class MSSurface;
 MSVQPlayer* __fastcall FUN_005BFAA0(const char* name, MSSurface* surface,
                                     RectangleStruct a, RectangleStruct b, int volume, int flag);
 
+// FUNCTION: GAMEMD 0x5C0080 (decl; reloc) -- advance the player: ECX the player, EDX the caller's "movie ended"
+// byte; answers whether a new frame was produced.
+bool __fastcall FUN_005C0080(MSVQPlayer* player, bool* ended);
+
 // GLOBAL: GAMEMD 0xA8EB98 -- the movie volume scale.
 extern float DAT_00A8EB98;
 
@@ -629,6 +633,9 @@ public:
     // prove Stop left the member alone.
     // FUNCTION: GAMEMD 0x5CCC30
     MSVQAnim(MSStringClass* name, MSSurface* surface, int field24, bool field2c);
+    // FUNCTION: GAMEMD 0x5CCA20
+    // The same build with the movie's source box taken from the caller instead of centred (640x400) on the screen.
+    MSVQAnim(MSStringClass* name, MSSurface* surface, int field24, const RectangleStruct* source, bool field2c);
     virtual ~MSVQAnim();                                   // slot 0, 0x5CECB0 (out of line 0x5CCE40)
     virtual bool   Update(MouseSurfaceView* context, RectangleStruct* out);       // slot 4, 0x5CCE90
     virtual void   Draw(MouseSurfaceView* context, RectangleStruct* area);        // slot 5, 0x5CD0E0
@@ -638,7 +645,7 @@ public:
 
     MSVQPlayer*  Player;        // +0x1C
     MSSurface*   Surface;       // +0x20
-    int          Field24;       // +0x24
+    int          Field24;       // +0x24 a pointer to the sibling list redrawn over the movie (slot 4 IndexOf, count +0x10)
     MSDeletable* Movie;         // +0x28
     bool         Field2C;       // +0x2C
     bool         Finished;      // +0x2D -- slot 7's whole body is

@@ -153776,5 +153776,79 @@
   "name": "?FUN_0077A8D0@@YIXPAUHWND__@@_N@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/msanim_early_methods.cpp",
+  "addr": "0x5CB880",
+  "sym": "?Update@MSShapeAnim@@UAE_NPAVMouseSurfaceView@@PAURectangleStruct@@@Z",
+  "len": "0x2fa",
+  "name": "MSShapeAnim::Update",
+  "status": "partial",
+  "pct": 94.1,
+  "best_pct": 94.1,
+  "best_at": "03a0c69f"
+ },
+ {
+  "tu": "match/msanim_early_methods.cpp",
+  "addr": "0x5CBB80",
+  "sym": "?Draw@MSShapeAnim@@UAEXPAVMouseSurfaceView@@PAURectangleStruct@@@Z",
+  "len": "0x12a",
+  "name": "MSShapeAnim::Draw",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/msanim_early_methods.cpp",
+  "addr": "0x5CC110",
+  "sym": "?Draw@MSFadeAnim@@UAEXPAVMouseSurfaceView@@PAURectangleStruct@@@Z",
+  "len": "0x13c",
+  "name": "MSFadeAnim::Draw",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/msanim_early_methods.cpp",
+  "addr": "0x5CC330",
+  "sym": "?Update@MSOverlayAnim@@UAE_NPAVMouseSurfaceView@@PAURectangleStruct@@@Z",
+  "len": "0x211",
+  "name": "MSOverlayAnim::Update",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/msanim_early_methods.cpp",
+  "addr": "0x5CC550",
+  "sym": "?Draw@MSOverlayAnim@@UAEXPAVMouseSurfaceView@@PAURectangleStruct@@@Z",
+  "len": "0x139",
+  "name": "MSOverlayAnim::Draw",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/msanim_early_methods.cpp",
+  "addr": "0x5CC6C0",
+  "sym": "?Attach@MSOverlayAnim@@UAEXPAX@Z",
+  "len": "0x7b",
+  "name": "MSOverlayAnim::Attach",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/msanim_early_methods.cpp",
+  "addr": "0x5CCA20",
+  "sym": "??0MSVQAnim@@QAE@PAVMSStringClass@@PAVMSSurface@@HPBURectangleStruct@@_N@Z",
+  "len": "0x201",
+  "name": "MSVQAnim::MSVQAnim",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/msanim_early_methods.cpp",
+  "addr": "0x5CCE90",
+  "sym": "?Update@MSVQAnim@@UAE_NPAVMouseSurfaceView@@PAURectangleStruct@@@Z",
+  "len": "0x245",
+  "name": "MSVQAnim::Update",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
