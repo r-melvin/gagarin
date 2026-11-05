@@ -7,6 +7,7 @@
 #ifndef GG_MATCH_LAYOUT_INI_CLASS_H
 #define GG_MATCH_LAYOUT_INI_CLASS_H
 #include "generic_list.h"
+#include "geometry2d.h"
 #include "index_class_layout.h"
 class Wstring;
 class FileClass;
@@ -83,6 +84,11 @@ public:
     // Declaration: GAMEMD 0x528C00 -- four stack pointers, RET10, signed length in EAX.
     int FUN_00528C00(const Wstring* section, const Wstring* key,
                      const Wstring* fallback, Wstring* output);
+    // FUNCTION: GAMEMD 0x529A30 (decl; reloc) -- read a point under Wstring names; the result comes back through the hidden
+    // pointer (4 stack words, RET 0x10).
+    Point2D FUN_00529A30(const Wstring* section, const Wstring* key, const Point2D* fallback);
+    // FUNCTION: GAMEMD 0x527F20 (decl; reloc) -- read a rectangle under Wstring names; hidden result pointer, RET 0x10.
+    RectangleStruct FUN_00527F20(const Wstring* section, const Wstring* key, const RectangleStruct* fallback);
     // Declaration: GAMEMD 0x528F00 -- full EAX length, five arguments, RET14.
     unsigned int FUN_00528F00(const char* section, const char* key, const wchar_t* fallback, wchar_t* output, int maximum);
     // Declaration: GAMEMD 0x529160 -- four stack arguments, RET10; UTF16 output.

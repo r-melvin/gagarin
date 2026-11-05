@@ -60,12 +60,12 @@ class Surface
 {
 public:
     virtual void* vf_00(unsigned int flags);
-    virtual void vf_04();
+    virtual bool CopyFromWhole(Surface* source, bool a, bool b);  // +0x04
     virtual void vf_08();
     virtual void HideCursor();             // +0x0C
     virtual void ShowCursor();             // +0x10
     virtual int  FillRect(Rect* area, unsigned colour);    // +0x14
-    virtual void vf_18();
+    virtual bool Fill(unsigned colour);                          // +0x18
     virtual void vf_1C();
     virtual void vf_20();
     virtual void vf_24();

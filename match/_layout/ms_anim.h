@@ -38,6 +38,7 @@ GG_STATIC_ASSERT(sizeof(MSClockClass) == 4);
 
 // The animations pass the engine's RectangleStruct (X, Y, Width, Height) around by value.
 class MouseSurfaceView;
+class Wstring;
 
 // The decoded shape file MSShapeAnim owns at +0x1C: a short header carrying the frame size and count.
 struct MSShapeFile
@@ -131,6 +132,9 @@ class MSShapeAnim : public MSAnim
 public:
     // FUNCTION: GAMEMD 0x5CB6D0
     MSShapeAnim(const char* name, int x, int y, int field20, int field24, bool field34, unsigned int flags);
+    // FUNCTION: GAMEMD 0x5CB6D0 (decl; reloc) -- the same entry point typed as retail's callers pass the name: the callee
+    // reads it with Wstring::FUN_007B5440 (0x4A3970), so the argument is a pointer to a Wstring.
+    MSShapeAnim(const Wstring& name, int x, int y, int field20, int field24, bool field34, unsigned int flags);
     // slot 0, 0x5CEB80 (scalar deleting), out of line 0x5CB750: hand the decoded buffer back only when this object owns it.
     virtual ~MSShapeAnim();
     virtual bool Update(MouseSurfaceView* context, RectangleStruct* out);         // slot 4, 0x5CB880

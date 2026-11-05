@@ -17,8 +17,11 @@
 #include "_rt/gg_static_assert.h"
 #include "ui_common.h"
 #include "vector_class.h"
+#include "_layout/geometry2d.h"
 
 // Point2D and Rect (ui_common.h) are the module-wide point and rectangle views.
+class MSEngine;
+class Wstring;
 
 // An owned helper object. Its destructor is the out-of-line thunk at 0x5D0580 (a jump to the
 // pointer-release body at 0x7B46F0) and 0x5D0590 is a no-argument empty method; both are declared only.
@@ -144,10 +147,13 @@ GG_STATIC_ASSERT(offsetof(GraphicMenuItem, Part) == 0x0C);
 class GraphicMenuAnimItem : public GraphicMenuItem
 {
 public:
+    // FUNCTION: GAMEMD 0x4F2F10 -- the animation item: its rectangle, the shape and palette files, the engine it queues on.
+    GraphicMenuAnimItem(int id, MSEngine* engine, const Point2D* position, const RectangleStruct* rect, const Wstring& shape,
+                        const Wstring& palette, int field24, bool field34);
     virtual ~GraphicMenuAnimItem();                   // 0x4F3070 body, 0x4F30E0 scalar deleting
     virtual bool Slot2(const Point2D* point);      // 0x4F3090
 
-    ::Rect        Rect;       // +0x10
+    RectangleStruct Rect;     // +0x10
     int            Unknown20;  // +0x20
     MenusFlagSink* Anim;       // +0x24
 };

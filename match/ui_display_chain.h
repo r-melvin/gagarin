@@ -544,6 +544,8 @@ public:
     void SetActiveFoundation_004A8BF0(void* foundation);
     // FUNCTION: GAMEMD 0x4A8EB0 (decl; reloc)
     bool FUN_004A8EB0(DisplayCmdPendType* type, int field, void* foundation, const CellStruct& at);
+    // FUNCTION: GAMEMD 0x4AAB30 -- can a unit of the speed type stand on both cells with no techno near either; RET 0x14.
+    bool FUN_004AAB30(const CellStruct* from, const CellStruct* to, int speedType, int zone, int movementZone);
     // FUNCTION: GAMEMD 0x4AC660 (decl; reloc) -- set the sell mode; RET 4.
     void SetSellMode_004AC660(int mode);
     // FUNCTION: GAMEMD 0x4AC700 (decl; reloc)

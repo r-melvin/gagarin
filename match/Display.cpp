@@ -795,6 +795,31 @@ Obj_004AA2B0* Map_004AA2B0::PrevObject(Obj_004AA2B0* current)
     return first;
 }
 
+// FUNCTION: GAMEMD 0x4AAB30
+// True when a unit of the speed type can stand on both cells and neither has a
+// techno near it; speed type 4 always passes. The first cell is tested with
+// no zone, the second with the caller's zone and movement zone.
+bool DisplayClass::FUN_004AAB30(const CellStruct* from, const CellStruct* to, int speedType, int zone, int movementZone)
+{
+    if (speedType == 4) {
+        return true;
+    }
+    if (!GetCellAt(*from)->IsClearToMove(speedType, true, true, -1, 0, -1, true)) {
+        return false;
+    }
+    if (!GetCellAt(*to)->IsClearToMove(speedType, true, true, zone, movementZone, -1, true)) {
+        return false;
+    }
+    Point2D none(0, 0);
+    if (GetCellAt(*from)->FindTechnoNearestTo(&none, false, 0)) {
+        return false;
+    }
+    none.X = 0;
+    none.Y = 0;
+    bool vacant = (GetCellAt(*to)->FindTechnoNearestTo(&none, false, 0) == 0);
+    return vacant;
+}
+
 // FUNCTION: GAMEMD 0x4AAD20
 void __stdcall FUN_004AAD20(int)
 {
