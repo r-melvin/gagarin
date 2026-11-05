@@ -83,6 +83,7 @@ extern "C" int __cdecl _stricmp(const char* a, const char* b);
 extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 
 #include "radar_class.h"
+#include "foundation_dimensions.h"
 #include "ui_common.h"
 #include "tooltip_manager_shared.h"
 #include "shape_button_class.h"
@@ -1571,6 +1572,57 @@ void RadarClass::FUN_00655B20()
         unknown_14AC = 5;
         FUN_00656CB0(value, 0);
         FUN_0055AF40(RulesInstance->DetailMinFrameRateNormal);
+    }
+}
+
+// FUNCTION: GAMEMD 0x6563B0
+// Rebuild the 22 per-foundation lists of radar diamond offsets for the current radar scale.
+void RadarClass::FUN_006563B0()
+{
+    for (int f = 0; f < 22; f++) {
+        DynamicVectorClass<Point2D>* list = &unknown_1278[f];
+        list->Clear();
+        int fw = FoundationWidth[f];
+        int fh = FoundationHeight[f];
+        int w;
+        if (fw == 1) {
+            double t = *(float*)&unknown_1488 + 0.5;
+            if (1.0 > t) {
+                t = 1.0;
+            }
+            w = (int)t;
+        } else {
+            double t = fw * *(float*)&unknown_1488 + 0.5;
+            if (2.0 > t) {
+                t = 2.0;
+            }
+            w = (int)t;
+        }
+        int h;
+        if (fh == 1) {
+            double t = *(float*)&unknown_1488 + 0.5;
+            if (1.0 > t) {
+                t = 1.0;
+            }
+            h = (int)t;
+        } else {
+            double t = fh * *(float*)&unknown_1488 + 0.5;
+            if (2.0 > t) {
+                t = 2.0;
+            }
+            h = (int)t;
+        }
+        int rows = h + w - 1;
+        for (int y = 0; y < rows; y++) {
+            int lo = (y < h) ? -y : y - h * 2 + 2;
+            int hi = (y < w) ? y : w * 2 - y - 2;
+            for (int x = lo; x <= hi; x++) {
+                Point2D p;
+                p.X = x;
+                p.Y = y;
+                list->AddItem(p);
+            }
+        }
     }
 }
 

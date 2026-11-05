@@ -837,6 +837,14 @@ void SidebarClass::FUN_006A60E0(int tab)
     }
 }
 
+// FUNCTION: GAMEMD 0x6A6140
+// Store `value` in the cameo of this type and id on the tab that builds that kind of object.
+bool SidebarClass::FUN_006A6140(void* value, int type, int id)
+{
+    int tab = GetObjectTabIdx_006A5F20(type, id);
+    return Strips[tab].FUN_006ABA60(value, type, id);
+}
+
 // FUNCTION: GAMEMD 0x6A6220
 unsigned char SidebarClass::FUN_006A6220(int mode)
 {
@@ -887,6 +895,62 @@ unsigned char SidebarClass::FUN_006A6290(int mode)
     return previous;
 }
 
+// The first strip that holds a cameo, or -1.
+static inline int FirstOccupiedStrip_006A6300(SidebarClass* sidebar)
+{
+    for (int i = 0; i < 4; i++) {
+        if (sidebar->Strips[i].CameoCount > 0) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+// FUNCTION: GAMEMD 0x6A6300
+// Add a cameo of this type and id to its tab, refresh the tab's button, and when the sidebar was empty
+// before, switch to the first tab that now holds a cameo. False when the cameo was refused.
+bool SidebarClass::FUN_006A6300(int type, int id)
+{
+    if (!DAT_00A8ED6B) {
+        int before = FirstOccupiedStrip_006A6300(this);
+        int tab = GetObjectTabIdx_006A5F20(type, id);
+        if (Strips[tab].FUN_006A87F0(type, id)) {
+            FUN_006A67A0(tab);
+            vf_54(1);
+            if (before == -1) {
+                int first = FirstOccupiedStrip_006A6300(this);
+                if (first != unknown_539C) {
+                    TabButtons_00B07C48[unknown_539C].TurnOff();
+                    StripClass* old = &Strips[unknown_539C];
+                    old->At_1C = 0;
+                    for (int k = 0; k < 0x3C; k++) {
+                        MapInstance_0087F7E8.FUN_004F4450(&CameoButtons_00B07E80[old->RowBase * 0x3C + k]);
+                    }
+                    unknown_539C = first;
+                    TabButtons_00B07C48[first].TurnOn();
+                    StripClass* now = &Strips[unknown_539C];
+                    now->At_1C = 1;
+                    int count = MapInstance_0087F7E8.FUN_006AC430();
+                    for (int j = 0; j < count; j++) {
+                        CameoButtons_00B07E80[now->RowBase * 0x3C + j].Zap();
+                        MapInstance_0087F7E8.AddButton(&CameoButtons_00B07E80[now->RowBase * 0x3C + j]);
+                    }
+                    DAT_00884B8F = 1;
+                    FUN_006A6610();
+                    At_53A7 = 1;
+                }
+            }
+            At_53A6 = 1;
+            FlagToRedraw(0);
+            if (tab == unknown_539C) {
+                DAT_00B0B518 = 1;
+            }
+            return true;
+        }
+    }
+    return false;
+}
+
 // GLOBAL: GAMEMD 0xB0B478 -- sidebar state flag, tested when no strip holds a cameo.
 extern int DAT_00B0B478;
 
@@ -911,6 +975,47 @@ void SidebarClass::FUN_006A67A0(int tab)
     }
     if (tab == unknown_539C) {
         FUN_006A6610();
+    }
+}
+
+// FUNCTION: GAMEMD 0x6A6820
+// Called when a tab lost a cameo: rebuild the strip while it still holds some, otherwise disable the tab
+// button and switch to the first tab that still has a cameo (or reset the scroll state when none has).
+void SidebarClass::FUN_006A6820(int tab)
+{
+    if (Strips[tab].CameoCount > 0) {
+        FUN_006A6610();
+        return;
+    }
+    TabButtons_00B07C48[tab].Disable();
+    int first = FirstOccupiedStrip_006A6300(this);
+    if (first == -1) {
+        FUN_006A6610();
+        if (SideShapes_00B0B468[4]) {
+            unknown_5398 = -1;
+            unknown_5394 = SideShapes_00B0B468[4]->Frames;
+        }
+        return;
+    }
+    if (first != unknown_539C) {
+        TabButtons_00B07C48[unknown_539C].TurnOff();
+        StripClass* old = &Strips[unknown_539C];
+        old->At_1C = 0;
+        for (int k = 0; k < 0x3C; k++) {
+            MapInstance_0087F7E8.FUN_004F4450(&CameoButtons_00B07E80[old->RowBase * 0x3C + k]);
+        }
+        unknown_539C = first;
+        TabButtons_00B07C48[first].TurnOn();
+        StripClass* now = &Strips[unknown_539C];
+        now->At_1C = 1;
+        int count = SidebarRowCount() * 2;
+        for (int j = 0; j < count; j++) {
+            CameoButtons_00B07E80[now->RowBase * 0x3C + j].Zap();
+            MapInstance_0087F7E8.AddButton(&CameoButtons_00B07E80[now->RowBase * 0x3C + j]);
+        }
+        DAT_00884B8F = 1;
+        FUN_006A6610();
+        At_53A7 = 1;
     }
 }
 
@@ -1957,6 +2062,47 @@ bool Obj_006ABAC0::FUN_006ABAC0() const
     return unknown_54 > 0;
 }
 
+// FUNCTION: GAMEMD 0x6ABB60
+// Forget a factory: abandon its production wherever a cameo holds it, mark the strip for redraw
+// and return whether any cameo did. Clears the strip's pending flag when no other factory is held.
+bool StripClass::FUN_006ABB60(SelectFactory* factory)
+{
+    if (factory != 0 && factory->FUN_004CA160() != 0) {
+        SelectTechno* probe = factory->FUN_004CA160();
+        if (probe != 0 && (probe->*probe->Vtbl->At_2C)() == 6) {
+            SelectTechno* object = factory->FUN_004CA160();
+            SelectTechno* building;
+            if (object == 0) {
+                building = 0;
+            } else {
+                building = ((object->*object->Vtbl->At_2C)() == 6) ? object : 0;
+            }
+            building->ClearSidebarTabObject();
+        }
+    }
+    bool found = false;
+    bool clear = true;
+    for (int i = 0; i < CameoCount; i++) {
+        if (Cameos[i].Pointer == factory) {
+            factory->AbandonProduction();
+            Cameos[i].Pointer = 0;
+            found = true;
+            Cameos[i].unknown_10 = 0;
+        } else if (Cameos[i].Pointer != 0) {
+            clear = false;
+        }
+    }
+    if (found) {
+        At_3C = 1;
+        Map_0087F7E8.FlagToRedraw(0);
+        DAT_00884B8F = 1;
+    }
+    if (clear) {
+        unknown_3D = 0;
+    }
+    return found;
+}
+
 // FUNCTION: GAMEMD 0x6ABC40
 // Branching.
 int __cdecl FUN_006ABC40()
@@ -2185,12 +2331,7 @@ int __cdecl FUN_006AC3E0()
     return SidebarRowCount();
 }
 
-// FUNCTION: GAMEMD 0x6AC430
-int __cdecl FUN_006AC430()
-{
-    return SidebarRowCount() * 2;
-}
-
+// 0x6AC430 (FUN_006AC430) lives in match/sidebar_row_capacity_006AC430.cpp (TUSPLIT).
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6AC5D0
 void Sidebar_006D1800::FUN_006AC5D0(void* arg)

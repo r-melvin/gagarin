@@ -96840,7 +96840,7 @@
   "best_at": "cf203011"
  },
  {
-  "tu": "match/Sidebar.cpp",
+  "tu": "match/sidebar_row_capacity_006AC430.cpp",
   "addr": "0x6AC430",
   "sym": "?FUN_006AC430@@YAHXZ",
   "len": "0x49",
@@ -153243,5 +153243,54 @@
   "pct": 92.9,
   "best_pct": 92.9,
   "best_at": "39303f83"
+ },
+ {
+  "tu": "match/Radar.cpp",
+  "addr": "0x6563B0",
+  "sym": "?FUN_006563B0@RadarClass@@QAEXXZ",
+  "len": "0x1cb",
+  "name": "RadarClass::FUN_006563B0",
+  "status": "partial",
+  "pct": 98.7,
+  "best_pct": 98.7,
+  "best_at": "5cc34972"
+ },
+ {
+  "tu": "match/Sidebar.cpp",
+  "addr": "0x6A6140",
+  "sym": "?FUN_006A6140@SidebarClass@@QAE_NPAXHH@Z",
+  "len": "0xd8",
+  "name": "SidebarClass::FUN_006A6140",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Sidebar.cpp",
+  "addr": "0x6A6300",
+  "sym": "?FUN_006A6300@SidebarClass@@QAE_NHH@Z",
+  "len": "0x309",
+  "name": "SidebarClass::FUN_006A6300",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Sidebar.cpp",
+  "addr": "0x6A6820",
+  "sym": "?FUN_006A6820@SidebarClass@@QAEXH@Z",
+  "len": "0x1dd",
+  "name": "SidebarClass::FUN_006A6820",
+  "status": "partial",
+  "pct": 96.4,
+  "best_pct": 96.4,
+  "best_at": "5cc34972"
+ },
+ {
+  "tu": "match/Sidebar.cpp",
+  "addr": "0x6ABB60",
+  "sym": "?FUN_006ABB60@StripClass@@QAE_NPAUSelectFactory@@@Z",
+  "len": "0xdd",
+  "name": "StripClass::FUN_006ABB60",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

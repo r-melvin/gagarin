@@ -1050,6 +1050,8 @@ struct StripClass
     bool FUN_006ABAC0();
     // FUNCTION: GAMEMD 0x6ABA60
     bool FUN_006ABA60(void* value, int type, int id);
+    // FUNCTION: GAMEMD 0x6ABB60 (decl; reloc) -- drop a factory from the strip; RET 4.
+    bool FUN_006ABB60(struct SelectFactory* factory);
     // FUNCTION: GAMEMD 0x6AA600 (decl; reloc)
     bool FUN_006AA600();
     // FUNCTION: GAMEMD 0x6A87F0
@@ -1114,10 +1116,16 @@ public:
     void FUN_006A5ED0();
     // FUNCTION: GAMEMD 0x6A60E0 (decl; partial) -- RET 4.
     void FUN_006A60E0(int tab);
+    // FUNCTION: GAMEMD 0x6A6140 (decl; reloc) -- set the pointer slot of a cameo on its tab; RET 0xC.
+    bool FUN_006A6140(void* value, int type, int id);
     // FUNCTION: GAMEMD 0x6A6220 (decl) -- set (1), clear (anything else) or flip (-1) the byte at +0x5515; RET 4.
     unsigned char FUN_006A6220(int mode);
     // FUNCTION: GAMEMD 0x6A6290 (decl) -- the same body on the byte at +0x5514; RET 4.
     unsigned char FUN_006A6290(int mode);
+    // FUNCTION: GAMEMD 0x6A6820 -- a tab lost a cameo; RET 4.
+    void FUN_006A6820(int tab);
+    // FUNCTION: GAMEMD 0x6A6300 (decl; reloc) -- add a cameo to its tab; RET 8.
+    bool FUN_006A6300(int type, int id);
     // FUNCTION: GAMEMD 0x6A6610 (decl; reloc) -- rebuild the strip contents.
     void FUN_006A6610();
     // FUNCTION: GAMEMD 0x6A70E0 (decl; reloc) -- RET 4.

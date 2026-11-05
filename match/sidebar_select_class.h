@@ -82,6 +82,8 @@ struct SelectFactory
     SelectTechno* FUN_004CA160();
     // FUNCTION: GAMEMD 0x4CA170 (decl; reloc) -- FactoryClass::GetOriginalBalance.
     int GetOriginalBalance() const;
+    // FUNCTION: GAMEMD 0x4C9FF0 (decl; reloc) -- FactoryClass::AbandonProduction.
+    bool AbandonProduction();
     // FUNCTION: GAMEMD 0x4CA6B0 (decl; reloc) -- FactoryClass::IsQueued; RET 4.
     bool IsQueued(SelectTechnoType* type) const;
     // FUNCTION: GAMEMD 0x4C9FB0 (decl; reloc) -- FactoryClass::GetBuildTimeFrames.
@@ -97,6 +99,8 @@ struct SelectTechnoVtbl;
 struct SelectTechno
 {
     SelectTechnoVtbl* Vtbl;
+    // FUNCTION: GAMEMD 0x734270 (decl; reloc) -- TechnoClass::ClearSidebarTabObject; a null this clears both slots.
+    void ClearSidebarTabObject();
 };
 typedef int (SelectTechno::*SelectTechnoFn2C)();
 typedef int (SelectTechno::*SelectTechnoFn38)();

@@ -344,6 +344,9 @@ struct SidebarMap
     void AddButton(SidebarCameoButton* button);
     // FUNCTION: GAMEMD 0x4F4450 (decl; reloc) -- take a button off the list.
     void FUN_004F4450(SidebarCameoButton* button);
+    // FUNCTION: GAMEMD 0x6AC430 (decl; reloc) -- the number of cameo buttons that fit in the sidebar; retail passes the
+    // map in ECX and the body does not read it.
+    int FUN_006AC430();
 };
 // GLOBAL: GAMEMD 0x87F7E8 -- MapClass::Instance.
 extern SidebarMap MapInstance_0087F7E8;
