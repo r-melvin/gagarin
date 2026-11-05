@@ -331,12 +331,15 @@ GG_STATIC_ASSERT(sizeof(Obj_00880D2C) == 0xF94);
 // GLOBAL: GAMEMD 0x880D2C
 extern Obj_00880D2C DAT_00880D2C[4];
 
-// An entry of the named array at 0xA8EB04 (count at 0xA8EB10); only its text at +0x24 is read here.
+// An entry of the named array at 0xA8EB04 (count at 0xA8EB10); its text at +0x24 and the field at +0x634 are touched here.
 struct Obj_00A8EB04
 {
     unsigned char unknown_00[0x24];
     char unknown_24[0x19];
+    unsigned char unknown_3D[0x634 - 0x3D];
+    int unknown_634;                 // +0x634 written by 0x6E37F0 (action parameter)
 };
+GG_STATIC_ASSERT(offsetof(Obj_00A8EB04, unknown_634) == 0x634);
 // GLOBAL: GAMEMD 0xA8EB04 / 0xA8EB10 -- the array's items and count.
 extern Obj_00A8EB04** DAT_00A8EB04;
 extern int DAT_00A8EB10;
@@ -921,6 +924,31 @@ bool TActionClass::FUN_006E0D00(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+#include "message_list_class_methods.h"
+#include "_layout/session_class.h"
+
+// GLOBAL: GAMEMD 0xA8BC60 -- MessageListClass::Instance.
+extern MessageListClass DAT_00A8BC60;
+// FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- localised string lookup(label, index-out, file, line).
+const wchar_t* __fastcall FUN_00734E60(const char* label, int* index, const char* file, int line);
+// STRING: GAMEMD 0x842BF8 -- this file's name as the assert text.
+extern const char STR_00842BF8[];
+
+// FUNCTION: GAMEMD 0x6E0D60
+// Post the action's text (when it has any) to the message list in the colour of the
+// session's slot, for the scenario's message delay.
+bool TActionClass::FUN_006E0D60(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    const char* label = unknown_6D[0] ? unknown_6D : 0;
+    int mode = DAT_00A8B230->unknown_34B8;
+    unsigned int colour = Session_00A8B238.FUN_0069A310(mode == 0 ? 2 : (mode == 1 ? 1 : 5));
+    if (label) {
+        DAT_00A8BC60.FUN_005D3BA0(0, 0, FUN_00734E60(label, 0, STR_00842BF8, 0x6E6), colour,
+            0x4046, (int)(DAT_008871E0->MessageDelay * 900.0), false);
+    }
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x6E0DF0
 bool TActionClass::FUN_006E0DF0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1039,6 +1067,37 @@ bool TActionClass::FUN_006E1440(HouseClass* house, ObjectClass* object, TriggerC
 {
     ScenarioTimer& timer = DAT_00A8B230->Timer_11E8;
     timer = ScenarioTimer(timer.GetTimeLeft() + unknown_90 * 15);
+    MapInstance.FUN_006D0F00();
+    return true;
+}
+
+// STRING: GAMEMD 0x889F64 -- the empty string.
+extern const char STR_00889F64[];
+// GLOBAL: GAMEMD 0x887734 -- the empty wide string.
+extern wchar_t EmptyName_00887734[];
+
+// FUNCTION: GAMEMD 0x6E1530
+// Start the scenario timer for the action's parameter in fifteenths of a second units (x15)
+// and clear the scenario's name text.
+bool TActionClass::FUN_006E1530(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    ScenarioClass* scenario = DAT_00A8B230;
+    scenario->Timer_11E8 = ScenarioTimer(unknown_90 * 15);
+    if (DAT_00A8B230->Timer_11E8.StartTime == -1) {
+        DAT_00A8B230->Timer_11E8.StartTime = CurrentFrame;
+    }
+    DAT_00A8B230->unknown_11F4 = EmptyName_00887734;
+    ScenarioText32 name((AbstractNoInit()));
+    const char* source = STR_00889F64;
+    if (!source) {
+        name.unknown_00[0] = 0;
+    } else {
+        strncpy(name.unknown_00, source, 31);
+        name.unknown_00[31] = 0;
+    }
+    if (&name != &DAT_00A8B230->unknown_11F8) {
+        DAT_00A8B230->unknown_11F8 = name;
+    }
     MapInstance.FUN_006D0F00();
     return true;
 }
@@ -1365,6 +1424,84 @@ bool TActionClass::FUN_006E21E0(HouseClass* house, ObjectClass* object, TriggerC
     DAT_0087F7E8.FUN_00657CE0();
     for (int i = DAT_00A8EB50 - 1; i >= 0; i--)
         DAT_00A8EB44[i]->vf_296(1);
+    return true;
+}
+
+#include "_layout/anim_class.h"
+// GLOBAL: GAMEMD 0x8B4154 -- AnimTypeClass::Array items.
+extern AnimTypeClass** DAT_008B4154;
+
+// FUNCTION: GAMEMD 0x6E2290
+// Create the animation named by the parameter at the waypoint, lifted over bridge cells,
+// and mark it inert.
+bool TActionClass::FUN_006E2290(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    CellStruct at = DAT_00A8B230->GetWaypointCoords(unknown_44);
+    CoordStruct where = TActionCellToCoord(at);
+    where.Z = DAT_0087F7E8.FUN_00578080(&where);
+    if ((DAT_0087F7E8.FUN_005657A0(&at)->Flags & 0x100) ||
+        (DAT_0087F7E8.FUN_005657A0(&at)->Flags & 0x400))
+        where.Z += DAT_00B0E6D4;
+    AnimClass* anim = new AnimClass(DAT_008B4154[unknown_90], where, 0, 1, 0x600, 0, false);
+    anim->IsInert = true;
+    return true;
+}
+
+#include "_layout/voxel_anim_class.h"
+// GLOBAL: GAMEMD 0xA8EB28 -- VoxelAnimTypeClass::Array.
+extern DynamicVectorClass<VoxelAnimTypeClass*> DAT_00A8EB28;
+
+#include "weapon_type_class.h"
+// GLOBAL: GAMEMD 0x887568 -- WeaponTypeClass::Array (items at +4, 0x88756C).
+extern DynamicVectorClass<WeaponTypeClass*> DAT_00887568;
+// FUNCTION: GAMEMD 0x489280 (decl; reloc) -- area damage (RET 0x10): where in ECX, damage in EDX.
+int __fastcall FUN_00489280(const CoordStruct* where, int damage, TechnoClass* owner,
+    WarheadTypeClass* warhead, int a, int b);
+// FUNCTION: GAMEMD 0x48A4F0 (decl; reloc) -- picks the impact animation (RET 8).
+AnimTypeClass* __fastcall FUN_0048A4F0(int health, WarheadTypeClass* warhead, int selected, const CoordStruct* location);
+// FUNCTION: GAMEMD 0x48ACE0 (decl; reloc) -- the coordinate by value (three stack words), RET 0xC.
+int __stdcall FUN_0048ACE0(CoordStruct where);
+
+// FUNCTION: GAMEMD 0x6E2390
+// PARTIAL: best 89.3% positional (122 of 122 instructions, same multiset). Remaining delta is the
+// register choice around the by-value coordinate copy of the second damage call. Tried: re-reading
+// the weapon table per call, a land-type local, and a local per reload.
+// Detonate the weapon named by the parameter at the waypoint, lifted over bridge cells: its
+// impact animation, its warhead's effect, and its area damage.
+bool TActionClass::FUN_006E2390(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    CellStruct at = DAT_00A8B230->GetWaypointCoords(unknown_44);
+    CoordStruct where = TActionCellToCoord(at);
+    where.Z = DAT_0087F7E8.FUN_00578080(&where);
+    if ((DAT_0087F7E8.FUN_005657A0(&at)->Flags & 0x100) ||
+        (DAT_0087F7E8.FUN_005657A0(&at)->Flags & 0x400))
+        where.Z += DAT_00B0E6D4;
+    int param = unknown_90;
+    WeaponTypeClass* weapon = DAT_00887568.Items[param];
+    int damage = weapon->Damage;
+    int land = DAT_0087F7E8.FUN_00565730(&where)->LandType;
+    AnimTypeClass* anim = FUN_0048A4F0(damage, weapon->Warhead, land, &where);
+    if (anim) {
+        new AnimClass(anim, where, 0, 1, 0x2600, FUN_0048ACE0(where), false);
+    }
+    WeaponTypeClass* effect = DAT_00887568.Items[param];
+    FUN_0048A620(damage, effect->Warhead, where, 0, 0);
+    WeaponTypeClass* blast = DAT_00887568.Items[param];
+    FUN_00489280(&where, damage, 0, blast->Warhead, 1, 0);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E2520
+// Create the voxel animation named by the parameter at the waypoint, lifted over bridge cells.
+bool TActionClass::FUN_006E2520(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    CellStruct at = DAT_00A8B230->GetWaypointCoords(unknown_44);
+    CoordStruct where = TActionCellToCoord(at);
+    where.Z = DAT_0087F7E8.FUN_00578080(&where);
+    if ((DAT_0087F7E8.FUN_005657A0(&at)->Flags & 0x100) ||
+        (DAT_0087F7E8.FUN_005657A0(&at)->Flags & 0x400))
+        where.Z += DAT_00B0E6D4;
+    new VoxelAnimClass(DAT_00A8EB28.Items[unknown_90], where, 0);
     return true;
 }
 
@@ -1927,6 +2064,48 @@ bool TActionClass::FUN_006E3380(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// FUNCTION: GAMEMD 0x53A100 (decl; reloc) -- a global byte flag, read without a receiver.
+bool __cdecl FUN_0053A100();
+// FUNCTION: GAMEMD 0x539EB0 (decl; reloc)
+void __fastcall FUN_00539EB0(int a, int b, CellStruct cell, void* c);
+
+// FUNCTION: GAMEMD 0x6E35F0
+// Start a lightning storm over the waypoint's cell unless one is already raised.
+bool TActionClass::FUN_006E35F0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    CellStruct at = DAT_00A8B230->GetWaypointCoords(unknown_44);
+    CoordStruct where = TActionCellToCoord(at);
+    where.Z = DAT_0087F7E8.FUN_00578080(&where);
+    if (DAT_0087F7E8.FUN_005657A0(&at)->Flags & 0x100)
+        where.Z += DAT_00B0E6D4;
+    CellStruct target;
+    target.X = (short)(where.X / 256);
+    target.Y = (short)(where.Y / 256);
+    if (!FUN_0053A100()) {
+        FUN_00539EB0(DAT_008871E0->LightningStormDuration, DAT_008871E0->LightningDeferment, target, house);
+        return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x6E37F0
+// Store the action's parameter on the entry whose name matches the action's text, then flag
+// every house for a tech-tree recheck.
+bool TActionClass::FUN_006E37F0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    for (int i = DAT_00A8EB10 - 1; i >= 0; i--) {
+        Obj_00A8EB04* entry = DAT_00A8EB04[i];
+        if (strcmp(entry->unknown_24, unknown_54) == 0) {
+            entry->unknown_634 = unknown_90;
+            break;
+        }
+    }
+    for (int j = HouseClass_Array.Count - 1; j >= 0; j--) {
+        HouseClass_Array.Items[j]->RecheckTechTree = true;
+    }
+    return true;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3890
@@ -2227,6 +2406,42 @@ bool TActionClass::FUN_006E4150(HouseClass* house, ObjectClass* object, TriggerC
     if (index < DAT_00A8EB10 && index >= 0) {
         MapInstance.FUN_006AC5F0(DAT_00A8EB04[index], unknown_90);
         return true;
+    }
+    return false;
+}
+
+#include "_layout/building_type_class_layout.h"
+
+// GLOBAL: GAMEMD 0xA83C6C / 0xA83C78 -- BuildingTypeClass::Array items and count.
+extern BuildingTypeClass** DAT_00A83C6C;
+extern int DAT_00A83C78;
+// FUNCTION: GAMEMD 0x45E7B0 (decl; reloc) -- the building type index named by a text.
+int __fastcall FUN_0045E7B0(const char* name);
+
+// FUNCTION: GAMEMD 0x6E4200
+// Create the building type named by the action's text for the given house and place it at the
+// waypoint's cell; a failed placement discards it.
+bool TActionClass::FUN_006E4200(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    if (house) {
+        CellStruct wp = DAT_00A8B230->GetWaypointCoords(unknown_44);
+        CellClass* at = MapInstance.FUN_005657A0(&wp);
+        CoordStruct where = at->vf_18();
+        int index = FUN_0045E7B0(unknown_54);
+        if (index >= 0 && index <= DAT_00A83C78) {
+            BuildingTypeClass* type = DAT_00A83C6C[index];
+            if (type) {
+                BuildingClass* building = (BuildingClass*)type->vf_35(house);
+                if (building) {
+                    if (!building->vf_292(&where, 0)) {
+                        building->vf_62();
+                    } else {
+                        building->vf_311(0);
+                        return true;
+                    }
+                }
+            }
+        }
     }
     return false;
 }

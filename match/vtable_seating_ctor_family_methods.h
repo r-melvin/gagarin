@@ -73,6 +73,7 @@ public:
     ~SeatNull_006406E0(); // GAMEMD 0x6406F0
     void FUN_00641140(); // GAMEMD 0x641140
     void FUN_006418B0(CCINIClass* ini); // GAMEMD 0x6418B0
+    bool ReadPCXPreview(const char* lpFile); // GAMEMD 0x641DB0
     int unknown_00;
 };
 GG_STATIC_ASSERT(offsetof(SeatNull_006406E0, unknown_00) == 0x0 &&

@@ -152824,5 +152824,99 @@
   "name": "Table_00626C60::Table_00626C60",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/netshare.cpp",
+  "addr": "0x5ED370",
+  "sym": "?FUN_005ED370@@YIXPAUHWND__@@@Z",
+  "len": "0x88",
+  "name": "?FUN_005ED370@@YIXPAUHWND__@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/netshare.cpp",
+  "addr": "0x5EE3A0",
+  "sym": "?FUN_005EE3A0@@YIXXZ",
+  "len": "0x169",
+  "name": "?FUN_005EE3A0@@YIXXZ",
+  "status": "partial",
+  "pct": 94.8,
+  "best_pct": 94.8,
+  "best_at": "00c20b70"
+ },
+ {
+  "tu": "match/TAction.cpp",
+  "addr": "0x6E0D60",
+  "sym": "?FUN_006E0D60@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x88",
+  "name": "TActionClass::FUN_006E0D60",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/TAction.cpp",
+  "addr": "0x6E1530",
+  "sym": "?FUN_006E1530@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0xb3",
+  "name": "TActionClass::FUN_006E1530",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/TAction.cpp",
+  "addr": "0x6E2290",
+  "sym": "?FUN_006E2290@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0xfa",
+  "name": "TActionClass::FUN_006E2290",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/TAction.cpp",
+  "addr": "0x6E2390",
+  "sym": "?FUN_006E2390@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x18c",
+  "name": "TActionClass::FUN_006E2390",
+  "status": "partial",
+  "pct": 89.3,
+  "best_pct": 89.3,
+  "best_at": "00c20b70"
+ },
+ {
+  "tu": "match/TAction.cpp",
+  "addr": "0x6E2520",
+  "sym": "?FUN_006E2520@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0xd6",
+  "name": "TActionClass::FUN_006E2520",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/TAction.cpp",
+  "addr": "0x6E35F0",
+  "sym": "?FUN_006E35F0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0xe4",
+  "name": "TActionClass::FUN_006E35F0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/TAction.cpp",
+  "addr": "0x6E37F0",
+  "sym": "?FUN_006E37F0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x99",
+  "name": "TActionClass::FUN_006E37F0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/TAction.cpp",
+  "addr": "0x6E4200",
+  "sym": "?FUN_006E4200@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0xcb",
+  "name": "TActionClass::FUN_006E4200",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

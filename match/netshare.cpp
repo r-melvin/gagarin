@@ -2944,6 +2944,36 @@ void FUN_005ED270(HWND dialog, int control, int kind)
     FUN_005EC9F0(dialog, control, node, 0);
 }
 
+#include "vtable_seating_ctor_family_methods.h"
+#include "session_entry.h"
+// GLOBAL: GAMEMD 0xA8B8C8 (Items 0xA8B8CC, Count 0xA8B8D8).
+extern DynamicVectorClass<MultiMission*> DAT_00A8B8C8;
+// GLOBAL: GAMEMD 0xAC1154 -- the lobby's map preview.
+extern SeatNull_006406E0* DAT_00AC1154;
+// FUNCTION: GAMEMD 0x5E74E0 (decl; reloc) -- redraw the preview from the scenario.
+void __fastcall FUN_005E74E0(HWND dialog);
+
+// FUNCTION: GAMEMD 0x5ED370
+// Show the random-map preview: when the selected entry is the random map, rebuild the
+// preview from "RandMap.img" (falling back to the plain redraw when it has no image),
+// else just redraw.
+void __fastcall FUN_005ED370(HWND dialog)
+{
+    if (DAT_00A8B8C8.Items[DAT_00A8B254]->FUN_0069ADF0()) {
+        if (DAT_00AC1154) {
+            delete DAT_00AC1154;
+        }
+        DAT_00AC1154 = new SeatNull_006406E0;
+        DAT_00AC1154->ReadPCXPreview("RandMap.img");
+        if (!DAT_00AC1154->unknown_00) {
+            FUN_005E74E0(dialog);
+        }
+        InvalidateRect(dialog, 0, 0);
+    } else {
+        FUN_005E74E0(dialog);
+    }
+}
+
 // FUNCTION: GAMEMD 0x5ED400
 // PARTIAL: best 4.4% positional, 77.2% aligned (105 of 136 instructions). Same
 // control flow and the same int-indexed stores; retail keeps the snapshot pointer
@@ -3211,6 +3241,74 @@ void FUN_005EE350(HWND dialog)
     if (other != 0) {
         FUN_005EE200(other);
         return;
+    }
+}
+
+// GLOBAL: GAMEMD 0xA8DA8C -- the seat the local player holds.
+extern int DAT_00A8DA8C;
+
+// FUNCTION: GAMEMD 0x5EE3A0
+// PARTIAL: best 94.8% positional, 98.3% aligned (114 of 116 instructions). Retail reaches
+// the BlankName argument is pushed after the handle widening call; this build pushes it first.
+// Tried: shared EnableWindow tail through a BOOL local, a local for the widened handle, and
+// the out-of-line blank-handle helper (inlined to a shorter body).
+//
+// Enable or disable the team-choice control of every slot: a free or AI slot is left to
+// the host, an occupied one only to its owner.
+void FUN_005EE3A0()
+{
+    bool hostMode = true;
+    HWND dialog = FUN_00775940(0xC2);
+    if (!dialog) {
+        dialog = FUN_00775940(0xC9);
+        if (!dialog) {
+            dialog = FUN_00775940(0xBC);
+            if (!dialog) {
+                dialog = FUN_00775940(0xBD);
+            }
+        }
+    }
+    if (dialog) {
+        if (DAT_00A8B23C) {
+            hostMode = DAT_00A8B23C->AlliesAllowed;
+        }
+        for (int i = 0; i < 8; i++) {
+            NodeNameType* node = Session_00A8B238.unknown_2858[i];
+            int id = FUN_004E5940(i);
+            if (id < 0) {
+                continue;
+            }
+            HWND item = GetDlgItem(dialog, id);
+            if (!item) {
+                continue;
+            }
+            if (node != 0 && (node == EasyAINode || node == MediumAINode || node == HardAINode)
+                && wcscmp(Widen_00735120(LocalHandle), BlankName) == 0) {
+                if (hostMode) {
+                    EnableWindow(item, TRUE);
+                } else {
+                    Session_00A8B238.unknown_18.unknown_AC[i] = -2;
+                    EnableWindow(item, FALSE);
+                }
+            } else if (node == OpenNode || node == ClosedNode) {
+                EnableWindow(item, FALSE);
+            } else {
+                if (i == DAT_00A8DA8C) {
+                    if (hostMode) {
+                        EnableWindow(item, TRUE);
+                    } else {
+                        EnableWindow(item, FALSE);
+                        if (wcscmp(Widen_00735120(LocalHandle), BlankName) == 0) {
+                            node->FUN_00697020(-2);
+                        }
+                        continue;
+                    }
+                }
+                if (!hostMode && wcscmp(Widen_00735120(LocalHandle), BlankName) == 0) {
+                    node->FUN_00697020(-2);
+                }
+            }
+        }
     }
 }
 

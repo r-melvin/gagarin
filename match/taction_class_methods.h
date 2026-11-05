@@ -91,6 +91,8 @@ public:
     bool FUN_006E0CA0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x6E0D00
     bool FUN_006E0D00(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x6E0D60
+    bool FUN_006E0D60(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x6E0DF0
     bool FUN_006E0DF0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x6E0E60
@@ -103,6 +105,8 @@ public:
     bool FUN_006E13E0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x6E1440
     bool FUN_006E1440(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x6E1530
+    bool FUN_006E1530(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x6E1760
     bool FUN_006E1760(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x6E1A40
@@ -191,6 +195,18 @@ public:
     bool FUN_006E1980(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x6E2970
     bool FUN_006E2970(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x6E37F0
+    bool FUN_006E37F0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x6E4200
+    bool FUN_006E4200(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x6E2520
+    bool FUN_006E2520(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x6E35F0
+    bool FUN_006E35F0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x6E2290
+    bool FUN_006E2290(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x6E2390
+    bool FUN_006E2390(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x6E0EF0
     bool FUN_006E0EF0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
 
