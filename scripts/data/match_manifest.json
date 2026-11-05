@@ -152054,5 +152054,67 @@
   "pct": 88.4,
   "best_pct": 88.4,
   "best_at": "380dea26"
+ },
+ {
+  "tu": "match/audio_tu001_methods.cpp",
+  "addr": "0x403FA0",
+  "sym": "?FUN_00403FA0@@YAXXZ",
+  "len": "0x191",
+  "name": "?FUN_00403FA0@@YAXXZ",
+  "status": "partial",
+  "pct": 83.3,
+  "best_pct": 83.3,
+  "best_at": "380dea26"
+ },
+ {
+  "tu": "match/audio_tu001_methods.cpp",
+  "addr": "0x4047B0",
+  "sym": "?FUN_004047B0@AudioEvent@@QAIPAXXZ",
+  "len": "0xfb",
+  "name": "AudioEvent::FUN_004047B0",
+  "status": "partial",
+  "pct": 86.6,
+  "best_pct": 86.6,
+  "best_at": "380dea26"
+ },
+ {
+  "tu": "match/audio_tu001_methods.cpp",
+  "addr": "0x404E70",
+  "sym": "?FUN_00404E70@@YAXXZ",
+  "len": "0x152",
+  "name": "?FUN_00404E70@@YAXXZ",
+  "status": "partial",
+  "pct": 80.7,
+  "best_pct": 80.7,
+  "best_at": "380dea26"
+ },
+ {
+  "tu": "match/audio_tu001_methods.cpp",
+  "addr": "0x405B50",
+  "sym": "?FUN_00405B50@@YIPAUPeer_00405D40@@HI@Z",
+  "len": "0x83",
+  "name": "?FUN_00405B50@@YIPAUPeer_00405D40@@HI@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/audio_tu001_methods.cpp",
+  "addr": "0x405E80",
+  "sym": "?FUN_00405E80@AudioController@@QAEXXZ",
+  "len": "0x14b",
+  "name": "AudioController::FUN_00405E80",
+  "status": "partial",
+  "pct": 92.9,
+  "best_pct": 92.9,
+  "best_at": "380dea26"
+ },
+ {
+  "tu": "match/audio_tu001_methods.cpp",
+  "addr": "0x406670",
+  "sym": "?FUN_00406670@@YIXPBDH@Z",
+  "len": "0xb5",
+  "name": "?FUN_00406670@@YIXPBDH@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

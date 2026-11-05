@@ -21,16 +21,21 @@
 #include "audio_controller.h"
 #include "audio_event_type.h"
 
+struct Obj_00402000;
+
 struct Peer_00405D40
 {
     char _pad000[0x10];
     Timer_00401000 unknown_10;
     char unknown_38[0x90 - 0x38];       // +0x0000
     int  At_90;               // +0x0090
-    int At_94;
+    Obj_00401000* At_94;
     int  At_98;               // +0x0098
-    int  At_9C;               // +0x009C
-    char _pad0A0[0xB0 - 0xA0];
+    Obj_00401000* At_9C;      // +0x009C
+    int  At_A0;               // +0x00A0
+    unsigned int At_A4;       // +0x00A4
+    int  At_A8;               // +0x00A8
+    char _pad0AC[0xB0 - 0xAC];
     int (__fastcall* unknown_B0)(void*);
     int  At_B4;               // +0x00B4
     int (__fastcall* At_B8)(void*);               // +0x00B8
@@ -61,10 +66,16 @@ GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_94) == 0x94);
 GG_STATIC_ASSERT(offsetof(Peer_00405D40, unknown_B0) == 0xB0);
 GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_98) == 0x98);
 GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_9C) == 0x9C);
+GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_A0) == 0xA0);
+GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_A4) == 0xA4);
+GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_A8) == 0xA8);
 GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_B4) == 0xB4);
 GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_B8) == 0xB8);
 GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_BC) == 0xBC);
 GG_STATIC_ASSERT(offsetof(Peer_00405D40, Voice) == 0xC0);
+
+// 0x4035F0 hands the record back under its own placeholder name.
+struct Obj_004035F0 : Peer_00405D40 {};
 
 // A level sink at AudioEvent +0xB8: a ramp timer whose level is set, then latched.
 struct AudioEventSink
@@ -83,6 +94,12 @@ struct AudioEvent : ListNode
 {
     // FUNCTION: GAMEMD 0x4052F0 (decl; reloc) -- stop: detach from the peer, release the sub-objects, mark finished
     void FUN_004052F0();
+    // FUNCTION: GAMEMD 0x404140 (decl; reloc) -- detach from the peer
+    void FUN_00404140();
+    // FUNCTION: GAMEMD 0x404700 (decl; reloc) -- order the sub-objects, then hand off to the mixer
+    void* __fastcall FUN_00404700();
+    // FUNCTION: GAMEMD 0x4047B0 -- pick and start the next sub-object
+    void* __fastcall FUN_004047B0();
     // FUNCTION: GAMEMD 0x406190 -- scale the clamped level by the descriptor's ramp and apply it to Sink
     void __fastcall FUN_00406190(unsigned level);
     // FUNCTION: GAMEMD 0x4061D0 -- AdjustAudioEventVolume
@@ -104,9 +121,9 @@ struct AudioEvent : ListNode
     int   State;              // +0x001C
     char  _pad020[0x24 - 0x20];
     AudioEventType* EventType; // +0x0024
-    void* Subs[(0xA8 - 0x28) / 4];  // +0x0028
+    Obj_00402000* Subs[(0xA8 - 0x28) / 4];  // +0x0028
     int   SubCount;           // +0x00A8
-    char  _pad0AC[0xB0 - 0xAC];
+    int   unknown_AC;         // +0x00AC
     Peer_00405D40* Peer;      // +0x00B0
     char  _pad0B4[0xB8 - 0xB4];
     union {
@@ -122,9 +139,11 @@ struct AudioEvent : ListNode
     char  _pad13C[0x154 - 0x13C];
     int   unknown_154;        // +0x0154  cleared at creation
     int   unknown_158;        // +0x0158  cleared at creation (after the Sink timer is armed)
-    char  _pad15C[0x1E0 - 0x15C];
+    char  _pad15C[0x160 - 0x15C];
+    int   Order[(0x1E0 - 0x160) / 4];  // +0x0160
     int   unknown_1E0;        // +0x01E0  cleared at creation
-    char  _pad1E4[0x268 - 0x1E4];
+    int   unknown_1E4;        // +0x01E4  completed loops
+    char  _pad1E8[0x268 - 0x1E8];
     int   unknown_268;        // +0x0268  cleared at creation
     char  _pad26C[0x278 - 0x26C];
     AudioController* Controller; // +0x0278 (stored by SetEvent)
@@ -140,6 +159,9 @@ GG_STATIC_ASSERT(offsetof(AudioEvent, Timers) == 0xB8);
 GG_STATIC_ASSERT(offsetof(AudioEvent, Sink) == 0xB8);
 GG_STATIC_ASSERT(offsetof(AudioEvent, Channel) == 0x108);
 GG_STATIC_ASSERT(offsetof(AudioEvent, Serial) == 0x138);
+GG_STATIC_ASSERT(offsetof(AudioEvent, unknown_AC) == 0xAC);
+GG_STATIC_ASSERT(offsetof(AudioEvent, Order) == 0x160);
+GG_STATIC_ASSERT(offsetof(AudioEvent, unknown_1E4) == 0x1E4);
 GG_STATIC_ASSERT(offsetof(AudioEvent, unknown_154) == 0x154);
 GG_STATIC_ASSERT(offsetof(AudioEvent, unknown_158) == 0x158);
 GG_STATIC_ASSERT(offsetof(AudioEvent, unknown_1E0) == 0x1E0);

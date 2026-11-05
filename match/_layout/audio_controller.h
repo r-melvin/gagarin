@@ -28,6 +28,8 @@ struct AudioController
     void FUN_00405C00();
     // FUNCTION: GAMEMD 0x405D40
     void Stop();
+    // FUNCTION: GAMEMD 0x405E80 -- stop a looping voice that has no repeat count, then forget the event
+    void FUN_00405E80();
     // FUNCTION: GAMEMD 0x405FD0 (decl; reloc)
     void FUN_00405FD0();
     // FUNCTION: GAMEMD 0x406060 -- ends a looping voice (YRpp: Audio::EndLooping)

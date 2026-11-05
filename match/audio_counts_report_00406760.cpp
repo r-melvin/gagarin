@@ -10,8 +10,9 @@
 extern int DAT_0087E28C;
 // GLOBAL: GAMEMD 0x87E290 -- its high-water mark.
 extern int DAT_0087E290;
-// GLOBAL: GAMEMD 0x87E298 -- reporting enabled.
-extern int DAT_0087E298;
+// GLOBAL: GAMEMD 0x87E298 -- the reporting manager, null while reporting is off.
+struct Mgr_00401B00;
+extern Mgr_00401B00* DAT_0087E298;
 // GLOBAL: GAMEMD 0xB1D3AC -- its high-water mark.
 extern int DAT_00B1D3AC;
 
@@ -37,7 +38,7 @@ int DAT_0087E28C;
 // GLOBAL: GAMEMD 0x87E290
 int DAT_0087E290;
 // GLOBAL: GAMEMD 0x87E298
-int DAT_0087E298;
+Mgr_00401B00* DAT_0087E298;
 // GLOBAL: GAMEMD 0xB1D3AC
 int DAT_00B1D3AC;
 // GLOBAL: GAMEMD 0xB1D3A8
