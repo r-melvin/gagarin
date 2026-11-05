@@ -103,6 +103,8 @@ extern MouseSurfaceView* MouseSidebarSurface;
 class WWMouseClass : public Mouse
 {
 public:
+    WWMouseClass(MouseSurfaceView* screen, void* window);          // 0x7B8730
+
     // ---- virtual slots (complete-object order) ----------------------------------------------
     virtual ~WWMouseClass(); // slot0: body0x7B88D0, deleting wrapper0x7BA3A0
     virtual void SetCursor(const Point2D* hotspot, Obj_0069E430* shape, int frame);      // 1  0x7B8A00
@@ -126,6 +128,7 @@ public:
     // ---- non-virtual neighbours called from the scored entries (declared; reloc) ------------
     bool Method_7B8C60();                                    // 0x7B8C60 __thiscall, no args, bool
     void FUN_007BA090();                                       // 0x7BA090 __thiscall, no args (the periodic cursor refresh)
+    void FUN_007B8960();                                      // 0x7B8960 __thiscall, no args
     CursorRect Method_7B8E80();                               // 0x7B8E80 __thiscall, hidden result pointer, RET 4
     void FUN_007B9690();                                      // 0x7B9690 __thiscall, no args
     void Method_7B93F0(MouseSurfaceView* surface, int a, int b);  // 0x7B93F0 __thiscall, RET 0xC

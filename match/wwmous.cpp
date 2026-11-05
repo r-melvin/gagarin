@@ -27,6 +27,9 @@
 #include "scenario_session_globals.h"
 #include "wide_string_scratch.h"
 
+// GLOBAL: GAMEMD 0xB78128 -- the zero rectangle the members start from.
+extern CursorRect DAT_00B78128;
+
 // The save-under restore that vf_3, vf_5 and SetCursor share: copy the saved background back onto the
 // screen at the cursor rectangle.
 inline void WWMouseClass::RestoreUnder()
@@ -420,6 +423,25 @@ void FUN_007B86B0()
         CloseHandle(MouseMutex);
         MouseMutex = 0;
     }
+}
+
+// FUNCTION: GAMEMD 0x7B8730
+// PARTIAL (84.7%, 107/111 aligned): the instruction multiset is identical; the remaining difference is
+// the order of the first stores (retail stores Screen before the Mouse vtable pointer) and where the last
+// dword of each rectangle copy is scheduled.
+WWMouseClass::WWMouseClass(MouseSurfaceView* screen, void* window)
+    : unknown_4(0), CursorFrame(0), unknown_C(-1), Captured(false), Position(0, 0), ReportedPosition(0, 0),
+      Screen(screen), Window(window), Bounds(DAT_00B78128), unknown_3C(0, 0), Under(0), UnderRect(DAT_00B78128),
+      Cache1(0), Cache1Rect(DAT_00B78128), Cache2(0), Cache2Rect(DAT_00B78128), unknown_80(DAT_00B78128),
+      unknown_90(-1), unknown_94(0)
+{
+    LockMouse();
+    FUN_007B8960();
+    unknown_3C.X = Bounds.X + Bounds.Width / 2;
+    unknown_3C.Y = Bounds.Y + Bounds.Height / 2;
+    DAT_00B78164 = this;
+    UnlockMouse();
+    ShowCursor(FALSE);
 }
 
 // FUNCTION: GAMEMD 0x7B88D0

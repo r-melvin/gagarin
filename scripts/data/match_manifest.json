@@ -154108,5 +154108,61 @@
   "name": "CommBufferClass::FUN_0048B890",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/tu198_net_id_map.cpp",
+  "addr": "0x663CD0",
+  "sym": "?FUN_00663CD0@NetIdMapRef@@QAEEPAVIPXAddressClass@@@Z",
+  "len": "0x82",
+  "name": "NetIdMapRef::FUN_00663CD0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu198_net_id_map.cpp",
+  "addr": "0x664240",
+  "sym": "?FUN_00664240@NetIdMapRef@@QAEXHPAVIPXAddressClass@@@Z",
+  "len": "0x5a",
+  "name": "NetIdMapRef::FUN_00664240",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu198_net_id_map.cpp",
+  "addr": "0x664440",
+  "sym": "?FUN_00664440@NetIdMapRef@@QAEHXZ",
+  "len": "0xee",
+  "name": "NetIdMapRef::FUN_00664440",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu198_net_id_map.cpp",
+  "addr": "0x664530",
+  "sym": "?FUN_00664530@NetIdMapRef@@QAEXXZ",
+  "len": "0xd1",
+  "name": "NetIdMapRef::FUN_00664530",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu198_net_id_map.cpp",
+  "addr": "0x664610",
+  "sym": "?FUN_00664610@NetIdMapRef@@QAE_NH_N@Z",
+  "len": "0xab",
+  "name": "NetIdMapRef::FUN_00664610",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/wwmous.cpp",
+  "addr": "0x7B8730",
+  "sym": "??0WWMouseClass@@QAE@PAVMouseSurfaceView@@PAX@Z",
+  "len": "0x198",
+  "name": "??0WWMouseClass@@QAE@PAVMouseSurfaceView@@PAX@Z",
+  "status": "partial",
+  "pct": 84.7,
+  "best_pct": 84.7,
+  "best_at": "f851e2b7"
  }
 ]

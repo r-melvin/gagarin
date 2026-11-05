@@ -360,8 +360,36 @@ GG_STATIC_ASSERT(sizeof(IPXConnClass) == 0xB8);
 
 // The player/connection id registry at 0xB052D0 (shared by conn and connman);
 // 0x663D60 maps a connection id to a byte.
+// One record of the id registry: key byte, name text from +1, node address at +0x21
+// (0x6642A0 reads it back as four plus two bytes), and the flag bytes at +0x27..+0x29.
+#pragma pack(push, 1)
+struct NetIdEntry
+{
+    char            Key;            // +0x00
+    char            Name[0x20];     // +0x01
+    NodeAddressType Node;           // +0x21
+    unsigned char   unknown_27;     // +0x27
+    unsigned char   unknown_28;     // +0x28
+    unsigned char   unknown_29;     // +0x29
+};
+#pragma pack(pop)
+GG_STATIC_ASSERT(offsetof(NetIdEntry, Name) == 0x01);
+GG_STATIC_ASSERT(offsetof(NetIdEntry, Node) == 0x21);
+GG_STATIC_ASSERT(offsetof(NetIdEntry, unknown_27) == 0x27);
+GG_STATIC_ASSERT(offsetof(NetIdEntry, unknown_29) == 0x29);
+
 struct NetIdMapRef
 {
+    int          unknown_00;     // +0x00
+    NetIdEntry** Items;          // +0x04
+    int          unknown_08;     // +0x08
+    int          unknown_0C;     // +0x0C
+    int          Count;          // +0x10
+    int          unknown_14;     // +0x14
+    unsigned char unknown_18;    // +0x18 router in use
+    unsigned char _pad19[3];     // +0x19
+    void*        RouterProcess;  // +0x1C (process handle)
+
     // Declaration: GAMEMD 0x6643E0 -- entry+1, used as byte string652452.
     const char* FUN_006643E0(int index);
     // Declaration: GAMEMD 0x6642A0 -- static12-byte IPXAddress returned.
@@ -371,7 +399,13 @@ struct NetIdMapRef
 
 
     // FUNCTION: GAMEMD 0x664610 (decl; 0x684B0A)
-    void FUN_00664610(int timeout, int flag);
+    bool FUN_00664610(int timeout, bool flag);
+    // Declaration: GAMEMD 0x663CD0 -- address to its flag byte, RET4.
+    unsigned char FUN_00663CD0(IPXAddressClass* address);
+    // Declaration: GAMEMD 0x664440 -- returns the selected id.
+    int FUN_00664440();
+    // Declaration: GAMEMD 0x664530 -- plain RET, no arguments.
+    void FUN_00664530();
     // Declaration: GAMEMD 0x663B40 -- ECX receiver, no arguments, RET.
     void FUN_00663B40();
     // Declaration: GAMEMD 0x663DB0 -- pointer stack argument, boolAL, RET4.
@@ -387,6 +421,10 @@ struct NetIdMapRef
     // FUNCTION: GAMEMD 0x664400 (decl; reloc)
     void FUN_00664400(int id, int port);
 };
+GG_STATIC_ASSERT(offsetof(NetIdMapRef, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(NetIdMapRef, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(NetIdMapRef, unknown_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(NetIdMapRef, RouterProcess) == 0x1C);
 // GLOBAL: GAMEMD 0xB052D0
 extern NetIdMapRef IdMap_00B052D0;
 
