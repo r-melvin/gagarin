@@ -151898,5 +151898,23 @@
   "name": "Obj_00625560::FUN_00625560",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/wide_string_tu293.cpp",
+  "addr": "0x7B73F0",
+  "sym": "?FUN_007B73F0@Obj_007B66D0@@QAE_NPBG0@Z",
+  "len": "0x208",
+  "name": "Obj_007B66D0::FUN_007B73F0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/wwmous.cpp",
+  "addr": "0x7B7A60",
+  "sym": "?FUN_007B7A60@Obj_007B66D0@@QBEHHPBGPAV1@@Z",
+  "len": "0x198",
+  "name": "Obj_007B66D0::FUN_007B7A60",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

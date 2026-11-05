@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes diffed against retail gamemd.exe v1.001 at 0x7B6BE0..0x7B7440 (members and string builders that sit
+//   Bytes diffed against retail gamemd.exe v1.001 at 0x7B6BE0..0x7B7600 (members and string builders that sit
 //   before the proven start of wwmous.cpp, 0x7B7831, and follow Obj_007B66D0's own members).
 //   Layout, conventions and CRT addresses come from the retail disassembly.
 #include "wide_string_scratch.h"
@@ -91,5 +91,38 @@ bool Obj_007B66D0::FUN_007B72F0(wchar_t ch, unsigned int pos)
     wcscat(grown, Buffer + pos);
     ::operator delete(Buffer);
     Buffer = grown;
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x7B73F0
+// Replaces every occurrence of `find` with `replacement`: the result is built
+// in a scratch buffer and then becomes this string.
+bool Obj_007B66D0::FUN_007B73F0(const wchar_t* find, const wchar_t* replacement)
+{
+    WideScratch work;
+    const wchar_t* current = (Buffer == 0) ? WideEmptyString : Buffer;
+    if (current != 0) {
+        while (current != 0 && *current != 0) {
+            wchar_t* hit = FUN_007CC682(current, find);
+            if (hit == 0) {
+                if (current != 0) {
+                    work.Append(current);
+                }
+                current = 0;
+                continue;
+            }
+            int prefix = (int)hit - (int)current;
+            if (prefix != 0) {
+                work.AppendCount(current, prefix);
+            }
+            if (replacement != 0) {
+                work.Append(replacement);
+            }
+            current = hit + wcslen(find);
+        }
+    }
+    const wchar_t* text = (work.Buffer == 0) ? WideEmptyString : work.Buffer;
+    Release();
+    Store(text);
     return true;
 }

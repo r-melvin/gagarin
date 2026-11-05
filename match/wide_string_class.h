@@ -160,6 +160,10 @@ public:
     bool FUN_007B71D0(const wchar_t* text, unsigned int pos);
     // FUNCTION: GAMEMD 0x7B72F0 (decl; reloc) -- __thiscall, two stack words: insert one character at `pos` (clamped to the length).
     bool FUN_007B72F0(wchar_t ch, unsigned int pos);
+    // FUNCTION: GAMEMD 0x7B73F0 (decl; reloc) -- __thiscall, RET 8: replace every occurrence of `find` with `replacement`.
+    bool FUN_007B73F0(const wchar_t* find, const wchar_t* replacement);
+    // FUNCTION: GAMEMD 0x7B7A60 (decl; reloc) -- __thiscall, RET 0xC: read the token at or after `start` into `token`; returns the index after it, or -1.
+    int FUN_007B7A60(int start, const wchar_t* delimiters, Obj_007B66D0* token) const;
     // FUNCTION: GAMEMD 0x7B7C00 (decl; reloc) -- __thiscall, RET 8: read the line at `start` into `line`; returns the index after it, or -1.
     int FUN_007B7C00(int start, Obj_007B66D0* line) const;
     // FUNCTION: GAMEMD 0x7B7100 (decl; reloc) -- the same buffer-or-shared-empty

@@ -103,6 +103,40 @@ bool Obj_007B66D0::FUN_007B7980(wchar_t ch)
     return true;
 }
 
+// FUNCTION: GAMEMD 0x7B7A60
+// Reads the next token at or after `start` into `token`: leading characters of
+// `delimiters` are skipped, the token runs to the next delimiter. Returns the
+// index after the token, or -1 when there is none.
+int Obj_007B66D0::FUN_007B7A60(int start, const wchar_t* delimiters, Obj_007B66D0* token) const
+{
+    int index = start;
+    if (index < 0) {
+        return -1;
+    }
+    while (index < WideLength(Buffer)) {
+        if (wcschr(delimiters, Buffer[index]) == 0) {
+            break;
+        }
+        index++;
+    }
+    if (index >= WideLength(Buffer)) {
+        return -1;
+    }
+    int begin = index;
+    while (index < WideLength(Buffer)) {
+        if (wcschr(delimiters, Buffer[index]) != 0) {
+            break;
+        }
+        index++;
+    }
+    int end = index - 1;
+    const wchar_t* from = Buffer + begin;
+    token->Release();
+    token->Store(from);
+    token->FUN_007B78D0(end - begin + 1);
+    return end + 1;
+}
+
 // FUNCTION: GAMEMD 0x7B7C00
 // Reads the line that starts at `start` into `line` (terminators are "\r\n",
 // a CR LF pair counts as one) and returns the index after it, or -1 when

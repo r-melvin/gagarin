@@ -12,6 +12,8 @@
 
 // LIBRARY: GAMEMD 0x7CA564 (decl; reloc) -- swprintf.
 extern "C" int __cdecl FUN_007CA564(wchar_t* buffer, const wchar_t* format, ...);
+// LIBRARY: GAMEMD 0x7CC682 (decl; reloc) -- wcsstr.
+extern "C" wchar_t* __cdecl FUN_007CC682(const wchar_t* text, const wchar_t* find);
 
 // The temporary string object of the original bodies: a heap buffer that its
 // destructor frees when the function leaves (retail expands that inline).
@@ -57,6 +59,24 @@ struct WideScratch
             *Buffer = 0;
         }
         wcscat(Buffer, text);
+        if (old != 0) {
+            ::operator delete(old);
+        }
+    }
+    void AppendCount(const wchar_t* text, int count)
+    {
+        wchar_t* old = Buffer;
+        int len = count + 1;
+        if (old != 0) {
+            len += (int)wcslen(old);
+        }
+        Buffer = (wchar_t*)::operator new(len * 4);
+        if (old != 0) {
+            wcscpy(Buffer, old);
+        } else {
+            *Buffer = 0;
+        }
+        wcsncat(Buffer, text, count);
         if (old != 0) {
             ::operator delete(old);
         }
