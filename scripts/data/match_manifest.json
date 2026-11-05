@@ -151860,5 +151860,16 @@
   "name": "Obj_00770430::FUN_007717A0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/Techno.cpp",
+  "addr": "0x708E00",
+  "sym": "?vf_219@TechnoClass@@UAEXXZ",
+  "len": "0xaa",
+  "name": "TechnoClass::vf_219",
+  "status": "partial",
+  "pct": 98.3,
+  "best_pct": 98.3,
+  "best_at": "2eeee861"
  }
 ]

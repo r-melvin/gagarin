@@ -4144,6 +4144,26 @@ void TechnoView_00708DC0::VoiceCapture()
     }
 }
 
+// FUNCTION: GAMEMD 0x708E00
+// Slot 219: play the deploy voice, or the undeploy voice when this is a deployed infantryman, then
+// clear the pending flag.
+void TechnoClass::vf_219()
+{
+    if (!unknown_bool_4F8) {
+        // Retail tests this itself and branches: cmp esi,ebx / je 0x708E74 at 0x708E13, then cmp eax,0xF / jne 0x708E74
+        // on vf_11() at 0x708E1C. The helper yields only its mask form (0x708E28); it was tried first and reached 18.6%.
+        // THISNULL: GAMEMD 0x459F40
+        if (this && vf_11() == 15 && ((InfantryClass*)KindCast_00459F40(15))->FUN_00522510()) {
+            if (vf_33()->VoiceUndeploy != -1) {
+                vf_213(vf_33()->VoiceUndeploy);
+            }
+        } else if (vf_33()->VoiceDeploy != -1) {
+            vf_213(vf_33()->VoiceDeploy);
+        }
+    }
+    unknown_bool_4F8 = 0;
+}
+
 // FUNCTION: GAMEMD 0x708EB0
 // Play a randomly chosen select voice through slot 213: from the type's
 // enslaved list when this has a slave owner, else its deactivated list when
