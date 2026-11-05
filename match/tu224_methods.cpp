@@ -5,6 +5,8 @@
 #include "bit_font_print_methods.h"
 #include "ccfile_class.h"
 #include "_layout/file_straw.h"
+#include "wwlib/surface/bsurface_class.h"
+#include "wwlib/surface/surface_ctor_inline.h"
 extern "C" int __cdecl _wcsicmp(const wchar_t*, const wchar_t*);
 extern "C" size_t __cdecl strlen(const char*);
 long __cdecl FUN_007CB9B8(const wchar_t* text, wchar_t** end, int radix);
@@ -34,7 +36,67 @@ unknown_P4_6C96E0 unknown_P4_6C96E0::FUN_006C9780(const unknown_P4_6C96E0& b) co
     return r;
 }
 
-struct unknown_Cues_6C9C60;
+struct unknown_Cue_6C9C60 {
+    unsigned int Start_0;
+    unsigned int Length_4;
+    unsigned int Color_8;
+    int Line_C;
+    int Align_10;
+    const unsigned short* Text_14;
+};
+struct unknown_Cues_6C9C60 {
+    char pad_0[4];
+    unknown_Cue_6C9C60** Items_4;
+    char pad_8[8];
+    int Count_10;
+};
+struct unknown_Player_6C9C60 {
+    unknown_Cues_6C9C60* Cues_0;
+    int Index_4;
+    unknown_Cue_6C9C60* Current_8;
+    void(__cdecl* Callback_C)();
+    Surface* Surface_10;
+    RectangleStruct Pending_14;
+    RectangleStruct Done_24;
+    void FUN_006C9D40(unknown_Cue_6C9C60* cue);
+    bool FUN_006C9C60(unsigned int t);
+    unknown_Player_6C9C60()
+        : Cues_0(0), Index_4(0), Current_8(0), Callback_C(0), Surface_10(0)
+    {
+    }
+    // FUNCTION: GAMEMD 0x6C9B40 (decl; reloc) -- the loader, defined on the leading-field view below.
+    bool FUN_006C9B40(const char* name);
+};
+
+extern "C" void __cdecl _splitpath(const char* path, char* drive, char* dir, char* fname, char* ext);
+
+// FUNCTION: GAMEMD 0x6C99D0
+// A subtitle player for the file `name`: zero the player, load the cue table named by the file's base name
+// and, when it loads, attach a 640x255 16-bit buffered surface cleared to black.
+unknown_Player_6C9C60* __fastcall FUN_006C99D0(const char* name)
+{
+    if (name && strlen(name)) {
+        unknown_Player_6C9C60* player = new unknown_Player_6C9C60;
+        if (player) {
+            char base[0x100];
+            player->Pending_14.X = 0;
+            player->Pending_14.Y = 0;
+            player->Pending_14.Width = 0;
+            player->Pending_14.Height = 0;
+            _splitpath(name, 0, 0, base, 0);
+            if (player->FUN_006C9B40(base) == true) {
+                BSurface* surface = new BSurface(0x280, 0xff, 2);
+                if (surface) {
+                    surface->Fill(0);
+                    player->Surface_10 = surface;
+                }
+            }
+        }
+        return player;
+    }
+    return 0;
+}
+
 struct unknown_Parser_6C9B40 {
     char pad_0[0x808];
     void FUN_006C9EC0(FileStraw* r);
@@ -66,32 +128,6 @@ bool unknown_Holder_6C9B40::FUN_006C9B40(const char* name)
     }
     return false;
 }
-
-struct unknown_Cue_6C9C60 {
-    unsigned int Start_0;
-    unsigned int Length_4;
-    unsigned int Color_8;
-    int Line_C;
-    int Align_10;
-    const unsigned short* Text_14;
-};
-struct unknown_Cues_6C9C60 {
-    char pad_0[4];
-    unknown_Cue_6C9C60** Items_4;
-    char pad_8[8];
-    int Count_10;
-};
-struct unknown_Player_6C9C60 {
-    unknown_Cues_6C9C60* Cues_0;
-    int Index_4;
-    unknown_Cue_6C9C60* Current_8;
-    void(__cdecl* Callback_C)();
-    Surface* Surface_10;
-    RectangleStruct Pending_14;
-    RectangleStruct Done_24;
-    void FUN_006C9D40(unknown_Cue_6C9C60* cue);
-    bool FUN_006C9C60(unsigned int t);
-};
 
 // FUNCTION: GAMEMD 0x6C9C60
 bool unknown_Player_6C9C60::FUN_006C9C60(unsigned int t)

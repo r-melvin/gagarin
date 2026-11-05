@@ -66,6 +66,8 @@
 #include "_layout/session_class.h"
 #include "mathtbl_init_shapes.h"
 #include "ccini_class_methods.h"
+#include "_layout/ini_class_default_ctor.h"
+#include "ccini_class_default_ctor.h"
 #include "ccfile_class.h"
 #include <stdio.h>
 #include <math.h>

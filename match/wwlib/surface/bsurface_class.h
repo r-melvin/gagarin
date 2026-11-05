@@ -12,6 +12,10 @@
 class BSurface : public XSurface
 {
 public:
+    // The construction the allocation sites expand inline: XSurface (Surface's two stores, the lock counter), the
+    // bytes per pixel, then the pixel buffer (MemoryBuffer 0x43AD00) of width * height * bytes per pixel.
+    BSurface(int width, int height, int bytesPerPixel)
+        : XSurface(width, height), BytesPerPixel(bytesPerPixel), Pixels(0, width * height * bytesPerPixel) {}
     virtual ~BSurface();
     // FUNCTION: GAMEMD 0x4115F0 (decl; reloc)
     virtual void* Lock(Point2D origin);

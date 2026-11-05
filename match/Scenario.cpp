@@ -34,6 +34,8 @@
 #include "_layout/cd_callback.h"
 #include "_layout/global_0081c1d0.h"
 #include "ccini_class_methods.h"
+#include "_layout/ini_class_default_ctor.h"
+#include "ccini_class_default_ctor.h"
 #include "ccfile_class.h"
 #include "class_sweep_00581f50.h"
 #include "frame_counter.h"

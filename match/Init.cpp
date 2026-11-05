@@ -95,6 +95,8 @@ extern unsigned char DAT_00A9F91C;
 #include "dialog_help_leaves.h"
 #include "window_moving_methods.h"
 #include "_layout/ini_class.h"
+#include "ccini_class_methods.h"
+#include "ccini_class_default_ctor.h"
 #include "ui_begin_dialog_methods.h"
 #include "randomizer.h"
 #include "random_straw.h"
@@ -1257,6 +1259,42 @@ void __cdecl FUN_00532140()
 
 // GLOBAL: GAMEMD 0x87F658 -- every registered keyboard command (defined in static_vector_dtor_stubs.cpp).
 extern DynamicVectorClass<const CommandClass*> DAT_0087F658;
+
+// The key-to-command index is the third retail instantiation of the {ID, Data} index (see _layout/index.h): its
+// own comparator at 0x48BC20 and out-of-line copies at 0x5387D0 (AddIndex), 0x5388A0 (RemoveIndex) and 0x538980
+// (IsPresent). The retail copy of RemoveIndex is phrased as an explicit specialisation below.
+template<> bool IndexClass<int, const CommandClass*>::RemoveIndex(const int& id);
+
+// GLOBAL: GAMEMD 0x87F680 -- the key-to-command index (typed here as the third {ID, Data} index).
+extern IndexClass<int, const CommandClass*> DAT_0087F680;
+
+// FUNCTION: GAMEMD 0x533D20
+// Load KEYBOARDMD.INI and rebuild the key-to-command index from its Hotkey section: each key names a command,
+// each value the key code it answers to.
+bool FUN_00533D20()
+{
+    CCINIClass ini;
+    CCFileClass file("KEYBOARDMD.INI");
+    if (ini.ReadCCFile(&file, false, false)) {
+        DAT_0087F680.Clear();
+        for (int i = 0; i < ini.GetKeyCount("Hotkey"); i++) {
+            const char* name = ini.GetKeyName("Hotkey", i);
+            int key = ini.FUN_005276D0("Hotkey", name, 0);
+            for (int j = 0; j < DAT_0087F658.Count; j++) {
+                if (strcmp(DAT_0087F658.Items[j]->vf_1(), name) == 0) {
+                    const CommandClass* command = DAT_0087F658.Items[j];
+                    if (command != 0 && key != 0) {
+                        DAT_0087F680.AddIndex(key, command);
+                    }
+                    break;
+                }
+            }
+        }
+        return true;
+    }
+    FUN_004068E0("Unable to load KEYBOARDMD.INI\n");
+    return false;
+}
 
 // FUNCTION: GAMEMD 0x533F50
 // Run the keyboard command called `name`, if there is one.
@@ -2963,17 +3001,8 @@ extern "C" void __cdecl FUN_007C8B3D(void* block);
 extern "C" void __cdecl FUN_007C8B48(void* base, unsigned int num, unsigned int width,
                                      int (__cdecl* compare)(const void*, const void*));
 
-// The key-to-command index is the third retail instantiation of the {ID, Data} index (see _layout/index.h): its
-// own comparator at 0x48BC20 and out-of-line copies at 0x5387D0 (AddIndex), 0x5388A0 (RemoveIndex) and 0x538980
-// (IsPresent). The retail copy of RemoveIndex is phrased as an explicit specialisation below.
-template<> bool IndexClass<int, const CommandClass*>::RemoveIndex(const int& id);
-
-// GLOBAL: GAMEMD 0x87F680 -- the key-to-command index (typed here as the third {ID, Data} index).
-extern IndexClass<int, const CommandClass*> DAT_0087F680;
 // GLOBAL: GAMEMD 0x87F658 -- every registered keyboard command.
 extern DynamicVectorClass<const CommandClass*> DAT_0087F658;
-// FUNCTION: GAMEMD 0x533D20 (decl; reloc)
-void FUN_00533D20();
 
 // FUNCTION: GAMEMD 0x532150
 // PARTIAL: 61% -- the compiler inlines the sixth CreateTeam constructor and its list append where retail

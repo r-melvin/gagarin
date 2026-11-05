@@ -36,6 +36,7 @@
 #include "vector_cursor.h"
 #include "house_class_can_ally_methods.h"
 #include "_layout/ini_class.h"
+#include "_layout/generic_list_ctor_inline.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -358,6 +359,27 @@ int ScenarioElapsedTimer::FUN_004F1B20()
     return left;
 }
 
+
+// FUNCTION: GAMEMD 0x4F1CA0 (decl; reloc) -- __fastcall(ini, name).
+int __fastcall FUN_004F1CA0(INIClass* ini, const char* name);
+
+// FUNCTION: GAMEMD 0x4F1B80
+// Open the named file, read it as an INI and hand it to the 0x4F1CA0 reader.
+int __fastcall FUN_004F1B80(const Wstring& file_name, const char* key)
+{
+    CCFileClass file(file_name);
+    if (!file.Exists(0)) {
+        return 0;
+    }
+    INIClass ini((INIClass::SectionIndexClass::InlineIndex()));
+    int result;
+    if (ini.FUN_00525A10(&file, 0) > 0) {
+        result = FUN_004F1CA0(&ini, key);
+    } else {
+        result = 0;
+    }
+    return result;
+}
 
 // FUNCTION: GAMEMD 0x4F2140
 // Build the screen engine, the two default names and an empty item list.

@@ -1515,6 +1515,46 @@ int FUN_005E64C0(int index)
     return Map_Player_Limit(index);
 }
 
+#include "session_entry.h"
+#include "ccfile_class.h"
+#include "_layout/ini_class.h"
+#include "_layout/generic_list_ctor_inline.h"
+// GLOBAL: GAMEMD 0xA8B8C8 (Items 0xA8B8CC, Count 0xA8B8D8).
+extern DynamicVectorClass<MultiMission*> DAT_00A8B8C8;
+
+// FUNCTION: GAMEMD 0x5E6520
+//
+// The player count of map entry `index`: the number of "Waypoints" keys the
+// map file holds, else its RandomMap NumPlayers, else 8.
+int FUN_005E6520(int index)
+{
+    if (index < 0 || index >= DAT_00A8B8C8.Count) {
+        return 0;
+    }
+    char name[0x84];
+    strcpy(name, DAT_00A8B8C8.Items[index]->unknown_058);
+    CCFileClass file(name);
+    INIClass ini((INIClass::SectionIndexClass::InlineIndex()));
+    if (ini.FUN_00525A10(&file, 0) == 0) {
+        return 0;
+    }
+    int count = 0;
+    for (int i = 0; i < 8; i++) {
+        char key[0x20];
+        sprintf(key, "%d", i);
+        if (ini.FUN_005276D0("Waypoints", key, -1) != -1) {
+            count++;
+        }
+    }
+    if (count == 0) {
+        count = ini.FUN_005276D0("RandomMap", "NumPlayers", 0);
+        if (count == 0) {
+            count = 8;
+        }
+    }
+    return count;
+}
+
 // FUNCTION: GAMEMD 0x5E66D0
 //
 // The selected entry of the lobby's map list (list item 0x553, LB_GETCURSEL).
@@ -2998,9 +3038,6 @@ void FUN_005ED270(HWND dialog, int control, int kind)
 }
 
 #include "vtable_seating_ctor_family_methods.h"
-#include "session_entry.h"
-// GLOBAL: GAMEMD 0xA8B8C8 (Items 0xA8B8CC, Count 0xA8B8D8).
-extern DynamicVectorClass<MultiMission*> DAT_00A8B8C8;
 // GLOBAL: GAMEMD 0xAC1154 -- the lobby's map preview.
 extern SeatNull_006406E0* DAT_00AC1154;
 // FUNCTION: GAMEMD 0x5E74E0 (decl; reloc) -- redraw the preview from the scenario.

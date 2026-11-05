@@ -268,6 +268,8 @@ template class MultiplayerGameMode::Initializer<MPCooperative>;
 #include "_layout/house_class.h"
 #include "_layout/house_type_class.h"
 #include "ccini_class_methods.h"
+#include "_layout/ini_class_default_ctor.h"
+#include "ccini_class_default_ctor.h"
 #include "ccfile_class.h"
 #include "vector_class_operations.h"
 #include "_rt/gg_vslot.h"

@@ -154193,5 +154193,59 @@
   "pct": 96.5,
   "best_pct": 96.5,
   "best_at": "f851e2b7"
+ },
+ {
+  "tu": "match/GOptions.cpp",
+  "addr": "0x4F1B80",
+  "sym": "?FUN_004F1B80@@YIHABVWstring@@PBD@Z",
+  "len": "0x11e",
+  "name": "?FUN_004F1B80@@YIHABVWstring@@PBD@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Init.cpp",
+  "addr": "0x533D20",
+  "sym": "?FUN_00533D20@@YI_NXZ",
+  "len": "0x225",
+  "name": "?FUN_00533D20@@YI_NXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ini_class_ctor_535aa0.cpp",
+  "addr": "0x535AA0",
+  "sym": "??0INIClass@@QAE@XZ",
+  "len": "0x8f",
+  "name": "??0INIClass@@QAE@XZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ini_class_ctor_535aa0.cpp",
+  "addr": "0x535B30",
+  "sym": "??0CCINIClass@@QAE@XZ",
+  "len": "0x92",
+  "name": "??0CCINIClass@@QAE@XZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/netshare.cpp",
+  "addr": "0x5E6520",
+  "sym": "?FUN_005E6520@@YIHH@Z",
+  "len": "0x1ad",
+  "name": "?FUN_005E6520@@YIHH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu224_methods.cpp",
+  "addr": "0x6C99D0",
+  "sym": "?FUN_006C99D0@@YIPAUunknown_Player_6C9C60@@PBD@Z",
+  "len": "0xec",
+  "name": "?FUN_006C99D0@@YIPAUunknown_Player_6C9C60@@PBD@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

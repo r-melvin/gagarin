@@ -39,10 +39,11 @@ public:
         // inline at the call sites, where retail calls.
         bool FUN_0052B390(const int& id);
     };
-    // The inline construction, as CCINIClass's constructor expands it at
-    // 0x5D5C07: +0x04/+0x08 zeroed, the list (0x49E8E0) and index (0x49EA10)
-    // constructors called, +0x3C zeroed.
-    INIClass() : unknown_04(0), unknown_08(0), unknown_3C(0) {}
+    // Retail's out-of-line copy is 0x535AA0 (defined in Init.cpp, with the list and index constructors expanded
+    // inside it). The units that expand the construction themselves, as CCINIClass's constructor does at
+    // 0x5D5C07 (+0x04/+0x08 zeroed, the list 0x49E8E0 and index 0x49EA10 constructors called, +0x3C zeroed), include
+    // ini_class_default_ctor.h for the inline body.
+    INIClass();
     // The same with the index construction expanded inline (0x779730).
     INIClass(SectionIndexClass::InlineIndex tag) : unknown_04(0), unknown_08(0), SectionIndex(tag), unknown_3C(0) {}
     // FUNCTION: GAMEMD 0x5256F0
