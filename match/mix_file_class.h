@@ -85,6 +85,8 @@ public:
     // codegen (plain `new(0x28); if(p) ctor`, no fs:0 SEH prologue).
     MixFileClass(const char* name, const char* tag = "") throw();  // 0x5B3C20 __thiscall
     virtual ~MixFileClass();                               // Node<> dtor slot 0
+    // FUNCTION: GAMEMD 0x5B43F0 (decl; reloc) -- cache the archive, one mode argument, ECX receiver.
+    bool FUN_005B43F0(int mode);
     MixFileClass* NextNode; // +0x04 list link (GenericNode layout)
     MixFileClass* PrevNode; // +0x08
     const char* FileName; // +0x0C, read by CCFile Open473D10

@@ -152985,5 +152985,110 @@
   "name": "StripClass::FUN_006A92E0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/Ini.cpp",
+  "addr": "0x526A30",
+  "sym": "?FUN_00526A30@INIClass@@QAEHABVWstring@@@Z",
+  "len": "0xc8",
+  "name": "INIClass::FUN_00526A30",
+  "status": "partial",
+  "pct": 83.6,
+  "best_pct": 83.6,
+  "best_at": "00c20b70"
+ },
+ {
+  "tu": "match/Init.cpp",
+  "addr": "0x52FC20",
+  "sym": "?FUN_0052FC20@@YIXXZ",
+  "len": "0x29e",
+  "name": "?FUN_0052FC20@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Init.cpp",
+  "addr": "0x52FEC0",
+  "sym": "?FUN_0052FEC0@@YIXPAUCaptureSurface@@E@Z",
+  "len": "0xca",
+  "name": "?FUN_0052FEC0@@YIXPAUCaptureSurface@@E@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Init.cpp",
+  "addr": "0x530000",
+  "sym": "?FUN_00530000@@YI_NXZ",
+  "len": "0x196",
+  "name": "?FUN_00530000@@YI_NXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Init.cpp",
+  "addr": "0x531680",
+  "sym": "?FUN_00531680@@YI_NXZ",
+  "len": "0x231",
+  "name": "?FUN_00531680@@YI_NXZ",
+  "status": "partial",
+  "pct": 82.0,
+  "best_pct": 82.0,
+  "best_at": "00c20b70"
+ },
+ {
+  "tu": "match/Init.cpp",
+  "addr": "0x5318C0",
+  "sym": "?FUN_005318C0@@YI_NPAVFileClass@@@Z",
+  "len": "0x93",
+  "name": "?FUN_005318C0@@YI_NPAVFileClass@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Init.cpp",
+  "addr": "0x531A00",
+  "sym": "?FUN_00531A00@@YGHPAUHWND__@@IIJ@Z",
+  "len": "0x22b",
+  "name": "?FUN_00531A00@@YGHPAUHWND__@@IIJ@Z",
+  "status": "partial",
+  "pct": 87.9,
+  "best_pct": 87.9,
+  "best_at": "00c20b70"
+ },
+ {
+  "tu": "match/Init.cpp",
+  "addr": "0x531C30",
+  "sym": "?FUN_00531C30@@YIXXZ",
+  "len": "0x81",
+  "name": "?FUN_00531C30@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Init.cpp",
+  "addr": "0x535A70",
+  "sym": "?FUN_00535A70@@YIXPAVCCFileClass@@@Z",
+  "len": "0x27",
+  "name": "?FUN_00535A70@@YIXPAVCCFileClass@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Init.cpp",
+  "addr": "0x538C40",
+  "sym": "?FUN_00538C40@@YIXPBD@Z",
+  "len": "0x78",
+  "name": "?FUN_00538C40@@YIXPBD@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Init.cpp",
+  "addr": "0x538CC0",
+  "sym": "?FUN_00538CC0@@YIXPBD@Z",
+  "len": "0x71",
+  "name": "?FUN_00538CC0@@YIXPBD@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

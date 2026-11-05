@@ -658,7 +658,7 @@ ScenarioClass::ScenarioClass()
         unknown_248A[i].unknown_00[0] = 0;
         FUN_00689910(i, 0);
     }
-    memset(&unknown_348E, 0, 16);
+    memset(Views, 0, 16);
 }
 
 // Declaration: GAMEMD 0x6886B0
@@ -1068,10 +1068,10 @@ void __fastcall FUN_00684C30()
         if (Session_00A8B238.GameMode == 0) {
             CellStruct cell = ScenarioInstance->Waypoints[DAT_008A38E0.CarryOverGlobals[0] ?
                 ScenarioInstance->unknown_0210 : ScenarioInstance->unknown_020C];
-            ScenarioInstance->unknown_349A = cell;
-            ScenarioInstance->unknown_3496 = ScenarioInstance->unknown_349A;
-            ScenarioInstance->unknown_3492 = ScenarioInstance->unknown_3496;
-            ScenarioInstance->unknown_348E = ScenarioInstance->unknown_3492;
+            ScenarioInstance->Views[3] = cell;
+            ScenarioInstance->Views[2] = ScenarioInstance->Views[3];
+            ScenarioInstance->Views[1] = ScenarioInstance->Views[2];
+            ScenarioInstance->Views[0] = ScenarioInstance->Views[1];
             CoordStruct coord;
             coord.X = cell.X * 256 + 128;
             coord.Y = cell.Y * 256 + 128;

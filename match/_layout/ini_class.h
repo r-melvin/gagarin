@@ -43,6 +43,8 @@ public:
     }
     // FUNCTION: GAMEMD 0x526960
     int GetKeyCount(const char* section);
+    // Declaration: GAMEMD 0x526A30 -- section name as a Wstring, RET 4; key count.
+    int FUN_00526A30(const Wstring& section);
     // FUNCTION: GAMEMD 0x526B00
     void Reset();
     // FUNCTION: GAMEMD 0x526B10

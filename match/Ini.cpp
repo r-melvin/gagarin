@@ -698,6 +698,27 @@ int INIClass::GetKeyCount(const char* section)
     return 0;
 }
 
+// FUNCTION: GAMEMD 0x526A30
+// Number of keys in a section named by a Wstring; a null name, an unknown
+// section or an empty slot all answer zero (GetKeyCount's body on the string).
+int INIClass::FUN_00526A30(const Wstring& section)
+{
+    const char* name = section.FUN_007B5440();
+    if (name != 0) {
+        CRC_00526960 engine;
+        int crc = engine(name, strlen(name));
+
+        Index_00526960* index = reinterpret_cast<Index_00526960*>(&SectionIndex);
+        if (index->IsPresent(crc)) {
+            INIClass::INISection* sec = (*index)[crc];
+            if (sec != 0)
+                return sec->EntryIndex.IndexCount;
+        }
+    }
+
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x526B00  INIClass::Reset (__thiscall)
 // Drop the parsed section bookkeeping. Retail zeroes both dwords from a single
 // XOR'd register and never touches the vptr.

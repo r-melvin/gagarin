@@ -201,7 +201,7 @@ struct ScenarioClass
     ScenarioRecord unknown_1C88[50];
     ScenarioRecord unknown_248A[100];
     // 0x684CBE..0x684D03 copies the packed waypoint through four cells.
-    CellStruct unknown_348E, unknown_3492, unknown_3496, unknown_349A;
+    CellStruct Views[4];   // indexed by a variable at Init.cpp's view store and recall
     char unknown_349E[2];
     int unknown_34A0;
     bool unknown_34A4;
@@ -325,12 +325,9 @@ GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1444) == 0x1444); // 0x683AB0 a
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1C70) == 0x1C70); // 0x683AB0 access
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34D0) == 0x34D0); // 0x683AB0 access
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34CC) == 0x34CC);
-GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_348E) == 0x348E);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, Views) == 0x348E);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_020C) == 0x020C);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0210) == 0x0210);
-GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3492) == 0x3492);
-GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3496) == 0x3496);
-GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_349A) == 0x349A);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34B2) == 0x34B2);
 
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34B8) == 0x34B8);

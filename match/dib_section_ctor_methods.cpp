@@ -6,9 +6,9 @@
 // pixel buffered surface (XSurface vtable 0x7E2104, then BSurface 0x7E2070,
 // pixels through MemoryBuffer 0x43AD00). Any failure sets the leading flag.
 //
-// The surface pair is a TU-local view: the canonical BSurface header has no
-// constructor and declares Surface's out of line, while retail expands both
-// here.
+// The surface pair is in _layout/dib_surface.h: the canonical BSurface header
+// has no constructor and declares Surface's out of line, while retail expands
+// both here.
 //
 // LIBRARY: IAT 0x7E13A4 USER32!GetDC, 0x7E1464 USER32!ReleaseDC,
 //   0x7E1058 GDI32!CreateDIBSection.
@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/memory_buffer.h"
+#include "_layout/dib_surface.h"
 
 extern "C" __declspec(dllimport) void* __stdcall GetDC(void* window);
 extern "C" __declspec(dllimport) int __stdcall ReleaseDC(void* window, void* dc);
@@ -62,33 +63,6 @@ struct DibInfo
 };
 GG_STATIC_ASSERT(offsetof(DibInfo, Colors) == 0x28);
 GG_STATIC_ASSERT(sizeof(DibInfo) == 0x42C);   // operator new(0x42C) at 0x4A686F
-
-// VTABLE: GAMEMD 0x7E2104
-struct DibSurfaceBase
-{
-    DibSurfaceBase(int width, int height) : Width(width), Height(height), LockLevel(0) {}
-    virtual ~DibSurfaceBase();
-
-    int Width;       // +0x04
-    int Height;      // +0x08
-    int LockLevel;   // +0x0C
-};
-
-// VTABLE: GAMEMD 0x7E2070
-struct DibSurface : DibSurfaceBase
-{
-    DibSurface(int width, int height, int bpp, void* buffer)
-        : DibSurfaceBase(width, height), BytesPerPixel(bpp), Pixels(buffer, width * height * bpp)
-    {
-    }
-    virtual ~DibSurface();
-
-    int          BytesPerPixel;   // +0x10
-    MemoryBuffer Pixels;          // +0x14
-};
-GG_STATIC_ASSERT(offsetof(DibSurface, BytesPerPixel) == 0x10);
-GG_STATIC_ASSERT(offsetof(DibSurface, Pixels) == 0x14);
-GG_STATIC_ASSERT(sizeof(DibSurface) == 0x20);   // operator new(0x20) at 0x4A699A
 
 class DibSectionClass
 {

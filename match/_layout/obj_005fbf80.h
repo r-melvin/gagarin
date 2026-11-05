@@ -13,6 +13,8 @@ struct Obj_005FBF80
     char unknown_00[0x4C];
     int unknown_4C;         // +0x4C last soviet entry unlocked
     int unknown_50;         // +0x50 last allied entry unlocked
+    // FUNCTION: GAMEMD 0x5FA430 (decl; reloc) -- empty member, ECX = the options object.
+    void FUN_005FA430();
     // FUNCTION: GAMEMD 0x5FBF80
     void FUN_005FBF80(const char* name);
     // FUNCTION: GAMEMD 0x5FC000

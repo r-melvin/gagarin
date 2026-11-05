@@ -95,6 +95,13 @@ extern unsigned char DAT_00A9F91C;
 #include "dialog_help_leaves.h"
 #include "window_moving_methods.h"
 #include "_layout/ini_class.h"
+#include "ui_begin_dialog_methods.h"
+#include "randomizer.h"
+#include "random_straw.h"
+#include "_layout/voxel_resource_data.h"
+#include "game_options_class_methods.h"
+#include "scenario_class.h"
+#include "_layout/scenario_ptr_00a8b230.h"
 
 // The source-file string every text load passes (0x825FB8).
 #define INIT_CPP "D:\\ra2mdpost\\Init.CPP"
@@ -207,16 +214,6 @@ struct CommandMessageList
 };
 // GLOBAL: GAMEMD 0xA8BC60
 extern CommandMessageList DAT_00A8BC60;
-
-// The scenario object (pointer global 0xA8B230): the four stored view cells.
-struct CommandScenario
-{
-    char unknown_0000[0x348E];        // +0x0000
-    CellStruct Views[4];              // +0x348E
-};
-GG_STATIC_ASSERT(offsetof(CommandScenario, Views) == 0x348E);
-// GLOBAL: GAMEMD 0xA8B230
-extern CommandScenario* DAT_00A8B230;
 
 // FUNCTION: GAMEMD 0x647040 (decl; reloc)
 void FUN_00647040();
@@ -418,14 +415,15 @@ inline void CommandStoreView(int view)
 
 // The surfaces and the mouse ScreenCapture drives. Only the slots it calls are
 // named; the rest pin their indices.
+struct DibSurface;
 struct CaptureSurface
 {
     virtual void vf_00();
-    virtual void vf_04();
+    virtual void Attach(DibSurface* surface, int x, int y);   // +0x04
     virtual bool Blit(RectangleStruct* dest, CaptureSurface* source,
                       RectangleStruct* sourceRect, bool a, bool b);   // +0x08
     virtual void vf_0C();  virtual void vf_10();  virtual void vf_14();
-    virtual void vf_18();  virtual void vf_1C();  virtual void vf_20();
+    virtual void vf_18(int mode);  virtual void vf_1C();  virtual void vf_20();
     virtual void vf_24();  virtual void vf_28();  virtual void vf_2C();
     virtual void vf_30();  virtual void vf_34();  virtual void vf_38();
     virtual void vf_3C();  virtual void vf_40();  virtual void vf_44();
@@ -744,6 +742,151 @@ void Obj_0052F610::FUN_0052F610()
     FUN_0075A7D0(0);
 }
 
+extern "C" void __cdecl FUN_004068E0(const char* format, ...);
+// GLOBAL: GAMEMD 0xA8E7B0 -- the random-number straw.
+extern RandomStraw DAT_00A8E7B0;
+// GLOBAL: GAMEMD 0xA8ED94 -- the game seed.
+extern int DAT_00A8ED94;
+// GLOBAL: GAMEMD 0xA8ED98 -- a seed handed in by the session, or zero.
+extern int DAT_00A8ED98;
+// GLOBAL: GAMEMD 0xA8B8B8
+extern int DAT_00A8B8B8;
+// GLOBAL: GAMEMD 0xA8D5F8
+extern unsigned char DAT_00A8D5F8;
+// GLOBAL: GAMEMD 0xA8B238 -- the session game mode.
+extern int DAT_00A8B238;
+// GLOBAL: GAMEMD 0x886B88 -- the map generator's random source.
+extern Randomizer DAT_00886B88;
+// FUNCTION: GAMEMD 0x53E720 (decl; reloc)
+int FUN_0053E720();
+
+// FUNCTION: GAMEMD 0x52FC20
+// Seed the random number generators: from the clock when the session is a plain
+// local game, otherwise from the seed already chosen.
+void FUN_0052FC20()
+{
+    FUN_004068E0("Init random number\n");
+    if (DAT_00A8B8B8 == 0 && !(DAT_00A8D5F8 & 2) && FUN_0053E720() == 0) {
+        if (DAT_00A8B238 == 0 || DAT_00A8B238 == 5) {
+            SYSTEMTIME time;
+            GetSystemTime(&time);
+            DAT_00A8E7B0.FUN_00661850(time.wMilliseconds);
+            DAT_00A8E7B0.FUN_00661770(time.wSecond);
+            DAT_00A8E7B0.FUN_00661770(time.wSecond >> 1);
+            DAT_00A8E7B0.FUN_00661770(time.wSecond >> 2);
+            DAT_00A8E7B0.FUN_00661770(time.wSecond >> 3);
+            DAT_00A8E7B0.FUN_00661770(time.wSecond >> 4);
+            DAT_00A8E7B0.FUN_00661770(time.wMinute);
+            DAT_00A8E7B0.FUN_00661770(time.wMinute >> 1);
+            DAT_00A8E7B0.FUN_00661770(time.wMinute >> 2);
+            DAT_00A8E7B0.FUN_00661770(time.wMinute >> 3);
+            DAT_00A8E7B0.FUN_00661770(time.wMinute >> 4);
+            DAT_00A8E7B0.FUN_00661770(time.wHour);
+            DAT_00A8E7B0.FUN_00661770(time.wDay);
+            DAT_00A8E7B0.FUN_00661770(time.wDayOfWeek);
+            DAT_00A8E7B0.FUN_00661770(time.wMonth);
+            DAT_00A8E7B0.FUN_00661770(time.wYear);
+            int seed = DAT_00A8ED98;
+            if (seed == 0) {
+                DAT_00A8E7B0.FUN_006C98E0(&DAT_00A8ED94, 4);
+                seed = GetTickCount();
+            }
+            DAT_00A8ED94 = seed;
+        }
+        FUN_004068E0("Seed is %08x\n", DAT_00A8ED94);
+        {
+            Randomizer scenarioRandom(DAT_00A8ED94);
+            DAT_00A8B230->unknown_0218 = scenarioRandom;
+        }
+        {
+            Randomizer mapRandom(DAT_00A8ED94);
+            DAT_00886B88 = mapRandom;
+        }
+    } else {
+        {
+            Randomizer scenarioRandom(DAT_00A8ED94);
+            DAT_00A8B230->unknown_0218 = scenarioRandom;
+        }
+        {
+            Randomizer mapRandom(DAT_00A8ED94);
+            DAT_00886B88 = mapRandom;
+        }
+        FUN_004068E0("Seed is %08x\n", DAT_00A8ED94);
+    }
+}
+
+// The 16-bit buffered surface retail builds inline here (XSurface table 0x7E2104,
+// then BSurface table 0x7E2070; pixels through MemoryBuffer 0x43AD00).
+#include "_layout/dib_surface.h"
+
+// FUNCTION: GAMEMD 0x4F4780 (decl; reloc)
+void __fastcall FUN_004F4780(bool value, CaptureSurface* surface, int unused);
+// FUNCTION: GAMEMD 0x72E820 (decl; reloc)
+void __fastcall FUN_0072E820(DibSurface* surface, RectangleStruct* area, int flag);
+
+// FUNCTION: GAMEMD 0x52FEC0
+// Snapshot the surface (the primary one by default) into a fresh buffered surface,
+// attach it, and optionally repaint.
+void __fastcall FUN_0052FEC0(CaptureSurface* surface, unsigned char repaint)
+{
+    if (surface == 0) {
+        surface = DAT_0088730C;
+    }
+    surface->vf_18(0);
+    int width = surface->GetWidth();
+    int height = surface->GetHeight();
+    RectangleStruct area;
+    area.X = 0;
+    area.Y = 0;
+    area.Width = width;
+    area.Height = height;
+    DibSurface* copy = new DibSurface(width, height, 2, 0);
+    FUN_0072E820(copy, &area, 0);
+    surface->Attach(copy, 0, 1);
+    delete copy;
+    if (repaint) {
+        FUN_004F4780(false, surface, 0);
+    }
+}
+
+// GLOBAL: GAMEMD 0x886980 -- the empty tag text (see 0x530000).
+extern const char DAT_00886980[];
+
+// FUNCTION: GAMEMD 0x530000
+// Mount every ECACHE*.MIX and then every ELOCAL*.MIX found in the working directory,
+// added to the archive array; the ECACHE ones are cached as well.
+bool FUN_00530000()
+{
+    WIN32_FIND_DATAA data;
+    HANDLE find = FindFirstFileA("ECACHE*.MIX", &data);
+    if (find != INVALID_HANDLE_VALUE) {
+        do {
+            if (!(data.dwFileAttributes & 0x116)) {
+                MixFileClass* mix = new MixFileClass(data.cFileName, DAT_00886980);
+                if (mix) {
+                    DynamicVectorClass_Mix_AddItem(&MixArray, mix);
+                    mix->FUN_005B43F0(0);
+                }
+            }
+        } while (FindNextFileA(find, &data));
+        FindClose(find);
+    }
+
+    find = FindFirstFileA("ELOCAL*.MIX", &data);
+    if (find != INVALID_HANDLE_VALUE) {
+        do {
+            if (!(data.dwFileAttributes & 0x116)) {
+                MixFileClass* mix = new MixFileClass(data.cFileName, DAT_00886980);
+                if (mix) {
+                    DynamicVectorClass_Mix_AddItem(&MixArray, mix);
+                }
+            }
+        } while (FindNextFileA(find, &data));
+        FindClose(find);
+    }
+    return true;
+}
+
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x5301A0   MixFileClass::Bootstrap
 //
@@ -822,6 +965,117 @@ bool MixFileClass_Bootstrap()
     return false;
 }
 
+// GLOBAL: GAMEMD 0xA8ED94
+extern int DAT_00A8ED94;
+// GLOBAL: GAMEMD 0xA8EC90
+extern int DAT_00A8EC90;
+// GLOBAL: GAMEMD 0xA8E960
+extern int DAT_00A8E960;
+extern "C" void __cdecl FUN_004068E0(const char* format, ...);
+// GLOBAL: GAMEMD 0x822CF4 -- the scenario tech level.
+extern int TechLevel;
+
+// GLOBAL: GAMEMD 0x884E38 -- the four cached archives checked at start-up.
+extern MixFileClass* DAT_00884E38;
+// GLOBAL: GAMEMD 0x884E3C
+extern MixFileClass* DAT_00884E3C;
+// GLOBAL: GAMEMD 0x884E40
+extern MixFileClass* DAT_00884E40;
+// GLOBAL: GAMEMD 0x884E44
+extern MixFileClass* DAT_00884E44;
+// GLOBAL: GAMEMD 0xA8ECD8 -- the drop-pod voxel library.
+extern Obj_00755D10* DAT_00A8ECD8;
+// GLOBAL: GAMEMD 0xA8ECDC -- the drop-pod motion library.
+extern Obj_005BD5A0* DAT_00A8ECDC;
+// FUNCTION: GAMEMD 0x48D080 (decl; reloc) -- Unsorted::CallBack.
+void __cdecl FUN_0048D080();
+// FUNCTION: GAMEMD 0x5F76B0 (decl; reloc)
+void FUN_005F76B0();
+// FUNCTION: GAMEMD 0x45E750 (decl; reloc)
+void __cdecl FUN_0045E750();
+// FUNCTION: GAMEMD 0x7473E0 (decl; reloc)
+void FUN_007473E0();
+// FUNCTION: GAMEMD 0x41CAF0 (decl; reloc)
+void __cdecl FUN_0041CAF0();
+// FUNCTION: GAMEMD 0x5FF420 (decl; reloc)
+void FUN_005FF420();
+// FUNCTION: GAMEMD 0x53D330 (decl; reloc)
+void FUN_0053D330();
+
+// FUNCTION: GAMEMD 0x531680
+// Start-up check: the four cached archives must be present and cacheable; then run the
+// resource initialisers and load the drop-pod voxel and motion libraries.
+bool FUN_00531680()
+{
+    if (DAT_00884E38 == 0 || !DAT_00884E38->FUN_005B43F0(0)) {
+        return false;
+    }
+    if (DAT_00884E3C == 0 || !DAT_00884E3C->FUN_005B43F0(0)) {
+        return false;
+    }
+    if (DAT_00884E40 == 0 || !DAT_00884E40->FUN_005B43F0(0)) {
+        return false;
+    }
+    if (DAT_00884E44 == 0 || !DAT_00884E44->FUN_005B43F0(0)) {
+        return false;
+    }
+    FUN_0048D080();
+    FUN_0048D080();
+    Map_0087F7E8.MouseClass::vf_05();
+    DAT_00A8EB60.FUN_005FA430();
+    Session_00A8B238.FUN_00697AD0();
+    FUN_005F76B0();
+    FUN_0045E750();
+    FUN_005F76B0();
+    FUN_005F76B0();
+    FUN_005F76B0();
+    FUN_007473E0();
+    FUN_005F76B0();
+    FUN_005F76B0();
+    FUN_0041CAF0();
+    FUN_004F6EB0();
+    FUN_005FF420();
+    FUN_0053D330();
+
+    CCFileClass vox("DPOD.VXL");
+    DAT_00A8ECD8 = new Obj_00755D10(&vox, 0);
+    if (DAT_00A8ECD8 == 0) {
+        FUN_004068E0("Failed to create VoxLib!\n");
+        return false;
+    }
+    CCFileClass motion("DPOD.HVA");
+    DAT_00A8ECDC = new Obj_005BD5A0(&motion);
+    if (DAT_00A8ECDC == 0) {
+        FUN_004068E0("Failed to create MotLib!\n");
+        return false;
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x5318C0
+// Write the recording values for the current scenario to a file.
+bool __fastcall FUN_005318C0(FileClass* file)
+{
+    FUN_004068E0("Saving recording values for scenario : %s\n", DAT_00A8B230->unknown_125C);
+    file->WriteBytes(&TechLevel, 4);
+    file->WriteBytes(&DAT_00A8ED94, 4);
+    file->WriteBytes(&DAT_00A8B230->unknown_1254, 4);
+    file->WriteBytes(DAT_00A8B230->unknown_125C, 0x104);
+    file->WriteBytes(&DAT_00A8EC90, 4);
+    file->WriteBytes(&DAT_00A8E960, 4);
+    file->WriteBytes(&DAT_00A8EB60, 0xB8);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x622800 (decl; reloc) -- UI::FocusOnWindow.
+void __fastcall FUN_00622800(HWND window);
+// FUNCTION: GAMEMD 0x622720 (decl; reloc) -- UI::EndDialog.
+void __fastcall FUN_00622720(HWND window);
+// FUNCTION: GAMEMD 0x623120 (decl; reloc) -- UI::Updated.
+char __cdecl FUN_00623120();
+// GLOBAL: GAMEMD 0x8A00A0
+extern bool DAT_008A00A0;
+
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- localised string lookup(label, index, file, line).
 const wchar_t* FUN_00734E60(const char* label, int index, const char* file, int line);
 // FUNCTION: GAMEMD 0x735120 (decl; reloc) -- ANSI to wide, ECX = text.
@@ -835,6 +1089,106 @@ extern VersionClass DAT_00A8ECE0;
 extern char DAT_00825FB8[];
 // GLOBAL: GAMEMD 0x82696C -- "GUI:Version"
 extern char DAT_0082696C[];
+
+// GLOBAL: GAMEMD 0xA8F314
+extern char DAT_00A8F314[];
+// GLOBAL: GAMEMD 0xA8F394
+extern char DAT_00A8F394[];
+// GLOBAL: GAMEMD 0xA8F420
+extern char DAT_00A8F420[];
+// GLOBAL: GAMEMD 0xA8F4A0
+extern char DAT_00A8F4A0[];
+// GLOBAL: GAMEMD 0xA8F520
+extern char DAT_00A8F520[];
+// FUNCTION: GAMEMD 0x74FDC0 (decl; reloc) -- the game version text.
+char* FUN_0074FDC0();
+// FUNCTION: GAMEMD 0x777AC0 (decl; reloc) -- build time stamp text, ECX output, EDX capacity.
+void __fastcall FUN_00777AC0(char* text, unsigned capacity);
+// FUNCTION: GAMEMD 0x777B60 (decl; reloc) -- ECX output, EDX capacity.
+char* __fastcall FUN_00777B60(char* text, unsigned capacity);
+// FUNCTION: GAMEMD 0x777B30 (decl; reloc) -- ECX output, EDX capacity.
+char* __fastcall FUN_00777B30(char* text, unsigned capacity);
+// FUNCTION: GAMEMD 0x4E6150 (decl; reloc) -- processor feature probe.
+void __fastcall FUN_004E6150(int* level, char* flag, int a, int b);
+// STRING: GAMEMD 0x821F08 -- "Yes"
+extern const char STR_00821F08[];
+// STRING: GAMEMD 0x821F04
+extern const char STR_00821F04[];
+// STRING: GAMEMD 0x84E865 -- "Not available"
+extern const char STR_0084E865[];
+// FUNCTION: GAMEMD 0x4A3C00 (decl; reloc) -- fills the buffer in ECX.
+void __fastcall FUN_004A3C00(char* text);
+
+// FUNCTION: GAMEMD 0x531A00
+// Dialog procedure for the about box: on a button command store its id (1 or 2)
+// through the window's user data; on init fill the version/build/processor lines.
+int __stdcall FUN_00531A00(HWND h, UINT msg, WPARAM w, LPARAM l)
+{
+    int r = FUN_00622B50(h, msg, w, l);
+    if (r == 0) {
+        unsigned int* data = (unsigned int*)GetWindowLongA(h, 8);
+        switch (msg) {
+        case 0x111: {
+            int id = w & 0xFFFF;
+            if (id > 0 && id <= 2) {
+                *data = id;
+            }
+            break;
+        }
+        case 0x497: {
+            char text[256];
+            char stamp[128];
+            char name[128];
+            char date[128];
+            HWND item = GetDlgItem(h, 0x5B5);
+            SendMessageA(item, 0x4CD, 0, (LPARAM)FUN_00734E60("TXT_SHORT_TITLE", 0, INIT_CPP, 0x1630));
+            sprintf(text, "Version %s", FUN_0074FDC0());
+            SendMessageA(item, 0x4C8, 0, (LPARAM)text);
+            sprintf(text, "Internal Version %s", DAT_00A8ECE0.FUN_0074FAE0());
+            SendMessageA(item, 0x4C8, 0, (LPARAM)text);
+            stamp[0] = 0;
+            FUN_00777AC0(stamp, 0x80);
+            sprintf(text, "Release Build: %s by %s - %s", FUN_00777B30(date, 0x80), FUN_00777B60(name, 0x80), stamp);
+            SendMessageA(item, 0x4C8, 0, (LPARAM)text);
+            int level = 5;
+            char hasMmx = 0;
+            SendMessageA(item, 0x4C8, 0, (LPARAM)DAT_00A8F314);
+            SendMessageA(item, 0x4C8, 0, (LPARAM)DAT_00A8F4A0);
+            SendMessageA(item, 0x4C8, 0, (LPARAM)DAT_00A8F420);
+            SendMessageA(item, 0x4C8, 0, (LPARAM)DAT_00A8F520);
+            SendMessageA(item, 0x4C8, 0, (LPARAM)DAT_00A8F394);
+            FUN_004E6150(&level, &hasMmx, 0, 0);
+            sprintf(text, "MMX %s, Vendor: %s", hasMmx ? STR_00821F08 : STR_00821F04, STR_0084E865);
+            SendMessageA(item, 0x4C8, 0, (LPARAM)text);
+            FUN_004A3C00(text);
+            SendMessageA(item, 0x4C8, 0, (LPARAM)text);
+            return 0;
+        }
+        }
+        r = 0;
+    }
+    return r;
+}
+
+// FUNCTION: GAMEMD 0x531C30
+// Run dialog 0xD4 until it reports a result or the UI is updated; repaint when asked.
+void FUN_00531C30()
+{
+    int result = 0;
+    HWND window = UI_BeginDialog(0xD4, FUN_00531A00, 0);
+    if (window != 0) {
+        SetWindowLongA(window, 8, (LONG)&result);
+        FUN_00622800(window);
+        while (result == 0 && FUN_00623120() != 1) {
+            if (DAT_008A00A0) {
+                DAT_008A00A0 = false;
+                FUN_0052FEC0(0, 1);
+                FUN_004F4780(false, DAT_0088730C, 0);
+            }
+        }
+        FUN_00622720(window);
+    }
+}
 
 // STRING: GAMEMD 0x826960 -- L"%s %s"
 // FUNCTION: GAMEMD 0x531F60
@@ -948,6 +1302,14 @@ bool FUN_00534DE0()
 void FUN_005355C0(int a1, int a2)
 {
     FUN_00721210(DAT_00A83D10, a2, DAT_008263A8);
+}
+
+// FUNCTION: GAMEMD 0x535A70
+// ~CCFileClass expanded for the non-deleting form: clear the position, release
+// the buffer, seat the CDFileClass table and run ~BufferIOFileClass.
+void __fastcall FUN_00535A70(CCFileClass* file)
+{
+    file->CCFileClass::~CCFileClass();
 }
 
 // FUNCTION: GAMEMD 0x535BD0 -- CommandClass slot 5
@@ -2920,6 +3282,31 @@ double __cdecl FUN_004CADE0(double value);
 // SYNTHETIC: GAMEMD 0x538C20
 // GLOBAL: GAMEMD 0xA8F908
 MathTblZero4 DAT_00A8F908;
+
+// FUNCTION: GAMEMD 0x538C40
+// Load the 64K table from the named file when it exists.
+void __fastcall FUN_00538C40(const char* name)
+{
+    CCFileClass file(name);
+    if (file.Exists(0)) {
+        file.Open(1);
+        file.ReadBytes(DAT_00A8F91C, 0x10000);
+        file.Close();
+        DAT_00A9F91C = 0;
+    }
+}
+
+// FUNCTION: GAMEMD 0x538CC0
+// Save the 64K table to the named file when it does not exist yet.
+void __fastcall FUN_00538CC0(const char* name)
+{
+    CCFileClass file(name);
+    if (!file.Exists(0)) {
+        file.Open(2);
+        file.WriteBytes(DAT_00A8F91C, 0x10000);
+        file.Close();
+    }
+}
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538D40
