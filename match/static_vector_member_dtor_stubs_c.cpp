@@ -54,3 +54,8 @@ struct StaticVectorHolder_00B0CE78 {
 // SYNTHETIC: GAMEMD 0x006D1AA0 -- exit-time destructor stub of DAT_00B0CE78, guard byte 0x00B0CD58 bit 0
 // SYNTHETIC: GAMEMD 0x006D1A60 -- initialiser of DAT_00B0CE78
 DynamicVectorClass<DirtyAreaStruct> StaticVectorHolder_00B0CE78::DAT_00B0CE78;
+
+// Second vector of the retail group guarded by byte 0x00A9F9A8 (initialiser 0x5396C0, exit stub 0x539700). Retail
+// guards it with bit 1; this file allocates bit 0, so the exit stub differs in one immediate and is not claimed.
+#include "_layout/staticvectorholder_00a9fa18.h"
+DynamicVectorClass<const AnimClass*> StaticVectorHolder_00A9FA18::DAT_00A9FA18;

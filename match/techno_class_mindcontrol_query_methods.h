@@ -14,18 +14,9 @@
 
 class TechnoClass;
 
-// TechnoTypeClass — two flags are consulted, both keeping placeholder names:
-// the bytes fix their offsets but not their meaning.
-class TechnoTypeClass
-{
-public:
-    char _pad000[0xD35];   // +0x0000
-    bool unknown_D35;      // +0x0D35  (MOV CL,[EAX+0xD35])
-    char _padD36[0xD6A - 0xD36];
-    bool unknown_D6A;      // +0x0D6A  (MOV CL,[EAX+0xD6A])
-};
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, unknown_D35) == 0xD35);
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, unknown_D6A) == 0xD6A);
+// TechnoTypeClass: the canonical layout; two of its flags are consulted
+// (ImmuneToPsionics at +0xD35, BalloonHover at +0xD6A).
+#include "_layout/techno_type_class.h"
 
 // Four primary-vtable virtuals, all dispatched through the tree's usual
 // __fastcall-fn-pointer idiom so VC6 reproduces `MOV EAX,[ESI]; MOV ECX,ESI;

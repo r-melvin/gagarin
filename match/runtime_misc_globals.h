@@ -14,7 +14,8 @@ struct MapObjCell;
 
 
 // GLOBAL: GAMEMD 0xA9F9F8
-extern int DAT_00A9F9F8;
+struct CellStruct;
+extern CellStruct DAT_00A9F9F8;
 // GLOBAL: GAMEMD 0xAA0374
 extern int DebugWindowListCapacity;
 // GLOBAL: GAMEMD 0xAA0448

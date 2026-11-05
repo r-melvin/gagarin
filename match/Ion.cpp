@@ -1,4 +1,3 @@
-// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT /Op /Ob2
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit Ion.cpp. The name is the source-file string at 0x828034
@@ -29,6 +28,23 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "runtime_misc_globals.h"
+#include "_layout/cell.h"
+#include "_layout/anim_class.h"
+#include "_layout/anim_type_class.h"
+#include "_layout/rules_class.h"
+#include "_layout/shp_struct.h"
+#include "_layout/cell_class.h"
+#include "_layout/map_0087f7e8.h"
+#include "_layout/scenario_ptr_00a8b230.h"
+#include "dsurface_class.h"
+#include "composite_surface.h"
+#include "_rt/gg_istream.h"
+#include "_layout/audio_controller.h"
+#include "small_misc5_methods.h"
+#include "wdt_voice_classes.h"
+#include "message_list_class_methods.h"
+#include "scenario_session_globals.h"
+#include "trivial_tu263_methods.h"
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
@@ -175,11 +191,143 @@ extern double DAT_00A9FA58;
 
 // SYNTHETIC: GAMEMD 0x00539560
 // GLOBAL: GAMEMD 0x00A9F9CC
-int DAT_00A9F9CC = DAT_00A9F9F8;
+CellStruct DAT_00A9F9CC = DAT_00A9F9F8;
 
 // SYNTHETIC: GAMEMD 0x00539570
 // GLOBAL: GAMEMD 0x00A9FA48
-int DAT_00A9FA48 = DAT_00A9F9F8;
+CellStruct DAT_00A9FA48 = DAT_00A9F9F8;
+
+// Included here, after the dynamic initialisers above: each static data member a header declares
+// advances the compiler-generated initialiser numbering (_$E<n>) that the earlier rows are named by.
+#include "_layout/staticvectorholder_00a9f9d0.h"
+#include "_layout/staticvectorholder_00a9fa60.h"
+#include "_layout/staticvectorholder_00a9fa18.h"
+#include "_layout/voc_class.h"
+// GLOBAL: GAMEMD 0xA9FAB8
+extern int DAT_00A9FAB8;
+// GLOBAL: GAMEMD 0xA9FACC
+extern HouseClass* DAT_00A9FACC;
+// GLOBAL: GAMEMD 0xA9FAD0
+extern unsigned char DAT_00A9FAD0;
+
+// GLOBAL: GAMEMD 0x8871E0
+extern RulesClass* DAT_008871E0;
+// GLOBAL: GAMEMD 0x827FC0
+extern int DAT_00827FC0;
+// GLOBAL: GAMEMD 0x827FC4
+extern int DAT_00827FC4;
+// GLOBAL: GAMEMD 0x827FC8
+extern int DAT_00827FC8;
+// GLOBAL: GAMEMD 0x827FCC
+extern int DAT_00827FCC;
+// GLOBAL: GAMEMD 0xA9FA98
+extern int DAT_00A9FA98;
+// GLOBAL: GAMEMD 0xA9FA9C
+extern DSurface* DAT_00A9FA9C;
+// GLOBAL: GAMEMD 0xA9FAA0
+extern int DAT_00A9FAA0;
+// GLOBAL: GAMEMD 0xA9FAA4
+extern int DAT_00A9FAA4;
+// GLOBAL: GAMEMD 0xA9FAC4
+extern AnimClass* DAT_00A9FAC4;
+// GLOBAL: GAMEMD 0xA9FAC8
+extern int DAT_00A9FAC8;
+
+// FUNCTION: GAMEMD 0x539760
+// Resets the lightning storm: sentinels, state words, the three animation lists, the saved
+// light level, the offscreen surface; then relights the map with no tint.
+void __fastcall FUN_00539760()
+{
+    DAT_00A9FA48 = DAT_00A9F9F8;
+    DAT_00A9F9CC = DAT_00A9F9F8;
+    DAT_00A9FAB4 = 0;
+    DAT_00A9FABC = 0;
+    DAT_00827FC0 = -1;
+    DAT_00827FC4 = -1;
+    DAT_00827FC8 = -1;
+    DAT_00827FCC = -1;
+    DAT_00A9FAC0 = 0;
+    DAT_00A9FAC4 = 0;
+    DAT_00A9FAC8 = 0;
+    DAT_00A9FAB8 = 0;
+    DAT_00A9FACC = 0;
+    StaticVectorHolder_00A9FA60::DAT_00A9FA60.Clear();
+    StaticVectorHolder_00A9F9D0::DAT_00A9F9D0.Clear();
+    StaticVectorHolder_00A9FA18::DAT_00A9FA18.Clear();
+    DAT_00A8B230->unknown_3530 = DAT_00A8B230->unknown_3528;
+    delete DAT_00A9FA9C;
+    DAT_00A9FA98 = 0;
+    DAT_00A9FA9C = 0;
+    DAT_00A9FAB0 = 0;
+    ScenarioClass::RecalcLighting(-1, -1, -1, false);
+}
+
+// FUNCTION: GAMEMD 0x539890
+// Writes the storm state to a save stream (single flags, then the three animation lists as
+// count plus pointers), stopping at the first failure.
+long __fastcall FUN_00539890(Gg_IStream* stream)
+{
+    long hr;
+    int count;
+    int i;
+
+    hr = stream->Write(&DAT_00A9FAB4, 1, 0);
+    if (hr < 0) return hr;
+    hr = stream->Write(&DAT_00827FC0, 4, 0);
+    if (hr < 0) return hr;
+    hr = stream->Write(&DAT_00827FC4, 4, 0);
+    if (hr < 0) return hr;
+    hr = stream->Write(&DAT_00A9FAB8, 4, 0);
+    if (hr < 0) return hr;
+    hr = stream->Write(&DAT_00A9FAD0, 1, 0);
+    if (hr < 0) return hr;
+    hr = stream->Write(&DAT_00827FC8, 4, 0);
+    if (hr < 0) return hr;
+    hr = stream->Write(&DAT_00827FCC, 4, 0);
+    if (hr < 0) return hr;
+    hr = stream->Write(&DAT_00A9FABC, 4, 0);
+    if (hr < 0) return hr;
+    hr = stream->Write(&DAT_00A9FAC0, 4, 0);
+    if (hr < 0) return hr;
+    hr = stream->Write(&DAT_00A9FAC4, 4, 0);
+    if (hr < 0) return hr;
+    hr = stream->Write(&DAT_00A9F9CC, 4, 0);
+    if (hr < 0) return hr;
+    hr = stream->Write(&DAT_00A9FA48, 4, 0);
+    if (hr < 0) return hr;
+    hr = stream->Write(&DAT_00A9FACC, 4, 0);
+    if (hr < 0) return hr;
+    hr = stream->Write(&DAT_00A9FAC8, 4, 0);
+    if (hr < 0) return hr;
+
+    count = StaticVectorHolder_00A9FA60::DAT_00A9FA60.Count;
+    hr = stream->Write(&count, 4, 0);
+    if (hr < 0) return hr;
+    for (i = 0; i < count; i++) {
+        const AnimClass* item = StaticVectorHolder_00A9FA60::DAT_00A9FA60.Items[i];
+        hr = stream->Write(&item, 4, 0);
+        if (hr < 0) return hr;
+    }
+
+    count = StaticVectorHolder_00A9F9D0::DAT_00A9F9D0.Count;
+    hr = stream->Write(&count, 4, 0);
+    if (hr < 0) return hr;
+    for (i = 0; i < count; i++) {
+        const AnimClass* item = StaticVectorHolder_00A9F9D0::DAT_00A9F9D0.Items[i];
+        hr = stream->Write(&item, 4, 0);
+        if (hr < 0) return hr;
+    }
+
+    count = StaticVectorHolder_00A9FA18::DAT_00A9FA18.Count;
+    hr = stream->Write(&count, 4, 0);
+    if (hr < 0) return hr;
+    for (i = 0; i < count; i++) {
+        const AnimClass* item = StaticVectorHolder_00A9FA18::DAT_00A9FA18.Items[i];
+        hr = stream->Write(&item, 4, 0);
+        if (hr < 0) return hr;
+    }
+    return hr;
+}
 
 // FUNCTION: GAMEMD 0x539EA0
 // Stores to a global.
@@ -188,16 +336,65 @@ void FUN_00539EA0(int a1)
     DAT_00A9FAB4 = a1;
 }
 
+// GLOBAL: GAMEMD 0x87F914
+extern int DAT_0087F914;
+// GLOBAL: GAMEMD 0x87F918
+extern int DAT_0087F918;
+// GLOBAL: GAMEMD 0xA8BC60 -- MessageListClass::Instance.
+extern MessageListClass DAT_00A8BC60;
+// FUNCTION: GAMEMD 0x65FA70 (decl; reloc)
+bool FUN_0065FA70(int a, CellStruct cell);
+// FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- localised string lookup(label, index-out, file, line).
+const wchar_t* FUN_00734E60(const char* label, int* index, const char* file, int line);
 
-// GLOBAL: GAMEMD 0xA9FAB8
-extern int DAT_00A9FAB8;
-// GLOBAL: GAMEMD 0xA9FACC
-extern int DAT_00A9FACC;
-// GLOBAL: GAMEMD 0xA9FAD0
-extern unsigned char DAT_00A9FAD0;
+// FUNCTION: GAMEMD 0x539EB0
+// Starts or schedules a storm: picks a legal target cell when none was given, records the
+// owner, and either queues the delay or begins the storm (radar outage for the other
+// houses, relight, message, sound).
+void __fastcall FUN_00539EB0(int duration, int deferment, CellStruct cell, void* house)
+{
+    int i;
 
-// FUNCTION: GAMEMD 0x53C280 (decl; reloc)
-void FUN_0053C280(unsigned char, int);
+    if (cell == DAT_00A9F9F8) {
+        while (!DAT_0087F7E8.FUN_00568300(&cell))
+            cell = CellStructInit(DAT_00A8B230->unknown_0218.RandomRanged(0, DAT_0087F914),
+                                  DAT_00A8B230->unknown_0218.RandomRanged(0, DAT_0087F918));
+    }
+    DAT_00A9F9CC = cell;
+    DAT_00A9FACC = static_cast<HouseClass*>(house);
+    if (DAT_00A9FAB4 != 0)
+        return;
+    if (deferment != 0) {
+        if (DAT_00A9FAB8 == 0 || DAT_00A9FAB8 >= deferment)
+            DAT_00A9FAB8 = deferment;
+        DAT_00827FC4 = duration;
+        return;
+    }
+    FUN_0065FA70(13, cell);
+    DAT_00827FC4 = duration;
+    DAT_00827FC0 = CurrentFrame;
+    DAT_00A9FAB4 = 1;
+    for (i = 0; i < HouseClass_Array.Count; i++) {
+        if (DAT_00A9FACC == 0 || !DAT_00A9FACC->IsAlliedWith(HouseClass_Array.Items[i])) {
+            if (!HouseClass_Array.Items[i]->Defeated && DAT_00A8B538 == 0)
+                HouseClass_Array.Items[i]->CreateRadarOutage(duration);
+        }
+    }
+    if (CurrentPlayer)
+        CurrentPlayer->RecheckRadar = true;
+    ScenarioClass::UpdateLighting();
+    if (DAT_008871E0->LightningPrintText) {
+        int scheme = 3;
+        if (CurrentPlayer)
+            scheme = CurrentPlayer->ColorSchemeIndex;
+        VocClass::PlayGlobal(DAT_008871E0->StormSound, 1.0f, 0x2000, 0);
+        DAT_00A8BC60.FUN_005D3BA0(0, 0,
+                                  FUN_00734E60("TXT_LIGHTNING_STORM", 0, "D:\\ra2mdpost\\Ion.cpp", 531),
+                                  scheme, 0x4046, 150, 0);
+    }
+    DAT_0087F7E8.FUN_004F42F0(1);
+}
+
 
 
 // FUNCTION: GAMEMD 0x53A090
@@ -226,7 +423,7 @@ void FUN_0053A0B0(int a1, int a2)
         DAT_00A9FAB4 = 0;
         DAT_00A9FACC = 0;
         DAT_00A9F9CC = DAT_00A9F9F8;
-        FUN_0053C280(t1, a2);
+        ScenarioClass::UpdateLighting();
     }
 }
 
@@ -258,6 +455,37 @@ bool HouseClass::IonSensitivesShouldBeOffline() const
     return false;
 }
 
+// GLOBAL: GAMEMD 0xA9FA84
+extern int DAT_00A9FA84;
+// GLOBAL: GAMEMD 0xA9FA90
+extern int DAT_00A9FA90;
+// GLOBAL: GAMEMD 0xA9FA30
+extern CoordStruct DAT_00A9FA30;
+// FUNCTION: GAMEMD 0x6D2120 (decl; reloc)
+int FUN_006D2120(int);
+
+// FUNCTION: GAMEMD 0x53A140
+// Spawns one cloud animation over a cell unless it is the cell already used; the animation
+// goes on two of the animation lists.
+void __stdcall FUN_0053A140(CellStruct cell)
+{
+    CellClass* cellObj = DAT_0087F7E8.FUN_005657A0(&cell);
+    int half = static_cast<SHPStruct*>(const_cast<AnimTypeClass*>(DAT_008871E0->WeatherConBolts.Items[0])->vf_39())->unknown_04 / 2;
+    int base = FUN_006D2120(half);
+    int z = base + ((cellObj->Flags & 0x100) ? DAT_00A9FA84 : 0) + cellObj->Level * DAT_00A9FA90;
+    CoordStruct coord;
+    coord.X = (cell.X << 8) + 0x80;
+    coord.Y = (cell.Y << 8) + 0x80;
+    coord.Z = z;
+    if (coord.X != DAT_00A9FA30.X || coord.Y != DAT_00A9FA30.Y || coord.Z != DAT_00A9FA30.Z) {
+        unsigned int pick = (unsigned int)DAT_00A8B230->unknown_0218.Random() % DAT_008871E0->WeatherConClouds.Count;
+        AnimTypeClass* type = const_cast<AnimTypeClass*>(DAT_008871E0->WeatherConClouds.Items[pick]);
+        AnimClass* anim = new AnimClass(type, coord, 0, 1, 0x600, 0, 0);
+        StaticVectorHolder_00A9FA60::DAT_00A9FA60.AddItem(anim);
+        StaticVectorHolder_00A9F9D0::DAT_00A9F9D0.AddItem(anim);
+    }
+}
+
 // FUNCTION: GAMEMD 0x53AB50  LightningStorm::Init (__fastcall, static)
 // Re-light the map for the storm, then raise the local player's flag. The
 // lighting call takes no arguments, so retail issues it before touching the
@@ -266,6 +494,24 @@ void LightningStorm::Init()
 {
     ScenarioClass::UpdateLighting();
     CurrentPlayer->RecheckRadar = true;
+}
+
+// FUNCTION: GAMEMD 0x53AB70
+// Other translation units declare this entry extern "C"; the definition keeps that linkage.
+// Starts the storm sequence: the timer takes the current frame and the
+// duration 1 (its middle word is left as it was on the stack), the light
+// level switches to the storm tint.
+extern "C" void __fastcall FUN_0053AB70()
+{
+    DAT_00A9FABC = 1;
+    DAT_00827FCC = 30;
+    DAT_00827FC8 = CurrentFrame;
+    DAT_00A8B230->unknown_1248 = ScenarioTimer(1);
+    DAT_00A8B230->unknown_3530 = DAT_00A8B230->unknown_3560;
+    ScenarioClass::RecalcLighting(DAT_00A8B230->unknown_3564 * 1000 / 100,
+                                  DAT_00A8B230->unknown_3568 * 1000 / 100,
+                                  DAT_00A8B230->unknown_356C * 1000 / 100, true);
+    DAT_0087F7E8.FUN_004F42F0(1);
 }
 
 // FUNCTION: GAMEMD 0x53AD00
@@ -310,6 +556,36 @@ void ScenarioClass::RecalcLighting(int r, int g, int b, bool tint)
     MapInstance.FlagToRedraw(1);
 }
 
+// FUNCTION: GAMEMD 0x53AE50
+// Starts the dominator sequence on a cell: the first animation above the cell, the timer and the tint.
+void __fastcall FUN_0053AE50(int a, CellStruct cell)
+{
+    if (DAT_008871E0->DominatorFirstAnim != 0 && DAT_008871E0->DominatorSecondAnim != 0) {
+        DAT_00A9FA48 = cell;
+        DAT_00A9FAC8 = a;
+        AnimTypeClass* type = DAT_008871E0->DominatorFirstAnim;
+        CoordStruct coord = DAT_0087F7E8.FUN_005657A0(&DAT_00A9FA48)->vf_18();
+        coord.Z += 0x2EE;
+        DAT_00A9FAC4 = new AnimClass(type, coord, 0, 1, 0x600, 0, 0);
+        DAT_00A9FAC0 = 1;
+        DAT_00A8B230->unknown_1248 = ScenarioTimer(1);
+        ScenarioClass::UpdateLighting();
+    }
+}
+
+// GLOBAL: GAMEMD 0xA9F9B8
+extern AudioController DAT_00A9F9B8;
+// GLOBAL: GAMEMD 0xA9FAA8
+extern int DAT_00A9FAA8;
+// GLOBAL: GAMEMD 0xA9FAD1
+extern unsigned char DAT_00A9FAD1;
+// FUNCTION: GAMEMD 0x684240 (decl; reloc)
+void __cdecl FUN_00684240();
+// FUNCTION: GAMEMD 0x753570 (decl; reloc)
+void FUN_00753570();
+// Forward declaration of 0x53BAF0, defined below.
+void __fastcall FUN_0053BAF0();
+
 // FUNCTION: GAMEMD 0x53B3F0
 // Empty function.
 void __cdecl FUN_0053B3F0()
@@ -321,6 +597,27 @@ void __cdecl FUN_0053B3F0()
 bool __cdecl FUN_0053B400()
 {
     return (DAT_00A9FAC0 != 0) ? true : false;
+}
+
+// FUNCTION: GAMEMD 0x53B460
+// Begins a storm of the given length: refreshes the offscreen copy of the screen, flags the
+// state, plays the sound and sets the follow-up globals.
+void FUN_0053B460(int value)
+{
+    if (value > 0) {
+        FUN_0053BAF0();
+        DAT_00A9FA98 = value;
+        DAT_00A9FAA8 = value;
+        DAT_00A9FAB0 = 1;
+        FUN_00406E80();
+        FUN_007529A0(true);
+        DAT_00A9F9B8.FUN_00405BE0();
+        VocClass::PlayGlobal(DAT_008871E0->LetsDoTheTimeWarpOutAgain, 1.0f, 0x2000, &DAT_00A9F9B8);
+        FUN_007518C0(0);
+        DAT_00A9FAD1 = DAT_00A8B230->unknown_35A2;
+        FUN_00684240();
+        FUN_00753570();
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -335,6 +632,48 @@ int FUN_0053BAD0()
 int FUN_0053BAE0()
 {
     return DAT_00A9FAB0 != 0;
+}
+
+// FUNCTION: GAMEMD 0x53BAF0
+// Replaces the offscreen copy of the display surface with a fresh one.
+void __fastcall FUN_0053BAF0()
+{
+    if (DAT_00A9FA9C) {
+        delete DAT_00A9FA9C;
+        DAT_00A9FA9C = 0;
+    }
+    DAT_00A9FA9C = new DSurface(DAT_0088731C->GetWidth(), DAT_0088731C->GetHeight(), true, false);
+    DAT_00A9FA9C->CopyFromWhole(DAT_0088731C, false, true);
+    DAT_00A9FAA0 = 0;
+    DAT_00A9FAA4 = 0;
+}
+
+// FUNCTION: GAMEMD 0x53C280  ScenarioClass::UpdateLighting
+// Picks the tint for the current lightning-storm phase and pushes it through
+// every converter.
+void ScenarioClass::UpdateLighting()
+{
+    if (DAT_00A9FABC != 1 && DAT_00A9FAB0 == 0) {
+        if (DAT_00A9FAB4) {
+            DAT_00A8B230->unknown_3530 = DAT_00A8B230->unknown_3548;
+            RecalcLighting(DAT_00A8B230->unknown_354C * 1000 / 100,
+                           DAT_00A8B230->unknown_3550 * 1000 / 100,
+                           DAT_00A8B230->unknown_3554 * 1000 / 100, true);
+        } else if (DAT_00A9FAC0 != 0 && DAT_00A9FAC0 != 5) {
+            DAT_00A8B230->unknown_3530 = DAT_00A8B230->unknown_357C;
+            RecalcLighting(DAT_00A8B230->unknown_3580 * 1000 / 100,
+                           DAT_00A8B230->unknown_3584 * 1000 / 100,
+                           DAT_00A8B230->unknown_3588 * 1000 / 100, true);
+        } else {
+            DAT_00A8B230->unknown_3530 = DAT_00A8B230->unknown_3528;
+            RecalcLighting(-1, -1, -1, false);
+        }
+    } else {
+        DAT_00A8B230->unknown_3530 = DAT_00A8B230->unknown_3560;
+        RecalcLighting(DAT_00A8B230->unknown_3564 * 1000 / 100,
+                       DAT_00A8B230->unknown_3568 * 1000 / 100,
+                       DAT_00A8B230->unknown_356C * 1000 / 100, true);
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -359,13 +698,13 @@ bool TechnoClass::CanBePermaMindControlled()
     if (TECHNO_WHAT_AM_I(this) == ABS_BUILDING)
         return false;
 
-    if (TECHNO_GET_TYPE(this)->unknown_D35)
+    if (TECHNO_GET_TYPE(this)->ImmuneToPsionics)
         return false;
 
     if (TECHNO_SLOT_160(this))
         return false;
 
-    if (TECHNO_GET_TYPE(this)->unknown_D6A)
+    if (TECHNO_GET_TYPE(this)->BalloonHover)
         return false;
 
     if (TECHNO_SLOT_54(this))
@@ -419,7 +758,7 @@ int DAT_00A9FABC;
 // GLOBAL: GAMEMD 0xA9FAC0
 int DAT_00A9FAC0;
 // GLOBAL: GAMEMD 0xA9FACC
-int DAT_00A9FACC;
+HouseClass* DAT_00A9FACC;
 // GLOBAL: GAMEMD 0xA9FAD0
 unsigned char DAT_00A9FAD0;
 // GLOBAL: GAMEMD 0xA9FAB8

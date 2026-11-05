@@ -154402,5 +154402,90 @@
   "name": "??_GFactoryClass@@UAEPAXI@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/Ion.cpp",
+  "addr": "0x539760",
+  "sym": "?FUN_00539760@@YIXXZ",
+  "len": "0x12f",
+  "name": "FUN_00539760",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Ion.cpp",
+  "addr": "0x539890",
+  "sym": "?FUN_00539890@@YIJPAUGg_IStream@@@Z",
+  "len": "0x249",
+  "name": "FUN_00539890",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Ion.cpp",
+  "addr": "0x539EB0",
+  "sym": "?FUN_00539EB0@@YIXHHUCellStruct@@PAX@Z",
+  "len": "0x1de",
+  "name": "FUN_00539EB0",
+  "status": "partial",
+  "pct": 88.3,
+  "best_pct": 88.3,
+  "best_at": "91a4b90d"
+ },
+ {
+  "tu": "match/Ion.cpp",
+  "addr": "0x53A140",
+  "sym": "?FUN_0053A140@@YGXUCellStruct@@@Z",
+  "len": "0x1b4",
+  "name": "FUN_0053A140",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Ion.cpp",
+  "addr": "0x53AB70",
+  "sym": "@FUN_0053AB70@0",
+  "len": "0xe0",
+  "name": "@FUN_0053AB70@0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Ion.cpp",
+  "addr": "0x53AE50",
+  "sym": "?FUN_0053AE50@@YIXHUCellStruct@@@Z",
+  "len": "0xe3",
+  "name": "FUN_0053AE50",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Ion.cpp",
+  "addr": "0x53B460",
+  "sym": "?FUN_0053B460@@YIXH@Z",
+  "len": "0xfc",
+  "name": "FUN_0053B460",
+  "status": "partial",
+  "pct": 89.4,
+  "best_pct": 89.4,
+  "best_at": "91a4b90d"
+ },
+ {
+  "tu": "match/Ion.cpp",
+  "addr": "0x53BAF0",
+  "sym": "?FUN_0053BAF0@@YIXXZ",
+  "len": "0x82",
+  "name": "FUN_0053BAF0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Ion.cpp",
+  "addr": "0x53C280",
+  "sym": "?UpdateLighting@ScenarioClass@@SIXXZ",
+  "len": "0x1c2",
+  "name": "ScenarioClass::UpdateLighting",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

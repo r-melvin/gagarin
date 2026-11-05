@@ -18,10 +18,7 @@ class ObjectTypeClass;
 #include "_layout/iso_tile_type_class.h"
 #include "_layout/light_source_class.h"
 
-struct StaticVectorHolder_00A9FA60 {
-    // GLOBAL: GAMEMD 0x00A9FA60
-    static DynamicVectorClass<const AnimClass*> DAT_00A9FA60;
-};
+#include "_layout/staticvectorholder_00a9fa60.h"
 // SYNTHETIC: GAMEMD 0x005395C0 -- exit-time destructor stub of DAT_00A9FA60, guard byte 0x00A9F9A9 bit 0
 // SYNTHETIC: GAMEMD 0x00539580 -- initialiser of DAT_00A9FA60
 DynamicVectorClass<const AnimClass*> StaticVectorHolder_00A9FA60::DAT_00A9FA60;

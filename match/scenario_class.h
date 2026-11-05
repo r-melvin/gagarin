@@ -228,7 +228,10 @@ struct ScenarioClass
     int unknown_3530, unknown_3534, unknown_3538, unknown_353C;
     int unknown_3540, unknown_3544, unknown_3548, unknown_354C;
     int unknown_3550, unknown_3554, unknown_3558, unknown_355C;
-    char unknown_3560[0x3598 - 0x3560];
+    int unknown_3560, unknown_3564, unknown_3568, unknown_356C;
+    char unknown_3570[0x357C - 0x3570];
+    int unknown_357C, unknown_3580, unknown_3584, unknown_3588;
+    char unknown_358C[0x3598 - 0x358C];
     bool unknown_3598;
     char unknown_3599[0x35A2 - 0x3599];
     bool unknown_35A2;
@@ -270,6 +273,14 @@ GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3550) == 0x3550);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3554) == 0x3554);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3558) == 0x3558);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_355C) == 0x355C);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3560) == 0x3560);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3564) == 0x3564);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3568) == 0x3568);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_356C) == 0x356C);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_357C) == 0x357C);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3580) == 0x3580);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3584) == 0x3584);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3588) == 0x3588);
 
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0214) == 0x214);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_35A4) == 0x35A4);

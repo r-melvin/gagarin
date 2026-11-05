@@ -11,9 +11,10 @@
 #include "runtime_misc_globals.h"
 
 // GLOBAL: GAMEMD 0xA9F9CC
-extern int DAT_00A9F9CC;
+struct CellStruct;
+extern CellStruct DAT_00A9F9CC;
 // GLOBAL: GAMEMD 0xA9FA48
-extern int DAT_00A9FA48;
+extern CellStruct DAT_00A9FA48;
 // GLOBAL: GAMEMD 0xA9FABC
 extern int DAT_00A9FABC;
 // GLOBAL: GAMEMD 0xA9FAC0
