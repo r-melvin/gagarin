@@ -151871,5 +151871,23 @@
   "pct": 98.3,
   "best_pct": 98.3,
   "best_at": "2eeee861"
+ },
+ {
+  "tu": "match/MapGen.cpp",
+  "addr": "0x58C6F0",
+  "sym": "?FUN_0058C6F0@@YGNPBUCellStruct@@0N@Z",
+  "len": "0x10f",
+  "name": "FUN_0058C6F0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MapGen.cpp",
+  "addr": "0x5A1190",
+  "sym": "?FUN_005A1190@@YGNPBUCellStruct@@0N@Z",
+  "len": "0xdd",
+  "name": "FUN_005A1190",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

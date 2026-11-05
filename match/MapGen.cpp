@@ -934,15 +934,9 @@ double __cdecl FUN_004CADE0(double value);
 // Heading of the vector (dx, dy) in radians; straight along the axis when dx is zero.
 static inline double Inline_005A1190(int dx, int dy)
 {
-    double angle;
-    if (dx != 0) {
-        angle = FUN_004CADE0(-((double)dy / (double)dx));
-        if (dx < 0)
-            angle += 3.141592653589793;
-    } else {
-        angle = 1.5707963267948966;
-    }
-    return angle;
+    double a = dx ? FUN_004CADE0(-((double)dy / (double)dx)) : 1.5707963267948966;
+    if (dx < 0) a += 3.141592653589793;
+    return a;
 }
 
 // GLOBAL: GAMEMD 0x7ED798
@@ -956,7 +950,7 @@ extern const double DAT_007ED6B8 = 1.5;
 // GLOBAL: GAMEMD 0x7ED6A8
 extern const double DAT_007ED6A8 = 2.5;
 
-// Unclaimed (below partial bar), GAMEMD 0x58C6F0
+// FUNCTION: GAMEMD 0x58C6F0
 // Cost of heading from a1 to a2 against the wanted heading a3 (radians): the distance and the
 // folded angular difference, weighted, plus a random jitter of up to 2.5.
 double __stdcall FUN_0058C6F0(const CellStruct* a1, const CellStruct* a2, double a3)
@@ -974,7 +968,7 @@ double __stdcall FUN_0058C6F0(const CellStruct* a1, const CellStruct* a2, double
     if (angle > 3.141592653589793)
         angle = 6.283185307179586 - angle;
     return DAT_007ED6B0 * distance + DAT_007ED6B8 * angle +
-           (double)(unsigned int)DAT_00ABE890.FUN_0065C780() * 2.3283064370807974e-10 * DAT_007ED6A8;
+           DAT_007ED6A8 * ((double)(unsigned int)DAT_00ABE890.FUN_0065C780() * 2.3283064370807974e-10);
 }
 
 // FUNCTION: GAMEMD 0x58CE90
@@ -1899,7 +1893,7 @@ DynamicVectorClass<Cell>* Obj_0059C580::FUN_005A0700(int a1)
     return list;
 }
 
-// Unclaimed (below partial bar), GAMEMD 0x5A1190
+// FUNCTION: GAMEMD 0x5A1190
 // Cost of heading from a1 to a2 against the wanted heading a3 (radians): the folded angular
 // difference weighted by 1.5, plus a random jitter of up to two.
 double __stdcall FUN_005A1190(const CellStruct* a1, const CellStruct* a2, double a3)
@@ -1915,7 +1909,7 @@ double __stdcall FUN_005A1190(const CellStruct* a1, const CellStruct* a2, double
     }
     if (angle > 3.141592653589793)
         angle = 6.283185307179586 - angle;
-    return DAT_007ED798 * angle + (double)(unsigned int)DAT_00ABE890.FUN_0065C780() * 2.3283064370807974e-10 * DAT_007ED790;
+    return DAT_007ED798 * angle + DAT_007ED790 * ((double)(unsigned int)DAT_00ABE890.FUN_0065C780() * 2.3283064370807974e-10);
 }
 
 // FUNCTION: GAMEMD 0x5A1270
