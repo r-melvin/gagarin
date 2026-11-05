@@ -182,7 +182,12 @@ struct SidebarCameoButton
     int Y;                                      // +0x10
     int Width;                                  // +0x14
     int Height;                                 // +0x18
-    char _pad01C[0x38 - 0x1C];                  // +0x1C
+    char _pad01C[0x24 - 0x1C];                  // +0x1C
+    int ID;                                     // +0x24 (0xCA, written by 0x6A8220)
+    char _pad028[0x2C - 0x28];                  // +0x28
+    void* Strip;                                // +0x2C owning strip (0x6A8220)
+    int Index;                                  // +0x30 slot within the strip (0x6A8220)
+    char _pad034[0x38 - 0x34];                  // +0x34
     // FUNCTION: GAMEMD 0x5565F0 (decl; reloc) -- LinkClass::Zap.
     void Zap();
 };
@@ -199,6 +204,9 @@ GG_STATIC_ASSERT(offsetof(SidebarCameoVtbl, At_48) == 0x48);
 GG_STATIC_ASSERT(offsetof(SidebarCameoVtbl, At_64) == 0x64);
 GG_STATIC_ASSERT(offsetof(SidebarCameoButton, X) == 0x0C);
 GG_STATIC_ASSERT(offsetof(SidebarCameoButton, Height) == 0x18);
+GG_STATIC_ASSERT(offsetof(SidebarCameoButton, ID) == 0x24);
+GG_STATIC_ASSERT(offsetof(SidebarCameoButton, Strip) == 0x2C);
+GG_STATIC_ASSERT(offsetof(SidebarCameoButton, Index) == 0x30);
 GG_STATIC_ASSERT(sizeof(SidebarCameoButton) == 0x38);
 
 // ---------------------------------------------------------------------------

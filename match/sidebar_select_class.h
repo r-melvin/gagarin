@@ -119,7 +119,9 @@ struct SelectTechnoTypeVtbl;
 struct SelectTechnoType
 {
     SelectTechnoTypeVtbl* Vtbl;
-    char _pad004[0xCCE - 4];
+    char _pad004[0x60 - 4];
+    const wchar_t* UIName;                      // +0x60 (read by 0x6A92E0)
+    char _pad064[0xCCE - 0x64];
     unsigned char At_CCE;                       // +0xCCE
     char _padCCF[0x1571 - 0xCCF];
     unsigned char At_1571;                      // +0x1571
@@ -138,6 +140,7 @@ struct SelectTechnoTypeVtbl
     char _pad08C[0x94 - 0x8C];
     SelectTypeFn94 At_94;                       // +0x94
 };
+GG_STATIC_ASSERT(offsetof(SelectTechnoType, UIName) == 0x60);
 GG_STATIC_ASSERT(offsetof(SelectTechnoType, At_CCE) == 0xCCE);
 GG_STATIC_ASSERT(offsetof(SelectTechnoType, At_1571) == 0x1571);
 GG_STATIC_ASSERT(offsetof(SelectTechnoTypeVtbl, At_84) == 0x84);

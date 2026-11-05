@@ -152918,5 +152918,72 @@
   "name": "TActionClass::FUN_006E4200",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/Radar.cpp",
+  "addr": "0x655740",
+  "sym": "?FUN_00655740@RadarClass@@QAEXPAVBuildingClass@@VPoint2D@@@Z",
+  "len": "0xad",
+  "name": "RadarClass::FUN_00655740",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Radar.cpp",
+  "addr": "0x6578F0",
+  "sym": "?FUN_006578F0@RadarClass@@QAEXXZ",
+  "len": "0xe1",
+  "name": "RadarClass::FUN_006578F0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Radar.cpp",
+  "addr": "0x658640",
+  "sym": "?FUN_00658640@RadarClass@@QAEXH@Z",
+  "len": "0x8d",
+  "name": "RadarClass::FUN_00658640",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Radar.cpp",
+  "addr": "0x6587A0",
+  "sym": "??_GRadarClass@@UAEPAXI@Z",
+  "len": "0xe3",
+  "name": "??_GRadarClass@@UAEPAXI@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Sidebar.cpp",
+  "addr": "0x6A74A0",
+  "sym": "?FUN_006A74A0@SidebarClass@@QAEXH@Z",
+  "len": "0xe7",
+  "name": "SidebarClass::FUN_006A74A0",
+  "status": "partial",
+  "pct": 92.8,
+  "best_pct": 92.8,
+  "best_at": "00c20b70"
+ },
+ {
+  "tu": "match/Sidebar.cpp",
+  "addr": "0x6A8860",
+  "sym": "?FUN_006A8860@StripClass@@QAE_N_NH@Z",
+  "len": "0xb9",
+  "name": "StripClass::FUN_006A8860",
+  "status": "partial",
+  "pct": 88.9,
+  "best_pct": 88.9,
+  "best_at": "00c20b70"
+ },
+ {
+  "tu": "match/Sidebar.cpp",
+  "addr": "0x6A92E0",
+  "sym": "?FUN_006A92E0@StripClass@@QAEPBGH@Z",
+  "len": "0x108",
+  "name": "StripClass::FUN_006A92E0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

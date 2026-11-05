@@ -69,6 +69,7 @@ struct IStream;
 // Views defined by the module headers that dereference them.
 class DisplayHouse;           // display_reveal.h  (HouseClass)
 class HouseClass;
+class BuildingClass;
 class ObjectClass;
 class DisplayCell;            // display_reveal.h  (CellClass)
 struct DisplayScCellObject;   // display_scenario.h (CellClass)
@@ -729,6 +730,16 @@ public:
     void FUN_00656DF0(bool on);
     // FUNCTION: GAMEMD 0x656E90 -- latch the forced flag; RET 4.
     void FUN_00656E90(bool force);
+    // FUNCTION: GAMEMD 0x658330 (decl; reloc) -- per-house update, RET 0xC.
+    void FUN_00658330(int a, int index, HouseClass* house);
+    // FUNCTION: GAMEMD 0x658640 -- run FUN_00658330 over the houses; RET 4.
+    void FUN_00658640(int a);
+    // FUNCTION: GAMEMD 0x6562D0 (decl; reloc) -- one stack argument, RET 4.
+    void FUN_006562D0(Point2D* point);
+    // FUNCTION: GAMEMD 0x655740 (decl; reloc) -- forget a tracked building at a radar point; RET 0xC.
+    void FUN_00655740(BuildingClass* building, Point2D point);
+    // FUNCTION: GAMEMD 0x656750 -- tracked object and cell at a radar-space point; RET 0xC.
+    void FUN_00656750(const Point2D* point, struct Cell_0050DEF0* out, TechnoClass** found);
 
     // Retail constructor 0x6A4F20: vector members at +0x1224/+0x125C/+0x1278,
     // followed by the timer at +0x1500. Other bytes remain unclassified.
@@ -928,44 +939,6 @@ union SidebarCameoUnknown18
 };
 GG_STATIC_ASSERT(sizeof(SidebarCameoUnknown18) == 4);
 
-// One of the 75 per-strip cameo entries (0x34 bytes). Its destructor is the empty function 0x40D260 (a lone RET);
-// retail passes its address to the vector-destructor helper (0x40AFD0).
-struct SidebarCameo
-{
-    // FUNCTION: GAMEMD 0x6AC7C0 (decl; partial) -- array element initializer, RET 4.
-    SidebarCameo();
-    int   unknown_00;                     // +0x00 (cleared by StripClass initializer)
-    SidebarCameoUnknown04 unknown_04;      // +0x04 (initializer writes byte 0; strip reset clears the four bytes; lookups compare it as an int)
-    int   unknown_08;                     // +0x08
-    void* Pointer;                        // +0x0C (registered with the swizzle manager after a load)
-    int   unknown_10;                     // +0x10
-    int   unknown_14;                     // +0x14
-    SidebarCameoUnknown18 unknown_18;     // +0x18 (word store by 0x6AC870; low-byte store by 0x6A80A0)
-    int   unknown_1C;                     // +0x1C
-    int   unknown_20;                     // +0x20
-    int   unknown_24;                     // +0x24
-    int   unknown_28;                     // +0x28
-    int   unknown_2C;                     // +0x2C
-    int   unknown_30;                     // +0x30
-    // FUNCTION: GAMEMD 0x40D260 -- empty destructor.
-    ~SidebarCameo() {}
-};
-GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_00) == 0x00);
-GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_04) == 0x04);
-GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_08) == 0x08);
-GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_10) == 0x10);
-GG_STATIC_ASSERT(offsetof(SidebarCameo, Pointer) == 0x0C);
-GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_14) == 0x14);
-GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_18) == 0x18);
-GG_STATIC_ASSERT(offsetof(SidebarCameoUnknown18Bytes, Low) == 0x00);
-GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_1C) == 0x1C);
-GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_20) == 0x20);
-GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_24) == 0x24);
-GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_28) == 0x28);
-GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_2C) == 0x2C);
-GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_30) == 0x30);
-GG_STATIC_ASSERT(sizeof(SidebarCameo) == 0x34);
-
 // The timer at strip +0x08 (start frame at +0, the countdown at +8; 0x6A4E60 stores the current frame and zero).
 // Retail's MouseClass destructor calls an empty out-of-line destructor (0x40D300) on it; the SidebarClass, TabClass
 // and ScrollClass destructors do not (it was inlined away in their units). One type cannot carry both, so it is
@@ -982,6 +955,41 @@ struct StripTimer
 GG_STATIC_ASSERT(sizeof(StripTimer) == 0x0C);
 GG_STATIC_ASSERT(offsetof(StripTimer, StartFrame) == 0x00);
 GG_STATIC_ASSERT(offsetof(StripTimer, TimeLeft) == 0x08);
+
+// One of the 75 per-strip cameo entries (0x34 bytes). Its destructor is the empty function 0x40D260 (a lone RET);
+// retail passes its address to the vector-destructor helper (0x40AFD0).
+struct SidebarCameo
+{
+    // FUNCTION: GAMEMD 0x6AC7C0 (decl; partial) -- array element initializer, RET 4.
+    SidebarCameo();
+    int   unknown_00;                     // +0x00 (cleared by StripClass initializer)
+    SidebarCameoUnknown04 unknown_04;      // +0x04 (initializer writes byte 0; strip reset clears the four bytes; lookups compare it as an int)
+    int   unknown_08;                     // +0x08
+    void* Pointer;                        // +0x0C (registered with the swizzle manager after a load)
+    int   unknown_10;                     // +0x10
+    int   unknown_14;                     // +0x14
+    SidebarCameoUnknown18 unknown_18;     // +0x18 (word store by 0x6AC870; low-byte store by 0x6A80A0)
+    StripTimer Timer;                     // +0x1C (start frame, an unset word, time left; 0x6AC7C0, 0x6A8710)
+    int   unknown_28;                     // +0x28
+    int   unknown_2C;                     // +0x2C
+    int   unknown_30;                     // +0x30
+    // FUNCTION: GAMEMD 0x40D260 -- empty destructor.
+    ~SidebarCameo() {}
+};
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_00) == 0x00);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_04) == 0x04);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_08) == 0x08);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_10) == 0x10);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, Pointer) == 0x0C);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_14) == 0x14);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(SidebarCameoUnknown18Bytes, Low) == 0x00);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, Timer) == 0x1C);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_28) == 0x28);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_2C) == 0x2C);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_30) == 0x30);
+GG_STATIC_ASSERT(sizeof(SidebarCameo) == 0x34);
+
 
 // StripClass: one build column. sizeof 0xF94 (stride of the strip array); origin +0x1544, see the file header.
 struct StripClass
@@ -1022,10 +1030,20 @@ struct StripClass
     void FUN_006A81B0();
     // FUNCTION: GAMEMD 0x6A8220 (decl; reloc) -- strip init(index); RET 4.
     void FUN_006A8220(int index);
+    // FUNCTION: GAMEMD 0x6A8330 -- refresh the visible cameo buttons of this strip's row block.
+    void FUN_006A8330();
+    // FUNCTION: GAMEMD 0x6A8860 -- scroll the strip by `amount` rows when allowed; RET 8.
+    bool FUN_006A8860(bool back, int amount);
+    // FUNCTION: GAMEMD 0x6A8920 -- the single-step form of 0x6A8860; RET 4.
+    bool FUN_006A8920(bool back);
+    // FUNCTION: GAMEMD 0x6A89E0 -- scroll the strip by a screenful when allowed; RET 4.
+    bool FUN_006A89E0(bool back);
+    // FUNCTION: GAMEMD 0x6A93F0 -- mark the strip redrawn and refresh its visible cameo buttons.
+    void FUN_006A93F0();
     // FUNCTION: GAMEMD 0x6A8B30 (decl; reloc) -- strip input (key, point); RET 8.
     bool FUN_006A8B30(int* key, Point2D* point);
     // FUNCTION: GAMEMD 0x6A92E0 (decl; reloc) -- text of the cameo at a row; RET 4.
-    wchar_t* FUN_006A92E0(int row);
+    const wchar_t* FUN_006A92E0(int row);
     // FUNCTION: GAMEMD 0x6A9540 (decl; reloc) -- draw the strip; RET 4.
     void FUN_006A9540(bool full);
     // FUNCTION: GAMEMD 0x6ABAC0 (decl; reloc)
@@ -1038,6 +1056,8 @@ struct StripClass
     bool FUN_006A87F0(int type, int id);
     // FUNCTION: GAMEMD 0x6A8710 (decl; reloc)
     void FUN_006A8710(int type, int id);
+    // FUNCTION: GAMEMD 0x6A8420 -- sort order test between a new cameo and an existing one; RET 0x10.
+    bool FUN_006A8420(int type, int id, int otherType, int otherId);
 };
 GG_STATIC_ASSERT(offsetof(StripClass, Timer) == 0x08);
 GG_STATIC_ASSERT(offsetof(StripClass, unknown_00) == 0x00);
@@ -1104,11 +1124,17 @@ public:
     void FUN_006A70E0(bool flag);
     // FUNCTION: GAMEMD 0x6A6A00 (decl; reloc) -- RET 8.
     bool Scroll(bool up, int amount);
+    // FUNCTION: GAMEMD 0x6A6AF0 -- the page form of Scroll; RET 8.
+    bool FUN_006A6AF0(bool up, int tab);
     // FUNCTION: GAMEMD 0x6A60A0 (decl; reloc).
     void RepaintSidebar(int tab);
     // FUNCTION: GAMEMD 0x6ABC60 / 0x6ABCD0 (decl; reloc; static __fastcall).
     static int FUN_006ABC60(int abs, int idxType, int unused);
     static int GetObjectTabIdx(int abs, int buildCat, int isNaval);
+    // FUNCTION: GAMEMD 0x6A74A0 -- select a tab and refresh its cameo buttons; RET 4.
+    void FUN_006A74A0(int tab);
+    // FUNCTION: GAMEMD 0x6AC5F0 -- postpone the cameo of a type by `delay` frames; RET 8.
+    void FUN_006AC5F0(class TechnoTypeClass* type, int delay);
     // FUNCTION: GAMEMD 0x6A7590 (decl; reloc) -- RET 4.
     void SetTab(int tab);
     // FUNCTION: GAMEMD 0x6A7D20

@@ -91,6 +91,7 @@ public:
     virtual void vf_74();
     virtual Rect GetRect();                               // +0x78, struct return: hidden out pointer
     virtual int  GetWidth();                              // +0x7C
+    virtual int  GetHeight();                             // +0x80 (named with GetWidth in the mouse view)
 };
 // GLOBAL: GAMEMD 0x887314 -- the surface the gadgets draw on.
 extern Surface* DAT_00887314;

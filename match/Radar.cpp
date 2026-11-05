@@ -75,6 +75,9 @@
 #include "sidebar_display_globals.h"
 #include "scenario_session_globals.h"
 #include "cell_coord_globals.h"
+#include "_layout/house_class.h"
+#include "_layout/house_type_class.h"
+#include "house_class_can_ally_methods.h"
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 extern "C" int __cdecl FUN_004068E0(const char* format, ...);
@@ -633,6 +636,43 @@ void RadarClass::FUN_006551C0(const Cell* cell)
     unknown_14D9 = 1;
 }
 
+template<class K,class V> struct HashObject { K Key; V Value; HashObject() {} HashObject(const HashObject<K,V>& o) : Key(o.Key), Value(o.Value) {} bool operator==(const HashObject<K,V>& o) const { return Key==o.Key; } bool operator!=(const HashObject<K,V>& o) const { return !(*this==o); } };
+
+class TechnoClass;
+struct RadarTrackingStruct { TechnoClass* unknown_00; int unknown_04; int unknown_08; RadarTrackingStruct() {} RadarTrackingStruct(const RadarTrackingStruct& o) : unknown_00(o.unknown_00), unknown_04(o.unknown_04), unknown_08(o.unknown_08) {} bool operator==(const RadarTrackingStruct& o) const { return unknown_00==o.unknown_00 && unknown_04==o.unknown_04 && unknown_08==o.unknown_08; } bool operator!=(const RadarTrackingStruct& o) const { return !(*this==o); } }; class TechnoClass; 
+
+typedef DynamicVectorClass<HashObject<RadarTrackingStruct, TechnoClass*> > RadarTrackingVector;
+GG_STATIC_ASSERT(sizeof(RadarTrackingStruct) == 0x0C);
+GG_STATIC_ASSERT(offsetof(RadarTrackingStruct, unknown_00) == 0x00);
+GG_STATIC_ASSERT(offsetof(RadarTrackingStruct, unknown_04) == 0x04);
+GG_STATIC_ASSERT(offsetof(RadarTrackingStruct, unknown_08) == 0x08);
+GG_STATIC_ASSERT(sizeof(RadarTrackingVector) == 0x18);
+GG_STATIC_ASSERT(offsetof(RadarTrackingVector, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(RadarTrackingVector, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(RadarTrackingVector, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(RadarTrackingVector, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(RadarTrackingVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(RadarTrackingVector, CapacityIncrement) == 0x14);
+GG_STATIC_ASSERT(offsetof(TechnoClass, IsRadarTracked) == 0x423);
+GG_STATIC_ASSERT(sizeof(TechnoClass) == 0x520);
+GG_STATIC_ASSERT(sizeof(TechnoClass*) == 4);
+GG_STATIC_ASSERT(sizeof(void*) == 4);
+
+// FUNCTION: GAMEMD 0x655740
+void RadarClass::FUN_00655740(BuildingClass* building, Point2D point)
+{
+    RadarTrackingVector* bucket = &unknown_1258->items[(point.X - point.Y * 5) & 0xFF];
+    HashObject<RadarTrackingStruct, TechnoClass*> entry;
+    entry.Key.unknown_00 = building;
+    entry.Key.unknown_04 = point.X;
+    entry.Key.unknown_08 = point.Y;
+    entry.Value = building;
+    if (bucket->RemoveItem(entry)) {
+        FUN_006562D0(&point);
+        unknown_14D9 = 1;
+    }
+}
+
 // FUNCTION: GAMEMD 0x6557F0
 // Convert a map point to the radar's pixel position at the fixed scale, optionally clamped to the radar's size.
 Point2D* RadarClass::FUN_006557F0(Point2D* out, const Point2D* point, bool clamp)
@@ -709,7 +749,6 @@ template class DynamicVectorClass<AngerStruct>;
 
 template class DynamicVectorClass<SwizzlePointerClass>;
 
-template<class K,class V> struct HashObject { K Key; V Value; HashObject() {} HashObject(const HashObject<K,V>& o) : Key(o.Key), Value(o.Value) {} bool operator==(const HashObject<K,V>& o) const { return Key==o.Key; } bool operator!=(const HashObject<K,V>& o) const { return !(*this==o); } };
 
 template class DynamicVectorClass<HashObject<unsigned int,unsigned int> >;
 
@@ -717,24 +756,6 @@ template class DynamicVectorClass<HashObject<unsigned int,unsigned int> >;
 
 template class DynamicVectorClass<HashObject<unsigned int,SubzoneConnectionStruct> >;
 
-struct RadarTrackingStruct { int unknown_00; int unknown_04; int unknown_08; RadarTrackingStruct() {} RadarTrackingStruct(const RadarTrackingStruct& o) : unknown_00(o.unknown_00), unknown_04(o.unknown_04), unknown_08(o.unknown_08) {} bool operator==(const RadarTrackingStruct& o) const { return unknown_00==o.unknown_00 && unknown_04==o.unknown_04 && unknown_08==o.unknown_08; } bool operator!=(const RadarTrackingStruct& o) const { return !(*this==o); } }; class TechnoClass; 
-
-typedef DynamicVectorClass<HashObject<RadarTrackingStruct, TechnoClass*> > RadarTrackingVector;
-GG_STATIC_ASSERT(sizeof(RadarTrackingStruct) == 0x0C);
-GG_STATIC_ASSERT(offsetof(RadarTrackingStruct, unknown_00) == 0x00);
-GG_STATIC_ASSERT(offsetof(RadarTrackingStruct, unknown_04) == 0x04);
-GG_STATIC_ASSERT(offsetof(RadarTrackingStruct, unknown_08) == 0x08);
-GG_STATIC_ASSERT(sizeof(RadarTrackingVector) == 0x18);
-GG_STATIC_ASSERT(offsetof(RadarTrackingVector, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(RadarTrackingVector, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(RadarTrackingVector, IsInitialized) == 0x0C);
-GG_STATIC_ASSERT(offsetof(RadarTrackingVector, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(RadarTrackingVector, Count) == 0x10);
-GG_STATIC_ASSERT(offsetof(RadarTrackingVector, CapacityIncrement) == 0x14);
-GG_STATIC_ASSERT(offsetof(TechnoClass, IsRadarTracked) == 0x423);
-GG_STATIC_ASSERT(sizeof(TechnoClass) == 0x520);
-GG_STATIC_ASSERT(sizeof(TechnoClass*) == 4);
-GG_STATIC_ASSERT(sizeof(void*) == 4);
 
 template class DynamicVectorClass<HashObject<RadarTrackingStruct,TechnoClass*> >;
 
@@ -893,6 +914,9 @@ RadarClass::~RadarClass()
     unknown_14C0.FUN_00405C00();
     FUN_00655A90();
 }
+
+// SYNTHETIC: GAMEMD 0x6587A0 -- implicit scalar deleting destructor (slot 4) of RadarClass: sets the vtable,
+// runs the 0x652C00 body inline, tears down the three vector members and the base, then frees on bit 0.
 
 // FUNCTION: GAMEMD 0x652CD0
 // Stores several members.
@@ -1695,6 +1719,59 @@ void RadarClass::FUN_00656E90(bool force)
     unknown_14DA = v;
 }
 
+// FUNCTION: GAMEMD 0x752370 (decl; reloc) -- VoxClass::ClearQueues.
+void FUN_00752370();
+// FUNCTION: GAMEMD 0x752480 (decl; reloc) -- VoxClass::PlayIndex.
+void __fastcall FUN_00752480(int index, int flags, int priority);
+// FUNCTION: GAMEMD 0x753570 (decl; reloc)
+void FUN_00753570();
+// FUNCTION: GAMEMD 0x7532A0 (decl; reloc)
+bool __fastcall FUN_007532A0(int index);
+// FUNCTION: GAMEMD 0x408390 (decl; reloc)
+void __cdecl FUN_00408390();
+// FUNCTION: GAMEMD 0x408410 (decl; reloc)
+int __cdecl FUN_00408410();
+// FUNCTION: GAMEMD 0x5BF580 (decl; reloc)
+void FUN_005BF580();
+
+// FUNCTION: GAMEMD 0x6578F0
+// Step the radar's open/close sequence (0x14B8): start the sound, wait for it, then restore the display and
+// start the loop sound.
+void RadarClass::FUN_006578F0()
+{
+    switch (unknown_14B8) {
+    case 0:
+        FUN_00752370();
+        FUN_00752480(unknown_14D4, 0, 3);
+        FUN_00753570();
+        unknown_14B8 = 1;
+        break;
+    case 1:
+        if (FUN_007532A0(unknown_14D4)) {
+            if (DAT_00B45B68) {
+                FUN_00408390();
+            }
+            unknown_14B8 = 2;
+        }
+        break;
+    case 2:
+        if (DAT_00B45B68) {
+            if (!FUN_00408410()) {
+                return;
+            }
+            if (DAT_00B45B68) {
+                FUN_00753580();
+                FUN_005BF580();
+            }
+        }
+        FUN_00656CB0(3, 0);
+        FUN_00406060(&unknown_14C0);
+        AudioController::SetEvent(&unknown_14C0, VocClass::PlayGlobal(RulesInstance->MovieOn, 1.0f, 0x2000, 0), 0);
+        FUN_0055AF40(RulesInstance->DetailMinFrameRateMovie);
+        break;
+    }
+}
+
 // GLOBAL: GAMEMD 0xA8B230
 extern ScenarioClass* DAT_00A8B230;
 
@@ -1707,6 +1784,29 @@ void __fastcall UI_FocusOnWindow(HWND window);
 void __fastcall FUN_00622720(HWND window);
 // FUNCTION: GAMEMD 0x657DA0 (decl; reloc) -- the dialog procedure.
 int __stdcall FUN_00657DA0(HWND window, unsigned int message, unsigned int wParam, long lParam);
+
+// FUNCTION: GAMEMD 0x658640
+void RadarClass::FUN_00658640(int a)
+{
+    int last = -1;
+    int count = DAT_00A80238;
+    for (int i = 0; i < count; i++) {
+        HouseClass* house = DAT_00A8022C[i];
+        if (house) {
+            if (house->IsControlledByCurrentPlayer()) {
+                last = i;
+            } else if (house->Type->MultiplayPassive) {
+                continue;
+            }
+            FUN_00658330(a, i, house);
+        }
+    }
+    HouseClass** items = DAT_00A8022C;
+    HouseClass* lastHouse = items[last];
+    HouseClass* firstHouse = items[0];
+    FUN_00658330(a, 0, lastHouse);
+    FUN_00658330(a, last, firstHouse);
+}
 
 // FUNCTION: GAMEMD 0x6586D0
 // Run dialog 0x73 with the input manager poked before and after, until the UI reports

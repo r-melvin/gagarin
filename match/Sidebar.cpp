@@ -1079,6 +1079,30 @@ void SidebarClass::vf_16(bool forced)
     CurrentSurface_00887314 = previous;
 }
 
+// FUNCTION: GAMEMD 0x6A74A0
+// Make `tab` the active tab: select its tab record, flag its strip, put the visible cameo buttons back on
+// the map's list and rebuild the strip.
+void SidebarClass::FUN_006A74A0(int tab)
+{
+    unknown_539C = tab;
+    DAT_00B07C48[tab].FUN_00723EA0();
+    StripClass* strip = &Strips[unknown_539C];
+    strip->At_1C = 1;
+    Scenario_006A7590* scenario = ScenarioInstance_006A7590;
+    int flag = scenario->At_34B8;
+    int margin = 0x1A;
+    if (flag) {
+        margin = 0x12;
+    }
+    int count = ((DAT_00886F9C - DAT_00B0B4F8 - margin - 7 + DAT_00886F94) / 50) * 2;
+    for (int i = 0; i < count; i++) {
+        DAT_00B07E80[strip->RowBase * 60 + i].FUN_005565F0();
+        MapInstance_006A7590.FUN_004F4410(&DAT_00B07E80[strip->RowBase * 60 + i]);
+    }
+    DAT_00884B8F = 1;
+    FUN_006A6610();
+}
+
 // FUNCTION: GAMEMD 0x6A7590
 //
 // PARTIAL (94.9%, 93/98; instruction multiset identical). The only residual
@@ -1126,8 +1150,9 @@ void Sidebar_006A7590::SetTab(int tab)
     strip = &this->Tabs[this->ActiveTabIndex];
     strip->IsSelected = 1;
 
+    Scenario_006A7590* scenario = ScenarioInstance_006A7590;
     int margin = 0x1A;
-    if (ScenarioInstance_006A7590->At_34B8) {
+    if (scenario->At_34B8) {
         margin = 0x12;
     }
     int count = ((DAT_00886F9C - DAT_00B0B4F8 - margin - 7 + DAT_00886F94) / 50) * 2;
@@ -1458,8 +1483,8 @@ StripClass* StripClass::FUN_006A80A0(void* unknown_00)
     do {
         cameo->unknown_14 = 0;
         cameo->unknown_18.Bytes.Low = 0;
-        cameo->unknown_1C = 0;
-        cameo->unknown_24 = CurrentFrame_00A8ED84;
+        cameo->Timer.StartFrame = 0;
+        cameo->Timer.TimeLeft = CurrentFrame_00A8ED84;
         cameo->unknown_28 = 0;
         cameo->unknown_2C = 1;
         ++cameo;
@@ -1526,12 +1551,85 @@ bool StripClass::FUN_006A87F0(int type, int id)
     return false;
 }
 
+// FUNCTION: GAMEMD 0x6A8860
+// Move this strip's scroll row by `amount` (down when `back` is clear, up otherwise) if the cameo list allows it.
+bool StripClass::FUN_006A8860(bool back, int amount)
+{
+    if (back) {
+        if (TopRowIndex == 0) {
+            return false;
+        }
+        At_48 = At_48 - amount;
+        return true;
+    }
+    int rows = SidebarRowCount();
+    if (CurrentPlayer == Observer) {
+        if (TopRowIndex + rows / 2 >= DAT_00884CF8) {
+            return false;
+        }
+    } else {
+        if ((TopRowIndex + rows) * 2 >= CameoCount) {
+            return false;
+        }
+    }
+    At_48 = At_48 + amount;
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x6A8B10
 // Calls other functions.
 void FUN_006A8B10(Obj_006A8B10* a1, int a2)
 {
     a1->unknown_3C = 1;
     FUN_004F42F0(DAT_0087F7E8, a2, 0);
+}
+
+// GLOBAL: GAMEMD 0xA8E9A0 -- nonzero while the sidebar text is live.
+extern unsigned char DAT_00A8E9A0;
+// GLOBAL: GAMEMD 0x884B8C -- selects the one-argument money format.
+extern char DAT_00884B8C;
+// GLOBAL: GAMEMD 0xB07BC4 -- cameo text buffer.
+extern wchar_t DAT_00B07BC4[];
+extern "C" unsigned int __cdecl wcslen(const wchar_t* s);
+
+// FUNCTION: GAMEMD 0x6A92E0
+// The text of the cameo at a row of this strip: a super weapon's name, or the item's cost line
+// (spaces become line breaks).
+const wchar_t* StripClass::FUN_006A92E0(int row)
+{
+    int index = row + TopRowIndex * 2;
+    if (DAT_00A8E9A0 && index < CameoCount && CameoCount < 0x4B) {
+        int type = Cameos[index].unknown_04.Word;
+        if (type == 0x1F) {
+            return SuperWeaponTypeClass_Array.Items[Cameos[index].unknown_00]->UIName;
+        }
+        SelectTechnoType* technoType = SelectGetByTypeAndIndex(type, Cameos[index].unknown_00);
+        if (technoType) {
+            if (DAT_00884B8C) {
+                int cost = (technoType->*technoType->Vtbl->At_84)(SelectPlayer_00A83D4C);
+                swprintf(DAT_00B07BC4,
+                         SidebarLoadString("TXT_MONEY_FORMAT_1", 0, "D:\\ra2mdpost\\Sidebar.CPP", 0xC6C), cost);
+            } else {
+                int cost = (technoType->*technoType->Vtbl->At_84)(SelectPlayer_00A83D4C);
+                swprintf(DAT_00B07BC4,
+                         SidebarLoadString("TXT_MONEY_FORMAT_2", 0, "D:\\ra2mdpost\\Sidebar.CPP", 0xC6E),
+                         technoType->UIName, cost);
+            }
+            int length = wcslen(DAT_00B07BC4);
+            if (length > 0) {
+                wchar_t* c = DAT_00B07BC4;
+                do {
+                    if (*c == 0x20) {
+                        *c = 10;
+                    }
+                    c++;
+                    length--;
+                } while (length != 0);
+            }
+            return DAT_00B07BC4;
+        }
+    }
+    return 0;
 }
 
 // FUNCTION: GAMEMD 0x6AACB0
@@ -2116,8 +2214,8 @@ SidebarCameo::SidebarCameo()
 {
     unknown_14 = 0;
     unknown_18.Bytes.Low = 0;
-    unknown_1C = CurrentFrame_00A8ED84;
-    unknown_24 = 0;
+    Timer.StartFrame = CurrentFrame_00A8ED84;
+    Timer.TimeLeft = 0;
     unknown_28 = 0;
     unknown_2C = 1;
 }
