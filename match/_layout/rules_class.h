@@ -93,6 +93,8 @@ struct RulesClass
     // Existing list readers: binary-confirmed section/allocator calls.
     // Declaration: GAMEMD 0x6722F0 -- thiscall, one INI pointer, RET4.
     bool Read_Countries(CCINIClass* pINI);
+    // Declaration: GAMEMD 0x672440 -- thiscall, one INI pointer, RET4; logs "Processing sides." and reads the sides.
+    void FUN_00672440(CCINIClass* pINI);
     // Declaration: GAMEMD 0x6725F0 -- thiscall, one INI pointer, RET4.
     bool Read_SuperWeaponTypes(CCINIClass* pINI);
     // Declaration: GAMEMD 0x672660 -- thiscall, one INI pointer, RET4.

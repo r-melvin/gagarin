@@ -40,6 +40,11 @@
 #include "command_packet_layouts.h"
 #include <string.h>
 #include "scenario_session_globals.h"
+#include "_layout/house_class.h"
+#include "vector_class.h"
+#include "scenario_class.h"
+#include "_layout/scenario_ptr_00a8b230.h"
+#include "_layout/house_type_class.h"
 
 // VTABLE: GAMEMD 0x7E4AAC
 // Campaign score screen state (retail slot 1 is 0x46FC00, not matched).
@@ -54,6 +59,8 @@ public:
 };
 GG_STATIC_ASSERT(offsetof(CampaignScoreClass, Unknown04) == 0x04);
 
+struct MPlayerScoreType;
+
 // VTABLE: GAMEMD 0x7E4AB8
 // Campaign end score screen state (retail slot 1 is 0x471420, not matched).
 class CampaignEndScoreClass
@@ -61,7 +68,7 @@ class CampaignEndScoreClass
 public:
     CampaignEndScoreClass();              // 0x470C00
     virtual ~CampaignEndScoreClass();     // 0x470C30 body, 0x471520 scalar deleting
-    virtual void Slot1();                 // 0x471420
+    virtual void Slot1(DynamicVectorClass<MPlayerScoreType*> scores, int scratch, int posted, int number, const wchar_t* record);  // 0x471420
 };
 
 // Globals written by this TU's static initialisers (placeholder names; no
@@ -217,6 +224,60 @@ void FUN_0046D810()
     }
 }
 
+// FUNCTION: GAMEMD 0x46DA70 (partial 97.6%: identical instruction multiset; the last two adds of the production sum pair units+built+buildings in a different order and use ecx where retail uses edx)
+//
+// Fill one score entry per human house that is present and not multiplay-passive: its name and colour
+// scheme, a winner count, losses, kills, production and the score. Each entry is traced to the debug log.
+void __cdecl FUN_0046DA70()
+{
+    Session_00A8B238.ScoreCount = 0;
+    int count = HouseClass_Array.Count;
+    for (int i = 0; i < count; i++) {
+        HouseClass* house = HouseClass_Array.Items[i];
+        if (house == 0 || ((HouseTypeClass*)house->Type)->MultiplayPassive == true || !house->IsControlledByHuman()) {
+            continue;
+        }
+
+        int index = Session_00A8B238.ScoreCount++;
+        Session_00A8B238.ScoreEntries[index].unknown_2C = 0;
+        wcscpy((wchar_t*)Session_00A8B238.ScoreEntries[index].Name, (wchar_t*)house->UIName);
+        Session_00A8B238.ScoreEntries[index].unknown_30[0] = 0;
+        Session_00A8B238.ScoreEntries[index].unknown_40[0] = 0;
+        Session_00A8B238.ScoreEntries[index].unknown_50[0] = 0;
+        Session_00A8B238.ScoreEntries[index].unknown_60[0] = 0;
+        Session_00A8B238.ScoreEntries[index].unknown_28 = house->ColorSchemeIndex;
+        if (!house->Defeated) {
+            ++Session_00A8B238.ScoreEntries[index].unknown_2C;
+            Session_00A8B238.ScoreSurvivor = index;
+        }
+
+        int kills = 0;
+        int k;
+        for (k = 0; k < 20; k++) {
+            kills += house->KilledUnitsOfHouses[k];
+        }
+        for (k = 0; k < 20; k++) {
+            kills += house->KilledBuildingsOfHouses[k];
+        }
+        Session_00A8B238.ScoreEntries[index].unknown_40[0] = kills;
+        Session_00A8B238.ScoreEntries[index].unknown_30[0] = house->TotalKilledUnits + house->TotalKilledBuildings;
+        int built = house->ActiveBuildingTypes.FUN_0049FB60();
+        built += house->ActiveUnitTypes.FUN_0049FB60();
+        built += house->ActiveInfantryTypes.FUN_0049FB60();
+        built += house->ActiveAircraftTypes.FUN_0049FB60();
+        Session_00A8B238.ScoreEntries[index].unknown_50[0] = house->TotalKilledUnits + built + house->TotalKilledBuildings;
+        if (house->PointTotal > 0) {
+            Session_00A8B238.ScoreEntries[index].unknown_60[0] += house->PointTotal;
+        }
+
+        FUN_004068E0("%hs: %s\n Scheme: %d\n Lost = %d\n Kills = %d\n Built = %d\n Score = %d\n",
+                     Session_00A8B238.ScoreEntries[index].Name, Session_00A8B238.ScoreEntries[index].unknown_2C > 0 ? "Winner" : "Loser",
+                     Session_00A8B238.ScoreEntries[index].unknown_28, Session_00A8B238.ScoreEntries[index].unknown_30[0],
+                     Session_00A8B238.ScoreEntries[index].unknown_40[0], Session_00A8B238.ScoreEntries[index].unknown_50[0],
+                     Session_00A8B238.ScoreEntries[index].unknown_60[0]);
+    }
+}
+
 struct Entry_0046DC50
 {
     char unknown_00[0x60];
@@ -305,6 +366,89 @@ extern "C" __declspec(dllimport) int __stdcall ShowWindow(HWND_ wnd, int command
 extern "C" __declspec(dllimport) long __stdcall SendDlgItemMessageA(HWND_ dialog, int id, unsigned message, unsigned wparam, long lparam);
 // IAT 0x7E14A4: USER32!SendMessageA.
 extern "C" __declspec(dllimport) long __stdcall SendMessageA(HWND_ hWnd, unsigned uMsg, unsigned wParam, long lParam);
+
+// FUNCTION: GAMEMD 0x46DE20
+//
+// Show or hide the lobby dialog's controls together (the first is also invalidated); the last
+// control takes the opposite state.
+void __fastcall FUN_0046DE20(HWND_ dialog, int show)
+{
+    HWND_ item = GetDlgItem(dialog, 0x732);
+    if (item) {
+        ShowWindow(item, show);
+        InvalidateRect(item, 0, 0);
+    }
+    item = GetDlgItem(dialog, 0x72f);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x798);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x799);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x79a);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x79b);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x77e);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x6d2);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x6d3);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x411);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x412);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x6da);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x6db);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x6a1);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x510);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x6a2);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x522);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x6a3);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x6a4);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x6d1);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x5a8);
+    if (item)
+        ShowWindow(item, show);
+    item = GetDlgItem(dialog, 0x71c);
+    if (item) {
+        if (!show)
+            ShowWindow(item, 1);
+        else
+            ShowWindow(item, 0);
+    }
+    item = GetDlgItem(dialog, 0x468);
+    if (item)
+        ShowWindow(item, show);
+}
 
 // FUNCTION: GAMEMD 0x46F600
 void FUN_0046F600(HWND_ dialog)
@@ -650,6 +794,49 @@ void __cdecl FUN_00471400()
     {
         FUN_007C8B48(DAT_0089DFE0, DAT_0089E020, 4, 0x46DC90);
     }
+}
+
+// GLOBAL: GAMEMD 0x89E0A4 -- the end-score caption.
+extern wchar_t DAT_0089E0A4[];
+// GLOBAL: GAMEMD 0x89DFC0
+extern int DAT_0089DFC0;
+struct CaptureSurface;
+// FUNCTION: GAMEMD 0x72D300 (decl; reloc) -- load the side-dependent multiplayer screen.
+void FUN_0072D300(int sideIndex);
+// FUNCTION: GAMEMD 0x72D350 (decl; reloc)
+void FUN_0072D350();
+// FUNCTION: GAMEMD 0x72D730 (decl; reloc)
+void EnsureMpScreenPalette(int sideIndex);
+// FUNCTION: GAMEMD 0x72D780 (decl; reloc)
+void __cdecl FreeMpScreenPalette();
+// FUNCTION: GAMEMD 0x52FEC0 (decl; reloc)
+void __fastcall FUN_0052FEC0(CaptureSurface* surface, unsigned char repaint);
+// FUNCTION: GAMEMD 0x60D380 (decl; reloc) -- run a modal dialog, RET 4.
+int FUN_0060D380(unsigned short dialogId, int (__stdcall* procedure)(void*, unsigned int, unsigned int, long), char banner);
+// FUNCTION: GAMEMD 0x470D30 (decl; reloc) -- the end-score dialog procedure.
+int __stdcall FUN_00470D30(void* dialog, unsigned int message, unsigned int wparam, long lparam);
+
+// FUNCTION: GAMEMD 0x471420
+void CampaignEndScoreClass::Slot1(DynamicVectorClass<MPlayerScoreType*> scores, int scratch, int posted, int number, const wchar_t* record)
+{
+    DAT_0089E020 = scores.Count;
+    wcscpy(DAT_0089E0A4, record);
+    for (int i = 0; i < DAT_0089E020; i++) {
+        DAT_0089DFE0[i] = scores.Items[i];
+    }
+    if (DAT_0089E020 > 1) {
+        qsort(DAT_0089DFE0, DAT_0089E020, sizeof(MPlayerScoreType*), FUN_0046DC90);
+    }
+    DAT_0089DFC0 = number;
+    DAT_0089E008 = posted;
+    DAT_0089DFD4 = scratch;
+    int side = DAT_00A8B230->unknown_34B8;
+    FUN_0072D300(side);
+    EnsureMpScreenPalette(side);
+    FUN_0052FEC0(0, 1);
+    FUN_0060D380(0xBC7, FUN_00470D30, 0);
+    FreeMpScreenPalette();
+    FUN_0072D350();
 }
 
 // BEGIN defined globals (define_globals.py)

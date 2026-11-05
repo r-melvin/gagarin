@@ -71,6 +71,7 @@ class SeatNull_006406E0
 public:
     SeatNull_006406E0();
     ~SeatNull_006406E0(); // GAMEMD 0x6406F0
+    void FUN_00640710(struct HWND__* dialog); // GAMEMD 0x640710 (decl; reloc) -- RET 4
     void FUN_00641140(); // GAMEMD 0x641140
     void FUN_006418B0(CCINIClass* ini); // GAMEMD 0x6418B0
     bool ReadPCXPreview(const char* lpFile); // GAMEMD 0x641DB0

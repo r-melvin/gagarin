@@ -153568,5 +153568,99 @@
   "name": "??0GraphicMenuAnimItem@@QAE@HPAVMSEngine@@PBVPoint2D@@PBURectangleStruct@@ABVWstring@@3H_N@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/CampScor.cpp",
+  "addr": "0x46DA70",
+  "sym": "?FUN_0046DA70@@YAXXZ",
+  "len": "0x1d1",
+  "name": "?FUN_0046DA70@@YAXXZ",
+  "status": "partial",
+  "pct": 97.6,
+  "best_pct": 97.6,
+  "best_at": "b5fdffd7"
+ },
+ {
+  "tu": "match/CampScor.cpp",
+  "addr": "0x46DE20",
+  "sym": "?FUN_0046DE20@@YIXPAUHWND__@@H@Z",
+  "len": "0x1a7",
+  "name": "?FUN_0046DE20@@YIXPAUHWND__@@H@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/CampScor.cpp",
+  "addr": "0x471420",
+  "sym": "?Slot1@CampaignEndScoreClass@@UAEXV?$DynamicVectorClass@PAUMPlayerScoreType@@@@HHHPBG@Z",
+  "len": "0xd2",
+  "name": "CampaignEndScoreClass::Slot1",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Skirmish.cpp",
+  "addr": "0x6ACCA0",
+  "sym": "?FUN_006ACCA0@@YI_NH@Z",
+  "len": "0xbb",
+  "name": "?FUN_006ACCA0@@YI_NH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Skirmish.cpp",
+  "addr": "0x6ACD60",
+  "sym": "?FUN_006ACD60@@YIXPAUHWND__@@@Z",
+  "len": "0x11c",
+  "name": "?FUN_006ACD60@@YIXPAUHWND__@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Skirmish.cpp",
+  "addr": "0x6ADDF0",
+  "sym": "?FUN_006ADDF0@@YIXPAUHWND__@@HH@Z",
+  "len": "0x107",
+  "name": "?FUN_006ADDF0@@YIXPAUHWND__@@HH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Skirmish.cpp",
+  "addr": "0x6ADF00",
+  "sym": "?FUN_006ADF00@@YIXPAUHWND__@@HH@Z",
+  "len": "0x174",
+  "name": "?FUN_006ADF00@@YIXPAUHWND__@@HH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Skirmish.cpp",
+  "addr": "0x6AE080",
+  "sym": "?FUN_006AE080@@YIXPAUHWND__@@H@Z",
+  "len": "0x234",
+  "name": "?FUN_006AE080@@YIXPAUHWND__@@H@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Skirmish.cpp",
+  "addr": "0x6AE2C0",
+  "sym": "?FUN_006AE2C0@@YI_NXZ",
+  "len": "0x121",
+  "name": "?FUN_006AE2C0@@YI_NXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Skirmish.cpp",
+  "addr": "0x6AE3F0",
+  "sym": "?FUN_006AE3F0@@YGHPAXIIJ@Z",
+  "len": "0x2e2",
+  "name": "?FUN_006AE3F0@@YGHPAXIIJ@Z",
+  "status": "partial",
+  "pct": 94.5,
+  "best_pct": 94.5,
+  "best_at": "b5fdffd7"
  }
 ]

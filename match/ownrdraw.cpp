@@ -1651,16 +1651,7 @@ void FUN_00603E40(int nKey, int nValue)
         value->FieldC0 = nValue;
 }
 
-// The three-word record the 0x4E9 control message fills in: two input words,
-// then the wide string it answers with.
-struct Query_00603F00
-{
-    int           unknown_00;   // +0x00
-    int           unknown_04;   // +0x04
-    Obj_007B66D0  unknown_08;   // +0x08
-};
-GG_STATIC_ASSERT(offsetof(Query_00603F00, unknown_08) == 0x08);
-GG_STATIC_ASSERT(sizeof(Query_00603F00) == 0x0C);
+#include "_layout/query_00603f00.h"
 
 // FUNCTION: GAMEMD 0x603F00
 // Asks the control for a wide string with message 0x4E9; the answer comes back

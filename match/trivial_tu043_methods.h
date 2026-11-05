@@ -9,11 +9,12 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
+struct MPlayerScoreType;
 struct Obj_0046D480;
 struct Obj_0046D490;
 
 // GLOBAL: GAMEMD 0x89DFE0
-extern char DAT_0089DFE0[];
+extern MPlayerScoreType* DAT_0089DFE0[];
 // GLOBAL: GAMEMD 0x89E020
 extern int DAT_0089E020;
 
