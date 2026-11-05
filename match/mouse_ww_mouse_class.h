@@ -125,6 +125,7 @@ public:
 
     // ---- non-virtual neighbours called from the scored entries (declared; reloc) ------------
     bool Method_7B8C60();                                    // 0x7B8C60 __thiscall, no args, bool
+    void FUN_007BA090();                                       // 0x7BA090 __thiscall, no args (the periodic cursor refresh)
     CursorRect Method_7B8E80();                               // 0x7B8E80 __thiscall, hidden result pointer, RET 4
     void Method_7B93F0(MouseSurfaceView* surface, int a, int b);  // 0x7B93F0 __thiscall, RET 0xC
     void Method_7B9DF0(int* x, int* y);                    // 0x7B9DF0 __thiscall, RET 8; reads the OS cursor

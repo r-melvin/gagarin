@@ -25,6 +25,7 @@
 #include "mouse_ww_mouse_class.h"
 #include "sidebar_display_globals.h"
 #include "scenario_session_globals.h"
+#include "wide_string_scratch.h"
 
 // The save-under restore that vf_3, vf_5 and SetCursor share: copy the saved background back onto the
 // screen at the cursor rectangle.
@@ -66,12 +67,192 @@ inline void WWMouseClass::DrawCursorBlock()
     UnlockMouse();
 }
 
+// FUNCTION: GAMEMD 0x7B78D0
+// Cut the string to `count` characters: the characters go to a fresh block,
+// the string is released and rebuilt from that block, and the block is freed.
+bool Obj_007B66D0::FUN_007B78D0(unsigned int count)
+{
+    const wchar_t* text = (Buffer == 0) ? WideEmptyString : Buffer;
+    wchar_t* block = (wchar_t*)::operator new(count * 2 + 2);
+    *block = 0;
+    if (text != 0) {
+        wcsncpy(block, text, count);
+    }
+    block[count] = 0;
+    text = (block == 0) ? WideEmptyString : block;
+    Release();
+    Store(text);
+    if (block != 0) {
+        ::operator delete(block);
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x7B7980
+// Cut the string at the first occurrence of `ch`; false when there is none.
+bool Obj_007B66D0::FUN_007B7980(wchar_t ch)
+{
+    if (Buffer == 0) {
+        return false;
+    }
+    wchar_t* found = wcschr(Buffer, ch);
+    if (found == 0) {
+        return false;
+    }
+    FUN_007B78D0((unsigned int)(found - Buffer));
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x7B7C00
+// Reads the line that starts at `start` into `line` (terminators are "\r\n",
+// a CR LF pair counts as one) and returns the index after it, or -1 when
+// `start` is past the end.
+int Obj_007B66D0::FUN_007B7C00(int start, Obj_007B66D0* line) const
+{
+    int index = start;
+    if (start >= WideLength(Buffer)) {
+        return -1;
+    }
+    while (index < WideLength(Buffer)) {
+        // GLOBAL: GAMEMD 0x822050 -- STRING:"\r\n"
+        if (strchr("\r\n", Buffer[index]) != 0) {
+            break;
+        }
+        index++;
+    }
+    int end = index;
+    if (Buffer[index] == 0xd && Buffer[index + 1] == 0xa) {
+        end = index + 1;
+    }
+    const wchar_t* from = Buffer + start;
+    line->Release();
+    line->Store(from);
+    line->FUN_007B78D0(end - start + 1);
+    return end + 1;
+}
+
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
 // FUNCTION: GAMEMD 0x7B7D80
 // Calls other functions.
 void Obj_007B7D80::FUN_007B7D80()
 {
     FUN_007CB9B8(unknown_00, 0, 0xA);
+}
+
+// FUNCTION: GAMEMD 0x7B7DD0
+// A new string holding the decimal text of `value`.
+Obj_007B66D0 FUN_007B7DD0(int value)
+{
+    wchar_t text[32];
+    FUN_007CA564(text, L"%d", value);
+    return Obj_007B66D0(Obj_007B66D0::Inline(), text);
+}
+
+// FUNCTION: GAMEMD 0x7B7E40
+// A new string holding `value` zero-padded to `width` digits; the pattern is
+// built in the same buffer the number is then formatted into.
+Obj_007B66D0 FUN_007B7E40(int value, int width)
+{
+    wchar_t text[32];
+    FUN_007CA564(text, L"%%0%dd", width);
+    FUN_007CA564(text, text, value);
+    return Obj_007B66D0(Obj_007B66D0::Inline(), text);
+}
+
+// FUNCTION: GAMEMD 0x7B7ED0
+// The wide-character text of a narrow string, returned by value (a __fastcall
+// free function: hidden result in ECX, the narrow string in EDX).
+Obj_007B66D0 FUN_007B7ED0(const Wstring& text)
+{
+    unsigned int length = (text.unknown_00 == 0) ? 0 : strlen(text.unknown_00);
+    wchar_t* wide = (wchar_t*)::operator new(length * 2 + 2);
+    FUN_00735060(wide, (text.unknown_00 == 0) ? STR_00889F64 : text.unknown_00, length);
+    WideScratch copy;
+    copy.Store(wide);
+    ::operator delete(wide);
+    return Obj_007B66D0(Obj_007B66D0::InlineCopy(), copy.Buffer);
+}
+
+// FUNCTION: GAMEMD 0x7B7F90
+// The narrow-character text of a wide string, returned by value (a __fastcall
+// free function: hidden result in ECX, the wide string in EDX).
+Wstring FUN_007B7F90(const Obj_007B66D0& text)
+{
+    unsigned int length = (text.Buffer == 0) ? 0 : wcslen(text.Buffer);
+    char* narrow = (char*)::operator new(length + 1);
+    FUN_00735090(narrow, text.Peek(), length);
+    NarrowScratch copy;
+    copy.Buffer = (char*)::operator new(narrow ? strlen(narrow) + 1 : 1);
+    *copy.Buffer = 0;
+    if (narrow != 0) {
+        strcpy(copy.Buffer, narrow);
+    }
+    ::operator delete(narrow);
+    return Wstring(Wstring::InlineNarrowCopy(), copy.Buffer);
+}
+
+// FUNCTION: GAMEMD 0x7B8090
+// A new string made of `text` followed by `other` (a __fastcall free function:
+// hidden result in ECX, `text` in EDX, `other` on the stack).
+Obj_007B66D0 FUN_007B8090(const wchar_t* text, const Obj_007B66D0& other)
+{
+    WideScratch first;
+    first.Store(text);
+    WideScratch second;
+    second.Copy(first.Buffer);
+    second.FUN_007B6970(other.Peek());
+    return Obj_007B66D0(Obj_007B66D0::InlineCopy(), second.Buffer);
+}
+
+// FUNCTION: GAMEMD 0x7B8170
+// A new string made of `first` followed by `second` (a __fastcall free
+// function: hidden result in ECX, `first` in EDX, `second` on the stack).
+Obj_007B66D0 FUN_007B8170(const Obj_007B66D0& first, const Obj_007B66D0& second)
+{
+    WideScratch work;
+    if (first.Buffer != 0) {
+        work.Buffer = (wchar_t*)::operator new(wcslen(first.Buffer) * 2 + 2);
+        wcscpy(work.Buffer, first.Buffer);
+    }
+    const wchar_t* text = second.Peek();
+    if (text != 0) {
+        work.Append(text);
+    }
+    return Obj_007B66D0(Obj_007B66D0::InlineCopy(), work.Buffer);
+}
+
+// FUNCTION: GAMEMD 0x7B82E0
+// The packed-byte form of a wide string, returned by value (a __fastcall free
+// function: hidden result in ECX, the wide string in EDX).
+Wstring FUN_007B82E0(const Obj_007B66D0& text)
+{
+    unsigned int length = (text.Buffer == 0) ? 0 : wcslen(text.Buffer);
+    int bits = (length + 1) * 16;
+    char* packed = (char*)::operator new((bits + 6) / 7);
+    FUN_004335E0(text.Peek(), packed, bits);
+    NarrowScratch copy;
+    copy.Buffer = (char*)::operator new(packed ? strlen(packed) + 1 : 1);
+    *copy.Buffer = 0;
+    if (packed != 0) {
+        strcpy(copy.Buffer, packed);
+    }
+    ::operator delete(packed);
+    return Wstring(Wstring::InlineNarrowCopy(), copy.Buffer);
+}
+
+// FUNCTION: GAMEMD 0x7B83E0
+// The wide string unpacked from a packed-byte string, returned by value (a
+// __fastcall free function: hidden result in ECX, the packed string in EDX).
+Obj_007B66D0 FUN_007B83E0(const Wstring& text)
+{
+    unsigned int length = (text.unknown_00 == 0) ? 0 : strlen(text.unknown_00);
+    int count = (int)((length + 1) * 7 / 8 + 1) / 2;
+    wchar_t* wide = (wchar_t*)::operator new(count * 2 + 2);
+    FUN_00433770((text.unknown_00 == 0) ? STR_00889F64 : text.unknown_00, wide, count);
+    WideScratch copy;
+    copy.Store(wide);
+    ::operator delete(wide);
+    return Obj_007B66D0(Obj_007B66D0::InlineCopy(), copy.Buffer);
 }
 
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
@@ -100,6 +281,94 @@ extern volatile int DAT_00B78140;
 extern HANDLE DAT_00B78154;
 // GLOBAL: GAMEMD 0xB7816C -- the mouse thread is running.
 extern int DAT_00B7816C;
+
+// Shared with the mouse thread (see MouseThreadBlock below).
+// GLOBAL: GAMEMD 0xB7813C -- the thread block's tick count (+0x04).
+extern volatile int DAT_00B7813C;
+// GLOBAL: GAMEMD 0xB78148 -- the thread block's sleep time in milliseconds (+0x10).
+extern volatile int DAT_00B78148;
+// GLOBAL: GAMEMD 0xB7814C -- the thread block's +0x14 word.
+extern volatile int DAT_00B7814C;
+// GLOBAL: GAMEMD 0xB78150 -- the thread block's running flag (+0x18).
+extern volatile int DAT_00B78150;
+// GLOBAL: GAMEMD 0xB78158 -- the mouse thread id.
+extern DWORD DAT_00B78158;
+
+// The block the thread procedure receives (it lives at 0xB78138). Shared with another thread: the creating
+// call is CreateThread at 0x7B8562 (in 0x7B84F0, which writes the block at 0x7B8524..0x7B8546), the thread
+// procedure is 0x7B8610 (reads at 0x7B8624/0x7B8681/0x7B868A/0x7B8691, writes at 0x7B861A..0x7B8697) and the
+// stop request is written by 0x7B86B0 -- hence `volatile` on the fields and on the globals above.
+struct MouseThreadBlock
+{
+    volatile int Stop;          // +0x00 shared with the mouse thread (proc 0x7B8610, CreateThread 0x7B8562)
+    volatile int Ticks;         // +0x04 shared with the mouse thread (proc 0x7B8610, CreateThread 0x7B8562)
+    volatile int Acknowledged;  // +0x08 shared with the mouse thread (proc 0x7B8610, CreateThread 0x7B8562)
+    volatile int unknown_0C;    // shared with the mouse thread (CreateThread 0x7B8562, cleared by 0x7B8524..0x7B8546)
+    volatile __int64 Delay;     // +0x10 shared with the mouse thread; 64-bit: retail reads the high word first (0x7B8681)
+    volatile int Running;       // +0x18 shared with the mouse thread (proc 0x7B8610 writes it at 0x7B861A)
+};
+GG_STATIC_ASSERT(offsetof(MouseThreadBlock, Ticks) == 0x04 && offsetof(MouseThreadBlock, Acknowledged) == 0x08
+              && offsetof(MouseThreadBlock, Delay) == 0x10 && offsetof(MouseThreadBlock, Running) == 0x18);
+
+// The thread procedure (defined below) is named by CreateThread above it.
+DWORD WINAPI FUN_007B8610(LPVOID parameter);
+
+// FUNCTION: GAMEMD 0x7B84F0
+// Starts the mouse thread: creates the cursor mutex if needed, clears the thread
+// block, creates the thread and raises its priority (a failed priority change is
+// logged and the thread is stopped again).
+void FUN_007B84F0()
+{
+    if (MouseMutex == 0) {
+        MouseMutex = CreateMutexA(0, 0, 0);
+    }
+    if (DAT_00B7816C == 0 && MouseMutex != 0) {
+        DAT_00B78138 = 0;
+        DAT_00B78140 = 0;
+        DAT_00B78150 = 0;
+        DAT_00B78148 = 0x10;
+        DAT_00B7814C = 0;
+        DAT_00B7813C = 0;
+        DAT_00B78154 = CreateThread(0, 0x1000, FUN_007B8610, (LPVOID)&DAT_00B78138, 0, &DAT_00B78158);
+        if (DAT_00B78154 != 0) {
+            DAT_00B7816C = 1;
+            if (!SetThreadPriority(DAT_00B78154, 15)) {
+                char message[1024];
+                FormatMessageA(0x1000, 0, GetLastError(), 0, message, 1024, 0);
+                FUN_004068E0("Unable to change the priority of the mouse thread - %s\n", message);
+                while (DAT_00B78140 == 0) {
+                    Sleep(0);
+                }
+                WaitForSingleObject(DAT_00B78154, 5000);
+                CloseHandle(DAT_00B78154);
+                DAT_00B7816C = 0;
+            }
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x7B8610
+// The mouse thread: refreshes the cursor under the lock every `Delay`
+// milliseconds until the stop request is set, then acknowledges it.
+DWORD WINAPI FUN_007B8610(LPVOID parameter)
+{
+    MouseThreadBlock* block = (MouseThreadBlock*)parameter;
+    block->Running = 1;
+    block->Acknowledged = 0;
+    if (block->Stop == 0) {
+        do {
+            LockMouse();
+            if (DAT_00B78164 != 0) {
+                DAT_00B78164->FUN_007BA090();
+            }
+            UnlockMouse();
+            Sleep(block->Delay);
+            block->Ticks++;
+        } while (block->Stop == 0);
+    }
+    block->Acknowledged = 1;
+    return 0;
+}
 
 // FUNCTION: GAMEMD 0x7B86B0
 // Stops the mouse thread (request, spin until acknowledged, wait up to 5 s) and closes its handles.

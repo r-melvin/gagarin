@@ -107,6 +107,21 @@ public:
     // `this->Buffer = 0` out of line (reached by callers in netshare.cpp,
     // 0x5E2AC0, as a plain CALL on a stack temporary).
     Obj_007B66D0();
+    // Retail expands the construction of a result object inline at several
+    // call sites (slot nulled, then Store) while the out-of-line copy below
+    // serves the rest. This tagged overload is that inline expansion; it emits
+    // no function of its own and leaves the out-of-line rows untouched.
+    struct Inline {};
+    Obj_007B66D0(Inline, const wchar_t* src) : Buffer(0) { Store(src); }
+    // The inline expansion of the copy constructor, from another string's buffer.
+    struct InlineCopy {};
+    Obj_007B66D0(InlineCopy, wchar_t* const& text) : Buffer(0)
+    {
+        if (text != 0) {
+            Buffer = (wchar_t*)::operator new(wcslen(text) * 2 + 2);
+            wcscpy(Buffer, text);
+        }
+    }
     Obj_007B66D0(const wchar_t* src);                       // 0x7B66D0
     Obj_007B66D0(const Obj_007B66D0& other);             // 0x7B6720
     // FUNCTION: GAMEMD 0x7B6760 (decl; reloc) -- the out-of-line destructor
@@ -133,10 +148,20 @@ public:
     bool FUN_007B7D90() const;
     // FUNCTION: GAMEMD 0x7B78D0 (decl; reloc) -- __thiscall, one argument: cut
     // the string to that many characters (reallocating).
-    void FUN_007B78D0(unsigned int count);
+    bool FUN_007B78D0(unsigned int count);
     // FUNCTION: GAMEMD 0x7B6F40 (decl; reloc) -- __thiscall, one argument: a
     // second string that names a character set, read against this string's tail.
     void FUN_007B6F40(const Obj_007B66D0* set);
+    // FUNCTION: GAMEMD 0x7B6BE0 (decl; reloc) -- __thiscall, RET 8 (hidden result, one word): this string followed by `text`.
+    Obj_007B66D0 FUN_007B6BE0(const wchar_t* text) const;
+    // FUNCTION: GAMEMD 0x7B6CB0 (decl; reloc) -- __thiscall, RET 8 (hidden result, one word): this string followed by `other`.
+    Obj_007B66D0 FUN_007B6CB0(const Obj_007B66D0& other) const;
+    // FUNCTION: GAMEMD 0x7B71D0 (decl; reloc) -- __thiscall, two stack words: insert `text` at `pos` (clamped to the length).
+    bool FUN_007B71D0(const wchar_t* text, unsigned int pos);
+    // FUNCTION: GAMEMD 0x7B72F0 (decl; reloc) -- __thiscall, two stack words: insert one character at `pos` (clamped to the length).
+    bool FUN_007B72F0(wchar_t ch, unsigned int pos);
+    // FUNCTION: GAMEMD 0x7B7C00 (decl; reloc) -- __thiscall, RET 8: read the line at `start` into `line`; returns the index after it, or -1.
+    int FUN_007B7C00(int start, Obj_007B66D0* line) const;
     // FUNCTION: GAMEMD 0x7B7100 (decl; reloc) -- the same buffer-or-shared-empty
     // read as 0x7B7140, a second out-of-line copy of it that callers in
     // netshare.cpp (0x5E2670) reach with a plain CALL.

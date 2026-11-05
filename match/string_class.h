@@ -13,6 +13,7 @@
 #define GG_MATCH_CORE_STRING_CLASS_H
 
 #include <stddef.h>
+#include <string.h>
 #include "_rt/gg_static_assert.h"
 
 // Retail TD 0x83F5D8 names the element of table 0x7F12B4 as class Wstring.
@@ -26,6 +27,16 @@ public:
     Wstring();
     // Declaration: GAMEMD 0x7B4630
     Wstring(const char* text);
+    // The inline expansion of the copy constructor, from another string's buffer
+    // (retail expands it at call sites that return a Wstring by value).
+    struct InlineNarrowCopy {};
+    Wstring(InlineNarrowCopy, const char* text) : unknown_00(0)
+    {
+        if (text != 0) {
+            unknown_00 = new char[strlen(text) + 1];
+            strcpy(unknown_00, text);
+        }
+    }
     // Declaration: GAMEMD 0x7B5400 -- returns fallback 0x889F64 when null.
     const char* FUN_007B5400() const;
     // Declaration: GAMEMD 0x7B5440 -- fallback pointer 0x889F64 when null.
