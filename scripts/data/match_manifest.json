@@ -156089,5 +156089,68 @@
   "name": "??0SpawnManagerClass@@QAE@PAVTechnoClass@@PAVAircraftTypeClass@@HHH@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/LoadDlg.cpp",
+  "addr": "0x559670",
+  "sym": "?FUN_00559670@LoadOptionsClass@@QAEXXZ",
+  "len": "0x30",
+  "name": "LoadOptionsClass::FUN_00559670",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ownrdraw.cpp",
+  "addr": "0x623170",
+  "sym": "?FUN_00623170@@YIXPAXHH@Z",
+  "len": "0xba",
+  "name": "?FUN_00623170@@YIXPAXHH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ownrdraw.cpp",
+  "addr": "0x624480",
+  "sym": "?FUN_00624480@Obj_00624480@@QAEPAU1@I@Z",
+  "len": "0x1e",
+  "name": "Obj_00624480::FUN_00624480",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ownrdraw.cpp",
+  "addr": "0x625C00",
+  "sym": "?FUN_00625C00@PacketClass@@QAEPADPAH@Z",
+  "len": "0x116",
+  "name": "PacketClass::FUN_00625C00",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Scenario.cpp",
+  "addr": "0x6B8B30",
+  "sym": "?FUN_006B8B30@ScenarioClass@@QAEXPAVCCINIClass@@@Z",
+  "len": "0x170",
+  "name": "ScenarioClass::FUN_006B8B30",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/win_modem_serial_methods.cpp",
+  "addr": "0x774310",
+  "sym": "?FUN_00774310@@YI_NPADH@Z",
+  "len": "0xf1",
+  "name": "?FUN_00774310@@YI_NPADH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/win_modem_serial_methods.cpp",
+  "addr": "0x7747C0",
+  "sym": "?Leave_Failsafe_Mode@WinModemClass@@QAEXXZ",
+  "len": "0xda",
+  "name": "WinModemClass::Leave_Failsafe_Mode",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

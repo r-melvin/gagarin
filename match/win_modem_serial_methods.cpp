@@ -51,6 +51,10 @@ extern const char STR_00849890[];
 extern const char STR_008498B0[];
 // STRING: GAMEMD 0x849910 -- "GetCommState returned error %s.\n"
 extern const char STR_00849910[];
+// STRING: GAMEMD 0x84995C -- "Leave_Failsafe_Mode - EscapeCommFunction failed to set state of RTS line. Error code %d, %s\n"
+extern const char STR_0084995C[];
+// STRING: GAMEMD 0x8499BC -- "WinModemClass - Leaving failsafe mode\n"
+extern const char STR_008499BC[];
 // STRING: GAMEMD 0x849934 -- "WinModemClass - Entering failsafe mode\n"
 extern const char STR_00849934[];
 // STRING: GAMEMD 0x849A28 -- "Reading from port handle failed with error %s\n"
@@ -148,6 +152,7 @@ public:
     virtual void Slot9();                                             // 0x7754B0
 
     bool Enter_Failsafe_Mode();
+    void Leave_Failsafe_Mode();                                         // 0x7747C0
     bool Read_Serial_Chars();
     int  FUN_00774B30(char* buffer, int length);                        // 0x774B30
     void FUN_00774BC0();                                     // 0x774BC0
@@ -284,6 +289,44 @@ HKEY FUN_007741C0(HKEY key, const char* name, bool closeParent)
     delete keyName;
     delete keyClass;
     return 0;
+}
+
+// FUNCTION: GAMEMD 0x774310
+//
+// Read the friendly name of the first modem registered under
+// HKLM\Enum\Root\Modem\0000 into `dest`, at most `size` bytes. False when any key
+// is missing or the value cannot be read.
+bool FUN_00774310(char* dest, int size)
+{
+    char name[0x100];
+    DWORD nameLength = sizeof(name);
+
+    HKEY key = FUN_007741C0(HKEY_LOCAL_MACHINE, "Enum", false);
+    if (!key) {
+        return false;
+    }
+    key = FUN_007741C0(key, "Root", true);
+    if (!key) {
+        return false;
+    }
+    key = FUN_007741C0(key, "Modem", true);
+    if (!key) {
+        return false;
+    }
+    key = FUN_007741C0(key, "0000", true);
+    if (!key) {
+        return false;
+    }
+    if (RegQueryValueExA(key, "FriendlyName", NULL, NULL, (LPBYTE)name, &nameLength) != ERROR_SUCCESS) {
+        RegCloseKey(key);
+        return false;
+    }
+    RegCloseKey(key);
+    if (size < (int)nameLength) {
+        nameLength = size;
+    }
+    memcpy(dest, name, nameLength);
+    return true;
 }
 
 // FUNCTION: GAMEMD 0x774410
@@ -435,6 +478,38 @@ bool WinModemClass::Enter_Failsafe_Mode()
         }
     }
     return true;
+}
+
+// FUNCTION: GAMEMD 0x7747C0
+//
+// Undo the failsafe line: drop pending I/O, put the saved line state back and
+// report any pending line errors, then raise DTR again (the log strings name the
+// function).
+void WinModemClass::Leave_Failsafe_Mode()
+{
+    COMSTAT status;
+    DWORD errors;
+
+    FUN_004068E0(STR_008499BC);
+    PurgeComm(PortHandle, PURGE_TXABORT | PURGE_RXABORT | PURGE_TXCLEAR | PURGE_RXCLEAR);
+    ResetEvent(unknown_28.hEvent);
+    ResetEvent(unknown_3C.hEvent);
+    unknown_50 = false;
+    unknown_51 = false;
+    if (!SetCommState(PortHandle, &unknown_206C)) {
+        FUN_004068E0(STR_00849830, 0);
+    }
+    if (!EscapeCommFunction(PortHandle, SETRTS)) {
+        FUN_004068E0(STR_0084995C, GetLastError(), 0);
+    }
+    if (ClearCommError(PortHandle, &errors, &status)) {
+        unknown_1C = status.cbInQue;
+        unknown_20 = status.cbOutQue;
+        if (errors) {
+            FUN_007754D0(errors, status);
+        }
+    }
+    Set_Serial_DTR(true);
 }
 
 // FUNCTION: GAMEMD 0x7748A0
@@ -811,6 +886,10 @@ extern const char STR_008498B0[] = "Enter_Failsafe_Mode - EscapeCommFunction fai
 extern const char STR_00849910[] = "GetCommState returned error %s.\n";
 // GLOBAL: GAMEMD 0x849934
 extern const char STR_00849934[] = "WinModemClass - Entering failsafe mode\n";
+// GLOBAL: GAMEMD 0x84995C
+extern const char STR_0084995C[] = "Leave_Failsafe_Mode - EscapeCommFunction failed to set state of RTS line. Error code %d, %s\n";
+// GLOBAL: GAMEMD 0x8499BC
+extern const char STR_008499BC[] = "WinModemClass - Leaving failsafe mode\n";
 // GLOBAL: GAMEMD 0x849AA4
 extern const char STR_00849AA4[] = "Writing to port handle failed with error %s\n";
 // GLOBAL: GAMEMD 0x849B68

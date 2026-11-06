@@ -121,6 +121,7 @@ struct ScenarioClass
     void FUN_00683610(); // GAMEMD 0x683610
     void FUN_006B8AE0(); // GAMEMD 0x6B8AE0
     void FUN_0068AD70(CCINIClass* ini, bool flag); // GAMEMD 0x68AD70
+    void FUN_006B8B30(CCINIClass* ini); // GAMEMD 0x6B8B30
     void FUN_00689310(Gg_IStream* stream);
     void FUN_00689470(Gg_IStream* stream); // FUNCTION: GAMEMD 0x689470 (decl)
     bool FUN_0053A100(); // GAMEMD 0x53A100

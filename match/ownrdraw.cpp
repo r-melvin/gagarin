@@ -271,6 +271,27 @@ ListEntry_006255F0::~ListEntry_006255F0()
 {
 }
 
+// A heap-held wide string: 0x624480 runs the string destructor at +0x00. Its eight callers null-test the
+// pointer and call it directly (`PUSH 1`, e.g. 0x60F95B, 0x610285); no table in the image holds its address.
+struct Obj_00624480
+{
+    WideString_006255F0 Text;   // +0x00
+
+    // FUNCTION: GAMEMD 0x624480 (__thiscall)
+    Obj_00624480* FUN_00624480(unsigned int flags);
+};
+GG_STATIC_ASSERT(offsetof(Obj_00624480, Text) == 0x00);
+
+// FUNCTION: GAMEMD 0x624480
+Obj_00624480* Obj_00624480::FUN_00624480(unsigned int flags)
+{
+    // NOVPTR: GAMEMD 0x624480
+    Text.~WideString_006255F0();
+    if (flags & 1)
+        ::operator delete(this);
+    return this;
+}
+
 // FUNCTION: GAMEMD 0x6247D0
 ListEntry_006255F0::ListEntry_006255F0(const ListEntry_006255F0& other)
     : Id(other.Id), Name(other.Name), Text(other.Text),
@@ -5244,6 +5265,30 @@ bool UI::Updated()
     return false;
 }
 
+// FUNCTION: GAMEMD 0x623170  FUN_00623170 (__fastcall)
+// Places a window: a coordinate of -1 keeps the window's current screen position on that axis
+// (measured against the main window's client origin); the size is kept.
+void __fastcall FUN_00623170(GG_HWND hWnd, int nX, int nY)
+{
+    GG_RECT rcSelf;
+    GG_RECT rcScreen;
+
+    rcScreen.left = 0;
+    rcScreen.top = 0;
+    rcScreen.right = DAT_008A00A4;
+    rcScreen.bottom = DAT_008A00A8;
+    ClientToScreen(DAT_00B73550, (GG_POINT*)&rcScreen.left);
+    ClientToScreen(DAT_00B73550, (GG_POINT*)&rcScreen.right);
+    GetWindowRect(hWnd, &rcSelf);
+
+    rcSelf.right -= rcSelf.left;
+    rcSelf.bottom -= rcSelf.top;
+    rcSelf.left = nX == -1 ? rcSelf.left - rcScreen.left : nX;
+    rcSelf.top = nY == -1 ? rcSelf.top - rcScreen.top : nY;
+
+    MoveWindow(hWnd, rcSelf.left, rcSelf.top, rcSelf.right, rcSelf.bottom, 0);
+}
+
 // FUNCTION: GAMEMD 0x623230  FUN_00623230 (__fastcall)
 // Opens the message dialog (resource 0xF0) with one or two text lines.
 GG_HWND FUN_00623230(long lLine1, long lLine2, long lUser)
@@ -6448,6 +6493,49 @@ PacketClass::PacketClass(char* pBuffer)
         pField->Next = Head;
         Head = pField;
     }
+}
+
+// FUNCTION: GAMEMD 0x625C00
+// Serialises the packet: measures the 4-byte header plus each field's 8-byte header and payload
+// (payloads padded to a 4-byte boundary), writes the size and ID words and every field in network
+// order, and returns the new buffer; *pSize receives its length.
+char* PacketClass::FUN_00625C00(int* pSize)
+{
+    *pSize = 4;
+    for (FieldClass* pMeasure = Head; pMeasure; pMeasure = pMeasure->Next)
+    {
+        *pSize += 8;
+        *pSize += pMeasure->Size;
+        *pSize += -(*pSize & 3) & 3;
+    }
+
+    char* pBuffer = new char[*pSize];
+    char* pOut = pBuffer;
+
+    *(unsigned short*)pOut = htons((unsigned short)*pSize);
+    pOut += 2;
+    *(unsigned short*)pOut = htons(ID);
+    pOut += 2;
+
+    for (FieldClass* pField = Head; pField; pField = pField->Next)
+    {
+        pField->HostToNet();
+        memcpy(pOut, pField, 8);
+        pOut += 8;
+
+        memcpy(pOut, pField->Data, ntohs(pField->Size));
+        pOut += ntohs(pField->Size);
+
+        int nPad = -(ntohs(pField->Size) & 3) & 3;
+        if (nPad != 0)
+        {
+            memset(pOut, 0, nPad);
+            pOut += nPad;
+        }
+        pField->NetToHost();
+    }
+
+    return pBuffer;
 }
 
 // FUNCTION: GAMEMD 0x625FB0

@@ -106,6 +106,8 @@ public:
     char FUN_00558810(const wchar_t* a1);
     // FUNCTION: GAMEMD 0x559C20 (decl; reloc) -- scans the save directory for this->Extension; bool result.
     bool FUN_00559C20();
+    // FUNCTION: GAMEMD 0x559670 -- release every entry and clear the vector.
+    void FUN_00559670();
 };
 GG_STATIC_ASSERT(offsetof(LoadOptionsClass, Mode) == 0x04);
 GG_STATIC_ASSERT(offsetof(LoadOptionsClass, Extension) == 0x08);

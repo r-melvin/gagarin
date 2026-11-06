@@ -279,6 +279,15 @@ int __stdcall FUN_00558CB0(HWND h, UINT msg, WPARAM w, LPARAM l)
     return r;
 }
 
+// FUNCTION: GAMEMD 0x559670
+// Release every list entry, then clear the vector through its vtable.
+void LoadOptionsClass::FUN_00559670()
+{
+    for (int i = 0; i < Entries.GetCount(); ++i)
+        delete Entries.Items[i];
+    Entries.Clear();
+}
+
 // FUNCTION: GAMEMD 0x559D30
 int __cdecl FUN_00559D30(SavedGameEntry_00559D30** a, SavedGameEntry_00559D30** b)
 {

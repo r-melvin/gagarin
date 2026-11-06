@@ -2698,6 +2698,28 @@ int ColorScheme::FindByName(const char* name, HSVClass* hsv,
     }
 }
 
+// GLOBAL: GAMEMD 0x8401C8 -- pointer to the section name the option flags are written under.
+extern const char* DAT_008401C8;
+
+// FUNCTION: GAMEMD 0x6B8B30
+// Writes the thirteen game option flags (bits of the first word) as boolean keys.
+void ScenarioClass::FUN_006B8B30(CCINIClass* ini)
+{
+    ini->WriteBool(DAT_008401C8, "TiberiumGrows", (unknown_0000 >> 6) & 1);
+    ini->WriteBool(DAT_008401C8, "TiberiumSpreads", (unknown_0000 >> 7) & 1);
+    ini->WriteBool(DAT_008401C8, "TiberiumExplosive", (unknown_0000 >> 14) & 1);
+    ini->WriteBool(DAT_008401C8, "DestroyableBridges", (unknown_0000 >> 15) & 1);
+    ini->WriteBool(DAT_008401C8, "MCVDeploy", (unknown_0000 >> 8) & 1);
+    ini->WriteBool(DAT_008401C8, "InitialVeteran", (unknown_0000 >> 9) & 1);
+    ini->WriteBool(DAT_008401C8, "FixedAlliance", (unknown_0000 >> 10) & 1);
+    ini->WriteBool(DAT_008401C8, "HarvesterImmune", (unknown_0000 >> 11) & 1);
+    ini->WriteBool(DAT_008401C8, "FogOfWar", (unknown_0000 >> 12) & 1);
+    ini->WriteBool(DAT_008401C8, "Inert", (unknown_0000 >> 5) & 1);
+    ini->WriteBool(DAT_008401C8, "IonStorms", (unknown_0000 >> 17) & 1);
+    ini->WriteBool(DAT_008401C8, "Meteorites", (unknown_0000 >> 16) & 1);
+    ini->WriteBool(DAT_008401C8, "Visceroids", (unknown_0000 >> 18) & 1);
+}
+
 // Layout checks for the start-slot region (kept here: extra asserts in scenario_class_methods.h
 // shift codegen in the TUs that include it).
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1180) == 0x1180);

@@ -174,6 +174,15 @@ extern int DAT_008A00A4;
 extern int DAT_008A00A8;
 // GLOBAL: GAMEMD 0xAC48A8 -- window handle recorded by 0x60C4A0.
 extern GG_HWND DAT_00AC48A8;
+// GLOBAL: GAMEMD 0xB73550 -- the main window.
+extern GG_HWND DAT_00B73550;
+struct GG_POINT
+{
+    long x;
+    long y;
+};
+// IAT 0x7E14B8: USER32!ClientToScreen.
+extern "C" __declspec(dllimport) int __stdcall ClientToScreen(GG_HWND hWnd, GG_POINT* lpPoint);
 // FUNCTION: GAMEMD 0x602D70 (__fastcall)
 bool FUN_00602D70(int nKey, GG_HWND hCtl);
 // FUNCTION: GAMEMD 0x602FE0 (__fastcall)
