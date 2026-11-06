@@ -156206,5 +156206,27 @@
   "name": "BuildingTypeClass::~BuildingTypeClass",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/Map.cpp",
+  "addr": "0x577C90",
+  "sym": "?FUN_00577C90@MapClass@@QAEXPAVHouseClass@@@Z",
+  "len": "0xfc",
+  "name": "MapClass::FUN_00577C90",
+  "status": "partial",
+  "pct": 92.8,
+  "best_pct": 92.8,
+  "best_at": "82f86b7f"
+ },
+ {
+  "tu": "match/trivial_tu127_methods.cpp",
+  "addr": "0x578C50",
+  "sym": "?FUN_00578C50@MapClass@@QAEPAUCellStruct@@PAU2@H@Z",
+  "len": "0x104",
+  "name": "MapClass::FUN_00578C50",
+  "status": "partial",
+  "pct": 80.6,
+  "best_pct": 80.6,
+  "best_at": "82f86b7f"
  }
 ]

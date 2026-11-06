@@ -99,6 +99,36 @@ void MapClass::FUN_00577BB0(HouseClass* house)
     }
 }
 
+// FUNCTION: GAMEMD 0x577C90
+void MapClass::FUN_00577C90(HouseClass* house)
+{
+    if (house != 0)
+        HouseClass_Array.Items[house->ArrayIndex]->MapIsClear = 0;
+
+    if (house == DAT_00A83D4C || house == 0) {
+        if (house == 0)
+            FUN_004068E0(DAT_0082AD48);
+
+        Map_0087F7E8.FUN_004ADEE0(0, 0);
+
+        FUN_00578350();
+        CellClass* cell = FUN_00578290();
+        while (cell != 0) {
+            cell->IncreaseShroudCounter();
+            if (cell->ShroudCounter >= 0) {
+                cell->AltFlags &= ~0x18;
+                cell->Flags &= ~3;
+            }
+            cell = FUN_00578290();
+        }
+
+        Map_0087F7E8.FUN_004ADCD0(0, 0);
+        DAT_00A83D4C->Visionary = 0;
+        Map_0087F7E8.FUN_00657CE0();
+        FlagToRedraw(2);
+    }
+}
+
 // FUNCTION: GAMEMD 0x578350
 void MapClass::FUN_00578350()
 {

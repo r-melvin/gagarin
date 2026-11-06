@@ -359,6 +359,10 @@ public:
     CellClass* FUN_00578290();
     // FUNCTION: GAMEMD 0x578290 (decl; reloc) -- the same entry point as the MapSavedObject view typed it.
     MapSavedObject* NextSavedObject_00578290();
+    // FUNCTION: GAMEMD 0x578C50 -- the cell at the centre of local-rectangle zone n (1..9), written to out; returns out.
+    CellStruct* FUN_00578C50(CellStruct* out, int zone);
+    // FUNCTION: GAMEMD 0x577C90 -- like Reshroud, but it raises the cells' shroud counters and clears the flags of unshrouded cells.
+    void FUN_00577C90(HouseClass* house);
     // FUNCTION: GAMEMD 0x578350 -- rewind the diagonal walk to the cell at (1, MapRect.Width).
     void FUN_00578350();
     // FUNCTION: GAMEMD 0x578850 -- the walk's two limits from the local rectangle: x + y + 1 and width - x + y.

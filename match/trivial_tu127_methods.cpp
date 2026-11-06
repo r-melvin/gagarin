@@ -487,3 +487,34 @@ int FUN_005889F0(int value, int running)
     }
     return bestZone;
 }
+
+// Unclaimed (below partial bar): GAMEMD 0x578B70 MapClass::FUN_00578B70, the local-rectangle zone of a cell (best 41.2%:
+// the retail sums are int loads truncated at use, the compiler narrows them to word loads).
+
+static inline CellStruct AddCells(CellStruct a, CellStruct b)
+{
+    CellStruct r;
+    r.X = a.X + b.X;
+    r.Y = a.Y + b.Y;
+    return r;
+}
+
+// FUNCTION: GAMEMD 0x578C50
+CellStruct* MapClass::FUN_00578C50(CellStruct* out, int zone)
+{
+    int w = LocalRect.Width * 2 - 1;
+    int zm = zone - 1;
+    int col = zm % 3 * (w / 3) + (w % 3 != 0);
+    int h = LocalRect.Height * 2 - 1;
+    int row = h / 3 * (zm / 3) + (h % 3 != 0);
+    CellStruct base;
+    int bx = LocalRect.X + LocalRect.Y + 1;
+    int by = MapRect.Width - LocalRect.X + LocalRect.Y;
+    base.X = bx;
+    base.Y = by;
+    CellStruct delta;
+    delta.X = ((col & 1) + row + (row & 1) + col) / 2;
+    delta.Y = (row - col) / 2;
+    *out = AddCells(base, delta);
+    return out;
+}
