@@ -790,15 +790,6 @@ bool MultiplayerGameMode::vf_7(int)
 // Pick a start cell for a house. The first house (no slot taken yet) gets a
 // random cell; an observer gets a random cell, or the first taken one; every
 // other house gets the free cell farthest in sum from the taken ones.
-//
-// PARTIAL (93.8% positional after the counts are read through GetCount(); was 20.5% positional, 80.2% aligned: 219/273). CAPPED after three
-// variants: (1) the observer search written out twice in place (20.9/82.1,
-// but it folds retail's `SETZ AL; TEST AL,AL` away); (2) the search as one
-// inline helper returning the node's observer test (kept: it reproduces the
-// SETZ); (3) the distance through a Cell difference read as two ints.
-// Remaining: the random-index argument order (count before the scenario
-// pointer), the local slot of the house pointer (+0x14 vs +0x10) and retail's
-// separate epilogue on the first-house path, which cl 8804 tail-merges.
 Cell MultiplayerGameMode::vf_49(int house, DynamicVectorClass<Cell>& starts, bool* taken)
 {
     int i;
@@ -842,8 +833,8 @@ Cell MultiplayerGameMode::vf_49(int house, DynamicVectorClass<Cell>& starts, boo
         return starts.Items[i];
     }
 
-    int best = -1;
     int bestDistance = -1;
+    int best = -1;
     for (int k = 0; k < starts.GetCount(); k++) {
         if (!taken[k]) {
             int distance = 0;
@@ -852,9 +843,9 @@ Cell MultiplayerGameMode::vf_49(int house, DynamicVectorClass<Cell>& starts, boo
                     Cell d;
                     d.X = starts.Items[k].X - starts.Items[m].X;
                     d.Y = starts.Items[k].Y - starts.Items[m].Y;
-                    int x = d.X;
-                    int y = d.Y;
-                    distance += (short)FUN_004CAC40((double)x * x + (double)y * y);
+                    double fx = d.X;
+                    double fy = d.Y;
+                    distance += (short)FUN_004CAC40(fx * fx + fy * fy);
                 }
             }
             if (distance > bestDistance) {

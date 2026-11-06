@@ -1042,6 +1042,10 @@ int FUN_005c80a0(unsigned int* r, unsigned int* a, unsigned int* b, int n)
 // r = base^exp mod mod, n words (left-to-right square and multiply).
 // Returns 0, or -1..-5 for 0^0, zero modulus, base >= mod, exp >= mod and a
 // failed modulus setup. Clears the modulus state afterwards.
+//
+// PARTIAL (56.9% positional, 88.2% aligned). The loop counter is `--bits` on the
+// unreduced bit length; retail keeps the counter and the exponent word pointer in
+// the opposite stack/register roles and holds n*4 in EDI across the exponent scan.
 int FUN_005c8500(unsigned int* r, unsigned int* base, unsigned int* exp, unsigned int* mod, int n)
 {
     unsigned int tmp[64];
@@ -1077,14 +1081,13 @@ int FUN_005c8500(unsigned int* r, unsigned int* base, unsigned int* exp, unsigne
         mask = 1 << ((bits - 1) % 32);
     }
     unsigned int* ep = &exp[words - 1];
-    bits--;
     WordsCopy(r, base, w);
     mask >>= 1;
     if (mask == 0) {
         mask = 0x80000000;
         ep--;
     }
-    while (bits--) {
+    while (--bits) {
         FUN_005c80a0(tmp, r, r, w);
         if (*ep & mask) {
             FUN_005c80a0(r, tmp, base, w);

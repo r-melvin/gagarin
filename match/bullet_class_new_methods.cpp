@@ -147,15 +147,6 @@ extern const double DAT_007E3570;
 // GLOBAL: GAMEMD 0x7E3CC0
 extern const double DAT_007E3CC0;
 
-// Native writes the low WORD, then reads a DWORD. The final &31 removes all
-// influence of the uninitialized high WORD. No stack-padding assumption.
-static inline unsigned int BulletDirectionIndex(double y, double x)
-{
-    unsigned short raw = (unsigned short)(int)((FUN_004CAE30(y, x)
-        - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
-    return ((raw >> 10) + 1 >> 1) & 31;
-}
-
 static inline CellStruct BulletCell(const CoordStruct& coord)
 {
     CellStruct result;
@@ -1006,6 +997,9 @@ int BulletClass::vf_122()
 }
 
 // FUNCTION: GAMEMD 0x468090
+//
+// PARTIAL (50.9% positional, 67.1% aligned). The voxel arm is exact in shape; the sprite arm differs in
+// register roles (retail keeps this in ESI, the location pointer in EDI and the floor height in EBX).
 void BulletClass::vf_69(Point2D* point, RectangleStruct* clip)
 {
     if ((*reinterpret_cast<unsigned int*>(DAT_00A8B230) & 0x1000) != 0) {
@@ -1019,15 +1013,20 @@ void BulletClass::vf_69(Point2D* point, RectangleStruct* clip)
     if (Type->Voxel) {
         Matrix3D rotation;
         rotation.MakeIdentity();
-        rotation.RotateZ((float)((int(BulletDirectionIndex(-Velocity.Y,
-            Velocity.X)) - 8) * gg_locomotion_facing_step));
+        DirStruct yaw;
+        yaw.Raw = (unsigned short)(int)((FUN_004CAE30(
+            -Velocity.Y, Velocity.X) - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
+        int yawIndex = (yaw.Whole >> 10) + 1 >> 1 & 0x1F;
+        rotation.RotateZ((float)((yawIndex - 8) * gg_locomotion_facing_step));
         double horizontal = FUN_004CAC40(Velocity.Y * Velocity.Y
                                          + Velocity.X * Velocity.X);
-        rotation.RotateY((float)(-(int(BulletDirectionIndex(Velocity.Z,
-            horizontal)) - 8) * gg_locomotion_facing_step));
-        Matrix3D world = FUN_00754BE0();
-        Matrix3D combined = FUN_005AF980(world, rotation);
-        FUN_0046B0C0(&Type->MainVoxel, combined, point, clip, 0, 0x800, 1000);
+        DirStruct pitch;
+        pitch.Raw = (unsigned short)(int)((FUN_004CAE30(
+            Velocity.Z, horizontal) - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
+        int pitchIndex = (pitch.Whole >> 10) + 1 >> 1 & 0x1F;
+        rotation.RotateY((float)-((pitchIndex - 8) * gg_locomotion_facing_step));
+        FUN_0046B0C0(&Type->MainVoxel, FUN_005AF980(FUN_00754BE0(), rotation),
+                     point, clip, 0, 0x800, 1000);
         return;
     }
 

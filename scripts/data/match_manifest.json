@@ -60098,9 +60098,9 @@
   "len": "0x36F",
   "name": "FUN_005c8500",
   "status": "partial",
-  "pct": 27.6,
-  "best_pct": 27.6,
-  "best_at": "cf203011"
+  "pct": 56.9,
+  "best_pct": 56.9,
+  "best_at": "7e22100f"
  },
  {
   "tu": "match/MPLayer.cpp",
@@ -73556,10 +73556,8 @@
   "sym": "?vf_49@MultiplayerGameMode@@UAE?AVCell@@HAAV?$DynamicVectorClass@VCell@@@@PA_N@Z",
   "len": "0x34c",
   "name": "MultiplayerGameMode::vt_entry_C4",
-  "status": "partial",
-  "pct": 93.8,
-  "best_pct": 93.8,
-  "best_at": "ca2773f6"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Multiplayer.cpp",
@@ -91941,10 +91939,9 @@
   "len": "0x330",
   "name": "BuildingLightClass::BuildingLightClass",
   "status": "partial",
-  "pct": 14.7,
-  "best_pct": 14.7,
-  "best_at": "cf203011",
-  "note": "Canonical CoordStruct writer at437090 replaces placeholder receiver; partial14.7,231native222compiled instructions. Retail FIADD/member-vptr ordering and list-search differences remain."
+  "pct": 67.2,
+  "best_pct": 67.2,
+  "best_at": "7e22100f"
  },
  {
   "tu": "match/building_light_class_draw.cpp",
@@ -105628,9 +105625,9 @@
   "len": "0x39b",
   "name": "BulletClass::vf_69",
   "status": "partial",
-  "pct": 8.1,
-  "best_pct": 8.1,
-  "best_at": "cf203011"
+  "pct": 50.9,
+  "best_pct": 50.9,
+  "best_at": "7e22100f"
  },
  {
   "tu": "match/bullet_class_new_methods.cpp",

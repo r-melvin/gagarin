@@ -20,17 +20,13 @@ extern const double DAT_007E2810;
 extern DynamicVectorClass<BuildingLightClass*> DAT_008B4190;
 
 // FUNCTION: GAMEMD 0x435820
+//
+// PARTIAL (67.2% positional, 77.6% aligned). Retail's frame is 0x54 bytes, ours 0x5C-0x6C: one coordinate
+// temporary fewer. The member list stores the vptrs after the members as retail does.
 BuildingLightClass::BuildingLightClass(BuildingClass* sourceBuilding)
+    : unknown_B0(0), unknown_B8(DAT_0089C510), unknown_C4(DAT_0089C510), unknown_D0(0),
+      unknown_D8(false), unknown_DC(0), unknown_E0(0), source(sourceBuilding)
 {
-    unknown_B0 = 0;
-    unknown_B8 = DAT_0089C510;
-    unknown_C4 = DAT_0089C510;
-    unknown_D0 = 0;
-    unknown_D8 = false;
-    unknown_DC = 0;
-    unknown_E0 = 0;
-    source = sourceBuilding;
-
     DAT_008B4190.AddItem(this);
 
     if (sourceBuilding == 0)
@@ -42,23 +38,18 @@ BuildingLightClass::BuildingLightClass(BuildingClass* sourceBuilding)
     double angle = (double)((short)sourceBuilding->PrimaryFacing.FUN_004C93D0(&heading)->Raw - 0x3FFF)
                  * DAT_007E2810;
     CoordStruct first;
-    first.FUN_00437090((int)(FUN_004CAD00(angle) * zOffset + location.Y),
-                       (int)(location.X - FUN_004CACB0(angle) * zOffset), location.Z);
     CoordStruct coordinate;
-    coordinate.X = first.X;
-    coordinate.Y = first.Y;
-    coordinate.Z = first.Z;
+    coordinate = *first.FUN_00437090((int)(FUN_004CAD00(angle) * zOffset + location.Y),
+                       (int)(location.X - FUN_004CACB0(angle) * zOffset), location.Z);
     unknown_C4 = coordinate;
 
+    location = sourceBuilding->Location;
     int drawOffset = -RulesInstance->SpotlightMovementRadius;
     angle = (double)((short)sourceBuilding->PrimaryFacing.FUN_004C93D0(&heading)->Raw - 0x3FFF)
           * DAT_007E2810;
     CoordStruct second;
-    second.FUN_00437090((int)(FUN_004CAD00(angle) * drawOffset + location.Y),
+    unknown_B8 = *second.FUN_00437090((int)(FUN_004CAD00(angle) * drawOffset + location.Y),
                         (int)(location.X - FUN_004CACB0(angle) * drawOffset), location.Z);
-    unknown_B8.X = second.X;
-    unknown_B8.Y = second.Y;
-    unknown_B8.Z = second.Z;
 
     vf_109(coordinate);
 
