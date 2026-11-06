@@ -3185,7 +3185,7 @@ void Tactical::FUN_006D8B30()
 void FUN_006D8C60(ObjectClass* object, RectangleStruct* clip)
 {
     Point2D point;
-    InlineCoordsToScreen(&point, &object->vf_18());
+    InlineCoordsToScreen(&point, &object->vf_18()); // ADDRCALL: GAMEMD 0x6D8C84
     Pair_006D9F80 offset = DAT_00887324->unknown_B0;
     point.X -= offset.unknown_00;
     point.Y -= offset.unknown_04;
