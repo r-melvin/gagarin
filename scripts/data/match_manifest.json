@@ -144009,10 +144009,8 @@
   "sym": "?FUN_004FF980@HouseClass@@QAEXPAVTechnoClass@@@Z",
   "len": "0x8b",
   "name": "HouseView_004FF980::FUN_004FF980",
-  "status": "partial",
-  "pct": 88.9,
-  "best_pct": 88.9,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/House.cpp",
@@ -144020,10 +144018,8 @@
   "sym": "?FUN_004FFA50@HouseClass@@QAEXPAVTechnoClass@@@Z",
   "len": "0x8b",
   "name": "HouseView_004FF980::FUN_004FFA50",
-  "status": "partial",
-  "pct": 88.9,
-  "best_pct": 88.9,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/w2_leaf_r17.cpp",

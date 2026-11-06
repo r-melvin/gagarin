@@ -2878,81 +2878,25 @@ int* HouseClass::FUN_004FF8F0(int category, bool naval)
 }
 
 // FUNCTION: GAMEMD 0x4FF980
-// PARTIAL: 88.9%. Retail tests the naval flag as a byte (test cl,cl); a plain bool test differs.
 // Takes one off the matching factory counter (airpad, barracks, war factory, construction
 // yard or shipyard) when a building of that category is removed from this house.
 void HouseClass::FUN_004FF980(TechnoClass* building)
 {
     if (building->vf_11() == 6) {
         TechnoTypeClass* type = building->vf_33();
-        bool naval;
-        if (type == 0 || !type->Naval)
-            naval = false;
-        else
-            naval = true;
-        int* counter;
-        switch (static_cast<BuildingClass*>(building)->Type->Factory) {
-        case 1:
-        case 0x28:
-            if (naval)
-                counter = &NumShipyards;
-            else
-                counter = &NumWarFactories;
-            break;
-        case 2:
-        case 3:
-            counter = &NumAirpads;
-            break;
-        default:
-            return;
-        case 0xF:
-        case 0x10:
-            counter = &NumBarracks;
-            break;
-        case 6:
-        case 7:
-            counter = &NumConYards;
-        }
+        int* counter = FUN_004FF8F0(static_cast<BuildingClass*>(building)->Type->Factory, type != 0 && type->Naval);
         if (counter != 0)
             *counter -= 1;
     }
 }
 
 // FUNCTION: GAMEMD 0x4FFA50
-// PARTIAL: 88.9%. Retail tests the naval flag as a byte (test cl,cl); a plain bool test differs.
 // As 0x4FF980, adding one when a building of the category is added.
 void HouseClass::FUN_004FFA50(TechnoClass* building)
 {
     if (building->vf_11() == 6) {
         TechnoTypeClass* type = building->vf_33();
-        bool naval;
-        if (type == 0 || !type->Naval)
-            naval = false;
-        else
-            naval = true;
-        int* counter;
-        switch (static_cast<BuildingClass*>(building)->Type->Factory) {
-        case 1:
-        case 0x28:
-            if (naval)
-                counter = &NumShipyards;
-            else
-                counter = &NumWarFactories;
-            break;
-        case 2:
-        case 3:
-            counter = &NumAirpads;
-            break;
-        default:
-            return;
-        case 0xF:
-        case 0x10:
-            counter = &NumBarracks;
-            break;
-        case 6:
-        case 7:
-            counter = &NumConYards;
-        }
+        int* counter = FUN_004FF8F0(static_cast<BuildingClass*>(building)->Type->Factory, type != 0 && type->Naval);
         if (counter != 0)
             *counter += 1;
     }
