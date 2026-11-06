@@ -938,15 +938,20 @@ bool __fastcall FUN_00684620(const char* filename)
     CurrentFrame = 0;
     ScenarioInstance->unknown_3598 = true;
     ++DAT_00A8E7AC;
-    ScenarioInstance->unknown_34BD = _stricmp(scenario + strlen(scenario) - 4, STR_0083DA88) == 0;
-    FUN_004068E0(ScenarioInstance->unknown_34BD ? STR_0083DA70 : STR_0083DA58);
+    if (_stricmp(scenario + strlen(scenario) - 4, STR_0083DA88) == 0) {
+        ScenarioInstance->unknown_34BD = true;
+        FUN_004068E0(STR_0083DA70);
+    } else {
+        ScenarioInstance->unknown_34BD = false;
+        FUN_004068E0(STR_0083DA58);
+    }
     LoadProgressMgr* manager = 0;
     if (!DAT_00A8ED6B) {
         int players = 1;
         if (Session_00A8B238.GameMode != 0 && Session_00A8B238.GameMode != 5)
             players = PlayerCount_00A8DA84;
         DAT_00AC4F58.FUN_00642A60(100.0, players, 0);
-        wchar_t caption[132];
+        wchar_t caption[128];
         const wchar_t* captionText = 0;
         if (Session_00A8B238.GameMode == 4 && DAT_00B779C4) {
             swprintf(caption, FUN_00734E60(STR_0083DA4C, 0, STR_0083D838, 0x4AF), DAT_00B779D4);
@@ -982,7 +987,7 @@ bool __fastcall FUN_00684620(const char* filename)
             // Literal bytes at0x82E108, followed by sixteen zero bytes.
             char dotted[32] = "xxx.xxx.xxx.xxx";
             for (int i = 1; i < PlayerCount_00A8DA84; ++i) {
-                unsigned char network[4], node[6];
+                unsigned char node[6], network[4];
                 Players_00A8DA78[i]->Address.GetAddress(network, node);
                 sprintf(dotted, STR_0083D9FC, node[0], node[1], node[2], node[3]);
                 FUN_004068E0(STR_0083D9DC, dotted);
@@ -1442,7 +1447,7 @@ void __fastcall FUN_00685DC0()
             }
             if (DAT_00A8B23C) resume = DAT_00A8B23C->vf_42();
             ++DAT_00A8D588;
-            if (DAT_00A8D588 > 3) DAT_00A8D588 = 3;
+            if (DAT_00A8D588 >= 4) DAT_00A8D588 = 3;
             if (resume) {
                 DAT_00A8B23C->vf_43();
                 FUN_0078ABF0(false, DAT_00887734);
@@ -1491,7 +1496,8 @@ void __fastcall FUN_00685DC0()
             delete Interface_00887628;
             Interface_00887628 = 0;
             DAT_00A8E9A0 = false;
-            goto cleanupNotice;
+            if (Session_00A8B238.GameMode == 4) FUN_0078ABF0(false, DAT_00887734);
+            return;
         }
         DAT_00A8B274 = saved;
         memcpy(DAT_00A8B27C, settings[3], 32);
@@ -1606,7 +1612,8 @@ bool __fastcall FUN_00686730(const char* filename)
     CCINIClass ini;
     CCFileClass file(filename);
     FUN_004068E0(STR_0083DB6C, filename);
-    if (!ini.ReadCCFile(&file, true, false)) {
+    int loaded = ini.ReadCCFile(&file, true, false);
+    if (!loaded) {
         FUN_004068E0(STR_0083DB50);
         return false;
     }
@@ -1896,6 +1903,7 @@ int __fastcall FUN_00688ED0(ObjectClass* object, const CellStruct& cell, int dis
                 int y = cell.Y;
                 int maxX = DAT_0087F90C - 1 + DAT_0087F914;
                 int maxY = DAT_0087F910 - 1 + DAT_0087F918;
+                int same = 0;
                 switch (direction) {
                 case 0: y -= distance; break;
                 case 1: x += distance; y -= distance; break;
@@ -1910,7 +1918,7 @@ int __fastcall FUN_00688ED0(ObjectClass* object, const CellStruct& cell, int dis
                 if (x < DAT_0087F90C) x = DAT_0087F90C;
                 if (y > maxY) y = maxY;
                 if (y < DAT_0087F910) y = DAT_0087F910;
-                CellStruct candidate = { (short)x, (short)y };
+                Cell candidate = Cell((short)x, (short)y);
                 if (pass > 0) {
                     int delta = ScenarioInstance->unknown_0218.RandomRanged(0, 1);
                     if (ScenarioInstance->unknown_0218.RandomRanged(0, 99) < 50) {
@@ -1928,10 +1936,9 @@ int __fastcall FUN_00688ED0(ObjectClass* object, const CellStruct& cell, int dis
                         y = candidate.Y - delta;
                         if (y < DAT_0087F910) y = DAT_0087F910;
                     }
-                    candidate.X = (short)x;
-                    candidate.Y = (short)y;
+                    candidate = Cell((short)x, (short)y);
                 }
-                bool same = candidate.X == cell.X && candidate.Y == cell.Y;
+                if (candidate.X == cell.X && candidate.Y == cell.Y) same = 1;
                 if (MapInstance.FUN_00578460(&candidate, 1) && !same) {
                     Point2D offset(0, 0);
                     ObjectClass* occupied = MapInstance.FUN_005657A0(&candidate)->FindTechnoNearestTo(&offset, false, 0);
