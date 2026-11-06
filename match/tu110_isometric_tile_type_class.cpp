@@ -38,6 +38,18 @@
 #include "header_init_shapes.h"
 
 #include "iso_tile_type_class_tile_data_methods.h"
+#include "ccfile_class.h"
+#include "abstract_registry.h"
+#include "_layout/obj_004a1d30.h"
+#include "vector_class_operations.h"
+#include <objidl.h>
+#include "_layout/cell_class.h"
+#include "_layout/rgb_class.h"
+#include "scenario_class.h"
+#include "cell_flag_search_shared.h"
+#include <stdarg.h>
+#include <stdio.h>
+#include "_layout/light_convert_class.h"
 
 template class DynamicVectorClass<IsometricTileTypeClass::TileInsertType*>;
 
@@ -224,6 +236,31 @@ Quad_0054A120 Gbl_00ABC2D0[40] = {
     Quad_0054A120(0, 0, 0, 0)
 };
 
+// GLOBAL: GAMEMD 0x87F698 -- LightConvertClass registry (defined in static_vector_dtor_stubs.cpp)
+extern DynamicVectorClass<LightConvertClass*> DAT_0087F698;
+
+// GLOBAL: GAMEMD 0xA8ED28 -- every IsometricTileTypeClass, in tile order.
+extern DynamicVectorClass<IsometricTileTypeClass*> DAT_00A8ED28;
+
+// FUNCTION: GAMEMD 0x544A70
+// Destructor: announce the expiry, free the chained tile type and the cell lists, and leave both registries.
+IsometricTileTypeClass::~IsometricTileTypeClass()
+{
+    AnnounceExpiredPointer(1);
+    if (unknown_2BC != 0) {
+        IsometricTileTypeClass* next = unknown_2BC;
+        unknown_2BC = 0;
+        delete next;
+    }
+    DAT_00A8ED28.RemoveItem(this);
+    reinterpret_cast<DynamicVectorClass<AbstractClass*>*>(&DAT_00B0F670)->RemoveItem(this);
+    for (int i = unknown_vec_2A4.Count - 1; i >= 0; --i) {
+        if (unknown_vec_2A4.Items[i] != 0)
+            delete unknown_vec_2A4.Items[i];
+        unknown_vec_2A4.Delete(i);
+    }
+}
+
 // FUNCTION: GAMEMD 0x544CB0  (__thiscall, vtable slot 39)
 // The loaded tile-set header, loading it on first use. Retail reads the member
 // once up front and again only inside the loading arm, so the source keeps the
@@ -241,11 +278,96 @@ void* IsometricTileTypeClass::vf_39()
 }
 
 
+// An element of the function-local cell list below (retail registers its exit-time destructor, 0x544DF0, which is empty).
+struct IsoListCell_00AA0E3C
+{
+    CellStruct Value;
+    ~IsoListCell_00AA0E3C() {}
+};
+
+// FUNCTION: GAMEMD 0x544D30
+// The cell (column, row) of every present sub-tile of the tile set, followed by the 0x7FFF marker; the list is a
+// function-local static.
+CellStruct* IsometricTileTypeClass::FUN_00544D30(int)
+{
+    static IsoListCell_00AA0E3C List[124];
+    TileImageHeader* data = GetTileData();
+    SubTileImage** tile = data->SubTiles;
+    IsoListCell_00AA0E3C* out = List;
+    for (int i = 0; i < unknown_2E4 * unknown_2E8; ++i) {
+        if (*tile++ != 0) {
+            CellStruct cell;
+            cell.X = i % unknown_2E4;
+            cell.Y = i / unknown_2E4;
+            (out++)->Value = cell;
+        }
+    }
+    CellStruct end;
+    end.X = 0x7FFF;
+    end.Y = 0x7FFF;
+    out->Value = end;
+    return &List[0].Value;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x544DF0
 // Empty function.
 void __cdecl FUN_00544DF0()
 {
+}
+
+// GLOBAL: GAMEMD 0x885780 -- the second palette (defined in colour_table_statics.cpp)
+extern RGBClass DAT_00885780[256];
+// GLOBAL: GAMEMD 0xABBED0 -- the first palette (defined in header_init_543c40.cpp)
+extern HeaderByte3 DAT_00ABBED0[256];
+// GLOBAL: GAMEMD 0x887308 -- the display surface
+extern Surface* DAT_00887308;
+
+// FUNCTION: GAMEMD 0x544E70
+// The shared light converter for a colour tint: the neutral one for an untouched tint, else a match among the
+// existing ones, else a new one registered at the end of the list.
+LightConvertClass* __fastcall FUN_00544E70(int red, int green, int blue)
+{
+    if (DAT_00887308 == 0)
+        return 0;
+    if (red == 1000 && green == 1000 && blue == 1000 && DAT_0087F698.Count != 0)
+        return DAT_0087F698.Items[0];
+    ScenarioClass::ScenarioLighting(&red, &green, &blue);
+    for (int i = 1; i < DAT_0087F698.Count; ++i) {
+        LightConvertClass* existing = DAT_0087F698.Items[i];
+        if (existing->unknown_198 == red && existing->unknown_19C == green && existing->unknown_1A0 == blue)
+            return existing;
+    }
+    int level = 0x35;
+    if (red + green + blue < 2000)
+        level = 0x1B;
+    LightConvertClass* created = new LightConvertClass(DAT_00ABBED0, DAT_00885780, DAT_00887308, red, green, blue,
+                                                       DAT_0087F698.GetCount() != 0, false, level);
+    DAT_0087F698.AddItem(created);
+    return created;
+}
+
+// FUNCTION: GAMEMD 0x545000
+// Rebuilds the light converter list from scratch (just the neutral one), resets the invalid cell's light and clears
+// every cell's converter.
+void FUN_00545000()
+{
+    while (DAT_0087F698.GetCount() > 0) {
+        if (DAT_0087F698.Items[0] != 0)
+            delete DAT_0087F698.Items[0];
+        DAT_0087F698.Delete(0);
+    }
+    LightConvertClass* neutral = new LightConvertClass(DAT_00ABBED0, DAT_00885780, DAT_00887308, 1000, 1000, 1000,
+                                                       false, false, 0x35);
+    DAT_0087F698.AddItem(neutral);
+    DAT_00ABDC50.LightConvert = 0;
+    DAT_00ABDC50.FUN_00483E30(0, 0x10000, 0, 1000, 1000, 1000);
+    DAT_0087F7E8.FUN_00578350();
+    CellClass* cell = DAT_0087F7E8.FUN_00578290();
+    while (cell != 0) {
+        cell->LightConvert = 0;
+        cell = DAT_0087F7E8.FUN_00578290();
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -254,6 +376,28 @@ void __cdecl FUN_00544DF0()
 bool __cdecl FUN_00544FF0()
 {
     return false;
+}
+
+// FUNCTION: GAMEMD 0x547020
+// Reads the tile set file named at +0x2F5 into a fresh block, rebasing the sub-tile pointers.
+int IsometricTileTypeClass::LoadTileData()
+{
+    CCFileClass file(unknown_2F5);
+    int size = file.GetFileSize();
+    if (Image != 0)
+        delete Image;
+    Image = new char[size];
+    file.ReadBytes(Image, size);
+    ImageAllocated = true;
+    TileImageHeader* data = static_cast<TileImageHeader*>(Image);
+    unknown_2E4 = (unsigned char)data->Width;
+    unknown_2E8 = (unsigned char)data->Height;
+    for (int i = 0; i < unknown_2E4 * unknown_2E8; ++i) {
+        if (data->SubTiles[i] != 0 && (unsigned int)data->SubTiles[i] < (unsigned int)Image)
+            data->SubTiles[i] = (SubTileImage*)((unsigned int)data->SubTiles[i] + (unsigned int)Image);
+    }
+    FUN_00549E90();
+    return size;
 }
 
 // FUNCTION: GAMEMD 0x5471B0  (__thiscall)
@@ -383,6 +527,31 @@ Rec_00549B50 Obj_00549B50::FUN_00549B50(const Rec_00549B50& in)
     return in;
 }
 
+// FUNCTION: GAMEMD 0x549B70
+// Feeds the identity fields to the checksum sink.
+void IsometricTileTypeClass::vf_13(Obj_004A1D30* crc)
+{
+    AbstractTypeClass::vf_13(crc);
+    crc->FUN_004A1D50(unknown_294);
+    crc->FUN_004A1D50(unknown_298);
+    crc->FUN_004A1D50(unknown_29C);
+    crc->FUN_004A1D50(unknown_2A0);
+    crc->FUN_004A1D50(unknown_vec_2A4.Count);
+    if (unknown_2BC != 0)
+        crc->FUN_004A1D50(static_cast<IRTTITypeInfo*>(unknown_2BC)->vf_rtti_4());
+    crc->FUN_004A1D50(unknown_2C0);
+    crc->FUN_004A1D50(unknown_2C4);
+    crc->FUN_004A1D50(unknown_2D4);
+    crc->FUN_004A1D50(unknown_2D8);
+    crc->FUN_004A1D50(unknown_2DC);
+    crc->FUN_004A1CA0(unknown_2E0);
+    crc->FUN_004A1CA0(unknown_2E1);
+    crc->FUN_004A1D50(unknown_2E4);
+    crc->FUN_004A1D50(unknown_2E8);
+    crc->FUN_004A1D50(unknown_2EC);
+    crc->FUN_004A1D50(unknown_2F0);
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0054A120
 Quad_0054A120::Quad_0054A120(int a, int b, int c, int d)
@@ -454,6 +623,26 @@ template class VectorClass<unsigned short*>;
 // TEMPLATE: GAMEMD 0x54A6E0
 // DynamicVectorClass<IsometricTileTypeClass::TileInsertType*>::FindItemIndex (slot 4)
 template class VectorClass<IsometricTileTypeClass::TileInsertType*>;
+
+#include "message_log_005bd0d0.h"
+
+// FUNCTION: GAMEMD 0x006BEC60 (decl; reloc)
+void FUN_006BEC60();
+// FUNCTION: GAMEMD 0x006BEC50 (decl; reloc)
+void FUN_006BEC50(int);
+// FUNCTION: GAMEMD 0x005BC450 (decl; reloc) -- the object at a slot of the table at 0xABF168.
+int FUN_005BC450(int index);
+// FUNCTION: GAMEMD 0x54A8C0
+// Writes the formatted text to the error stream, then logs the format text through message log 4.
+void __cdecl FUN_0054A8C0(const char* format, ...)
+{
+    FUN_006BEC60();
+    va_list args;
+    va_start(args, format);
+    vfprintf(stderr, format, args);
+    ((MessageLog_005BD0D0*)FUN_005BC450(4))->Printf(format);
+    FUN_006BEC50(1);
+}
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xAA102C

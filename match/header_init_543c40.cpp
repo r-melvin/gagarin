@@ -10,14 +10,6 @@
 #include "mathtbl_consts.h"
 #include "trig_table_functions_004cac40.h"
 
-// Three zeroed bytes (a palette entry with a user constructor).
-struct HeaderByte3
-{
-    unsigned char a, b, c;
-    HeaderByte3() : a(0), b(0), c(0) {}
-};
-GG_STATIC_ASSERT(sizeof(HeaderByte3) == 3);
-
 
 // GLOBAL: GAMEMD 0x7EC440
 const double DAT_007EC440 = 60.0;

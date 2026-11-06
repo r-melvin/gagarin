@@ -13,19 +13,7 @@
 // LIBRARY: GAMEMD 0x7CA858 (decl; reloc) -- CRT vswprintf.
 extern "C" int __cdecl vswprintf(wchar_t* buffer, const wchar_t* format, va_list args);
 
-class MessageLog_005BD0D0
-{
-public:
-    // FUNCTION: GAMEMD 0x5BD0D0 (decl; reloc)
-    void FUN_005BD0D0(const char* text);
-    // FUNCTION: GAMEMD 0x5BD1F0
-    void __cdecl Printf(const char* format, ...);
-    // FUNCTION: GAMEMD 0x5BD240
-    void __cdecl PrintfWide(const wchar_t* format, ...);
-
-    // GLOBAL: GAMEMD 0xABF23A
-    static bool Enabled;
-};
+#include "message_log_005bd0d0.h"
 
 // FUNCTION: GAMEMD 0x5BD1F0
 void __cdecl MessageLog_005BD0D0::Printf(const char* format, ...)

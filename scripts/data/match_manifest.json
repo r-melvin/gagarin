@@ -85376,9 +85376,9 @@
  {
   "tu": "match/tu110_isometric_tile_type_class.cpp",
   "addr": "0x547CE0",
-  "sym": "_$E5",
+  "sym": "_$E7",
   "len": "0x1",
-  "name": "exit-time destructor stub (function-local table of FUN_00547370)",
+  "name": "_$E7",
   "status": "matched",
   "pct": 100.0
  },
@@ -154543,6 +154543,71 @@
   "sym": "?FUN_0054D820@JumpjetLocomotionClass@@QAEHXZ",
   "len": "0x10e",
   "name": "JumpjetLocomotionClass::FUN_0054D820",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu110_isometric_tile_type_class.cpp",
+  "addr": "0x544A70",
+  "sym": "??1IsometricTileTypeClass@@UAE@XZ",
+  "len": "0x169",
+  "name": "??1IsometricTileTypeClass@@UAE@XZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu110_isometric_tile_type_class.cpp",
+  "addr": "0x544D30",
+  "sym": "?FUN_00544D30@IsometricTileTypeClass@@QAEPAUCellStruct@@H@Z",
+  "len": "0xb1",
+  "name": "IsometricTileTypeClass::FUN_00544D30",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu110_isometric_tile_type_class.cpp",
+  "addr": "0x544E70",
+  "sym": "?FUN_00544E70@@YIPAVLightConvertClass@@HHH@Z",
+  "len": "0x171",
+  "name": "?FUN_00544E70@@YIPAVLightConvertClass@@HHH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu110_isometric_tile_type_class.cpp",
+  "addr": "0x545000",
+  "sym": "?FUN_00545000@@YIXXZ",
+  "len": "0x14a",
+  "name": "?FUN_00545000@@YIXXZ",
+  "status": "partial",
+  "pct": 97.9,
+  "best_pct": 97.9,
+  "best_at": "8381b478"
+ },
+ {
+  "tu": "match/tu110_isometric_tile_type_class.cpp",
+  "addr": "0x547020",
+  "sym": "?LoadTileData@IsometricTileTypeClass@@QAEHXZ",
+  "len": "0xe7",
+  "name": "IsometricTileTypeClass::LoadTileData",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu110_isometric_tile_type_class.cpp",
+  "addr": "0x549B70",
+  "sym": "?vf_13@IsometricTileTypeClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x10f",
+  "name": "IsometricTileTypeClass::vf_13",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu110_isometric_tile_type_class.cpp",
+  "addr": "0x54A8C0",
+  "sym": "?FUN_0054A8C0@@YAXPBDZZ",
+  "len": "0x3e",
+  "name": "?FUN_0054A8C0@@YAXPBDZZ",
   "status": "matched",
   "pct": 100.0
  }

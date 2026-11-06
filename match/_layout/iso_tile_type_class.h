@@ -13,6 +13,7 @@
 #include "object_type_class.h"
 
 struct CellStruct;
+struct Obj_004A1D30;
 struct RectangleStruct;
 class Surface;
 class IsometricTileTypeClass;
@@ -52,6 +53,7 @@ class IsometricTileTypeClass : public ObjectTypeClass
 {
 public:
     virtual int vf_16();                    // 16  0x54A160
+    virtual void vf_13(Obj_004A1D30* crc);  // 13  0x549B70
     struct TileInsertType; // nested pointer type attested by TU110 vector RTTI
 
     // FUNCTION: GAMEMD 0x5447C0 (decl; reloc) -- the named constructor. Its first argument is forwarded to the
@@ -82,7 +84,7 @@ public:
     bool             GetConnectFlag(int idx); // GAMEMD 0x5471F0
 
     // FUNCTION: GAMEMD 0x547020 (decl; reloc) — the lazy tile-set loader.
-    void LoadTileData();
+    int LoadTileData();
 
     // Round 15 additions (GAMEMD 0x544BE0, 0x544C80, 0x549A60).
     int              FUN_00544BE0(int idx);
@@ -95,6 +97,10 @@ public:
     static int       FUN_00544CE0(const char* name);
     // Round 25 addition (GAMEMD 0x549AE0).
     IsometricTileClass* FUN_00549AE0(int unused);
+    // FUNCTION: GAMEMD 0x544D30 -- the cells of the tile set's present sub-tiles, ended by the 0x7FFF marker (static list).
+    CellStruct* FUN_00544D30(int unused);
+    // FUNCTION: GAMEMD 0x549E90 (decl; reloc)
+    void FUN_00549E90();
     // Added with GAMEMD 0x547370.
     CellStruct* FUN_00547370();
     // FUNCTION: GAMEMD 0x547CF0 (decl; reloc) -- draw one tile of the set (clip rectangle by value).
@@ -107,7 +113,7 @@ public:
     int              unknown_2A0;              // +0x2A0 ctor = 0 @0x5447F0
     DynamicVectorClass<unsigned short*> unknown_vec_2A4;  // +0x2A4 (0x18) DynamicVectorClass<unsigned short*>: vptr 0x7ECCEC (RTTI .?AV?$DynamicVectorClass@PAG@@) @0x544811,
                                                //   Count 0 @0x544825, CapacityIncrement 0xA @0x54481B
-    int              unknown_2BC;              // +0x2BC ctor = 0 @0x544868
+    IsometricTileTypeClass* unknown_2BC;       // +0x2BC ctor = 0 @0x544868; next tile type of the chain (546DA0 walks it, 544A70 deletes it)
     int              unknown_2C0;              // +0x2C0 ctor @0x544836
     int              unknown_2C4;              // +0x2C4 ctor @0x54483C
     int              unknown_2C8;              // +0x2C8 ctor @0x544842
@@ -125,8 +131,7 @@ public:
     int              unknown_2EC;              // +0x2EC ctor stores its fifth argument (low byte) @0x54489F
     int              unknown_2F0;              // +0x2F0 ctor = 1 @0x5448A5
     unsigned char    TileDataLoadable;         // +0x2F4
-    unsigned char    unknown_2F5;              // +0x2F5 ctor = 0 @0x5449C5
-    char             _pad_2F6[0x305 - 0x2F6];
+    char             unknown_2F5[0x10];        // +0x2F5 tile set file name (CCFileClass argument at 0x547020); first byte ctor = 0 @0x5449C5
     unsigned char    unknown_305;              // +0x305 ctor = 1 @0x5448B5
     unsigned char    unknown_306;              // +0x306 ctor = 0 @0x5448BC
     char             _pad_307[1];              // +0x307
