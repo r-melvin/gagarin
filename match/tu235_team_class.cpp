@@ -380,12 +380,19 @@ extern char DAT_00842DD4[];
 extern char DAT_00842DCC_name[];
 extern Lookup_00747370 DAT_00842DD4_obj;
 
-#include "team_class_add_member_methods.h"
 #include "_layout/object_class.h"
+#include "_layout/techno_type_class.h"
 
 #include "team_class_methods.h"
 #include "team_class_r14_views.h"
 #include "_layout/script_class.h"
+#include "_layout/rules_class.h"
+#include "_layout/task_force_class.h"
+#include "mapobj_globals.h"
+#include "mathtbl_init_shapes.h"
+
+// GLOBAL: GAMEMD 0xB0E948
+extern MathTblShortPair DAT_00B0E948;
 #include "_layout/anim_class.h"
 #include "_layout/anim_type_class.h"
 #include "_layout/script_type_class.h"
@@ -562,6 +569,50 @@ void TeamClass::FUN_006EA080()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6EA3E0
+// Refresh the team's fill state from the member count against its task force.
+bool TeamClass::FUN_006EA3E0()
+{
+    bool wasShort = Flag7A;
+    int total = Type->TaskForce->FUN_006E8160();
+    int have = unknown_48;
+    if (have > 0) {
+        unknown_79 = have == total;
+        if (unknown_79) Flag78 = true;
+        TeamTypeClass* type = Type;
+        if (type->Reinforce) {
+            if (total > 2) Flag7A = have <= total / 3;
+            else Flag7A = have < total;
+        } else {
+            Flag7A = Flag78 == 0;
+        }
+        if (type->GuardSlower) {
+            if (Flag7A) unknown_76 = 0;
+            else unknown_76 = 1;
+        }
+    } else {
+        bool wasDone = Flag78;
+        unknown_76 = 0;
+        Flag7A = true;
+        unknown_79 = 0;
+        Member34 = 0;
+        if (wasDone) {
+            if (Flag82) {
+                for (int i = LogicArray.Count - 1; i >= 0; --i) {
+                    if (LogicArray.Items[i]->FUN_006E53A0(0x17, 0, DAT_00B0E948, false, 0) && LogicArray.Count == 0) break;
+                }
+            }
+            delete this;
+            return false;
+        }
+    }
+    unknown_7E = 0;
+    unknown_7D = 0;
+    if (wasShort != Flag7A) Flag7B = true;
+    return true;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x006EA4F0
 void Obj_006EA4F0::FUN_006EA4F0(int a)
 {
@@ -579,49 +630,46 @@ void Obj_006EA4F0::FUN_006EA4F0(int a)
 // threat totals are updated, the lazily-built pair at +0x34 is filled if still
 // empty, the two recalc bytes are raised and the unit inherits the type's byte
 // at +0xF5.
-bool Team_006EA500::AddMember(Foot_006EA500* member, bool flag)
+bool TeamClass::AddMember(FootClass* member, bool flag)
 {
     if (member == 0) {
         return false;
     }
 
     int slot;
-    if (!this->FUN_006EA610(member, &slot, flag)) {
+    if (!FUN_006EA610(member, &slot, flag)) {
         return false;
     }
 
     if (member->Team != 0) {
-        member->Team->LiberateMember(member, -1, false);
+        member->Team->LiberateMember(member, -1, 0);
     }
 
     if (!flag) {
-        this->CountObjects[slot]++;
+        unknown_88[slot]++;
     }
 
-    member->At_689 = this->FirstUnit == 0;
-    member->NextTeamMember = this->FirstUnit;
-    this->FirstUnit = member;
+    member->IsInitiated = FirstUnit == 0;
+    member->NextTeamMember = FirstUnit;
+    FirstUnit = member;
     member->Team = this;
-    member->Group = this->Type->GetGroup();
+    member->Group = Type->GetGroup();
 
-    if (this->Trigger != 0) {
-        if (this->Type->At_B3 == 0
-            || (member->*member->Vtbl->GetTechnoType)()->At_5E0 > 0) {
-            // Retail passes member in ECX unchanged to ObjectClass::AttachTrigger.
-            reinterpret_cast<ObjectClass*>(member)->AttachTrigger(
-                static_cast<TagClass*>(this->Trigger));
+    if (unknown_70 != 0) {
+        if (Type->OnTransOnly == 0 || member->vf_33()->Passengers > 0) {
+            member->AttachTrigger(unknown_70);
         }
     }
 
-    this->TotalObjects = this->TotalObjects + 1;
-    this->TotalThreatValue += (member->*member->Vtbl->At_2C0)();
-    if (this->At_34 == 0) {
-        this->FUN_006EAEE0(&this->At_34, &this->At_38);
+    unknown_48 = unknown_48 + 1;
+    unknown_4C += member->vf_176();
+    if (Member34 == 0) {
+        FUN_006EAEE0(&Member34, &unknown_38);
     }
 
-    this->At_7E = 1;
-    this->At_7D = 1;
-    member->At_422 = this->Type->At_F5;
+    unknown_7E = 1;
+    unknown_7D = 1;
+    member->RecruitableB = Type->AreTeamMembersRecruitable;
     return true;
 }
 
@@ -643,6 +691,34 @@ void TeamClass::vf_10(void* target, bool removed)
     if (unknown_38 == target) unknown_38 = 0;
     if (unknown_44 == target) unknown_44 = 0;
     if (unknown_30 == target) unknown_30 = 0;
+}
+
+// GLOBAL: GAMEMD 0xA8E7AC
+extern int DAT_00A8E7AC;
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6EC130
+// Keep a member within the stray distance of the team's destination at +0x34.
+bool TeamClass::FUN_006EC130(FootClass* member)
+{
+    if (member == 0 || !member->IsAlive || !member->Health) return false;
+    if (!DAT_00A8E7AC && member->InLimbo) return false;
+    if (member->IsInitiated) return false;
+    ScriptActionNode node;
+    int action = Target28->GetCurrentAction(&node)->Action;
+    int stray;
+    if (action == 0x36 || action == 0x35) stray = RulesInstance->RelaxedStray;
+    else stray = RulesInstance->Stray;
+    if (member->FUN_005F6360(Member34) > stray) {
+        if (member->Destination == 0) {
+            member->vf_122(2, false);
+            member->vf_242(0);
+            member->SetDestination(Member34, true);
+        }
+        return true;
+    }
+    member->IsInitiated = 1;
+    return false;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -809,8 +885,6 @@ void Obj_006EDB20::FUN_006EDB20(Arg1_006EDB20* a1, int a2)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // Native 6EDB50 entry reads these canonical object fields and COM slot 4.
-// GLOBAL: GAMEMD 0xA8E7AC
-extern int DAT_00A8E7AC;
 // Native target 0x40DD70 (declaration; native ECX input).
 // The body is annotated in core/whatami_dispatch_methods.cpp.
 // Physical ABI proposal; the differently typed existing provider is not unified here.

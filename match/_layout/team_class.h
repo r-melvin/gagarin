@@ -68,7 +68,8 @@ public:
     CDTimerClass    unknown_64;          // +0x64, inline countdown6EC643
     TagClass*       unknown_70;          // +0x70
     bool            unknown_74;
-    char            _pad_75[0x77 - 0x75];
+    char            _pad_75;
+    bool            unknown_76;
     bool            Flag77;              // +0x77
     bool            Flag78;              // +0x78
     unsigned char   unknown_79;
@@ -98,8 +99,14 @@ public:
     // FUNCTION: GAMEMD 0x6EF610 (declaration; thiscall, RET 8).
     void FUN_006EF610(ScriptActionNode* action, bool enabled);
 
-    // FUNCTION: GAMEMD 0x6EA500 (decl; reloc) -- TeamClass::AddMember; the body is on the view in tu235_team_class.cpp.
+    // FUNCTION: GAMEMD 0x6EA500 -- TeamClass::AddMember.
     bool AddMember(FootClass* member, bool flag);
+    // FUNCTION: GAMEMD 0x6EA3E0
+    bool FUN_006EA3E0();
+    // FUNCTION: GAMEMD 0x6EC130
+    bool FUN_006EC130(FootClass* member);
+    // FUNCTION: GAMEMD 0x6EA610 (decl; reloc) -- can the member join; the task-force slot it fills comes back through `slot`.
+    bool FUN_006EA610(FootClass* member, int* slot, bool flag);
     // FUNCTION: GAMEMD 0x6EA870 (decl; reloc) -- TeamClass::LiberateMember.
     void LiberateMember(FootClass* foot, int idx, unsigned char count);
     // FUNCTION: GAMEMD 0x6EBAD0 (decl; reloc)
@@ -147,6 +154,8 @@ GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_44) == 4);
 GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_70) == 4);
 GG_STATIC_ASSERT(offsetof(TeamClass, Member34) == 0x34);
 GG_STATIC_ASSERT(offsetof(TeamClass, FirstUnit) == 0x54);
+GG_STATIC_ASSERT(offsetof(TeamClass, unknown_76) == 0x76);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_76) == 1);
 GG_STATIC_ASSERT(offsetof(TeamClass, Flag77)   == 0x77);
 GG_STATIC_ASSERT(offsetof(TeamClass, Flag78)   == 0x78);
 GG_STATIC_ASSERT(offsetof(TeamClass, Flag7A)   == 0x7A);

@@ -480,7 +480,6 @@ void FootClass::CreateWakes(int x, int y, int z)
 }
 
 #include "_layout/map_0087f7e8.h"
-#include "team_class_add_member_methods.h"
 #include "_layout/house_class.h"
 
 // GLOBAL: GAMEMD 0xA8ED5C (decl; reloc)

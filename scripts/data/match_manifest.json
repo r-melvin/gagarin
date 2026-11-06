@@ -653,11 +653,11 @@
  {
   "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EA500",
-  "sym": "?AddMember@Team_006EA500@@QAE_NPAUFoot_006EA500@@_N@Z",
+  "sym": "?AddMember@TeamClass@@QAE_NPAVFootClass@@_N@Z",
   "len": "0x101",
   "name": "TeamClass::AddMember",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/tu235_team_class.cpp",
@@ -155756,6 +155756,26 @@
   "sym": "?vf_10@ParasiteClass@@UAEXPAX_N@Z",
   "len": "0x23d",
   "name": "ParasiteClass::vf_10",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu235_team_class.cpp",
+  "addr": "0x6EA3E0",
+  "sym": "?FUN_006EA3E0@TeamClass@@QAE_NXZ",
+  "len": "0x108",
+  "name": "FUN_006EA3E0",
+  "status": "partial",
+  "pct": 80.4,
+  "best_pct": 80.4,
+  "best_at": "773de7d3"
+ },
+ {
+  "tu": "match/tu235_team_class.cpp",
+  "addr": "0x6EC130",
+  "sym": "?FUN_006EC130@TeamClass@@QAE_NPAVFootClass@@@Z",
+  "len": "0xE4",
+  "name": "FUN_006EC130",
   "status": "matched",
   "pct": 100.0
  }
