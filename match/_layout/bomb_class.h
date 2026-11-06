@@ -25,6 +25,7 @@ class BombClass : public AbstractClass
 {
 public:
     BombClass();                        // GAMEMD 0x4385D0 (declaration; reloc)
+    virtual ~BombClass();               // GAMEMD 0x438670; slot 8 is the scalar deleting destructor 0x4393F0
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
     virtual HRESULT __stdcall Load(IStream* pStm);
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);

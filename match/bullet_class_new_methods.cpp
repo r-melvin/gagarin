@@ -21,6 +21,7 @@
 #include "airstrike_class_methods.h"
 #include "parasite_class_infect_methods.h"
 #include "small_misc35_methods.h"
+#include "_layout/bomb_list_class.h"
 #include <new>
 #include "engine_core_globals.h"
 #include "shared_constants_globals.h"
@@ -102,7 +103,7 @@ extern int DAT_0087F7EC;
 // GLOBAL: GAMEMD 0x87F7F0
 extern int DAT_0087F7F0;
 // GLOBAL: GAMEMD 0x87F5D8
-extern Obj_00439110 DAT_0087F5D8;
+extern BombListClass DAT_0087F5D8;
 // GLOBAL: GAMEMD 0x7E48E0
 extern const double DAT_007E48E0;
 // GLOBAL: GAMEMD 0x7E1738
@@ -1415,7 +1416,7 @@ extern int DAT_0087F7EC;
 // GLOBAL: GAMEMD 0x87F7F0; native EAX store at 0x46912B.
 extern int DAT_0087F7F0;
 // GLOBAL: GAMEMD 0x87F5D8; native fixed receiver at 0x46936B.
-extern Obj_00439110 DAT_0087F5D8;
+extern BombListClass DAT_0087F5D8;
 // Existing globals bound at the same native addresses.
 extern const char rclsid_007E96E0[16];
 extern const char riid_007F7C90[16];

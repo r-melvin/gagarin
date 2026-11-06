@@ -155412,5 +155412,41 @@
   "name": "TiberiumClass::FUN_00722C40",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/dynamic_bomb_vector_00438410.cpp",
+  "addr": "0x438670",
+  "sym": "??1BombClass@@UAE@XZ",
+  "len": "0x7a",
+  "name": "??1BombClass@@UAE@XZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/dynamic_bomb_vector_00438410.cpp",
+  "addr": "0x438E70",
+  "sym": "?FUN_00438E70@BombListClass@@QAEXPAVTechnoClass@@0@Z",
+  "len": "0x1bb",
+  "name": "BombListClass::FUN_00438E70",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/dynamic_bomb_vector_00438410.cpp",
+  "addr": "0x4393F0",
+  "sym": "??_GBombClass@@UAEPAXI@Z",
+  "len": "0x8e",
+  "name": "??_GBombClass@@UAEPAXI@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/capture_manager_release_methods.cpp",
+  "addr": "0x4719A0",
+  "sym": "??1CaptureManagerClass@@UAE@XZ",
+  "len": "0xa2",
+  "name": "??1CaptureManagerClass@@UAE@XZ",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

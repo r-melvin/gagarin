@@ -8,6 +8,11 @@
 //   out-of-line _$E thunk behind a jump).
 #include "FUNCTION.H"
 #include "vector_add_item_free.h"
+#include "_layout/bomb_list_class.h"
+#include "_layout/techno_class.h"
+#include "_layout/house_class.h"
+#include "_layout/voc_class.h"
+#include "frame_counter.h"
 
 extern RulesClass* Rules;   // GLOBAL: GAMEMD 0x8871E0
 
@@ -28,3 +33,35 @@ BombClass::BombClass() : TickSound(0)
     unknown_50 = Rules->BombTickingSound;
     DynamicVectorAddItemFree(&DAT_0089C668, this);
 }
+
+// FUNCTION: GAMEMD 0x438670
+// Release the ticking sound and leave the global bomb list.
+BombClass::~BombClass()
+{
+    Audio.FUN_00405C00();
+    DAT_0089C668.RemoveItem(this);
+}
+
+// FUNCTION: GAMEMD 0x438E70
+// Plant an Ivan bomb: a techno of kind 0xF may attach a time bomb to a target that has none.
+void BombListClass::FUN_00438E70(TechnoClass* owner, TechnoClass* target)
+{
+    if (owner != 0 && owner->vf_11() == 0xF && target != 0 && target->AttachedBomb == 0) {
+        BombClass* bomb = new BombClass;
+        bomb->OwnerHouse = owner->vf_15();
+        bomb->Owner = owner;
+        bomb->Target = target;
+        bomb->PlantingFrame = CurrentFrame;
+        bomb->DetonationFrame = bomb->PlantingFrame + Rules->IvanTimedDelay;
+        bomb->DeathBomb = 0;
+        target->AttachedBomb = bomb;
+        DynamicVectorAddItemFree(this, bomb);
+        UpdateDelay = 1;
+        if (Rules->BombAttachSound != -1 && owner->Owner->IsControlledByCurrentPlayer()) {
+            CoordStruct where = target->Location;
+            VocClass::PlayAt(Rules->BombAttachSound, &where, 0);
+        }
+    }
+}
+
+// SYNTHETIC: GAMEMD 0x4393F0 -- compiler-generated scalar deleting destructor.

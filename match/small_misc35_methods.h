@@ -32,9 +32,6 @@ struct Obj_00439110 : Node_00439110
     char          _pad24[0x30 - 0x24];
     int           unknown_30;   // +0x0030
 
-    // CALLEE: GAMEMD 0x438E70 -- thiscall, two TechnoClass pointers, RET 8.
-    void FUN_00438E70(TechnoClass* owner, TechnoClass* target);
-
     // FUNCTION: GAMEMD 0x439110
     void FUN_00439110();
 };
