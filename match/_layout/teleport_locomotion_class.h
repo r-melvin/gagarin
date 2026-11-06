@@ -76,9 +76,8 @@ struct TeleportTimer
         if (StartTime != -1) {
             int elapsed = CurrentFrame - StartTime;
             if (elapsed < left)
-                left -= elapsed;
-            else
-                left = 0;
+                return left - elapsed;
+            return 0;
         }
         return left;
     }

@@ -60903,9 +60903,10 @@
   "len": "0x384",
   "name": "WinModemClass::FUN_00775110",
   "status": "partial",
-  "pct": 38.3,
+  "pct": 36.0,
   "best_pct": 38.3,
-  "best_at": "cf203011"
+  "best_at": "cf203011",
+  "lowered_reason": "the exact row 0x774CD0 proves the single Countdown_00774B30::Time() inline body (the one-use Left() is retired); this unrelated partial inlines the same body and re-measures 2.3 points lower (38.3 to 36.0)"
  },
  {
   "tu": "match/win_modem_serial_methods.cpp",
@@ -73803,9 +73804,10 @@
   "len": "0x8FE",
   "name": "TeleportLocomotionClass::Process",
   "status": "partial",
-  "pct": 6.5,
+  "pct": 2.7,
   "best_pct": 6.5,
-  "best_at": "cf203011"
+  "best_at": "cf203011",
+  "lowered_reason": "the exact row 0x719BF0 proves the inlined TeleportTimer::GetTimeLeft body (return left - elapsed, else 0); this unrelated partial inlines the same body and re-measures 3.8 points lower (6.5 to 2.7)"
  },
  {
   "tu": "match/tu240_teleport_locomotion_class.cpp",
@@ -73813,10 +73815,8 @@
   "sym": "?vf_10@TeleportLocomotionClass@@UAGXXZ",
   "len": "0x68",
   "name": "TeleportLocomotionClass::vf_10",
-  "status": "partial",
-  "pct": 80.6,
-  "best_pct": 80.6,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/tu240_teleport_locomotion_class.cpp",

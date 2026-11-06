@@ -116,18 +116,6 @@ struct Countdown_00774B30
     int Time()
     {
         int remain = Delay;
-        if (Started != -1) {
-            int elapsed = Clock.GetTime() - Started;
-            if (elapsed >= remain) {
-                return 0;
-            }
-            remain -= elapsed;
-        }
-        return remain;
-    }
-    int Left()
-    {
-        int remain = Delay;
         if (Started == -1) {
             return remain;
         }
@@ -657,13 +645,13 @@ int WinModemClass::Get_Modem_Result(int timeout, char* buffer, int length,
                 got += n;
                 quiet = Countdown_00774B30(perCharTimeout);
             }
-            if (!total.Left() || got >= length) {
+            if (!total.Time() || got >= length) {
                 break;
             }
             if (!strchr(buffer, '\r')) {
                 continue;
             }
-            if (perCharTimeout == -1 || !quiet.Left()) {
+            if (perCharTimeout == -1 || !quiet.Time()) {
                 break;
             }
         }
@@ -696,7 +684,7 @@ int WinModemClass::Get_Modem_Result(int timeout, char* buffer, int length,
     if (strrchr(buffer, '\r')) {
         *strrchr(buffer, '\r') = '\0';
     }
-    return total.Left();
+    return total.Time();
 }
 
 // FUNCTION: GAMEMD 0x774F50
