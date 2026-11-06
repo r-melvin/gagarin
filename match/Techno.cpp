@@ -4954,6 +4954,9 @@ bool TechnoClass::vf_203(HouseClass* a1)
 void Abstract_0070D4A0::BecomeUntargetable()
 {
     Techno_0070D4A0* self;
+    // Placeholder view (cannot call the AbstractClass helper). Retail tests this itself: test ebp,ebp / jne 0x70D4AD at 0x70D4A5,
+    // with the null arm xor edi,edi; the +0x14 bit-0 mask follows only on the non-null arm.
+    // THISNULL: GAMEMD 0x459F40
     if (this == 0)
         self = 0;
     else
@@ -6073,6 +6076,8 @@ void TechnoReactivate::Reactivate()
 {
     (this->*(*(ReactVtbl**)this)->At_3D0)();
 
+    // Retail tests this as a literal branch: test esi,esi / je 0x70FC18 at 0x70FBEE, then test [esi+0x14],4 (not a kind mask).
+    // THISNULL: GAMEMD 0x459F40
     if (this != 0 && (((AbstractClass*)(void*)this)->Flags.IsFoot))
     {
         FootClass* foot = (FootClass*)this;
@@ -6154,6 +6159,8 @@ void TechnoDeactivate::Deactivate()
     (this->*(*(DeactVtbl**)this)->At_3D0)();
     (this->*(*(DeactVtbl**)this)->At_150)();
 
+    // Retail tests this as a literal branch: test esi,esi / je 0x70FD0E at 0x70FCE4, then test [esi+0x14],4 (not a kind mask).
+    // THISNULL: GAMEMD 0x459F40
     if (this != 0 && (((AbstractClass*)(void*)this)->Flags.IsFoot))
     {
         FootClass* foot = (FootClass*)this;
@@ -6208,6 +6215,8 @@ void Drainer_0070FD70::BeginDraining(Target_0070FD70* target)
         anim->FUN_00424B50(this);
     }
 
+    // Retail tests this as a literal branch: test esi,esi / je 0x70FE37 at 0x70FE19, then test [esi+0x14],4 (not a kind mask).
+    // THISNULL: GAMEMD 0x459F40
     if (this != 0 && (this->Flags & 4) != 0) {
         Display_0070FD70* display = this->Display;
         if (display != 0) {

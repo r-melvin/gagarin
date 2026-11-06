@@ -747,11 +747,9 @@ HRESULT __stdcall TeamClass::Load(IStream* pStm)
         return hr;
     }
 
-    if (this) {
-        // Native reuses the stream argument's stack home as the no-init token.
-        AbstractNoInit& noInit = *reinterpret_cast<AbstractNoInit*>(&pStm);
-        new (this) TeamClass(noInit);
-    }
+    // Native reuses the stream argument's stack home as the no-init token.
+    AbstractNoInit& noInit = *reinterpret_cast<AbstractNoInit*>(&pStm);
+    new (this) TeamClass(noInit);
 
     DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&Target28);

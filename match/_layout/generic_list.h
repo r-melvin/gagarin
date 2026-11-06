@@ -25,6 +25,9 @@ public:
     virtual ~GenericNode() { Unlink(); }
     bool IsValid() const
     {
+        // Retail expands this test in place: test eax,eax at 0x40E345 (inlined Unlink in 0x40E340) and cmp esi,edx at 0x40E395
+        // (0x40E390); dropping it leaves 0x40E340 at 7.7%.
+        // THISNULL: GAMEMD 0x459F40
         return this != 0 && NextNode != 0 && PrevNode != 0;
     }
     void Unlink()

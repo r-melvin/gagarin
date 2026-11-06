@@ -45,7 +45,7 @@ ReferenceCounted::~ReferenceCounted()
 // Drop one reference; the last one deletes the object.
 void ReferenceCounted::vf_2()
 {
-    if (--RefCount == 0 && this != 0)
+    if (--RefCount == 0)
         delete this;
 }
 

@@ -448,6 +448,8 @@ void FUN_00407780()
 // FUNCTION: GAMEMD 0x407860
 Obj_00407F80* Pool_00402860::FUN_00407860(unsigned __int64 interval)
 {
+    // Retail entry: xor ebp,ebp / cmp ecx,ebp / jne 0x407875 at 0x407869; the null arm returns 0.
+    // THISNULL: GAMEMD 0x459F40
     if (!this) return 0;
     if (interval < 7000) interval = 7000;
     Obj_00407F80* event = static_cast<Obj_00407F80*>(FUN_007C8E17(sizeof(Obj_00407F80)));

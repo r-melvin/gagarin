@@ -164,6 +164,8 @@ bool ObjectClass::vf_83()
         }
     }
     bool isTechno = false;
+    // Retail tests this as a literal branch: test esi,esi / je 0x5F46BB at 0x5F45FD, then the +0x14 bit-0 read (not a kind mask).
+    // THISNULL: GAMEMD 0x459F40
     if (this != NULL) {
         isTechno = Flags.IsTechno;
     }

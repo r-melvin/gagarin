@@ -71,6 +71,9 @@ int ObjectClass::vf_91(int* damage, int distance, void* warhead, void* source, b
         if (!a5) {
             *damage = MapView_489180::FUN_00489180(*damage, warhead, vf_34()->Armor, distance);
         }
+        // Retail tests this as a literal branch (test esi,esi / je 0x5F5456 at 0x5F5416, then the slot-11 compare against 6 at 0x5F5421)
+        // before the branchless AsBuilding mask; KindCast_00459F40(6) alone yields only the mask form (tried: 10.6%).
+        // THISNULL: GAMEMD 0x459F40
         if (this != 0 && vf_11() == 6 && !((BuildingTypeView_5F5390*)AsBuilding(this)->Type)->unknown_1577) {
             *damage = *damage < 1 ? 1 : *damage;
         }

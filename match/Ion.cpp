@@ -693,6 +693,8 @@ void ScenarioClass::UpdateLighting()
 // difference between the earlier 91.8% and byte parity here.
 bool TechnoClass::CanBePermaMindControlled()
 {
+    // Retail entry: mov esi,ecx / test esi,esi at 0x53C453; the null arm returns false.
+    // THISNULL: GAMEMD 0x53C450
     if (this == 0)
         return false;
 

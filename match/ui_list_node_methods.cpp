@@ -58,6 +58,8 @@ void SortedTreeNode::SortedTreeInsert(SortedTreeNode** slot)
 // last.
 void SortedTreeNode::SortedTreeFree()
 {
+    // Retail entry: mov esi,ecx / test esi,esi at 0x5B4083.
+    // THISNULL: GAMEMD 0x5B4080
     if (this != 0) {
         if (this->Low != 0) {
             this->Low->SortedTreeFree();

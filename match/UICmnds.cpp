@@ -1395,6 +1395,8 @@ void FUN_00734250(BuildingClass* object)
 // both slots; otherwise only the slot(s) that point at this object are cleared.
 void TechnoClass::ClearSidebarTabObject()
 {
+    // Retail entry: xor eax,eax / cmp ecx,eax / jne 0x734281 at 0x734272 (a literal compare against zero).
+    // THISNULL: GAMEMD 0x459F40
     if (this == NULL) {
         SidebarTabObjectA = NULL;
         SidebarTabObjectB = NULL;

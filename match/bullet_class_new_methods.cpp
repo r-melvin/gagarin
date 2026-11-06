@@ -2619,8 +2619,7 @@ HRESULT __stdcall BulletClass::Load(IStream* stream)
     HRESULT result = ObjectClass::Load(stream); // Native direct5F5E80.
     if (result < 0)
         return result;
-    if (this != 0)
-        new (this) BulletClass(AbstractNoInit());
+    new (this) BulletClass(AbstractNoInit());
     if (NextAnim)
         DAT_00B0F5B8.AddItem(this);
     // Qualified calls are native direct6CF240, not interface dispatch.

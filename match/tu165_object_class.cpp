@@ -595,6 +595,8 @@ void ObjectClass::vf_55(bool removed)
     House_5F5280* house = (House_5F5280*)vf_15();
     bool keep = false;
     if (!removed) {
+        // Retail tests this as a literal branch: test esi,esi / je 0x5F52D2 at 0x5F52B2, then the +0x14 bit-0 read (not a kind mask).
+        // THISNULL: GAMEMD 0x459F40
         if (this != 0 && Flags.IsTechno) {
             Techno_5F5850* techno = (Techno_5F5850*)this;
             if ((techno->*techno->Vtbl->At_328)()) {
@@ -1050,6 +1052,8 @@ void ObjectClass::vf_62()
     if (this->AttachedBomb != 0)
         this->AttachedBomb->Disarm();
 
+    // Retail tests this as a literal branch: test esi,esi / je 0x5F6612 at 0x5F65FF, then test [esi+0x14],1 (not a kind mask).
+    // THISNULL: GAMEMD 0x459F40
     if (this != 0 && this->Flags.IsTechno)
         ((TechnoClass*)this)->KillPassengers(0);
 

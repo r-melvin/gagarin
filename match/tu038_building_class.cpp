@@ -7309,6 +7309,9 @@ int Obj_00456FB0::FUN_00456FB0(int value)
         // fall-through, which is why it is written as `this == 0` first.
         Obj_00456FB0* typed;
 
+        // Placeholder view (cannot call the AbstractClass helper). Retail inlines the kind-cast shape: test esi,esi / jne 0x456FE5 at
+        // 0x456FDD, null arm xor eax,eax, then the SUB/NEG/SBB/NOT/AND mask.
+        // THISNULL: GAMEMD 0x459F40
         if (this == 0) {
             typed = 0;
         } else {
@@ -8474,6 +8477,8 @@ CoordStruct BuildingClass::vf_43()
 // conditional expression produces here.
 Obj_00459F40* Obj_00459F40::FUN_00459F40()
 {
+    // Retail entry: mov esi,ecx / test esi,esi at 0x459F43 (the out-of-line kind-cast helper).
+    // THISNULL: GAMEMD 0x459F40
     if (this == 0) {
         return 0;
     }

@@ -440,6 +440,8 @@ void PlanningNodeClass::FUN_006340B0(TechnoClass* techno)
         PlanningBranchClass* branch = Branches.Items[member->unknown_08];
         branch->unknown_74 = -1;
         FUN_00635DB0(0);
+        // Retail inlines 0x6378B0 here: cmp esi,ebx / je at 0x634143, then the +0x1C flag test.
+        // THISNULL: GAMEMD 0x6378B0
         if (--branch->unknown_70 == 0 && this != 0 && !unknown_1C) {
             unknown_1C = true;
             PlanningLists::DAT_00AC4C98.AddItem(this);
@@ -449,7 +451,7 @@ void PlanningNodeClass::FUN_006340B0(TechnoClass* techno)
     delete member->Event;
     Members.RemoveItem(member);
     delete member;
-    if (Members.Count == 0 && this != 0) {
+    if (Members.Count == 0) {
         delete this;
     }
 }

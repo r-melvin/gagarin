@@ -52,6 +52,8 @@ SpotLightClass::~SpotLightClass() throw()
 void SpotLightClass::AgeStep()
 {
     Age += 8;
+    // Retail tests this as a literal branch: test esi,esi / je 0x5FF38A at 0x5FF334 before the array removal.
+    // THISNULL: GAMEMD 0x459F40
     if (Age >= 0x50 && this != 0) {
         SpotlightArray.RemoveItem(this);
         operator delete(this);

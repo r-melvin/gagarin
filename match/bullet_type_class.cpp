@@ -167,8 +167,7 @@ HRESULT __stdcall BulletTypeClass::Load(IStream* stream)
     HRESULT result = ObjectTypeClass::Load(stream);
     if (result < 0)
         return result;
-    if (this != 0)
-        new (this) BulletTypeClass(AbstractNoInit());
+    new (this) BulletTypeClass(AbstractNoInit());
     ObjectTypeClass::FUN_005F8110();
     ObjectTypeClass::FUN_005F9070();
     // Native direct calls to 0x6CF240 register these three DWORD slots.

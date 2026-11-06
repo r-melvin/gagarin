@@ -83,10 +83,8 @@ long MouseClass::vf_30(IStream* stream)
     if (hr < 0)
         return hr;
 
-    if (this) {
-        Obj_005BDF70 noInit;
-        new (this) MouseClass(noInit);
-    }
+    Obj_005BDF70 noInit;
+    new (this) MouseClass(noInit);
 
     for (i = 0; i < 4; i++) {
         for (int j = 0; j < 75; j++)

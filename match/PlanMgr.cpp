@@ -1024,6 +1024,8 @@ void PlanningNodeClass::FUN_00635060(PlanningMemberClass* member)
         PlanningBranchClass* branch = Branches.Items[member->unknown_08];
         branch->unknown_74 = -1;
         unknown_B4 = -1;
+        // Retail inlines 0x6378B0 here: test esi,esi / je at 0x6350AB, then the +0x1C flag test.
+        // THISNULL: GAMEMD 0x6378B0
         if (--branch->unknown_70 == 0 && this != 0 && !unknown_1C) {
             unknown_1C = true;
             PlanningListAdd(PlanningLists::DAT_00AC4C98, this);
@@ -1613,6 +1615,8 @@ void FUN_00637840(TechnoClass* techno)
 // FUNCTION: GAMEMD 0x6378B0
 void PlanningNodeClass::FUN_006378B0()
 {
+    // Retail entry: mov esi,ecx / test esi,esi at 0x6378B3.
+    // THISNULL: GAMEMD 0x6378B0
     if (this != 0 && !unknown_1C) {
         unknown_1C = true;
         PlanningListAdd(PlanningLists::DAT_00AC4C98, this);
@@ -1756,6 +1760,9 @@ bool TechnoClass::TryNextPlanningTokenNode()
 // to -1 and the two flag bytes at +0x98/+0x99 are cleared.
 void Techno_006386E0::ClearPlanningTokens(Record_006386E0* gate)
 {
+    // Retail tests this right after the prologue: test esi,esi / je 0x63882A at 0x6386E8 (a literal branch, no kind mask).
+    // The row's own entry opens with sub esp,0xC, so the helper row 0x459F40 is cited.
+    // THISNULL: GAMEMD 0x459F40
     if (this == 0) {
         return;
     }

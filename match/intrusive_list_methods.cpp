@@ -36,6 +36,8 @@ int ListNode::FUN_004073B0() const
 // FUNCTION: GAMEMD 0x4073C0
 ListNode* ListNode::FUN_004073C0()
 {
+    // Retail entry: test ecx,ecx / je at 0x4073C0; the null arm returns 0.
+    // THISNULL: GAMEMD 0x4073C0
     if (this == 0) {
         return 0;
     }
@@ -52,6 +54,8 @@ ListNode* ListNode::FUN_004073C0()
 // FUNCTION: GAMEMD 0x4073E0
 ListNode* ListNode::FUN_004073E0()
 {
+    // Retail entry: test ecx,ecx / je at 0x4073E0; the null arm returns 0.
+    // THISNULL: GAMEMD 0x4073E0
     if (this == 0) {
         return 0;
     }
