@@ -1261,5 +1261,98 @@ class UnclaimedCallee(unittest.TestCase):
         self.assertEqual(f, [])
 
 
+class ComdatLint(unittest.TestCase):
+    """comdatlint on tiny hand-built COFF objects (no compiler)."""
+    CODE, COMDAT, DATA = 0x60500020, 0x60501020, 0xC0501040
+
+    @staticmethod
+    def obj(path, secs, syms, rels):
+        """secs [(name, chars)], syms [(name, section, storage class)] (symbol i is index i), rels {section no: [target symbol]}."""
+        import struct
+        strtab, sy = b"", b""
+        for n, sec, scl in syms:
+            off = 4 + len(strtab)
+            strtab += n.encode() + b"\0"
+            sy += struct.pack("<IIIhHBB", 0, off, 0, sec, 0x20, scl, 0)
+        raw, hdr = b"", b""
+        base = 20 + 40 * len(secs)
+        body = b""
+        for i, (name, chars) in enumerate(secs, 1):
+            data, rl = b"\x90" * 4, b"".join(struct.pack("<IIH", 0, syms.index(next(x for x in syms if x[0] == t)), 6) for t in rels.get(i, []))
+            dptr = base + len(body)
+            body += data
+            rptr = base + len(body) if rl else 0
+            body += rl
+            hdr += struct.pack("<8sIIIIIIHHI", name.encode(), 0, 0, 4, dptr, rptr, 0, len(rels.get(i, [])), 0, chars)
+        symptr = base + len(body)
+        open(path, "wb").write(struct.pack("<HHIIIHH", 0x14C, len(secs), 0, symptr, len(syms), 0, 0) + hdr + body + sy + struct.pack("<I", 4 + len(strtab)) + strtab)
+        return path
+
+    def setUp(self):
+        import comdatlint
+        self.C = comdatlint
+        self.d = tempfile.mkdtemp()
+        self.addCleanup(__import__("shutil").rmtree, self.d, True)
+
+    def mk(self, name, **kw):
+        # sections: 1 .text (live root), 2 f (comdat code), 3 g (comdat code), 4 vt (comdat data), 5 .debug$S (discardable)
+        secs = [(".text", self.CODE & ~0x1000), ("f", self.COMDAT), ("g", self.COMDAT), ("vt", 0x40301040 | 0x1000), (".debug$S", 0x42100040)]
+        syms = [("main_fn", 1, 2), ("f", 2, 2), ("g", 3, 2), ("??_7vt", 4, 2)]
+        return self.obj(os.path.join(self.d, name), secs, syms, kw.get("rels", {}))
+
+    def test_reached_unclaimed_function_comdat_is_an_orphan(self):
+        o = self.C.read_object(self.mk("a.obj", rels={1: ["f"], 2: ["g"]}))
+        self.assertEqual(self.C.orphans(o, {"main_fn"}), ["f", "g"])
+        self.assertEqual(self.C.orphans(o, {"main_fn", "f"}), ["g"])
+
+    def test_unreferenced_and_debug_only_comdats_are_not_orphans(self):
+        o = self.C.read_object(self.mk("b.obj", rels={5: ["f"]}))
+        self.assertEqual(self.C.orphans(o, set()), [])
+
+    def test_bound_vtable_cuts_the_slots_it_points_at(self):
+        o = self.C.read_object(self.mk("c.obj", rels={1: ["??_7vt"], 4: ["f"]}))
+        self.assertEqual(self.C.orphans(o, set()), ["f"])
+        self.assertEqual(self.C.orphans(o, set(), {"??_7vt"}), [])
+
+    def test_bound_symbol_is_claimed_only_without_a_row_at_its_address(self):
+        man = [{"addr": "0x401000", "sym": "p", "tu": "match/a.cpp", "status": "matched"}]
+        c = self.C.claimed_syms(man, {"f": "0x00402000", "g": "0x00401000"})
+        self.assertIn("f", c)
+        self.assertNotIn("g", c)
+        self.assertIn("p", c)
+
+    def test_check_reports_only_orphans_new_since_base(self):
+        base = self.mk("base.obj", rels={})
+        new = self.mk("new.obj", rels={1: ["f"], 2: ["g"]})
+        got = self.C.check(["match/a.cpp"], {"match/a.cpp": new}, {"match/a.cpp": base}, [], [], {})
+        self.assertEqual([(k, s) for k, tu, s, w in got], [("orphan", "f"), ("orphan", "g")])
+        self.assertEqual(self.C.check(["match/a.cpp"], {"match/a.cpp": new}, {"match/a.cpp": new}, [], [], {}), [])
+
+    def test_collocated_fold_is_not_an_orphan(self):
+        new = self.mk("fold.obj", rels={1: ["f"]})
+        run = lambda f: [(k, s) for k, tu, s, w in self.C.check(["match/a.cpp"], {"match/a.cpp": new}, {}, [], [], {}, None, f)]
+        self.assertEqual(run(lambda sym, tu: False), [("orphan", "f")])
+        self.assertEqual(run(lambda sym, tu: True), [])
+        self.assertEqual(run(lambda sym, tu: None), [("orphan-unsure", "f")])
+
+    def test_template_clash_is_a_warning_kind(self):
+        new = self.mk("tc.obj", rels={1: ["f"]})
+        man = [{"addr": "0x401000", "sym": "??0?$V@H@@QAE@XZ", "tu": "match/b.cpp", "status": "matched"}]
+        new2 = self.obj(os.path.join(self.d, "tc2.obj"), [(".text", 0x60500020), ("t", self.COMDAT)], [("main_fn", 1, 2), ("??0?$V@H@@QAE@XZ", 2, 2)], {1: ["??0?$V@H@@QAE@XZ"]})
+        got = self.C.check(["match/a.cpp"], {"match/a.cpp": new2}, {}, man, man, {}, lambda tu, a: True)
+        self.assertEqual([k for k, tu, s, w in got], ["clash-template"])
+
+    def test_comdat_clashes_with_a_function_row_of_another_tu_only(self):
+        new = self.mk("n.obj", rels={1: ["f"]})
+        man = [{"addr": "0x401000", "sym": "f", "tu": "match/b.cpp", "status": "matched"}]
+        got = self.C.check(["match/a.cpp"], {"match/a.cpp": new}, {}, man, man, {}, lambda tu, a: True)
+        self.assertEqual([(k, s) for k, tu, s, w in got], [("clash", "f")])
+        self.assertEqual(self.C.check(["match/a.cpp"], {"match/a.cpp": new}, {}, man, man, {}, lambda tu, a: False), [])
+        unref = self.mk("u.obj")
+        self.assertEqual(self.C.check(["match/a.cpp"], {"match/a.cpp": unref}, {}, man, man, {}, lambda tu, a: True), [])
+        own = [dict(man[0], tu="match/a.cpp")]
+        self.assertEqual(self.C.check(["match/a.cpp"], {"match/a.cpp": new}, {}, own, own, {}, lambda tu, a: True), [])
+
+
 if __name__ == "__main__":
     unittest.main()

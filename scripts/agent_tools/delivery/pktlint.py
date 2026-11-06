@@ -58,6 +58,10 @@ enforces; nothing here needs a compiler except --strict.
                  (exact) function of the same TU references by relocation (call or address-of): the unannotated body is linked
                  past retail .text and the caller's relocation points at the copy (M3 differs). Make it a declaration only.
                  Source candidates (unclaimed.py) are confirmed by compiling the post-patch TU and reading its relocations
+  comdat       E a function COMDAT of a changed TU's object with no manifest row and no binding that a live relocation
+                 newly reaches (the base compile of the TU did not) and that stubgen's collocated-COMDAT fold
+                 (coff_equivalence fingerprint equal to the row at its bound address) would not remove: it links past retail .text (M3). E a non-template COMDAT whose row is a strong
+                 definition in another TU's object (LNK2005). Compiles only the patched and delta-row TUs (comdatlint.py)
   partial-bar  E a NEW partial row below the project's partial bar: len < 0x400 needs pct >= 80.0; len >= 0x400 needs
                  pct >= 60.0 AND an identical instruction multiset (diff_retail's 'multiset: identical', checked under
                  --strict; without --strict an unverified multiset is a warning). pct is diff_retail's positional
@@ -85,6 +89,7 @@ import time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import dlib as D
 import unclaimed as U  # noqa: E402
+import comdatlint as CD  # noqa: E402
 import landlib as L  # noqa: E402
 import cppscan  # noqa: E402
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "land"))
@@ -938,6 +943,85 @@ class Lint:
             D.remove_worktree(self.repo, wt)
             D.remove_dir(work)
 
+    def comdat(self):
+        """Orphan COMDAT functions and COMDAT/strong clashes in the compiled objects of the changed TUs (comdatlint.py)."""
+        tus = sorted({p for p, t in self.post_files().items() if t is not None and p.startswith("match/") and p.lower().endswith(L.SRC_EXT)}
+                     | {r["tu"] for op, r, old in self.ops if r.get("tu") and op != "remove" and r.get("status") == "matched"})
+        tus = [t for t in tus if t.lower().endswith(L.SRC_EXT)]
+        if not tus:
+            return
+        work = D.scratch_dir("pktlint_cd_")
+        wt = D.add_worktree(self.repo, os.path.join(work, "wt"), self.t.rev or "HEAD")
+        try:
+            def build(tag, files):
+                res = {}
+                for f in files:
+                    obj = os.path.join(work, tag, f + ".obj")
+                    ok, text = D.compile_tu(wt, f, obj)
+                    res[f] = obj if ok else None
+                    if not ok and tag == "new":
+                        self.warn("comdat", "%s does not compile, so its COMDATs were not checked" % f, file=f)
+                return res
+            base_objs = build("base", [t for t in tus if os.path.isfile(os.path.join(wt, t))])
+            body = "".join(d.text for d in self.diffs if d.path != D.MANIFEST)
+            r = subprocess.run(["git", "-C", wt, "apply", "--3way", "--index", "--whitespace=nowarn", "-"], input=body, text=True, capture_output=True)
+            if r.returncode:
+                self.warn("comdat", "cannot apply the patch to compile the changed TUs: " + r.stderr.strip()[:160])
+                return
+            man, _ = L.load_manifest(os.path.join(wt, D.MANIFEST))
+            merged, errs, _ = L.merge_deltas(man, [(self.p.name, self.delta)])
+            if errs:
+                self.warn("comdat", "delta does not merge, COMDATs not checked: " + "; ".join(errs[:2]))
+                return
+            new_objs = build("new", tus)
+            bound = {}
+            for m in list(self.p.symbol_map_files()) + [D.first_existing(D.BINDINGS_CANDIDATES, wt)]:
+                try:
+                    bound.update(json.load(open(m)))
+                except Exception:
+                    pass
+            fp_cache, row_obj = {}, {}
+
+            def folds(sym, tu):
+                """Would stubgen.plan_folds fold SYM (bound, defined by TU's object) into the matched row at its address?"""
+                try:
+                    binds = CD.load_bindings(merged, bound)
+                    if sym not in binds or binds[sym][1] != "symbol_bindings":
+                        return False
+                    va = binds[sym][0]
+                    rows = [r for r in merged if r.get("status") == "matched" and CD.row_va(r) == va]
+                    if len(rows) != 1:
+                        return False
+                    r = rows[0]
+                    if r["tu"] not in row_obj:
+                        o = new_objs.get(r["tu"])
+                        if o is None:
+                            o = os.path.join(work, "prov", r["tu"] + ".obj")
+                            ok, _t = D.compile_tu(wt, r["tu"], o)
+                            o = o if ok else None
+                        row_obj[r["tu"]] = o
+                    if not row_obj[r["tu"]]:
+                        return None
+                    return CD.same_body(row_obj[r["tu"]], r["sym"], new_objs[tu], sym, int(r["len"], 16), va, binds, fp_cache)
+                except Exception:
+                    return None
+
+            def is_strong(tu, addr):
+                try:
+                    text = open(os.path.join(wt, tu), errors="replace").read()
+                except OSError:
+                    return False
+                return re.search(r"^//\s*FUNCTION:\s*GAMEMD\s+0x0*%s\b" % re.escape(addr[2:].lstrip("0")), text, re.I | re.M) is not None
+
+            for kind, tu, sym, why in CD.check(tus, new_objs, base_objs, merged, man, bound, is_strong, folds):
+                if kind in ("orphan-unsure", "clash-template"):
+                    self.warn("comdat", "%s %s in %s: %s" % (kind, sym, tu, why), file=tu)
+                    continue
+                self.err("comdat", "%s %s in %s: %s" % (kind, sym, tu, why), file=tu)
+        finally:
+            D.remove_worktree(self.repo, wt)
+            D.remove_dir(work)
+
     def strict(self, jobs):
         """Compile the touched TUs in a scratch worktree with the patch applied and prove every
         matched delta row: raw_match, then strict verify_relocations with the packet maps,
@@ -1042,7 +1126,7 @@ class Lint:
 
     def run(self, do_strict=False, jobs=8, rules=None):
         order = ["shape", "paths", "c2probe", "stale", "words", "steering", "sdd", "flags", "thisnull", "views", "migrated", "inits", "delta_rules",
-                 "dupclaims", "dupaddr", "order", "includes", "provenance", "spans", "bindings", "rekeys", "rea", "partial_bar", "unclaimed_callee"]
+                 "dupclaims", "dupaddr", "order", "includes", "provenance", "spans", "bindings", "rekeys", "rea", "partial_bar", "unclaimed_callee", "comdat"]
         self.do_strict = do_strict
         for name in order:
             if rules and name.replace("_rules", "").replace("_", "-") not in rules:
