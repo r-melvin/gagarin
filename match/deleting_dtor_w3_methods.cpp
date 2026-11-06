@@ -48,16 +48,16 @@ static inline int TubeIndexOf(TubeClass* tube)
 
 // FUNCTION: GAMEMD 0x727FD0
 // Registers a tube and points its start cell at the new registry index.
-TubeClass::TubeClass(const CellStruct* cell, int direction)
-    : StartCell(*cell), EndCell(*cell), Direction(direction), StepCount(0)
+TubeClass::TubeClass(const CellStruct& cell, int direction)
+    : StartCell(cell), EndCell(cell), Direction(direction), StepCount(0)
 {
     vf_rtti_5();
     for (int i = 0; i < 100; i++) {
         Steps[i] = -1;
     }
     TubeRegistryAdd(&DAT_008B4138, this);
-    if (cell->X != 0 || cell->Y != 0) {
-        CellClass* mapCell = DAT_0087F7E8.FUN_005657A0(cell);
+    if (cell.X != 0 || cell.Y != 0) {
+        CellClass* mapCell = DAT_0087F7E8.FUN_005657A0(&cell);
         int index = TubeIndexOf(this);
         mapCell->TubeIndex = (short)index;
     }
@@ -140,7 +140,7 @@ void __fastcall FUN_007283C0(CCINIClass* ini)
     for (int i = 0; i < count; i++) {
         const char* key = ini->GetKeyName(DAT_00844A60, i);
         ini->FUN_00528A10(DAT_00844A60, key, 0, line, sizeof(line));
-        TubeClass* tube = new TubeClass(&Cell(0, 0), 0);
+        TubeClass* tube = new TubeClass(Cell(0, 0), 0);
         tube->StartCell.X = (short)atoi(strtok(line, STR_00817F70));
         tube->StartCell.Y = (short)atoi(strtok(0, STR_00817F70));
         tube->Direction = atoi(strtok(0, STR_00817F70));

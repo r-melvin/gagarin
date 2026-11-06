@@ -137431,7 +137431,7 @@
  {
   "tu": "match/deleting_dtor_w3_methods.cpp",
   "addr": "0x727FD0",
-  "sym": "??0TubeClass@@QAE@PBUCellStruct@@H@Z",
+  "sym": "??0TubeClass@@QAE@ABUCellStruct@@H@Z",
   "len": "0xf6",
   "name": "TubeClass::TubeClass",
   "status": "matched",

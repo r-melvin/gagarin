@@ -15,6 +15,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "bomb_class.h"
+#include "../vector_class.h"
 
 class TechnoClass;
 
@@ -87,30 +88,9 @@ GG_STATIC_ASSERT(sizeof(DetectorVectorClass)                      == 0x18);
 
 // FindItemIndex takes its argument by reference: retail hands it the
 // address of a stack temporary (`LEA ECX,[ESP+8]; PUSH ECX`).
-// DynamicVectorClass<BombClass*> -- vptr at +0x00, then the standard vector fields.
-struct BombVectorClass
-{
-    virtual void v00();
-    virtual void v04();
-    virtual bool SetCapacity(int capacity, BombClass** items);   // +0x08 (declared; reloc)
-    virtual void v0C();
-    virtual int  FindItemIndex(BombClass* const& item);   // +0x10 (declared; reloc)
-
-    BombClass** Items;         // +0x04
-    int         Capacity;      // +0x08
-    bool        IsInitialized; // +0x0C
-    bool        IsAllocated;   // +0x0D
-    int         Count;         // +0x10
-    int         CapacityIncrement;   // +0x14
-};
-GG_STATIC_ASSERT(offsetof(BombVectorClass, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(BombVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(BombVectorClass, Count) == 0x10);
-
-GG_STATIC_ASSERT(offsetof(BombVectorClass, CapacityIncrement) == 0x14);
-GG_STATIC_ASSERT(sizeof(BombVectorClass) == 0x18);
-
-struct BombListClass : BombVectorClass
+// The prefix is the real template: the object at 0x87F5D8 stores vtable 0x7E17CC, whose RTTI names
+// DynamicVectorClass<BombClass*> (constructor 0x40B540).
+struct BombListClass : DynamicVectorClass<BombClass*>
 {
     void FUN_00438E70(TechnoClass* owner, TechnoClass* target);   // GAMEMD 0x438E70 __thiscall, RET 8
     void AddDetector(TechnoClass* Detector);          // GAMEMD 0x439080 __thiscall
@@ -121,6 +101,7 @@ struct BombListClass : BombVectorClass
     int                 UpdateDelay; // +0x30
 };
 
+GG_STATIC_ASSERT(sizeof(DynamicVectorClass<BombClass*>) == 0x18);
 GG_STATIC_ASSERT(offsetof(BombListClass, Detectors)   == 0x18);
 GG_STATIC_ASSERT(offsetof(BombListClass, UpdateDelay) == 0x30);
 
