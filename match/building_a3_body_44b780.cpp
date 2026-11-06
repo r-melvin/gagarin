@@ -16,17 +16,17 @@
 
 // The stage counter step shared by several states: when the timer ran out and the rate is set, advance the stage by
 // the step and restart the timer; the "changed" flag tells whether it advanced.
-inline void BA3AdvanceStage(BA3StageView& s)
+inline void BA3AdvanceStage(StageClass& s)
 {
     if (!s.Timer.FUN_00426630() && s.Rate != 0) {
-        s.Changed = 1;
-        s.Stage += s.Step;
-        BA3Timer restart;
-        restart.Start = DAT_00A8ED84;
-        restart.Delay = s.Rate;
+        s.HasChanged = 1;
+        s.Value += s.Step;
+        CDTimerClass restart;
+        restart.StartTime = DAT_00A8ED84;
+        restart.TimeLeft = s.Rate;
         s.Timer = restart;
     } else {
-        s.Changed = 0;
+        s.HasChanged = 0;
     }
 }
 
@@ -69,19 +69,19 @@ int BuildingA3View::vf_147()
         case 0:
             Status = 2;
             unknown_6DD = 0;
-            unknown_620.Stage = 0;
+            unknown_620.Value = 0;
             unknown_620.Rate = 1;
-            unknown_620.Timer.Start = DAT_00A8ED84;
-            unknown_620.Timer.Delay = 1;
+            unknown_620.Timer.StartTime = DAT_00A8ED84;
+            unknown_620.Timer.TimeLeft = 1;
             if (Type->unknown_684 != -1) {
                 unknown_2FC = unknown_2FC - 1 <= 0 ? 0 : unknown_2FC - 1;
             }
             break;
         case 2:
             BA3AdvanceStage(unknown_620);
-            if ((double)unknown_620.Stage >= RulesInstance->unknown_16F0 * DAT_007E27F8) {
+            if ((double)unknown_620.Value >= RulesInstance->unknown_16F0 * DAT_007E27F8) {
                 unknown_6DD = 0;
-                unknown_620.Stage = 0;
+                unknown_620.Value = 0;
                 switch (vf_157(0x1C)) {
                 case 0x21:
                     if (Owner->IsControlledByCurrentPlayer()) {
@@ -114,15 +114,15 @@ int BuildingA3View::vf_147()
         case 0:
             Status = 2;
             unknown_6DD = 0;
-            unknown_620.Stage = 0;
+            unknown_620.Value = 0;
             unknown_620.Rate = 1;
-            unknown_620.Timer.Start = DAT_00A8ED84;
-            unknown_620.Timer.Delay = 1;
+            unknown_620.Timer.StartTime = DAT_00A8ED84;
+            unknown_620.Timer.TimeLeft = 1;
             unknown_2FC = unknown_2FC - 1 <= 0 ? 0 : unknown_2FC - 1;
             break;
         case 2:
             BA3AdvanceStage(unknown_620);
-            if ((double)unknown_620.Stage >= RulesInstance->unknown_16F0 * DAT_007E27F8) {
+            if ((double)unknown_620.Value >= RulesInstance->unknown_16F0 * DAT_007E27F8) {
                 BA3FlashView* flash = &FUN_0065AD30(0)->unknown_150;
                 if (flash->FUN_0074FFF0()) {
                     flash->FUN_00750090(1);
@@ -259,10 +259,10 @@ int BuildingA3View::vf_147()
                     FUN_00451E40(3);
                     FUN_00451E40(0x12);
                     unknown_6DD = 0;
-                    unknown_620.Stage = 0;
-                    unknown_620.Timer.Start = DAT_00A8ED84;
+                    unknown_620.Value = 0;
+                    unknown_620.Timer.StartTime = DAT_00A8ED84;
                     unknown_620.Rate = 1;
-                    unknown_620.Timer.Delay = 1;
+                    unknown_620.Timer.TimeLeft = 1;
                 } else {
                     techno->vf_104(1);
                     Status = 0;
@@ -288,9 +288,9 @@ int BuildingA3View::vf_147()
                 unknown_620.Rate = 1;
             }
             BA3AdvanceStage(unknown_620);
-            if ((double)unknown_620.Stage >= RulesInstance->unknown_16E8 * DAT_007E27F8 && vf_157(0x13) == 1) {
+            if ((double)unknown_620.Value >= RulesInstance->unknown_16E8 * DAT_007E27F8 && vf_157(0x13) == 1) {
                 unknown_6DD = 0;
-                unknown_620.Stage = 0;
+                unknown_620.Value = 0;
                 int action = vf_157(0x1C);
                 if (action != 1) {
                     if (action != 0x20) {

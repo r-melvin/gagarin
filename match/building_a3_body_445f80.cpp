@@ -37,9 +37,9 @@ void BuildingA3View::vf_311(char flag)
     }
 
     if (Type->unknown_1560) {
-        BA3Timer timer;
-        timer.Start = DAT_00A8ED84;
-        timer.Delay = Type->unknown_1560;
+        CDTimerClass timer;
+        timer.StartTime = DAT_00A8ED84;
+        timer.TimeLeft = Type->unknown_1560;
         unknown_6D0 = timer;
     }
 

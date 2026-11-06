@@ -157,6 +157,8 @@ public:
     virtual void vf_103(int mode);                                      // 103 0x446FF0: toggles IsBeingRepaired
     virtual int vf_107(CellClass* cell, int a2, int a3, int a4, bool a5); // 107 0x449440
     virtual bool vf_161();                                              // 161 0x455DA0
+    virtual bool vf_168();                                              // 168 0x457770
+    virtual bool vf_169();                                              // 169 0x4578C0
     virtual DirStruct vf_170();                                         // 170 0x445E50
     virtual int GetYSort() const;                                       // 46  0x449410
     virtual bool vf_38();                                               // 38  0x4494C0
@@ -173,6 +175,7 @@ public:
     virtual int vf_195();                                               // 195 0x44EB10
     virtual void vf_219();                                              // 219 0x459C20
     virtual AbstractClass* vf_241(unsigned int threat, CoordStruct* coord, bool a3); // 241 0x445F00
+    virtual WeaponStruct* vf_254(int a);                                // 254 0x4526F0
     virtual bool vf_255();                                              // 255 0x4527D0
     virtual bool vf_256();                                              // 256 0x458DD0
     virtual int vf_257();                                               // 257 0x458E00

@@ -28,6 +28,16 @@ inline HBCoord operator+(const HBCoord& a, const HBCoord& b)
     return r;
 }
 
+// The object's canonical coordinate plus a view-typed offset.
+inline HBCoord operator+(const CoordStruct& a, const HBCoord& b)
+{
+    HBCoord r;
+    r.X = a.X + b.X;
+    r.Y = a.Y + b.Y;
+    r.Z = a.Z + b.Z;
+    return r;
+}
+
 inline HBCoord operator-(const HBCoord& a, const HBCoord& b)
 {
     HBCoord r;
@@ -56,6 +66,23 @@ inline bool operator==(const HBCell& a, const HBCell& b)
 inline HBCell BuildingBCellOf(const HBCoord& c)
 {
     HBCell r;
+    r.X = c.X / 256;
+    r.Y = c.Y / 256;
+    return r;
+}
+
+// The same cell as a canonical CellStruct.
+inline CellStruct BuildingBCellStructOf(const HBCoord& c)
+{
+    CellStruct r;
+    r.X = c.X / 256;
+    r.Y = c.Y / 256;
+    return r;
+}
+
+inline CellStruct BuildingBCellStructOf(const CoordStruct& c)
+{
+    CellStruct r;
     r.X = c.X / 256;
     r.Y = c.Y / 256;
     return r;

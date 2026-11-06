@@ -297,10 +297,10 @@ static inline CellClass* AsCell(AbstractClass* object)
 }
 
 // The local list of cleared objects: a DynamicVectorClass with a growth step of ten.
-class BuildingBClearedList : public BuildingBVector<BuildingBObjectView>
+class BuildingBClearedList : public BuildingBVector<ObjectClass>
 {
 public:
-    BuildingBClearedList() : BuildingBVector<BuildingBObjectView>(0, 0)
+    BuildingBClearedList() : BuildingBVector<ObjectClass>(0, 0)
     {
         CapacityIncrement = 10;
         Count = 0;
@@ -5953,32 +5953,32 @@ bool BuildingClass::FUN_00452670(BuildingTypeClass* upgrade, HouseClass* house)
 // FUNCTION: GAMEMD 0x4526F0
 // The weapon slot for index `a`: the first upgrade whose slot has a weapon type, else the firing occupant's
 // occupy weapon (the occupant's own slot when the type has none), else the base lookup.
-WeaponStruct* BuildingBView::vf_254(int a)
+WeaponStruct* BuildingClass::vf_254(int a)
 {
     if (UpgradeLevel) {
         for (int i = 0; i < UpgradeLevel; i++) {
             if (Upgrades[i]) {
-                WeaponStruct* weapon = Upgrades[i]->Func_7177C0(a);
+                WeaponStruct* weapon = Upgrades[i]->GetWeapon(a);
                 if (weapon->WeaponType)
                     return weapon;
             }
         }
     }
     if (vf_256() && FiringOccupantIndex < Occupants.Count) {
-        BuildingBOccupantView* occupant = Occupants.Items[FiringOccupantIndex];
-        if (occupant->Veterancy.Func_750010()) {
-            WeaponStruct* weapon = &occupant->Type->unknown_E20;
+        InfantryClass* occupant = Occupants.Items[FiringOccupantIndex];
+        if (occupant->Veterancy.FUN_00750010()) {
+            WeaponStruct* weapon = &occupant->Type->EliteOccupyWeapon;
             if (weapon->WeaponType == 0)
                 return occupant->vf_254(0);
             return weapon;
         } else {
-            WeaponStruct* weapon = &occupant->Type->unknown_E04;
+            WeaponStruct* weapon = &occupant->Type->OccupyWeapon;
             if (weapon->WeaponType == 0)
                 return occupant->vf_254(0);
             return weapon;
         }
     }
-    return Func_70E140(a);
+    return TechnoClass::vf_254(a);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -6199,7 +6199,7 @@ tail:
 void BuildingClass::vf_60(CoordStruct* coord)
 {
     CellStruct cell = CellOfCoord(*coord);
-    unsigned int& flags = BuildingBMap.Func_5657A0(&cell)->OccupationFlags;
+    unsigned int& flags = DAT_0087F7E8.FUN_005657A0(&cell)->OccupationFlags;
     flags |= 0x80;
 }
 
@@ -6209,7 +6209,7 @@ void BuildingClass::vf_60(CoordStruct* coord)
 void BuildingClass::vf_61(CoordStruct* coord)
 {
     CellStruct cell = CellOfCoord(*coord);
-    unsigned int& flags = BuildingBMap.Func_5657A0(&cell)->OccupationFlags;
+    unsigned int& flags = DAT_0087F7E8.FUN_005657A0(&cell)->OccupationFlags;
     flags &= ~0x80u;
 }
 
@@ -6370,9 +6370,9 @@ int BuildingBView::vf_26(bool a, BuildingBTargetView* target)
             if (a) {
                 keep = false;
                 if (target != 0) {
-                    HBCoord loc = Location;
-                    HBCell cell = BuildingBCellOf(loc);
-                    keep = BuildingBMap.Func_5657A0(&cell)->Func_4870D0(target->unknown_30);
+                    CoordStruct loc = Location;
+                    CellStruct cell = BuildingBCellStructOf(loc);
+                    keep = DAT_0087F7E8.FUN_005657A0(&cell)->FUN_004870D0(target->unknown_30);
                 }
             } else {
                 keep = unknown_41A || vf_202() || BuildingBGlobal_00B73550 == 0
@@ -6595,7 +6595,7 @@ void BuildingBView::vf_260(bool refresh)
 {
     if (Type != 0) {
     HBCoord tmp;
-    HBCell cell = BuildingBCellOf(*vf_18(&tmp));
+    CellStruct cell = BuildingBCellStructOf(*vf_18(&tmp));
     if (unknown_220 == 1) {
         if (Translucency < 15) {
             char step = Translucency + 1;
@@ -6607,7 +6607,7 @@ void BuildingBView::vf_260(bool refresh)
                 level = 16;
             for (int i = 0; i < 21; i++) {
                 if (Anims[i])
-                    Anims[i]->unknown_178 = level;
+                    Anims[i]->TranslucencyLevel = level;
             }
             if (Translucency == 15) {
                 unknown_220 = 2;
@@ -6629,7 +6629,7 @@ void BuildingBView::vf_260(bool refresh)
                 level = 16;
             for (int i = 0; i < 21; i++) {
                 if (Anims[i])
-                    Anims[i]->unknown_178 = level;
+                    Anims[i]->TranslucencyLevel = level;
             }
             if (Translucency == 0) {
                 unknown_220 = 0;
@@ -6638,8 +6638,8 @@ void BuildingBView::vf_260(bool refresh)
                     if (!(offset == BuildingBEmptyCoord)) {
                         BuildingBParticleSystemView* system = 0;
                         HBCoord where = Location + offset;
-                        HBCoord here = Location;
-                        BuildingBCellView* under = BuildingBMap.Func_565730(&here);
+                        CoordStruct here = Location;
+                        CellClass* under = DAT_0087F7E8.FUN_00565730(&here);
                         system = new BuildingBParticleSystemView(Type->unknown_764, &where, under, 0,
                                                                  &BuildingBEmptyCoord, 0);
                         unknown_30C = system;
@@ -6667,26 +6667,28 @@ void BuildingBView::vf_260(bool refresh)
         BuildingBColor16 color;
         surface->Func_7BB920(half, half, CloakRadius, *surface->vf_30(&color, 1));
         char* mask = surface->vf_23(0, 0);
-        HBCell origin;
+        CellStruct origin;
         origin.X = cell.X - half;
         origin.Y = cell.Y - half;
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
                 if (*mask++ == 0)
                     continue;
-                HBCell at(origin.X + x, origin.Y + y);
-                BuildingBCellView* target = BuildingBMap.Func_5657A0(&at);
-                if (target->Func_4870B0(owner))
+                CellStruct at;
+                at.X = origin.X + x;
+                at.Y = origin.Y + y;
+                CellClass* target = DAT_0087F7E8.FUN_005657A0(&at);
+                if (target->FUN_004870B0(owner))
                     continue;
-                target->Func_487110(owner);
-                for (BuildingBObjectView* object = target->FirstObject; object; object = object->NextObject) {
+                target->FUN_00487110(owner);
+                for (ObjectClass* object = target->FirstObject; object; object = static_cast<ObjectClass*>(object->NextObject)) {
                     int kind = object->vf_11();
                     if (kind == 1 || kind == 0xF || kind == 2)
-                        object->vf_264();
+                        static_cast<TechnoClass*>(object)->vf_264();
                 }
-                BuildingBView* building = target->Func_47C520();
+                BuildingClass* building = target->GetBuilding();
                 if (building && building->Owner->ArrayIndex == owner) {
-                                        HBCell there = BuildingBCellOf(*building->vf_18(&tmp));
+                    CellStruct there = CellOfCoord(building->vf_18());
                     if (there.X == cell.X && there.Y == cell.Y) {
                         CloakRadius = CloakRadius - 1;
                         return;
@@ -6706,26 +6708,28 @@ void BuildingBView::vf_260(bool refresh)
         if (CloakRadius)
             surface->Func_7BB920(half, half, CloakRadius, *surface->vf_30(&color, 1));
         char* mask = surface->vf_23(0, 0);
-        HBCell origin;
+        CellStruct origin;
         origin.X = cell.X - half;
         origin.Y = cell.Y - half;
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
                 if (*mask++ != 0)
                     continue;
-                HBCell at(origin.X + x, origin.Y + y);
-                BuildingBCellView* target = BuildingBMap.Func_5657A0(&at);
-                if (!target->Func_4870B0(owner))
+                CellStruct at;
+                at.X = origin.X + x;
+                at.Y = origin.Y + y;
+                CellClass* target = DAT_0087F7E8.FUN_005657A0(&at);
+                if (!target->FUN_004870B0(owner))
                     continue;
-                target->Func_487130(owner);
-                for (BuildingBObjectView* object = target->FirstObject; object; object = object->NextObject) {
+                target->FUN_00487130(owner);
+                for (ObjectClass* object = target->FirstObject; object; object = static_cast<ObjectClass*>(object->NextObject)) {
                     int kind = object->vf_11();
                     if (kind == 1 || kind == 0xF || kind == 2)
-                        object->vf_264();
+                        static_cast<TechnoClass*>(object)->vf_264();
                 }
-                BuildingBView* building = target->Func_47C520();
+                BuildingClass* building = target->GetBuilding();
                 if (building && building->Owner->ArrayIndex == owner) {
-                                        HBCell there = BuildingBCellOf(*building->vf_18(&tmp));
+                    CellStruct there = CellOfCoord(building->vf_18());
                     if (there.X == at.X && there.Y == at.Y) {
                         if (!refresh) {
                             CloakRadius = CloakRadius + 1;
@@ -6820,15 +6824,15 @@ void BuildingBView::vf_318(HBCell cell)
         int dySq = dy * dy;
         for (int dx = -radius; dx < radius; dx++) {
             if (dx * dx + dySq < radiusSq) {
-                HBCell c;
+                CellStruct c;
                 c.X = cell.X + dx;
                 c.Y = cell.Y + dy;
-                BuildingBCellView* target = BuildingBMap.Func_5657A0(&c);
-                target->Func_487160(owner);
-                for (BuildingBObjectView* object = target->FirstObject; object; object = object->NextObject) {
+                CellClass* target = DAT_0087F7E8.FUN_005657A0(&c);
+                target->DecreaseSensorsOfHouse(owner);
+                for (ObjectClass* object = target->FirstObject; object; object = static_cast<ObjectClass*>(object->NextObject)) {
                     int kind = object->vf_11();
                     if (kind == 1 || kind == 0xF || kind == 2)
-                        object->vf_264();
+                        static_cast<TechnoClass*>(object)->vf_264();
                 }
             }
         }
@@ -6859,15 +6863,15 @@ void BuildingBView::vf_317(HBCell cell)
         int dySq = dy * dy;
         for (int dx = -radius; dx < radius; dx++) {
             if (dx * dx + dySq < radiusSq) {
-                HBCell c;
+                CellStruct c;
                 c.X = cell.X + dx;
                 c.Y = cell.Y + dy;
-                BuildingBCellView* target = BuildingBMap.Func_5657A0(&c);
-                target->Func_487150(owner);
-                for (BuildingBObjectView* object = target->FirstObject; object; object = object->NextObject) {
+                CellClass* target = DAT_0087F7E8.FUN_005657A0(&c);
+                target->IncreaseSensorsOfHouse(owner);
+                for (ObjectClass* object = target->FirstObject; object; object = static_cast<ObjectClass*>(object->NextObject)) {
                     int kind = object->vf_11();
                     if (kind == 1 || kind == 0xF || kind == 2)
-                        object->vf_264();
+                        static_cast<TechnoClass*>(object)->vf_264();
                 }
             }
         }
@@ -6896,10 +6900,10 @@ void BuildingBView::vf_320(HBCell cell)
         int dySq = dy * dy;
         for (int dx = -radius; dx < radius; dx++) {
             if (dx * dx + dySq < radiusSq) {
-                HBCell c;
+                CellStruct c;
                 c.X = cell.X + dx;
                 c.Y = cell.Y + dy;
-                BuildingBMap.Func_5657A0(&c)->Func_487180(owner);
+                DAT_0087F7E8.FUN_005657A0(&c)->DecreaseDisguiseSensorsOfHouse(owner);
             }
         }
     }
@@ -6929,10 +6933,10 @@ void BuildingBView::vf_319(HBCell cell)
         int dySq = dy * dy;
         for (int dx = -radius; dx < radius; dx++) {
             if (dx * dx + dySq < radiusSq) {
-                HBCell c;
+                CellStruct c;
                 c.X = cell.X + dx;
                 c.Y = cell.Y + dy;
-                BuildingBMap.Func_5657A0(&c)->Func_487170(owner);
+                DAT_0087F7E8.FUN_005657A0(&c)->IncreaseDisguiseSensorsOfHouse(owner);
             }
         }
     }
@@ -7229,20 +7233,20 @@ void BuildingBView::vf_82(int a)
     if (a)
         NeedsRedraw = true;
     Func_6F9DD0(a);
-    int frame;
+    void* frame;
     frame = vf_121();
-    BuildingBCellView* cell = vf_111();
-    int base = vf_281(cell->unknown_10A);
+    CellClass* cell = vf_111();
+    int base = vf_281(cell->Intensity_Normal);
     if (vf_88() || (unknown_294 && unknown_294->unknown_50 == BuildingBCastBuilding(this)))
         base = Func_70E360(base);
     unknown_short_700 = base;
     unsigned int mask = (unsigned short)base;
     for (int i = 0; i < 21; i++) {
-        BuildingBAnimObjView* anim = Anims[i];
+        AnimClass* anim = Anims[i];
         if (anim) {
-            if (anim->unknown_C8 && anim->unknown_C8->unknown_35C) {
-                anim->unknown_D4 = frame;
-                anim->unknown_FC = mask;
+            if (anim->Type && anim->Type->ShouldUseCellDrawer) {
+                anim->LightConvert = frame;
+                anim->TintColor = mask;
             }
             ApplyAnimLevel();
         }
@@ -7323,20 +7327,20 @@ bool BuildingBView::vf_201(int* flag)
         return unknown_41B ? true : false;
     {
         HBCoord tmp;
-        HBCell cell = BuildingBCellOf(*vf_18(&tmp));
-        if (!BuildingBMap.Func_578460(&cell, 1))
+        Cell cell = BuildingBCellStructOf(*vf_18(&tmp));
+        if (!DAT_0087F7E8.FUN_00578460(&cell, 1))
             return false;
     }
     int widthPixels = (Type->Func_45ECA0(0) << 8) - 0x100;
     int heightPixels = (Type->Func_45EC90() << 8) - 0x100;
     bool blocked;
-    HBCoord here = Location;
-    if (BuildingBMap.Func_586360(&here)) {
-        HBCoord corner;
+    CoordStruct here = Location;
+    if (DAT_0087F7E8.IsLocationShrouded(here)) {
+        CoordStruct corner;
         corner.X = Location.X + heightPixels;
         corner.Y = Location.Y + widthPixels;
         corner.Z = Location.Z;
-        if (BuildingBMap.Func_586360(&corner) && BuildingBGlobal_00B73550)
+        if (DAT_0087F7E8.IsLocationShrouded(corner) && BuildingBGlobal_00B73550)
             blocked = true;
         else
             blocked = false;
@@ -7442,31 +7446,30 @@ void BuildingClass::vf_184()
 // counters and both cell counts in stack slots and tests the found object and the type flag through registers
 // (`mov cl,[eax+0xC9D]; test cl,cl`) where cl emits `cmp byte ptr`. Variants tried: operator+ cell sum, field-wise
 // cell sum, goto-based exits, hoisted loop variables, a type local for the flag.
-bool BuildingBView::vf_168()
+bool BuildingClass::vf_168()
 {
-    if (!Func_6FBDC0())
+    if (!TechnoClass::vf_168())
         goto refuse;
     {
-        HBCell tmp;
-        HBCell base = *vf_110(&tmp);
-        int width = Type->Func_45EC90();
-        int height = Type->Func_45ECA0(0);
+        CellStruct base = vf_110();
+        int width = Type->GetFoundationWidth();
+        int height = Type->GetFoundationHeight(0);
         int x;
         int y;
         for (x = -1; x <= width; x++) {
             for (y = -1; y <= height; y++) {
-                HBPoint2D zero;
+                Point2D zero;
                 zero.X = 0;
                 zero.Y = 0;
-                HBCell cell;
+                CellStruct cell;
                 cell.X = base.X + x;
                 cell.Y = base.Y + y;
-                BuildingBView* found = BuildingBMap.Func_5657A0(&cell)->Func_47C3D0(&zero, 0, 0);
+                TechnoClass* found = static_cast<TechnoClass*>(DAT_0087F7E8.FUN_005657A0(&cell)->FindTechnoNearestTo(&zero, false, 0));
                 if (found == this) {
-                    HBCell again = cell;
-                    found = BuildingBMap.Func_5657A0(&again)->Func_47EC40(0);
+                    CellStruct again = cell;
+                    found = static_cast<TechnoClass*>(DAT_0087F7E8.FUN_005657A0(&again)->FUN_0047EC40(false));
                 }
-                if (found && found->Owner != Owner && found->vf_33()->unknown_C9D)
+                if (found && found->Owner != Owner && found->vf_33()->Sensors)
                     goto refuse;
             }
         }
@@ -7482,31 +7485,30 @@ refuse:
 // counters and both cell counts in stack slots and tests the found object and the type flag through registers
 // (`mov cl,[eax+0xC9D]; test cl,cl`) where cl emits `cmp byte ptr`. Variants tried: operator+ cell sum, field-wise
 // cell sum, goto-based exits, hoisted loop variables, a type local for the flag.
-bool BuildingBView::vf_169()
+bool BuildingClass::vf_169()
 {
-    if (Func_6FBC90())
+    if (TechnoClass::vf_169())
         goto accept;
     {
-        HBCell tmp;
-        HBCell base = *vf_110(&tmp);
-        int width = Type->Func_45EC90();
-        int height = Type->Func_45ECA0(0);
+        CellStruct base = vf_110();
+        int width = Type->GetFoundationWidth();
+        int height = Type->GetFoundationHeight(0);
         int x;
         int y;
         for (x = -1; x <= width; x++) {
             for (y = -1; y <= height; y++) {
-                HBPoint2D zero;
+                Point2D zero;
                 zero.X = 0;
                 zero.Y = 0;
-                HBCell cell;
+                CellStruct cell;
                 cell.X = base.X + x;
                 cell.Y = base.Y + y;
-                BuildingBView* found = BuildingBMap.Func_5657A0(&cell)->Func_47C3D0(&zero, 0, 0);
+                TechnoClass* found = static_cast<TechnoClass*>(DAT_0087F7E8.FUN_005657A0(&cell)->FindTechnoNearestTo(&zero, false, 0));
                 if (found == this) {
-                    HBCell again = cell;
-                    found = BuildingBMap.Func_5657A0(&again)->Func_47EC40(0);
+                    CellStruct again = cell;
+                    found = static_cast<TechnoClass*>(DAT_0087F7E8.FUN_005657A0(&again)->FUN_0047EC40(false));
                 }
-                if (found && found->Owner != Owner && found->vf_33()->unknown_C9D)
+                if (found && found->Owner != Owner && found->vf_33()->Sensors)
                     goto accept;
             }
         }
@@ -7941,24 +7943,24 @@ bool BuildingClass::IsCellImpassable(CellClass* cell)
 // Variants tried: base + offset copy (kept), base + *footprint++ and *footprint++ + base direct sums.
 bool BuildingBView::vf_292(HBCoord* where, int dir)
 {
-    HBCell* footprint = vf_66(0);
-    HBCell base = BuildingBCellOf(*where);
+    CellStruct* footprint = vf_66(0);
+    CellStruct base = BuildingBCellStructOf(*where);
     BuildingBClearedList cleared;
     while (!(footprint->X == 0x7FFF && footprint->Y == 0x7FFF)) {
-        HBCell offset = *footprint++;
-        HBCell at = base + offset;
-        BuildingBCellView* cell = BuildingBMap.Func_5657A0(&at);
-        if (cell->SmudgeIndex != -1) {
-            cell->SmudgeIndex = -1;
-            cell->unknown_11E = 0;
-            cell->unknown_40 = 0;
+        CellStruct offset = *footprint++;
+        CellStruct at = base + offset;
+        CellClass* cell = DAT_0087F7E8.FUN_005657A0(&at);
+        if (cell->OverlayTypeIndex != -1) {
+            cell->OverlayTypeIndex = -1;
+            cell->OverlayData = 0;
+            cell->Rubble = 0;
         }
-        for (BuildingBObjectView* object = cell->FirstObject; object; object = cell->FirstObject) {
-            if (!(object->unknown_14 & 1) || object->vf_11() == 6) {
+        for (ObjectClass* object = cell->FirstObject; object; object = cell->FirstObject) {
+            if (!object->Flags.IsTechno || object->vf_11() == 6) {
                 for (int i = cleared.Count - 1; i >= 0; i--) {
-                    BuildingBObjectView* item = cleared.Items[i];
-                    HBCoord home = item->Location;
-                    if (!item->vf_54(&home, 0))
+                    ObjectClass* item = cleared.Items[i];
+                    CoordStruct home = item->Location;
+                    if (!item->vf_54(home, 0))
                         item->vf_62();
                 }
                 return false;
@@ -7969,23 +7971,24 @@ bool BuildingBView::vf_292(HBCoord* where, int dir)
     }
     if (vf_54(where, dir)) {
         for (int i = cleared.Count - 1; i >= 0; i--) {
-            BuildingBObjectView* item = cleared.Items[i];
-            HBCell itemCell;
-            HBCell zero(0, 0);
-            HBCell start = *item->vf_110(&itemCell);
-            HBCell found = *BuildingBMap.Func_56DC20(&itemCell, &start, item->vf_33()->unknown_67C, -1, 0, 0, 1, 1, 0,
+            ObjectClass* item = cleared.Items[i];
+            CellStruct itemCell;
+            CellStruct zero;
+            zero.X = 0;
+            zero.Y = 0;
+            CellStruct start = item->vf_110();
+            CellStruct found = *DAT_0087F7E8.FUN_0056DC20(&itemCell, &start, item->vf_33()->SpeedType, -1, 0, 0, 1, 1, 0,
                                                             0, 0, 1, &zero, 0, 0);
-            HBCoord landing;
-            if (!item->vf_54(BuildingBMap.Func_5657A0(&found)->vf_18(&landing), 0))
+            if (!item->vf_54(DAT_0087F7E8.FUN_005657A0(&found)->vf_18(), 0))
                 item->vf_62();
         }
         return true;
     }
     vf_62();
     for (int i = cleared.Count - 1; i >= 0; i--) {
-        BuildingBObjectView* item = cleared.Items[i];
-        HBCoord home = item->Location;
-        if (!item->vf_54(&home, 0))
+        ObjectClass* item = cleared.Items[i];
+        CoordStruct home = item->Location;
+        if (!item->vf_54(home, 0))
             item->vf_62();
     }
     return false;

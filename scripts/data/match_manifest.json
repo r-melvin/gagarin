@@ -49314,9 +49314,9 @@
   "len": "0x11a6",
   "name": "BuildingClass::vf_245",
   "status": "partial",
-  "pct": 10.7,
-  "best_pct": 10.7,
-  "best_at": "cf203011"
+  "pct": 42.5,
+  "best_pct": 42.5,
+  "best_at": "aebb4024"
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -49575,7 +49575,7 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x4526F0",
-  "sym": "?vf_254@BuildingBView@@UAEPAUWeaponStruct@@H@Z",
+  "sym": "?vf_254@BuildingClass@@UAEPAUWeaponStruct@@H@Z",
   "len": "0xd3",
   "name": "BuildingClass::vf_254",
   "status": "matched",
@@ -49673,9 +49673,9 @@
   "len": "0x81c",
   "name": "BuildingClass::vf_260",
   "status": "partial",
-  "pct": 0.6,
-  "best_pct": 0.6,
-  "best_at": "cf203011"
+  "pct": 0.8,
+  "best_pct": 0.8,
+  "best_at": "aebb4024"
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -49820,7 +49820,7 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x457770",
-  "sym": "?vf_168@BuildingBView@@UAE_NXZ",
+  "sym": "?vf_168@BuildingClass@@UAE_NXZ",
   "len": "0x147",
   "name": "BuildingClass::vf_168",
   "status": "partial",
@@ -49831,7 +49831,7 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x4578C0",
-  "sym": "?vf_169@BuildingBView@@UAE_NXZ",
+  "sym": "?vf_169@BuildingClass@@UAE_NXZ",
   "len": "0x147",
   "name": "BuildingClass::vf_169",
   "status": "partial",

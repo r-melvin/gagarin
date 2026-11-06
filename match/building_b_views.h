@@ -30,32 +30,20 @@
 #include "_layout/color_struct.h"
 #include "_layout/techno_type_class.h"
 #include "_layout/player_ptr_00a83d4c.h"
+#include "_layout/building_class.h"
+#include "_layout/infantry_class.h"
+#include "_layout/anim_class.h"
 
 class BuildingBView;
 class BuildingBTypeView;
 class HouseClass;
 class BuildingBSurfaceView;
 class BuildingBTargetObjView;
-class BuildingBAnimObjView;
-class BuildingBAnimDataView;
 class BuildingBParticleSystemTypeView;
 class BuildingBParticleSystemView;
-class BuildingBAbstractView;
-class BuildingBPointVector;
 class BuildingBView;
-class BuildingBObjectView;
-class BuildingBCrcView;
 class BuildingBTargetView;
-class BuildingBRttiHolder;
-class BuildingBCellView;
-class BuildingBMapView;
 class BuildingBTacticalView;
-class BuildingBAudioView;
-class BuildingBOccupantView;
-class BuildingBOccupantTypeView;
-
-// GLOBAL: GAMEMD 0xA8ED84 (the frame counter CDTimerClass compares against)
-extern int BuildingBFrame;
 
 
 // A 16-byte colour record returned by the surface (read-only here).
@@ -114,33 +102,6 @@ public:
 };
 
 
-// Opaque data object of an anim (read-only here).
-class BuildingBAnimDataView
-{
-public:
-    char unknown_00[0x35C];   // +0x0
-    bool unknown_35C;   // +0x35C
-};
-GG_STATIC_ASSERT(offsetof(BuildingBAnimDataView, unknown_35C) == 0x35C);
-
-// Partial view of an AnimClass held in BuildingClass::Anims (read-only here).
-class BuildingBAnimObjView
-{
-public:
-    char unknown_00[0xC8];   // +0x0
-    BuildingBAnimDataView* unknown_C8;   // +0xC8
-    char unknown_CC[0x8];   // +0xCC
-    int unknown_D4;   // +0xD4
-    char unknown_D8[0x24];   // +0xD8
-    int unknown_FC;   // +0xFC
-    char unknown_100[0x78];   // +0x100
-    char unknown_178;   // +0x178
-};
-GG_STATIC_ASSERT(offsetof(BuildingBAnimObjView, unknown_C8) == 0xC8);
-GG_STATIC_ASSERT(offsetof(BuildingBAnimObjView, unknown_D4) == 0xD4);
-GG_STATIC_ASSERT(offsetof(BuildingBAnimObjView, unknown_FC) == 0xFC);
-GG_STATIC_ASSERT(offsetof(BuildingBAnimObjView, unknown_178) == 0x178);
-
 // Partial view of the object at BuildingClass+0x294 (read-only here).
 class BuildingBTargetObjView
 {
@@ -172,356 +133,11 @@ public:
     virtual void unused_slot_6();
     virtual void unused_slot_7();
     virtual void vf_8(int a);   // slot 8 (+0x20)
-    BuildingBParticleSystemView(BuildingBParticleSystemTypeView* type, HBCoord* where, BuildingBCellView* cell, BuildingBView* owner, const HBCoord* b, int c);
+    BuildingBParticleSystemView(BuildingBParticleSystemTypeView* type, HBCoord* where, CellClass* cell, BuildingBView* owner, const HBCoord* b, int c);
     void Func_6301F0(int a);
     char unknown_04[0xFC];   // +0x4
 };
 GG_STATIC_ASSERT(sizeof(BuildingBParticleSystemView) == 0x100);
-
-// Partial view of an object reached through BuildingClass+0x218 (read-only here).
-class BuildingBAbstractView
-{
-public:
-    // virtual table (primary), slot index in the comment
-    virtual void unused_slot_0();
-    virtual void unused_slot_1();
-    virtual void unused_slot_2();
-    virtual void unused_slot_3();
-    virtual void unused_slot_4();
-    virtual void unused_slot_5();
-    virtual void unused_slot_6();
-    virtual void unused_slot_7();
-    virtual void unused_slot_8();
-    virtual void unused_slot_9();
-    virtual void unused_slot_10();
-    virtual int vf_11();   // slot 11 (+0x2C)
-    char unknown_04[0xE8];   // +0x4
-    int unknown_EC;   // +0xEC
-};
-GG_STATIC_ASSERT(offsetof(BuildingBAbstractView, unknown_EC) == 0xEC);
-
-// A vector of points (vptr, Items, Capacity, flags, Count; read-only here).
-class BuildingBPointVector
-{
-public:
-    // virtual table (primary), slot index in the comment
-    virtual void unused_slot_0_pv();   // slot 0 (+0x0)
-    HBPoint2D* Items;   // +0x4
-    int Capacity;   // +0x8
-    char unknown_0C[0x4];   // +0xC
-    int Count;   // +0x10
-    char unknown_14[0x4];   // +0x14
-};
-GG_STATIC_ASSERT(offsetof(BuildingBPointVector, Items) == 0x4);
-GG_STATIC_ASSERT(offsetof(BuildingBPointVector, Capacity) == 0x8);
-GG_STATIC_ASSERT(offsetof(BuildingBPointVector, Count) == 0x10);
-GG_STATIC_ASSERT(sizeof(BuildingBPointVector) == 0x18);
-
-// Partial view of an object in a cell list (read-only here).
-class BuildingBObjectView
-{
-public:
-    // virtual table (primary), slot index in the comment
-    virtual void unused_slot_0();
-    virtual void unused_slot_1();
-    virtual void unused_slot_2();
-    virtual void unused_slot_3();
-    virtual void unused_slot_4();
-    virtual void unused_slot_5();
-    virtual void unused_slot_6();
-    virtual void unused_slot_7();
-    virtual void unused_slot_8();
-    virtual void unused_slot_9();
-    virtual void unused_slot_10();
-    virtual int vf_11();   // slot 11 (+0x2C)
-    virtual void unused_slot_12();
-    virtual void unused_slot_13();
-    virtual void unused_slot_14();
-    virtual void unused_slot_15();
-    virtual void unused_slot_16();
-    virtual void unused_slot_17();
-    virtual void unused_slot_18();
-    virtual void unused_slot_19();
-    virtual void unused_slot_20();
-    virtual void unused_slot_21();
-    virtual void unused_slot_22();
-    virtual void unused_slot_23();
-    virtual void unused_slot_24();
-    virtual void unused_slot_25();
-    virtual void unused_slot_26();
-    virtual void unused_slot_27();
-    virtual void unused_slot_28();
-    virtual void unused_slot_29();
-    virtual void unused_slot_30();
-    virtual void unused_slot_31();
-    virtual void unused_slot_32();
-    virtual BuildingBTypeView* vf_33();   // slot 33 (+0x84)
-    virtual void unused_slot_34();
-    virtual void unused_slot_35();
-    virtual void unused_slot_36();
-    virtual void unused_slot_37();
-    virtual void unused_slot_38();
-    virtual void unused_slot_39();
-    virtual void unused_slot_40();
-    virtual void unused_slot_41();
-    virtual void unused_slot_42();
-    virtual void unused_slot_43();
-    virtual void unused_slot_44();
-    virtual void unused_slot_45();
-    virtual void unused_slot_46();
-    virtual void unused_slot_47();
-    virtual void unused_slot_48();
-    virtual void unused_slot_49();
-    virtual void unused_slot_50();
-    virtual void unused_slot_51();
-    virtual void unused_slot_52();
-    virtual void vf_53();   // slot 53 (+0xD4)
-    virtual bool vf_54(HBCoord* where, int dir);   // slot 54 (+0xD8)
-    virtual void unused_slot_55();
-    virtual void unused_slot_56();
-    virtual void unused_slot_57();
-    virtual void unused_slot_58();
-    virtual void unused_slot_59();
-    virtual void unused_slot_60();
-    virtual void unused_slot_61();
-    virtual void vf_62();   // slot 62 (+0xF8)
-    virtual void unused_slot_63();
-    virtual void unused_slot_64();
-    virtual void unused_slot_65();
-    virtual void unused_slot_66();
-    virtual void unused_slot_67();
-    virtual void unused_slot_68();
-    virtual void unused_slot_69();
-    virtual void unused_slot_70();
-    virtual void unused_slot_71();
-    virtual void unused_slot_72();
-    virtual void unused_slot_73();
-    virtual void unused_slot_74();
-    virtual void unused_slot_75();
-    virtual void unused_slot_76();
-    virtual void unused_slot_77();
-    virtual void unused_slot_78();
-    virtual void unused_slot_79();
-    virtual void unused_slot_80();
-    virtual void unused_slot_81();
-    virtual void unused_slot_82();
-    virtual void unused_slot_83();
-    virtual void unused_slot_84();
-    virtual void unused_slot_85();
-    virtual void unused_slot_86();
-    virtual void unused_slot_87();
-    virtual void unused_slot_88();
-    virtual void unused_slot_89();
-    virtual void unused_slot_90();
-    virtual void unused_slot_91();
-    virtual void unused_slot_92();
-    virtual void unused_slot_93();
-    virtual void unused_slot_94();
-    virtual void unused_slot_95();
-    virtual void unused_slot_96();
-    virtual void unused_slot_97();
-    virtual void unused_slot_98();
-    virtual void unused_slot_99();
-    virtual void unused_slot_100();
-    virtual void unused_slot_101();
-    virtual void unused_slot_102();
-    virtual void unused_slot_103();
-    virtual void unused_slot_104();
-    virtual void unused_slot_105();
-    virtual void unused_slot_106();
-    virtual void unused_slot_107();
-    virtual void unused_slot_108();
-    virtual void unused_slot_109();
-    virtual HBCell* vf_110(HBCell* out);   // slot 110 (+0x1B8)
-    virtual void unused_slot_111();
-    virtual void unused_slot_112();
-    virtual void unused_slot_113();
-    virtual void unused_slot_114();
-    virtual void unused_slot_115();
-    virtual void unused_slot_116();
-    virtual void unused_slot_117();
-    virtual void unused_slot_118();
-    virtual void unused_slot_119();
-    virtual void unused_slot_120();
-    virtual void unused_slot_121();
-    virtual void unused_slot_122();
-    virtual void unused_slot_123();
-    virtual void unused_slot_124();
-    virtual void unused_slot_125();
-    virtual void unused_slot_126();
-    virtual void unused_slot_127();
-    virtual void unused_slot_128();
-    virtual void unused_slot_129();
-    virtual void unused_slot_130();
-    virtual void unused_slot_131();
-    virtual void unused_slot_132();
-    virtual void unused_slot_133();
-    virtual void unused_slot_134();
-    virtual void unused_slot_135();
-    virtual void unused_slot_136();
-    virtual void unused_slot_137();
-    virtual void unused_slot_138();
-    virtual void unused_slot_139();
-    virtual void unused_slot_140();
-    virtual void unused_slot_141();
-    virtual void unused_slot_142();
-    virtual void unused_slot_143();
-    virtual void unused_slot_144();
-    virtual void unused_slot_145();
-    virtual void unused_slot_146();
-    virtual void unused_slot_147();
-    virtual void unused_slot_148();
-    virtual void unused_slot_149();
-    virtual void unused_slot_150();
-    virtual void unused_slot_151();
-    virtual void unused_slot_152();
-    virtual void unused_slot_153();
-    virtual void unused_slot_154();
-    virtual void unused_slot_155();
-    virtual void unused_slot_156();
-    virtual void unused_slot_157();
-    virtual void unused_slot_158();
-    virtual void unused_slot_159();
-    virtual void unused_slot_160();
-    virtual void unused_slot_161();
-    virtual void unused_slot_162();
-    virtual void unused_slot_163();
-    virtual void unused_slot_164();
-    virtual void unused_slot_165();
-    virtual void unused_slot_166();
-    virtual void unused_slot_167();
-    virtual void unused_slot_168();
-    virtual void unused_slot_169();
-    virtual void unused_slot_170();
-    virtual void unused_slot_171();
-    virtual void unused_slot_172();
-    virtual void unused_slot_173();
-    virtual void unused_slot_174();
-    virtual void unused_slot_175();
-    virtual void unused_slot_176();
-    virtual void unused_slot_177();
-    virtual void unused_slot_178();
-    virtual void unused_slot_179();
-    virtual void unused_slot_180();
-    virtual void unused_slot_181();
-    virtual void unused_slot_182();
-    virtual void unused_slot_183();
-    virtual void unused_slot_184();
-    virtual void unused_slot_185();
-    virtual void unused_slot_186();
-    virtual void unused_slot_187();
-    virtual void unused_slot_188();
-    virtual void unused_slot_189();
-    virtual void unused_slot_190();
-    virtual void unused_slot_191();
-    virtual void unused_slot_192();
-    virtual void unused_slot_193();
-    virtual void unused_slot_194();
-    virtual void unused_slot_195();
-    virtual void unused_slot_196();
-    virtual void unused_slot_197();
-    virtual void unused_slot_198();
-    virtual void unused_slot_199();
-    virtual void unused_slot_200();
-    virtual void unused_slot_201();
-    virtual void unused_slot_202();
-    virtual void unused_slot_203();
-    virtual void unused_slot_204();
-    virtual void unused_slot_205();
-    virtual void unused_slot_206();
-    virtual void unused_slot_207();
-    virtual void unused_slot_208();
-    virtual void unused_slot_209();
-    virtual void unused_slot_210();
-    virtual void unused_slot_211();
-    virtual void unused_slot_212();
-    virtual void unused_slot_213();
-    virtual void unused_slot_214();
-    virtual void unused_slot_215();
-    virtual void unused_slot_216();
-    virtual void unused_slot_217();
-    virtual void unused_slot_218();
-    virtual void unused_slot_219();
-    virtual void unused_slot_220();
-    virtual void unused_slot_221();
-    virtual void unused_slot_222();
-    virtual void unused_slot_223();
-    virtual void unused_slot_224();
-    virtual void unused_slot_225();
-    virtual void unused_slot_226();
-    virtual void unused_slot_227();
-    virtual void unused_slot_228();
-    virtual void unused_slot_229();
-    virtual void unused_slot_230();
-    virtual void unused_slot_231();
-    virtual void unused_slot_232();
-    virtual void unused_slot_233();
-    virtual void unused_slot_234();
-    virtual void unused_slot_235();
-    virtual void unused_slot_236();
-    virtual void unused_slot_237();
-    virtual void unused_slot_238();
-    virtual void unused_slot_239();
-    virtual void unused_slot_240();
-    virtual void unused_slot_241();
-    virtual void unused_slot_242();
-    virtual void unused_slot_243();
-    virtual void unused_slot_244();
-    virtual void unused_slot_245();
-    virtual void unused_slot_246();
-    virtual void unused_slot_247();
-    virtual void unused_slot_248();
-    virtual void unused_slot_249();
-    virtual void unused_slot_250();
-    virtual void unused_slot_251();
-    virtual void unused_slot_252();
-    virtual void unused_slot_253();
-    virtual void unused_slot_254();
-    virtual void unused_slot_255();
-    virtual void unused_slot_256();
-    virtual void unused_slot_257();
-    virtual void unused_slot_258();
-    virtual void unused_slot_259();
-    virtual void unused_slot_260();
-    virtual void unused_slot_261();
-    virtual void unused_slot_262();
-    virtual void unused_slot_263();
-    virtual void vf_264();   // slot 264 (+0x420)
-    char unknown_04[0x10];   // +0x4
-    unsigned char unknown_14;   // +0x14
-    char unknown_15[0x1B];   // +0x15
-    BuildingBObjectView* NextObject;   // +0x30
-    char unknown_34[0x68];   // +0x34
-    HBCoord Location;   // +0x9C
-};
-GG_STATIC_ASSERT(offsetof(BuildingBObjectView, unknown_14) == 0x14);
-GG_STATIC_ASSERT(offsetof(BuildingBObjectView, NextObject) == 0x30);
-GG_STATIC_ASSERT(offsetof(BuildingBObjectView, Location) == 0x9C);
-
-// CDTimerClass (0xC bytes): start frame (-1 = stopped), unknown dword, frames left.
-// Not merged: cluster timers differ in constructors and inline bodies (see house_building_views.h).
-struct BuildingBTimer
-{
-public:
-    int GetTimeLeft() const;
-    int StartTime;   // +0x0
-    int unknown_04;   // +0x4
-    int TimeLeft;   // +0x8
-};
-GG_STATIC_ASSERT(offsetof(BuildingBTimer, StartTime) == 0x0);
-GG_STATIC_ASSERT(offsetof(BuildingBTimer, unknown_04) == 0x4);
-GG_STATIC_ASSERT(offsetof(BuildingBTimer, TimeLeft) == 0x8);
-GG_STATIC_ASSERT(sizeof(BuildingBTimer) == 0xC);
-
-// Any object whose IRTTITypeInfo subobject sits at +4 (read-only here).
-class BuildingBRttiHolder
-{
-public:
-    // virtual table (primary), slot index in the comment
-    virtual void unused_slot_0_holder();   // slot 0 (+0x0)
-    HBRttiBase Rtti;   // +0x4
-};
-GG_STATIC_ASSERT(offsetof(BuildingBRttiHolder, Rtti) == 0x4);
 
 // Partial view of the target object handed to vf_26 (read-only here).
 class BuildingBTargetView
@@ -531,90 +147,6 @@ public:
     int unknown_30;   // +0x30
 };
 GG_STATIC_ASSERT(offsetof(BuildingBTargetView, unknown_30) == 0x30);
-
-// The CRC accumulator (read-only here).
-class BuildingBCrcView
-{
-public:
-    void AddBool(bool value);
-    void AddInt(int value);
-    void AddByte(unsigned char value);
-    char unknown_00[0x1];   // +0x0
-};
-GG_STATIC_ASSERT(sizeof(BuildingBCrcView) == 0x1);
-
-// Partial view of CellClass (read-only here).
-class BuildingBCellView
-{
-public:
-    // virtual table (primary), slot index in the comment
-    virtual void unused_slot_0();
-    virtual void unused_slot_1();
-    virtual void unused_slot_2();
-    virtual void unused_slot_3();
-    virtual void unused_slot_4();
-    virtual void unused_slot_5();
-    virtual void unused_slot_6();
-    virtual void unused_slot_7();
-    virtual void unused_slot_8();
-    virtual void unused_slot_9();
-    virtual void unused_slot_10();
-    virtual void unused_slot_11();
-    virtual void unused_slot_12();
-    virtual void unused_slot_13();
-    virtual void unused_slot_14();
-    virtual void unused_slot_15();
-    virtual void unused_slot_16();
-    virtual void unused_slot_17();
-    virtual HBCoord* vf_18(HBCoord* out);   // slot 18 (+0x48)
-    bool Func_4870B0(int a);
-    void Func_487110(int a);
-    void Func_487130(int a);
-    BuildingBView* Func_47C3D0(HBPoint2D* where, char a, void* b);
-    BuildingBView* Func_47EC40(char a);
-    BuildingBView* Func_47C520();
-    bool Func_4870D0(int a);
-    void Func_487150(int a);
-    void Func_487170(int a);
-    void Func_487180(int a);
-    void Func_487160(int a);
-    char unknown_04[0x3C];   // +0x4
-    int unknown_40;   // +0x40
-    int SmudgeIndex;   // +0x44
-    char unknown_48[0x9C];   // +0x48
-    BuildingBObjectView* FirstObject;   // +0xE4
-    char unknown_E8[0x22];   // +0xE8
-    short unknown_10A;   // +0x10A
-    char unknown_10C[0x12];   // +0x10C
-    unsigned char unknown_11E;   // +0x11E
-    char unknown_11F[0x5];   // +0x11F
-    unsigned int Flags;   // +0x124
-};
-GG_STATIC_ASSERT(offsetof(BuildingBCellView, unknown_40) == 0x40);
-GG_STATIC_ASSERT(offsetof(BuildingBCellView, SmudgeIndex) == 0x44);
-GG_STATIC_ASSERT(offsetof(BuildingBCellView, FirstObject) == 0xE4);
-GG_STATIC_ASSERT(offsetof(BuildingBCellView, unknown_10A) == 0x10A);
-GG_STATIC_ASSERT(offsetof(BuildingBCellView, unknown_11E) == 0x11E);
-GG_STATIC_ASSERT(offsetof(BuildingBCellView, Flags) == 0x124);
-
-// Partial view of the map object at global 0x87F7E8 (read-only here).
-class BuildingBMapView
-{
-public:
-    HBCell* Func_56DC20(HBCell* out, HBCell* start, int a, int b, int c, char d, int e, int f, char g, char h, char i, char j, HBCell* k, char l, char m);
-    bool Func_578460(HBCell* cell, int a);
-    bool Func_586360(HBCoord* where);
-    BuildingBCellView* Func_565730(HBCoord* where);
-    BuildingBPointVector* Func_656580(BuildingBTypeView* type);
-    void Func_655740(BuildingBView* building, int x, int y);
-    void Func_6562D0(HBPoint2D* point);
-    BuildingBCellView* Func_5657A0(HBCell* cell);
-    // The same call (0x5657A0) with the canonical cell types.
-    CellClass* Func_5657A0(CellStruct* cell);
-    BuildingBCellView* GetCellAtCoord(HBCoord coord);
-    char unknown_00[0x1];   // +0x0
-};
-GG_STATIC_ASSERT(sizeof(BuildingBMapView) == 0x1);
 
 // Partial view of the tactical object behind global 0x887324 (read-only here).
 class BuildingBTacticalView
@@ -626,17 +158,6 @@ public:
     HBPoint2D Offset;   // +0xB0
 };
 GG_STATIC_ASSERT(offsetof(BuildingBTacticalView, Offset) == 0xB0);
-
-// AudioController embedded in a techno (0x14 bytes).
-class BuildingBAudioView
-{
-public:
-    void Func_405BE0();
-    int unknown_00;   // +0x0
-    char unknown_04[0x10];   // +0x4
-};
-GG_STATIC_ASSERT(offsetof(BuildingBAudioView, unknown_00) == 0x0);
-GG_STATIC_ASSERT(sizeof(BuildingBAudioView) == 0x14);
 
 // Partial view of the BuildingTypeClass object at BuildingClass+0x520.
 class BuildingBTypeView
@@ -808,304 +329,6 @@ GG_STATIC_ASSERT(offsetof(BuildingBTypeView, unknown_16C7) == 0x16C7);
 GG_STATIC_ASSERT(offsetof(BuildingBTypeView, unknown_1707) == 0x1707);
 GG_STATIC_ASSERT(offsetof(BuildingBTypeView, unknown_1708) == 0x1708);
 
-// VeterancyStruct embedded at +0x150 of a techno (4 bytes).
-struct BuildingBVeterancyView
-{
-public:
-    bool Func_750010();
-    int Value;   // +0x0
-};
-GG_STATIC_ASSERT(offsetof(BuildingBVeterancyView, Value) == 0x0);
-GG_STATIC_ASSERT(sizeof(BuildingBVeterancyView) == 0x4);
-
-// Partial view of the type object of an occupant (InfantryTypeClass).
-class BuildingBOccupantTypeView
-{
-public:
-    char unknown_00[0xE04];   // +0x0
-    WeaponStruct unknown_E04;   // +0xE04
-    WeaponStruct unknown_E20;   // +0xE20
-};
-GG_STATIC_ASSERT(offsetof(BuildingBOccupantTypeView, unknown_E04) == 0xE04);
-GG_STATIC_ASSERT(offsetof(BuildingBOccupantTypeView, unknown_E20) == 0xE20);
-
-// Partial view of an occupant of the building (an InfantryClass).
-class BuildingBOccupantView
-{
-public:
-    // virtual table (primary), slot index in the comment
-    virtual void unused_slot_0();
-    virtual void unused_slot_1();
-    virtual void unused_slot_2();
-    virtual void unused_slot_3();
-    virtual void unused_slot_4();
-    virtual void unused_slot_5();
-    virtual void unused_slot_6();
-    virtual void unused_slot_7();
-    virtual void unused_slot_8();
-    virtual void unused_slot_9();
-    virtual void unused_slot_10();
-    virtual void unused_slot_11();
-    virtual void unused_slot_12();
-    virtual void unused_slot_13();
-    virtual void unused_slot_14();
-    virtual void unused_slot_15();
-    virtual void unused_slot_16();
-    virtual void unused_slot_17();
-    virtual void unused_slot_18();
-    virtual HBCoord* vf_19(HBCoord* out, int a);   // slot 19 (+0x4C)
-    virtual void unused_slot_20();
-    virtual void unused_slot_21();
-    virtual void unused_slot_22();
-    virtual void unused_slot_23();
-    virtual void unused_slot_24();
-    virtual void unused_slot_25();
-    virtual void unused_slot_26();
-    virtual void unused_slot_27();
-    virtual void unused_slot_28();
-    virtual void unused_slot_29();
-    virtual void unused_slot_30();
-    virtual void unused_slot_31();
-    virtual void unused_slot_32();
-    virtual void unused_slot_33();
-    virtual void unused_slot_34();
-    virtual void unused_slot_35();
-    virtual void unused_slot_36();
-    virtual void unused_slot_37();
-    virtual void unused_slot_38();
-    virtual void unused_slot_39();
-    virtual void unused_slot_40();
-    virtual void unused_slot_41();
-    virtual void unused_slot_42();
-    virtual void unused_slot_43();
-    virtual void unused_slot_44();
-    virtual void unused_slot_45();
-    virtual void unused_slot_46();
-    virtual void unused_slot_47();
-    virtual void unused_slot_48();
-    virtual void unused_slot_49();
-    virtual void unused_slot_50();
-    virtual void unused_slot_51();
-    virtual void unused_slot_52();
-    virtual void unused_slot_53();
-    virtual void unused_slot_54();
-    virtual void unused_slot_55();
-    virtual void unused_slot_56();
-    virtual void unused_slot_57();
-    virtual void unused_slot_58();
-    virtual void unused_slot_59();
-    virtual void unused_slot_60();
-    virtual void unused_slot_61();
-    virtual void unused_slot_62();
-    virtual void unused_slot_63();
-    virtual void unused_slot_64();
-    virtual void unused_slot_65();
-    virtual void unused_slot_66();
-    virtual void unused_slot_67();
-    virtual void unused_slot_68();
-    virtual void unused_slot_69();
-    virtual void unused_slot_70();
-    virtual void unused_slot_71();
-    virtual void unused_slot_72();
-    virtual void unused_slot_73();
-    virtual void unused_slot_74();
-    virtual void unused_slot_75();
-    virtual void unused_slot_76();
-    virtual void unused_slot_77();
-    virtual void unused_slot_78();
-    virtual void unused_slot_79();
-    virtual void unused_slot_80();
-    virtual void unused_slot_81();
-    virtual void unused_slot_82();
-    virtual void unused_slot_83();
-    virtual void unused_slot_84();
-    virtual void unused_slot_85();
-    virtual void unused_slot_86();
-    virtual void unused_slot_87();
-    virtual void unused_slot_88();
-    virtual void unused_slot_89();
-    virtual void unused_slot_90();
-    virtual void unused_slot_91();
-    virtual void unused_slot_92();
-    virtual void vf_93(const HBCoord* where, int a, int b);   // slot 93 (+0x174)
-    virtual void unused_slot_94();
-    virtual void unused_slot_95();
-    virtual void unused_slot_96();
-    virtual void unused_slot_97();
-    virtual void unused_slot_98();
-    virtual void unused_slot_99();
-    virtual void unused_slot_100();
-    virtual void unused_slot_101();
-    virtual void unused_slot_102();
-    virtual void unused_slot_103();
-    virtual void unused_slot_104();
-    virtual void unused_slot_105();
-    virtual void unused_slot_106();
-    virtual void unused_slot_107();
-    virtual void unused_slot_108();
-    virtual void unused_slot_109();
-    virtual void unused_slot_110();
-    virtual void unused_slot_111();
-    virtual void unused_slot_112();
-    virtual void unused_slot_113();
-    virtual void unused_slot_114();
-    virtual void unused_slot_115();
-    virtual void unused_slot_116();
-    virtual void unused_slot_117();
-    virtual void unused_slot_118();
-    virtual void unused_slot_119();
-    virtual void unused_slot_120();
-    virtual void unused_slot_121();
-    virtual void unused_slot_122();
-    virtual void unused_slot_123();
-    virtual void unused_slot_124();
-    virtual void unused_slot_125();
-    virtual void unused_slot_126();
-    virtual void unused_slot_127();
-    virtual void unused_slot_128();
-    virtual void unused_slot_129();
-    virtual void unused_slot_130();
-    virtual void unused_slot_131();
-    virtual void unused_slot_132();
-    virtual void unused_slot_133();
-    virtual void unused_slot_134();
-    virtual void unused_slot_135();
-    virtual void unused_slot_136();
-    virtual void unused_slot_137();
-    virtual void unused_slot_138();
-    virtual void unused_slot_139();
-    virtual void unused_slot_140();
-    virtual void unused_slot_141();
-    virtual void unused_slot_142();
-    virtual void unused_slot_143();
-    virtual void unused_slot_144();
-    virtual void unused_slot_145();
-    virtual void unused_slot_146();
-    virtual void unused_slot_147();
-    virtual void unused_slot_148();
-    virtual void unused_slot_149();
-    virtual void unused_slot_150();
-    virtual void unused_slot_151();
-    virtual void unused_slot_152();
-    virtual void unused_slot_153();
-    virtual void unused_slot_154();
-    virtual void unused_slot_155();
-    virtual void unused_slot_156();
-    virtual void unused_slot_157();
-    virtual void unused_slot_158();
-    virtual void unused_slot_159();
-    virtual void unused_slot_160();
-    virtual void unused_slot_161();
-    virtual void unused_slot_162();
-    virtual void unused_slot_163();
-    virtual void unused_slot_164();
-    virtual void unused_slot_165();
-    virtual void unused_slot_166();
-    virtual void unused_slot_167();
-    virtual void unused_slot_168();
-    virtual void unused_slot_169();
-    virtual void unused_slot_170();
-    virtual void unused_slot_171();
-    virtual void unused_slot_172();
-    virtual void unused_slot_173();
-    virtual void unused_slot_174();
-    virtual void unused_slot_175();
-    virtual void unused_slot_176();
-    virtual void unused_slot_177();
-    virtual void unused_slot_178();
-    virtual void unused_slot_179();
-    virtual void unused_slot_180();
-    virtual void unused_slot_181();
-    virtual void unused_slot_182();
-    virtual void unused_slot_183();
-    virtual void unused_slot_184();
-    virtual void unused_slot_185();
-    virtual void unused_slot_186();
-    virtual void unused_slot_187();
-    virtual void unused_slot_188();
-    virtual void unused_slot_189();
-    virtual void unused_slot_190();
-    virtual void unused_slot_191();
-    virtual void unused_slot_192();
-    virtual void unused_slot_193();
-    virtual void unused_slot_194();
-    virtual void unused_slot_195();
-    virtual void unused_slot_196();
-    virtual void unused_slot_197();
-    virtual void unused_slot_198();
-    virtual void unused_slot_199();
-    virtual void unused_slot_200();
-    virtual void unused_slot_201();
-    virtual void unused_slot_202();
-    virtual void unused_slot_203();
-    virtual void unused_slot_204();
-    virtual void unused_slot_205();
-    virtual void unused_slot_206();
-    virtual void unused_slot_207();
-    virtual void unused_slot_208();
-    virtual void unused_slot_209();
-    virtual void unused_slot_210();
-    virtual void unused_slot_211();
-    virtual void unused_slot_212();
-    virtual void unused_slot_213();
-    virtual void unused_slot_214();
-    virtual void unused_slot_215();
-    virtual void unused_slot_216();
-    virtual void unused_slot_217();
-    virtual void unused_slot_218();
-    virtual void unused_slot_219();
-    virtual void unused_slot_220();
-    virtual void unused_slot_221();
-    virtual void unused_slot_222();
-    virtual void unused_slot_223();
-    virtual void unused_slot_224();
-    virtual void unused_slot_225();
-    virtual void unused_slot_226();
-    virtual void unused_slot_227();
-    virtual void unused_slot_228();
-    virtual void unused_slot_229();
-    virtual void unused_slot_230();
-    virtual void unused_slot_231();
-    virtual void unused_slot_232();
-    virtual void unused_slot_233();
-    virtual void unused_slot_234();
-    virtual void unused_slot_235();
-    virtual void unused_slot_236();
-    virtual void unused_slot_237();
-    virtual void unused_slot_238();
-    virtual void unused_slot_239();
-    virtual void unused_slot_240();
-    virtual void unused_slot_241();
-    virtual void unused_slot_242();
-    virtual void unused_slot_243();
-    virtual void unused_slot_244();
-    virtual void unused_slot_245();
-    virtual void unused_slot_246();
-    virtual void unused_slot_247();
-    virtual void unused_slot_248();
-    virtual void unused_slot_249();
-    virtual void unused_slot_250();
-    virtual void unused_slot_251();
-    virtual void unused_slot_252();
-    virtual void unused_slot_253();
-    virtual WeaponStruct* vf_254(int a);   // slot 254 (+0x3F8)
-    char unknown_04[0x10];   // +0x4
-    unsigned char unknown_14;   // +0x14
-    char unknown_15[0x7B];   // +0x15
-    bool IsAlive;   // +0x90
-    char unknown_91[0xBF];   // +0x91
-    BuildingBVeterancyView Veterancy;   // +0x150
-    char unknown_154[0x450];   // +0x154
-    BuildingBView* unknown_5A4;   // +0x5A4
-    char unknown_5A8[0x118];   // +0x5A8
-    BuildingBOccupantTypeView* Type;   // +0x6C0
-};
-GG_STATIC_ASSERT(offsetof(BuildingBOccupantView, unknown_14) == 0x14);
-GG_STATIC_ASSERT(offsetof(BuildingBOccupantView, IsAlive) == 0x90);
-GG_STATIC_ASSERT(offsetof(BuildingBOccupantView, Veterancy) == 0x150);
-GG_STATIC_ASSERT(offsetof(BuildingBOccupantView, unknown_5A4) == 0x5A4);
-GG_STATIC_ASSERT(offsetof(BuildingBOccupantView, Type) == 0x6C0);
-
 // Partial view of BuildingClass (derives TechnoClass at 0; sizeof 0x720).
 class BuildingBView
 {
@@ -1177,7 +400,7 @@ public:
     virtual void unused_slot_63();
     virtual void unused_slot_64();
     virtual void unused_slot_65();
-    virtual HBCell* vf_66(int a);   // slot 66 (+0x108)
+    virtual CellStruct* vf_66(int a);   // slot 66 (+0x108)
     virtual void unused_slot_67();
     virtual void unused_slot_68();
     virtual void unused_slot_69();
@@ -1222,7 +445,7 @@ public:
     virtual void unused_slot_108();
     virtual void unused_slot_109();
     virtual HBCell* vf_110(HBCell* out);   // slot 110 (+0x1B8)
-    virtual BuildingBCellView* vf_111();   // slot 111 (+0x1BC)
+    virtual CellClass* vf_111();   // slot 111 (+0x1BC)
     virtual void unused_slot_112();
     virtual void unused_slot_113();
     virtual void unused_slot_114();
@@ -1232,7 +455,7 @@ public:
     virtual void unused_slot_118();
     virtual void unused_slot_119();
     virtual void unused_slot_120();
-    virtual int vf_121();   // slot 121 (+0x1E4)
+    virtual void* vf_121();   // slot 121 (+0x1E4)
     virtual void unused_slot_122();
     virtual void unused_slot_123();
     virtual void unused_slot_124();
@@ -1365,7 +588,7 @@ public:
     virtual void unused_slot_251();
     virtual void unused_slot_252();
     virtual void unused_slot_253();
-    virtual WeaponStruct* vf_254(int a);   // slot 254 (+0x3F8)
+    virtual void unused_slot_254();
     virtual bool vf_255();   // slot 255 (+0x3FC)
     virtual bool vf_256();   // slot 256 (+0x400)
     virtual int vf_257();   // slot 257 (+0x404)
@@ -1439,17 +662,13 @@ public:
     void ApplyAnimLevel();
     void Func_70C610(void* first);
     void Func_709A30(void* first, void* second);
-    bool Func_6FBDC0();
-    bool Func_6FBC90();
     void Func_43BCF0();
     bool Func_701120();
     void Func_708E00();
     void Func_70E2B0(int a, int b, int c);
     BuildingBView(const HBNoInit& noInit);
-    void Func_70C270(BuildingBCrcView* crc);
     int Func_703860(bool a, BuildingBTargetView* target);
     bool Func_701140();
-    WeaponStruct* Func_70E140(int a);
     HRESULT __stdcall Func_70BF50(IStream* pStm);
     HRESULT __stdcall Func_70C250(IStream* pStm, BOOL fClearDirty);
     HBCoord* Func_453BF0(HBCoord* out, int a, int b);
@@ -1465,7 +684,7 @@ public:
     char unknown_82[0xE];   // +0x82
     bool IsAlive;   // +0x90
     char unknown_91[0xB];   // +0x91
-    HBCoord Location;   // +0x9C
+    CoordStruct Location;   // +0x9C
     char unknown_A8[0x4];   // +0xA8
     int CurrentMission;   // +0xAC
     char unknown_B0[0x40];   // +0xB0
@@ -1473,7 +692,7 @@ public:
     char unknown_F4[0x114];   // +0xF4
     HBPoint2D RadarPosition;   // +0x208
     char unknown_210[0x8];   // +0x210
-    BuildingBAbstractView* unknown_218;   // +0x218
+    AbstractClass* unknown_218;   // +0x218
     HouseClass* Owner;   // +0x21C
     int unknown_220;   // +0x220
     char unknown_224[0x70];   // +0x224
@@ -1492,16 +711,16 @@ public:
     char unknown_508[0x18];   // +0x508
     BuildingBTypeView* Type;   // +0x520
     void* Factory;   // +0x524
-    BuildingBTimer C4Timer;   // +0x528
+    CDTimerClass C4Timer;   // +0x528
     int BState;   // +0x534
     int QueueBState;   // +0x538
     int OwnerCountryIndex;   // +0x53C
-    BuildingBRttiHolder* C4AppliedBy;   // +0x540
+    InfantryClass* C4AppliedBy;   // +0x540
     int unknown_544;   // +0x544
-    BuildingBRttiHolder* FirestormAnim;   // +0x548
+    AnimClass* FirestormAnim;   // +0x548
     void* PsiWarnAnim;   // +0x54C
-    BuildingBTimer FactoryRetryTimer;   // +0x550
-    BuildingBAnimObjView* Anims[21];   // +0x55C
+    CDTimerClass FactoryRetryTimer;   // +0x550
+    AnimClass* Anims[21];   // +0x55C
     char unknown_5B0[0x18];   // +0x5B0
     void* DamageFireAnims[8];   // +0x5C8
     char unknown_5E8[0x4];   // +0x5E8
@@ -1520,16 +739,16 @@ public:
     bool HasPower;   // +0x660
     char unknown_661[0xB];   // +0x661
     BuildingBVector<void> Overpowerers;   // +0x66C
-    BuildingBVector<BuildingBOccupantView> Occupants;   // +0x684
+    DynamicVectorClass<InfantryClass*> Occupants;   // +0x684
     int FiringOccupantIndex;   // +0x69C
-    BuildingBAudioView Audio7;   // +0x6A0
-    BuildingBAudioView Audio8;   // +0x6B4
+    AudioController Audio7;   // +0x6A0
+    AudioController Audio8;   // +0x6B4
     char unknown_6C8[0x2];   // +0x6C8
     bool BeingProduced;   // +0x6CA
     bool ShouldRebuild;   // +0x6CB
     bool HasEngineer;   // +0x6CC
     char unknown_6CD[0x3];   // +0x6CD
-    BuildingBTimer CashProductionTimer;   // +0x6D0
+    CDTimerClass CashProductionTimer;   // +0x6D0
     bool unknown_6DC;   // +0x6DC
     bool IsReadyToCommence;   // +0x6DD
     bool NeedsRepairs;   // +0x6DE
@@ -1652,15 +871,8 @@ inline void BuildingBView::ApplyAnimLevel()
         level = 0x10;
     for (int i = 0; i < 21; i++) {
         if (Anims[i])
-            Anims[i]->unknown_178 = level;
+            Anims[i]->TranslucencyLevel = level;
     }
-}
-// The checked cast the retail code expands inline: null stays null, any other object must report RTTI 0xB.
-inline BuildingBAbstractView* BuildingBCastAbstract(BuildingBAbstractView* object)
-{
-    if (object == 0)
-        return 0;
-    return object->vf_11() == 0xB ? object : 0;
 }
 inline HBRect operator+(const HBRect& r, const HBPoint2D& p)
 {
@@ -1670,24 +882,6 @@ inline HBRect operator+(const HBRect& r, const HBPoint2D& p)
     result.Width = r.Width;
     result.Height = r.Height;
     return result;
-}
-inline BuildingBCellView* BuildingBMapView::GetCellAtCoord(HBCoord coord)
-{
-    HBCell cell = BuildingBCellOf(coord);
-    return Func_5657A0(&cell);
-}
-// The elapsed branch returns directly; folding it back into `left` swaps the
-// start and elapsed registers at 0x454260 and 0x4555D0.
-inline int BuildingBTimer::GetTimeLeft() const
-{
-    int left = TimeLeft;
-    if (StartTime != -1) {
-        int elapsed = BuildingBFrame - StartTime;
-        if (elapsed < left)
-            return left - elapsed;
-        return 0;
-    }
-    return left;
 }
 // Layout of the vector family, pinned here because the first member use instantiates the template.
 typedef BuildingBVector<void> BuildingBVoidVector;
@@ -1709,8 +903,6 @@ inline bool operator==(const HBPoint2D& a, const HBPoint2D& b)
 }
 
 // GLOBAL: GAMEMD 0xA83DEC (pointer to the item table) / 0xA83DF8 (count) of a global techno array
-extern BuildingBOccupantView** BuildingBUnitItems;
-extern int BuildingBUnitCount;
 // GLOBAL: GAMEMD 0x89C870
 extern HBCoord BuildingBGlobal_0089C870;
 // GLOBAL: GAMEMD 0x89DDC0 (pointer to the surface)
@@ -1724,8 +916,6 @@ extern HBCell BuildingBEmptyCell;
 extern HBCoord BuildingBEmptyCoord;
 // GLOBAL: GAMEMD 0xB73550
 extern int BuildingBGlobal_00B73550;
-// GLOBAL: GAMEMD 0x87F7E8 (the map object; its address is passed in ECX)
-extern BuildingBMapView BuildingBMap;
 // GLOBAL: GAMEMD 0x887324 (pointer to the tactical object)
 extern BuildingBTacticalView* BuildingBTactical;
 

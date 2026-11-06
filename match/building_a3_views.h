@@ -15,6 +15,8 @@
 #include "_rt/gg_static_assert.h"
 #include "house_building_layout.h"
 #include "_layout/house_class.h"
+#include "_layout/stage_class.h"
+#include "_layout/frame_timer.h"
 #include "cell_step_tables.h"
 #include "house_building_views.h"
 #include "house_building_views.h"
@@ -412,21 +414,6 @@ struct BA3TypeSubView
     int unknown_10;   // +0x0010
 };
 GG_STATIC_ASSERT(offsetof(BA3TypeSubView, unknown_10) == 0x10);
-
-// A frame timer: start frame, one word the setter leaves alone, duration.
-// Not merged: cluster timers differ in constructors and inline bodies (see house_building_views.h).
-struct BA3Timer
-{
-    int Start;   // +0x0000
-    int unknown_04;   // +0x0004
-    int Delay;   // +0x0008
-    // FUNCTION: GAMEMD 0x426630 (read-only here) - non-zero while the timer is still running.
-    int FUN_00426630();
-};
-GG_STATIC_ASSERT(offsetof(BA3Timer, Start) == 0x0);
-GG_STATIC_ASSERT(offsetof(BA3Timer, unknown_04) == 0x4);
-GG_STATIC_ASSERT(offsetof(BA3Timer, Delay) == 0x8);
-
 
 // A light / spotlight object (opaque); one method is reached.
 struct BA3LightView
@@ -1630,22 +1617,6 @@ struct BA3ProbeView
     int FUN_0048AB90(double radius);
 };
 
-// A stage counter (StageClass, name YRpp-cross-checked): current stage, "changed" flag, timer, rate and step.
-struct BA3StageView
-{
-    int Stage;   // +0x0000
-    unsigned char Changed;   // +0x0004
-    char _pad_0005[0x3];   // +0x0005
-    BA3Timer Timer;   // +0x0008
-    int Rate;   // +0x0014
-    int Step;   // +0x0018
-};
-GG_STATIC_ASSERT(offsetof(BA3StageView, Stage) == 0x0);
-GG_STATIC_ASSERT(offsetof(BA3StageView, Changed) == 0x4);
-GG_STATIC_ASSERT(offsetof(BA3StageView, Timer) == 0x8);
-GG_STATIC_ASSERT(offsetof(BA3StageView, Rate) == 0x14);
-GG_STATIC_ASSERT(offsetof(BA3StageView, Step) == 0x18);
-
 // A 0x20 byte member of BuildingClass (two of them at +0x3D8 / +0x3F8; partial).
 struct BA3RecoilView
 {
@@ -2065,11 +2036,11 @@ public:
     char _pad_0600[0x14];   // +0x0600
     BA3LightView* LightSource;   // +0x0614
     char _pad_0618[0x8];   // +0x0618
-    BA3StageView unknown_620;   // +0x0620
+    StageClass unknown_620;   // +0x0620
     char _pad_063C[0x2D];   // +0x063C
     unsigned char unknown_669;   // +0x0669
     char _pad_066A[0x66];   // +0x066A
-    BA3Timer unknown_6D0;   // +0x06D0
+    CDTimerClass unknown_6D0;   // +0x06D0
     char _pad_06DC[0x1];   // +0x06DC
     unsigned char unknown_6DD;   // +0x06DD
     char _pad_06DE[0x2];   // +0x06DE

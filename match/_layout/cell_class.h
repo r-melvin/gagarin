@@ -80,6 +80,7 @@ public:
     void FUN_0047F510(const Point2D* point, const RectangleStruct* clip); // 0x47F510
     bool FUN_0047EC90(Point2D* point, RectangleStruct* clip, bool mode); // RET12, AL result
     ObjectClass* FindTechnoNearestTo(Point2D* offset, bool alt, ObjectClass* exclude); // GAMEMD 0x47C3D0
+    ObjectClass* FUN_0047EC40(bool alternate); // 0x47EC40: the first object of the list whose RTTI is 0xF, RET 4
     ObjectClass* FUN_0047C550(bool alternate); // 0x47C550, returns list object with type24, RET4
     BuildingClass* GetBuilding() const; // GAMEMD 0x47C520; BuildingClass 0x458A00 compares it with `this`
     // FUNCTION: GAMEMD 0x480510 (decl; reloc), ECX receiver, two dword args.
@@ -151,6 +152,10 @@ public:
     // FUNCTION: GAMEMD 0x4870B0 (decl; reloc) -- tests the bit for the given index in the word at +0x78; RET 4.
     bool FUN_004870B0(int index);
     bool FUN_004870D0(int index);
+    // FUNCTION: GAMEMD 0x487110 -- sets the bit for the given index in the word at +0x78; RET 4.
+    void FUN_00487110(int index);
+    // FUNCTION: GAMEMD 0x487130 -- clears the bit for the given index in the word at +0x78; RET 4.
+    void FUN_00487130(int index);
     // FUNCTION: GAMEMD 0x4870F0 (decl; reloc) -- reads a word table at +0xAC indexed by the argument; true when positive.
     bool FUN_004870F0(int index);
     // FUNCTION: GAMEMD 0x4870F0 (decl; reloc) -- the same test fed an object's +0x30 link word (TechnoClass::vf_272).
@@ -287,7 +292,7 @@ public:
     int             OccupyHeightsCoveringMe; // +0x100 ctor @0x0047BCE7
     unsigned int    Intensity;               // +0x104 ctor MOV [ESI+0x104],0x10000 @0x0047BCED
     unsigned short  Ambient;                 // +0x108 ctor MOV word [ESI+0x108],BX @0x0047BC69
-    unsigned short  Intensity_Normal;        // +0x10A ctor MOV word [ESI+0x10A],CX(=0x3E8) @0x0047BC9F
+    short           Intensity_Normal;        // +0x10A ctor MOV word [ESI+0x10A],CX(=0x3E8) @0x0047BC9F; signed: 36 retail reads are MOVSX, none MOVZX
     unsigned short  Intensity_Terrain;       // +0x10C ctor @0x0047BCA6 (=0x3E8)
     unsigned short  Color1_Blue;             // +0x10E ctor @0x0047BCAD (=0x3E8)
     unsigned short  Color2_Red;              // +0x110 ctor @0x0047BCB4 (=0x3E8)
