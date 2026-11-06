@@ -45713,9 +45713,9 @@
   "len": "0x601",
   "name": "DSurface::unknown_50",
   "status": "partial",
-  "pct": 1.6,
-  "best_pct": 1.6,
-  "best_at": "cf203011"
+  "pct": 2.0,
+  "best_pct": 2.0,
+  "best_at": "1ca2f206"
  },
  {
   "tu": "match/tu072_d_surface.cpp",
@@ -73736,9 +73736,9 @@
   "len": "0x74E",
   "name": "TeleportLocomotionClass::FUN_00718B70",
   "status": "partial",
-  "pct": 8.3,
-  "best_pct": 8.3,
-  "best_at": "cf203011"
+  "pct": 39.5,
+  "best_pct": 39.5,
+  "best_at": "1ca2f206"
  },
  {
   "tu": "match/tu240_teleport_locomotion_class.cpp",
@@ -103368,9 +103368,10 @@
   "len": "0x561",
   "name": "?FUN_0064A0C0@@YIHPAVConnManClass@@PADHIPAUObj_00646D00@@PAUGameTimerClass@@@Z",
   "status": "partial",
-  "pct": 3.9,
+  "pct": 3.6,
   "best_pct": 3.9,
-  "best_at": "cf203011"
+  "best_at": "cf203011",
+  "lowered_reason": "the old body passed a wrong argument: it gave the two MEGAFRAMEINFO log calls an extra frame->unknown_0B, while retail (0x64A1CB, 0x64A225; ADD ESP,0xC) and the format strings take only name and value; the corrected source is 56.9 aligned (was 49.9) but 3.6 positional (was 3.9)"
  },
  {
   "tu": "match/Queue.cpp",
@@ -103465,9 +103466,9 @@
   "len": "0x768",
   "name": "?FUN_0064B660@@YIHPADHHHHPAH@Z",
   "status": "partial",
-  "pct": 3.7,
-  "best_pct": 3.7,
-  "best_at": "cf203011"
+  "pct": 8.8,
+  "best_pct": 8.8,
+  "best_at": "1ca2f206"
  },
  {
   "tu": "match/Queue.cpp",
@@ -103476,9 +103477,9 @@
   "len": "0x5af",
   "name": "?FUN_0064BDD0@@YIHPADI@Z",
   "status": "partial",
-  "pct": 2.4,
-  "best_pct": 2.4,
-  "best_at": "cf203011"
+  "pct": 2.7,
+  "best_pct": 2.7,
+  "best_at": "1ca2f206"
  },
  {
   "tu": "match/Queue.cpp",
@@ -105645,9 +105646,9 @@
   "len": "0x518",
   "name": "BulletClass::vf_124",
   "status": "partial",
-  "pct": 4.5,
-  "best_pct": 4.5,
-  "best_at": "cf203011"
+  "pct": 38.8,
+  "best_pct": 38.8,
+  "best_at": "1ca2f206"
  },
  {
   "tu": "match/bullet_class_new_methods.cpp",

@@ -1398,7 +1398,7 @@ int FUN_0064A0C0(ConnManClass* manager, char* data, int id, unsigned length,
                         if (Manager_00A8E9C0.FUN_00540FC0(frame->unknown_0B))
                             FUN_004068E0(STR_00837910,
                                 FUN_007350C0(Manager_00A8E9C0.FUN_00540FC0(frame->unknown_0B)),
-                                frame->unknown_0B, record.unknown_00);
+                                record.unknown_00);
                         if (record.unknown_04 < frame->unknown_08) {
                             record.unknown_04 = frame->unknown_08;
                             FUN_004068E0(STR_008378F8, record.unknown_04);
@@ -1406,7 +1406,7 @@ int FUN_0064A0C0(ConnManClass* manager, char* data, int id, unsigned length,
                     } else if (Manager_00A8E9C0.FUN_00540FC0(frame->unknown_0B)) {
                         FUN_004068E0(STR_008378BC,
                             FUN_007350C0(Manager_00A8E9C0.FUN_00540FC0(frame->unknown_0B)),
-                            frame->unknown_0B, record.unknown_00);
+                            record.unknown_00);
                     }
                     if (!(frame->unknown_0C & 1))
                         record.unknown_0C = stamp->Clock.GetTime() - stamp->StartTime;
@@ -1435,66 +1435,67 @@ int FUN_0064A0C0(ConnManClass* manager, char* data, int id, unsigned length,
             }
         }
         if (count && maximum) DAT_00A8E2C4 = maximum;
-        return ready;
     }
-    Obj_00646D00& record = records[index];
-    if (record.unknown_00 < int(header->Frame - header->Data.Payload_19.unknown_0D)) {
-        if (record.unknown_00 == -1) {
-            ready = 1;
-            FUN_004068E0(STR_00837888);
-        }
-        record.unknown_00 = header->Frame - header->Data.Payload_19.unknown_0D;
-        FUN_00652110(records, index);
-    }
-    if (record.unknown_04 < header->Data.Payload_19.unknown_0B)
-        record.unknown_04 = header->Data.Payload_19.unknown_0B;
-    if (header->Type == 0x19) {
-        if (Session_00A8B238.GameMode == 4 || Session_00A8B238.GameMode == 3)
-            FUN_004068E0(STR_008377F8, Manager_00A8E9C0.FUN_00540FC0(id),
-                header->Frame - header->Data.Payload_19.unknown_0D);
-        if (header->Data.Payload_19.unknown_07 != DAT_00A8E7A8) return 2;
-        record.unknown_0C = stamp->Clock.GetTime() - stamp->StartTime;
-        return ready;
-    }
-    int count;
-    if (DAT_00A8B24C == 0) {
-        count = 0;
-        int offset = 0;
-        while (length >= sizeof(EventClass)) {
-            EventClass* event = reinterpret_cast<EventClass*>(data + offset);
-            if (event->Type != 0x19) {
-                event->IsExecuted &= 0xFE;
-                if (event->Type == 0x1F) {
-                    event->Data.Payload_1F.unknown_07 = new char[event->Data.Payload_1F.unknown_0B];
-                    // Retail's 0x64A46F source is the packet's +111, independent
-                    // of the current event offset. Preserve that wire behavior.
-                    memcpy(event->Data.Payload_1F.unknown_07, data + sizeof(EventClass),
-                        event->Data.Payload_1F.unknown_0B);
-                    offset += event->Data.Payload_1F.unknown_0B;
-                    length -= event->Data.Payload_1F.unknown_0B;
-                }
-                if (DAT_008B41F8.Count >= 0x4000) {
-                    if (event->Type == 0x1F) FUN_007C8B3D(event->Data.Payload_1F.unknown_07);
-                    count = -1;
-                    break;
-                }
-                DAT_008B41F8.List[DAT_008B41F8.Head] = *event;
-                DAT_008B41F8.Time[DAT_008B41F8.Head] = timeGetTime();
-                DAT_008B41F8.Head = (DAT_008B41F8.Head + 1) & 0x3FFF;
-                ++DAT_008B41F8.Count;
-                ++count;
+    else {
+        Obj_00646D00& record = records[index];
+        if (record.unknown_00 < int(header->Frame - header->Data.Payload_19.unknown_0D)) {
+            if (record.unknown_00 == -1) {
+                ready = 1;
+                FUN_004068E0(STR_00837888);
             }
-            offset += sizeof(EventClass);
-            length -= sizeof(EventClass);
+            record.unknown_00 = header->Frame - header->Data.Payload_19.unknown_0D;
+            FUN_00652110(records, index);
         }
-    } else count = FUN_0064BDD0(data, length);
-    if (count == -1) {
-        FUN_004068E0(STR_00837864);
-        return 3;
+        if (record.unknown_04 < header->Data.Payload_19.unknown_0B)
+            record.unknown_04 = header->Data.Payload_19.unknown_0B;
+        if (header->Type == 0x19) {
+            if (Session_00A8B238.GameMode == 4 || Session_00A8B238.GameMode == 3)
+                FUN_004068E0(STR_008377F8, Manager_00A8E9C0.FUN_00540FC0(id),
+                    header->Frame - header->Data.Payload_19.unknown_0D);
+            if (header->Data.Payload_19.unknown_07 != DAT_00A8E7A8) return 2;
+            record.unknown_0C = stamp->Clock.GetTime() - stamp->StartTime;
+            return ready;
+        }
+        int count;
+        if (DAT_00A8B24C == 0) {
+            count = 0;
+            int offset = 0;
+            while (length >= sizeof(EventClass)) {
+                EventClass* event = reinterpret_cast<EventClass*>(data + offset);
+                if (event->Type != 0x19) {
+                    event->IsExecuted &= 0xFE;
+                    if (event->Type == 0x1F) {
+                        event->Data.Payload_1F.unknown_07 = new char[event->Data.Payload_1F.unknown_0B];
+                        // Retail's 0x64A46F source is the packet's +111, independent
+                        // of the current event offset. Preserve that wire behavior.
+                        memcpy(event->Data.Payload_1F.unknown_07, data + sizeof(EventClass),
+                            event->Data.Payload_1F.unknown_0B);
+                        offset += event->Data.Payload_1F.unknown_0B;
+                        length -= event->Data.Payload_1F.unknown_0B;
+                    }
+                    if (DAT_008B41F8.Count >= 0x4000) {
+                        if (event->Type == 0x1F) FUN_007C8B3D(event->Data.Payload_1F.unknown_07);
+                        count = -1;
+                        break;
+                    }
+                    DAT_008B41F8.List[DAT_008B41F8.Head] = *event;
+                    DAT_008B41F8.Time[DAT_008B41F8.Head] = timeGetTime();
+                    DAT_008B41F8.Head = (DAT_008B41F8.Head + 1) & 0x3FFF;
+                    ++DAT_008B41F8.Count;
+                    ++count;
+                }
+                offset += sizeof(EventClass);
+                length -= sizeof(EventClass);
+            }
+        } else count = FUN_0064BDD0(data, length);
+        if (count == -1) {
+            FUN_004068E0(STR_00837864);
+            return 3;
+        }
+        if (header->Type == 0x1C && count > 0) --count;
+        FUN_004068E0(STR_00837828, CurrentFrame, count);
+        record.unknown_08 += unsigned(count) & 0xFFFF;
     }
-    if (header->Type == 0x1C && count > 0) --count;
-    FUN_004068E0(STR_00837828, CurrentFrame, count);
-    record.unknown_08 += unsigned(count) & 0xFFFF;
     return ready;
 }
 
@@ -1862,6 +1863,9 @@ bool FUN_0064B4D0(unsigned char* count, int* length, char* prefix, const char* t
 }
 
 // FUNCTION: GAMEMD 0x64B660
+// PARTIAL 8.8% (aligned 41.1%). The queue entry is addressed in place (retail re-forms the
+// 13-byte slot address and never holds an entry pointer). Remaining: register choice and one
+// spill slot (frame 0x98 vs 0x94).
 int FUN_0064B660(char* data, int capacity, int ahead, int length, int limit, int* result)
 {
     EventClass previous;
@@ -1875,29 +1879,28 @@ int FUN_0064B660(char* data, int capacity, int ahead, int length, int limit, int
     char* targets = 0;
     if (DAT_00A8ED74) FUN_004068E0(STR_00837CB0, CurrentFrame);
     while (DAT_00A802C8.Count && packed < limit) {
-        EventClass& event = DAT_00A802C8.List[DAT_00A802C8.unknown_04];
-        unsigned payload = DAT_008208EC[event.Type];
+        unsigned payload = DAT_008208EC[DAT_00A802C8.List[DAT_00A802C8.unknown_04].Type];
         int needed = payload + 1;
-        if (event.Type == 0x1F) needed += event.Data.Payload_1F.unknown_0B;
+        if (DAT_00A802C8.List[DAT_00A802C8.unknown_04].Type == 0x1F) needed += DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.Payload_1F.unknown_0B;
         if (previous.Type == 4) {
-            if (event.Type == 4) {
-                if (!forceNew && event.Data.MegaMission.Mission == previous.Data.MegaMission.Mission &&
-                    event.Data.MegaMission.Target.RTTI == previous.Data.MegaMission.Target.RTTI &&
-                    event.Data.MegaMission.Target.ID == previous.Data.MegaMission.Target.ID &&
-                    event.Data.MegaMission.Destination.RTTI == previous.Data.MegaMission.Destination.RTTI &&
-                    event.Data.MegaMission.Destination.ID == previous.Data.MegaMission.Destination.ID) {
+            if (DAT_00A802C8.List[DAT_00A802C8.unknown_04].Type == 4) {
+                if (!forceNew && DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.MegaMission.Mission == previous.Data.MegaMission.Mission &&
+                    DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.MegaMission.Target.RTTI == previous.Data.MegaMission.Target.RTTI &&
+                    DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.MegaMission.Target.ID == previous.Data.MegaMission.Target.ID &&
+                    DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.MegaMission.Destination.RTTI == previous.Data.MegaMission.Destination.RTTI &&
+                    DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.MegaMission.Destination.ID == previous.Data.MegaMission.Destination.ID) {
                     if (DAT_00A8ED74) {
-                        unsigned destination = event.Data.MegaMission.Destination.RTTI ?
-                            (unsigned(event.Data.MegaMission.Destination.RTTI) << 24) |
-                            (event.Data.MegaMission.Destination.ID & 0xFFFFFF) : ~0U;
-                        unsigned target = event.Data.MegaMission.Target.RTTI ?
-                            (unsigned(event.Data.MegaMission.Target.RTTI) << 24) |
-                            (event.Data.MegaMission.Target.ID & 0xFFFFFF) : ~0U;
-                        unsigned whom = event.Data.MegaMission.Whom.RTTI ?
-                            (unsigned(event.Data.MegaMission.Whom.RTTI) << 24) |
-                            (event.Data.MegaMission.Whom.ID & 0xFFFFFF) : ~0U;
+                        unsigned destination = DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.MegaMission.Destination.RTTI ?
+                            (unsigned(DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.MegaMission.Destination.RTTI) << 24) |
+                            (DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.MegaMission.Destination.ID & 0xFFFFFF) : ~0U;
+                        unsigned target = DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.MegaMission.Target.RTTI ?
+                            (unsigned(DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.MegaMission.Target.RTTI) << 24) |
+                            (DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.MegaMission.Target.ID & 0xFFFFFF) : ~0U;
+                        unsigned whom = DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.MegaMission.Whom.RTTI ?
+                            (unsigned(DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.MegaMission.Whom.RTTI) << 24) |
+                            (DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.MegaMission.Whom.ID & 0xFFFFFF) : ~0U;
                         FUN_004068E0(STR_00837C7C, whom,
-                            FUN_005B3950(event.Data.MegaMission.Mission), target, destination);
+                            FUN_005B3950(DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.MegaMission.Mission), target, destination);
                     }
                     payload = sizeof(TargetClass);
                     ++runLength;
@@ -1921,7 +1924,7 @@ int FUN_0064B660(char* data, int capacity, int ahead, int length, int limit, int
                 append = false;
                 runLength = 0;
             }
-        } else if (event.Type == 4) {
+        } else if (DAT_00A802C8.List[DAT_00A802C8.unknown_04].Type == 4) {
             if (DAT_00A8ED74) FUN_004068E0(STR_00837C64);
             ++needed;
             runLength = 1;
@@ -1930,7 +1933,7 @@ int FUN_0064B660(char* data, int capacity, int ahead, int length, int limit, int
         }
         forceNew = false;
         if (needed + length > capacity) {
-            if (event.Type == 4 && append) {
+            if (DAT_00A802C8.List[DAT_00A802C8.unknown_04].Type == 4 && append) {
                 // Primary0x64BD5F decrements before dictionary lookup; the
                 // decompiler's reordered expression would miscount a cache hit.
                 --runLength;
@@ -1941,20 +1944,20 @@ int FUN_0064B660(char* data, int capacity, int ahead, int length, int limit, int
             break;
         }
         if (DAT_00A8B24C == 2)
-            event.Frame = ((DAT_00A8B554 + (unsigned)CurrentFrame - 1 + ahead) /
+            DAT_00A802C8.List[DAT_00A802C8.unknown_04].Frame = ((DAT_00A8B554 + (unsigned)CurrentFrame - 1 + ahead) /
                 DAT_00A8B554) * DAT_00A8B554;
-        else event.Frame = CurrentFrame + ahead;
-        event.HouseIndex = DAT_00A83D4C->ArrayIndex;
-        event.IsExecuted &= 0xFE;
+        else DAT_00A802C8.List[DAT_00A802C8.unknown_04].Frame = CurrentFrame + ahead;
+        DAT_00A802C8.List[DAT_00A802C8.unknown_04].HouseIndex = DAT_00A83D4C->ArrayIndex;
+        DAT_00A802C8.List[DAT_00A802C8.unknown_04].IsExecuted &= 0xFE;
         if (DAT_008B41F8.Count >= 0x4000) break;
-        DAT_008B41F8.List[DAT_008B41F8.Head] = event;
+        DAT_008B41F8.List[DAT_008B41F8.Head] = DAT_00A802C8.List[DAT_00A802C8.unknown_04];
         DAT_008B41F8.Time[DAT_008B41F8.Head] = DAT_00A802C8.Time[DAT_00A802C8.unknown_04];
         DAT_008B41F8.Head = (DAT_008B41F8.Head + 1) & 0x3FFF;
         ++DAT_008B41F8.Count;
-        if (event.Type == 4) {
+        if (DAT_00A802C8.List[DAT_00A802C8.unknown_04].Type == 4) {
             *runCount = runLength;
             if (append) {
-                memcpy(data + length, event.Data.DataBuffer, payload);
+                memcpy(data + length, DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.DataBuffer, payload);
                 length += payload;
                 if (DAT_00A802C8.Count == 1 || packed == limit - 1) {
                     FUN_004068E0(STR_00837B44, runLength);
@@ -1968,28 +1971,28 @@ int FUN_0064B660(char* data, int capacity, int ahead, int length, int limit, int
             } else {
                 data[length] = 4;
                 prefix = data + length + 2;
-                memcpy(prefix, event.Data.DataBuffer, payload);
+                memcpy(prefix, DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.DataBuffer, payload);
                 targets = prefix + payload;
                 length += 2 + payload;
             }
-        } else if (event.Type == 0x1B) {
+        } else if (DAT_00A802C8.List[DAT_00A802C8.unknown_04].Type == 0x1B) {
             data[length] = 0x1B;
             // Wire payload starts at EventClass+0xD for this type0x64BB81.
-            memcpy(data + length + 1, event.Data.DataBuffer + 6, payload);
+            memcpy(data + length + 1, DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.DataBuffer + 6, payload);
             length += 1 + payload;
-        } else if (event.Type == 0x1F) {
+        } else if (DAT_00A802C8.List[DAT_00A802C8.unknown_04].Type == 0x1F) {
             data[length] = 0x1F;
-            memcpy(data + length + 1, &event.Data.Payload_1F.unknown_0B, payload);
+            memcpy(data + length + 1, &DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.Payload_1F.unknown_0B, payload);
             length += 1 + payload;
-            memcpy(data + length, event.Data.Payload_1F.unknown_07, event.Data.Payload_1F.unknown_0B);
-            length += event.Data.Payload_1F.unknown_0B;
+            memcpy(data + length, DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.Payload_1F.unknown_07, DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.Payload_1F.unknown_0B);
+            length += DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.Payload_1F.unknown_0B;
         } else {
-            data[length] = event.Type;
-            memcpy(data + length + 1, event.Data.DataBuffer, payload);
+            data[length] = DAT_00A802C8.List[DAT_00A802C8.unknown_04].Type;
+            memcpy(data + length + 1, DAT_00A802C8.List[DAT_00A802C8.unknown_04].Data.DataBuffer, payload);
             length += 1 + payload;
         }
         ++packed;
-        previous = event;
+        previous = DAT_00A802C8.List[DAT_00A802C8.unknown_04];
         if (!DAT_00A802C8.Count) break;
         DAT_00A802C8.unknown_04 = (DAT_00A802C8.unknown_04 + 1) & 127;
         --DAT_00A802C8.Count;
@@ -1999,6 +2002,8 @@ int FUN_0064B660(char* data, int capacity, int ahead, int length, int limit, int
 }
 
 // FUNCTION: GAMEMD 0x64BDD0
+// PARTIAL 2.7% (aligned 28.3%). The run count lives outside the loop as in retail. Remaining:
+// retail keeps data+offset in a register at the loop bottom and reads the next type from it.
 int FUN_0064BDD0(char* data, unsigned length)
 {
     EventClass event;
@@ -2007,6 +2012,7 @@ int FUN_0064BDD0(char* data, unsigned length)
     int offset = 0;
     int added = 0;
     unsigned expected = 13;
+    unsigned char count = 0;
     while (expected + 1 <= length) {
         event.Type = data[offset];
         if (event.Type == 0x19) {
@@ -2015,7 +2021,6 @@ int FUN_0064BDD0(char* data, unsigned length)
             expected = 13;
             continue;
         }
-        unsigned char count = 0;
         if (event.Type == 0x1C) {
             EventClass* header = reinterpret_cast<EventClass*>(data + offset);
             event.HouseIndex = header->HouseIndex;

@@ -155,14 +155,6 @@ static inline CellStruct BulletCell(const CoordStruct& coord)
     return result;
 }
 
-// Native FCOMP; FNSTSW; TEST AH,40 checks C3 without C2: unordered also
-// passes the zero test. Preserve this rather than silently treating NaN as
-// unequal, even though ordinary finite velocities are the expected inputs.
-static inline bool BulletUnorderedOrZero(double value)
-{
-    return !(value < 0.0) && !(value > 0.0);
-}
-
 // SYNTHETIC: readable 3x3 transform used by native BulletClass::vf_23.
 static Vector3D BulletTransformDirection(const Matrix3D& matrix,
                                          const Vector3D& vector)
@@ -1122,70 +1114,89 @@ void BulletClass::vf_10(void* pointer, bool removed)
 }
 
 // FUNCTION: GAMEMD 0x468670
+// PARTIAL 38.8% (aligned 76.3%). Positive test on the base call puts the failure return after the
+// body; velocity-zero tests are plain `== 0.0` (FCOMP/TEST AH,40). Remaining: frame 0x4C vs 0x44
+// (two extra temporaries in the scatter arm) and register naming in it.
 bool BulletClass::vf_124(const CoordStruct& source,
                          const BulletVelocity& velocity)
 {
-    if (!ObjectClass::vf_54(source, 0)) // Native direct5F4EC0.
-        return false;
-    Velocity = velocity;
-    SourceCoords = source;
-    LastMapCoords = BulletCell(SourceCoords);
-    Map_0087F7E8.Remove(this);
-    CoordStruct destination = Target->vf_22();
-    TargetCoords = destination;
+    if (ObjectClass::vf_54(source, 0)) { // Native direct5F4EC0.
+        Velocity = velocity;
+        SourceCoords = source;
+        LastMapCoords = BulletCell(SourceCoords);
+        Map_0087F7E8.Remove(this);
+        CoordStruct destination = Target->vf_22();
+        TargetCoords = destination;
 
-    if (Type->FlakScatter && Type->Inviso) {
-        float dx = (float)(source.X - destination.X);
-        float dy = (float)(destination.Y - source.Y);
-        int dz = source.Z - destination.Z;
-        float distance = (float)FUN_004CAC40((double)dx*dx
-            + (double)dy*dy + (double)dz*dz);
-        // ScenarioClass::unknown_0218 has asserted offset 0x218 and size 0x3F4
-        // in scenario_class_methods.h; use that evidence for the call ABI.
-        int draw = reinterpret_cast<Randomizer*>(reinterpret_cast<char*>(DAT_00A8B230) + 0x218)->RandomRanged(0,
-            RulesInstance->BallisticScatter * 2);
-        int truncatedDistance = (int)distance;
-        int product = (int)((unsigned int)draw * (unsigned int)truncatedDistance);
-        // WeaponTypeClass::Range is pinned at +0xB4 (and 4 bytes) in
-        // weapon_type_class.h. That header's legacy BulletTypeClass view
-        // conflicts with the canonical BulletTypeClass, so retain the proven
-        // ABI access here without importing the competing class definition.
-        int range = *reinterpret_cast<int*>(reinterpret_cast<char*>(WeaponType) + 0xB4);
-        int radius = product / range;
-        int direction = reinterpret_cast<Randomizer*>(reinterpret_cast<char*>(DAT_00A8B230) + 0x218)->RandomRanged(0, 0x7FFFFFFE);
-        short raw = (short)(int)((direction * DAT_007E3570 * DAT_007E3CC0
-                                 - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
-        double angle = (raw - 0x3FFF) * DAT_007E2810;
-        int oldZ = destination.Z;
-        int newY = (int)(destination.Y - FUN_004CACB0(angle) * radius);
-        int newX = (int)(FUN_004CAD00(angle) * radius + destination.X);
-        destination.X = newX;
-        destination.Y = newY;
-        destination.Z = oldZ;
-    }
+        if (Type->FlakScatter && Type->Inviso) {
+            float dx = (float)(source.X - destination.X);
+            float dy = (float)(destination.Y - source.Y);
+            int dz = source.Z - destination.Z;
+            float distance = (float)FUN_004CAC40((double)dx*dx
+                + (double)dy*dy + (double)dz*dz);
+            // ScenarioClass::unknown_0218 has asserted offset 0x218 and size 0x3F4
+            // in scenario_class_methods.h; use that evidence for the call ABI.
+            int draw = reinterpret_cast<Randomizer*>(reinterpret_cast<char*>(DAT_00A8B230) + 0x218)->RandomRanged(0,
+                RulesInstance->BallisticScatter * 2);
+            int truncatedDistance = (int)distance;
+            int product = (int)((unsigned int)draw * (unsigned int)truncatedDistance);
+            // WeaponTypeClass::Range is pinned at +0xB4 (and 4 bytes) in
+            // weapon_type_class.h. That header's legacy BulletTypeClass view
+            // conflicts with the canonical BulletTypeClass, so retain the proven
+            // ABI access here without importing the competing class definition.
+            int range = *reinterpret_cast<int*>(reinterpret_cast<char*>(WeaponType) + 0xB4);
+            int radius = product / range;
+            int direction = reinterpret_cast<Randomizer*>(reinterpret_cast<char*>(DAT_00A8B230) + 0x218)->RandomRanged(0, 0x7FFFFFFE);
+            short raw = (short)(int)((direction * DAT_007E3570 * DAT_007E3CC0
+                                     - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
+            double angle = (raw - 0x3FFF) * DAT_007E2810;
+            int oldZ = destination.Z;
+            int newY = (int)(destination.Y - FUN_004CACB0(angle) * radius);
+            int newX = (int)(FUN_004CAD00(angle) * radius + destination.X);
+            destination.X = newX;
+            destination.Y = newY;
+            destination.Z = oldZ;
+        }
 
-    if (Type->Inviso) {
-        HouseClass* house = Owner ? Owner->Owner : 0;
-        CoordStruct intermediate = Map_0087F7E8.FUN_005880A0(
-            source, destination, house);
-        if (intermediate.X != DAT_0089DE30.X
-            || intermediate.Y != DAT_0089DE30.Y
-            || intermediate.Z != DAT_0089DE30.Z) {
-            intermediate.Z = Map_0087F7E8.GetZPos(&intermediate);
-            vf_109(intermediate);
-        } else {
-            ObjectClass* obstacle = FUN_004CC100(&source, &destination, Type, house);
-            if (obstacle) {
-                CoordStruct obstacleCoords = obstacle->vf_18();
-                vf_109(obstacleCoords);
+        if (Type->Inviso) {
+            HouseClass* house = Owner ? Owner->Owner : 0;
+            CoordStruct intermediate = Map_0087F7E8.FUN_005880A0(
+                source, destination, house);
+            if (intermediate.X != DAT_0089DE30.X
+                || intermediate.Y != DAT_0089DE30.Y
+                || intermediate.Z != DAT_0089DE30.Z) {
+                intermediate.Z = Map_0087F7E8.GetZPos(&intermediate);
+                vf_109(intermediate);
             } else {
-                vf_109(destination);
+                ObjectClass* obstacle = FUN_004CC100(&source, &destination, Type, house);
+                if (obstacle) {
+                    CoordStruct obstacleCoords = obstacle->vf_18();
+                    vf_109(obstacleCoords);
+                } else {
+                    vf_109(destination);
+                }
+                vf_109(destination); // Native468986: intentional second invocation.
+                Speed = 0;
+                if (Velocity.X == 0.0
+                    && Velocity.Y == 0.0
+                    && Velocity.Z == 0.0)
+                    Velocity.X = 100.0;
+                double scale = 1.0 / FUN_004CAC40(Velocity.X*Velocity.X
+                    + Velocity.Y*Velocity.Y + Velocity.Z*Velocity.Z);
+                Velocity.X *= scale;
+                Velocity.Y *= scale;
+                Velocity.Z *= scale;
             }
-            vf_109(destination); // Native468986: intentional second invocation.
-            Speed = 0;
-            if (BulletUnorderedOrZero(Velocity.X)
-                && BulletUnorderedOrZero(Velocity.Y)
-                && BulletUnorderedOrZero(Velocity.Z))
+        }
+        int value = Type->Arm;
+        if (Target && Target->vf_11() == 2)
+            value = 0;
+        CoordStruct where = Location;
+        Data.FUN_004E1130(where, destination, value, 0x7FFFFFFF);
+        if (Type->ROT > 0) {
+            if (Velocity.X == 0.0
+                && Velocity.Y == 0.0
+                && Velocity.Z == 0.0)
                 Velocity.X = 100.0;
             double scale = 1.0 / FUN_004CAC40(Velocity.X*Velocity.X
                 + Velocity.Y*Velocity.Y + Velocity.Z*Velocity.Z);
@@ -1193,26 +1204,11 @@ bool BulletClass::vf_124(const CoordStruct& source,
             Velocity.Y *= scale;
             Velocity.Z *= scale;
         }
+        if (IsAlive)
+            Map_0087F7E8.Submit(this);
+        return true;
     }
-    int value = Type->Arm;
-    if (Target && Target->vf_11() == 2)
-        value = 0;
-    CoordStruct where = Location;
-    Data.FUN_004E1130(where, destination, value, 0x7FFFFFFF);
-    if (Type->ROT > 0) {
-        if (BulletUnorderedOrZero(Velocity.X)
-            && BulletUnorderedOrZero(Velocity.Y)
-            && BulletUnorderedOrZero(Velocity.Z))
-            Velocity.X = 100.0;
-        double scale = 1.0 / FUN_004CAC40(Velocity.X*Velocity.X
-            + Velocity.Y*Velocity.Y + Velocity.Z*Velocity.Z);
-        Velocity.X *= scale;
-        Velocity.Y *= scale;
-        Velocity.Z *= scale;
-    }
-    if (IsAlive)
-        Map_0087F7E8.Submit(this);
-    return true;
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x468B90

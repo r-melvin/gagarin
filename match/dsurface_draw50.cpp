@@ -49,152 +49,154 @@ GG_STATIC_ASSERT(sizeof(MaskRing) == 0x2C);
     } while (0)
 
 // FUNCTION: GAMEMD 0x4C0E30
+// PARTIAL 2.0% (aligned 36.6%). Failure paths share one trailing return as in retail. Remaining:
+// retail keeps the clipped rect above the end points in the frame and swaps them through
+// registers; 20 instructions short (retail duplicates the unlock/return per case).
 // Arguments (base declaration types kept): from/to are Point2D* line ends relative to the surface origin,
 // color is the 16-bit pixel value, the last is a byte flag: write where the mask word is zero (true) or non-zero.
 bool DSurface::unknown_50(Point2D* from, Point2D* to, int color, bool flag)
 {
 
-    if (GetBytesPerPixel() != 2)
-        return false;
+    if (GetBytesPerPixel() == 2) {
 
-    Point2D ends[2];
-    Point2D& a = ends[0];
-    Point2D& b = ends[1];
-    RectangleStruct bounds = GetRect();
-    a.X = from->X + bounds.X;
-    a.Y = from->Y + bounds.Y;
-    b.X = to->X + bounds.X;
-    b.Y = to->Y + bounds.Y;
-    if (!ClipLine(&a, &b, &bounds))
-        return false;
-    if (a.X > b.X) {
-        Point2D t = a;
-        a = b;
-        b = t;
-    }
+        RectangleStruct bounds = GetRect();
+        Point2D ends[2];
+        Point2D& a = ends[0];
+        Point2D& b = ends[1];
+        a.X = from->X + bounds.X;
+        a.Y = from->Y + bounds.Y;
+        b.X = to->X + bounds.X;
+        b.Y = to->Y + bounds.Y;
+        if (ClipLine(&a, &b, &bounds)) {
+        if (a.X > b.X) {
+            Point2D t = a;
+            a = b;
+            b = t;
+        }
 
-    // The entry loads ECX from 0x87E8A4 and directly calls 0x4114B0.
-    unsigned short* mask = (unsigned short*)((ABuffer*)gg_blit_alpha_wrap_global)->GetBuffer(a.X, a.Y - ((MaskRing*)gg_blit_alpha_wrap_global)->originY);
-    int rowStride = ((MaskRing*)gg_blit_alpha_wrap_global)->rowStride;
-    if (b.Y < a.Y)
-        rowStride = -rowStride;
+        // The entry loads ECX from 0x87E8A4 and directly calls 0x4114B0.
+        unsigned short* mask = (unsigned short*)((ABuffer*)gg_blit_alpha_wrap_global)->GetBuffer(a.X, a.Y - ((MaskRing*)gg_blit_alpha_wrap_global)->originY);
+        int rowStride = ((MaskRing*)gg_blit_alpha_wrap_global)->rowStride;
+        if (b.Y < a.Y)
+            rowStride = -rowStride;
 
-    Point2D origin = a;
-    unsigned short* pixel = (unsigned short*)Lock(origin);
-    if (!pixel)
-        return false;
+        Point2D origin = a;
+        unsigned short* pixel = (unsigned short*)Lock(origin);
+        if (pixel) {
 
-    int dx = b.X - a.X;
-    int dy = b.Y - a.Y;
-    if (flag) {
-        if (a.Y == b.Y) {
-            for (int i = 0; i <= b.X - a.X; i++) {
-                if ((*mask == 0))
-                    *pixel = (unsigned short)color;
-                STEP_MASK(mask, 1, rowStride);
-                pixel++;
-            }
-        } else if (a.X == b.X) {
-            int pitch = GetPitch();
-            if (a.Y > b.Y)
-                pitch = -pitch;
-            int count = abs(dy) + 1;
-            for (; count > 0; count--) {
-                if ((*mask == 0))
-                    *pixel = (unsigned short)color;
-                STEP_MASK(mask, rowStride, rowStride);
-                pixel = (unsigned short*)((char*)pixel + pitch);
-            }
-        } else {
-            int pitch = GetPitch();
-            if (dy < 0)
-                pitch = -pitch;
-            int ady = abs(dy);
-            if (dx > ady) {
-                int err = 2 * ady - dx;
-                for (int i = 0; i < dx; i++) {
+        int dx = b.X - a.X;
+        int dy = b.Y - a.Y;
+        if (flag) {
+            if (a.Y == b.Y) {
+                for (int i = 0; i <= b.X - a.X; i++) {
                     if ((*mask == 0))
-                        pixel[i] = (unsigned short)color;
-                    if (err > 0) {
-                        pixel = (unsigned short*)((char*)pixel + pitch);
-                        STEP_MASK(mask, rowStride, 1);
-                        err -= 2 * dx;
-                    }
+                        *pixel = (unsigned short)color;
                     STEP_MASK(mask, 1, rowStride);
-                    err += 2 * ady;
+                    pixel++;
                 }
-            } else {
-                int err = 2 * dx - ady;
-                int xoff = 0;
-                for (int i = 0; i < ady; i++) {
+            } else if (a.X == b.X) {
+                int pitch = GetPitch();
+                if (a.Y > b.Y)
+                    pitch = -pitch;
+                int count = abs(dy) + 1;
+                for (; count > 0; count--) {
                     if ((*mask == 0))
-                        pixel[xoff] = (unsigned short)color;
-                    if (err > 0) {
-                        err -= 2 * ady;
-                        STEP_MASK(mask, 1, 1);
-                        xoff++;
-                    }
+                        *pixel = (unsigned short)color;
                     STEP_MASK(mask, rowStride, rowStride);
                     pixel = (unsigned short*)((char*)pixel + pitch);
-                    err += 2 * dx;
+                }
+            } else {
+                int pitch = GetPitch();
+                if (dy < 0)
+                    pitch = -pitch;
+                int ady = abs(dy);
+                if (dx > ady) {
+                    int err = 2 * ady - dx;
+                    for (int i = 0; i < dx; i++) {
+                        if ((*mask == 0))
+                            pixel[i] = (unsigned short)color;
+                        if (err > 0) {
+                            pixel = (unsigned short*)((char*)pixel + pitch);
+                            STEP_MASK(mask, rowStride, 1);
+                            err -= 2 * dx;
+                        }
+                        STEP_MASK(mask, 1, rowStride);
+                        err += 2 * ady;
+                    }
+                } else {
+                    int err = 2 * dx - ady;
+                    int xoff = 0;
+                    for (int i = 0; i < ady; i++) {
+                        if ((*mask == 0))
+                            pixel[xoff] = (unsigned short)color;
+                        if (err > 0) {
+                            err -= 2 * ady;
+                            STEP_MASK(mask, 1, 1);
+                            xoff++;
+                        }
+                        STEP_MASK(mask, rowStride, rowStride);
+                        pixel = (unsigned short*)((char*)pixel + pitch);
+                        err += 2 * dx;
+                    }
+                }
+            }
+        } else {
+            if (a.Y == b.Y) {
+                for (int i = 0; i <= b.X - a.X; i++) {
+                    if ((*mask != 0))
+                        *pixel = (unsigned short)color;
+                    STEP_MASK(mask, 1, rowStride);
+                    pixel++;
+                }
+            } else if (a.X == b.X) {
+                int pitch = GetPitch();
+                if (a.Y > b.Y)
+                    pitch = -pitch;
+                int count = abs(dy) + 1;
+                for (; count > 0; count--) {
+                    if ((*mask != 0))
+                        *pixel = (unsigned short)color;
+                    STEP_MASK(mask, rowStride, rowStride);
+                    pixel = (unsigned short*)((char*)pixel + pitch);
+                }
+            } else {
+                int pitch = GetPitch();
+                if (dy < 0)
+                    pitch = -pitch;
+                int ady = abs(dy);
+                if (dx > ady) {
+                    int err = 2 * ady - dx;
+                    for (int i = 0; i < dx; i++) {
+                        if ((*mask != 0))
+                            pixel[i] = (unsigned short)color;
+                        if (err > 0) {
+                            pixel = (unsigned short*)((char*)pixel + pitch);
+                            STEP_MASK(mask, rowStride, 1);
+                            err -= 2 * dx;
+                        }
+                        STEP_MASK(mask, 1, rowStride);
+                        err += 2 * ady;
+                    }
+                } else {
+                    int err = 2 * dx - ady;
+                    int xoff = 0;
+                    for (int i = 0; i < ady; i++) {
+                        if ((*mask != 0))
+                            pixel[xoff] = (unsigned short)color;
+                        if (err > 0) {
+                            err -= 2 * ady;
+                            STEP_MASK(mask, 1, 1);
+                            xoff++;
+                        }
+                        STEP_MASK(mask, rowStride, rowStride);
+                        pixel = (unsigned short*)((char*)pixel + pitch);
+                        err += 2 * dx;
+                    }
                 }
             }
         }
-    } else {
-        if (a.Y == b.Y) {
-            for (int i = 0; i <= b.X - a.X; i++) {
-                if ((*mask != 0))
-                    *pixel = (unsigned short)color;
-                STEP_MASK(mask, 1, rowStride);
-                pixel++;
-            }
-        } else if (a.X == b.X) {
-            int pitch = GetPitch();
-            if (a.Y > b.Y)
-                pitch = -pitch;
-            int count = abs(dy) + 1;
-            for (; count > 0; count--) {
-                if ((*mask != 0))
-                    *pixel = (unsigned short)color;
-                STEP_MASK(mask, rowStride, rowStride);
-                pixel = (unsigned short*)((char*)pixel + pitch);
-            }
-        } else {
-            int pitch = GetPitch();
-            if (dy < 0)
-                pitch = -pitch;
-            int ady = abs(dy);
-            if (dx > ady) {
-                int err = 2 * ady - dx;
-                for (int i = 0; i < dx; i++) {
-                    if ((*mask != 0))
-                        pixel[i] = (unsigned short)color;
-                    if (err > 0) {
-                        pixel = (unsigned short*)((char*)pixel + pitch);
-                        STEP_MASK(mask, rowStride, 1);
-                        err -= 2 * dx;
-                    }
-                    STEP_MASK(mask, 1, rowStride);
-                    err += 2 * ady;
-                }
-            } else {
-                int err = 2 * dx - ady;
-                int xoff = 0;
-                for (int i = 0; i < ady; i++) {
-                    if ((*mask != 0))
-                        pixel[xoff] = (unsigned short)color;
-                    if (err > 0) {
-                        err -= 2 * ady;
-                        STEP_MASK(mask, 1, 1);
-                        xoff++;
-                    }
-                    STEP_MASK(mask, rowStride, rowStride);
-                    pixel = (unsigned short*)((char*)pixel + pitch);
-                    err += 2 * dx;
-                }
-            }
-        }
-    }
     Unlock();
     return true;
+    }}}
+    return false;
 }

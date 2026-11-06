@@ -419,10 +419,10 @@ void TeleportLocomotionClass::FUN_007187A0(LocoCoord coord)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x718B70
-// PARTIAL 8.3% (aligned 59.7%). The frame is 0x4C in retail vs 0x5C here and the
-// `*to` empty case is placed at the end of the function; register naming
-// differs from there. Tried: if/else for the height flag (7.6%), the && form
-// (kept), a constructor-less cell (no change).
+// PARTIAL 39.5% (aligned 69.0%). The frame is 0x4C in retail vs 0x5C here; register naming
+// differs from there. The `*to` empty case is the else arm (retail places it last) and the
+// height flag compares a by-value copy of the location, as retail does. Tried: if/else for
+// the height flag (setg, 33.7%), a constructor-less cell (no change).
 bool TeleportLocomotionClass::FUN_00718B70(const LocoCoord* to)
 {
     if (!TeleportSameCoord(unknown_28, DAT_00B0EBF8)) {
@@ -432,11 +432,9 @@ bool TeleportLocomotionClass::FUN_00718B70(const LocoCoord* to)
         Foot()->vf_0F4(&at);
     }
     LocoCoord target = *to;
-    if (TeleportSameCoord(*to, DAT_00B0EBF8)) {
-        unknown_28 = *to;
-    } else {
+    if (!TeleportSameCoord(*to, DAT_00B0EBF8)) {
         bool high = (DAT_0087F7E8.FUN_00565730(target)->unknown_140 & 0x100)
-            && Foot()->Location.Z > DAT_0087F7E8.FUN_00578080(&target) + DAT_00B0EC38 * 3;
+            && LocoCoord(Foot()->Location).Z > DAT_0087F7E8.FUN_00578080(&target) + DAT_00B0EC38 * 3;
         if (Foot()->WhatAmI() == 0xF) {
             bool onTarget = false;
             if (Foot()->vf_200())
@@ -507,6 +505,8 @@ bool TeleportLocomotionClass::FUN_00718B70(const LocoCoord* to)
                 Foot()->vf_0F0(&unknown_28);
             }
         }
+    } else {
+        unknown_28 = *to;
     }
     if (!TeleportSameCoord(unknown_28, DAT_00B0EBF8)) {
         Foot()->vf_0F0(&unknown_28);
