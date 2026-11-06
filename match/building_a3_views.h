@@ -19,6 +19,11 @@
 #include "_layout/frame_timer.h"
 #include "cell_step_tables.h"
 #include "house_building_views.h"
+#include "building_b_shared.h"
+#include "_layout/tactical.h"
+#include "_layout/building_class.h"
+#include "_layout/unit_type_class.h"
+#include "_layout/anim_type_class.h"
 #include "house_building_views.h"
 #include "house_building_views.h"
 #include "vector_class.h"
@@ -33,22 +38,15 @@ class BA3UnitView;
 struct BA3LightView;
 class SuperClass;
 struct BA3SpotView;
-class BA3TypeView;
+class BuildingTypeClass;
 class HouseClass;
 class BuildingA3View;
 class ParticleSystemTypeClass;
-class BA3AnimTypeView;
+class AnimTypeClass;
 
 // LIBRARY: GAMEMD 0x7DC720 (read-only here) - raises a COM error (HRESULT on the stack).
 void __stdcall FUN_007DC720(long hr);
 
-// Eight bytes passed by value (a double of the original, copied dword-wise).
-struct BA3Eight
-{
-    int Lo;   // +0x00
-    int Hi;   // +0x04
-};
-GG_STATIC_ASSERT(sizeof(BA3Eight) == 8);
 
 // A target reference (a 32-bit value and one tag byte; copied member-wise as five bytes, passed in eight).
 #pragma pack(push, 1)
@@ -112,9 +110,9 @@ GG_STATIC_ASSERT(offsetof(BA3Chain1View, unknown_28) == 0x28);
 struct BA3FacingView
 {
     // FUNCTION: GAMEMD 0x4C93D0 (read-only here)
-    HBDir FUN_004C93D0();
+    DirStruct FUN_004C93D0();
     // FUNCTION: GAMEMD 0x4C9220 (read-only here)
-    void FUN_004C9220(HBDir* dir);
+    void FUN_004C9220(DirStruct* dir);
 };
 
 // Weapon type (first member of a weapon slot): only the flag byte tested.
@@ -171,7 +169,7 @@ public:
     virtual void vt_03C();
     virtual void vt_040();
     virtual void vt_044();
-    virtual HBCoord vf_18();   // slot 18, +0x48
+    virtual CoordStruct vf_18();   // slot 18, +0x48
 
     char _pad_0004[0x13C];   // +0x0004
     unsigned int unknown_140;   // +0x0140
@@ -277,7 +275,7 @@ struct BA3AnimMem
 {
     char _pad_0000[0x1C8];   // +0x0000
     // FUNCTION: GAMEMD 0x421EA0 (read-only here) - the animation constructor, returns the object.
-    BA3AnimView* FUN_00421EA0(const BA3AnimTypeView* type, HBCoord* where, int delay, int loops, int flags, int a, int b);
+    BA3AnimView* FUN_00421EA0(const AnimTypeClass* type, CoordStruct* where, int delay, int loops, int flags, int a, int b);
 };
 GG_STATIC_ASSERT(sizeof(BA3AnimMem) == 0x1C8);
 
@@ -286,7 +284,7 @@ struct BA3ParticleMem
 {
     char _pad_0000[0x100];   // +0x0000
     // FUNCTION: GAMEMD 0x62DC50 (read-only here) - the particle system constructor, returns the object.
-    struct BA3ParticleView* FUN_0062DC50(const ParticleSystemTypeClass* type, HBCoord* where, int a, BuildingA3View* owner, HBCoord* b, int c);
+    struct BA3ParticleView* FUN_0062DC50(const ParticleSystemTypeClass* type, CoordStruct* where, int a, BuildingA3View* owner, CoordStruct* b, int c);
 };
 GG_STATIC_ASSERT(sizeof(BA3ParticleMem) == 0x100);
 
@@ -317,31 +315,30 @@ GG_STATIC_ASSERT(offsetof(BA3MapCellView, unknown_44) == 0x44);
 struct BA3MapView
 {
     // FUNCTION: GAMEMD 0x578080 (read-only here)
-    void FUN_00578080(const HBCoord& where);
+    void FUN_00578080(const CoordStruct& where);
     // FUNCTION: GAMEMD 0x4F42F0 (read-only here)
     void FUN_004F42F0(int arg);
     // FUNCTION: GAMEMD 0x565730 (read-only here)
-    BA3MapCellView* FUN_00565730(HBCoord* where);
+    BA3MapCellView* FUN_00565730(CoordStruct* where);
     // FUNCTION: GAMEMD 0x6A60E0 (read-only here)
     void FUN_006A60E0(int arg);
     // FUNCTION: GAMEMD 0x567DA0 (read-only here)
-    void FUN_00567DA0(HBCoord* where, int a, int b, int c);
+    void FUN_00567DA0(CoordStruct* where, int a, int b, int c);
     // FUNCTION: GAMEMD 0x56D230 (read-only here)
-    int FUN_0056D230(HBCell* out, int zone, char flag);
+    int FUN_0056D230(CellStruct* out, int zone, char flag);
     // FUNCTION: GAMEMD 0x56DC20 (read-only here) - the cell search; 15 stack arguments.
-    HBCell* FUN_0056DC20(HBCoord* start, HBCell* cell, int a, int b, int c, char d, int e, int f, char g, char h, char i, char j, HBCell* k, char l, char m);
+    CellStruct* FUN_0056DC20(CoordStruct* start, CellStruct* cell, int a, int b, int c, char d, int e, int f, char g, char h, char i, char j, CellStruct* k, char l, char m);
     // FUNCTION: GAMEMD 0x5657A0 (read-only here)
-    BA3ObjView* FUN_005657A0(HBCell* cell);
     BA3ObjView* FUN_005657A0(CellStruct* cell);
     // FUNCTION: GAMEMD 0x4ACA10 (read-only here)
-    HBCoord* FUN_004ACA10(HBCoord* out, HBCoord* in, char flag);
+    CoordStruct* FUN_004ACA10(CoordStruct* out, CoordStruct* in, char flag);
 };
 
 // Object behind the global at 0x8871E0 (partial).
 struct BA3RulesView
 {
     char _pad_0000[0x98];   // +0x0000
-    BA3AnimTypeView* unknown_98;   // +0x0098
+    AnimTypeClass* unknown_98;   // +0x0098
     char _pad_009C[0x1D8];   // +0x009C
     int unknown_274;   // +0x0274
     char _pad_0278[0x350];   // +0x0278
@@ -407,13 +404,6 @@ public:
 };
 
 
-// Sub-object at BuildingTypeClass +0x510 (only a field at +0x10 is read).
-struct BA3TypeSubView
-{
-    char _pad_0000[0x10];   // +0x0000
-    int unknown_10;   // +0x0010
-};
-GG_STATIC_ASSERT(offsetof(BA3TypeSubView, unknown_10) == 0x10);
 
 // A light / spotlight object (opaque); one method is reached.
 struct BA3LightView
@@ -427,7 +417,7 @@ struct BA3LightMem
 {
     char _pad_0000[0x4C];   // +0x0000
     // FUNCTION: GAMEMD 0x554760 (read-only here) - the constructor, returns the object.
-    BA3LightView* FUN_00554760(HBCoord where, int a, int b, int c, int d, int e);
+    BA3LightView* FUN_00554760(CoordStruct where, int a, int b, int c, int d, int e);
 };
 GG_STATIC_ASSERT(sizeof(BA3LightMem) == 0x4C);
 
@@ -546,7 +536,7 @@ public:
     virtual void vt_0CC();
     virtual void vt_0D0();
     virtual void vt_0D4();
-    virtual bool vf_54(const HBCoord& where, int arg);   // slot 54, +0xD8
+    virtual bool vf_54(const CoordStruct& where, int arg);   // slot 54, +0xD8
     virtual void vt_0DC();
     virtual void vt_0E0();
     virtual void vt_0E4();
@@ -664,7 +654,7 @@ struct BA3UnitMem
 {
     char _pad_0000[0x8E8];   // +0x0000
     // FUNCTION: GAMEMD 0x7353C0 (read-only here) - the constructor, returns the object.
-    BA3UnitView* FUN_007353C0(BA3UnitTypeView* type, HouseClass* owner);
+    BA3UnitView* FUN_007353C0(UnitTypeClass* type, HouseClass* owner);
 };
 GG_STATIC_ASSERT(sizeof(BA3UnitMem) == 0x8E8);
 
@@ -731,7 +721,7 @@ public:
     virtual void vt_064();
     virtual void vt_068();
     virtual void vt_06C();
-    virtual long __stdcall vf_28(int arg, HBCoord where);   // slot 28, +0x70
+    virtual long __stdcall vf_28(int arg, CoordStruct where);   // slot 28, +0x70
 
 };
 
@@ -817,7 +807,7 @@ public:
     virtual void vt_03C();
     virtual void vt_040();
     virtual void vt_044();
-    virtual HBCoord vf_18();   // slot 18, +0x48
+    virtual CoordStruct vf_18();   // slot 18, +0x48
     virtual void vt_04C();
     virtual void vt_050();
     virtual void vt_054();
@@ -853,7 +843,7 @@ public:
     virtual void vt_0CC();
     virtual void vt_0D0();
     virtual void vt_0D4();
-    virtual bool vf_54(const HBCoord& where, int facing);   // slot 54, +0xD8
+    virtual bool vf_54(const CoordStruct& where, int facing);   // slot 54, +0xD8
     virtual void vt_0DC();
     virtual void vt_0E0();
     virtual void vt_0E4();
@@ -909,7 +899,7 @@ public:
     virtual int vf_107(void* cell, int dir, int a, int b, int c);   // slot 107, +0x1AC
     virtual void vt_1B0();
     virtual void vt_1B4();
-    virtual HBCell* vf_110(HBCell* out);   // slot 110, +0x1B8
+    virtual CellStruct* vf_110(CellStruct* out);   // slot 110, +0x1B8
     virtual void vt_1BC();
     virtual void vt_1C0();
     virtual void vt_1C4();
@@ -1329,286 +1319,13 @@ public:
     virtual void vt_1E4();
     virtual void vt_1E8();
     virtual void vt_1EC();
-    virtual bool vf_124(HBCoord* from, double* velocity);   // slot 124, +0x1F0
+    virtual bool vf_124(CoordStruct* from, double* velocity);   // slot 124, +0x1F0
 
     // FUNCTION: GAMEMD 0x46B260 (read-only here)
     void FUN_0046B260(BA3LaunchInfoView* info);
 };
 
-// Object reached from the building type at +0xED4 (partial): a cell offset at +0x28.
-struct BA3OffsetHolderView
-{
-    char _pad_0000[0x28];   // +0x0000
-    HBCell unknown_28;   // +0x0028
-};
-GG_STATIC_ASSERT(offsetof(BA3OffsetHolderView, unknown_28) == 0x28);
 
-// The object at BuildingClass +0x520 (BuildingTypeClass, name YRpp-cross-checked; touched members only).
-class BA3TypeView
-{
-public:
-    virtual void vt_000();
-    virtual void vt_004();
-    virtual void vt_008();
-    virtual void vt_00C();
-    virtual void vt_010();
-    virtual void vt_014();
-    virtual void vt_018();
-    virtual void vt_01C();
-    virtual void vt_020();
-    virtual void vt_024();
-    virtual void vt_028();
-    virtual void vt_02C();
-    virtual void vt_030();
-    virtual void vt_034();
-    virtual void vt_038();
-    virtual void vt_03C();
-    virtual void vt_040();
-    virtual void vt_044();
-    virtual void vt_048();
-    virtual void vt_04C();
-    virtual void vt_050();
-    virtual void vt_054();
-    virtual void vt_058();
-    virtual void vt_05C();
-    virtual void vt_060();
-    virtual void vt_064();
-    virtual void vt_068();
-    virtual void vt_06C();
-    virtual void vt_070();
-    virtual void vt_074();
-    virtual void vt_078();
-    virtual void vt_07C();
-    virtual void vt_080();
-    virtual int vf_33(HouseClass* owner);   // slot 33, +0x84
-
-    char _pad_0004[0x1F4];   // +0x0004
-    char unknown_1F8[1];   // +0x01F8
-    char _pad_01F9[0x1CF];   // +0x01F9
-    BA3Eight unknown_3C8;   // +0x03C8
-    char _pad_03D0[0x140];   // +0x03D0
-    BA3TypeSubView unknown_510;   // +0x0510
-    char _pad_0524[0xCA];   // +0x0524
-    unsigned char unknown_5EE;   // +0x05EE
-    char _pad_05EF[0x8D];   // +0x05EF
-    int unknown_67C;   // +0x067C
-    char _pad_0680[0x4];   // +0x0680
-    int unknown_684;   // +0x0684
-    char _pad_0688[0xA4];   // +0x0688
-    DynamicVectorClass<const BA3AnimTypeView*> unknown_72C;   // +0x072C
-    char _pad_0744[0x4];   // +0x0744
-    DynamicVectorClass<const BA3AnimTypeView*> unknown_748;   // +0x0748
-    char _pad_0760[0x34];   // +0x0760
-    DynamicVectorClass<const ParticleSystemTypeClass*> unknown_794;   // +0x0794
-    char _pad_07AC[0x14];   // +0x07AC
-    HBCoord unknown_7C0;   // +0x07C0
-    char _pad_07CC[0x34];   // +0x07CC
-    int unknown_800;   // +0x0800
-    char _pad_0804[0x49E];   // +0x0804
-    unsigned char unknown_CA2;   // +0x0CA2
-    char _pad_0CA3[0x2B];   // +0x0CA3
-    unsigned char unknown_CCE;   // +0x0CCE
-    char _pad_0CCF[0x2];   // +0x0CCF
-    unsigned char unknown_CD1;   // +0x0CD1
-    char unknown_CD2;   // +0x0CD2
-    char unknown_CD3;   // +0x0CD3
-    char _pad_0CD4[0x1];   // +0x0CD4
-    unsigned char unknown_CD5;   // +0x0CD5
-    char _pad_0CD6[0x3F];   // +0x0CD6
-    unsigned char unknown_D15;   // +0x0D15
-    char _pad_0D16[0x1B];   // +0x0D16
-    unsigned char unknown_D31;   // +0x0D31
-    char _pad_0D32[0x9E];   // +0x0D32
-    char unknown_DD0;   // +0x0DD0
-    char _pad_0DD1[0x1F];   // +0x0DD1
-    int unknown_DF0;   // +0x0DF0
-    char _pad_0DF4[0x3C];   // +0x0DF4
-    int unknown_E30;   // +0x0E30
-    int unknown_E34;   // +0x0E34
-    int unknown_E38;   // +0x0E38
-    int unknown_E3C;   // +0x0E3C
-    int unknown_E40;   // +0x0E40
-    char _pad_0E44[0x5C];   // +0x0E44
-    BA3UnitTypeView* unknown_EA0;   // +0x0EA0
-    char _pad_0EA4[0x14];   // +0x0EA4
-    int unknown_EB8;   // +0x0EB8
-    char _pad_0EBC[0x18];   // +0x0EBC
-    BA3OffsetHolderView* unknown_ED4;   // +0x0ED4
-    char _pad_0ED8[0x10];   // +0x0ED8
-    int unknown_EE8;   // +0x0EE8
-    char _pad_0EEC[0x12C];   // +0x0EEC
-    char unknown_1018[16];   // +0x1018
-    char unknown_1028[16];   // +0x1028
-    char unknown_1038[16];   // +0x1038
-    char _pad_1048[0x14];   // +0x1048
-    char unknown_105C[16];   // +0x105C
-    char unknown_106C[16];   // +0x106C
-    char _pad_107C[0x24];   // +0x107C
-    char unknown_10A0[16];   // +0x10A0
-    char unknown_10B0[16];   // +0x10B0
-    char _pad_10C0[0x24];   // +0x10C0
-    char unknown_10E4[16];   // +0x10E4
-    char unknown_10F4[16];   // +0x10F4
-    char _pad_1104[0x24];   // +0x1104
-    char unknown_1128[16];   // +0x1128
-    char unknown_1138[16];   // +0x1138
-    char _pad_1148[0x24];   // +0x1148
-    char unknown_116C[16];   // +0x116C
-    char unknown_117C[16];   // +0x117C
-    char _pad_118C[0x24];   // +0x118C
-    char unknown_11B0[16];   // +0x11B0
-    char _pad_11C0[0x20];   // +0x11C0
-    HBPoint2D unknown_11E0;   // +0x11E0
-    char _pad_11E8[0xC];   // +0x11E8
-    char unknown_11F4[16];   // +0x11F4
-    char unknown_1204[16];   // +0x1204
-    char _pad_1214[0x68];   // +0x1214
-    char unknown_127C[16];   // +0x127C
-    char unknown_128C[16];   // +0x128C
-    char _pad_129C[0x68];   // +0x129C
-    char unknown_1304[16];   // +0x1304
-    char unknown_1314[16];   // +0x1314
-    char unknown_1324[16];   // +0x1324
-    char _pad_1334[0x58];   // +0x1334
-    char unknown_138C[16];   // +0x138C
-    char unknown_139C[16];   // +0x139C
-    char unknown_13AC[16];   // +0x13AC
-    char _pad_13BC[0x58];   // +0x13BC
-    char unknown_1414[16];   // +0x1414
-    char unknown_1424[16];   // +0x1424
-    char unknown_1434[16];   // +0x1434
-    char _pad_1444[0x10A];   // +0x1444
-    unsigned char unknown_154E;   // +0x154E
-    char _pad_154F[0x11];   // +0x154F
-    int unknown_1560;   // +0x1560
-    int unknown_1564;   // +0x1564
-    int unknown_1568;   // +0x1568
-    char _pad_156C[0x7];   // +0x156C
-    unsigned char unknown_1573;   // +0x1573
-    char _pad_1574[0x130];   // +0x1574
-    unsigned char unknown_16A4;   // +0x16A4
-    char _pad_16A5[0x4];   // +0x16A5
-    unsigned char unknown_16A9;   // +0x16A9
-    unsigned char unknown_16AA;   // +0x16AA
-    unsigned char unknown_16AB;   // +0x16AB
-    char _pad_16AC[0x2];   // +0x16AC
-    unsigned char unknown_16AE;   // +0x16AE
-    unsigned char unknown_16AF;   // +0x16AF
-    char _pad_16B0[0x9];   // +0x16B0
-    unsigned char unknown_16B9;   // +0x16B9
-    unsigned char unknown_16BA;   // +0x16BA
-    unsigned char unknown_16BB;   // +0x16BB
-    char _pad_16BC[0x1];   // +0x16BC
-    unsigned char unknown_16BD;   // +0x16BD
-    unsigned char unknown_16BE;   // +0x16BE
-    char _pad_16BF[0x2];   // +0x16BF
-    unsigned char unknown_16C1;   // +0x16C1
-    unsigned char unknown_16C2;   // +0x16C2
-    unsigned char unknown_16C3;   // +0x16C3
-    char _pad_16C4[0x1];   // +0x16C4
-    unsigned char unknown_16C5;   // +0x16C5
-    char _pad_16C6[0x1];   // +0x16C6
-    unsigned char unknown_16C7;   // +0x16C7
-    unsigned char unknown_16C8;   // +0x16C8
-    char _pad_16C9[0x2];   // +0x16C9
-    unsigned char unknown_16CB;   // +0x16CB
-    unsigned char unknown_16CC;   // +0x16CC
-    char _pad_16CD[0x23];   // +0x16CD
-    int unknown_16F0;   // +0x16F0
-    char _pad_16F4[0x13];   // +0x16F4
-    unsigned char unknown_1707;   // +0x1707
-    char _pad_1708[0x78];   // +0x1708
-    int unknown_1780;   // +0x1780
-    // FUNCTION: GAMEMD 0x45EC90 (read-only here)
-    int FUN_0045EC90();
-    // FUNCTION: GAMEMD 0x45ECA0 (read-only here)
-    int FUN_0045ECA0(int arg);
-};
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1F8) == 0x1F8);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_3C8) == 0x3C8);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_510) == 0x510);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_5EE) == 0x5EE);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_67C) == 0x67C);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_684) == 0x684);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_72C) == 0x72C);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_748) == 0x748);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_794) == 0x794);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_7C0) == 0x7C0);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_800) == 0x800);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_CA2) == 0xCA2);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_CCE) == 0xCCE);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_CD1) == 0xCD1);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_CD2) == 0xCD2);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_CD3) == 0xCD3);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_CD5) == 0xCD5);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_D15) == 0xD15);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_D31) == 0xD31);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_DD0) == 0xDD0);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_DF0) == 0xDF0);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_E30) == 0xE30);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_E34) == 0xE34);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_E38) == 0xE38);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_E3C) == 0xE3C);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_E40) == 0xE40);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_EA0) == 0xEA0);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_EB8) == 0xEB8);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_ED4) == 0xED4);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_EE8) == 0xEE8);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1018) == 0x1018);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1028) == 0x1028);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1038) == 0x1038);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_105C) == 0x105C);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_106C) == 0x106C);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_10A0) == 0x10A0);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_10B0) == 0x10B0);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_10E4) == 0x10E4);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_10F4) == 0x10F4);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1128) == 0x1128);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1138) == 0x1138);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_116C) == 0x116C);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_117C) == 0x117C);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_11B0) == 0x11B0);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_11E0) == 0x11E0);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_11F4) == 0x11F4);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1204) == 0x1204);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_127C) == 0x127C);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_128C) == 0x128C);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1304) == 0x1304);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1314) == 0x1314);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1324) == 0x1324);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_138C) == 0x138C);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_139C) == 0x139C);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_13AC) == 0x13AC);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1414) == 0x1414);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1424) == 0x1424);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1434) == 0x1434);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_154E) == 0x154E);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1560) == 0x1560);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1564) == 0x1564);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1568) == 0x1568);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1573) == 0x1573);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16A4) == 0x16A4);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16A9) == 0x16A9);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16AA) == 0x16AA);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16AB) == 0x16AB);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16AE) == 0x16AE);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16AF) == 0x16AF);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16B9) == 0x16B9);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16BA) == 0x16BA);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16BB) == 0x16BB);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16BD) == 0x16BD);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16BE) == 0x16BE);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16C1) == 0x16C1);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16C2) == 0x16C2);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16C3) == 0x16C3);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16C5) == 0x16C5);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16C7) == 0x16C7);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16C8) == 0x16C8);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16CB) == 0x16CB);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16CC) == 0x16CC);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_16F0) == 0x16F0);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1707) == 0x1707);
-GG_STATIC_ASSERT(offsetof(BA3TypeView, unknown_1780) == 0x1780);
 
 // Object returned by FUN_005F6360 (partial).
 struct BA3ProbeView
@@ -1635,9 +1352,9 @@ struct BA3Stage350View
     // FUNCTION: GAMEMD 0x4A51D0 (read-only here)
     bool FUN_004A51D0();
     // FUNCTION: GAMEMD 0x4A51F0 (read-only here)
-    void FUN_004A51F0(BA3Eight duration);
+    void FUN_004A51F0(double duration);
     // FUNCTION: GAMEMD 0x4A5240 (read-only here)
-    void FUN_004A5240(BA3Eight duration);
+    void FUN_004A5240(double duration);
 };
 GG_STATIC_ASSERT(sizeof(BA3Stage350View) == 0x1C);
 
@@ -1663,7 +1380,7 @@ public:
     virtual void vt_03C();
     virtual void vt_040();
     virtual void vt_044();
-    virtual HBCoord vf_18();   // slot 18, +0x48
+    virtual CoordStruct vf_18();   // slot 18, +0x48
     virtual void vt_04C();
     virtual void vt_050();
     virtual void vt_054();
@@ -1678,7 +1395,7 @@ public:
     virtual void vt_078();
     virtual void vt_07C();
     virtual void vt_080();
-    virtual BA3TypeView* vf_33();   // slot 33, +0x84
+    virtual TechnoTypeClass* vf_33();   // slot 33, +0x84
     virtual void vt_088();
     virtual void vt_08C();
     virtual void vt_090();
@@ -1688,8 +1405,8 @@ public:
     virtual void vt_0A0();
     virtual void vt_0A4();
     virtual void vt_0A8();
-    virtual HBCoord* vf_43(HBCoord* out);   // slot 43, +0xAC
-    virtual HBCoord vf_44(int zero, HBCoord offset);   // slot 44, +0xB0
+    virtual CoordStruct* vf_43(CoordStruct* out);   // slot 43, +0xAC
+    virtual CoordStruct vf_44(int zero, CoordStruct offset);   // slot 44, +0xB0
     virtual void vt_0B4();
     virtual void vt_0B8();
     virtual void vt_0BC();
@@ -1709,7 +1426,7 @@ public:
     virtual void vt_0F4();
     virtual void vf_62();   // slot 62, +0xF8
     virtual void vt_0FC();
-    virtual void vf_64(BA3TechnoView* who, HBCell b);   // slot 64, +0x100
+    virtual void vf_64(BA3TechnoView* who, CellStruct b);   // slot 64, +0x100
     virtual void vt_104();
     virtual void vt_108();
     virtual void vt_10C();
@@ -1755,7 +1472,7 @@ public:
     virtual void vt_1AC();
     virtual void vt_1B0();
     virtual void vt_1B4();
-    virtual HBCell* vf_110(HBCell* out);   // slot 110, +0x1B8
+    virtual CellStruct* vf_110(CellStruct* out);   // slot 110, +0x1B8
     virtual void vt_1BC();
     virtual void vt_1C0();
     virtual void vt_1C4();
@@ -1769,7 +1486,7 @@ public:
     virtual int vf_121();   // slot 121, +0x1E4
     virtual void vf_122(int mission, int arg);   // slot 122, +0x1E8
     virtual void vt_1EC();
-    virtual bool vf_124(HBCoord* from, double* velocity);   // slot 124, +0x1F0
+    virtual bool vf_124(CoordStruct* from, double* velocity);   // slot 124, +0x1F0
     virtual void vt_1F4();
     virtual void vt_1F8();
     virtual void vt_1FC();
@@ -1823,7 +1540,7 @@ public:
     virtual void vt_2BC();
     virtual void vt_2C0();
     virtual void vt_2C4();
-    virtual HBDir vf_178(BA3ObjView* target);   // slot 178, +0x2C8
+    virtual DirStruct vf_178(BA3ObjView* target);   // slot 178, +0x2C8
     virtual void vt_2CC();
     virtual void vt_2D0();
     virtual void vt_2D4();
@@ -1837,7 +1554,7 @@ public:
     virtual void vt_2F4();
     virtual void vt_2F8();
     virtual void vt_2FC();
-    virtual HBCoord vf_192(int zero);   // slot 192, +0x300
+    virtual CoordStruct vf_192(int zero);   // slot 192, +0x300
     virtual void vt_304();
     virtual void vt_308();
     virtual void vt_30C();
@@ -1954,17 +1671,17 @@ public:
     virtual void vt_4C8();
     virtual void vt_4CC();
     virtual void vt_4D0();
-    virtual HBCell* vf_309(HBCell* out, BA3TechnoView* who, HBCell cell);   // slot 309, +0x4D4
+    virtual CellStruct* vf_309(CellStruct* out, BA3TechnoView* who, CellStruct cell);   // slot 309, +0x4D4
     virtual int vf_310(BA3TechnoView* who);   // slot 310, +0x4D8
     virtual void vf_311(char flag);   // slot 311, +0x4DC
     virtual void vt_4E0();
     virtual void vt_4E4();
-    virtual HBDir vf_314(void* target);   // slot 314, +0x4E8
+    virtual DirStruct vf_314(void* target);   // slot 314, +0x4E8
     virtual void vf_315(int unused, int a, char flag, short* list);   // slot 315, +0x4EC
     virtual void vt_4F0();
-    virtual void vf_317(const HBCell& cell);   // slot 317, +0x4F4
+    virtual void vf_317(const CellStruct& cell);   // slot 317, +0x4F4
     virtual void vt_4F8();
-    virtual void vf_319(const HBCell& cell);   // slot 319, +0x4FC
+    virtual void vf_319(const CellStruct& cell);   // slot 319, +0x4FC
 
     char _pad_0004[0x34];   // +0x0004
     BA3Chain1View* unknown_38;   // +0x0038
@@ -1974,13 +1691,13 @@ public:
     unsigned char unknown_80;   // +0x0080
     unsigned char unknown_81;   // +0x0081
     char _pad_0082[0x1A];   // +0x0082
-    HBCoord Location;   // +0x009C
+    CoordStruct Location;   // +0x009C
     char _pad_00A8[0x14];   // +0x00A8
     int Status;   // +0x00BC
     char _pad_00C0[0x28];   // +0x00C0
     int unknown_E8;   // +0x00E8
     char _pad_00EC[0x14];   // +0x00EC
-    HBCoord unknown_100;   // +0x0100
+    CoordStruct unknown_100;   // +0x0100
     int unknown_10C;   // +0x010C
     char _pad_0110[0x4];   // +0x0110
     BA3Obj114View unknown_114;   // +0x0114
@@ -2015,9 +1732,9 @@ public:
     char _pad_0419[0x1];   // +0x0419
     unsigned char unknown_41A;   // +0x041A
     char _pad_041B[0x105];   // +0x041B
-    BA3TypeView* Type;   // +0x0520
+    BuildingTypeClass* Type;   // +0x0520
     char _pad_0524[0x4];   // +0x0524
-    HBCoord unknown_528;   // +0x0528
+    CoordStruct unknown_528;   // +0x0528
     char _pad_0534[0xC];   // +0x0534
     BA3ObjView* C4AppliedBy;   // +0x0540
     char _pad_0544[0x8];   // +0x0544
@@ -2053,17 +1770,17 @@ public:
     char _pad_06ED[0x3];   // +0x06ED
     int unknown_6F0;   // +0x06F0
     // FUNCTION: GAMEMD 0x70BCB0 (read-only here)
-    HBCoord FUN_0070BCB0();
+    CoordStruct FUN_0070BCB0();
     // FUNCTION: GAMEMD 0x5F6360 (read-only here)
     BA3ProbeView* FUN_005F6360(BA3ObjView* target);
     // FUNCTION: GAMEMD 0x70D590 (read-only here)
     char FUN_0070D590(int arg);
     // FUNCTION: GAMEMD 0x6FDA00 (read-only here)
-    HBDir FUN_006FDA00(BA3ObjView* target);
+    DirStruct FUN_006FDA00(BA3ObjView* target);
     // FUNCTION: GAMEMD 0x452A40 (read-only here)
     void FUN_00452A40(int arg);
     // FUNCTION: GAMEMD 0x443860 (read-only here)
-    void FUN_00443860(const HBCell& cell, int flag);
+    void FUN_00443860(const CellStruct& cell, int flag);
     // FUNCTION: GAMEMD 0x442D90 (read-only here)
     void FUN_00442D90(BA3ObjView* arg);
     // FUNCTION: GAMEMD 0x707CB0 (read-only here) - inherited body.
@@ -2180,31 +1897,30 @@ template<class T> inline bool BA3AddItem(DynamicVectorClass<T>& v, const T& item
 extern HouseClass* DAT_00A83D4C;
 extern int DAT_00A8ED84;
 extern HBSourceView* DAT_00A8B230;
-extern HBCoord DAT_0089C848;
+extern CoordStruct DAT_0089C848;
 // GLOBAL: GAMEMD 0x818CB8..0x818CC8 - four int offsets scanned by 0x4415F0; 0xA83D84 / 0x8B4154 - object / anim type tables
 extern int DAT_00818CB8[4];
 extern BA3ObjView** DAT_00A83D84;
-extern const BA3AnimTypeView** DAT_008B4154;
+extern const AnimTypeClass** DAT_008B4154;
 // STRING: GAMEMD 0x818E00 - "FIRE3"
 extern const char s_FIRE3_00818E00[];
 // GLOBAL: GAMEMD 0x7E2AC8 - float constant
 extern const float DAT_007E2AC8;
 // FUNCTION: GAMEMD 0x6B59A0 / 0x6B5C90 (read-only here) - ECX/EDX in registers, two more on the stack.
-void FUN_006B59A0(const HBCoord& where, int a, int b, char c);
-void FUN_006B5C90(const HBCoord& where, int a, int b, char c);
+void FUN_006B59A0(const CoordStruct& where, int a, int b, char c);
+void FUN_006B5C90(const CoordStruct& where, int a, int b, char c);
 // FUNCTION: GAMEMD 0x49F420 / 0x49F550 (read-only here) - results come back through a hidden pointer in ECX.
-HBCoord* FUN_0049F420(HBCoord* out, HBCoord* from, int distance, char flag);
-HBCoord* FUN_0049F550(HBCoord* out, HBCoord* from, int distance);
+CoordStruct* FUN_0049F420(CoordStruct* out, CoordStruct* from, int distance, char flag);
+CoordStruct* FUN_0049F550(CoordStruct* out, CoordStruct* from, int distance);
 // FUNCTION: GAMEMD 0x427CB0 (read-only here) - looks an anim type up by name: one register argument.
 int FUN_00427CB0(const char* name);
 // FUNCTION: GAMEMD 0x48DED0 (read-only here) - an empty body; the count is in ECX.
 void FUN_0048DED0(int count);
 // FUNCTION: GAMEMD 0x750E20 (read-only here) - ECX/EDX in registers, one more on the stack.
-void FUN_00750E20(int a, HBCoord* where, int b);
+void FUN_00750E20(int a, CoordStruct* where, int b);
 // GLOBAL: GAMEMD 0x87F7E8 (the map object, its address is loaded into ECX), 0x8871E0 (rules), 0x887324.
 extern BA3MapView DAT_0087F7E8;
 extern BA3RulesView* RulesInstance;
-extern HBPairXformView* DAT_00887324;
 // GLOBAL: GAMEMD 0x7E1718 / 0x7E4418 / 0x7E4410 - double constants.
 extern const double DAT_007E1718;
 extern const double DAT_007E4418;
@@ -2214,14 +1930,14 @@ double __cdecl FUN_004CAC40(double a);
 double __cdecl FUN_004CAD80(double a);
 double __cdecl FUN_004CAE30(double a, double b);
 // FUNCTION: GAMEMD 0x48A8D0 (read-only here) - first two arguments in ECX/EDX, the rest on the stack (ret 0x14).
-bool FUN_0048A8D0(char flag, int a, int b, int z, double radius, HBDir* out);
+bool FUN_0048A8D0(char flag, int a, int b, int z, double radius, DirStruct* out);
 // GLOBAL: GAMEMD 0xA8E7AC / 0xA8ED6B / 0xA8B538 / 0xA8B238 and the index array 0xA83CBC
 extern int DAT_00A8E7AC;
 extern unsigned char DAT_00A8ED6B;
 extern HBIdxView** DAT_00A83CBC;
 // GLOBAL: GAMEMD 0x89F698 (a cell offset), 0x89C818 (the "no cell" marker), 0x7F4890 (a table of 32 values), 0x818D7C (a suffix)
-extern HBCell DAT_0089F698;
-extern HBCell DAT_0089C818;
+extern CellStruct DAT_0089F698;
+extern CellStruct DAT_0089C818;
 extern int DAT_007F4890[32];
 extern const char DAT_00818D7C[];
 // STRING: GAMEMD 0x818F00 / 0x818EE8 / 0x818ED0 / 0x818E78 / 0x818EB0 / 0x818E94 - the EVA speech names of the super weapons.
@@ -2234,7 +1950,7 @@ extern const char s_EVA_GeneticMutatorDetected_00818E94[];
 // FUNCTION: GAMEMD 0x752700 (read-only here) - the string in ECX, two further arguments (EDX and the stack).
 void FUN_00752700(const char* name, int a, int b);
 // FUNCTION: GAMEMD 0x65FA70 (read-only here) - ECX carries a small integer, one cell on the stack.
-struct BA3EvaView { bool FUN_0065FA70(HBCell cell); };
+struct BA3EvaView { bool FUN_0065FA70(CellStruct cell); };
 // LIBRARY: GAMEMD intrinsics (/Oi expands them inline)
 extern "C" char* __cdecl strcpy(char*, const char*);
 extern "C" char* __cdecl strcat(char*, const char*);
@@ -2243,7 +1959,7 @@ extern "C" unsigned int __cdecl strlen(const char*);
 // GLOBAL: GAMEMD 0x7E27F8 - double constant
 extern const double DAT_007E27F8;
 // FUNCTION: GAMEMD 0x7509E0 (read-only here) - plays a sound at a position.
-void FUN_007509E0(int sound, HBCoord* where, void* unused);
+void FUN_007509E0(int sound, CoordStruct* where, void* unused);
 // STRING: GAMEMD 0x81905C / 0x819044 / 0x818F18 - EVA speech names.
 extern const char s_EVA_UnitRepaired_0081905C[];
 extern const char s_EVA_InsufficientFunds_00819044[];

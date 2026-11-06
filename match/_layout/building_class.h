@@ -230,6 +230,8 @@ public:
     virtual int vf_135();                                          // 135 0x4496B0
     virtual void vf_85(int a1, int a2, bool a3);                   // 85  0x457C90
     virtual void vf_184();                                         // 184 0x4576F0
+    virtual void vf_282();                                         // 282 0x459900
+    virtual bool vf_292(CoordStruct* coord, int dir);              // 292 0x458A80
     virtual void vf_293();                                         // 293 0x456580
     virtual void vf_294();                                         // 294 0x4565E0
     virtual bool IsArmed();                                        // 171 0x458DB0

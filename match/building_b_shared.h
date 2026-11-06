@@ -12,74 +12,27 @@
 #include <objidl.h>   // IStream, HRESULT (VC98 SDK, LIBRARY)
 #include "_rt/gg_static_assert.h"
 #include "abstract_index_cast_sweep.h"
-#include "house_building_views.h"
-#include "house_building_com_bases.h"
-#include "house_building_views.h"
-#include "house_building_com_bases.h"
+#include "_layout/coord_struct_sum.h"
+#include "_layout/cell.h"
+#include "_layout/geometry2d.h"
 #include "house_building_views.h"
 #include "house_building_com_bases.h"
 
-inline HBCoord operator+(const HBCoord& a, const HBCoord& b)
+inline CoordStruct operator-(const CoordStruct& a, const CoordStruct& b)
 {
-    HBCoord r;
-    r.X = a.X + b.X;
-    r.Y = a.Y + b.Y;
-    r.Z = a.Z + b.Z;
-    return r;
-}
-
-// The object's canonical coordinate plus a view-typed offset.
-inline HBCoord operator+(const CoordStruct& a, const HBCoord& b)
-{
-    HBCoord r;
-    r.X = a.X + b.X;
-    r.Y = a.Y + b.Y;
-    r.Z = a.Z + b.Z;
-    return r;
-}
-
-inline HBCoord operator-(const HBCoord& a, const HBCoord& b)
-{
-    HBCoord r;
+    CoordStruct r;
     r.X = a.X - b.X;
     r.Y = a.Y - b.Y;
     r.Z = a.Z - b.Z;
     return r;
 }
 
-inline HBPoint2D operator+(const HBPoint2D& a, const HBPoint2D& b)
+inline bool operator==(const CoordStruct& a, const CoordStruct& b)
 {
-    HBPoint2D r;
-    r.X = a.X + b.X;
-    r.Y = a.Y + b.Y;
-    return r;
-}
-
-// The cell sum is HBCell::operator+ (house_building_common_types.h).
-
-inline bool operator==(const HBCell& a, const HBCell& b)
-{
-    return a.X == b.X && a.Y == b.Y;
+    return a.X == b.X && a.Y == b.Y && a.Z == b.Z;
 }
 
 // The cell containing a world coordinate (leptons / 256, per axis).
-inline HBCell BuildingBCellOf(const HBCoord& c)
-{
-    HBCell r;
-    r.X = c.X / 256;
-    r.Y = c.Y / 256;
-    return r;
-}
-
-// The same cell as a canonical CellStruct.
-inline CellStruct BuildingBCellStructOf(const HBCoord& c)
-{
-    CellStruct r;
-    r.X = c.X / 256;
-    r.Y = c.Y / 256;
-    return r;
-}
-
 inline CellStruct BuildingBCellStructOf(const CoordStruct& c)
 {
     CellStruct r;

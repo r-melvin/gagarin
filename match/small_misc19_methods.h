@@ -24,12 +24,4 @@ struct Pair2d
 };
 GG_STATIC_ASSERT(offsetof(Pair2d, y) == 0x8);
 
-struct Triple3i
-{
-    int a, b, c;
-
-    // FUNCTION: GAMEMD 0x459F60
-    bool FUN_00459F60(const Triple3i* other) const;
-};
-
 #endif  // GG_MATCH_CORE_SMALL_MISC19_METHODS_H

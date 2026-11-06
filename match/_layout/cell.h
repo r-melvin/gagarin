@@ -31,6 +31,8 @@ struct CellStruct
         ret.Y = Y - a.Y;
         return ret;
     }
+    // FUNCTION: GAMEMD 0x42D470 (decl; reloc) -- builds a cell from two shorts in place, returns it (two stack arguments, RET 8).
+    CellStruct* FUN_0042D470(short x, short y);
     // FUNCTION: GAMEMD 0x453240 (decl; reloc) -- thiscall on the cell value.
     void FUN_00453240();
     // FUNCTION: GAMEMD 0x660B80 (decl; reloc) -- thiscall on the cell value.

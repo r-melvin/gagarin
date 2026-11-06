@@ -13,27 +13,30 @@
 #include "building_a3_views.h"
 
 // FUNCTION: GAMEMD 0x43E940
-HBDir BuildingA3View::vf_178(BA3ObjView* target)
+DirStruct BuildingA3View::vf_178(BA3ObjView* target)
 {
     if (vf_254(0)->First->unknown_149) {
         vf_33();
         if (target) {
-            HBCoord c = FUN_0070BCB0();
-            HBCoord m;
+            CoordStruct c = FUN_0070BCB0();
+            CoordStruct m;
             m.Z = vf_254(0)->unknown_0C;
-            HBCoord tmp;
-            HBCoord* pm = vf_43(&tmp);
+            CoordStruct tmp;
+            CoordStruct* pm = vf_43(&tmp);
             m.X = pm->X;
             m.Y = pm->Y;
             m.Z += pm->Z;
-            HBPoint2D out2;
-            HBPoint2D* r = DAT_00887324->FUN_006D2070(&out2, &Type->unknown_11E0);
-            HBCoord diff;
+            Point2D out2;
+            Point2D in2;
+            in2.X = Type->BuildingAnim[9].X;
+            in2.Y = Type->BuildingAnim[9].Y;
+            Point2D* r = DAT_00887324->FUN_006D2070(&out2, &in2);
+            CoordStruct diff;
             diff.X = c.X - (m.X + r->X);
             diff.Y = c.Y - (m.Y + r->Y);
             diff.Z = c.Z - m.Z;
             if (diff.Z == 0) {
-                return HBDir((short)0x4000);
+                return DirStruct((short)0x4000);
             }
             double h = (double)(diff.Y * diff.Y + diff.X * diff.X);
             double flat = FUN_004CAC40(h);
@@ -42,7 +45,7 @@ HBDir BuildingA3View::vf_178(BA3ObjView* target)
             if (ratio > DAT_007E1718) {
                 ratio = 1.0;
             }
-            HBDir d;
+            DirStruct d;
             d.Raw = (short)(int)(FUN_004CAD80(ratio) * DAT_007E4418 * DAT_007E4410);
             if (diff.Z < 0) {
                 d.Raw = (short)(-0x8000 - d.Whole);
@@ -51,24 +54,24 @@ HBDir BuildingA3View::vf_178(BA3ObjView* target)
         }
         return Facing370.FUN_004C93D0();
     }
-    if (Type->unknown_16C3) {
+    if (Type->EMPulseCannon) {
         DAT_0087F7E8.FUN_00578080(target->vf_18());
-        HBCoord t = target->vf_18();
-        HBCoord zero;
+        CoordStruct t = target->vf_18();
+        CoordStruct zero;
         zero.X = 0;
         zero.Y = 0;
         zero.Z = 0;
-        HBCoord rc = vf_44(0, zero);
+        CoordStruct rc = vf_44(0, zero);
         FUN_004CAE30((double)rc.Y - t.Y, (double)t.X - rc.X);
         int a = FUN_005F6360(target)->FUN_0048AB90((double)RulesInstance->unknown_16B8);
-        HBCoord g = vf_192(0);
-        HBCoord pe = target->vf_18();
-        HBCoord e;
+        CoordStruct g = vf_192(0);
+        CoordStruct pe = target->vf_18();
+        CoordStruct e;
         e.X = pe.X - g.X;
         e.Y = pe.Y - g.Y;
         e.Z = pe.Z - g.Z;
         double sq = (double)(e.Y * e.Y + e.X * e.X);
-        HBDir d;
+        DirStruct d;
         if (!FUN_0048A8D0(FUN_0070D590(0), a, (int)FUN_004CAC40(sq), e.Z, (double)RulesInstance->unknown_16B8, &d)) {
             FUN_0048A8D0(FUN_0070D590(0), a * 10 / 8, (int)FUN_004CAC40(sq), e.Z, (double)RulesInstance->unknown_16B8, &d);
         }

@@ -127,6 +127,8 @@ public:
     int GetFoundationWidth() const;
     // FUNCTION: GAMEMD 0x45ECA0 (decl; reloc) -- one stack argument (RET 4)
     int GetFoundationHeight(bool includeBib) const;
+    // FUNCTION: GAMEMD 0x465570 (decl; reloc) -- writes a rectangle into `out` and returns it; RET 4.
+    RectangleStruct* FUN_00465570(RectangleStruct* out) const;
     // FUNCTION: GAMEMD 0x465AF0 -- releases the owned buildup image.
     void ClearBuildUp();
     // FUNCTION: GAMEMD 0x465D40 -- const predicate; existing external spelling

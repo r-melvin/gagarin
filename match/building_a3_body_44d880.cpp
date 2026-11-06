@@ -29,26 +29,26 @@ int BuildingA3View::vf_143()
         FUN_00457DE0(0, 0);
     }
 
-    if ((Type->unknown_16AE || Type->unknown_16AF) && unknown_114.Count > 0) {
+    if ((Type->UnitAbsorb || Type->InfantryAbsorb) && unknown_114.Count > 0) {
         BA3TechnoView* passenger = unknown_114.FUN_00473430();
         if (passenger) {
-            HBDir start;
+            DirStruct start;
             start.Raw = Facing388.FUN_004C93D0().Raw + 0x7FFF;
             bool first = true;
             int index = 0;
             unsigned int base = ((start.Whole >> 12) + 1) >> 1;
             do {
                 int dir = (base + index) & 7;
-                HBCell scratch;
-        HBCell origin = *vf_110(&scratch);
-                HBCell cellA;
+                CellStruct scratch;
+        CellStruct origin = *vf_110(&scratch);
+                CellStruct cellA;
                 cellA.X = origin.X + DAT_0089F688[dir].X;
                 cellA.Y = origin.Y + DAT_0089F688[dir].Y;
-                HBCell cellB;
+                CellStruct cellB;
                 cellB.X = cellA.X + DAT_0089F688[dir].X;
                 cellB.Y = cellA.Y + DAT_0089F688[dir].Y;
-                HBCell copyA = cellA;
-                HBCell copyB = cellB;
+                CellStruct copyA = cellA;
+                CellStruct copyB = cellB;
 
                 bool farFree = passenger->vf_107(DAT_0087F7E8.FUN_005657A0(&copyB), dir, FUN_005F5F00(), 0, 1) == 0;
                 int nearBlocked = passenger->vf_107(DAT_0087F7E8.FUN_005657A0(&copyA), dir, FUN_005F5F00(), 0, 1);
@@ -59,35 +59,35 @@ int BuildingA3View::vf_143()
                     if (!(DAT_0087F7E8.FUN_005657A0(&copyA)->unknown_140 & 0x100)) {
                         // The near cell is free: put the passenger there.
                         ++DAT_00A8E7AC;
-                        HBCoord where;
+                        CoordStruct where;
                         where.X = copyA.X * 256 + 0x80;
                         where.Y = copyA.Y * 256 + 0x80;
                         where.Z = 0;
                         if (passenger->vf_11() == 0xF) {
-                            HBCoord tmp;
+                            CoordStruct tmp;
                             where = *DAT_0087F7E8.FUN_004ACA10(&tmp, &where, 0);
                         } else {
-                            HBCell zero;
+                            CellStruct zero;
                             zero.X = 0;
                             zero.Y = 0;
-                            HBCell found = *DAT_0087F7E8.FUN_0056DC20(
+                            CellStruct found = *DAT_0087F7E8.FUN_0056DC20(
                                 &where, &copyA, passenger->vf_33()->unknown_67C, -1, 0, 0, 1, 1, 0, 0, 0, 1, &zero, 0, 0);
                             copyA = found;
-                            HBCoord centre = DAT_0087F7E8.FUN_005657A0(&copyA)->vf_18();
-                            HBCell back;
-                            HBCell snapped = *back.FUN_0042D470((short)(centre.X / 256), (short)(centre.Y / 256));
+                            CoordStruct centre = DAT_0087F7E8.FUN_005657A0(&copyA)->vf_18();
+                            CellStruct back;
+                            CellStruct snapped = *back.FUN_0042D470((short)(centre.X / 256), (short)(centre.Y / 256));
                             where.X = snapped.X * 256 + 0x80;
                             where.Y = snapped.Y * 256 + 0x80;
                             where.Z = 0;
                         }
-                        HBDir facing;
+                        DirStruct facing;
                         facing.Raw = (short)(dir << 13);
                         bool placed = passenger->vf_54(where, ((facing.Whole >> 7) + 1 >> 1) & 0xFF);
                         --DAT_00A8E7AC;
                         if (!placed) {
                             goto failed;
                         }
-                        if (Type->unknown_16AF) {
+                        if (Type->InfantryAbsorb) {
                             FUN_007509E0(RulesInstance->unknown_274, &vf_18(), 0);
                             if (passenger->unknown_21C->IsHumanPlayer) {
                                 passenger->unknown_68F = 0;
@@ -100,7 +100,7 @@ int BuildingA3View::vf_143()
                         }
                         passenger->vf_122(2, 0);
                         passenger->vf_288(DAT_0087F7E8.FUN_005657A0(first ? &copyB : &copyA), 1);
-                        if (Type->unknown_EE8 > 0) {
+                        if (Type->ExtraPowerBonus > 0) {
                             Owner->RecheckPower = 1;
                         }
                         goto done;
@@ -122,16 +122,16 @@ int BuildingA3View::vf_143()
         BA3_RETURN_NEXT_DELAY()
     }
 
-    if (Type->unknown_16BD) {
-    HBCoord exit;
+    if (Type->WeaponsFactory) {
+    CoordStruct exit;
     exit.X = 0;
     exit.Y = 0;
     exit.Z = 0;
-    if (!Type->unknown_CCE) {
-        HBCell offset = Type->unknown_ED4->unknown_28;
-        HBCell scratch;
-        HBCell origin = *vf_110(&scratch);
-        HBCell cell;
+    if (!Type->Naval) {
+        CellStruct offset = Type->FoundationOutside[10];
+        CellStruct scratch;
+        CellStruct origin = *vf_110(&scratch);
+        CellStruct cell;
         cell.X = offset.X + origin.X;
         cell.Y = origin.Y + offset.Y;
         exit.X = (short)(cell.X - 1) * 256 + 0x80;
@@ -146,11 +146,11 @@ int BuildingA3View::vf_143()
             passenger->vf_122(5, 0);
             passenger->vf_123();
         }
-        unknown_350.FUN_004A51F0(Type->unknown_3C8);
+        unknown_350.FUN_004A51F0(Type->DeployTime);
         unknown_80 = 1;
-        Status = (Type->unknown_CCE != 0 ? 3 : 0) + 1;
+        Status = (Type->Naval != 0 ? 3 : 0) + 1;
         FUN_00451E40(0x12);
-        BA3_PLAY_NAME(this, unknown_116C, unknown_117C, 8)
+        BA3_PLAY_NAME(this, BuildingAnim[8].Anim, BuildingAnim[8].Damaged, 8)
         break;
     }
     case 1:
@@ -180,9 +180,9 @@ int BuildingA3View::vf_143()
             persist->vf_3(clsid);
             if (memcmp(clsid, DAT_007E9A50, 16) != 0 && memcmp(clsid, DAT_007E9A90, 16) != 0) {
                 if (memcmp(clsid, DAT_007E9A30, 16) != 0) {
-                    HBCell scratch;
-                    HBCell here = *passenger->vf_110(&scratch);
-                    HBCell beside;
+                    CellStruct scratch;
+                    CellStruct here = *passenger->vf_110(&scratch);
+                    CellStruct beside;
                     beside.X = here.X + 4;
                     beside.Y = here.Y + 1;
                     passenger->vf_288(DAT_0087F7E8.FUN_005657A0(&beside), 1);
@@ -274,19 +274,19 @@ int BuildingA3View::vf_143()
                 persist.p->Release();
             }
         } else {
-            unknown_350.FUN_004A5240(Type->unknown_3C8);
+            unknown_350.FUN_004A5240(Type->DeployTime);
             Status = 4;
         }
         break;
     }
     case 3:
         if (!unknown_418) {
-            unknown_350.FUN_004A5240(Type->unknown_3C8);
+            unknown_350.FUN_004A5240(Type->DeployTime);
             Status = 4;
         }
         break;
     case 4:
-        if (unknown_350.FUN_004A51D0() || Type->unknown_CCE) {
+        if (unknown_350.FUN_004A51D0() || Type->Naval) {
             vf_289(false, 1);
             unknown_80 = 1;
         }
@@ -296,24 +296,24 @@ int BuildingA3View::vf_143()
     }
 
     // The type without the second exit: toggle the flag state of the building.
-    if (Type->unknown_CD1 && Type->unknown_CD3) {
+    if (Type->GapGenerator && Type->SuperGapRadiusInCells) {
             if (!unknown_268) {
                 vf_262();
-                unknown_26C = Type->unknown_CD3;
+                unknown_26C = Type->SuperGapRadiusInCells;
                 if (vf_212()) {
                     vf_261();
                     unknown_268 = 1;
                     unknown_669 = 1;
                     Owner->RecheckPower = 1;
                 } else {
-                    unknown_26C = Type->unknown_CD2;
+                    unknown_26C = Type->GapRadiusInCells;
                     vf_261();
                 }
             } else {
                 vf_262();
                 unknown_268 = 0;
                 unknown_669 = 0;
-                unknown_26C = Type->unknown_CD2;
+                unknown_26C = Type->GapRadiusInCells;
                 vf_261();
                 Owner->RecheckPower = 1;
             }

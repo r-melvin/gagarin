@@ -28,6 +28,9 @@ struct CoordStruct
     // `out` and returns it (__thiscall, RET 8).
     CoordStruct* FUN_00437160(CoordStruct* out, const CoordStruct* rhs);
 
+    // FUNCTION: GAMEMD 0x459F60 -- whether all three components equal those of `other` (__thiscall, RET 4).
+    bool FUN_00459F60(const CoordStruct* other) const;
+
     // Component-wise sum, inlined at its users (e.g. AnimClass::vf_18 0x422BE0,
     // BuildingClass 0x4500CB..0x4500E0). Declared here, defined inline in
     // coord_struct_sum.h, which only the TUs that add coordinates include: any body

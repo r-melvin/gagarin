@@ -21,9 +21,9 @@
 // FUN_00451890 is reached through BuildingA3View::FUN_00451890(name, id, a, b, c).
 
 // The 256-lepton cell a coordinate lies in.
-inline HBCell BA3CellOf(const HBCoord& where)
+inline CellStruct BA3CellOf(const CoordStruct& where)
 {
-    HBCell cell;
+    CellStruct cell;
     cell.X = (short)(where.X / 256);
     cell.Y = (short)(where.Y / 256);
     return cell;
@@ -36,20 +36,20 @@ void BuildingA3View::vf_311(char flag)
         return;
     }
 
-    if (Type->unknown_1560) {
+    if (Type->ProduceCashDelay) {
         CDTimerClass timer;
         timer.StartTime = DAT_00A8ED84;
-        timer.TimeLeft = Type->unknown_1560;
+        timer.TimeLeft = Type->ProduceCashDelay;
         unknown_6D0 = timer;
     }
 
     if (!unknown_6E4) {
         const char* name;
-        if (Type->unknown_16BB) {
+        if (Type->Refinery) {
             // Charge-up sounds: the stage is the charge in quarters.
             int stage = 0;
             if ((int)unknown_33C.FUN_006C9650() != 0) {
-                stage = ((int)unknown_33C.FUN_006C9650() << 2) / Type->unknown_800;
+                stage = ((int)unknown_33C.FUN_006C9650() << 2) / Type->Storage;
             }
             unknown_6F0 = stage;
             double ratio;
@@ -57,10 +57,10 @@ void BuildingA3View::vf_311(char flag)
             if (stage >= 3) {
                 ratio = FUN_005F5C60();
                 if (ratio > RulesInstance->unknown_1700) {
-                    name = Type->unknown_10E4;
+                    name = Type->BuildingAnim[6].Anim;
                     flagLow = 0;
                 } else {
-                    name = Type->unknown_10F4;
+                    name = Type->BuildingAnim[6].Damaged;
                     flagLow = 1;
                 }
                 if (name && *name) {
@@ -69,10 +69,10 @@ void BuildingA3View::vf_311(char flag)
             } else if (stage >= 2) {
                 ratio = FUN_005F5C60();
                 if (ratio > RulesInstance->unknown_1700) {
-                    name = Type->unknown_10A0;
+                    name = Type->BuildingAnim[5].Anim;
                     flagLow = 0;
                 } else {
-                    name = Type->unknown_10B0;
+                    name = Type->BuildingAnim[5].Damaged;
                     flagLow = 1;
                 }
                 if (name && *name) {
@@ -81,10 +81,10 @@ void BuildingA3View::vf_311(char flag)
             } else if (stage >= 1) {
                 ratio = FUN_005F5C60();
                 if (ratio > RulesInstance->unknown_1700) {
-                    name = Type->unknown_105C;
+                    name = Type->BuildingAnim[4].Anim;
                     flagLow = 0;
                 } else {
-                    name = Type->unknown_106C;
+                    name = Type->BuildingAnim[4].Damaged;
                     flagLow = 1;
                 }
                 if (name && *name) {
@@ -93,10 +93,10 @@ void BuildingA3View::vf_311(char flag)
             } else if (stage >= 0) {
                 ratio = FUN_005F5C60();
                 if (ratio > RulesInstance->unknown_1700) {
-                    name = Type->unknown_1018;
+                    name = Type->BuildingAnim[3].Anim;
                     flagLow = 0;
                 } else {
-                    name = Type->unknown_1028;
+                    name = Type->BuildingAnim[3].Damaged;
                     flagLow = 1;
                 }
                 if (name && *name) {
@@ -109,7 +109,7 @@ void BuildingA3View::vf_311(char flag)
                 double ratio = FUN_005F5C60();
                 int low = ratio <= RulesInstance->unknown_1700;
                 bool armed = vf_258() > 0;
-                name = low ? Type->unknown_1424 : (armed ? Type->unknown_1434 : Type->unknown_1414);
+                name = low ? Type->BuildingAnim[18].Damaged : (armed ? Type->BuildingAnim[18].Garrisoned : Type->BuildingAnim[18].Anim);
                 if (name && *name) {
                     FUN_00451890(name, 0x12, low, armed, 0);
                 }
@@ -118,7 +118,7 @@ void BuildingA3View::vf_311(char flag)
                 double ratio = FUN_005F5C60();
                 int low = ratio <= RulesInstance->unknown_1700;
                 bool armed = vf_258() > 0;
-                name = low ? Type->unknown_1028 : (armed ? Type->unknown_1038 : Type->unknown_1018);
+                name = low ? Type->BuildingAnim[3].Damaged : (armed ? Type->BuildingAnim[3].Garrisoned : Type->BuildingAnim[3].Anim);
                 if (name && *name) {
                     FUN_00451890(name, 3, low, armed, 0);
                 }
@@ -127,10 +127,10 @@ void BuildingA3View::vf_311(char flag)
                 double ratio = FUN_005F5C60();
                 int flagLow;
                 if (ratio > RulesInstance->unknown_1700) {
-                    name = Type->unknown_105C;
+                    name = Type->BuildingAnim[4].Anim;
                     flagLow = 0;
                 } else {
-                    name = Type->unknown_106C;
+                    name = Type->BuildingAnim[4].Damaged;
                     flagLow = 1;
                 }
                 if (name && *name) {
@@ -141,10 +141,10 @@ void BuildingA3View::vf_311(char flag)
                 double ratio = FUN_005F5C60();
                 int flagLow;
                 if (ratio > RulesInstance->unknown_1700) {
-                    name = Type->unknown_10A0;
+                    name = Type->BuildingAnim[5].Anim;
                     flagLow = 0;
                 } else {
-                    name = Type->unknown_10B0;
+                    name = Type->BuildingAnim[5].Damaged;
                     flagLow = 1;
                 }
                 if (name && *name) {
@@ -155,10 +155,10 @@ void BuildingA3View::vf_311(char flag)
                 double ratio = FUN_005F5C60();
                 int flagLow;
                 if (ratio > RulesInstance->unknown_1700) {
-                    name = Type->unknown_10E4;
+                    name = Type->BuildingAnim[6].Anim;
                     flagLow = 0;
                 } else {
-                    name = Type->unknown_10F4;
+                    name = Type->BuildingAnim[6].Damaged;
                     flagLow = 1;
                 }
                 if (name && *name) {
@@ -167,25 +167,25 @@ void BuildingA3View::vf_311(char flag)
             }
         }
 
-        if (Type->unknown_16CC) {
+        if (Type->OrePurifier) {
             ++Owner->NumOrePurifiers;
         }
-        if (Type->unknown_1564) {
-            Owner->InfantrySelfHeal += Type->unknown_1564;
+        if (Type->InfantryGainSelfHeal) {
+            Owner->InfantrySelfHeal += Type->InfantryGainSelfHeal;
         }
-        if (Type->unknown_1568) {
-            Owner->UnitsSelfHeal += Type->unknown_1568;
+        if (Type->UnitsGainSelfHeal) {
+            Owner->UnitsSelfHeal += Type->UnitsGainSelfHeal;
         }
-        if (Type->unknown_16CB) {
-            Owner->AirportDocks += Type->unknown_1780;
+        if (Type->Helipad) {
+            Owner->AirportDocks += Type->NumberOfDocks;
             DAT_0087F7E8.FUN_006A60E0(3);
         }
 
         // Super weapon timers of the owner that belong to this type: announce how long they still have to run.
-        if (Type->unknown_16F0 != -1) {
+        if (Type->SuperWeapon != -1) {
             for (int i = 0; i < Owner->Supers.Count; i++) {
                 SuperClass* super = Owner->Supers.Items[i];
-                if (super->Type->Type == Type->unknown_16F0) {
+                if (super->Type->Type == Type->SuperWeapon) {
                     int remaining = super->RechargeTimer.TimeLeft;
                     if (super->RechargeTimer.StartTime != -1) {
                         int elapsed = DAT_00A8ED84 - super->RechargeTimer.StartTime;
@@ -199,7 +199,7 @@ void BuildingA3View::vf_311(char flag)
                         double ratio = FUN_005F5C60();
                         int low = ratio <= RulesInstance->unknown_1700;
                         bool armed = vf_258() > 0;
-                        name = low ? Type->unknown_139C : (armed ? Type->unknown_13AC : Type->unknown_138C);
+                        name = low ? Type->BuildingAnim[16].Damaged : (armed ? Type->BuildingAnim[16].Garrisoned : Type->BuildingAnim[16].Anim);
                         if (name && *name) {
                             FUN_00451890(name, 0x10, low, armed, 0);
                         }
@@ -207,7 +207,7 @@ void BuildingA3View::vf_311(char flag)
                         double ratio = FUN_005F5C60();
                         int low = ratio <= RulesInstance->unknown_1700;
                         bool armed = vf_258() > 0;
-                        name = low ? Type->unknown_1314 : (armed ? Type->unknown_1324 : Type->unknown_1304);
+                        name = low ? Type->BuildingAnim[14].Damaged : (armed ? Type->BuildingAnim[14].Garrisoned : Type->BuildingAnim[14].Anim);
                         if (name && *name) {
                             FUN_00451890(name, 0xE, low, armed, 0);
                         }
@@ -216,19 +216,19 @@ void BuildingA3View::vf_311(char flag)
             }
         }
 
-        if (vf_255() && !Type->unknown_16C5) {
+        if (vf_255() && !Type->TurretAnimIsVoxel) {
             int previous = unknown_5FC;
             if (previous == -1) {
-                name = Type->unknown_11B0;
+                name = Type->BuildingAnim[9].Anim;
                 if (name && *name) {
                     FUN_00451890(name, 9, 0, 0, 0);
                 }
             } else {
                 unknown_5FC = -1;
-                if (!Type->unknown_16C5) {
+                if (!Type->TurretAnimIsVoxel) {
                     FUN_00451E40(9);
                     char buffer[0x40];
-                    strcpy(buffer, Type->unknown_1F8);
+                    strcpy(buffer, Type->ImageFile);
                     strcat(buffer, DAT_00818D7C);
                     buffer[strlen(buffer)] = (char)(previous + 'B');
                     buffer[strlen(buffer) + 1] = 0;
@@ -237,7 +237,7 @@ void BuildingA3View::vf_311(char flag)
                 }
             }
             if (vf_255() && unknown_580) {
-                HBDir facing = Facing388.FUN_004C93D0();
+                DirStruct facing = Facing388.FUN_004C93D0();
                 if (unknown_580) {
                     unknown_580->unknown_AC = DAT_007F4890[(facing.Whole >> 10) + 1 >> 1 & 0x1F];
                     unknown_580->unknown_C4 = 0;
@@ -245,12 +245,12 @@ void BuildingA3View::vf_311(char flag)
             }
         }
 
-        if (Type->unknown_E34) {
+        if (Type->LightIntensity) {
             if (!LightSource) {
                 BA3LightMem* mem = new BA3LightMem;
                 if (mem) {
-                    LightSource = mem->FUN_00554760(vf_18(), Type->unknown_E30, Type->unknown_E34, Type->unknown_E38,
-                                                    Type->unknown_E3C, Type->unknown_E40);
+                    LightSource = mem->FUN_00554760(vf_18(), Type->LightVisibility, Type->LightIntensity, Type->LightRedTint,
+                                                    Type->LightGreenTint, Type->LightBlueTint);
                 } else {
                     LightSource = 0;
                 }
@@ -258,29 +258,29 @@ void BuildingA3View::vf_311(char flag)
             LightSource->FUN_00554A60(0);
         }
 
-        if (Type->unknown_16BE) {
+        if (Type->LaserFencePost) {
             FUN_004533A0(0);
         }
-        if (Type->unknown_16C8) {
+        if (Type->SensorArray) {
             vf_317(DAT_0089C818);
         }
-        if (Type->unknown_D31) {
+        if (Type->DetectDisguise) {
             vf_319(DAT_0089C818);
         }
         unknown_6DD = 1;
     }
 
-    if (Type->unknown_1573) {
+    if (Type->Powered) {
         FUN_004547C0();
     }
 
-    if (Type->unknown_5EE && !Owner->IsControlledByCurrentPlayer()) {
+    if (Type->RevealToAll && !Owner->IsControlledByCurrentPlayer()) {
         if (!flag) {
             vf_290(0, 0, 1, DAT_00A83D4C, 0);
-            HBCoord where = Location;
+            CoordStruct where = Location;
             DAT_0087F7E8.FUN_00567DA0(&where, 0, unknown_260 + 3, 0);
         }
-        HBCell cell;
+        CellStruct cell;
         cell.X = (short)(Location.X / 256);
         cell.Y = (short)(Location.Y / 256);
         ((BA3EvaView*)12)->FUN_0065FA70(cell);
@@ -288,10 +288,10 @@ void BuildingA3View::vf_311(char flag)
 
     // The EVA announcement of a super weapon building.
     if (!Owner->IsControlledByCurrentPlayer() && !Owner->IsAlliedWith(DAT_00A83D4C) && DAT_00A8B538 == 0 && Session_00A8B238.GameMode
-        && (Type->unknown_16F0 == -1 || DAT_00A83CBC[Type->unknown_16F0]->unknown_28->unknown_C8 == 0
-            || Owner->ActiveBuildingTypes.FUN_0049FAE0(DAT_00A83CBC[Type->unknown_16F0]->unknown_28->unknown_C8->unknown_DF8) != 0)) {
+        && (Type->SuperWeapon == -1 || DAT_00A83CBC[Type->SuperWeapon]->unknown_28->unknown_C8 == 0
+            || Owner->ActiveBuildingTypes.FUN_0049FAE0(DAT_00A83CBC[Type->SuperWeapon]->unknown_28->unknown_C8->unknown_DF8) != 0)) {
         const char* eva;
-        switch (Type->unknown_16F0) {
+        switch (Type->SuperWeapon) {
         case 0:
             eva = s_EVA_NuclearSiloDetected_00818F00;
             break;
@@ -318,14 +318,14 @@ void BuildingA3View::vf_311(char flag)
 afterEva:
 
     // A building with a second exit: look for a free cell next to it and move there.
-    if (Type->unknown_16BD && Type->unknown_CCE && unknown_218 == 0) {
-        HBCell zero;
+    if (Type->WeaponsFactory && Type->Naval && unknown_218 == 0) {
+        CellStruct zero;
         zero.X = 0;
         zero.Y = 0;
-        HBCoord start;
-        HBCell scratch;
-        HBCell found = *DAT_0087F7E8.FUN_0056DC20(&start, vf_110(&scratch), 5, -1, 10, 0, 5, 5, 0, 0, 0, 1, &zero, 0, 0);
-        HBCell moved;
+        CoordStruct start;
+        CellStruct scratch;
+        CellStruct found = *DAT_0087F7E8.FUN_0056DC20(&start, vf_110(&scratch), 5, -1, 10, 0, 5, 5, 0, 0, 0, 1, &zero, 0, 0);
+        CellStruct moved;
         moved.X = found.X + 2;
         moved.Y = found.Y + 2;
         if (moved.X != DAT_0089C818.X || moved.Y != DAT_0089C818.Y) {
@@ -337,29 +337,29 @@ afterEva:
     unknown_6E4 = 1;
     Owner->RecheckPower = 1;
     Owner->RecheckRadar = 1;
-    if (vf_33()->unknown_CD1) {
+    if (vf_33()->GapGenerator) {
         vf_261();
     }
 
     // The free unit of the building type.
-    if (Type->unknown_EA0 && DAT_00A8E7AC == 0 && !flag && !DAT_00A8ED6B) {
-        if (!Owner->IsControlledByHuman() || !unknown_300 || unknown_300 > Type->unknown_EA0->vf_43()) {
-            HBCoord at = vf_18();
-            HBCell base;
+    if (Type->FreeUnit && DAT_00A8E7AC == 0 && !flag && !DAT_00A8ED6B) {
+        if (!Owner->IsControlledByHuman() || !unknown_300 || unknown_300 > Type->FreeUnit->vf_43()) {
+            CoordStruct at = vf_18();
+            CellStruct base;
             base.X = (short)(at.X / 256);
             base.Y = (short)(at.Y / 256);
-            HBCell spot;
+            CellStruct spot;
             spot.X = base.X + DAT_0089F698.X;
             spot.Y = base.Y + DAT_0089F698.Y;
             BA3UnitMem* mem = new BA3UnitMem;
             BA3UnitView* unit;
             if (mem) {
-                unit = mem->FUN_007353C0(Type->unknown_EA0, Owner);
+                unit = mem->FUN_007353C0(Type->FreeUnit, Owner);
             } else {
                 unit = 0;
             }
             if (unit) {
-                HBCoord target;
+                CoordStruct target;
                 target.X = spot.X * 256 + 0x80;
                 target.Y = spot.Y * 256 + 0x80;
                 target.Z = 0;
@@ -367,17 +367,17 @@ afterEva:
                     // Not placeable there: let the cell search look around the building, twice with different options.
                     int movement = unit->unknown_6C4->unknown_5B4;
                     {
-                        HBCell zeroCell;
+                        CellStruct zeroCell;
                         zeroCell.X = 0;
                         zeroCell.Y = 0;
-                        HBCoord start = Location;
-                        HBCell cell = BA3CellOf(start);
-                        HBCell zoneCell = cell;
-                        HBCell result = *DAT_0087F7E8.FUN_0056DC20(
+                        CoordStruct start = Location;
+                        CellStruct cell = BA3CellOf(start);
+                        CellStruct zoneCell = cell;
+                        CellStruct result = *DAT_0087F7E8.FUN_0056DC20(
                             &start, &cell, 2, DAT_0087F7E8.FUN_0056D230(&zoneCell, movement, 0), movement, 0, 1, 1, 1, 1, 0, 0,
                             &zeroCell, 0, 0);
                         if (result.X != DAT_0089C818.X || result.Y != DAT_0089C818.Y) {
-                            HBCoord to;
+                            CoordStruct to;
                             to.X = result.X * 256 + 0x80;
                             to.Y = result.Y * 256 + 0x80;
                             to.Z = 0;
@@ -387,17 +387,17 @@ afterEva:
                         }
                     }
                     {
-                        HBCell zeroCell;
+                        CellStruct zeroCell;
                         zeroCell.X = 0;
                         zeroCell.Y = 0;
-                        HBCoord start = Location;
-                        HBCell cell = BA3CellOf(start);
-                        HBCell zoneCell = cell;
-                        HBCell result = *DAT_0087F7E8.FUN_0056DC20(
+                        CoordStruct start = Location;
+                        CellStruct cell = BA3CellOf(start);
+                        CellStruct zoneCell = cell;
+                        CellStruct result = *DAT_0087F7E8.FUN_0056DC20(
                             &start, &cell, 2, DAT_0087F7E8.FUN_0056D230(&zoneCell, movement, 0), movement, 0, 1, 1, 0, 1, 0, 0,
                             &zeroCell, 0, 0);
                         if (result.X != DAT_0089C818.X || result.Y != DAT_0089C818.Y) {
-                            HBCoord to;
+                            CoordStruct to;
                             to.X = result.X * 256 + 0x80;
                             to.Y = result.Y * 256 + 0x80;
                             to.Z = 0;
@@ -414,13 +414,13 @@ afterEva:
                     unit->vf_123();
                 }
             } else {
-                Owner->GiveMoney(Type->unknown_EA0->vf_46(Owner, 1));
+                Owner->GiveMoney(Type->FreeUnit->vf_46(Owner, 1));
             }
         }
     }
 
     // The spawned object of the rules (a harvester-like helper), created while the counter is raised.
-    if (!RulesInstance->unknown_17E8 && Type->unknown_154E && !flag) {
+    if (!RulesInstance->unknown_17E8 && Type->HoverPad && !flag) {
         ++DAT_00A8E7AC;
         BA3SpawnMem* mem = new BA3SpawnMem;
         if (mem) {

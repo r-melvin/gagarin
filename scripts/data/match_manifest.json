@@ -10645,7 +10645,7 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x459F60",
-  "sym": "?FUN_00459F60@Triple3i@@QBE_NPBU1@@Z",
+  "sym": "?FUN_00459F60@CoordStruct@@QBE_NPBU1@@Z",
   "len": "0x2e",
   "name": "FUN_00459F60",
   "status": "matched",
@@ -49048,20 +49048,21 @@
   "len": "0xd22",
   "name": "BuildingClass::vf_313",
   "status": "partial",
-  "pct": 3.4,
+  "pct": 2.9,
   "best_pct": 3.4,
-  "best_at": "cf203011"
+  "best_at": "cf203011",
+  "lowered_reason": "CellClass::Intensity_Normal is a signed short (36 retail MOVSX reads, no MOVZX; stage 1 retyped it); the earlier figure was measured with the unsigned field and overstated the match"
  },
  {
   "tu": "match/building_a3_body_43e940.cpp",
   "addr": "0x43E940",
-  "sym": "?vf_178@BuildingA3View@@UAE?AUHBDir@@PAVBA3ObjView@@@Z",
+  "sym": "?vf_178@BuildingA3View@@UAE?AUDirStruct@@PAVBA3ObjView@@@Z",
   "len": "0x3f4",
   "name": "BuildingClass::vf_178",
   "status": "partial",
-  "pct": 11.5,
-  "best_pct": 11.5,
-  "best_at": "cf203011"
+  "pct": 12.1,
+  "best_pct": 12.1,
+  "best_at": "f10538e6"
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -49592,7 +49593,7 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x453A70",
-  "sym": "?vf_192@BuildingBView@@UAEPAUHBCoord@@PAU2@H@Z",
+  "sym": "?vf_192@BuildingBView@@UAEPAUCoordStruct@@PAU2@H@Z",
   "len": "0x176",
   "name": "BuildingClass::vf_192",
   "status": "partial",
@@ -49672,9 +49673,9 @@
   "len": "0x81c",
   "name": "BuildingClass::vf_260",
   "status": "partial",
-  "pct": 0.8,
-  "best_pct": 0.8,
-  "best_at": "aebb4024"
+  "pct": 1.1,
+  "best_pct": 1.1,
+  "best_at": "f10538e6"
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -49688,18 +49689,18 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x4556D0",
-  "sym": "?vf_318@BuildingBView@@UAEXUHBCell@@@Z",
+  "sym": "?vf_318@BuildingBView@@UAEXUCellStruct@@@Z",
   "len": "0x145",
   "name": "BuildingClass::vf_318",
   "status": "partial",
-  "pct": 3.8,
-  "best_pct": 3.8,
-  "best_at": "cf203011"
+  "pct": 4.8,
+  "best_pct": 4.8,
+  "best_at": "f10538e6"
  },
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x455820",
-  "sym": "?vf_317@BuildingBView@@UAEXUHBCell@@@Z",
+  "sym": "?vf_317@BuildingBView@@UAEXUCellStruct@@@Z",
   "len": "0x158",
   "name": "BuildingClass::vf_317",
   "status": "partial",
@@ -49710,7 +49711,7 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x455980",
-  "sym": "?vf_320@BuildingBView@@UAEXUHBCell@@@Z",
+  "sym": "?vf_320@BuildingBView@@UAEXUCellStruct@@@Z",
   "len": "0xf9",
   "name": "BuildingClass::vf_320",
   "status": "partial",
@@ -49721,7 +49722,7 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x455A80",
-  "sym": "?vf_319@BuildingBView@@UAEXUHBCell@@@Z",
+  "sym": "?vf_319@BuildingBView@@UAEXUCellStruct@@@Z",
   "len": "0x10d",
   "name": "BuildingClass::vf_319",
   "status": "partial",
@@ -49732,7 +49733,7 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x455C20",
-  "sym": "?vf_75@BuildingBView@@UAEPAUHBRect@@PAU2@@Z",
+  "sym": "?vf_75@BuildingBView@@UAEPAURectangleStruct@@PAU2@@Z",
   "len": "0x12e",
   "name": "BuildingClass::vf_75",
   "status": "partial",
@@ -49859,7 +49860,7 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x458A80",
-  "sym": "?vf_292@BuildingBView@@UAE_NPAUHBCoord@@H@Z",
+  "sym": "?vf_292@BuildingClass@@UAE_NPAUCoordStruct@@H@Z",
   "len": "0x329",
   "name": "BuildingClass::vf_292",
   "status": "partial",
@@ -49906,7 +49907,7 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x459900",
-  "sym": "?vf_282@BuildingBView@@UAEXXZ",
+  "sym": "?vf_282@BuildingClass@@UAEXXZ",
   "len": "0x300",
   "name": "BuildingClass::vf_282",
   "status": "partial",
@@ -91970,9 +91971,10 @@
   "len": "0x257",
   "name": "BuildingClass::vf_70",
   "status": "partial",
-  "pct": 7.8,
+  "pct": 6.9,
   "best_pct": 7.8,
-  "best_at": "cf203011"
+  "best_at": "cf203011",
+  "lowered_reason": "CellClass::Intensity_Normal is a signed short (36 retail MOVSX reads, no MOVZX; stage 1 retyped it); the earlier figure was measured with the unsigned field and overstated the match"
  },
  {
   "tu": "match/tu038_building_class.cpp",

@@ -42,15 +42,15 @@ inline BA3TechnoView* BA3AsTechno(BA3TechnoView* object)
 // FUNCTION: GAMEMD 0x44B780
 int BuildingA3View::vf_147()
 {
-    if (Type->unknown_16AB) {
+    if (Type->Bunker) {
         FUN_00458E50();
     }
 
-    if (Type->unknown_16B9) {
+    if (Type->ConstructionYard) {
         switch (Status) {
         case 0:
             FUN_00447780(2);
-            BA3_PLAY_NAME(this, unknown_1128, unknown_1138, 7)
+            BA3_PLAY_NAME(this, BuildingAnim[7].Anim, BuildingAnim[7].Damaged, 7)
             Status = 2;
             break;
         case 2:
@@ -64,7 +64,7 @@ int BuildingA3View::vf_147()
         return 1;
     }
 
-    if (Type->unknown_16C1) {
+    if (Type->Hospital) {
         switch (Status) {
         case 0:
             Status = 2;
@@ -73,7 +73,7 @@ int BuildingA3View::vf_147()
             unknown_620.Rate = 1;
             unknown_620.Timer.StartTime = DAT_00A8ED84;
             unknown_620.Timer.TimeLeft = 1;
-            if (Type->unknown_684 != -1) {
+            if (Type->Ammo != -1) {
                 unknown_2FC = unknown_2FC - 1 <= 0 ? 0 : unknown_2FC - 1;
             }
             break;
@@ -85,12 +85,12 @@ int BuildingA3View::vf_147()
                 switch (vf_157(0x1C)) {
                 case 0x21:
                     if (Owner->IsControlledByCurrentPlayer()) {
-                        HBCell cellTmp;
-                        HBCell* cell = vf_110(&cellTmp);
+                        CellStruct cellTmp;
+                        CellStruct* cell = vf_110(&cellTmp);
                         if (((BA3EvaView*)8)->FUN_0065FA70(*cell)) {
                             FUN_00752700(s_EVA_UnitRepaired_0081905C, -1, -1);
                         }
-                        HBCoord where = Location;
+                        CoordStruct where = Location;
                         FUN_007509E0(RulesInstance->unknown_718, &where, 0);
                     }
                 case 10:
@@ -109,7 +109,7 @@ int BuildingA3View::vf_147()
         goto finish;
     }
 
-    if (Type->unknown_16C2) {
+    if (Type->Armory) {
         switch (Status) {
         case 0:
             Status = 2;
@@ -136,15 +136,15 @@ int BuildingA3View::vf_147()
         goto finish;
     }
 
-    if (Type->unknown_16A9) {
+    if (Type->UnitRepair) {
         // The main service mission (the building services one passenger at a time).
         switch (Status) {
         case 0: {
             if (!FUN_0065AE30()) {
                 FUN_00451E40(8);
                 FUN_00451E40(0xB);
-                BA3_PLAY_NAME(this, unknown_127C, unknown_128C, 0xC)
-                BA3_PLAY_NAME(this, unknown_1018, unknown_1028, 3)
+                BA3_PLAY_NAME(this, BuildingAnim[12].Anim, BuildingAnim[12].Damaged, 0xC)
+                BA3_PLAY_NAME(this, BuildingAnim[3].Anim, BuildingAnim[3].Damaged, 3)
                 vf_122(5, 0);
                 return 1;
             }
@@ -185,8 +185,8 @@ int BuildingA3View::vf_147()
         case 1: {
             if (!FUN_0065AE30()) {
                 if (unknown_57C != 0 || unknown_588 != 0) {
-                    BA3_PLAY_NAME(this, unknown_127C, unknown_128C, 0xC)
-                    BA3_PLAY_NAME(this, unknown_1018, unknown_1028, 3)
+                    BA3_PLAY_NAME(this, BuildingAnim[12].Anim, BuildingAnim[12].Damaged, 0xC)
+                    BA3_PLAY_NAME(this, BuildingAnim[3].Anim, BuildingAnim[3].Damaged, 3)
                     FUN_00451E40(8);
                     FUN_00451E40(0xB);
                 }
@@ -224,11 +224,11 @@ int BuildingA3View::vf_147()
                             BA3TechnoView* generic = BA3AsTechno(FUN_0065AD30(0));
                             generic->unknown_674->vf_22();
                             if (generic->unknown_218 == 0 || Owner->IsControlledByHuman()) {
-                                HBCell cellTmp;
-                        HBCell where = *vf_309(&cellTmp, FUN_0065AD30(0), DAT_0089C818);
+                                CellStruct cellTmp;
+                        CellStruct where = *vf_309(&cellTmp, FUN_0065AD30(0), DAT_0089C818);
                                 if (unknown_218) {
-                                    HBCoord coordTmp;
-                                    HBCoord c = unknown_218->vf_18();
+                                    CoordStruct coordTmp;
+                                    CoordStruct c = unknown_218->vf_18();
                                     (void)coordTmp;
                                     where.X = (short)(c.X / 256);
                                     where.Y = (short)(c.Y / 256);
@@ -255,7 +255,7 @@ int BuildingA3View::vf_147()
                         FUN_00752700(s_EVA_Repairing_00818F18, -1, -1);
                     }
                     Status = 2;
-                    BA3_PLAY_NAME(this, unknown_11F4, unknown_1204, 10)
+                    BA3_PLAY_NAME(this, BuildingAnim[10].Anim, BuildingAnim[10].Damaged, 10)
                     FUN_00451E40(3);
                     FUN_00451E40(0x12);
                     unknown_6DD = 0;
@@ -279,8 +279,8 @@ int BuildingA3View::vf_147()
             if (!FUN_0065AE30()) {
                 FUN_00451E40(8);
                 FUN_00451E40(0xB);
-                BA3_PLAY_NAME(this, unknown_127C, unknown_128C, 0xC)
-                BA3_PLAY_NAME(this, unknown_1018, unknown_1028, 3)
+                BA3_PLAY_NAME(this, BuildingAnim[12].Anim, BuildingAnim[12].Damaged, 0xC)
+                BA3_PLAY_NAME(this, BuildingAnim[3].Anim, BuildingAnim[3].Damaged, 3)
                 Status = 1;
                 return 1;
             }
@@ -295,16 +295,16 @@ int BuildingA3View::vf_147()
                 if (action != 1) {
                     if (action != 0x20) {
                         if (unknown_41A) {
-                            HBCell cellTmp;
-                        HBCell* cell = vf_110(&cellTmp);
+                            CellStruct cellTmp;
+                        CellStruct* cell = vf_110(&cellTmp);
                         if (((BA3EvaView*)8)->FUN_0065FA70(*cell)) {
                                 FUN_00752700(s_EVA_UnitRepaired_0081905C, -1, -1);
                             }
                         }
                         FUN_00451E40(8);
                         FUN_00451E40(0xB);
-                        BA3_PLAY_NAME(this, unknown_127C, unknown_128C, 0xC)
-                        BA3_PLAY_NAME(this, unknown_1018, unknown_1028, 3)
+                        BA3_PLAY_NAME(this, BuildingAnim[12].Anim, BuildingAnim[12].Damaged, 0xC)
+                        BA3_PLAY_NAME(this, BuildingAnim[3].Anim, BuildingAnim[3].Damaged, 3)
                         Status = 1;
                         BA3TechnoView* techno = BA3AsTechno(FUN_0065AD30(0));
                         if (techno->unknown_218 != 0 && !Owner->IsControlledByHuman()) {
@@ -315,10 +315,10 @@ int BuildingA3View::vf_147()
                             techno->unknown_500 = 0;
                             return 1;
                         }
-                        HBCell cellTmp;
-                        HBCell where = *vf_309(&cellTmp, FUN_0065AD30(0), DAT_0089C818);
+                        CellStruct cellTmp;
+                        CellStruct where = *vf_309(&cellTmp, FUN_0065AD30(0), DAT_0089C818);
                         if (unknown_218) {
-                            HBCoord c = unknown_218->vf_18();
+                            CoordStruct c = unknown_218->vf_18();
                             where.X = (short)(c.X / 256);
                             where.Y = (short)(c.Y / 256);
                         }
@@ -335,8 +335,8 @@ int BuildingA3View::vf_147()
                         }
                         FUN_00451E40(8);
                         FUN_00451E40(0xB);
-                        BA3_PLAY_NAME(this, unknown_127C, unknown_128C, 0xC)
-                        BA3_PLAY_NAME(this, unknown_1018, unknown_1028, 3)
+                        BA3_PLAY_NAME(this, BuildingAnim[12].Anim, BuildingAnim[12].Damaged, 0xC)
+                        BA3_PLAY_NAME(this, BuildingAnim[3].Anim, BuildingAnim[3].Damaged, 3)
                         Status = 1;
                     }
                 }
@@ -349,7 +349,7 @@ finish:
         return (int)(FUN_005B3A00()->unknown_10 * DAT_007E27F8);
     }
 
-    if (!Type->unknown_16AA) {
+    if (!Type->UnitReload) {
         return 0xF;
     }
     // Walk the passengers and release or send them on, depending on what they are doing.

@@ -41,7 +41,7 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
 
     if (unknown_210) {
         unknown_210 = 0;
-        if (Type->unknown_16A4) {
+        if (Type->Radar) {
             Owner->RadarVisibleTo = 0;
             for (int i = 0; i < Owner->Buildings.Count; ++i) {
                 BuildingClass* other = Owner->Buildings.Items[i];
@@ -53,86 +53,86 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
         }
     }
 
-    if (Type->unknown_16C7) {
+    if (Type->CloakGenerator) {
         unknown_6EB = 0xFF;
         if (!unknown_6EC) {
-            unknown_6EC = Type->unknown_1707;
+            unknown_6EC = Type->CloakRadiusInCells;
         }
         unknown_80 = 1;
         unknown_6EC = 1;
         vf_260(1);
     }
 
-    if (Type->unknown_16BE) {
+    if (Type->LaserFencePost) {
         FUN_00452A40(1);
     }
 
-    if (Type->unknown_5EE && !Owner->IsControlledByCurrentPlayer()) {
+    if (Type->RevealToAll && !Owner->IsControlledByCurrentPlayer()) {
         vf_291(0, 0, 1, DAT_00A83D4C);
     }
 
-    if (vf_33()->unknown_510.unknown_10 == 0) {
-        HBCoord where = Location;
+    if (vf_33()->DieSound.Count == 0) {
+        CoordStruct where = Location;
         FUN_00750E20(RulesInstance->unknown_6E8, &where, 0);
     }
 
-    if (Type->FUN_0045EC90() >= 2 && Type->FUN_0045ECA0(0) >= 2) {
-        if (Type->FUN_0045EC90() > 2) {
-            DAT_00A8B230->Counter.FUN_0065C7E0(0, Type->FUN_0045EC90() - 2);
+    if (Type->GetFoundationWidth() >= 2 && Type->GetFoundationHeight(0) >= 2) {
+        if (Type->GetFoundationWidth() > 2) {
+            DAT_00A8B230->Counter.FUN_0065C7E0(0, Type->GetFoundationWidth() - 2);
         }
-        if (Type->FUN_0045ECA0(0) > 2) {
-            DAT_00A8B230->Counter.FUN_0065C7E0(0, Type->FUN_0045ECA0(0) - 2);
+        if (Type->GetFoundationHeight(0) > 2) {
+            DAT_00A8B230->Counter.FUN_0065C7E0(0, Type->GetFoundationHeight(0) - 2);
         }
         if (DAT_00A8B230->Counter.FUN_0065C7E0(0, 99) < 50) {
-            HBCoord at;
+            CoordStruct at;
             at.Z = 0;
-            HBCoord loc = Location;
+            CoordStruct loc = Location;
             at.X = BA3CellCentre(loc.X);
             at.Y = BA3CellCentre(loc.Y);
             FUN_006B59A0(at, 100, 100, 1);
         } else {
-            HBCoord at;
+            CoordStruct at;
             at.Z = 0;
-            HBCoord loc = Location;
+            CoordStruct loc = Location;
             at.X = BA3CellCentre(loc.X);
             at.Y = BA3CellCentre(loc.Y);
             FUN_006B5C90(at, 100, 100, 1);
         }
     }
 
-    HBCoord scatter;
+    CoordStruct scatter;
     while (list[0] != 0x7FFF || list[1] != 0x7FFF) {
         short* entry = list;
         list += 2;
-        HBCoord tmp;
-        HBCoord* centre = vf_43(&tmp);
+        CoordStruct tmp;
+        CoordStruct* centre = vf_43(&tmp);
         short x = (short)(centre->X / 256) + entry[0];
         short y = entry[1] + (short)(centre->Y / 256);
-        if (Type->unknown_72C.Count > 0) {
-            HBCoord at;
+        if (Type->Explosion.Count > 0) {
+            CoordStruct at;
             at.X = (short)x * 256 + 0x80;
             at.Y = (short)y * 256 + 0x80;
-            HBCoord loc = Location;
+            CoordStruct loc = Location;
             at.Z = 0;
-            HBCoord* p = FUN_0049F420(&scatter, &at, 0x40, 0);
-            HBCoord spawn;
+            CoordStruct* p = FUN_0049F420(&scatter, &at, 0x40, 0);
+            CoordStruct spawn;
             spawn.X = p->X;
             spawn.Y = p->Y;
             spawn.Z = p->Z + loc.Z;
             BA3AnimMem* mem = new BA3AnimMem;
             if (mem) {
                 int delay = DAT_00A8B230->Counter.FUN_0065C7E0(0, 3);
-                BA3TypeView* type = Type;
-                mem->FUN_00421EA0(type->unknown_72C.Items[DAT_00A8B230->Counter.FUN_0065C780() % type->unknown_72C.GetCount()],
+                BuildingTypeClass* type = Type;
+                mem->FUN_00421EA0(type->Explosion.Items[DAT_00A8B230->Counter.FUN_0065C780() % type->Explosion.GetCount()],
                                   &spawn, delay, 1, 0x600, 0, 0);
             }
         }
     }
 
-    if (Type->unknown_D15) {
+    if (Type->Explodes) {
         for (int* offset = DAT_00818CB8; offset < DAT_00818CB8 + 4; ++offset) {
-            HBCoord loc = Location;
-            HBCoord cellAt = *FUN_0049F550(&scatter, &loc, *offset);
+            CoordStruct loc = Location;
+            CoordStruct cellAt = *FUN_0049F550(&scatter, &loc, *offset);
             if (DAT_0087F7E8.FUN_00565730(&cellAt)->unknown_44 != -1
                 && DAT_00A83D84[DAT_0087F7E8.FUN_00565730(&cellAt)->unknown_44]->unknown_2B0) {
                 BA3AnimMem* mem = new BA3AnimMem;
@@ -149,8 +149,8 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
         unknown_33C.FUN_006C96B0(1.0f, index);
         Owner->OwnedTiberium.RemoveAmount(1.0f, index);
         int distance = DAT_00A8B230->Counter.FUN_0065C7E0(0x100, 0x300);
-        HBCoord loc = Location;
-        HBCoord shot = *FUN_0049F420(&scatter, &loc, distance, 1);
+        CoordStruct loc = Location;
+        CoordStruct shot = *FUN_0049F420(&scatter, &loc, distance, 1);
         DAT_0087F7E8.FUN_00565730(&shot)->FUN_00487190(index, 1);
     }
 
@@ -159,7 +159,7 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
         FUN_0048DED0(amount);
     }
 
-    if (vf_97() == 0x13 || Type->unknown_D15) {
+    if (vf_97() == 0x13 || Type->Explodes) {
         unknown_528.X = DAT_00A8ED84;
         unknown_528.Z = 0;
         unknown_100.X = DAT_00A8ED84;
@@ -170,40 +170,40 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
         unknown_528.Z = 8;
     }
 
-    if (Type->unknown_748.Count > 0) {
-        const BA3AnimTypeView* animType =
-            Type->unknown_748.Items[DAT_00A8B230->Counter.FUN_0065C780() % Type->unknown_748.Count];
+    if (Type->DestroyAnim.Count > 0) {
+        const AnimTypeClass* animType =
+            Type->DestroyAnim.Items[DAT_00A8B230->Counter.FUN_0065C780() % Type->DestroyAnim.Count];
         if (animType) {
             BA3AnimMem* mem = new BA3AnimMem;
             BA3AnimView* anim;
             if (mem) {
-                HBCoord tmp;
+                CoordStruct tmp;
                 anim = mem->FUN_00421EA0(animType, vf_43(&tmp), 0, 1, 0x600, 0, 0);
             } else {
                 anim = 0;
             }
-            if (vf_33()->unknown_DF0) {
+            if (vf_33()->Palette) {
                 anim->unknown_D4 = vf_121();
-                if (Type->unknown_DD0) {
-                    strncpy(anim->unknown_DC, &Type->unknown_DD0, 0x20);
+                if (Type->PaletteFile[0]) {
+                    strncpy(anim->unknown_DC, Type->PaletteFile, 0x20);
                 }
             }
         }
     }
 
     DynamicVectorClass<const ParticleSystemTypeClass*> systems(0, 0);
-    for (int k = vf_33()->unknown_794.Count - 1; k >= 0; --k) {
-        if (BA3ParticleType(vf_33()->unknown_794.Items[k])->unknown_2B4 == 0) {
-            BA3AddItem(systems, vf_33()->unknown_794.Items[k]);
+    for (int k = vf_33()->DestroyParticleSystems.Count - 1; k >= 0; --k) {
+        if (BA3ParticleType(vf_33()->DestroyParticleSystems.Items[k])->unknown_2B4 == 0) {
+            BA3AddItem(systems, vf_33()->DestroyParticleSystems.Items[k]);
         }
     }
 
     if (unknown_320 == 0 && systems.Count > 0 && vf_114() > -10) {
-        HBCoord offset = vf_33()->unknown_7C0;
+        CoordStruct offset = vf_33()->DestroySmokeOffset;
         BA3ParticleMem* mem = new BA3ParticleMem;
         BA3ParticleView* made;
         if (mem) {
-            HBCoord at;
+            CoordStruct at;
             at.X = Location.X + offset.X;
             at.Y = Location.Y + offset.Y;
             at.Z = Location.Z + offset.Z;

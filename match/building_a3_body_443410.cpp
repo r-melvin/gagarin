@@ -14,9 +14,9 @@
 
 #include "building_a3_views.h"
 // The 256-lepton cell a coordinate lies in.
-inline HBCell BA3CellOf(const HBCoord& where)
+inline CellStruct BA3CellOf(const CoordStruct& where)
 {
-    HBCell cell;
+    CellStruct cell;
     cell.X = (short)(where.X / 256);
     cell.Y = (short)(where.Y / 256);
     return cell;
@@ -30,13 +30,13 @@ bool BuildingA3View::vf_81(int mode, BA3ObjView* target, int unused)
             return true;
         }
     } else if (mode == 4) {
-        if (Type->unknown_EB8 != 0) {
+        if (Type->Factory != 0) {
             BA3QueueEventHeadFirst(BA3Event(vf_14(), 0x11, BA3TargetRef(this)));
         }
-        if (Type->unknown_CD1) {
+        if (Type->GapGenerator) {
             vf_222(0x10, target, 0, 0);
         }
-        if (Type->unknown_16AE || Type->unknown_16AF) {
+        if (Type->UnitAbsorb || Type->InfantryAbsorb) {
             vf_222(0x10, target, 0, 0);
         }
         if (vf_258() > 0) {
@@ -47,7 +47,7 @@ bool BuildingA3View::vf_81(int mode, BA3ObjView* target, int unused)
         BA3QueueEvent(BA3Event(unknown_38->unknown_28->unknown_30, 10, BA3TargetRef(this)));
         return true;
     } else if (mode == 1) {
-        int kind = Type->unknown_EB8;
+        int kind = Type->Factory;
         if (kind == 0x10 || kind == 0x28 || kind == 3) {
             FUN_00443860(BA3CellOf(target->vf_18()), 1);
             return true;

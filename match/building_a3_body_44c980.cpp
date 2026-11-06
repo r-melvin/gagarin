@@ -26,13 +26,13 @@ inline double BA3DirToRadians(int dir)
 // FUNCTION: GAMEMD 0x44C980
 int BuildingA3View::vf_148()
 {
-    HBCoord zero;
+    CoordStruct zero;
     zero.X = 0;
     zero.Y = 0;
     zero.Z = 0;
-    HBCoord at;
+    CoordStruct at;
 
-    if (Type->unknown_16BA) {
+    if (Type->NukeSilo) {
         switch (Status) {
         case 0: {
             unknown_6DD = 0;
@@ -40,8 +40,8 @@ int BuildingA3View::vf_148()
             Status = 1;
             BA3ObjView* cell = DAT_0087F7E8.FUN_005657A0(&Owner->NukeTarget);
             HouseClass* owner = Owner;
-            const BA3AnimTypeView* warning = DAT_008B4154[FUN_00427CB0(s_PSIWARN_0081907C)];
-            HBCoord where = cell->vf_18();
+            const AnimTypeClass* warning = DAT_008B4154[FUN_00427CB0(s_PSIWARN_0081907C)];
+            CoordStruct where = cell->vf_18();
             BA3AnimMem* mem = new BA3AnimMem;
             BA3AnimView* anim;
             if (mem) {
@@ -60,7 +60,7 @@ int BuildingA3View::vf_148()
                 Status = 2;
             }
         case 2: {
-            HBCoord tmp;
+            CoordStruct tmp;
             vf_18();
             BA3ObjView* cell = DAT_0087F7E8.FUN_005657A0(&Owner->NukeTarget);
             BA3LaunchInfoView* info = DAT_00A8E334[unknown_5F8]->unknown_9C;
@@ -74,7 +74,7 @@ int BuildingA3View::vf_148()
                 missile->vf_53();
                 // The velocity is a unit vector straight up (the retail code evaluates the trig functions of a
                 // quarter turn instead of folding them).
-                HBCoord pos = vf_44(0, zero);
+                CoordStruct pos = vf_44(0, zero);
                 double quarter = 1.5707963267948966;
                 double up = FUN_004CACB0(quarter);
                 double velocity[3];
@@ -89,7 +89,7 @@ int BuildingA3View::vf_148()
                 BA3AnimMem* mem = new BA3AnimMem;
                 BA3AnimView* anim;
                 if (mem) {
-                    HBCoord where = pos;
+                    CoordStruct where = pos;
                     anim = mem->FUN_00421EA0(RulesInstance->unknown_98, &where, 0, 1, 0x600, 0, 0);
                 } else {
                     anim = 0;
@@ -113,11 +113,11 @@ int BuildingA3View::vf_148()
         vf_122(5, 0);
     }
 
-    if (Type->unknown_16C3) {
+    if (Type->EMPulseCannon) {
         switch (Status) {
         case 0: {
-            HBDir dirA = vf_314(DAT_0087F7E8.FUN_005657A0(&Owner->EMPTarget));
-            HBDir dirB = vf_178(DAT_0087F7E8.FUN_005657A0(&Owner->EMPTarget));
+            DirStruct dirA = vf_314(DAT_0087F7E8.FUN_005657A0(&Owner->EMPTarget));
+            DirStruct dirB = vf_178(DAT_0087F7E8.FUN_005657A0(&Owner->EMPTarget));
             if (abs(0) < abs((short)(Facing388.FUN_004C93D0().Raw - dirA.Raw))) {
                 Facing388.FUN_004C9220(&dirA);
                 return 1;
@@ -132,14 +132,14 @@ int BuildingA3View::vf_148()
         case 1: {
             BA3AnimMem* mem = new BA3AnimMem;
             if (mem) {
-                const BA3AnimTypeView** entry = &DAT_008B4154[FUN_00422B20(s_PULSBALL_00819070)];
+                const AnimTypeClass** entry = &DAT_008B4154[FUN_00422B20(s_PULSBALL_00819070)];
                 mem->FUN_00421EA0(*entry, &vf_44(0, zero), 0, 1, 0x600, 0, 0);
             }
             Status = 2;
             return 0x20;
         }
         case 3: {
-            HBDir up;
+            DirStruct up;
             up.Raw = 0x4000;
             Facing370.FUN_004C9220(&up);
             goto finishStep;
@@ -154,8 +154,8 @@ int BuildingA3View::vf_148()
                 return 0x3C;
             }
             Facing370.FUN_004C9220(&vf_178(cell));
-            HBCoord muzzle = vf_44(0, zero);
-            HBCoord aim;
+            CoordStruct muzzle = vf_44(0, zero);
+            CoordStruct aim;
             aim.X = Owner->EMPTarget.X * 256 + 0x80;
             aim.Y = Owner->EMPTarget.Y * 256 + 0x80;
             aim.Z = 0;
@@ -185,14 +185,14 @@ int BuildingA3View::vf_148()
             velocity[2] *= scale;
 
             // Ask for a firing solution against the target position, then tilt the velocity by the elevation.
-            HBCoord from = vf_192(0);
-            HBCoord to = targetCell->vf_18();
-            HBCoord diff;
+            CoordStruct from = vf_192(0);
+            CoordStruct to = targetCell->vf_18();
+            CoordStruct diff;
             diff.X = to.X - from.X;
             diff.Y = to.Y - from.Y;
             diff.Z = to.Z - from.Z;
             int flat2 = diff.Y * diff.Y + diff.X * diff.X;
-            HBDir solution;
+            DirStruct solution;
             bool found = FUN_0048A8D0(FUN_0070D590(0), speed, (int)FUN_004CAC40((double)flat2), diff.Z,
                                       (double)RulesInstance->unknown_16B8, &solution);
             if (!found) {
@@ -216,11 +216,11 @@ int BuildingA3View::vf_148()
             velocity[2] = FUN_004CACB0(elevation) * length;
 
             if (found && missile->vf_124(&muzzle, velocity)) {
-                if (vf_255() && vf_33()->unknown_CA2) {
+                if (vf_255() && vf_33()->TurretRecoil) {
                     unknown_3D8.FUN_0070ECE0();
                     unknown_3F8.FUN_0070ECE0();
                 }
-                if (!vf_33()->unknown_CD5) {
+                if (!vf_33()->IsGattling) {
                     HBCounterView& rand = DAT_00886B88;
                     int sound = weapon->unknown_BC.Items[rand.FUN_0065C780() % weapon->unknown_BC.GetCount()];
                     FUN_007509E0(sound, &vf_44(0, zero), 0);
