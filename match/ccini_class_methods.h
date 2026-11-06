@@ -94,6 +94,8 @@ public:
     bool WriteUUBlock(const char* section, const void* block, int length);
     // FUNCTION: GAMEMD 0x52A610
     bool WriteKeyBlocks(const IniKeyBlockSource& key);
+    // FUNCTION: GAMEMD 0x476D80 -- 32-bit checksum of the INI, cached digest at +0x40/+0x41.
+    int GetCRC();
     // FUNCTION: GAMEMD 0x477640
     AbilitiesStruct ReadAbilities(const char* section, const char* key, const AbilitiesStruct& def);
 
@@ -110,6 +112,7 @@ public:
     unsigned char Digest[0x14];    // +0x41
 };
 GG_STATIC_ASSERT(offsetof(CCINIClass, DigestValid) == 0x40);
+GG_STATIC_ASSERT(offsetof(CCINIClass, Digest) == 0x41);
 GG_STATIC_ASSERT(sizeof(CCINIClass) == 0x58);
 
 // GLOBAL: GAMEMD 0x887048 -- native52D0FA selects a CCINIClass pointer.

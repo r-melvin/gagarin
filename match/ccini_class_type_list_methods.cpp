@@ -486,7 +486,7 @@ bool CCINI_00475C70::WriteTypeIdList(const char* section, const char* key,
 // once (a stack hash engine is seeded, fed the whole file, and asked for its
 // result) and cached behind the flag at +0x40; the returned value is a CRC run
 // over that digest by a freshly zeroed CRC engine.
-int CCINI_00476D80::GetCRC()
+int CCINIClass::GetCRC()
 {
     if (DigestValid == 0) {
         SHA_00476D80 sha;

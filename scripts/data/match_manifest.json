@@ -27248,7 +27248,7 @@
  {
   "tu": "match/ccini_class_type_list_methods.cpp",
   "addr": "0x476D80",
-  "sym": "?GetCRC@CCINI_00476D80@@QAEHXZ",
+  "sym": "?GetCRC@CCINIClass@@QAEHXZ",
   "len": "0x9d",
   "name": "CCINIClass::GetCRC",
   "status": "matched",

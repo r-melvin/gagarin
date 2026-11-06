@@ -24,20 +24,4 @@ typedef SHAPipeLayout SHA_00476D80;
 
 #include "_layout/crc_00476d80.h"
 
-struct CCINI_00476D80
-{
-    char          _pad000[0x40];   // +0x0000
-    char          DigestValid;     // +0x0040
-    unsigned char Digest[0x14];    // +0x0041
-
-    // FUNCTION: GAMEMD 0x526470 (decl; reloc) — hash the whole INI into the
-    // engine.
-    void FUN_00526470(SHA_00476D80* sha);
-
-    // FUNCTION: GAMEMD 0x476D80 — CCINIClass::GetCRC.
-    int GetCRC();
-};
-GG_STATIC_ASSERT(offsetof(CCINI_00476D80, DigestValid) == 0x40);
-GG_STATIC_ASSERT(offsetof(CCINI_00476D80, Digest) == 0x41);
-
 #endif  // GG_MATCH_PLATFORM_CCINI_CLASS_CRC_METHODS_H

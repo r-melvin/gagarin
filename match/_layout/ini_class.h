@@ -63,6 +63,8 @@ public:
     }
     // FUNCTION: GAMEMD 0x526960
     int GetKeyCount(const char* section);
+    // FUNCTION: GAMEMD 0x526470 (decl; reloc) -- hash the whole INI into the engine.
+    void FUN_00526470(struct SHAPipeLayout* sha);
     // Declaration: GAMEMD 0x526A30 -- section name as a Wstring, RET 4; key count.
     int FUN_00526A30(const Wstring& section);
     // FUNCTION: GAMEMD 0x526B00
