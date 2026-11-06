@@ -6,6 +6,15 @@
 // CounterClass (a VectorClass<int> plus the cached total at +0x10): the
 // grow-on-index accessors. Ordered ascending by retail address.
 #include "_layout/house_class.h"
+#include "vector_class_operations.h"
+
+// FUNCTION: GAMEMD 0x49F9B0
+// Zeroes the base vector, marks it initialised and clears the cached total.
+CounterClass::CounterClass()
+    : VectorClass<int>(0, 0)
+{
+    Total = 0;
+}
 
 // FUNCTION: GAMEMD 0x49FA00
 // Grows the vector to hold `index` (zeroing the new slots), counts it up and
@@ -93,3 +102,7 @@ HRESULT CounterClass::Save(IStream* stream)
     }
     return 0;
 }
+
+// SYNTHETIC: GAMEMD 0x49FCE0
+// CounterClass::scalar deleting destructor -- slot 0 of retail vtable 0x007E5C54 (RTTI `.?AVCounterClass@@`); the
+// implicit destructor inlines the VectorClass<int> base destructor, emitted with the vtable by the constructor above.

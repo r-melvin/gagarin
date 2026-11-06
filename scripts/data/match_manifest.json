@@ -15626,13 +15626,13 @@
   "pct": 100
  },
  {
-  "tu": "match/vector_dtor_family_methods.cpp",
+  "tu": "match/counter_class_r13_methods.cpp",
   "addr": "0x0049FCE0",
-  "sym": "??_G?$VectorClass@H@@UAEPAXI@Z",
+  "sym": "??_GCounterClass@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<int>::`scalar deleting destructor'",
+  "name": "CounterClass::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_small_struct_slot_methods.cpp",
@@ -15845,11 +15845,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x004D2D60",
-  "sym": "??_G?$VectorClass@UDrawRecord@FoggedObjectClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@UDrawRecord@FoggedObjectClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<FoggedObjectClass::DrawRecord>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<FoggedObjectClass::DrawRecord>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_abstractclass_methods.cpp",
@@ -15935,11 +15935,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x004EF670",
-  "sym": "??_G?$VectorClass@PAVSuperClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVSuperClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<SuperClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<SuperClass*>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_aitriggertypeclass_methods.cpp",
@@ -16718,11 +16718,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x00510180",
-  "sym": "??_G?$VectorClass@UAngerStruct@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@UAngerStruct@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<AngerStruct>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<AngerStruct>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_dtor_family_methods.cpp",
@@ -16736,11 +16736,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x00510220",
-  "sym": "??_G?$VectorClass@UScoutStruct@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@UScoutStruct@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<ScoutStruct>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<ScoutStruct>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_dtor_family_methods.cpp",
@@ -16754,11 +16754,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x005102C0",
-  "sym": "??_G?$VectorClass@PAUBuildChoiceClass@HouseClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAUBuildChoiceClass@HouseClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<HouseClass::BuildChoiceClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<HouseClass::BuildChoiceClass*>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/House.cpp",
@@ -16781,11 +16781,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x005103B0",
-  "sym": "??_G?$VectorClass@_N@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@_N@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<bool>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<bool>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_infantrytype_methods.cpp",
@@ -16961,11 +16961,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x0054A760",
-  "sym": "??_G?$VectorClass@PAG@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAG@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<unsigned short*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<unsigned short*>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_dtor_family_methods.cpp",
@@ -16979,11 +16979,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x0054A800",
-  "sym": "??_G?$VectorClass@PAUTileInsertType@IsometricTileTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAUTileInsertType@IsometricTileTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<IsometricTileTypeClass::TileInsertType*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<IsometricTileTypeClass::TileInsertType*>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_kamikazecontrol_methods.cpp",
@@ -17051,11 +17051,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x00555870",
-  "sym": "??_G?$VectorClass@PAVPendingCellClass@LightSourceClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVPendingCellClass@LightSourceClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<LightSourceClass::PendingCellClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<LightSourceClass::PendingCellClass*>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_linetrail_methods.cpp",
@@ -17132,11 +17132,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x0058A420",
-  "sym": "??_G?$VectorClass@UZoneConnectionClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@UZoneConnectionClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<ZoneConnectionClass>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<ZoneConnectionClass>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_dtor_family_methods.cpp",
@@ -17150,11 +17150,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x0058AAE0",
-  "sym": "??_G?$VectorClass@W4PassabilityType@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@W4PassabilityType@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<PassabilityType>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<PassabilityType>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_dtor_family_methods.cpp",
@@ -17231,20 +17231,20 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x005AD520",
-  "sym": "??_G?$VectorClass@V?$TRect@H@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@V?$TRect@H@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<TRect<int>>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<TRect<int>>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x005AD570",
-  "sym": "??_G?$VectorClass@PAVCellClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVCellClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<CellClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<CellClass*>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_dtor_family_methods.cpp",
@@ -17258,11 +17258,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x005AD610",
-  "sym": "??_G?$VectorClass@N@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@N@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<double>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<double>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_const_char_methods.cpp",
@@ -17348,11 +17348,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x005D1710",
-  "sym": "??_G?$VectorClass@VPoint2D@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@VPoint2D@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<Point2D>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<Point2D>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/MSChoice.cpp",
@@ -17510,11 +17510,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x005D57D0",
-  "sym": "??_G?$VectorClass@UAcceleratorTracker@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@UAcceleratorTracker@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<AcceleratorTracker>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<AcceleratorTracker>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Multiplayer.cpp",
@@ -17546,11 +17546,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x005D8900",
-  "sym": "??_G?$VectorClass@PAVMultiplayerGameMode@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVMultiplayerGameMode@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<MultiplayerGameMode*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<MultiplayerGameMode*>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/netshare.cpp",
@@ -17636,11 +17636,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x006287B0",
-  "sym": "??_G?$VectorClass@VHSVClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@VHSVClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<HSVClass>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<HSVClass>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_dtor_family_methods.cpp",
@@ -17807,11 +17807,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x0065C200",
-  "sym": "??_G?$VectorClass@PAVRadSiteClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVRadSiteClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<RadSiteClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<RadSiteClass*>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/tu196_random_straw.cpp",
@@ -17843,11 +17843,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x00664AC0",
-  "sym": "??_G?$VectorClass@PAUConnectionListStruct@OwnerTalkClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAUConnectionListStruct@OwnerTalkClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<OwnerTalkClass::ConnectionListStruct*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<OwnerTalkClass::ConnectionListStruct*>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_voxelanimtype_methods.cpp",
@@ -17933,11 +17933,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x0069C6C0",
-  "sym": "??_G?$VectorClass@W4DiskID@@@@UAEPAXI@Z",
+  "sym": "??_G?$TypeList@W4DiskID@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<DiskID>::`scalar deleting destructor'",
+  "name": "TypeList<DiskID>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_dtor_family_methods.cpp",
@@ -17960,11 +17960,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x0069D5E0",
-  "sym": "??_G?$VectorClass@PAVMultiMission@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVMultiMission@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<MultiMission*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<MultiMission*>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Session.cpp",
@@ -17996,11 +17996,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x0069D720",
-  "sym": "??_G?$VectorClass@PAVPhoneEntryClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVPhoneEntryClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<PhoneEntryClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<PhoneEntryClass*>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_dtor_family_methods.cpp",
@@ -18014,11 +18014,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x006B1980",
-  "sym": "??_G?$VectorClass@PAUSlaveControl@SlaveManagerClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAUSlaveControl@SlaveManagerClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<SlaveManagerClass::SlaveControl*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<SlaveManagerClass::SlaveControl*>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_dtor_family_methods.cpp",
@@ -18032,11 +18032,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x006B1A20",
-  "sym": "??_G?$VectorClass@PAVSlaveManagerClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVSlaveManagerClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<SlaveManagerClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<SlaveManagerClass*>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_dtor_family_methods.cpp",
@@ -18050,11 +18050,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x006B47F0",
-  "sym": "??_G?$VectorClass@UUndoInfoStruct@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@UUndoInfoStruct@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<UndoInfoStruct>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<UndoInfoStruct>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_dtor_family_methods.cpp",
@@ -18068,11 +18068,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x006B8790",
-  "sym": "??_G?$VectorClass@PAUSpawnControl@SpawnManagerClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAUSpawnControl@SpawnManagerClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<SpawnManagerClass::SpawnControl*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<SpawnManagerClass::SpawnControl*>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_dtor_family_methods.cpp",
@@ -18086,11 +18086,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x006B8830",
-  "sym": "??_G?$VectorClass@PAVSpawnManagerClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVSpawnManagerClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<SpawnManagerClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<SpawnManagerClass*>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_dtor_family_methods.cpp",
@@ -18104,11 +18104,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x006C64D0",
-  "sym": "??_G?$VectorClass@K@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@K@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<unsigned long>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<unsigned long>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_subtitle_methods.cpp",
@@ -18158,11 +18158,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x006DCC80",
-  "sym": "??_G?$VectorClass@UDirtyAreaStruct@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@UDirtyAreaStruct@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<DirtyAreaStruct>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<DirtyAreaStruct>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_shadowcontrolclass_methods.cpp",
@@ -18266,11 +18266,11 @@
  {
   "tu": "match/vector_dtor_family_methods.cpp",
   "addr": "0x007213E0",
-  "sym": "??_G?$VectorClass@PAUThemeControl@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAUThemeControl@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<ThemeControl*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<ThemeControl*>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_tiberiumclass_methods.cpp",
@@ -84315,13 +84315,13 @@
   "pct": 100
  },
  {
-  "tu": "match/trivial_tu058_methods.cpp",
+  "tu": "match/counter_class_r13_methods.cpp",
   "addr": "0x49F9B0",
-  "sym": "?FUN_0049F9B0@Obj_0049F9B0@@QAEPAU1@XZ",
+  "sym": "??0CounterClass@@QAE@XZ",
   "len": "0x1b",
-  "name": "Obj_0049F9B0::FUN_0049F9B0",
+  "name": "CounterClass::CounterClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/trivial_tu064_methods.cpp",
@@ -97340,7 +97340,7 @@
  {
   "tu": "match/House.cpp",
   "addr": "0x50FC60",
-  "sym": "?SetCapacity@?$VectorClass@U?$DistributionObject@PAVCellClass@@@?$DiscreteDistributionClass@VCellClass@@@@@@UAE_NHPAU?$DistributionObject@PAVCellClass@@@?$DiscreteDistributionClass@VCellClass@@@@@Z",
+  "sym": "?SetCapacity@?$VectorClass@U?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@@UAE_NHPAU?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@Z",
   "len": "0x101",
   "name": "VectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>::SetCapacity",
   "status": "matched",
@@ -97349,7 +97349,7 @@
  {
   "tu": "match/House.cpp",
   "addr": "0x50FF50",
-  "sym": "?AddItem@?$DynamicVectorClass@U?$DistributionObject@PAVCellClass@@@?$DiscreteDistributionClass@VCellClass@@@@@@QAE_NABU?$DistributionObject@PAVCellClass@@@?$DiscreteDistributionClass@VCellClass@@@@@Z",
+  "sym": "?AddItem@?$DynamicVectorClass@U?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@@QAE_NABU?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@Z",
   "len": "0x57",
   "name": "DynamicVectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>::AddItem",
   "status": "matched",
@@ -98716,7 +98716,7 @@
  {
   "tu": "match/tu236_team_type_class.cpp",
   "addr": "0x6F22F0",
-  "sym": "?SetCapacity@?$VectorClass@U?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@@UAE_NHPAU?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@Z",
+  "sym": "?SetCapacity@?$VectorClass@U?$DistributionObject@PAVAITriggerTypeClass@@@?$DiscreteDistributionClass@VAITriggerTypeClass@@@@@@UAE_NHPAU?$DistributionObject@PAVAITriggerTypeClass@@@?$DiscreteDistributionClass@VAITriggerTypeClass@@@@@Z",
   "len": "0x101",
   "name": "VectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>::SetCapacity",
   "status": "matched",
@@ -98725,7 +98725,7 @@
  {
   "tu": "match/tu236_team_type_class.cpp",
   "addr": "0x6F25E0",
-  "sym": "?AddItem@?$DynamicVectorClass@U?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@@QAE_NABU?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@Z",
+  "sym": "?AddItem@?$DynamicVectorClass@U?$DistributionObject@PAVAITriggerTypeClass@@@?$DiscreteDistributionClass@VAITriggerTypeClass@@@@@@QAE_NABU?$DistributionObject@PAVAITriggerTypeClass@@@?$DiscreteDistributionClass@VAITriggerTypeClass@@@@@Z",
   "len": "0x57",
   "name": "DynamicVectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>::AddItem",
   "status": "matched",

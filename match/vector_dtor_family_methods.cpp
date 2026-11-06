@@ -42,6 +42,7 @@ struct CrossDissolveEffect;
 struct DamageGroup;
 struct DirtyAreaStruct;
 #include "disk_id.h"
+#include "type_list.h"
 class DiskLaserClass;
 template<class T0> class DynamicVectorClass;
 class EBolt;
@@ -183,9 +184,9 @@ template class VectorClass<ObjectClass*>;
 
 // Nested char-vector instantiation moved to vector_nested_char_methods.cpp.
 
-// FUNCTION: GAMEMD 0x0049FCE0
 // VectorClass<int> -- reseats retail vtable 0x007E4DB8; locator 0x007FCDB0 -> type descriptor 0x0081C038
-//   `.?AV?$VectorClass@H@@`.
+//   `.?AV?$VectorClass@H@@`. Its deleting destructor is owned by vector_int_methods.cpp (0x478630); the second
+//   body formerly claimed here, 0x49FCE0, is CounterClass's (counter_class_r13_methods.cpp).
 template class VectorClass<int>;
 
 // Layout asserted on the int instantiation; every instantiation in this
@@ -206,84 +207,123 @@ GG_STATIC_ASSERT(sizeof(GgVectorRep)                == 0x10);
 template class VectorClass<tagCONNECTDATA>;
 
 // FUNCTION: GAMEMD 0x004D2D10
-// FUNCTION: GAMEMD 0x004D2D60
 // VectorClass<FoggedObjectClass::DrawRecord> -- reseats retail vtable 0x007E8BC0; locator 0x00800800 -> type descriptor 0x00822458
 //   `.?AV?$VectorClass@UDrawRecord@FoggedObjectClass@@@@`.
 template class VectorClass<FoggedObjectClass::DrawRecord>;
 
+// FUNCTION: GAMEMD 0x004D2D60
+// DynamicVectorClass<FoggedObjectClass::DrawRecord> -- slot 0 of retail vtable 0x007E8BA0.
+template class DynamicVectorClass<FoggedObjectClass::DrawRecord>;
+
 // FUNCTION: GAMEMD 0x004EF620
-// FUNCTION: GAMEMD 0x004EF670
 // VectorClass<SuperClass*> -- reseats retail vtable 0x007EA504; locator 0x008022B8 -> type descriptor 0x00823DF8
 //   `.?AV?$VectorClass@PAVSuperClass@@@@`.
 template class VectorClass<SuperClass*>;
 
+// FUNCTION: GAMEMD 0x004EF670
+// DynamicVectorClass<SuperClass*> -- slot 0 of retail vtable 0x007EA4E4.
+template class DynamicVectorClass<SuperClass*>;
+
 
 // FUNCTION: GAMEMD 0x004EF940
-// FUNCTION: GAMEMD 0x007213E0
 // VectorClass<ThemeControl*> -- reseats retail vtable 0x007EA584; locator 0x00802448 -> type descriptor 0x00823F40
 //   `.?AV?$VectorClass@PAUThemeControl@@@@`.
 template class VectorClass<ThemeControl*>;
 
+// FUNCTION: GAMEMD 0x007213E0
+// DynamicVectorClass<ThemeControl*> -- slot 0 of retail vtable 0x007F568C.
+template class DynamicVectorClass<ThemeControl*>;
+
 // FUNCTION: GAMEMD 0x00510130
-// FUNCTION: GAMEMD 0x00510180
 // VectorClass<AngerStruct> -- reseats retail vtable 0x007EA984; locator 0x00802BC0 -> type descriptor 0x00824588
 //   `.?AV?$VectorClass@UAngerStruct@@@@`.
 template class VectorClass<AngerStruct>;
 
+// FUNCTION: GAMEMD 0x00510180
+// DynamicVectorClass<AngerStruct> -- slot 0 of retail vtable 0x007EA924.
+template class DynamicVectorClass<AngerStruct>;
+
 // FUNCTION: GAMEMD 0x005101D0
-// FUNCTION: GAMEMD 0x00510220
 // VectorClass<ScoutStruct> -- reseats retail vtable 0x007EA9A4; locator 0x00802B90 -> type descriptor 0x00824520
 //   `.?AV?$VectorClass@UScoutStruct@@@@`.
 template class VectorClass<ScoutStruct>;
 
+// FUNCTION: GAMEMD 0x00510220
+// DynamicVectorClass<ScoutStruct> -- slot 0 of retail vtable 0x007EA904.
+template class DynamicVectorClass<ScoutStruct>;
+
 // FUNCTION: GAMEMD 0x00510270
-// FUNCTION: GAMEMD 0x005102C0
 // VectorClass<HouseClass::BuildChoiceClass*> -- reseats retail vtable 0x007EA7D4; locator 0x00802888 -> type descriptor 0x00824418
 //   `.?AV?$VectorClass@PAUBuildChoiceClass@HouseClass@@@@`.
 template class VectorClass<HouseClass::BuildChoiceClass*>;
 
+// FUNCTION: GAMEMD 0x005102C0
+// DynamicVectorClass<HouseClass::BuildChoiceClass*> -- slot 0 of retail vtable 0x007EA7B4.
+template class DynamicVectorClass<HouseClass::BuildChoiceClass*>;
+
 // FUNCTION: GAMEMD 0x00510360
-// FUNCTION: GAMEMD 0x005103B0
 // VectorClass<bool> -- reseats retail vtable 0x007EAA5C; locator 0x00802D68 -> type descriptor 0x00824E70
 //   `.?AV?$VectorClass@_N@@`.
 template class VectorClass<bool>;
 
+// FUNCTION: GAMEMD 0x005103B0
+// DynamicVectorClass<bool> -- slot 0 of retail vtable 0x007EAA7C.
+template class DynamicVectorClass<bool>;
+
 // FUNCTION: GAMEMD 0x0054A710
-// FUNCTION: GAMEMD 0x0054A760
 // VectorClass<unsigned short*> -- reseats retail vtable 0x007ECD0C; locator 0x00804C58 -> type descriptor 0x008290F0
 //   `.?AV?$VectorClass@PAG@@`.
 template class VectorClass<unsigned short*>;
 
+// FUNCTION: GAMEMD 0x0054A760
+// DynamicVectorClass<unsigned short*> -- slot 0 of retail vtable 0x007ECCEC.
+template class DynamicVectorClass<unsigned short*>;
+
 // FUNCTION: GAMEMD 0x0054A7B0
-// FUNCTION: GAMEMD 0x0054A800
 // VectorClass<IsometricTileTypeClass::TileInsertType*> -- reseats retail vtable 0x007ECBFC; locator 0x00804B08 -> type descriptor 0x00829030
 //   `.?AV?$VectorClass@PAUTileInsertType@IsometricTileTypeClass@@@@`.
 template class VectorClass<IsometricTileTypeClass::TileInsertType*>;
 
+// FUNCTION: GAMEMD 0x0054A800
+// DynamicVectorClass<IsometricTileTypeClass::TileInsertType*> -- slot 0 of retail vtable 0x007ECBDC.
+template class DynamicVectorClass<IsometricTileTypeClass::TileInsertType*>;
+
 
 // FUNCTION: GAMEMD 0x00555820
-// FUNCTION: GAMEMD 0x00555870
 // VectorClass<LightSourceClass::PendingCellClass*> -- reseats retail vtable 0x007ECFDC; locator 0x00805040 -> type descriptor 0x00829B68
 //   `.?AV?$VectorClass@PAVPendingCellClass@LightSourceClass@@@@`.
 template class VectorClass<LightSourceClass::PendingCellClass*>;
 
+// FUNCTION: GAMEMD 0x00555870
+// DynamicVectorClass<LightSourceClass::PendingCellClass*> -- slot 0 of retail vtable 0x007ECFBC.
+template class DynamicVectorClass<LightSourceClass::PendingCellClass*>;
+
 // FUNCTION: GAMEMD 0x00589060
-// FUNCTION: GAMEMD 0x005AD570
 // VectorClass<CellClass*> -- reseats retail vtable 0x007ED480; locator 0x008055E0 -> type descriptor 0x0082AB78
 //   `.?AV?$VectorClass@PAVCellClass@@@@`.
 template class VectorClass<CellClass*>;
 
+// FUNCTION: GAMEMD 0x005AD570
+// DynamicVectorClass<CellClass*> -- slot 0 of retail vtable 0x007ED9BC.
+template class DynamicVectorClass<CellClass*>;
+
 // FUNCTION: GAMEMD 0x0058A3D0
-// FUNCTION: GAMEMD 0x0058A420
 // VectorClass<ZoneConnectionClass> -- reseats retail vtable 0x007ED4E0; locator 0x00805610 -> type descriptor 0x0082AA88
 //   `.?AV?$VectorClass@UZoneConnectionClass@@@@`.
 template class VectorClass<ZoneConnectionClass>;
 
+// FUNCTION: GAMEMD 0x0058A420
+// DynamicVectorClass<ZoneConnectionClass> -- slot 0 of retail vtable 0x007ED4C0.
+template class DynamicVectorClass<ZoneConnectionClass>;
+
 // FUNCTION: GAMEMD 0x0058AA90
-// FUNCTION: GAMEMD 0x0058AAE0
 // VectorClass<PassabilityType> -- reseats retail vtable 0x007ED560; locator 0x00805740 -> type descriptor 0x0082ACE0
 //   `.?AV?$VectorClass@W4PassabilityType@@@@`.
 template class VectorClass<PassabilityType>;
+
+// FUNCTION: GAMEMD 0x0058AAE0
+// DynamicVectorClass<PassabilityType> -- slot 0 of retail vtable 0x007ED580.
+template class DynamicVectorClass<PassabilityType>;
 
 // FUNCTION: GAMEMD 0x0058AB30
 // VectorClass<HashObject<unsigned int, unsigned int>> -- reseats retail vtable 0x007ED5C0; locator 0x00805828 -> type descriptor 0x0082ABA8
@@ -296,42 +336,60 @@ template class VectorClass<HashObject<unsigned int, unsigned int> >;
 template class VectorClass<HashObject<unsigned int, SubzoneConnectionStruct> >;
 
 // FUNCTION: GAMEMD 0x005AD4D0
-// FUNCTION: GAMEMD 0x005AD520
 // VectorClass<TRect<int>> -- reseats retail vtable 0x007ED970; locator 0x00805AC0 -> type descriptor 0x0082BFE0
 //   `.?AV?$VectorClass@V?$TRect@H@@@@`.
 template class VectorClass<TRect<int> >;
 
+// FUNCTION: GAMEMD 0x005AD520
+// DynamicVectorClass<TRect<int>> -- slot 0 of retail vtable 0x007ED99C.
+template class DynamicVectorClass<TRect<int> >;
+
 // FUNCTION: GAMEMD 0x005AD5C0
-// FUNCTION: GAMEMD 0x005AD610
 // VectorClass<double> -- reseats retail vtable 0x007EDA4C; locator 0x00805B40 -> type descriptor 0x0082C048
 //   `.?AV?$VectorClass@N@@`.
 template class VectorClass<double>;
 
+// FUNCTION: GAMEMD 0x005AD610
+// DynamicVectorClass<double> -- slot 0 of retail vtable 0x007EDA6C.
+template class DynamicVectorClass<double>;
+
 // FUNCTION: GAMEMD 0x005D16C0
-// FUNCTION: GAMEMD 0x005D1710
 // VectorClass<Point2D> -- reseats retail vtable 0x007EEB74; locator 0x00806B88 -> type descriptor 0x00830380
 //   `.?AV?$VectorClass@VPoint2D@@@@`.
 template class VectorClass<Point2D>;
 
+// FUNCTION: GAMEMD 0x005D1710
+// DynamicVectorClass<Point2D> -- slot 0 of retail vtable 0x007EEB54.
+template class DynamicVectorClass<Point2D>;
+
 // MSAnimEntry vector specialization moved to vector_msanimentry_methods.cpp.
 
 // FUNCTION: GAMEMD 0x005D5780
-// FUNCTION: GAMEMD 0x005D57D0
 // VectorClass<AcceleratorTracker> -- reseats retail vtable 0x007EECEC; locator 0x00806EC0 -> type descriptor 0x00830728
 //   `.?AV?$VectorClass@UAcceleratorTracker@@@@`.
 template class VectorClass<AcceleratorTracker>;
 
+// FUNCTION: GAMEMD 0x005D57D0
+// DynamicVectorClass<AcceleratorTracker> -- slot 0 of retail vtable 0x007EECCC.
+template class DynamicVectorClass<AcceleratorTracker>;
+
 // FUNCTION: GAMEMD 0x005D88B0
-// FUNCTION: GAMEMD 0x005D8900
 // VectorClass<MultiplayerGameMode*> -- reseats retail vtable 0x007EED40; locator 0x00806F58 -> type descriptor 0x008307B8
 //   `.?AV?$VectorClass@PAVMultiplayerGameMode@@@@`.
 template class VectorClass<MultiplayerGameMode*>;
 
+// FUNCTION: GAMEMD 0x005D8900
+// DynamicVectorClass<MultiplayerGameMode*> -- slot 0 of retail vtable 0x007EED20.
+template class DynamicVectorClass<MultiplayerGameMode*>;
+
 // FUNCTION: GAMEMD 0x00628760
-// FUNCTION: GAMEMD 0x006287B0
 // VectorClass<HSVClass> -- reseats retail vtable 0x007EF7F0; locator 0x008079E8 -> type descriptor 0x00836478
 //   `.?AV?$VectorClass@VHSVClass@@@@`.
 template class VectorClass<HSVClass>;
+
+// FUNCTION: GAMEMD 0x006287B0
+// DynamicVectorClass<HSVClass> -- slot 0 of retail vtable 0x007EF750.
+template class DynamicVectorClass<HSVClass>;
 
 // FUNCTION: GAMEMD 0x00628E80
 // VectorClass<HashObject<HashString, SchemeNode*>> -- reseats retail vtable 0x007EF7D0; locator 0x008079B8 -> type descriptor 0x008364D0
@@ -359,76 +417,113 @@ template class VectorClass<PlanningTokenClass*>;
 template class VectorClass<HashObject<RadarTrackingStruct, TechnoClass*> >;
 
 // FUNCTION: GAMEMD 0x0065C1B0
-// FUNCTION: GAMEMD 0x0065C200
 // VectorClass<RadSiteClass*> -- reseats retail vtable 0x007F07C4; locator 0x00808628 -> type descriptor 0x00839598
 //   `.?AV?$VectorClass@PAVRadSiteClass@@@@`.
 template class VectorClass<RadSiteClass*>;
 
+// FUNCTION: GAMEMD 0x0065C200
+// DynamicVectorClass<RadSiteClass*> -- slot 0 of retail vtable 0x007F07A4.
+template class DynamicVectorClass<RadSiteClass*>;
+
 // FUNCTION: GAMEMD 0x00664A70
-// FUNCTION: GAMEMD 0x00664AC0
 // VectorClass<OwnerTalkClass::ConnectionListStruct*> -- reseats retail vtable 0x007F0C4C; locator 0x00808A00 -> type descriptor 0x008399F8
 //   `.?AV?$VectorClass@PAUConnectionListStruct@OwnerTalkClass@@@@`.
 template class VectorClass<OwnerTalkClass::ConnectionListStruct*>;
 
+// FUNCTION: GAMEMD 0x00664AC0
+// DynamicVectorClass<OwnerTalkClass::ConnectionListStruct*> -- slot 0 of retail vtable 0x007F0C2C.
+template class DynamicVectorClass<OwnerTalkClass::ConnectionListStruct*>;
+
 // FUNCTION: GAMEMD 0x0069C6C0
+// TypeList<DiskID> -- slot 0 of retail vtable 0x007F12D4 (RTTI `.?AV?$TypeList@W4DiskID@@@@`); it inlines the
+//   VectorClass<DiskID> base destructor, so its body is the same 0x49 bytes as 0x69D460.
+template class TypeList<DiskID>;
+
 // FUNCTION: GAMEMD 0x0069D460
 // VectorClass<DiskID> -- reseats retail vtable 0x007F1274; locator 0x00809270 -> type descriptor 0x0083F530
 //   `.?AV?$VectorClass@W4DiskID@@@@`.
 template class VectorClass<DiskID>;
 
 // FUNCTION: GAMEMD 0x0069D590
-// FUNCTION: GAMEMD 0x0069D5E0
 // VectorClass<MultiMission*> -- reseats retail vtable 0x007F1214; locator 0x008091F8 -> type descriptor 0x0083EDD0
 //   `.?AV?$VectorClass@PAVMultiMission@@@@`.
 template class VectorClass<MultiMission*>;
 
+// FUNCTION: GAMEMD 0x0069D5E0
+// DynamicVectorClass<MultiMission*> -- slot 0 of retail vtable 0x007F11F4.
+template class DynamicVectorClass<MultiMission*>;
+
 // FUNCTION: GAMEMD 0x0069D6D0
-// FUNCTION: GAMEMD 0x0069D720
 // VectorClass<PhoneEntryClass*> -- reseats retail vtable 0x007F1254; locator 0x008091C8 -> type descriptor 0x0083ED60
 //   `.?AV?$VectorClass@PAVPhoneEntryClass@@@@`.
 template class VectorClass<PhoneEntryClass*>;
 
+// FUNCTION: GAMEMD 0x0069D720
+// DynamicVectorClass<PhoneEntryClass*> -- slot 0 of retail vtable 0x007F11B4.
+template class DynamicVectorClass<PhoneEntryClass*>;
+
 // FUNCTION: GAMEMD 0x006B1930
-// FUNCTION: GAMEMD 0x006B1980
 // VectorClass<SlaveManagerClass::SlaveControl*> -- reseats retail vtable 0x007F324C; locator 0x00809798 -> type descriptor 0x0083FD30
 //   `.?AV?$VectorClass@PAUSlaveControl@SlaveManagerClass@@@@`.
 template class VectorClass<SlaveManagerClass::SlaveControl*>;
 
+// FUNCTION: GAMEMD 0x006B1980
+// DynamicVectorClass<SlaveManagerClass::SlaveControl*> -- slot 0 of retail vtable 0x007F322C.
+template class DynamicVectorClass<SlaveManagerClass::SlaveControl*>;
+
 // FUNCTION: GAMEMD 0x006B19D0
-// FUNCTION: GAMEMD 0x006B1A20
 // VectorClass<SlaveManagerClass*> -- reseats retail vtable 0x007F317C; locator 0x00809650 -> type descriptor 0x0083FC98
 //   `.?AV?$VectorClass@PAVSlaveManagerClass@@@@`.
 template class VectorClass<SlaveManagerClass*>;
 
+// FUNCTION: GAMEMD 0x006B1A20
+// DynamicVectorClass<SlaveManagerClass*> -- slot 0 of retail vtable 0x007F315C.
+template class DynamicVectorClass<SlaveManagerClass*>;
+
 // FUNCTION: GAMEMD 0x006B47A0
-// FUNCTION: GAMEMD 0x006B47F0
 // VectorClass<UndoInfoStruct> -- reseats retail vtable 0x007F329C; locator 0x00809830 -> type descriptor 0x0083FF70
 //   `.?AV?$VectorClass@UUndoInfoStruct@@@@`.
 template class VectorClass<UndoInfoStruct>;
 
+// FUNCTION: GAMEMD 0x006B47F0
+// DynamicVectorClass<UndoInfoStruct> -- slot 0 of retail vtable 0x007F327C.
+template class DynamicVectorClass<UndoInfoStruct>;
+
 // FUNCTION: GAMEMD 0x006B8740
-// FUNCTION: GAMEMD 0x006B8790
 // VectorClass<SpawnManagerClass::SpawnControl*> -- reseats retail vtable 0x007F36D4; locator 0x00809B80 -> type descriptor 0x00840140
 //   `.?AV?$VectorClass@PAUSpawnControl@SpawnManagerClass@@@@`.
 template class VectorClass<SpawnManagerClass::SpawnControl*>;
 
+// FUNCTION: GAMEMD 0x006B8790
+// DynamicVectorClass<SpawnManagerClass::SpawnControl*> -- slot 0 of retail vtable 0x007F36B4.
+template class DynamicVectorClass<SpawnManagerClass::SpawnControl*>;
+
 // FUNCTION: GAMEMD 0x006B87E0
-// FUNCTION: GAMEMD 0x006B8830
 // VectorClass<SpawnManagerClass*> -- reseats retail vtable 0x007F3604; locator 0x00809A38 -> type descriptor 0x008400A8
 //   `.?AV?$VectorClass@PAVSpawnManagerClass@@@@`.
 template class VectorClass<SpawnManagerClass*>;
 
+// FUNCTION: GAMEMD 0x006B8830
+// DynamicVectorClass<SpawnManagerClass*> -- slot 0 of retail vtable 0x007F35E4.
+template class DynamicVectorClass<SpawnManagerClass*>;
+
 // FUNCTION: GAMEMD 0x006C6480
-// FUNCTION: GAMEMD 0x006C64D0
 // VectorClass<unsigned long> -- reseats retail vtable 0x007F3748; locator 0x00809C18 -> type descriptor 0x00840A88
 //   `.?AV?$VectorClass@K@@`.
 template class VectorClass<unsigned long>;
 
+// FUNCTION: GAMEMD 0x006C64D0
+// DynamicVectorClass<unsigned long> -- slot 0 of retail vtable 0x007F3728.
+template class DynamicVectorClass<unsigned long>;
+
 // FUNCTION: GAMEMD 0x006DCC30
-// FUNCTION: GAMEMD 0x006DCC80
 // VectorClass<DirtyAreaStruct> -- reseats retail vtable 0x007F42BC; locator 0x0080B860 -> type descriptor 0x00842958
 //   `.?AV?$VectorClass@UDirtyAreaStruct@@@@`.
 template class VectorClass<DirtyAreaStruct>;
+
+// FUNCTION: GAMEMD 0x006DCC80
+// DynamicVectorClass<DirtyAreaStruct> -- slot 0 of retail vtable 0x007F429C.
+template class DynamicVectorClass<DirtyAreaStruct>;
 
 // FUNCTION: GAMEMD 0x0074BFA0
 // VectorClass<unsigned char> -- reseats retail vtable 0x007F65F4; locator 0x0080CEF8 -> type descriptor 0x00845F28
