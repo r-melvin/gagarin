@@ -2540,7 +2540,8 @@ bool TechnoClass::vf_233(AbstractClass* target)
     if (vf_248()) {
         WarheadTypeClass* warhead = vf_252()->WeaponType->Warhead;
         if (warhead) {
-            float reach = warhead->CellSpread - warhead->CellInset;
+            float reach = warhead->CellSpread;
+            reach -= warhead->CellInset;
             CellStruct from = CoordToCell(vf_18());
             CellStruct to = CoordToCell(target->vf_18());
             short dx = from.X - to.X;
@@ -3186,9 +3187,11 @@ int TechnoClass::vf_240(AbstractClass* target, int weaponIndex, bool ignoreRange
     if (vf_33()->HunterSeeker) {
         return 8;
     }
-    if (weapon->Warhead->Parasite && IsFootObject(this)
-        && !((ParasiteClass*)((FootClass*)this)->ParasiteImUsing)->CanInfect(target->Flags.IsFoot ? (FootClass*)target : 0)) {
-        return 5;
+    if (weapon->Warhead->Parasite && IsFootObject(this)) {
+        FootClass* victim = target->Flags.IsFoot ? (FootClass*)target : 0;
+        if (!((ParasiteClass*)((FootClass*)this)->ParasiteImUsing)->CanInfect(victim)) {
+            return 5;
+        }
     }
     if (weapon->Warhead->Parasite && target->Flags.IsFoot
         && CurrentFrame < ((FootClass*)target)->LastBeParasitedStartFrame) {

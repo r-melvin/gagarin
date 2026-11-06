@@ -151361,10 +151361,8 @@
   "sym": "?vf_240@TechnoClass@@UAEHPAVAbstractClass@@H_N@Z",
   "len": "0xc88",
   "name": "TechnoClass::vf_240",
-  "status": "partial",
-  "pct": 97.8,
-  "best_pct": 97.8,
-  "best_at": "658da7d4"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/foot_class_methods.cpp",
@@ -156251,10 +156249,8 @@
   "sym": "?vf_233@TechnoClass@@UAE_NPAVAbstractClass@@@Z",
   "len": "0x11f",
   "name": "TechnoClass::vf_233",
-  "status": "partial",
-  "pct": 94.6,
-  "best_pct": 94.6,
-  "best_at": "82f86b7f"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Techno.cpp",
