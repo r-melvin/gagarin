@@ -6,14 +6,14 @@
 // Interface views: only receiver addresses and call conventions are modeled.
 struct ProbeMap_0057CCF0 {
     // FUNCTION: GAMEMD 0x5657A0
-    NeighborCell_0057CBE0* GetCell(const NeighborCoord_0057CBE0* cell);
+    NeighborCell_0057CBE0* FUN_005657A0(const NeighborCoord_0057CBE0* cell);
 };
 // GLOBAL: GAMEMD 0x87F7E8
-extern ProbeMap_0057CCF0 ProbeMap;
+extern ProbeMap_0057CCF0 DAT_0087F7E8;
 struct ProbeCoord_0057CCF0 : NeighborCoord_0057CBE0 {
     // Entry 0x588C60 subtracts the two signed-short components and RET 8.
     // FUNCTION: GAMEMD 0x588C60
-    NeighborCoord_0057CBE0* Subtract(NeighborCoord_0057CBE0* out,
+    NeighborCoord_0057CBE0* FUN_00588C60(NeighborCoord_0057CBE0* out,
                                const NeighborCoord_0057CBE0* delta);
 };
 GG_STATIC_ASSERT(offsetof(ProbeCoord_0057CCF0, X) == 0);

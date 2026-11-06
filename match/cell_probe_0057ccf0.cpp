@@ -20,41 +20,41 @@ static inline NeighborCoord_0057CBE0 ProbeCoordinate(short x, short y)
     return value;
 }
 // FUNCTION: GAMEMD 0x57CCF0
-// PARTIAL: 100/186 instructions (53.8%); 86 differing after source, flag
-// bisection and a bounded permuter run. No assembly or padding is used.
+// The range tests are written as `(...) != 0` for the period compiler's branch layout; the
+// subtract result is copied into its own local before the final call.
 char CellProbe_0057CCF0::FUN_0057CCF0(NeighborCoord_0057CBE0* cell)
 {
     NeighborCoord_0057CBE0 candidate;
     int type = InitialProbeCell(cell)->At_44;
     if ((type >= 205 && type <= 213) || (type >= 223 && type <= 226) || type == 231) {
         candidate = ProbeCoordinate(cell->X, (short)(cell->Y - 1));
-        type = ProbeMap.GetCell(&candidate)->At_44;
-        if (type < 205 || type > 232) {
+        type = DAT_0087F7E8.FUN_005657A0(&candidate)->At_44;
+        if ((type < 205 || type > 232) != 0) {
             candidate = ProbeCoordinate(cell->X, (short)(cell->Y + 1));
             return FUN_0057CF60(&candidate);
         }
         candidate = ProbeCoordinate(cell->X, (short)(cell->Y - 2));
-        type = ProbeMap.GetCell(&candidate)->At_44;
-        if (type < 205 || type > 232) return FUN_0057CF60(cell);
+        type = DAT_0087F7E8.FUN_005657A0(&candidate)->At_44;
+        if ((type < 205 || type > 232) != 0) return FUN_0057CF60(cell);
         candidate = ProbeCoordinate(cell->X, (short)(cell->Y - 1));
         return FUN_0057CF60(&candidate);
     }
     if ((type >= 214 && type <= 222) || (type >= 227 && type <= 230) || type == 232) {
         candidate = ProbeCoordinate((short)(cell->X - 1), cell->Y);
-        type = ProbeMap.GetCell(&candidate)->At_44;
+        type = DAT_0087F7E8.FUN_005657A0(&candidate)->At_44;
         // Explicit zero comparison preserves the period compiler's branch layout.
         if ((type < 205 || type > 232) != 0) {
             candidate = ProbeCoordinate((short)(cell->X + 1), cell->Y);
             return FUN_0057D530(&candidate);
         }
         candidate = ProbeCoordinate((short)(cell->X - 2), cell->Y);
-        type = ProbeMap.GetCell(&candidate)->At_44;
-        if (type < 205 || type > 232) return FUN_0057D530(cell);
+        type = DAT_0087F7E8.FUN_005657A0(&candidate)->At_44;
+        if ((type < 205 || type > 232) != 0) return FUN_0057D530(cell);
         candidate.X = 1;
         candidate.Y = 0;
         NeighborCoord_0057CBE0 temporary;
-        candidate = *((ProbeCoord_0057CCF0*)cell)->Subtract(&temporary, &candidate);
-        return FUN_0057D530(&candidate);
+        NeighborCoord_0057CBE0 result = *((ProbeCoord_0057CCF0*)cell)->FUN_00588C60(&temporary, &candidate);
+        return FUN_0057D530(&result);
     }
     return 0;
 }

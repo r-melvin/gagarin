@@ -30779,10 +30779,8 @@
   "sym": "?FUN_0057CCF0@CellProbe_0057CCF0@@QAEDPAUNeighborCoord_0057CBE0@@@Z",
   "len": "0x26a",
   "name": "CellProbe::FUN_0057CCF0",
-  "status": "partial",
-  "pct": 53.8,
-  "best_pct": 53.8,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/bit_font_pixel_methods_00434790.cpp",
@@ -60197,9 +60195,9 @@
   "len": "0x242",
   "name": "FUN_005f9e80",
   "status": "partial",
-  "pct": 54.3,
-  "best_pct": 54.3,
-  "best_at": "cf203011"
+  "pct": 69.5,
+  "best_pct": 69.5,
+  "best_at": "4ac5cd57"
  },
  {
   "tu": "match/ownrdraw.cpp",
@@ -69555,10 +69553,8 @@
   "sym": "?FUN_004C58C0@EMPulseClass@@QAEXXZ",
   "len": "0xD2",
   "name": "EMPulseClass::FUN_004C58C0",
-  "status": "partial",
-  "pct": 64.9,
-  "best_pct": 64.9,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/tu076_em_pulse_class.cpp",
@@ -100459,10 +100455,8 @@
   "sym": "?FUN_00730F30@@YAXXZ",
   "len": "0xac",
   "name": "FUN_00730F30",
-  "status": "partial",
-  "pct": 58.7,
-  "best_pct": 58.7,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/UICmnds.cpp",
@@ -100512,10 +100506,8 @@
   "sym": "?FUN_00731840@@YIXH@Z",
   "len": "0xb0",
   "name": "FUN_00731840",
-  "status": "partial",
-  "pct": 61.2,
-  "best_pct": 61.2,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/UICmnds.cpp",
@@ -100523,10 +100515,8 @@
   "sym": "?FUN_007318F0@@YAXXZ",
   "len": "0x112",
   "name": "FUN_007318F0",
-  "status": "partial",
-  "pct": 68.5,
-  "best_pct": 68.5,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/UICmnds.cpp",
@@ -139563,10 +139553,8 @@
   "sym": "??0MSBinkAnim@@QAE@PAVWstring@@HHPBURectangleStruct@@_N@Z",
   "len": "0xb9",
   "name": "MSBinkAnim::MSBinkAnim",
-  "status": "partial",
-  "pct": 58.2,
-  "best_pct": 58.2,
-  "best_at": "685ebdf1"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/msanim_early_methods.cpp",

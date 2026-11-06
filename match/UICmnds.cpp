@@ -288,13 +288,7 @@ void __cdecl FUN_00730EA0()
 void __cdecl FUN_00730F30()
 {
     if (DAT_00A8B538 == 0 && RulesInstance->MaximumCheerRate + DAT_0084555C < CurrentFrame) {
-        EventClass event(DAT_00A83D4C->ArrayIndex, 0x2D);
-        if (DAT_00A802C8.Count < 128) {
-            DAT_00A802C8.List[DAT_00A802C8.Head] = event;
-            DAT_00A802C8.Time[DAT_00A802C8.Head] = timeGetTime();
-            DAT_00A802C8.Head = (DAT_00A802C8.Head + 1) & 127;
-            ++DAT_00A802C8.Count;
-        }
+        DAT_00A802C8.Add(EventClass(DAT_00A83D4C->ArrayIndex, 0x2D));
         DAT_0084555C = CurrentFrame;
     }
 }
@@ -453,13 +447,7 @@ void __cdecl FUN_007315A0()
 void FUN_00731840(int data)
 {
     if (Session_00A8B238.GameMode != 0 && !(DAT_00A8B230->unknown_0000 & 0x400) && RulesInstance->AlliesAllowed && RulesInstance->AllyChangeAllowed) {
-        EventClass event(DAT_00A83D4C->ArrayIndex, 3, data);
-        if (DAT_00A802C8.Count < 128) {
-            DAT_00A802C8.List[DAT_00A802C8.Head] = event;
-            DAT_00A802C8.Time[DAT_00A802C8.Head] = timeGetTime();
-            DAT_00A802C8.Head = (DAT_00A802C8.Head + 1) & 127;
-            ++DAT_00A802C8.Count;
-        }
+        DAT_00A802C8.Add(EventClass(DAT_00A83D4C->ArrayIndex, 3, data));
     }
 }
 
@@ -471,13 +459,7 @@ void __cdecl FUN_007318F0()
         reinterpret_cast<HouseClass*>(DAT_00A8ECB8.Items[0]->vf_15())->IsHumanPlayer) {
         int id = DAT_00A8ECB8.Items[0]->vf_14();
         if (Session_00A8B238.GameMode && !(DAT_00A8B230->unknown_0000 & 0x400) && RulesInstance->AlliesAllowed && RulesInstance->AllyChangeAllowed) {
-            EventClass event(DAT_00A83D4C->ArrayIndex, 3, id);
-            if (DAT_00A802C8.Count < 128) {
-                DAT_00A802C8.List[DAT_00A802C8.Head] = event;
-                DAT_00A802C8.Time[DAT_00A802C8.Head] = timeGetTime();
-                DAT_00A802C8.Head = (DAT_00A802C8.Head + 1) & 127;
-                ++DAT_00A802C8.Count;
-            }
+            DAT_00A802C8.Add(EventClass(DAT_00A83D4C->ArrayIndex, 3, id));
         }
     }
 }

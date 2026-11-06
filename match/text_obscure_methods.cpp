@@ -65,7 +65,7 @@ int FUN_005f9e80(const char* text)
     for (i = 0; i < len; i++) {
         key ^= (unsigned char)buf[i];
         buf[i] ^= key;
-        key = ((key & 0xFF) << 24) | (key >> 8);
+        key = ((key & 0xFF) * 0x1000000) | (key >> 8);
     }
 
     for (i = 0; i < len; i++) {

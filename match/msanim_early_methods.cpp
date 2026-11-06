@@ -415,17 +415,14 @@ void MSOverlayAnim::Attach(void* target)
 }
 
 // FUNCTION: GAMEMD 0x5CC760
-// PARTIAL: 56.7% -- the same instructions as retail (multiset identical), but cl keeps the caller's flags in EBP
-// and re-reads the name where retail holds the name in EBP and the flags in EBX, and spills the new object
-// into a dead argument slot. Reading the corner from the stored box rather than the argument scores better.
 // Remember the caller's numbers and box; when the file name is not empty, open it as a Bink player and
-// move it to the box's corner.
+// move it to the argument box's corner.
 MSBinkAnim::MSBinkAnim(Wstring* name, int flags, int field34, const RectangleStruct* rect, bool field38)
     : MSAnim(rect->X, rect->Y), Player(0), Field20(flags), Bounds(*rect), Field34(field34), Field38(field38)
 {
     if ((unsigned int)name->Length() > 0) {
         Player = new MSBinkPlayer(name->FUN_007B5440(), flags);
-        Player->Move(Bounds.X, Bounds.Y);
+        Player->Move(rect->X, rect->Y);
     }
 }
 

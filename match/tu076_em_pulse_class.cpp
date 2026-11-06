@@ -120,9 +120,6 @@ void __stdcall EMPulseClass::FUN_004C54A0()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4C58C0
-// PARTIAL 64.9%: retail clears the flag with one `AND dword ptr [EAX+0x140],imm`; cl loads, masks and stores
-// through a separately computed address, which shifts the loop tail. Tried: `&= ~0x80000u`, `&= ~0x80000`,
-// `&= 0xFFF7FFFF`, and the cell built field by field instead of through EMPulse_Offset (25.0%).
 void EMPulseClass::FUN_004C58C0()
 {
     int radius2 = unknown_28 * unknown_28;
@@ -134,7 +131,8 @@ void EMPulseClass::FUN_004C58C0()
                 int dx = cell.X - unknown_24.X;
                 int dy = cell.Y - unknown_24.Y;
                 if (dy * dy + dx * dx <= radius2) {
-                    DAT_0087F7E8.FUN_005657A0(&cell)->Flags &= ~0x80000u;
+                    CellClass* c = DAT_0087F7E8.FUN_005657A0(&cell);
+                    c->Flags &= ~0x80000u;
                 }
             }
         }
