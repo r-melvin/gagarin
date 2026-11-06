@@ -1461,23 +1461,23 @@ void RadarClass::vf_29(RectangleStruct* mapRect)
 void RadarClass::FUN_006558D0()
 {
     RadarArrayHolder* holder = new RadarArrayHolder;
-    if (holder == 0) {
+    if (holder != 0) {
+        int growth = 10;
+        holder->unknown_04 = reinterpret_cast<void*>(&stub_006558B0);
+        holder->unknown_08 = 0x100;
+        holder->unknown_0C = growth;
+        holder->items = new RadarTrackingVector[0x100];
+
+        // Native executes this second pass even when the array allocation fails.
+        // Keep the loop unguarded: the resulting null dereference is part of the
+        // observed allocation-failure path.
+        for (int i = 0; i < holder->unknown_08; ++i)
+            holder->items[i].CapacityIncrement = growth;
+
+        unknown_1258 = holder;
+    } else {
         unknown_1258 = 0;
-        return;
     }
-
-    holder->unknown_04 = reinterpret_cast<void*>(&stub_006558B0);
-    holder->unknown_08 = 0x100;
-    holder->unknown_0C = 10;
-    holder->items = new RadarTrackingVector[0x100];
-
-    // Native executes this second pass even when the array allocation fails.
-    // Keep the loop unguarded: the resulting null dereference is part of the
-    // observed allocation-failure path.
-    for (int i = 0; i < holder->unknown_08; ++i)
-        holder->items[i].CapacityIncrement = holder->unknown_0C;
-
-    unknown_1258 = holder;
 }
 
 // FUNCTION: GAMEMD 0x655990

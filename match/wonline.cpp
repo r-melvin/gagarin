@@ -1685,17 +1685,16 @@ bool __fastcall FUN_0077D710()
 }
 
 // FUNCTION: GAMEMD 0x77D720
-//   Not exact (29% aligned): retail zeroes the address as one dword and
-//   schedules the octet stores differently.
 Value_0053ECE0 FUN_0077D720(Obj_0077D720* host)
 {
-    Address_0077D720 address = { { 0, 0, 0, 0 }, 0 };
     int first = 0;
+    Address_0077D720 address;
+    memset(&address, 0, sizeof(address));
     unsigned long ip = ntohl(host->unknown_18);
     address.unknown_00[3] = (unsigned char)ip;
     address.unknown_00[2] = (unsigned char)(ip >> 8);
-    address.unknown_00[0] = (unsigned char)(ip >> 24);
     address.unknown_00[1] = (unsigned char)(ip >> 16);
+    address.unknown_00[0] = (unsigned char)(ip >> 24);
     Value_0053ECE0 value(&first, &address, 0);
     return value;
 }
@@ -2197,7 +2196,8 @@ void FUN_007813E0(Obj_00781380* pairs, bool descending)
     Record_00B76AE8 record;
     memset(&record, 0, sizeof(record));
 
-    for (int i = 0; i < DAT_00B76AE0.count; i++) {
+    int count = DAT_00B76AE0.count;
+    for (int i = 0; i < count; i++) {
         if (i >= 0 && i < DAT_00B76AE0.count) {
             record = DAT_00B76AE0.data[i];
         }
@@ -2205,9 +2205,9 @@ void FUN_007813E0(Obj_00781380* pairs, bool descending)
         pairs[i].Value = record.Key;
     }
     if (descending) {
-        qsort(pairs, DAT_00B76AE0.count, sizeof(Obj_00781380), FUN_00781380);
+        qsort(pairs, count, sizeof(Obj_00781380), FUN_00781380);
     } else {
-        qsort(pairs, DAT_00B76AE0.count, sizeof(Obj_00781380), FUN_007813B0);
+        qsort(pairs, count, sizeof(Obj_00781380), FUN_007813B0);
     }
 }
 
@@ -2842,10 +2842,10 @@ void FUN_0078F720(HWND dialog)
 void FUN_00791AA0(void* window)
 {
     if (window != NULL) {
-        FUN_005E2CD0(DAT_00AC10C8 == 0
-                         ? FUN_00734E60("TXT_CHANNEL_FULL", NULL, DAT_0084A430, 0x4351)
-                         : FUN_00734E60("TXT_OBSERVER_FULL", NULL, DAT_0084A430, 0x4353),
-                     0, FUN_0077D710, 0);
+        if (DAT_00AC10C8 == 0)
+            FUN_005E2CD0(FUN_00734E60("TXT_CHANNEL_FULL", NULL, DAT_0084A430, 0x4351), 0, FUN_0077D710, 0);
+        else
+            FUN_005E2CD0(FUN_00734E60("TXT_OBSERVER_FULL", NULL, DAT_0084A430, 0x4353), 0, FUN_0077D710, 0);
         if (DAT_00AC116C->Vtbl->At_24(DAT_00AC116C) < 0) {
             FUN_007757E0(window, 2);
         }
