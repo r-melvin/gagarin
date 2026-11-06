@@ -96,7 +96,6 @@ const char* FUN_0048E090(unsigned int index);
 #include "_layout/rec_00549b50.h"
 #include "_layout/obj_00549b50.h"
 
-#include "_layout/obj_006ea4f0.h"
 
 #include "_layout/obj_007719c0.h"
 

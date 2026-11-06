@@ -28,4 +28,3 @@ void Obj_004770B0::FUN_004770B0(int a, int b, unsigned int c)
 #include "_layout/rec_00549b50.h"
 #include "_layout/obj_00549b50.h"
 
-#include "_layout/obj_006ea4f0.h"

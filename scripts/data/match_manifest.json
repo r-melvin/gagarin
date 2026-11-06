@@ -98795,9 +98795,9 @@
  {
   "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EA4F0",
-  "sym": "?FUN_006EA4F0@Obj_006EA4F0@@QAEXH@Z",
+  "sym": "?FUN_006EA4F0@TeamClass@@QAEXPAVFootClass@@@Z",
   "len": "0xf",
-  "name": "Obj_006EA4F0::FUN_006EA4F0",
+  "name": "TeamClass::FUN_006EA4F0",
   "status": "matched",
   "pct": 100.0
  },

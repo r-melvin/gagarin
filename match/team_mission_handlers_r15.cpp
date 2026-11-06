@@ -11,6 +11,7 @@
 #include "_layout/frame_timer.h"
 #include "_layout/cell.h"
 #include "_layout/map_0087f7e8.h"
+#include "_layout/team_class.h"
 
 // The action record: only the parameter at +0x04.
 struct MissionArg_R15
@@ -101,18 +102,6 @@ public:
 };
 GG_STATIC_ASSERT(offsetof(TeamMember_R15, unknown_2FC) == 0x2FC);
 GG_STATIC_ASSERT(offsetof(TeamMember_R15, unknown_5D8) == 0x5D8);
-
-// The 0xA0-byte team the 0x6ECFB0 handler splits the members off to.
-class TeamPeer_006E8A90
-{
-public:
-    // FUNCTION: GAMEMD 0x6E8A90 (decl; reloc)
-    TeamPeer_006E8A90(void* type, int house, int flag);
-    // FUNCTION: GAMEMD 0x6EA500 (decl; reloc)
-    void FUN_006EA500(TeamMember_R15* member, int flag);
-    unsigned char unknown_00[0xA0];
-};
-GG_STATIC_ASSERT(sizeof(TeamPeer_006E8A90) == 0xA0);
 
 // A mission target (a cell or a building): slot 11 reports its kind; +0x140 holds the cell flags.
 class Target_R15
@@ -250,11 +239,11 @@ void Team_R15::SetCellTarget(MissionArg_R15* arg, bool first)
 // Move every member into a fresh team of the parameter's type, then dissolve this one.
 void Team_R15::SplitOff(MissionArg_R15* arg, bool first)
 {
-    TeamPeer_006E8A90* peer = new TeamPeer_006E8A90(DAT_00A8ECA4[arg->unknown_04], unknown_2C, 0);
+    TeamClass* peer = new TeamClass((int)DAT_00A8ECA4[arg->unknown_04], unknown_2C, 0);
     while (unknown_54 != 0) {
         TeamMember_R15* member = unknown_54;
         FUN_006EA870(member, -1, 0);
-        peer->FUN_006EA500(member, 0);
+        peer->AddMember((FootClass*)member, false);
     }
     delete this;
 }

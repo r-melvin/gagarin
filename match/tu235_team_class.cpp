@@ -417,7 +417,6 @@ const char* FUN_0048E090(unsigned int index);
 #include "_layout/rec_00549b50.h"
 #include "_layout/obj_00549b50.h"
 
-#include "_layout/obj_006ea4f0.h"
 
 #include "_layout/obj_007719c0.h"
 
@@ -614,9 +613,9 @@ bool TeamClass::FUN_006EA3E0()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x006EA4F0
-void Obj_006EA4F0::FUN_006EA4F0(int a)
+void TeamClass::FUN_006EA4F0(FootClass* member)
 {
-    FUN_006EA500(a, 1);
+    AddMember(member, true);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

@@ -108,7 +108,6 @@ struct Obj_005176A0 {
 #include "_layout/rec_00549b50.h"
 #include "_layout/obj_00549b50.h"
 
-#include "_layout/obj_006ea4f0.h"
 
 #include "_layout/obj_007719c0.h"
 

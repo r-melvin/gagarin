@@ -99,6 +99,8 @@ public:
     // FUNCTION: GAMEMD 0x6EF610 (declaration; thiscall, RET 8).
     void FUN_006EF610(ScriptActionNode* action, bool enabled);
 
+    // FUNCTION: GAMEMD 0x6EA4F0 -- AddMember with the flag set; RET 4.
+    void FUN_006EA4F0(FootClass* member);
     // FUNCTION: GAMEMD 0x6EA500 -- TeamClass::AddMember.
     bool AddMember(FootClass* member, bool flag);
     // FUNCTION: GAMEMD 0x6EA3E0
