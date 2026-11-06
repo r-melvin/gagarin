@@ -50,6 +50,10 @@ public:
     bool StopPreclickAnim(bool unused);
     // FUNCTION: GAMEMD 0x6CB920 (decl; reloc)
     char ClickFire(bool isPlayer, const CellStruct& cell);
+    // FUNCTION: GAMEMD 0x6CBEE0 -- the cameo's progress stage, 0..0x36.
+    int FUN_006CBEE0();
+    // FUNCTION: GAMEMD 0x6CC080 -- the weapon just finished charging: ready flag, full charge, announcement.
+    void FUN_006CC080(bool announce);
     // FUNCTION: GAMEMD 0x6CC1E0
     void SetCharge(int percentage);
     // FUNCTION: GAMEMD 0x6CC260
@@ -75,6 +79,8 @@ public:
     SuperClass(LoadTag) {}
     // FUNCTION: GAMEMD 0x6CAEC0 -- default constructor (registers in the super weapon array).
     SuperClass();
+    // FUNCTION: GAMEMD 0x6CAF90 -- constructor for a house's super weapon of a given type.
+    SuperClass(SuperWeaponTypeClass* type, HouseClass* owner);
     int           CustomChargeTime;      // +0x24 ctor MOV [ESI+0x24],EAX(-1) @0x006CAFA7
     SuperWeaponTypeClass* Type;          // +0x28 ctor =arg1 @0x006CAFA4
     HouseClass*   Owner;                 // +0x2C HouseClass*; ctor =arg2 @0x006CAFAA

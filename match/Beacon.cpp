@@ -49,6 +49,9 @@ GG_STATIC_ASSERT(offsetof(BenchTimer, Samples) == 0x10);
 #include "small_misc14_methods.h"
 
 #include "beacon_class_methods.h"
+#include "trig_table_functions_004cac40.h"
+#include "map_class_methods.h"
+#include "frame_counter.h"
 
 #include "beacon_manager_class.h"
 
@@ -58,6 +61,7 @@ extern "C" void __cdecl GameDelete(void* pMem);
 
 #include "beacon_manager_class_art_methods.h"
 #include "ccfile_class.h"
+#include <string.h>
 
 #include "beacon_manager_class_draw_methods.h"
 
@@ -275,6 +279,37 @@ bool BeaconManagerClass::CanPlaceBeacon(int houseId)
     return false;
 }
 
+// FUNCTION: GAMEMD 0x430F70
+// Pick the beacon nearest to the world position, as the first one within 128 units: the previous
+// selection is dropped and the beacon is marked as selected (bit 1). False when none is close enough.
+bool BeaconManagerClass::FUN_00430F70(CoordStruct where)
+{
+    if (AllocatedCount) {
+        for (int house = 0; house < 8; house++) {
+            for (int slot = 0; slot < 3; slot++) {
+                BeaconClass* beacon = Beacons[house][slot];
+                if (beacon) {
+                    CoordStruct at = beacon->Coord;
+                    CoordStruct diff;
+                    diff.X = where.X - at.X;
+                    diff.Y = where.Y - at.Y;
+                    diff.Z = where.Z - at.Z;
+                    if ((int)FUN_004CAC40((double)diff.X * diff.X + (double)diff.Z * diff.Z + (double)diff.Y * diff.Y) < 0x80) {
+                        beacon = Beacons[house][slot];
+                        if (beacon) {
+                            MapView_5865E0::UnselectAll();
+                            beacon->Bitfield |= 2;
+                            return true;
+                        }
+                        return false;
+                    }
+                }
+            }
+        }
+    }
+    return false;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x431060
 // Clear bit 1 on every live slot - eight groups of three, walked as one
@@ -296,6 +331,30 @@ void Obj_00431060::FUN_00431060()
             slot++;
         }
     }
+}
+
+// FUNCTION: GAMEMD 0x431090
+// The first beacon within 128 units of the world position, or null.
+BeaconClass* BeaconManagerClass::FUN_00431090(CoordStruct where)
+{
+    if (AllocatedCount) {
+        for (int house = 0; house < 8; house++) {
+            for (int slot = 0; slot < 3; slot++) {
+                BeaconClass* beacon = Beacons[house][slot];
+                if (beacon) {
+                    CoordStruct at = beacon->Coord;
+                    CoordStruct diff;
+                    diff.X = where.X - at.X;
+                    diff.Y = where.Y - at.Y;
+                    diff.Z = where.Z - at.Z;
+                    if ((int)FUN_004CAC40((double)diff.X * diff.X + (double)diff.Z * diff.Z + (double)diff.Y * diff.Y) < 0x80) {
+                        return Beacons[house][slot];
+                    }
+                }
+            }
+        }
+    }
+    return 0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -345,6 +404,31 @@ void BeaconManagerClass::DeleteAllBeacons(int houseId)
 
 // FUNCTION: GAMEMD 0x7C6064 (decl; reloc) -- RDTSC helper: returns the low half, stores the high half.
 unsigned int __cdecl FUN_007C6064(unsigned int* high);
+
+// FUNCTION: GAMEMD 0x431800
+// Whether the radar should draw its beacon markers this frame: some live beacon is visible to the
+// local player, and the frame falls in the lit part of the blink period.
+bool BeaconManagerClass::FUN_00431800()
+{
+    if (AllocatedCount) {
+        bool anyVisible = false;
+        for (int house = 0; house < 8; house++) {
+            for (int slot = 0; slot < 3; slot++) {
+                BeaconClass* beacon = Beacons[house][slot];
+                if (beacon && beacon->VisibleToPlayer()) {
+                    anyVisible = true;
+                    break;
+                }
+            }
+        }
+        if (anyVisible) {
+            if (CurrentFrame % RadarBeaconAnimPeriod < DAT_0089C3B0.RadarBeaconFrameCount + 1) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
 
 // FUNCTION: GAMEMD 0x4318F0
 // Stamps the start time (counter shifted right by 4) and clears the totals.
@@ -403,7 +487,32 @@ unsigned int BenchTimer::Average()
     return 0;
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// BufferIOFileClass::SetFileName as the constructor below expands it: renaming a file whose buffer
+// is live to the same name does nothing; to another name it first commits the pending buffer.
+static inline const char* RenameBuffered(BufferIOFileClass* file, const char* fileName)
+{
+    if (file->GetFileName() != 0 && file->unknown_bool_29) {
+        if (strcmp(fileName, file->GetFileName()) == 0) {
+            return file->GetFileName();
+        }
+        file->Commit();
+        file->unknown_bool_27 = false;
+    }
+    file->RawFileClass::SetFileName(fileName);
+    return file->GetFileName();
+}
+
+// FUNCTION: GAMEMD 0x431A30
+// A buffered file that starts out empty and is then given its name.
+BufferIOFileClass::BufferIOFileClass(const char* fileName)
+    : unknown_bool_24(false), unknown_bool_25(false), unknown_bool_26(false), unknown_bool_27(false),
+      unknown_bool_28(false), unknown_bool_29(false), unknown_2C(0), unknown_30(0), unknown_34(0),
+      unknown_38(0), unknown_3C(0), unknown_40(-1), unknown_int_44(-1), unknown_int_48(0), unknown_4C(0),
+      unknown_50(0)
+{
+    RenameBuffered(this, fileName);
+}
+
 // FUNCTION: GAMEMD 0x431B20
 Obj_00431B20* Obj_00431B20::FUN_00431B20()
 {

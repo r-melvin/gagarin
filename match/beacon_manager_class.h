@@ -12,6 +12,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/coord_struct.h"
 
 class BeaconClass;
 class Surface;
@@ -36,6 +37,9 @@ public:
     void Reset();                              // GAMEMD 0x430980 __thiscall
     bool CanPlaceBeacon(int houseId);          // GAMEMD 0x430F30 __thiscall
     void DeleteAllBeacons(int houseId);        // GAMEMD 0x431410 __thiscall
+    bool FUN_00430F70(CoordStruct where);      // GAMEMD 0x430F70 __thiscall, RET 0xC
+    BeaconClass* FUN_00431090(CoordStruct where); // GAMEMD 0x431090 __thiscall, RET 0xC
+    bool FUN_00431800();                       // GAMEMD 0x431800 __thiscall
 
     // Referenced callee matched in its own TU; declared (no body) so cl emits
     // a __thiscall call (relocation-normalised by the harness).

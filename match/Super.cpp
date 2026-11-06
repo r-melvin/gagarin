@@ -33,6 +33,9 @@
 #include "_layout/straw.h"
 #include "_layout/anim_class.h"
 #include "frame_counter.h"
+#include "_layout/rules_class.h"
+#include "_layout/vox_class.h"
+#include "_layout/voc_class.h"
 
 #include "empty_function_family_methods.h"
 
@@ -49,6 +52,8 @@
 extern const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x7F3FA8
 extern const double DAT_007F3FA8;
+// GLOBAL: GAMEMD 0x7F4048
+extern const double DAT_007F4048;
 // GLOBAL: GAMEMD 0xB0C008
 extern double DAT_00B0C008;
 
@@ -64,6 +69,31 @@ double DAT_00B0C068 = DAT_007E1718 / DAT_00B0C080;
 // GLOBAL: GAMEMD 0x00B0C070
 MathTblCoord DAT_00B0C070;
 
+// The nine cell offsets 0x6CAE00 builds: the centre cell, then the eight neighbours starting east
+// and turning counter-clockwise on screen (placeholder type; the original name is not recovered).
+struct CellOffsetTable_00B0C038
+{
+    CellStruct Offsets[9];
+    CellOffsetTable_00B0C038()
+    {
+        CellStruct cell;
+        cell.X = 0; cell.Y = 0; Offsets[0] = cell;
+        cell.X = 1; cell.Y = 0; Offsets[1] = cell;
+        cell.X = 1; cell.Y = -1; Offsets[2] = cell;
+        cell.X = 0; cell.Y = -1; Offsets[3] = cell;
+        cell.X = -1; cell.Y = -1; Offsets[4] = cell;
+        cell.X = -1; cell.Y = 0; Offsets[5] = cell;
+        cell.X = -1; cell.Y = 1; Offsets[6] = cell;
+        cell.X = 0; cell.Y = 1; Offsets[7] = cell;
+        cell.X = 1; cell.Y = 1; Offsets[8] = cell;
+    }
+};
+GG_STATIC_ASSERT(sizeof(CellOffsetTable_00B0C038) == 0x24);
+
+// SYNTHETIC: GAMEMD 0x006CAE00
+// GLOBAL: GAMEMD 0x00B0C038
+CellOffsetTable_00B0C038 DAT_00B0C038;
+
 // GLOBAL: GAMEMD 0xB0F5B8 -- the registry of super weapons that carry an animation.
 extern DynamicVectorClass<AbstractClass*> DAT_00B0F5B8;
 
@@ -75,6 +105,20 @@ inline void CDTimerClass::Resume()
         this->StartTime = CurrentFrame;
     }
 }
+
+// GLOBAL: GAMEMD 0x8809A0
+extern int DAT_008809A0;
+// STRING: GAMEMD 0x8423FC .. 0x8424D4 - the EVA speech names of the super weapons.
+extern const char DAT_008423FC[];
+extern const char DAT_00842414[];
+extern const char DAT_0084242C[];
+extern const char DAT_00842440[];
+extern const char DAT_00842458[];
+extern const char DAT_00842470[];
+extern const char DAT_0084248C[];
+extern const char DAT_008424A4[];
+extern const char DAT_008424BC[];
+extern const char DAT_008424D4[];
 
 // FUNCTION: GAMEMD 0x6CB2E0
 // Let go of the animation and take the super weapon off the list, once per reason it was on it.
@@ -115,6 +159,11 @@ bool SuperClass::Lose()
 // GLOBAL: GAMEMD 0xA83CB8 -- the super weapon array (defined in core/static_vector_init_stubs.cpp).
 extern DynamicVectorClass<SuperClass*> DAT_00A83CB8;
 
+// GLOBAL: GAMEMD 0xB0F670 -- registry of every abstract object (typed view for the append/remove).
+extern DynamicVectorClass<AbstractClass*> DAT_00B0F670;
+// GLOBAL: GAMEMD 0xB0F6C8 -- the second registry.
+extern DynamicVectorClass<AbstractClass*> DAT_00B0F6C8;
+
 // FUNCTION: GAMEMD 0x6CAEC0
 // Default constructor: an unowned, untyped super weapon with no charge, then
 // registered in the global array.
@@ -127,6 +176,22 @@ SuperClass::SuperClass()
     DAT_00A83CB8.AddItem(this);
 }
 
+// FUNCTION: GAMEMD 0x6CAF90
+// The super weapon of a house: an untouched weapon of the given type, registered in the
+// super weapon array and in the two shared registries every abstract object joins.
+SuperClass::SuperClass(SuperWeaponTypeClass* type, HouseClass* owner)
+    : CustomChargeTime(-1), Type(type), Owner(owner), RechargeTimer(0), BlinkState(0),
+      BlinkTimer_Low(0), BlinkTimer_High(0), SpecialSoundDuration(-1), CanHold(true),
+      ChronoMapCoords(DAT_00B0C000), Animation(0), AnimationGotInvalid(false), IsPresent(false),
+      IsOneTime(false), IsReady(false), IsSuspended(false), ReadyFrame(-100),
+      CameoChargeState(-1), ChargeDrainState(-1)
+{
+    AbstractClass::vf_rtti_5();
+    DAT_00A83CB8.AddItem(this);
+    DAT_00B0F670.AddItem(this);
+    DAT_00B0F6C8.AddItem(this);
+}
+
 // SYNTHETIC: GAMEMD 0x6CE220 -- SuperClass scalar deleting destructor, emitted by the compiler from the
 // virtual destructor where this TU seats the vtable.
 
@@ -137,9 +202,187 @@ void SuperClass::SetReadiness(bool ready)
     this->IsReady = ready;
 }
 
+// FUNCTION: GAMEMD 0x6CBCA0
+// The per-frame update of a super weapon; true when something the sidebar shows has changed (it just
+// became ready, started or finished draining, stopped, or its cameo meter moved a step).
+bool SuperClass::FUN_006CBCA0(bool isPlayer)
+{
+    if (SpecialSoundDuration > 0) {
+        SpecialSoundDuration--;
+    }
+    if (SpecialSoundDuration == 0) {
+        SpecialSoundDuration = -1;
+        VocClass::PlayAt(Type->SpecialSound, &SpecialSoundLocation, 0);
+    }
+    if (DAT_008809A0 != 4 && Animation) {
+        Animation->Invisible = true;
+        Animation->StartSoundAudioController.FUN_00405FD0();
+    }
+    if (!IsPresent) {
+        return false;
+    }
+    if (IsReady && !Type->UseChargeDrain) {
+        return false;
+    }
+    if (IsSuspended) {
+        return false;
+    }
+    if (RechargeTimer.StartTime == -1) {
+        if (CameoChargeState == -1) {
+            return false;
+        }
+        CameoChargeState = -1;
+        return true;
+    }
+    if (RechargeTimer.GetTimeLeft() == 0) {
+        if (Type->UseChargeDrain) {
+            if (ChargeDrainState == 2) {
+                ChargeDrainState = 0;
+                RechargeTimer = CDTimerClass(GetRechargeTime());
+                return true;
+            }
+            ChargeDrainState = 1;
+            IsReady = true;
+            return true;
+        }
+        IsReady = true;
+        if (isPlayer) {
+            switch (Type->Type) {
+            case 0:
+                VoxClass::Play(DAT_008424D4, -1, -1);
+                break;
+            case 1:
+                VoxClass::Play(DAT_008424BC, -1, -1);
+                break;
+            case 10:
+                VoxClass::Play(DAT_008424A4, -1, -1);
+                break;
+            case 2:
+                VoxClass::Play(DAT_0084248C, -1, -1);
+                break;
+            case 7:
+                VoxClass::Play(DAT_00842470, -1, -1);
+                break;
+            case 3:
+                VoxClass::Play(DAT_00842458, -1, -1);
+                break;
+            case 5:
+            case 6:
+                VoxClass::Play(DAT_00842440, -1, -1);
+                break;
+            case 8:
+                VoxClass::Play(DAT_0084242C, -1, -1);
+                break;
+            case 9:
+                VoxClass::Play(DAT_00842414, -1, -1);
+                break;
+            case 11:
+                VoxClass::Play(DAT_008423FC, -1, -1);
+                break;
+            }
+        }
+        ReadyFrame = CurrentFrame;
+        return true;
+    }
+    if (FUN_006CBEE0() != CameoChargeState) {
+        CameoChargeState = FUN_006CBEE0();
+        return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x6CBEE0
+// How far the sidebar cameo's progress overlay has advanced, in 0..0x35 steps; a weapon that is
+// ready (and not a charge-drain one) reports 0x36, an absent one 0. A draining weapon runs the
+// meter backwards over its drain time (the recharge time scaled by the rules' charge-to-drain ratio).
+int SuperClass::FUN_006CBEE0()
+{
+    if (IsPresent) {
+        int stage;
+        if (Type->UseChargeDrain) {
+            if (ChargeDrainState == 2) {
+                stage = (int)((1.0 - (GetRechargeTime() * Rules->ChargeToDrainRatio - RechargeTimer.GetTimeLeft())
+                                         / (GetRechargeTime() * Rules->ChargeToDrainRatio))
+                              * DAT_007F4048);
+            } else {
+                stage = (int)(((double)(GetRechargeTime() - RechargeTimer.GetTimeLeft()) / GetRechargeTime())
+                              * DAT_007F4048);
+            }
+        } else {
+            if (IsReady) {
+                return 0x36;
+            }
+            stage = (int)(((double)(GetRechargeTime() - RechargeTimer.GetTimeLeft()) / GetRechargeTime())
+                          * DAT_007F4048);
+        }
+        if (stage >= 0x35) {
+            return 0x35;
+        }
+        return stage;
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x006CC070
 void FUN_006CC070()
 {
+}
+
+// FUNCTION: GAMEMD 0x6CC080
+// A present super weapon becomes ready: full charge and, when asked, the
+// type's "ready" announcement. The ready frame is stamped and a charge-drain weapon starts draining.
+void SuperClass::FUN_006CC080(bool announce)
+{
+    if (IsPresent) {
+        IsReady = true;
+        // Full charge: the whole recharge time is covered, as SetCharge(100) computes it.
+        int rechargeTime = GetRechargeTime();
+        int remaining = rechargeTime - (int)(1.0f * rechargeTime);
+        if (remaining == 0) {
+            IsReady = true;
+        }
+        RechargeTimer.Resume();
+        RechargeTimer = CDTimerClass(remaining);
+        if (announce) {
+            switch (Type->Type) {
+            case 0:
+                VoxClass::Play(DAT_008424D4, -1, -1);
+                break;
+            case 1:
+                VoxClass::Play(DAT_008424BC, -1, -1);
+                break;
+            case 10:
+                VoxClass::Play(DAT_008424A4, -1, -1);
+                break;
+            case 2:
+                VoxClass::Play(DAT_0084248C, -1, -1);
+                break;
+            case 7:
+                VoxClass::Play(DAT_00842470, -1, -1);
+                break;
+            case 3:
+                VoxClass::Play(DAT_00842458, -1, -1);
+                break;
+            case 5:
+            case 6:
+                VoxClass::Play(DAT_00842440, -1, -1);
+                break;
+            case 8:
+                VoxClass::Play(DAT_0084242C, -1, -1);
+                break;
+            case 9:
+                VoxClass::Play(DAT_00842414, -1, -1);
+                break;
+            case 11:
+                VoxClass::Play(DAT_008423FC, -1, -1);
+                break;
+            }
+        }
+        ReadyFrame = CurrentFrame;
+        if (Type->UseChargeDrain) {
+            ChargeDrainState = 1;
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x6CC1E0  SuperClass::SetCharge (__thiscall, ret 0x4)
@@ -418,6 +661,28 @@ bool ItemVector_0063DFD0::FUN_00006CE2D0(int item)
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x7F3FA8
 extern const double DAT_007F3FA8 = 60.0;
+// GLOBAL: GAMEMD 0x8423FC
+extern const char DAT_008423FC[] = "EVA_PsychicRevealReady";
+// GLOBAL: GAMEMD 0x842414
+extern const char DAT_00842414[] = "EVA_GeneticMutatorReady";
+// GLOBAL: GAMEMD 0x84242C
+extern const char DAT_0084242C[] = "EVA_SpyPlaneReady";
+// GLOBAL: GAMEMD 0x842440
+extern const char DAT_00842440[] = "EVA_ReinforcementsReady";
+// GLOBAL: GAMEMD 0x842458
+extern const char DAT_00842458[] = "EVA_ChronosphereReady";
+// GLOBAL: GAMEMD 0x842470
+extern const char DAT_00842470[] = "EVA_PsychicDominatorReady";
+// GLOBAL: GAMEMD 0x84248C
+extern const char DAT_0084248C[] = "EVA_LightningStormReady";
+// GLOBAL: GAMEMD 0x8424A4
+extern const char DAT_008424A4[] = "EVA_ForceShieldReady";
+// GLOBAL: GAMEMD 0x8424BC
+extern const char DAT_008424BC[] = "EVA_IronCurtainReady";
+// GLOBAL: GAMEMD 0x8424D4
+extern const char DAT_008424D4[] = "EVA_NuclearMissileReady";
+// GLOBAL: GAMEMD 0x7F4048
+extern const double DAT_007F4048 = 53.0;
 // GLOBAL: GAMEMD 0x81B454
 extern const char DAT_0081B454[] = "TXT_READY";
 // GLOBAL: GAMEMD 0x83FB2C

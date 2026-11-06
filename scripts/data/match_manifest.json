@@ -155006,5 +155006,92 @@
   "name": "Obj_0065FE00::FUN_00660A10",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/Beacon.cpp",
+  "addr": "0x430F70",
+  "sym": "?FUN_00430F70@BeaconManagerClass@@QAE_NUCoordStruct@@@Z",
+  "len": "0xed",
+  "name": "BeaconManagerClass::FUN_00430F70",
+  "status": "partial",
+  "pct": 93.2,
+  "best_pct": 93.2,
+  "best_at": "7e727448"
+ },
+ {
+  "tu": "match/Beacon.cpp",
+  "addr": "0x431090",
+  "sym": "?FUN_00431090@BeaconManagerClass@@QAEPAUBeaconClass@@UCoordStruct@@@Z",
+  "len": "0xda",
+  "name": "BeaconManagerClass::FUN_00431090",
+  "status": "partial",
+  "pct": 92.6,
+  "best_pct": 92.6,
+  "best_at": "7e727448"
+ },
+ {
+  "tu": "match/Beacon.cpp",
+  "addr": "0x431800",
+  "sym": "?FUN_00431800@BeaconManagerClass@@QAE_NXZ",
+  "len": "0xcf",
+  "name": "BeaconManagerClass::FUN_00431800",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Beacon.cpp",
+  "addr": "0x431A30",
+  "sym": "??0BufferIOFileClass@@QAE@PBD@Z",
+  "len": "0xe4",
+  "name": "??0BufferIOFileClass@@QAE@PBD@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Super.cpp",
+  "addr": "0x6CAE00",
+  "sym": "_$E26",
+  "len": "0xbf",
+  "name": "_$E26",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Super.cpp",
+  "addr": "0x6CAF90",
+  "sym": "??0SuperClass@@QAE@PAVSuperWeaponTypeClass@@PAVHouseClass@@@Z",
+  "len": "0x185",
+  "name": "??0SuperClass@@QAE@PAVSuperWeaponTypeClass@@PAVHouseClass@@@Z",
+  "status": "partial",
+  "pct": 98.3,
+  "best_pct": 98.3,
+  "best_at": "7e727448"
+ },
+ {
+  "tu": "match/Super.cpp",
+  "addr": "0x6CBCA0",
+  "sym": "?FUN_006CBCA0@SuperClass@@QAE_N_N@Z",
+  "len": "0x208",
+  "name": "SuperClass::FUN_006CBCA0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Super.cpp",
+  "addr": "0x6CBEE0",
+  "sym": "?FUN_006CBEE0@SuperClass@@QAEHXZ",
+  "len": "0x18d",
+  "name": "SuperClass::FUN_006CBEE0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Super.cpp",
+  "addr": "0x6CC080",
+  "sym": "?FUN_006CC080@SuperClass@@QAEX_N@Z",
+  "len": "0x122",
+  "name": "SuperClass::FUN_006CC080",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

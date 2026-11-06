@@ -85,6 +85,12 @@ class RawFileClass : public FileClass
 {
 public:
     RawFileClass(const char* name); // GAMEMD 0x65CA80, table 0x7F0904
+    // Inline default state, as expanded into the BufferIOFileClass constructors (0x431A30, 0x431B20).
+    RawFileClass()
+        : FileAccess(1), FilePointer(0), FileSize(-1), Handle((void*)-1), FileName(0), unknown_short_1C(0),
+          unknown_short_1E(0), FileNameAllocated(false)
+    {
+    }
     virtual ~RawFileClass(); // GAMEMD 0x65CA00
 
     virtual const char* GetFileName() const;   // GAMEMD 0x401940 (matched here)
@@ -129,6 +135,7 @@ class BufferIOFileClass : public RawFileClass
 {
 public:
     BufferIOFileClass(); // GAMEMD 0x431B20 (decl; reloc)
+    BufferIOFileClass(const char* fileName); // GAMEMD 0x431A30
     virtual const char* SetFileName(const char* name); // 0x431E80, slot2
 
     bool Commit(); // 0x431DD0: ECX receiver, AL-only return tails.
