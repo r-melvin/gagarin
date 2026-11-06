@@ -49343,9 +49343,9 @@
   "len": "0x387",
   "name": "BuildingClass::vf_135",
   "status": "partial",
-  "pct": 40.5,
-  "best_pct": 40.5,
-  "best_at": "cf203011"
+  "pct": 49.3,
+  "best_pct": 49.3,
+  "best_at": "7e22100f"
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -60877,11 +60877,8 @@
   "sym": "?FUN_00775110@WinModemClass@@UAEHPADD0HHHH@Z",
   "len": "0x384",
   "name": "WinModemClass::FUN_00775110",
-  "status": "partial",
-  "pct": 36.0,
-  "best_pct": 38.3,
-  "best_at": "cf203011",
-  "lowered_reason": "the exact row 0x774CD0 proves the single Countdown_00774B30::Time() inline body (the one-use Left() is retired); this unrelated partial inlines the same body and re-measures 2.3 points lower (38.3 to 36.0)"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/win_modem_serial_methods.cpp",
@@ -70594,9 +70591,9 @@
   "len": "0x36f",
   "name": "ObjectClass::vf_54",
   "status": "partial",
-  "pct": 83.4,
-  "best_pct": 83.4,
-  "best_at": "cf203011"
+  "pct": 96.8,
+  "best_pct": 96.8,
+  "best_at": "7e22100f"
  },
  {
   "tu": "match/tu165_object_class.cpp",
@@ -75624,10 +75621,8 @@
   "sym": "?vf_91@ObjectClass@@UAEHPAHHPAX1_N21@Z",
   "len": "0x4bd",
   "name": "ObjectClass::vf_91",
-  "status": "partial",
-  "pct": 76.1,
-  "best_pct": 76.1,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/techno_class_slots_41bee0.cpp",

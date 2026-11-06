@@ -4216,8 +4216,10 @@ bool BuildingClass::vf_38()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4496B0
-// CAPPED at 41.5%. Delta: retail realigns the stack (AND ESP,-8, 0x38 frame), keeps a masked flag byte in a stack
-// local and evaluates the price conversion before the counter call; local flag, temp price and operand-swap forms tried.
+// CAPPED at 49.3%. Delta: retail stores the masked flag byte to a stack slot (and cl,1 / mov [esp+17],cl; the store is
+// never read) and reads the two vf_18 results through their returned pointers instead of hoisting the loads of the first.
+// What helped: the distance vector copied by value (`CoordStruct diff = *d.FUN_...`) and the price as `rate * 900.0`.
+// Tried for the flag byte: function-scope local, per-iteration bool/uchar local, ternary read.
 int BuildingClass::vf_135()
 {
     int i;
@@ -4246,7 +4248,7 @@ int BuildingClass::vf_135()
             }
         }
     price:
-        int price = (int)(DAT_007E27F8 * FUN_005B3A00()->AARate);
+        int price = (int)(FUN_005B3A00()->AARate * 900.0);
         return DAT_00A8B230->unknown_0218.RandomRanged(0, 2) + price;
     }
     if (Type->HasStupidGuardMode) {
@@ -4266,8 +4268,8 @@ int BuildingClass::vf_135()
                         const CoordStruct& pa = o->vf_18();
                         const CoordStruct& pb = vf_18();
                         CoordStruct d;
-                        CoordStruct* diff = d.FUN_0041C230(pb.X - pa.X, pb.Y - pa.Y, pb.Z - pa.Z);
-                        if ((int)FUN_004CAC40((double)diff->X * diff->X + (double)diff->Z * diff->Z + (double)diff->Y * diff->Y) < 0x40) {
+                        CoordStruct diff = *d.FUN_0041C230(pb.X - pa.X, pb.Y - pa.Y, pb.Z - pa.Z);
+                        if ((int)FUN_004CAC40((double)diff.X * diff.X + (double)diff.Z * diff.Z + (double)diff.Y * diff.Y) < 0x40) {
                             if (vf_158(0x13, o) == 1) {
                                 vf_122(0x14, 0);
                                 return 1;
@@ -4288,10 +4290,10 @@ int BuildingClass::vf_135()
         }
     }
     if (Type->UnitRepair) {
-        int price = (int)(DAT_007E27F8 * FUN_005B3A00()->Rate);
+        int price = (int)(FUN_005B3A00()->Rate * 900.0);
         return DAT_00A8B230->unknown_0218.RandomRanged(0, 2) + price;
     }
-    int price = (int)(DAT_007E27F8 * FUN_005B3A00()->Rate);
+    int price = (int)(FUN_005B3A00()->Rate * 900.0);
     return DAT_00A8B230->unknown_0218.RandomRanged(0, 2) + price * 3;
 }
 

@@ -116,14 +116,14 @@ struct Countdown_00774B30
     int Time()
     {
         int remain = Delay;
-        if (Started == -1) {
-            return remain;
+        if (Started != -1) {
+            int elapsed = Clock.GetTime() - Started;
+            if (elapsed < remain) {
+                return remain - elapsed;
+            }
+            return 0;
         }
-        int elapsed = Clock.GetTime() - Started;
-        if (elapsed < remain) {
-            return remain - elapsed;
-        }
-        return 0;
+        return remain;
     }
 };
 GG_STATIC_ASSERT(offsetof(Countdown_00774B30, Delay) == 0x08);

@@ -57,11 +57,6 @@ extern CellStruct DAT_00AC1360;
 
 
 // FUNCTION: GAMEMD 0x5F5390
-// PARTIAL 76.1% (94.6% aligned): every exit after a tag event that killed the
-// object shares one `return 5` epilogue, reached here through `died`. The
-// remaining delta is the last of those exits: retail branches to the shared
-// block and re-reads Health; cl lays the block out in line there. Tried nested
-// tests and an else-if on the Health == 0 test (both 76.1%).
 int ObjectClass::vf_91(int* damage, int distance, void* warhead, void* source, bool a5, bool a6, void* house)
 {
     int result = 0;
@@ -162,13 +157,11 @@ int ObjectClass::vf_91(int* damage, int distance, void* warhead, void* source, b
                 }
             }
         }
-        if (!IsAlive) {
+        if (!IsAlive || (newHealth > 0 && Health <= 0)) {
             goto died;
         }
-        if (newHealth > 0 && Health <= 0) {
-            goto died;
-        } else if (Health == 0) {
-            void* owner = 0;
+        void* owner = 0;
+        if (Health == 0) {
             if (source != 0) {
                 owner = ((TechnoClass*)source)->Owner;
             }

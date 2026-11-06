@@ -173,10 +173,9 @@ bool ObjectClass::vf_53()
 }
 
 // FUNCTION: GAMEMD 0x5F4EC0
-// PARTIAL 83.4%: in the black-rules branch retail loads LineTrailer into EDX
-// before forming the colour address and copies through ECX; cl copies from EAX,
-// which swaps registers through the SetDecrement and Owner stores. Tried
-// split `+=`, operator+, a ternary colour, a local trail pointer and a helper.
+// PARTIAL 96.8%: the colour copy now matches through a named ColorStruct local; the
+// remaining delta is the vtable register (edx vs eax) in the last arm and the
+// edx/ecx choice for the final Owner store.
 bool ObjectClass::vf_54(const CoordStruct& coord, int a2)
 {
     if (coord.X == DAT_00AC1380.X && coord.Y == DAT_00AC1380.Y && coord.Z == DAT_00AC1380.Z) {
@@ -232,7 +231,8 @@ bool ObjectClass::vf_54(const CoordStruct& coord, int a2)
                 if (LineTrailer != 0) {
                     ColorStruct color = DAT_008871E0->unknown_1863;
                     if (color.R == 0 && color.G == 0 && color.B == 0) {
-                        ((LineTrailView*)LineTrailer)->Color = vf_34()->LineTrailColor;
+                        ColorStruct trailColor = vf_34()->LineTrailColor;
+                        ((LineTrailView*)LineTrailer)->Color = trailColor;
                     } else {
                         ((LineTrailView*)LineTrailer)->Color = DAT_008871E0->unknown_1863;
                     }
