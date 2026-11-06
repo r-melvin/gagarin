@@ -456,22 +456,43 @@ Pair_006D9F80* Pair_006D9F80::FUN_006D1EB0(int x, int y)
 //
 // World coordinate to the raw iso screen point: the (x, y) leptons go through
 // the 60x30 projection and a signed divide by 256, then the height lift is
-// subtracted from Y. Z is read off pCoord only when the lift is computed, which
-// keeps pCoord in EBX across the projection and lets Z take over EBX after it.
-// Point2D returns through the MSVC6 hidden stack result pointer; EAX returns
-// that pointer. The value-return form preserves the exact200-byte body.
+// subtracted from Y. Point2D returns through the MSVC6 hidden stack result
+// pointer; EAX returns that pointer.
+//
+// COSTFORM: GAMEMD 0x6D8DB0 calls 1 inlined 1
+// Retail has 35 CALL sites (26 in 20 window functions) and only 6 full expanded
+// copies (0x6D2140, 0x6D2420, 0x6D8C60, 0x6D8DB0, 0x6D9B50, 0x6D9CE0), so the
+// callee was over VC6's inline cap. 0x6DAD60 expands all but the projection, which
+// stays a call to 0x6D1EB0. The natural body is exact but expands at every site.
+// Redundant steps that add parse-tree cost and leave the bytes unchanged: x and
+// y read into locals before the xy[] stores; the lift written out in the body
+// as a double local instead of a call to AdjustForZ; and r copied to a separate
+// `result` before the return. The binary does not attest these steps; it
+// attests only the call/inline split.
 Point2D Tactical::CoordsToScreen(const CoordStruct* pCoord)
 {
+    int x = pCoord->X;
+    int y = pCoord->Y;
     int xy[2];
-    xy[0] = pCoord->X;
-    xy[1] = pCoord->Y;
+    xy[0] = x;
+    xy[1] = y;
 
     Point2D r = IsoProject(xy);
-    r.X /= 256;
-    r.Y /= 256;
-    r.Y -= AdjustForZ(pCoord->Z);
+    r.X = r.X / 256;
+    r.Y = r.Y / 256;
+    int height = pCoord->Z;
+    int bias = 0;
+    if (height >= 728) {
+        bias = 1;
+    }
+    double lift = height * AdjustForZ_Factor;
+    lift = lift + bias;
+    lift = lift + 0.5;
+    int pixels = (int)lift;
+    r.Y = r.Y - pixels;
 
-    return r;
+    Point2D result = r;
+    return result;
 }
 
 // Lepton-space (x, y) to the un-normalised iso pixel offset: a 60x30 cell,
@@ -2513,17 +2534,20 @@ void Tactical::FUN_006D6D10(const RectangleStruct* rectangle)
                                              rectangle, 0, 0);
     int row;
     for (row = lastRow; row >= 0; --row) {
+        CellStruct offset;
+        offset.X = row / 2;
+        offset.Y = (row + 1) / 2;
         CellStruct coordinate;
-        coordinate.X = base.X + row / 2;
-        coordinate.Y = base.Y + (row + 1) / 2;
+        coordinate.X = base.X + offset.X;
+        coordinate.Y = base.Y + offset.Y;
         for (int remaining = columns; remaining > 0; --remaining) {
             if (MapInstance.FUN_00568300(&coordinate)) {
                 CellClass* cell = MapInstance.FUN_005657A0(&coordinate);
                 if (cell->OverlayTypeIndex != -1) {
                     RectangleStruct bounds = cell->FUN_0047FB90();
                     RectangleStruct intersection;
-                    RectangleStruct* result = FUN_00421B60(&intersection, &clipped, &bounds, 0, 0);
-                    if (result->Width > 0 && result->Height > 0) {
+                    RectangleStruct visible = *FUN_00421B60(&intersection, &clipped, &bounds, 0, 0);
+                    if (visible.Width > 0 && visible.Height > 0) {
                         CoordStruct center;
                         center.FUN_0041C230((coordinate.X * 256 + 128) / 256 * 256,
                                             (coordinate.Y * 256 + 128) / 256 * 256, 0);
@@ -2541,17 +2565,20 @@ void Tactical::FUN_006D6D10(const RectangleStruct* rectangle)
     }
 
     for (row = lastRow; row >= 0; --row) {
+        CellStruct offset;
+        offset.X = row / 2;
+        offset.Y = (row + 1) / 2;
         CellStruct coordinate;
-        coordinate.X = base.X + row / 2;
-        coordinate.Y = base.Y + (row + 1) / 2;
+        coordinate.X = base.X + offset.X;
+        coordinate.Y = base.Y + offset.Y;
         for (int remaining = columns; remaining > 0; --remaining) {
             if (MapInstance.FUN_00568300(&coordinate)) {
                 CellClass* cell = MapInstance.FUN_005657A0(&coordinate);
                 if (cell->OverlayTypeIndex != -1) {
                     RectangleStruct bounds = cell->FUN_0047FDE0();
                     RectangleStruct intersection;
-                    RectangleStruct* result = FUN_00421B60(&intersection, &clipped, &bounds, 0, 0);
-                    if (result->Width > 0 && result->Height > 0) {
+                    RectangleStruct visible = *FUN_00421B60(&intersection, &clipped, &bounds, 0, 0);
+                    if (visible.Width > 0 && visible.Height > 0) {
                         CoordStruct center;
                         center.X = (coordinate.X * 256 + 128) / 256 * 256;
                         center.Y = (coordinate.Y * 256 + 128) / 256 * 256;
@@ -3157,7 +3184,8 @@ void Tactical::FUN_006D8B30()
 // FUNCTION: GAMEMD 0x6D8C60
 void FUN_006D8C60(ObjectClass* object, RectangleStruct* clip)
 {
-    Point2D point = DAT_00887324->CoordsToScreen(&object->vf_18());
+    Point2D point;
+    InlineCoordsToScreen(&point, &object->vf_18());
     Pair_006D9F80 offset = DAT_00887324->unknown_B0;
     point.X -= offset.unknown_00;
     point.Y -= offset.unknown_04;

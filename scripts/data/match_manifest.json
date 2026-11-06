@@ -104154,9 +104154,9 @@
   "len": "0x272",
   "name": "Tactical::FUN_006D2B60",
   "status": "partial",
-  "pct": 4.9,
-  "best_pct": 4.9,
-  "best_at": "cf203011"
+  "pct": 5.2,
+  "best_pct": 5.2,
+  "best_at": "51736322"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -104165,9 +104165,9 @@
   "len": "0x25d",
   "name": "Tactical::FUN_006D2DE0",
   "status": "partial",
-  "pct": 10.7,
-  "best_pct": 10.7,
-  "best_at": "cf203011"
+  "pct": 18.3,
+  "best_pct": 18.3,
+  "best_at": "51736322"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -104176,9 +104176,9 @@
   "len": "0x24c",
   "name": "Tactical::FUN_006D3040",
   "status": "partial",
-  "pct": 2.7,
-  "best_pct": 2.7,
-  "best_at": "cf203011"
+  "pct": 21.0,
+  "best_pct": 21.0,
+  "best_at": "51736322"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -104187,9 +104187,9 @@
   "len": "0x1d8",
   "name": "Tactical::FUN_006D3290",
   "status": "partial",
-  "pct": 3.4,
-  "best_pct": 3.4,
-  "best_at": "cf203011"
+  "pct": 21.2,
+  "best_pct": 21.2,
+  "best_at": "51736322"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -104198,9 +104198,9 @@
   "len": "0x1e3",
   "name": "Tactical::FUN_006D3470",
   "status": "partial",
-  "pct": 8.8,
-  "best_pct": 8.8,
-  "best_at": "cf203011"
+  "pct": 11.3,
+  "best_pct": 11.3,
+  "best_at": "51736322"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -104209,9 +104209,9 @@
   "len": "0x210",
   "name": "Tactical::FUN_006D3660",
   "status": "partial",
-  "pct": 3.1,
-  "best_pct": 3.1,
-  "best_at": "cf203011"
+  "pct": 5.0,
+  "best_pct": 5.0,
+  "best_at": "51736322"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -104231,9 +104231,9 @@
   "len": "0x246",
   "name": "Tactical::FUN_006D3870",
   "status": "partial",
-  "pct": 1.8,
-  "best_pct": 1.8,
-  "best_at": "cf203011"
+  "pct": 5.3,
+  "best_pct": 5.3,
+  "best_at": "51736322"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -104253,9 +104253,9 @@
   "len": "0x246",
   "name": "Tactical::FUN_006D3AC0",
   "status": "partial",
-  "pct": 1.8,
-  "best_pct": 1.8,
-  "best_at": "cf203011"
+  "pct": 5.3,
+  "best_pct": 5.3,
+  "best_at": "51736322"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -104342,9 +104342,10 @@
   "len": "0x294",
   "name": "Tactical::FUN_006D5730",
   "status": "partial",
-  "pct": 10.8,
+  "pct": 9.1,
   "best_pct": 10.8,
-  "best_at": "cf203011"
+  "best_at": "cf203011",
+  "lowered_reason": "CoordsToScreen now stays a call here under the accepted COSTFORM ruling (AGENTS.md), as in retail; the old 10.8 was reached with it expanded, and the rest of the body is not retail shape yet"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -104353,9 +104354,9 @@
   "len": "0x27d",
   "name": "Tactical::FUN_006D59D0",
   "status": "partial",
-  "pct": 7.5,
-  "best_pct": 7.5,
-  "best_at": "cf203011"
+  "pct": 8.2,
+  "best_pct": 8.2,
+  "best_at": "51736322"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -104384,9 +104385,9 @@
   "len": "0x6f5",
   "name": "Tactical::FUN_006D5030",
   "status": "partial",
-  "pct": 0.5,
-  "best_pct": 0.5,
-  "best_at": "cf203011"
+  "pct": 0.6,
+  "best_pct": 0.6,
+  "best_at": "51736322"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -104406,9 +104407,9 @@
   "len": "0x4f1",
   "name": "Tactical::FUN_006D6590",
   "status": "partial",
-  "pct": 3.0,
-  "best_pct": 3.0,
-  "best_at": "cf203011"
+  "pct": 11.0,
+  "best_pct": 11.0,
+  "best_at": "51736322"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -104435,9 +104436,10 @@
   "len": "0x4d0",
   "name": "Tactical::FUN_006D6D10",
   "status": "partial",
-  "pct": 10.2,
+  "pct": 8.2,
   "best_pct": 10.2,
-  "best_at": "cf203011"
+  "best_at": "cf203011",
+  "lowered_reason": "CoordsToScreen now stays a call here under the accepted COSTFORM ruling (AGENTS.md), as in retail; the old 10.2 was reached with it expanded, and the rest of the body is not retail shape yet"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -104446,9 +104448,9 @@
   "len": "0x37e",
   "name": "Tactical::FUN_006D71E0",
   "status": "partial",
-  "pct": 5.1,
-  "best_pct": 5.1,
-  "best_at": "cf203011"
+  "pct": 5.6,
+  "best_pct": 5.6,
+  "best_at": "51736322"
  },
  {
   "tu": "match/tu177_pixel_fx_class.cpp",
@@ -104497,9 +104499,10 @@
   "len": "0x26b",
   "name": "Tactical::FUN_006D8260",
   "status": "partial",
-  "pct": 18.8,
+  "pct": 16.8,
   "best_pct": 18.8,
-  "best_at": "cf203011"
+  "best_at": "cf203011",
+  "lowered_reason": "CoordsToScreen now stays a call here under the accepted COSTFORM ruling (AGENTS.md), as in retail; the old 18.8 was reached with it expanded, and the rest of the body is not retail shape yet"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -104508,9 +104511,9 @@
   "len": "0x338",
   "name": "Tactical::FUN_006D7F20",
   "status": "partial",
-  "pct": 2.7,
-  "best_pct": 2.7,
-  "best_at": "cf203011"
+  "pct": 6.3,
+  "best_pct": 6.3,
+  "best_at": "51736322"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -104581,9 +104584,9 @@
   "len": "0x38e",
   "name": "Tactical::FUN_006DA9D0",
   "status": "partial",
-  "pct": 3.3,
-  "best_pct": 3.3,
-  "best_at": "cf203011"
+  "pct": 7.7,
+  "best_pct": 7.7,
+  "best_at": "51736322"
  },
  {
   "tu": "match/Display.cpp",
@@ -104661,9 +104664,9 @@
   "len": "0x40c",
   "name": "Tactical::FUN_006DB210",
   "status": "partial",
-  "pct": 5.0,
-  "best_pct": 5.0,
-  "best_at": "cf203011"
+  "pct": 47.5,
+  "best_pct": 47.5,
+  "best_at": "51736322"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -104672,9 +104675,10 @@
   "len": "0x534",
   "name": "Tactical::FUN_006DB620",
   "status": "partial",
-  "pct": 2.9,
+  "pct": 0.9,
   "best_pct": 2.9,
-  "best_at": "cf203011"
+  "best_at": "cf203011",
+  "lowered_reason": "CoordsToScreen now stays a call here under the accepted COSTFORM ruling (AGENTS.md), as in retail; the old 2.9 was reached with it expanded, and the rest of the body is not retail shape yet"
  },
  {
   "tu": "match/tu165_object_class.cpp",
@@ -104710,9 +104714,10 @@
   "len": "0xa18",
   "name": "Tactical::FUN_006D8DB0",
   "status": "partial",
-  "pct": 2.7,
+  "pct": 1.8,
   "best_pct": 2.7,
-  "best_at": "cf203011"
+  "best_at": "cf203011",
+  "lowered_reason": "CoordsToScreen now stays a call here under the accepted COSTFORM ruling (AGENTS.md), as in retail; the old 2.7 was reached with it expanded, and the rest of the body is not retail shape yet"
  },
  {
   "tu": "match/Tactical.cpp",
