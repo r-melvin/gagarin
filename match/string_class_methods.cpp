@@ -578,7 +578,7 @@ bool Wstring::FUN_007B57A0(const char* find, const char* repl)
         }
         cur = hit + strlen(find);
     }
-    const char* text = result ? result : GLOBAL_00889F64;
+    const char* text = result == 0 ? GLOBAL_00889F64 : result;
     AssignText(this, text);
     if (result != 0) {
         delete result;
@@ -691,7 +691,7 @@ bool Wstring::FUN_007B5D70(int length)
         strncpy(head, source, length);
     }
     head[length] = 0;
-    const char* text = head ? head : GLOBAL_00889F64;
+    const char* text = head == 0 ? GLOBAL_00889F64 : head;
     AssignText(this, text);
     if (head != 0) {
         delete head;

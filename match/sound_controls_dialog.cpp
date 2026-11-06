@@ -32,8 +32,6 @@ void __fastcall FUN_00622720(HWND window);
 
 // STRING: GAMEMD 0x840030
 // FUNCTION: GAMEMD 0x6B6230
-// PARTIAL: 91.8% -- retail pushes the proc and the zero before it loads the dialog id (the same
-// instruction multiset; only the position of the id load differs).
 // Run the sound-controls dialog: log the option values, open the dialog, pump
 // until the dialog procedure stores a result (or the host asks to leave), then close it.
 void FUN_006B6230()
@@ -42,11 +40,12 @@ void FUN_006B6230()
     FUN_004068E0("SoundControls: GameSpeed = %d, ScrollRate = %d, Detail = %d\n",
                  DAT_00A8EB60.GameSpeed, DAT_00A8EB60.ScrollRate, DAT_00A8EB60.DetailLevel);
     DAT_00B0B800 = 0;
-    unsigned short id = 0xD6;
-    if (DAT_00A8E9A0) {
-        id = 0xB8;
+    HWND window;
+    if (!DAT_00A8E9A0) {
+        window = UI_BeginDialog(0xD6, FUN_006B6300, 0);
+    } else {
+        window = UI_BeginDialog(0xB8, FUN_006B6300, 0);
     }
-    HWND window = UI_BeginDialog(id, FUN_006B6300, 0);
     if (window) {
         SetWindowLongA(window, DWL_USER, (LONG)&result);
         UI_FocusOnWindow(window);

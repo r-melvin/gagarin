@@ -27,9 +27,6 @@ public:
 };
 
 // FUNCTION: GAMEMD 0x747620
-// PARTIAL: 99.7% (instruction multiset identical, 659 of 659). One delta: the final `add` of MaxDeathCounter
-// sums into EAX where retail sums into ECX (`add ecx,eax` against `add eax,ecx`); operand order, a value
-// temporary, a chained assignment and a compound assignment all give the same bytes.
 // Reads the vehicle type's rules and art keys: the techno type reader first, then every key over its
 // current value, then the frame-layout defaults derived from them.
 bool UnitTypeClass::vf_25(CCINIClass* ini)
@@ -107,8 +104,9 @@ bool UnitTypeClass::vf_25(CCINIClass* ini)
         if (StartFiringFrame == -1)
             StartFiringFrame = FiringFrames == 0 ? StartStandFrame : (WalkFrames + StandingFrames) * Facings;
         if (StartDeathFrame == -1) {
-            StartDeathFrame = DeathFrames == 0 ? -1 : (FiringFrames + 1 + WalkFrames) * Facings;
-            MaxDeathCounter = StartDeathFrame + DeathFrames;
+            int frames = DeathFrames;
+            StartDeathFrame = frames == 0 ? -1 : (FiringFrames + 1 + WalkFrames) * Facings;
+            MaxDeathCounter = StartDeathFrame + frames;
         }
         // STRING: GAMEMD 0x845D08
         StartStandFrame = DAT_00887180.ReadInteger(ImageFile.Data, "StartStandFrame", StartStandFrame);

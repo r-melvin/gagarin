@@ -521,7 +521,7 @@ BOOL CALLBACK FUN_0052D430(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam
         switch (wParam & 0xFFFF) {
         case 2:
         case 0x4A4:
-            if (wParam >> 16)
+            if (HIWORD(wParam))
                 break;
             HWND list = GetDlgItem(hwnd, 0x4A3);
             int selected = SendMessageA(list, LB_GETCURSEL, 0, 0);

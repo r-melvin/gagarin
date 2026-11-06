@@ -940,7 +940,8 @@ bool FUN_00732C30(TechnoClass* object, DynamicVectorClass<const char*>* list)
 {
     int count = list->Count;
     for (int i = 0; i < count; ++i) {
-        if (object->FUN_005F3E50(list->Items[i])) {
+        const char* name = list->Items[i];
+        if (object->FUN_005F3E50(name)) {
             if (object->vf_79()) return 1;
             if (object && object->vf_11() == 6 && object->vf_33()->UndeploysInto) return 1;
         }
