@@ -36,8 +36,6 @@ class TechnoTypeIniView : public CCINIClass
 public:
     // FUNCTION: GAMEMD 0x476FC0 (decl; reloc) -- movement speed class by name.
     int ReadSpeedType(const char* section, const char* key, int fallback);
-    // FUNCTION: GAMEMD 0x477590 (decl; reloc) -- VHP scan class by name.
-    int ReadVHPScan(const char* section, const char* key, int fallback);
     // FUNCTION: GAMEMD 0x4749E0 (decl; reloc) -- build category by name.
     int ReadCategory(const char* section, const char* key, int fallback);
     // FUNCTION: GAMEMD 0x474940 (decl; reloc) -- pip scale by name.

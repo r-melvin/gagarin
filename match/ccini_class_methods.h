@@ -17,6 +17,7 @@
 
 
 class FileClass;
+class Pipe;
 template<class T> class TypeList;
 class Straw;
 class TechnoTypeClass;
@@ -36,6 +37,16 @@ public:
     CCINIClass();
     // The same with the section-index construction expanded inline (0x679CC0, 0x679D90).
     CCINIClass(SectionIndexClass::InlineIndex tag) : INIClass(tag), DigestValid(false) {}
+    // FUNCTION: GAMEMD 0x474540 -- save into a pipe, hashing it into the [Digest] block when asked.
+    int FUN_00474540(Pipe* pipe, bool withDigest);
+    // FUNCTION: GAMEMD 0x4764F0 -- comma-separated TechnoTypeClass list by ID; the default goes by value.
+    TypeList<TechnoTypeClass*> FUN_004764F0(const char* section, const char* key, TypeList<TechnoTypeClass*> defaultValue);
+    // FUNCTION: GAMEMD 0x4766F0 -- write a TechnoTypeClass list as comma-separated IDs.
+    bool FUN_004766F0(const char* section, const char* key, const TypeList<TechnoTypeClass*>* list);
+    // FUNCTION: GAMEMD 0x476E20 -- hash the whole INI into the cached digest at +0x41.
+    void FUN_00476E20();
+    // FUNCTION: GAMEMD 0x477590 -- VHP scan class by name.
+    int ReadVHPScan(const char* section, const char* key, int fallback);
     // Declaration: GAMEMD 0x477440 -- five stackargs, RET14hex.
     // Declaration: GAMEMD 0x477510 -- five arguments, RET14; forwards WriteString bool.
     bool FUN_00477510(const char* section, const char* key, int first, int second, int third);

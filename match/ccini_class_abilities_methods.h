@@ -34,12 +34,8 @@ extern const char DAT_00817F70[];
 // unknown; the string arrives in ECX.
 int FUN_0074FEF0(const char* name);
 
-// One flag per veteran/elite ability, 18 of them.
-struct AbilitiesStruct
-{
-    bool Flags[18];   // +0x00
-};
-GG_STATIC_ASSERT(sizeof(AbilitiesStruct) == 0x12);
+// AbilitiesStruct (one flag byte per veteran/elite ability, 18 of them) is the canonical one.
+#include "_layout/components.h"
 
 
 #endif  // GG_MATCH_PLATFORM_CCINI_CLASS_ABILITIES_METHODS_H

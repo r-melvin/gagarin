@@ -11,6 +11,9 @@
 //   0x476240.
 
 #include "ccini_class_type_list_methods.h"
+#include "vector_class_operations.h"
+#include "type_list.h"
+#include "_layout/techno_type_class.h"
 #include "ccini_class_abilities_methods.h"
 #include "ccini_class_base_category_methods.h"
 #include "ccini_class_crc_methods.h"
@@ -173,6 +176,44 @@ int CCINI_00474430::WriteCCFile(File_00474430* file, bool withDigest)
     }
 
     pipe.Destroy();
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x474540
+//
+// Save the INI into a pipe. Without the digest it is simply saved. With it, the
+// old [Digest] block is cleared, the whole INI is run through a stack SHA-1
+// pipe into the cached digest, the digest is stored back as a UU-encoded block,
+// the INI is saved with it, and the block is cleared again.
+int CCINIClass::FUN_00474540(Pipe* pipe, bool withDigest)
+{
+    if (!withDigest) {
+        return SavePipe(pipe);
+    }
+
+    Clear(STR_0081BFE0, 0);
+
+        SHA_00476D80 sha;
+        sha.ChainTo      = 0;
+        sha.ChainFrom    = 0;
+        sha.IsCached     = 0;
+        sha.Length       = 0;
+        sha.PartialCount = 0;
+        sha.Acc[0] = 0x67452301;
+        sha.Acc[1] = 0xEFCDAB89;
+        sha.Acc[2] = 0x98BADCFE;
+        sha.Acc[3] = 0x10325476;
+        sha.Acc[4] = 0xC3D2E1F0;
+        sha.Vtable = &VT_007E4D78;
+
+    SavePipe((Pipe*)&sha);
+    ((SHAPipe*)&sha)->Result(Digest);
+    DigestValid = 1;
+    ((Pipe*)&sha)->Pipe::~Pipe();
+
+    WriteUUBlock(STR_0081BFE0, Digest, 0x14);
+    int result = SavePipe(pipe);
+    Clear(STR_0081BFE0, 0);
     return result;
 }
 
@@ -480,6 +521,58 @@ bool CCINI_00475C70::WriteTypeIdList(const char* section, const char* key,
 }
 
 
+// GLOBAL: GAMEMD 0xA8EB00 -- the registry array whose entries' IDs the list reader matches by name.
+extern DynamicVectorClass<TechnoTypeClass*> DAT_00A8EB00;
+
+// FUNCTION: GAMEMD 0x4764F0
+//
+// Read a comma-separated list of type IDs. Each token is looked up by name in the
+// registry array and the entry appended to the list; an absent key hands back the
+// caller's default list.
+TypeList<TechnoTypeClass*> CCINIClass::FUN_004764F0(const char* section, const char* key,
+                                                    TypeList<TechnoTypeClass*> defaultValue)
+{
+    char buffer[512];
+
+    if (ReadString(section, key, "", buffer, sizeof(buffer))) {
+        TypeList<TechnoTypeClass*> list(0, 0);
+
+        for (char* token = strtok(buffer, STR_00817F70);
+             token != 0 && *token != '\0';
+             token = strtok(0, STR_00817F70)) {
+            for (int i = 0; i < DAT_00A8EB00.Count; ++i) {
+                if (_stricmp(token, DAT_00A8EB00.Items[i]->ID) == 0) {
+                    list.AddItem(DAT_00A8EB00.Items[i]);
+                    break;
+                }
+            }
+        }
+
+        return list;
+    }
+
+    return defaultValue;
+}
+
+// FUNCTION: GAMEMD 0x4766F0
+//
+// Write a list of TechnoTypeClass pointers out as comma-separated IDs.
+bool CCINIClass::FUN_004766F0(const char* section, const char* key,
+                              const TypeList<TechnoTypeClass*>* list)
+{
+    char buffer[512] = "";
+
+    for (int i = 0; i < list->Count; ++i) {
+        if (buffer[0] != '\0') {
+            strcat(buffer, STR_00817F70);
+        }
+
+        strcat(buffer, list->Items[i]->ID);
+    }
+
+    return WriteString(section, key, buffer);
+}
+
 // FUNCTION: GAMEMD 0x476D80
 //
 // A 32-bit checksum of the INI. The 20-byte SHA-1 digest at +0x41 is computed
@@ -515,6 +608,89 @@ int CCINIClass::GetCRC()
     return crc.FUN_004A1DE0(Digest, 0x14);
 }
 
+// FUNCTION: GAMEMD 0x476E20
+//
+// The digest half of GetCRC: hash the whole INI into the cached digest at +0x41.
+void CCINIClass::FUN_00476E20()
+{
+        SHA_00476D80 sha;
+        sha.ChainTo      = 0;
+        sha.ChainFrom    = 0;
+        sha.IsCached     = 0;
+        sha.Length       = 0;
+        sha.PartialCount = 0;
+        sha.Acc[0] = 0x67452301;
+        sha.Acc[1] = 0xEFCDAB89;
+        sha.Acc[2] = 0x98BADCFE;
+        sha.Acc[3] = 0x10325476;
+        sha.Acc[4] = 0xC3D2E1F0;
+        sha.Vtable = &VT_007E4D78;
+
+    FUN_00526470(&sha);
+    ((SHAPipe*)&sha)->Result(Digest);
+    DigestValid = 1;
+    ((Pipe*)&sha)->Pipe::~Pipe();
+}
+
+// FUNCTION: GAMEMD 0x477440
+//
+// Read three comma-separated integers; each token that is present is stored.
+void CCINIClass::FUN_00477440(const char* section, const char* key, int* first, int* second, int* third)
+{
+    char buffer[512] = "";
+
+    if (ReadString(section, key, "", buffer, sizeof(buffer))) {
+        char* token = strtok(buffer, STR_00817F70);
+        if (token) {
+            *first = atoi(token);
+        }
+        token = strtok(0, STR_00817F70);
+        if (token) {
+            *second = atoi(token);
+        }
+        token = strtok(0, STR_00817F70);
+        if (token) {
+            *third = atoi(token);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x477510
+//
+// Write three integers as "a,b,c".
+bool CCINIClass::FUN_00477510(const char* section, const char* key, int first, int second, int third)
+{
+    char buffer[512] = "";
+
+    sprintf(buffer, "%d,%d,%d", first, second, third);
+    return WriteString(section, key, buffer);
+}
+
+// GLOBAL: GAMEMD 0x81BABC -- the VHP scan class names (None, Normal, Strong).
+extern const char* const DAT_0081BABC[];
+
+// FUNCTION: GAMEMD 0x477590
+//
+// A VHP scan class by name: None, Normal or Strong; anything else keeps the
+// fallback.
+int CCINIClass::ReadVHPScan(const char* section, const char* key, int fallback)
+{
+    char buffer[0x80];
+
+    ReadString(section, key, DAT_0081BABC[fallback], buffer, sizeof(buffer));
+    char* token = strtok(buffer, STR_00817F70);
+    if (_stricmp(token, "None") == 0) {
+        return 0;
+    }
+    if (_stricmp(token, "Normal") == 0) {
+        return 1;
+    }
+    if (_stricmp(token, "Strong") == 0) {
+        return 2;
+    }
+    return fallback;
+}
+
 // FUNCTION: GAMEMD 0x477640
 //
 // Read a comma-separated ability list. When the key is present each token is
@@ -534,7 +710,7 @@ AbilitiesStruct CCINIClass::ReadAbilities(const char* section, const char* key,
              token = strtok(0, DAT_00817F70)) {
             int index = FUN_0074FEF0(token);
             if (index != -1) {
-                result.Flags[index] = true;
+                result._raw[index] = true;
             }
         }
         return result;

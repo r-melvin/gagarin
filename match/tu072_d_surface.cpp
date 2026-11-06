@@ -374,10 +374,45 @@ static inline void Advance(float* step, float* blend)
 
 #include "dsurface_class.h"
 
+#include "direct_draw_interface_view.h"
+#include "wwlib/surface/surface_ctor_inline.h"
+
+// GLOBAL: GAMEMD 0x8A0DEF -- set when the display supports offscreen 3D surfaces.
+extern char DAT_008A0DEF;
+
 // GLOBAL: GAMEMD 0x8A0DCC -- the clipper attached to the primary surface.
 extern "C" DDClipper* DAT_008A0DCC;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4BA5A0
+// Build the DirectDraw surface: a zeroed description (flags 7, width and height), system memory when asked
+// (0x800) and the offscreen 3D caps (0x2040) when the display supports them, then create the surface and read
+// back its depth and whether it ended up in video memory.
+DSurface::DSurface(int width, int height, bool systemMemory, bool offscreen3D)
+    : XSurface(width, height), BytesPerPixel(0), Buffer(0), IsPrimary(false), InVideoMemory(false), DDSurf(0), Desc(0)
+{
+    Desc = new DDSurfaceDesc;
+    if (Desc != 0) {
+        memset(Desc, 0, sizeof(DDSurfaceDesc));
+        Desc->dwSize = sizeof(DDSurfaceDesc);
+        Desc->dwFlags = 7;
+        Desc->dwWidth = width;
+        Desc->dwHeight = height;
+        if (systemMemory == true)
+            Desc->dwCaps = 0x800;
+        if (DAT_008A0DEF != 0 && offscreen3D)
+            Desc->dwCaps = 0x2040;
+        DAT_008A0094->lpVtbl->CreateSurface(DAT_008A0094, Desc, &DDSurf, 0);
+        if (DDSurf != 0) {
+            memset(Desc, 0, sizeof(DDSurfaceDesc));
+            Desc->dwSize = sizeof(DDSurfaceDesc);
+            DDSurf->lpVtbl->GetSurfaceDesc(DDSurf, Desc);
+            BytesPerPixel = (Desc->dwRGBBitCount + 7) >> 3;
+            InVideoMemory = (Desc->dwCaps >> 14) & 1;
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x4BA6B0
 DSurface::~DSurface()
 {
@@ -893,6 +928,48 @@ bool DSurface::unknown_38(RectangleStruct* clip, Point2D* from, Point2D* to, int
     return true;
 }
 
+// FUNCTION: GAMEMD 0x4BE9D0
+unsigned short BlendPixel(const unsigned char* rgb, int r, int g, int b)
+{
+    int red = rgb[0] + r;
+    int green = rgb[1] + g;
+    int blue = rgb[2] + b;
+    int excess = 0;
+    int over = 0;
+
+    if (red >= 255) {
+        over++;
+        excess += red - 255;
+    }
+    if (green >= 255) {
+        over++;
+        excess += green - 255;
+    }
+    if (blue >= 255) {
+        over++;
+        excess += blue - 255;
+    }
+    if (over != 0 && over < 3) {
+        if (over == 1)
+            excess >>= 1;
+        if (red < 255)
+            red += excess;
+        if (green < 255)
+            green += excess;
+        if (blue < 255)
+            blue += excess;
+    }
+    if (blue > 255)
+        blue = 255;
+    if (green > 255)
+        green = 255;
+    if (red > 255)
+        red = 255;
+    return (unsigned short)(((red >> gg_b_translucent_pixel_format.loss0) << gg_b_translucent_pixel_format.pos0) |
+                            ((green >> gg_b_translucent_pixel_format.loss1) << gg_b_translucent_pixel_format.pos1) |
+                            ((blue >> gg_b_translucent_pixel_format.loss2) << gg_b_translucent_pixel_format.pos2));
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4BF750
 // PARTIAL (second look, 21.3% positional; instruction multiset gap 8 of 483). Channel terms are packed in
@@ -1160,6 +1237,265 @@ bool DSurface::unknown_34(RectangleStruct* clip, Point2D* from, Point2D* to, uns
     return true;
 }
 
+#include "direct3d_interface_view.h"
+
+// GLOBAL: GAMEMD 0x8A0E00 -- the DirectDraw interface queried from the DirectDraw object at 0x8A0094.
+extern DirectDrawInterfaceView* DAT_008A0E00;
+// GLOBAL: GAMEMD 0x8A0DF4 -- the Direct3D interface queried from 0x8A0E00.
+extern Direct3DInterfaceView* DAT_008A0DF4;
+// GLOBAL: GAMEMD 0x8A0DF8 -- the Direct3D device created on the primary surface.
+extern Direct3DDeviceView* DAT_008A0DF8;
+
+// FUNCTION: GAMEMD 0x4C1440
+// Check the DirectDraw interface's capabilities for what the overlay pass needs; the failing HRESULT of the query
+// comes back as it is, a missing capability as -1.
+int FUN_004C1440()
+{
+    DirectDrawCaps caps;
+    memset(&caps, 0, sizeof(caps));
+    caps.dwSize = sizeof(caps);
+    long result = DAT_008A0E00->lpVtbl->GetCaps(DAT_008A0E00, &caps, 0);
+    if (result != 0)
+        return result;
+    if (!(caps.unknown_04 & 1))
+        return -1;
+    if (!(caps.unknown_38 & 0x400))
+        return -1;
+    if (!(caps.unknown_84 & 0x2000))
+        return -1;
+    if (!(caps.unknown_84 & 0x1000))
+        return -1;
+    return (caps.unknown_84 & 0x20000) ? 0 : -1;
+}
+
+// FUNCTION: GAMEMD 0x4C14D0
+// PARTIAL (89.4% positional; instruction multiset identical, 85 of 85). Remaining delta: retail loads the 0xFC
+// size constant into EDX between the two zeroing loops and stores both sizes after the device pointer load; ours
+// loads it into EAX after the second loop. Tried: separate stores, a chained store, a local device pointer and a
+// local size.
+// Check the Direct3D device's capabilities (hardware description first): the colour model, the depth and blend
+// operations, 16-bit render and depth buffers and textures of at least 256 by 256.
+int FUN_004C14D0()
+{
+    Direct3DDeviceDesc hardware;
+    Direct3DDeviceDesc software;
+    memset(&hardware, 0, sizeof(hardware));
+    memset(&software, 0, sizeof(software));
+    hardware.dwSize = sizeof(hardware);
+    software.dwSize = sizeof(software);
+    long result = DAT_008A0DF8->lpVtbl->GetCaps(DAT_008A0DF8, &hardware, &software);
+    if (result != 0)
+        return result;
+    if ((hardware.unknown_04 & 0x1C3) != 0x1C3)
+        return -1;
+    if (!(hardware.unknown_08 & 2))
+        return -1;
+    if (!(hardware.unknown_0C & 0x400))
+        return -1;
+    if (!(hardware.unknown_0C & 0x200))
+        return -1;
+    if (!(hardware.unknown_9C & 0x400))
+        return -1;
+    if (!(hardware.unknown_A0 & 0x400))
+        return -1;
+    if (!(hardware.unknown_70 & 0xA))
+        return -1;
+    if (!(hardware.unknown_74 & 2))
+        return -1;
+    if (!(hardware.unknown_78 & 2))
+        return -1;
+    if (hardware.unknown_B4 < 0x100)
+        return -1;
+    return (hardware.unknown_B8 < 0x100) ? -1 : 0;
+}
+
+// GUID: GAMEMD 0x7F7D50 -- the DirectDraw interface the DirectDraw object is queried for.
+extern const _GUID DAT_007F7D50;
+// GUID: GAMEMD 0x7F8070 -- the Direct3D interface 0x8A0E00 is queried for.
+extern const _GUID DAT_007F8070;
+
+// FUNCTION: GAMEMD 0x4C1600
+// PARTIAL (84.0% positional; instruction multiset differs by one branch sense). Remaining delta: retail ends with
+// `test eax,0x20000; jne success` and falls into the -1 return, ours ends with `je fail` and falls into the success
+// return. Tried: the && chain with two return shapes, a ternary, nested ifs, a || chain, a result variable and
+// an inline helper with several returns.
+// Query the DirectDraw object for its newer interface and that one for the Direct3D interface, then check the
+// same capabilities as 0x4C1440; 0 when all are present, -1 when one is missing.
+int FUN_004C1600()
+{
+    long result = DAT_008A0094->lpVtbl->QueryInterface(DAT_008A0094, &DAT_007F7D50, &DAT_008A0E00);
+    if (result != 0)
+        return result;
+    result = DAT_008A0E00->lpVtbl->QueryInterface(DAT_008A0E00, &DAT_007F8070, &DAT_008A0DF4);
+    if (result != 0)
+        return result;
+    DirectDrawCaps caps;
+    memset(&caps, 0, sizeof(caps));
+    caps.dwSize = sizeof(caps);
+    if (DAT_008A0E00->lpVtbl->GetCaps(DAT_008A0E00, &caps, 0) == 0 && (caps.unknown_04 & 1) &&
+        (caps.unknown_38 & 0x400) && (caps.unknown_84 & 0x2000) && (caps.unknown_84 & 0x1000) &&
+        (caps.unknown_84 & 0x20000))
+        return 0;
+    return -1;
+}
+
+#include "display_gscreen.h"
+#include "trivial_tu064_methods.h"
+
+// GLOBAL: GAMEMD 0x8A0DFC -- the viewport of the Direct3D device.
+extern Direct3DViewportView* DAT_008A0DFC;
+// GUID: GAMEMD 0x7F80B0 -- the device class created on the primary surface.
+extern const _GUID DAT_007F80B0;
+// GLOBAL: GAMEMD 0x7E3D90 -- the falloff scale (3.0).
+extern const double DAT_007E3D90;
+
+// FUNCTION: GAMEMD 0x4A3370 (decl; reloc) -- release both interfaces of a texture (defined in leaf_sweep_w1b.cpp).
+struct ComPair_004A3370;
+void __fastcall FUN_004A3370(ComPair_004A3370* self);
+
+// The 0x78-byte texture object of the overlay pass (0x8A0E04 / 0x8A0E08 / 0x8A0E0C): the layer methods
+// 0x4A33A0 / 0x4A3660 / 0x4A3840 act on it (DisplayLayer), 0x4A3370 releases its two interfaces at +0x70 / +0x74.
+struct ComPair_004A3370 : public DisplayLayer
+{
+    char unknown_04[0x78 - 4];
+    // FUNCTION: GAMEMD 0x4A3270 (decl; reloc) -- the constructor: width, height and kind (0 plain, 1 filled, 2 target).
+    ComPair_004A3370(int width, int height, int kind);
+};
+GG_STATIC_ASSERT(sizeof(ComPair_004A3370) == 0x78);
+
+// GLOBAL: GAMEMD 0x8A0E04 / 0x8A0E08 / 0x8A0E0C -- the light texture, the texture the batch binds and the second one.
+extern ComPair_004A3370* DAT_008A0E04;
+extern ComPair_004A3370* DAT_008A0E08;
+extern ComPair_004A3370* DAT_008A0E0C;
+// GLOBAL: GAMEMD 0x8A0E10 -- the triangle batch (0x18004 bytes). Built through Obj_004A3630 (0x4A3630) and
+// reset through Obj_004A3640 (0x4A3640): both placeholder views of the same object (the only store of each is
+// the count at +0x18000), so the global is typed by the first and reached through the second where it is reset.
+extern Obj_004A3630* DAT_008A0E10;
+
+// FUNCTION: GAMEMD 0x4C16A0
+// Set up the Direct3D overlay: create the device on the primary surface and check it, add a viewport the size
+// of the surface, build the 256 by 256 light falloff texture (a radial ramp packed in the display's pixel
+// format) and upload it, then create the texture the batch binds and the batch itself. Returns 0 on success,
+// the failing HRESULT, 1 when the light texture could not be created, 2 or 3 when its pixels could not be
+// built or uploaded, or -1 when a required object is missing.
+int FUN_004C16A0()
+{
+    DDSurface* surface = DAT_0088731C->DDSurf;
+    long result = DAT_008A0DF4->lpVtbl->CreateDevice(DAT_008A0DF4, &DAT_007F80B0, surface, &DAT_008A0DF8);
+    if (result == 0) {
+        if (FUN_004C14D0() != 0)
+            return -1;
+        result = DAT_008A0DF4->lpVtbl->CreateViewport(DAT_008A0DF4, &DAT_008A0DFC, 0);
+        if (result == 0 && (result = DAT_008A0DF8->lpVtbl->AddViewport(DAT_008A0DF8, DAT_008A0DFC)) == 0) {
+            DDSurfaceDesc desc;
+            memset(&desc, 0, sizeof(desc));
+            desc.dwSize = sizeof(desc);
+            result = surface->lpVtbl->GetSurfaceDesc(surface, &desc);
+            if (result == 0) {
+                Direct3DViewportDesc viewport;
+                memset(&viewport, 0, sizeof(viewport));
+                viewport.dwSize = sizeof(viewport);
+                viewport.dwWidth = desc.dwWidth;
+                viewport.dwHeight = desc.dwHeight;
+                viewport.ClipWidth = (float)desc.dwWidth;
+                viewport.ClipHeight = (float)desc.dwHeight;
+                viewport.MaxZ = 1.0f;
+                result = DAT_008A0DFC->lpVtbl->SetViewport2(DAT_008A0DFC, &viewport);
+                if (result == 0 &&
+                    (result = DAT_008A0DF8->lpVtbl->SetCurrentViewport(DAT_008A0DF8, DAT_008A0DFC)) == 0) {
+                    DAT_008A0E04 = new ComPair_004A3370(0x100, 0x100, 0);
+                    if (DAT_008A0E04 != 0) {
+                        unsigned short* pixels = (unsigned short*)malloc(0x20000);
+                        if (pixels != 0) {
+                            unsigned short* out = pixels;
+                            for (int y = -128; y + 128 < 256; y++) {
+                                int yy = y * y;
+                                for (int x = -128; x + 128 < 256; x++) {
+                                    int v = 400 - (int)(FUN_004CAC40((double)(x * x + yy)) * DAT_007E3D90);
+                                    if (v < 0)
+                                        v = 0;
+                                    else if (v > 255)
+                                        v = 255;
+                                    *out++ = (unsigned short)(
+                                        ((v >> gg_b_translucent_pixel_format.loss0) << gg_b_translucent_pixel_format.pos0) |
+                                        ((v >> gg_b_translucent_pixel_format.loss1) << gg_b_translucent_pixel_format.pos1) |
+                                        ((v >> gg_b_translucent_pixel_format.loss2) << gg_b_translucent_pixel_format.pos2));
+                                }
+                            }
+                            if (DAT_008A0E04->FUN_004A33A0((int)pixels) != 0)
+                                return 3;
+                            memset(&desc, 0, sizeof(desc));
+                            desc.dwSize = sizeof(desc);
+                            result = surface->lpVtbl->GetSurfaceDesc(surface, &desc);
+                            if (result != 0)
+                                return result;
+                            DAT_008A0E08 = new ComPair_004A3370(desc.dwWidth, desc.dwHeight, 1);
+                            Obj_004A3630* batch = new Obj_004A3630;
+                            if (batch != 0)
+                                DAT_008A0E10 = batch->FUN_004A3630();
+                            else
+                                DAT_008A0E10 = 0;
+                            if (DAT_008A0E08 == 0 || DAT_008A0E10 == 0)
+                                return -1;
+                            return 0;
+                        }
+                        return 2;
+                    }
+                    result = 1;
+                }
+            }
+        }
+    }
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x4C19B0
+// Release and clear everything 0x4C16A0 set up: the batch, the three textures, then the viewport, device,
+// Direct3D interface and DirectDraw interface.
+void FUN_004C19B0()
+{
+    Obj_004A3640* batch = (Obj_004A3640*)DAT_008A0E10;
+    if (batch != 0) {
+        batch->FUN_004A3640();
+        delete batch;
+        DAT_008A0E10 = 0;
+    }
+    ComPair_004A3370* second = DAT_008A0E0C;
+    if (second != 0) {
+        FUN_004A3370(second);
+        delete second;
+        DAT_008A0E0C = 0;
+    }
+    ComPair_004A3370* bound = DAT_008A0E08;
+    if (bound != 0) {
+        FUN_004A3370(bound);
+        delete bound;
+        DAT_008A0E08 = 0;
+    }
+    ComPair_004A3370* first = DAT_008A0E04;
+    if (first != 0) {
+        FUN_004A3370(first);
+        delete first;
+        DAT_008A0E04 = 0;
+    }
+    if (DAT_008A0DFC != 0) {
+        DAT_008A0DFC->lpVtbl->Release(DAT_008A0DFC);
+        DAT_008A0DFC = 0;
+    }
+    if (DAT_008A0DF8 != 0) {
+        DAT_008A0DF8->lpVtbl->Release(DAT_008A0DF8);
+        DAT_008A0DF8 = 0;
+    }
+    if (DAT_008A0DF4 != 0) {
+        DAT_008A0DF4->lpVtbl->Release(DAT_008A0DF4);
+        DAT_008A0DF4 = 0;
+    }
+    if (DAT_008A0E00 != 0) {
+        DAT_008A0E00->lpVtbl->Release(DAT_008A0E00);
+        DAT_008A0E00 = 0;
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4C1A90
 bool DSurface::CopyFromWhole(Surface* src, bool a, bool b)
@@ -1192,4 +1528,6 @@ int FUN_004C1B50(const Pair_004C1B50* self)
 int DAT_008205D0 = -1;
 // GLOBAL: GAMEMD 0x7E85A8
 extern const double DAT_007E85A8 = 60.0;
+// GLOBAL: GAMEMD 0x7E3D90
+extern const double DAT_007E3D90 = 3.0;
 // END defined globals
