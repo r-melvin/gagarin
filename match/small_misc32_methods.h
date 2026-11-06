@@ -33,7 +33,11 @@ struct Cursor_00408930
     Source_00408930*  Source;       // +0x0028
     int               unknown_2C;   // +0x002C
     unsigned unknown_30;
-    int unknown_34;
+    // Same object as unknown_38: thread 0x53E070 (CreateThread @0x53DF2A) walks the cursors at
+    // 0xAA0460/0xAA0464 of the pool at 0xAA045C under critical section 0xAA0418.
+    // Thread reads at 0x408D30, 0x408D40 (sole caller) and 0x4091CA (via 0x53E11A);
+    // writes at 0x40912F (0x409100, either thread) and 0x408AC7 (creator, via 0x53DFBB).
+    volatile int unknown_34;
     // Thread 0x53E070 (CreateThread @0x53DF2A) writes at0x409127;
     // callers read at0x409320. Stream thread0x407680 is created@0x407610.
     volatile int unknown_38;

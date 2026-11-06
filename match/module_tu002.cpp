@@ -757,7 +757,34 @@ void Obj_00408D00::FUN_00408840()
         FUN_007C8B3D(block);
         node = sentinel->Prev;
     }
-    FUN_00408A70();
+    ListNode* first = sentinel->Prev;
+    if (first == sentinel) first = 0;
+    else if (first)
+    {
+        int index = 0;
+        ListNode* node = first;
+        do
+        {
+            Aligned_00408D80* block = reinterpret_cast<Aligned_00408D80*>(node);
+            for (int i = 0; i < 2; ++i)
+            {
+                block->Entries[i].First = block->Aligned;
+                block->Entries[i].Second = block->Size;
+            }
+            block->unknown_34 = index++;
+            node = node->Prev;
+        } while (node != sentinel);
+    }
+    for (int i = 0; i < 2; ++i)
+    {
+        Cursor_00408930* cursor = &Channels[i];
+        cursor->Source = reinterpret_cast<Aligned_00408D80*>(first);
+        cursor->unknown_34 = -1001;
+        cursor->unknown_38 = cursor->unknown_34;
+        cursor->unknown_30 = 0;
+        cursor->FUN_00408930();
+    }
+    Channels[0].unknown_34 += unknown_14;
 
     FUN_007C8B3D(this);
 }
@@ -779,7 +806,39 @@ void Obj_00408D00::FUN_00408970()
         FUN_007C8B3D(block);
         node = sentinel->Prev;
     }
-    FUN_00408A70();
+    ListNode* first = sentinel->Prev;
+    if (first == sentinel) first = 0;
+    else if (first)
+    {
+        int index = 0;
+        ListNode* node = first;
+        do
+        {
+            Aligned_00408D80* block = reinterpret_cast<Aligned_00408D80*>(node);
+            for (int i = 0; i < 2; ++i)
+            {
+                block->Entries[i].First = block->Aligned;
+                block->Entries[i].Second = block->Size;
+            }
+            block->unknown_34 = index++;
+            node = node->Prev;
+        } while (node != sentinel);
+    }
+    for (int i = 0; i < 2; ++i)
+    {
+        Cursor_00408930* cursor = &Channels[i];
+        cursor->Source = reinterpret_cast<Aligned_00408D80*>(first);
+        cursor->unknown_34 = -1001;
+        cursor->unknown_38 = cursor->unknown_34;
+        cursor->unknown_30 = 0;
+        cursor->unknown_2C = 0;
+        cursor->unknown_0C = cursor->Source;
+        if (first) cursor->unknown_04 = cursor->Source->Entries[cursor->Channel].First;
+        else cursor->unknown_04 = 0;
+        cursor->unknown_08 = 0;
+        cursor->Flags &= ~1;
+    }
+    Channels[0].unknown_34 += unknown_14;
 }
 // FUNCTION: GAMEMD 0x408A70
 void Obj_00408D00::FUN_00408A70()
@@ -812,7 +871,8 @@ void Obj_00408D00::FUN_00408A70()
         cursor->unknown_30 = 0;
         cursor->unknown_2C = 0;
         cursor->unknown_0C = cursor->Source;
-        cursor->unknown_04 = first ? cursor->Source->Entries[cursor->Channel].First : 0;
+        if (first) cursor->unknown_04 = cursor->Source->Entries[cursor->Channel].First;
+        else cursor->unknown_04 = 0;
         cursor->unknown_08 = 0;
         cursor->Flags &= ~1;
     }

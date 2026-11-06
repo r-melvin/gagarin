@@ -99816,10 +99816,8 @@
   "sym": "?FUN_00408840@Obj_00408D00@@QAEXXZ",
   "len": "0xe4",
   "name": "FUN_00408840",
-  "status": "partial",
-  "pct": 2.2,
-  "best_pct": 2.2,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/module_tu002.cpp",
@@ -99827,10 +99825,8 @@
   "sym": "?FUN_00408970@Obj_00408D00@@QAEXXZ",
   "len": "0xf2",
   "name": "FUN_00408970",
-  "status": "partial",
-  "pct": 1.0,
-  "best_pct": 1.0,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/module_tu002.cpp",
@@ -99838,10 +99834,8 @@
   "sym": "?FUN_00408A70@Obj_00408D00@@QAEXXZ",
   "len": "0x9f",
   "name": "FUN_00408A70",
-  "status": "partial",
-  "pct": 52.2,
-  "best_pct": 52.2,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/module_tu002.cpp",
