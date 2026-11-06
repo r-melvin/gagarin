@@ -99845,9 +99845,9 @@
   "len": "0xfe",
   "name": "FUN_00408C30",
   "status": "partial",
-  "pct": 0.0,
-  "best_pct": 0.0,
-  "best_at": "cf203011"
+  "pct": 8.4,
+  "best_pct": 8.4,
+  "best_at": "e3815e72"
  },
  {
   "tu": "match/module_tu002.cpp",
@@ -99905,9 +99905,9 @@
   "len": "0xbc",
   "name": "FUN_00409100",
   "status": "partial",
-  "pct": 0.0,
-  "best_pct": 0.0,
-  "best_at": "cf203011"
+  "pct": 53.8,
+  "best_pct": 53.8,
+  "best_at": "e3815e72"
  },
  {
   "tu": "match/module_tu002.cpp",
@@ -99916,9 +99916,9 @@
   "len": "0xed",
   "name": "FUN_004091C0",
   "status": "partial",
-  "pct": 1.0,
-  "best_pct": 1.0,
-  "best_at": "cf203011"
+  "pct": 13.5,
+  "best_pct": 13.5,
+  "best_at": "e3815e72"
  },
  {
   "tu": "match/module_tu002.cpp",

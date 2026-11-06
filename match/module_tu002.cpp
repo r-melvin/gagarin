@@ -1,8 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT
-// Placement lead: this file regresses under the project /Ob2 default, so a
-// definition it can see probably lived in another original file.
 // Retail TU name is unattested. REA byte evidence and entry-origin CFGs
 // establish these routines; source names remain address placeholders.
 #include "trivial_tu002_methods.h"
@@ -899,8 +896,49 @@ int __fastcall Obj_00408D00::FUN_00408B40(int count, int size, int shift)
 Cursor_00408930* __fastcall Obj_00408D00::FUN_00408C30(int channel)
 {
     Cursor_00408930* cursor = &Channels[channel];
-    if (cursor->unknown_1C) return 0;
-    if (!unknown_98) FUN_00408A70();
+    if (cursor->unknown_1C)
+    {
+        FUN_004068E0("%s access to stream failed. Access already acquired.\n",
+                     cursor->Channel == 0 ? "Write" : "Read");
+        return 0;
+    }
+    if (!unknown_98)
+    {
+        ListNode* sentinel = &unknown_04;
+        ListNode* first = sentinel->Prev;
+        if (first == sentinel) first = 0;
+        else if (first)
+        {
+            int index = 0;
+            ListNode* node = first;
+            do
+            {
+                Aligned_00408D80* block = reinterpret_cast<Aligned_00408D80*>(node);
+                for (int i = 0; i < 2; ++i)
+                {
+                    block->Entries[i].First = block->Aligned;
+                    block->Entries[i].Second = block->Size;
+                }
+                block->unknown_34 = index++;
+                node = node->Prev;
+            } while (node != sentinel);
+        }
+        for (int i = 0; i < 2; ++i)
+        {
+            Cursor_00408930* ring = &Channels[i];
+            ring->Source = reinterpret_cast<Aligned_00408D80*>(first);
+            ring->unknown_34 = -1001;
+            ring->unknown_38 = ring->unknown_34;
+            ring->unknown_30 = 0;
+            ring->unknown_2C = 0;
+            ring->unknown_0C = ring->Source;
+            if (first) ring->unknown_04 = ring->Source->Entries[ring->Channel].First;
+            else ring->unknown_04 = 0;
+            ring->unknown_08 = 0;
+            ring->Flags &= ~1;
+        }
+        Channels[0].unknown_34 += unknown_14;
+    }
     ++cursor->unknown_1C;
     ++unknown_98;
     return cursor;
@@ -1006,17 +1044,17 @@ int __fastcall Cursor_00408930::FUN_00409030(void* file, int count, int* transfe
 // FUNCTION: GAMEMD 0x409100
 int Cursor_00408930::FUN_00409100()
 {
-    int amount = unknown_2C;
-    if (!amount) return 0;
+    int left = unknown_2C;
+    if (!left) return 0;
     Cursor_00408930* other = static_cast<Cursor_00408930*>(FUN_00409340());
-    unknown_38 += amount;
-    other->unknown_34 += amount;
+    unknown_38 += left;
+    other->unknown_34 += left;
+    int amount = left;
     Source_00408930* block = Source;
-    int left = amount;
     do
     {
         Entry8b* entry = &block->Entries[Channel];
-        if (left < entry->Second)
+        if (entry->Second > left)
         {
             entry->First += left;
             entry->Second -= left;
@@ -1040,7 +1078,9 @@ int Cursor_00408930::FUN_00409100()
 int __fastcall Cursor_00408930::FUN_004091C0(int count)
 {
     int total = 0;
-    int remaining = unknown_34 - unknown_38 - unknown_2C;
+    int remaining = unknown_34;
+    remaining -= unknown_38;
+    remaining -= unknown_2C;
     if (!remaining) { unknown_08 = 0; return 0; }
     if (remaining < count) count = remaining;
     int channel = Channel;
