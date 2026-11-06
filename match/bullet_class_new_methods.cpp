@@ -226,13 +226,13 @@ void BulletClass::FUN_004664C0(BulletTypeClass* type, AbstractClass* target,
                                 WarheadTypeClass* warhead,
                                 int speed, unsigned char bright)
 {
+    Type = type;
+    Owner = owner;
     Target = target;
     Speed = speed;
     WH = warhead;
     Bright = bright;
     Health = health;
-    Type = type;
-    Owner = owner;
     AnimFrame = 0;
     AnimRateCounter = Type->AnimRate;
     if (Type->FirersPalette && Owner)
@@ -1080,6 +1080,11 @@ void BulletClass::LoseTarget()
     Target = 0;
 }
 
+static inline Obj_0042D400 BulletCellObj(const CoordStruct& c)
+{
+    return Obj_0042D400((short)(c.X / 256), (short)(c.Y / 256));
+}
+
 // FUNCTION: GAMEMD 0x4684E0
 void BulletClass::vf_10(void* pointer, bool removed)
 {
@@ -1087,13 +1092,10 @@ void BulletClass::vf_10(void* pointer, bool removed)
     if (Owner == pointer)
         Owner = 0;
     if (Target == pointer) {
-        CoordStruct where = Target->vf_18();
-        Obj_0042D400 cell((short)(where.X / 256), (short)(where.Y / 256));
+        Obj_0042D400 cell = BulletCellObj(Target->vf_18());
         if (!DAT_00A8E7AC && !Target->IsInAir()
             && (cell.unknown_00 != DAT_0089DDF0.X
                 || cell.unknown_02 != DAT_0089DDF0.Y))
-            // The hidden-result ctor writes exactly the two CellStruct words;
-            // the lookup consumes that same binary-verified four-byte value.
             Target = reinterpret_cast<CellClass*>(
                 Map_0087F7E8.FUN_005657A0(
                     reinterpret_cast<const CellStruct*>(&cell)));
@@ -1110,7 +1112,7 @@ void BulletClass::vf_10(void* pointer, bool removed)
         BulletClass* bullet = static_cast<BulletClass*>(object);
         if (bullet->Type->Scalable) {
             for (int i = 0; i < ScalableBullets.Count; ++i) {
-                if (ScalableBullets.Items[i] == bullet) {
+                if (bullet == ScalableBullets.Items[i]) {
                     ScalableBullets.RemoveItem(bullet);
                     break;
                 }

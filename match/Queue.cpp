@@ -1061,44 +1061,38 @@ bool FUN_00646E90(int mission, const TargetClass& target, TargetClass source,
     return true;
 }
 
+static inline bool QueueEvent_Local(const EventClass& event)
+{
+    if (DAT_00A802C8.Count < 128) {
+        DAT_00A802C8.List[DAT_00A802C8.Head] = event;
+        DAT_00A802C8.Time[DAT_00A802C8.Head] = timeGetTime();
+        DAT_00A802C8.Head = (DAT_00A802C8.Head + 1) & 127;
+        ++DAT_00A802C8.Count;
+        return true;
+    }
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x646F70
 bool FUN_00646F70(int mission, const TargetClass& target, TargetClass source,
                   const TargetClass& destination, int speed, int maxSpeed)
 {
-    EventClass event(DAT_00A83D4C->ArrayIndex, source, (unsigned char)mission,
-                     target, destination, speed, maxSpeed);
-    if (DAT_00A802C8.Count >= 128) return false;
-    DAT_00A802C8.List[DAT_00A802C8.Head] = event;
-    DAT_00A802C8.Time[DAT_00A802C8.Head] = timeGetTime();
-    ++DAT_00A802C8.Count;
-    DAT_00A802C8.Head = (DAT_00A802C8.Head + 1) & 127;
-    return true;
+    return QueueEvent_Local(EventClass(DAT_00A83D4C->ArrayIndex, source, (unsigned char)mission,
+                                       target, destination, speed, maxSpeed));
 }
 
 // FUNCTION: GAMEMD 0x647040
 bool FUN_00647040()
 {
     if (DAT_00A83D4C->IsWinner || DAT_00A83D4C->IsLoser || DAT_00A83D4C->IsGameOver) return false;
-    EventClass event(DAT_00A83D4C->ArrayIndex, 0xc);
-    if (DAT_00A802C8.Count >= 128) return false;
-    DAT_00A802C8.List[DAT_00A802C8.Head] = event;
-    DAT_00A802C8.Time[DAT_00A802C8.Head] = timeGetTime();
-    ++DAT_00A802C8.Count;
-    DAT_00A802C8.Head = (DAT_00A802C8.Head + 1) & 127;
-    return true;
+    return QueueEvent_Local(EventClass(DAT_00A83D4C->ArrayIndex, 0xc));
 }
 
 // FUNCTION: GAMEMD 0x6470F0
 bool FUN_006470F0()
 {
     if (DAT_00A83D4C->IsWinner || DAT_00A83D4C->IsLoser || DAT_00A83D4C->IsGameOver) return false;
-    EventClass event(DAT_00A83D4C->ArrayIndex, 0x22);
-    if (DAT_00A802C8.Count >= 128) return false;
-    DAT_00A802C8.List[DAT_00A802C8.Head] = event;
-    DAT_00A802C8.Time[DAT_00A802C8.Head] = timeGetTime();
-    ++DAT_00A802C8.Count;
-    DAT_00A802C8.Head = (DAT_00A802C8.Head + 1) & 127;
-    return true;
+    return QueueEvent_Local(EventClass(DAT_00A83D4C->ArrayIndex, 0x22));
 }
 
 // FUNCTION: GAMEMD 0x6471A0

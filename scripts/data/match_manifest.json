@@ -103167,9 +103167,9 @@
   "len": "0x288",
   "name": "?FUN_00686890@@YIX_N@Z",
   "status": "partial",
-  "pct": 52.0,
-  "best_pct": 52.0,
-  "best_at": "cf203011"
+  "pct": 53.1,
+  "best_pct": 53.1,
+  "best_at": "4ac5cd57"
  },
  {
   "tu": "match/Scenario.cpp",
@@ -103399,10 +103399,8 @@
   "sym": "?FUN_00646F70@@YI_NHABUTargetClass@@U1@0HH@Z",
   "len": "0xcf",
   "name": "FUN_00646F70",
-  "status": "partial",
-  "pct": 55.6,
-  "best_pct": 55.6,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Queue.cpp",
@@ -103410,10 +103408,8 @@
   "sym": "?FUN_00647040@@YI_NXZ",
   "len": "0xa2",
   "name": "FUN_00647040",
-  "status": "partial",
-  "pct": 66.0,
-  "best_pct": 66.0,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Queue.cpp",
@@ -103421,10 +103417,8 @@
   "sym": "?FUN_006470F0@@YI_NXZ",
   "len": "0xa2",
   "name": "FUN_006470F0",
-  "status": "partial",
-  "pct": 66.0,
-  "best_pct": 66.0,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Queue.cpp",
@@ -105762,10 +105756,8 @@
   "sym": "?vf_10@BulletClass@@UAEXPAX_N@Z",
   "len": "0x188",
   "name": "BulletClass::vf_10",
-  "status": "partial",
-  "pct": 60.7,
-  "best_pct": 60.7,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/bullet_class_new_methods.cpp",
@@ -106204,10 +106196,8 @@
   "sym": "?FUN_004664C0@BulletClass@@QAEXPAVBulletTypeClass@@PAVAbstractClass@@PAVTechnoClass@@HPAVWarheadTypeClass@@HE@Z",
   "len": "0xa0",
   "name": "BulletClass::FUN_004664C0",
-  "status": "partial",
-  "pct": 63.9,
-  "best_pct": 63.9,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/trivial_tu238_methods.cpp",

@@ -1652,7 +1652,7 @@ void __fastcall FUN_00686890(bool value)
     if (DAT_00A8B261) {
         int count = RulesInstance->CrateMinimum;
         if (count <= DAT_00A8B54C) count = DAT_00A8B54C;
-        if (RulesInstance->CrateMaximum <= count) count = RulesInstance->CrateMaximum;
+        if (count >= RulesInstance->CrateMaximum) count = RulesInstance->CrateMaximum;
         for (; count > 0; --count) MapInstance.FUN_0056BD40();
     }
     FUN_0048D080();
