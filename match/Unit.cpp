@@ -142,9 +142,8 @@ void UnitClass::vf_265()
     UnitTypeClass* type = static_cast<UnitTypeClass*>(this->Type);
     if (!type->MobileFire) {
         if (this->Locomotor->IsMoving()) {
-            const int remaining = this->ReloadTimer.GetTimeLeft();
-            if (remaining > 0) {
-                this->ReloadTimer = CDTimerClass(remaining + 1);
+            if (this->ReloadTimer.GetTimeLeft() > 0) {
+                this->ReloadTimer = CDTimerClass(this->ReloadTimer.GetTimeLeft() + 1);
             }
         }
     }
@@ -161,7 +160,7 @@ bool UnitClass::vf_313()
     }
 
     BuildingTypeClass* deploysInto = type->DeploysInto;
-    if (!deploysInto || deploysInto->TickTank) {
+    if (!deploysInto || !deploysInto->TickTank) {
         return false;
     }
 
@@ -175,14 +174,19 @@ bool UnitClass::vf_313()
     }
 
     IRTTITypeInfo* typeInfo = static_cast<IRTTITypeInfo*>(target);
-    const int targetType = typeInfo->vf_rtti_3();
-    if (targetType != 1 && targetType != 6 && targetType != 15) {
+    switch (typeInfo->vf_rtti_3()) {
+    case 1:
+        break;
+    case 6:
+    case 15:
+        return false;
+    default:
         return false;
     }
 
     CoordStruct location = this->Location;
     CellClass* cell = Map_0087F7E8.FUN_00565730(location);
-    return cell->FUN_00487C10();
+    return cell->FUN_00487C10() ? true : false;
 }
 
 // FUNCTION: GAMEMD 0x737BA0

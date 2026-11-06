@@ -16,7 +16,9 @@ void __cdecl FUN_00409FF0()
     }
 
     if (DAT_0087E898) {
-        if (--DAT_0087E878 < 0) {
+        int count = DAT_0087E878 - 1;
+        DAT_0087E878 = count;
+        if (count < 0) {
             DAT_0087E878 = 0;
         }
         if (DAT_0087E878 == 0) {

@@ -5,9 +5,8 @@
 //   `this` pushed rather than passed in the register, which is the COM
 //   __stdcall form; on a yes take the three coordinate words the object
 //   carries at +0x18, +0x1C and +0x20, otherwise take them from +0x9C of the
-//   owner it holds at +0x08. The result goes through a plain out pointer, not
-//   a hidden return buffer, which the untouched return register at exit
-//   proves.
+//   owner it holds at +0x08. The result goes through a hidden return buffer
+//   (the second stack word after `this`), which comes back in EAX.
 #ifndef GG_MATCH_MOVEMENT_WAYPOINT_QUEUE_POSITION_METHODS_H
 #define GG_MATCH_MOVEMENT_WAYPOINT_QUEUE_POSITION_METHODS_H
 
@@ -45,11 +44,11 @@ struct Source_007180A0
     Owner_007180A0*  Owner;          // +0x0008
     char             _pad00C[0xC];   // +0x000C
     Coord_007180A0   Position;       // +0x0018
+
+    // FUNCTION: GAMEMD 0x7180A0
+    Coord_007180A0 __stdcall FUN_007180A0();
 };
 GG_STATIC_ASSERT(offsetof(Source_007180A0, Owner)    == 0x8);
 GG_STATIC_ASSERT(offsetof(Source_007180A0, Position) == 0x18);
-
-// FUNCTION: GAMEMD 0x7180A0
-void __stdcall FUN_007180A0(Source_007180A0* self, Coord_007180A0* out);
 
 #endif  // GG_MATCH_MOVEMENT_WAYPOINT_QUEUE_POSITION_METHODS_H

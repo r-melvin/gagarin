@@ -1204,9 +1204,9 @@
   "len": "0x94",
   "name": "FUN_00409FF0",
   "status": "partial",
-  "pct": 29.7,
-  "best_pct": 29.7,
-  "best_at": "cf203011",
+  "pct": 80.6,
+  "best_pct": 80.6,
+  "best_at": "81aa71d7",
   "note": "volatile removed from DAT_0087E878 (no thread evidence). Retail reloads the count after the clamp; cl reuses EAX and adds one jmp, shifting the positional score."
  },
  {
@@ -26130,13 +26130,11 @@
  {
   "tu": "match/waypoint_queue_position_methods.cpp",
   "addr": "0x7180A0",
-  "sym": "?FUN_007180A0@@YGXPAUSource_007180A0@@PAUCoord_007180A0@@@Z",
+  "sym": "?FUN_007180A0@Source_007180A0@@QAG?AUCoord_007180A0@@XZ",
   "len": "0x52",
   "name": "FUN_007180A0",
-  "status": "partial",
-  "pct": 9.1,
-  "best_pct": 9.1,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Beacon.cpp",
@@ -58919,9 +58917,9 @@
   "len": "0x106",
   "name": "ShapeButtonClass::Draw",
   "status": "partial",
-  "pct": 14.7,
-  "best_pct": 14.7,
-  "best_at": "cf203011"
+  "pct": 15.7,
+  "best_pct": 15.7,
+  "best_at": "81aa71d7"
  },
  {
   "tu": "match/Sidebar.cpp",
@@ -99653,9 +99651,9 @@
   "len": "0xe5",
   "name": "FUN_004071C0",
   "status": "partial",
-  "pct": 0.0,
-  "best_pct": 0.0,
-  "best_at": "cf203011"
+  "pct": 28.7,
+  "best_pct": 28.7,
+  "best_at": "81aa71d7"
  },
  {
   "tu": "match/module_tu002.cpp",
@@ -99731,9 +99729,9 @@
   "len": "0xfe",
   "name": "FUN_00407680",
   "status": "partial",
-  "pct": 45.1,
-  "best_pct": 45.1,
-  "best_at": "cf203011"
+  "pct": 59.8,
+  "best_pct": 59.8,
+  "best_at": "81aa71d7"
  },
  {
   "tu": "match/module_tu002.cpp",
@@ -99919,9 +99917,9 @@
   "len": "0x98",
   "name": "FUN_00408EE0",
   "status": "partial",
-  "pct": 25.0,
-  "best_pct": 25.0,
-  "best_at": "cf203011"
+  "pct": 28.8,
+  "best_pct": 28.8,
+  "best_at": "81aa71d7"
  },
  {
   "tu": "match/module_tu002.cpp",
@@ -99929,10 +99927,8 @@
   "sym": "?FUN_00408F80@Cursor_00408930@@QAIHPAVFileClass@@HPAH@Z",
   "len": "0xae",
   "name": "FUN_00408F80",
-  "status": "partial",
-  "pct": 28.6,
-  "best_pct": 28.6,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/module_tu002.cpp",
@@ -99940,10 +99936,8 @@
   "sym": "?FUN_00409030@Cursor_00408930@@QAIHPAXHPAH@Z",
   "len": "0xbb",
   "name": "FUN_00409030",
-  "status": "partial",
-  "pct": 42.0,
-  "best_pct": 42.0,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/module_tu002.cpp",
@@ -105653,10 +105647,8 @@
   "sym": "?vf_122@BulletClass@@UAEHXZ",
   "len": "0x89",
   "name": "BulletClass::vf_122",
-  "status": "partial",
-  "pct": 2.5,
-  "best_pct": 2.5,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/bullet_class_new_methods.cpp",
@@ -106388,10 +106380,8 @@
   "sym": "?vf_265@UnitClass@@UAEXXZ",
   "len": "0xa9",
   "name": "UnitClass::vf_265",
-  "status": "partial",
-  "pct": 34.0,
-  "best_pct": 34.0,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Unit.cpp",
@@ -106399,10 +106389,8 @@
   "sym": "?vf_313@UnitClass@@UAE_NXZ",
   "len": "0xa0",
   "name": "UnitClass::vf_313",
-  "status": "partial",
-  "pct": 43.6,
-  "best_pct": 43.6,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/bullet_class_new_methods.cpp",
@@ -106430,10 +106418,8 @@
   "sym": "?vf_73@BulletClass@@UAE_NH@Z",
   "len": "0x12",
   "name": "BulletClass::vf_73",
-  "status": "partial",
-  "pct": 42.9,
-  "best_pct": 42.9,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/bullet_class_new_methods.cpp",

@@ -261,7 +261,7 @@ BulletClass::~BulletClass()
 // FUNCTION: GAMEMD 0x4666C0
 bool BulletClass::vf_73(int mode)
 {
-    return ObjectClass::vf_73(mode) != false;
+    return ObjectClass::vf_73(mode) ? true : false;
 }
 
 // FUNCTION: GAMEMD 0x004666E0
@@ -995,9 +995,10 @@ int BulletClass::vf_122()
 {
     int frame = 0;
     if (!Type->Rotates) {
-        unsigned short raw = (unsigned short)(int)((FUN_004CAE30(
+        DirStruct dir;
+        dir.Raw = (unsigned short)(int)((FUN_004CAE30(
             -Velocity.Y, Velocity.X) - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
-        frame = DAT_007F4890[((raw >> 10) + 1 >> 1) & 31];
+        frame = DAT_007F4890[(dir.Whole >> 10) + 1 >> 1 & 0x1F];
     }
     if (Type->AnimLow || Type->AnimHigh)
         frame = AnimFrame;

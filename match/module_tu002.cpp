@@ -252,29 +252,43 @@ void Obj_00407060::FUN_00407160() { unknown_00 |= 1; }
 int FUN_004071C0(Timer_00401000* timer)
 {
     int difference = timer->Target - timer->Value;
-    if (!difference) return 0;
-    if (!(timer->Flags32 & 1))
+    if (difference)
     {
+        if (timer->Flags32 & 1)
+        {
+            timer->Value = timer->Target;
+            timer->Flags32 |= 2;
+            return 1;
+        }
         __int64 now = Unsorted_AudioGetTime();
         unsigned __int64 elapsed = now - timer->unknown_18;
         timer->unknown_18 = now;
-        unsigned delta = static_cast<unsigned>(elapsed);
-        if (elapsed > timer->unknown_10) delta = static_cast<unsigned>(timer->unknown_10);
-        int step = timer->unknown_0C * delta;
+        unsigned __int64 delta = elapsed;
+        if (elapsed > timer->unknown_10) delta = timer->unknown_10;
+        int step = timer->unknown_0C * static_cast<int>(delta);
         if (difference >= 0)
         {
-            if (step <= difference) timer->Value += step;
-            else timer->Value += difference;
+            if (step > difference)
+            {
+                timer->Value += difference;
+                timer->Flags32 |= 2;
+                return 1;
+            }
+            timer->Value += step;
+            timer->Flags32 |= 2;
+            return 1;
         }
-        else
+        if (step > -difference)
         {
-            if (step <= -difference) timer->Value -= step;
-            else timer->Value += difference;
+            timer->Value += difference;
+            timer->Flags32 |= 2;
+            return 1;
         }
+        timer->Value -= step;
+        timer->Flags32 |= 2;
+        return 1;
     }
-    else timer->Value = timer->Target;
-    timer->Flags32 |= 2;
-    return 1;
+    return 0;
 }
 // FUNCTION: GAMEMD 0x407330
 void __fastcall Node_004072E0::FUN_00407330(Node_004072E0* node)
@@ -399,12 +413,13 @@ DWORD __stdcall FUN_00407680(void* parameter)
             if (event->unknown_0C & 4)
             {
                 EnterCriticalSection(&DAT_0087E7F8);
+                int remaining = event->unknown_9C;
                 IsReadingAudioFile = true;
                 int transferred;
-                int result = event->unknown_34->FUN_00408F80(event->unknown_7C, event->unknown_9C, &transferred);
+                int result = event->unknown_34->FUN_00408F80(event->unknown_7C, remaining, &transferred);
                 IsReadingAudioFile = false;
                 event->unknown_9C -= transferred;
-                if (event->unknown_9C < 1 || result == 2 || result == 0) event->unknown_0C &= ~4;
+                if (event->unknown_9C <= 0 || result == 2 || result == 0) event->unknown_0C &= ~4;
                 LeaveCriticalSection(&DAT_0087E7F8);
             }
         }
@@ -858,13 +873,12 @@ int __fastcall Cursor_00408930::FUN_00408EE0(void* buffer, unsigned count)
     FUN_004091C0(0);
     do
     {
-        unsigned chunk = unknown_08;
-        if (static_cast<int>(count) < unknown_08) chunk = count;
+        int chunk = unknown_08;
+        if (chunk > static_cast<int>(count)) chunk = count;
         if (!chunk) return total;
         // +4 and descriptor entry First are 32-bit buffer addresses in retail.
-        void* current = reinterpret_cast<void*>(unknown_04);
-        if (Channel == 0) memcpy(current, buffer, chunk);
-        else memcpy(buffer, current, chunk);
+        if (Channel == 0) memcpy(reinterpret_cast<void*>(unknown_04), buffer, chunk);
+        else memcpy(buffer, reinterpret_cast<void*>(unknown_04), chunk);
         FUN_004091C0(chunk);
         count -= chunk;
         buffer = static_cast<char*>(buffer) + chunk;
@@ -882,11 +896,16 @@ int __fastcall Cursor_00408930::FUN_00408F80(FileClass* file, int count, int* tr
     for (;;)
     {
         int chunk = unknown_08;
-        if (count < chunk) chunk = count;
+        if (chunk > count) chunk = count;
         if (!chunk) return 1;
-        void* current = reinterpret_cast<void*>(unknown_04);
-        int actual = Channel == 0 ? file->ReadBytes(current, chunk) : file->WriteBytes(current, chunk);
-        if (actual < 0) unknown_24 = 0x80040000;
+        int actual;
+        if (Channel) {
+            actual = file->WriteBytes(reinterpret_cast<void*>(unknown_04), chunk);
+            if (actual < 0) unknown_24 = 0x80040000;
+        } else {
+            actual = file->ReadBytes(reinterpret_cast<void*>(unknown_04), chunk);
+            if (actual < 0) unknown_24 = 0x80040000;
+        }
         if (!actual) return 2;
         if (actual == -1) return 0;
         FUN_004091C0(actual);
@@ -906,11 +925,16 @@ int __fastcall Cursor_00408930::FUN_00409030(void* file, int count, int* transfe
     for (;;)
     {
         int chunk = unknown_08;
-        if (count < chunk) chunk = count;
+        if (chunk > count) chunk = count;
         if (!chunk) return 1;
-        void* current = reinterpret_cast<void*>(unknown_04);
-        int actual = Channel == 0 ? FUN_007C94BC(current, 1, chunk, file) : FUN_007C95D3(current, 1, chunk, file);
-        if (actual < 0) unknown_24 = 0x80040000;
+        int actual;
+        if (Channel) {
+            actual = FUN_007C95D3(reinterpret_cast<void*>(unknown_04), 1, chunk, file);
+            if (actual < 0) unknown_24 = 0x80040000;
+        } else {
+            actual = FUN_007C94BC(reinterpret_cast<void*>(unknown_04), 1, chunk, file);
+            if (actual < 0) unknown_24 = 0x80040000;
+        }
         if (!actual) return 2;
         if (actual == -1) return 0;
         FUN_004091C0(actual);
