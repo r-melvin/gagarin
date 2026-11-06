@@ -136,7 +136,7 @@ public:
     int   unknown_18;               // +0x18
     long  RefCount;                 // +0x1C
     bool  Dirty;                    // +0x20
-    unsigned char _pad_21[3];       // +0x21
+    // +0x21..+0x23 is tail padding (sizeof 0x24); not a member, so the implicit copy leaves it alone.
 };
 
 // Subobject offsets (RTTI base array; constructor stores at +0/+4/+8/+0xC):

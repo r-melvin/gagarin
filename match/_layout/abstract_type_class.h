@@ -46,10 +46,11 @@ public:
     // Native 0x4108B3..0x4108B7 copies six dwords plus the terminator byte.
     GgBoundedText<25> ID;          // +0x24, 24 characters plus NUL at +0x3C
     GgBoundedText<32> UINameLabel; // +0x3D
-    unsigned char  _pad_5D[3];        // +0x5D  (align UIName to +0x60)
+    // +0x5D..+0x5F is compiler alignment padding (UIName sits at +0x60); a member there would be copied by the
+    // implicit copy constructor, which retail does not do.
     const wchar_t* UIName;            // +0x60
     GgBoundedText<49> Name;        // +0x64  strncpy(…, 0x30)
-    unsigned char  _pad_95[3];        // +0x95  (pad to sizeof 0x98)
+    // +0x95..+0x97 is tail padding (sizeof 0x98).
 };
 
 GG_STATIC_ASSERT(offsetof(GgBoundedText<25>, Data) == 0);

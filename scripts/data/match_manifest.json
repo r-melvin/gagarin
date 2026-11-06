@@ -143387,11 +143387,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/misc_free_r16_methods.cpp",
+  "tu": "match/task_force_class_body.cpp",
   "addr": "0x6E80F0",
-  "sym": "?FUN_006E80F0@PairListOwnerView_r16@@QAEPAV1@PAV1@0@Z",
+  "sym": "?FUN_006E80F0@TaskForceClass@@QAE?AV1@PAV1@@Z",
   "len": "0x6f",
-  "name": "FUN_006E80F0",
+  "name": "TaskForceClass::FUN_006E80F0",
   "status": "matched",
   "pct": 100.0
  },
@@ -143488,42 +143488,40 @@
   "pct": 100
  },
  {
-  "tu": "match/w2_leaf_r16.cpp",
+  "tu": "match/SerialEd.cpp",
   "addr": "0x696590",
-  "sym": "?FUN_00696590@Dlg_006966D0@@QAEXXZ",
+  "sym": "?FUN_00696590@SerialEdDialog_006956D0@@QAEXXZ",
   "len": "0x74",
-  "name": "Dialog: fill the four-entry list control and select the matching entry",
-  "status": "partial",
-  "pct": 87.8,
-  "best_pct": 87.8,
-  "best_at": "cf203011"
+  "name": "SerialEdDialog_006956D0::FUN_00696590",
+  "status": "matched",
+  "pct": 100.0
  },
  {
-  "tu": "match/w2_leaf_r16.cpp",
+  "tu": "match/SerialEd.cpp",
   "addr": "0x696740",
-  "sym": "?FUN_00696740@Dlg_006966D0@@QAEXH@Z",
+  "sym": "?FUN_00696740@SerialEdDialog_006956D0@@QAEXH@Z",
   "len": "0x68",
-  "name": "Dialog: show/enable a text control with the text after the dash",
+  "name": "SerialEdDialog_006956D0::FUN_00696740",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/w2_leaf_r16.cpp",
+  "tu": "match/SerialEd.cpp",
   "addr": "0x696950",
-  "sym": "?FUN_00696950@Dlg_006966D0@@QAEXXZ",
+  "sym": "?FUN_00696950@SerialEdDialog_006956D0@@QAEXXZ",
   "len": "0x64",
-  "name": "Dialog: hide text control and read its text back",
+  "name": "SerialEdDialog_006956D0::FUN_00696950",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/w2_leaf_r16.cpp",
+  "tu": "match/SerialEd.cpp",
   "addr": "0x6966D0",
-  "sym": "?FUN_006966D0@Dlg_006966D0@@QAEXXZ",
+  "sym": "?FUN_006966D0@SerialEdDialog_006956D0@@QAEXXZ",
   "len": "0x63",
-  "name": "Dialog: set the two radio buttons from the mode selector",
+  "name": "SerialEdDialog_006956D0::FUN_006966D0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/w2_leaf_r16.cpp",
@@ -143562,13 +143560,13 @@
   "pct": 100
  },
  {
-  "tu": "match/w2_leaf_r16.cpp",
+  "tu": "match/SerialEd.cpp",
   "addr": "0x696610",
-  "sym": "?FUN_00696610@Dlg_006966D0@@QAEXXZ",
+  "sym": "?FUN_00696610@SerialEdDialog_006956D0@@QAEXXZ",
   "len": "0xb5",
-  "name": "Dlg_006966D0::FUN_00696610",
+  "name": "SerialEdDialog_006956D0::FUN_00696610",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/w2_leaf_r16.cpp",
@@ -155210,6 +155208,105 @@
   "sym": "?FUN_005D7E50@@YIXXZ",
   "len": "0xcf",
   "name": "?FUN_005D7E50@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/SerialEd.cpp",
+  "addr": "0x695FD0",
+  "sym": "?FUN_00695FD0@SerialEdDialog_006956D0@@QAEXPAUSerialSettings_006956D0@@@Z",
+  "len": "0x22c",
+  "name": "SerialEdDialog_006956D0::FUN_00695FD0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/SerialEd.cpp",
+  "addr": "0x6964C0",
+  "sym": "?FUN_006964C0@SerialEdDialog_006956D0@@QAEXXZ",
+  "len": "0xcd",
+  "name": "SerialEdDialog_006956D0::FUN_006964C0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/SerialEd.cpp",
+  "addr": "0x6967B0",
+  "sym": "?FUN_006967B0@SerialEdDialog_006956D0@@QAEXXZ",
+  "len": "0x189",
+  "name": "SerialEdDialog_006956D0::FUN_006967B0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/SerialEd.cpp",
+  "addr": "0x6969C0",
+  "sym": "?FUN_006969C0@SerialEdDialog_006956D0@@QAEXHHPAD@Z",
+  "len": "0x117",
+  "name": "SerialEdDialog_006956D0::FUN_006969C0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/SerialEd.cpp",
+  "addr": "0x696AE0",
+  "sym": "?FUN_00696AE0@SerialEdDialog_006956D0@@QAEXXZ",
+  "len": "0x15c",
+  "name": "SerialEdDialog_006956D0::FUN_00696AE0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/task_force_class_ctor_006E7E80.cpp",
+  "addr": "0x6E7E80",
+  "sym": "??0TaskForceClass@@QAE@PBD@Z",
+  "len": "0xc2",
+  "name": "??0TaskForceClass@@QAE@PBD@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/task_force_class_body.cpp",
+  "addr": "0x6E8000",
+  "sym": "??0TaskForceClass@@QAE@ABV0@@Z",
+  "len": "0xf0",
+  "name": "TaskForceClass::TaskForceClass(copy)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/task_force_class_body.cpp",
+  "addr": "0x6E8220",
+  "sym": "?FUN_006E8220@@YIXPAVCCINIClass@@H@Z",
+  "len": "0x118",
+  "name": "FUN_006E8220",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/task_force_class_body.cpp",
+  "addr": "0x6E8340",
+  "sym": "?FUN_006E8340@@YIXPAVCCINIClass@@H@Z",
+  "len": "0xd5",
+  "name": "FUN_006E8340",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/task_force_class_body.cpp",
+  "addr": "0x6E8420",
+  "sym": "?vf_25@TaskForceClass@@UAE_NPAVCCINIClass@@@Z",
+  "len": "0xe3",
+  "name": "TaskForceClass::vf_25",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/task_force_class_body.cpp",
+  "addr": "0x6E8510",
+  "sym": "?vf_26@TaskForceClass@@UAE_NPAVCCINIClass@@@Z",
+  "len": "0x9e",
+  "name": "TaskForceClass::vf_26",
   "status": "matched",
   "pct": 100.0
  }

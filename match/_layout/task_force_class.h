@@ -10,24 +10,25 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "abstract_type_class.h"
+#include "obj_004c4f90.h"
 
 class TechnoTypeClass;
+class CCINIClass;
 struct TaskForceTypeView;
 
-struct TaskForceEntry
-{
-    int              Amount;   // +0x00
-    TechnoTypeClass* Type;     // +0x04
-};
-GG_STATIC_ASSERT(sizeof(TaskForceEntry) == 8);
+// The {amount, type} entry; its text form is the retail Obj_004C4F90 (see obj_004c4f90.h).
+typedef Obj_004C4F90 TaskForceEntry;
 
 class TaskForceClass : public AbstractTypeClass
 {
 public:
     // The stream loader's in-place construction.
-    // FUNCTION: GAMEMD 0x6E7E80 (decl; reloc)
+    // FUNCTION: GAMEMD 0x6E7E80
     // The class factory's construction (TClassFactory<TaskForceClass>): the same constructor with a default argument.
-    TaskForceClass(int unknown_arg0 = 0);
+    TaskForceClass(const char* id = 0);
+    // FUNCTION: GAMEMD 0x6E8000
+    // Copies the type identity and the used entries.
+    TaskForceClass(const TaskForceClass& other);
     TaskForceClass(const AbstractNoInit& noInit) : AbstractTypeClass(noInit) {}
     // FUNCTION: GAMEMD 0x6E87F0 (scalar deleting form; destructor expanded in place)
     virtual ~TaskForceClass();
@@ -36,8 +37,13 @@ public:
     virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x6E86A0
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 6
     virtual int vf_11();                                                  // 11  0x6E87D0
+    virtual bool vf_25(CCINIClass* ini);                                  // 25  0x6E8420
+    virtual bool vf_26(CCINIClass* ini);                                  // 26  0x6E8510
     virtual int vf_12();                                                  // 12  0x6E87E0
 
+    // FUNCTION: GAMEMD 0x6E80F0
+    // Copy the source's entries into this one and return this by value (the copy is built in the caller's slot).
+    TaskForceClass FUN_006E80F0(TaskForceClass* source);
     // FUNCTION: GAMEMD 0x6E8160
     int FUN_006E8160() const;
     // FUNCTION: GAMEMD 0x6E8780

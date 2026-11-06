@@ -128,47 +128,6 @@ void PointerListView_r16::FUN_00722140(void* target, bool removed)
     }
 }
 
-// A record with a counted list of pairs at +0xA4 (header ints at +0x98..+0xA0).
-struct PairListView_r16
-{
-    int First;    // +0x98
-    int Count;    // +0x9C
-    int Third;    // +0xA0
-    struct Pair {
-        int A;
-        int B;
-    } Pairs[1];   // +0xA4
-};
-
-class PairListOwnerView_r16
-{
-public:
-    // FUNCTION: GAMEMD 0x6E8000 (decl; reloc) -- refresh the other object from this one.
-    void FUN_006E8000(PairListOwnerView_r16* other);
-    PairListOwnerView_r16* FUN_006E80F0(PairListOwnerView_r16* target, PairListOwnerView_r16* source);
-
-    char unknown_00[0x98];
-    PairListView_r16 List;   // +0x98
-};
-GG_STATIC_ASSERT(offsetof(PairListOwnerView_r16, List) == 0x98);
-
-// FUNCTION: GAMEMD 0x6E80F0
-// Copy the source's pair list into this one, then have the target refresh from this.
-PairListOwnerView_r16* PairListOwnerView_r16::FUN_006E80F0(PairListOwnerView_r16* target,
-                                                           PairListOwnerView_r16* source)
-{
-    if (this != source) {
-        List.First = source->List.First;
-        List.Count = source->List.Count;
-        List.Third = source->List.Third;
-        for (int i = 0; i < List.Count; i++) {
-            List.Pairs[i] = source->List.Pairs[i];
-        }
-    }
-    target->FUN_006E8000(this);
-    return target;
-}
-
 // An object holding a request handle and two remembered values.
 struct RemembersView_r16
 {
