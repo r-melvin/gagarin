@@ -1346,7 +1346,7 @@ bool BuildingTypeClass::vf_25(CCINIClass* ini)
             if (strlen(animName))
                 strcpy(BuildupFile, animName);
         }
-        StampTheater(TypesScenario->TheaterIndex);
+        StampTheater(DAT_00A8B230->unknown_1258);
         {
             sprintf(frameDefault, "%d,%d,%d", BuildingAnimFrame[1].Frame, BuildingAnimFrame[1].Count, BuildingAnimFrame[1].Rate);
             if (DAT_00887180.ReadString(ImageFile, "AnimIdle", frameDefault, frameText, 0x40) > 0)
@@ -1670,7 +1670,7 @@ HRESULT __stdcall BuildingTypeClass::Load(IStream* pStm)
     RoofDeployingAnimLoaded = false;
     UnderRoofDoorAnim = 0;
     UnderRoofDoorAnimLoaded = false;
-    StampTheater(TypesScenario->TheaterIndex);
+    StampTheater(DAT_00A8B230->unknown_1258);
     return S_OK;
 }
 
@@ -1783,7 +1783,7 @@ void* BuildingTypeClass::vf_48()
         if (strlen(BuildupFile)) {
             char path[260];
             _makepath(path, 0, 0, BuildupFile, TypesShpExtension);
-            TypesStampTheater(path, TypesScenario->TheaterIndex);
+            TypesStampTheater(path, DAT_00A8B230->unknown_1258);
             TypesFileView file(path);
             void* shape = file.ReadShape();
             if (shape == 0) {

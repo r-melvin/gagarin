@@ -54,15 +54,9 @@ extern FoundationCell TypesFoundationOutsideCells[22][30];
 
 #include "foundation_dimensions.h"
 
-// The scenario object (global pointer 0xA8B230; read-only here); only the theater index is read.
-struct TypesScenarioView
-{
-    unsigned char unknown_000[0x1258];
-    int TheaterIndex;   // +0x1258
-};
-GG_STATIC_ASSERT(offsetof(TypesScenarioView, TheaterIndex) == 0x1258);
-// GLOBAL: GAMEMD 0xA8B230
-extern TypesScenarioView* TypesScenario;
+// The scenario object (global pointer 0xA8B230, the canonical ScenarioClass; only the theater index at +0x1258 is read).
+#include "scenario_class.h"
+#include "_layout/scenario_ptr_00a8b230.h"
 
 extern "C" void __cdecl _makepath(char* path, const char* drive, const char* dir, const char* fname,
                                   const char* ext);
