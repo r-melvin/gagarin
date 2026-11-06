@@ -154744,5 +154744,34 @@
   "pct": 98.5,
   "best_pct": 98.5,
   "best_at": "20d3fc7d"
+ },
+ {
+  "tu": "match/path_search_ctor_dtor_methods.cpp",
+  "addr": "0x42AA90",
+  "sym": "?FUN_0042aa90@PathSearchClass@@SGPAUPathResult@@PAUObj_0042A6D0@@PAH@Z",
+  "len": "0x159",
+  "name": "PathSearchClass::FUN_0042aa90",
+  "status": "partial",
+  "pct": 81.1,
+  "best_pct": 81.1,
+  "best_at": "f2644f90"
+ },
+ {
+  "tu": "match/ccini_class_methods.cpp",
+  "addr": "0x679CC0",
+  "sym": "?FUN_00679CC0@@YIHXZ",
+  "len": "0xcc",
+  "name": "?FUN_00679CC0@@YIHXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ccini_class_methods.cpp",
+  "addr": "0x679D90",
+  "sym": "?FUN_00679D90@@YIHXZ",
+  "len": "0x126",
+  "name": "?FUN_00679D90@@YIHXZ",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

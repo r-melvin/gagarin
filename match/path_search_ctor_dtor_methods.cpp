@@ -15,6 +15,7 @@
 #include <string.h>
 #include "_rt/gg_static_assert.h"
 #include "vector_class.h"
+#include "_layout/cell_class.h"
 
 // Retail calls the VectorClass capacity constructors out of line (0x42DC50,
 // 0x42DD60) and expands DynamicVectorClass's own constructor around them, so
@@ -73,6 +74,17 @@ struct PathHeap
 };
 GG_STATIC_ASSERT(sizeof(PathHeap) == 0x14);   // operator new(0x14) at 0x42A741
 
+// One search record (12-byte stride at 0x42A47F..0x42A492): the cell reference, the level
+// read from the cell, and the record the search came from.
+struct PathCellRecord
+{
+    CellClass**     unknown_00;   // +0x00
+    int             unknown_04;   // +0x04
+    PathCellRecord* unknown_08;   // +0x08
+};
+GG_STATIC_ASSERT(sizeof(PathCellRecord) == 0xC);
+
+// One open-list node (16-byte stride).
 struct Obj_0042A6D0
 {
     Obj_0042A6D0()
@@ -82,11 +94,12 @@ struct Obj_0042A6D0
         unknown_04 = 0;
     }
 
-    int unknown_00;   // +0x00
-    int unknown_04;   // +0x04
-    int unknown_08;   // +0x08
-    int unknown_0C;   // +0x0C
+    PathCellRecord* unknown_00;   // +0x00
+    float           unknown_04;   // +0x04
+    float           unknown_08;   // +0x08
+    int             unknown_0C;   // +0x0C
 };
+GG_STATIC_ASSERT(sizeof(Obj_0042A6D0) == 0x10);
 
 struct PathNodePool_0042A6D0
 {
@@ -98,17 +111,12 @@ struct PathNodePool_0042A6D0
 };
 GG_STATIC_ASSERT(sizeof(PathNodePool_0042A6D0) == 0x100004);   // operator new(0x100004) at 0x42A7E8
 
-struct PathCellRecord
-{
-    char unknown_00[0x18];
-};
-
 struct PathCellPool
 {
     PathCellPool() : Used(0) {}
     ~PathCellPool() {}
 
-    PathCellRecord Records[0x10000];   // +0x000000
+    PathCellRecord Records[0x20000];   // +0x000000
     int            Used;               // +0x180000
 };
 GG_STATIC_ASSERT(sizeof(PathCellPool) == 0x180004);   // operator new(0x180004) at 0x42A81C
@@ -252,11 +260,51 @@ inline unsigned short* InlineZoneIds_0042CCD0(PathCell const& cell)
     return DAT_0087F7E8.ZoneIds[DAT_0087F7E8.FUN_0056d3f0(cell)].Id;
 }
 
+// The result record the path builder hands back (function-local static at 0x89A2D8, guard 0x89A300).
+struct PathResult
+{
+    ~PathResult() {}
+
+    CellStruct unknown_00;   // +0x00
+    int        unknown_04;   // +0x04
+    int        unknown_08;   // +0x08
+    int*       unknown_0C;   // +0x0C
+    int        unknown_10;   // +0x10
+    int*       unknown_14;   // +0x14
+    short      unknown_18;   // +0x18
+    short      unknown_1A;   // +0x1A
+};
+GG_STATIC_ASSERT(sizeof(PathResult) == 0x1C);
+
+// GLOBAL: GAMEMD 0x89A324 -- the per-step level buffer the result points at.
+extern int DAT_0089A324[];
+
+// GLOBAL: GAMEMD 0x818760 -- facing between two neighbouring cells, indexed by dy * 3 - fx + tx.
+extern int DAT_00818760[9];
+
+// The facing from one cell to a neighbouring one, 8 when they are not neighbours (the logic of the
+// out-of-line function at 0x42AA40, expanded here).
+inline int FacingBetween(const CellStruct* from, const CellStruct* to)
+{
+    int dy = to->Y - from->Y;
+    if (abs(dy) <= 1)
+    {
+        int fx = from->X;
+        int tx = to->X;
+        if (abs(tx - fx) <= 1)
+        {
+            return DAT_00818760[dy * 3 - fx + tx];
+        }
+    }
+    return 8;
+}
+
 class PathSearchClass
 {
 public:
     PathSearchClass();
     ~PathSearchClass();
+    static PathResult* __stdcall FUN_0042aa90(Obj_0042A6D0* node, int* dirs);
     void FUN_0042bca0(int* path, int start, int end, int* out_index, PathCell* cell);
     void FUN_0042ccd0(int arg);
     void FUN_0042cf80(int value, int zone);
@@ -285,7 +333,8 @@ public:
     void*         unknown_24;        // +0x24
     int           unknown_28;        // +0x28
     int           unknown_2C;        // +0x2C
-    char          unknown_30[8];
+    int           unknown_30;        // +0x30
+    char          unknown_34[4];
     bool          unknown_38;        // +0x38
     char          unknown_39[3];
     int           unknown_3C;        // +0x3C
@@ -307,6 +356,7 @@ GG_STATIC_ASSERT(offsetof(PathSearchClass, unknown_10) == 0x10);
 GG_STATIC_ASSERT(offsetof(PathSearchClass, OpenHeap) == 0x14);
 GG_STATIC_ASSERT(offsetof(PathSearchClass, unknown_18) == 0x18);
 GG_STATIC_ASSERT(offsetof(PathSearchClass, unknown_28) == 0x28);
+GG_STATIC_ASSERT(offsetof(PathSearchClass, unknown_30) == 0x30);
 GG_STATIC_ASSERT(offsetof(PathSearchClass, unknown_38) == 0x38);
 GG_STATIC_ASSERT(offsetof(PathSearchClass, unknown_3C) == 0x3C);
 GG_STATIC_ASSERT(offsetof(PathSearchClass, BlockA) == 0x40);
@@ -408,6 +458,39 @@ PathSearchClass::~PathSearchClass()
         }
     }
     operator delete(unknown_64);
+}
+
+// FUNCTION: GAMEMD 0x42AA90
+// PARTIAL: 81.1% -- same instruction multiset; the cell pointers take different registers.
+PathResult* __stdcall PathSearchClass::FUN_0042aa90(Obj_0042A6D0* node, int* dirs)
+{
+    static PathResult result;
+    result.unknown_04 = (int)node->unknown_08;
+    result.unknown_08 = node->unknown_0C;
+    result.unknown_10 = 0;
+    result.unknown_18 = 0;
+    result.unknown_1A = 0;
+    result.unknown_0C = dirs;
+    result.unknown_14 = DAT_0089A324;
+    PathCellRecord* from = node->unknown_00;
+    PathCellRecord* to = from->unknown_08;
+    for (int i = node->unknown_0C - 2; i >= 0; i--)
+    {
+        if (to)
+        {
+            DAT_0089A324[i] = to->unknown_04;
+            dirs[i] = FacingBetween(&(*from->unknown_00)->MapCoords, &(*to->unknown_00)->MapCoords);
+        }
+        from = from->unknown_08;
+        to = to->unknown_08;
+    }
+    dirs[node->unknown_0C - 1] = -1;
+    result.unknown_00 = (*from->unknown_00)->MapCoords;
+    if (result.unknown_04 == 0)
+    {
+        result.unknown_04 = 1;
+    }
+    return &result;
 }
 
 // FUNCTION: GAMEMD 0x42BCA0

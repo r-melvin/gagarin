@@ -34,6 +34,8 @@ public:
     // Retail's out-of-line copy is 0x535B30 (ini_class_ctor_535aa0.cpp); the units that expand it themselves include
     // ccini_class_default_ctor.h for the inline body.
     CCINIClass();
+    // The same with the section-index construction expanded inline (0x679CC0, 0x679D90).
+    CCINIClass(SectionIndexClass::InlineIndex tag) : INIClass(tag), DigestValid(false) {}
     // Declaration: GAMEMD 0x477440 -- five stackargs, RET14hex.
     // Declaration: GAMEMD 0x477510 -- five arguments, RET14; forwards WriteString bool.
     bool FUN_00477510(const char* section, const char* key, int first, int second, int third);

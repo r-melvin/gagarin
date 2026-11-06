@@ -146,6 +146,8 @@ public:
     bool FUN_005D63E0(class MultiMission* entry);
     // FUNCTION: GAMEMD 0x5D6750 -- non-virtual.
     void FUN_005D6750();
+    // FUNCTION: GAMEMD 0x5D67B0 (decl; reloc) -- non-virtual; returns the mode's INI (+0x38), loading it first when null.
+    CCINIClass* FUN_005D67B0();
 
     bool  unknown_04;                                 // +0x04
     DynamicVectorClass<MultiplayerTeam*> Teams;       // +0x08
