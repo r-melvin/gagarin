@@ -735,16 +735,16 @@ void BulletClass::vf_23()
     }
     }
     sVar16 = static_cast<short>(
-        (local_18c + ((local_18c >> 31) & 0xFF)) >> 8);
+        local_18c / 256);
     sVar21 = static_cast<short>(
-        (local_188 + ((local_188 >> 31) & 0xFF)) >> 8);
+        local_188 / 256);
     CellStruct bulletCellCoords;
     bulletCellCoords.X = sVar16;
     bulletCellCoords.Y = sVar21;
     sVar19 = static_cast<short>(
-        (TargetCoords.X + ((TargetCoords.X >> 31) & 0xFF)) >> 8);
+        TargetCoords.X / 256);
     sVar4 = static_cast<short>(
-        (TargetCoords.Y + ((TargetCoords.Y >> 31) & 0xFF)) >> 8);
+        TargetCoords.Y / 256);
     CellStruct targetCellCoords;
     targetCellCoords.X = sVar19;
     targetCellCoords.Y = sVar4;
@@ -967,9 +967,9 @@ LAB_00467fba:
   // Native 0x467FBA..0x467FE8 converts the final X/Y lepton coordinates
   // from [ESP+0x24] and [ESP+0x28] to signed cell shorts using floor division.
   LastMapCoords.X = static_cast<short>(
-      (local_18c + ((local_18c >> 31) & 0xFF)) >> 8);
+      local_18c / 256);
   LastMapCoords.Y = static_cast<short>(
-      (local_188 + ((local_188 >> 31) & 0xFF)) >> 8);
+      local_188 / 256);
   return;
 }
 
@@ -2130,9 +2130,9 @@ common_impact_tail:
             // negative) >> 8, then truncation to a 16-bit cell component.
             CellStruct fallbackCell;
             fallbackCell.X = static_cast<short>(
-                (impactPosition.X + (impactPosition.X < 0 ? 255 : 0)) >> 8);
+                impactPosition.X / 256);
             fallbackCell.Y = static_cast<short>(
-                (impactPosition.Y + (impactPosition.Y < 0 ? 255 : 0)) >> 8);
+                impactPosition.Y / 256);
             // 0x4251F0 is a /Gr free function: color in ECX and CellStruct*
             // in EDX. The retained canonical API spells these two arguments.
             FUN_004251F0(color, &fallbackCell.X);
@@ -2348,13 +2348,12 @@ void BulletClass::FUN_0046A310()
             const CoordStruct origin = Location;
             CoordStruct ownerPosition = Owner->vf_18();
             CoordStruct difference;
-            difference.FUN_0041C230(ownerPosition.X - origin.X,
-                                   ownerPosition.Y - origin.Y,
-                                   ownerPosition.Z - origin.Z);
-            int distance = difference.FUN_0041C380();
-            // Native CDQ / AND 0xff / ADD / SAR sequence rounds signed
-            // distance/256 toward zero; it is not an x87 conversion.
-            int cellDistance = (distance + (distance < 0 ? 0xFF : 0)) >> 8;
+            CoordStruct offset = *difference.FUN_0041C230(ownerPosition.X - origin.X,
+                                                          ownerPosition.Y - origin.Y,
+                                                          ownerPosition.Z - origin.Z);
+            int distance = offset.FUN_0041C380();
+            // Native CDQ / AND 0xff / ADD / SAR sequence is the signed divide by 256.
+            int cellDistance = distance / 256;
             requested = -requested - cellDistance;
             if (requested <= 0)
                 return;
@@ -2378,7 +2377,7 @@ void BulletClass::FUN_0046A310()
     // 46A41F snapshots Projectile once before either scan loop.
     BulletTypeClass* projectile = weapon->Projectile;
     CellStruct baseCell = vf_110();
-    int rangeInCells = (weapon->Range + (weapon->Range < 0 ? 0xFF : 0)) >> 8;
+    int rangeInCells = weapon->Range / 256;
     int attempted = 0;
 
     // 46A473-46A914: scan each ring's [begin,end) cell-offset records at

@@ -412,15 +412,13 @@ int FUN_0045DD50(const char* name)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// CAPPED at 83.4% aligned-instruction match (322 of 386 retail instructions; 389 compiled). Observed delta:
-// retail reserves an 8-byte stack local (`sub esp,8`) and uses EBP for the anim-slot pointer, loading the
-// zero for X, Y and the strings from three different registers; this build has no local and uses EDI for the
-// pointer with one zero register. The array-registration tail differs by register choice only (retail
-// `mov eax,Count; mov ecx,Capacity`, this build the reverse). Forms tried: all scalar members in the
-// initialiser list with plain Point2D constructors (74.6%); coordinate members built with a 3-argument
-// constructor (76.2%); Point2D members built through a by-value helper (78.8%); the docking vector element left
-// unconstructed with its three zero stores moved to the end (83.4%, kept); the anim-slot loop as a struct
-// constructor (66.8%, dropped) and as a memset/assignment variants (82.6% to 83.4%).
+// PARTIAL: 82.9% positional, 90.2% aligned (348 of 386 retail instructions; 383 compiled). ChargedAnimTime
+// defaults to 999.0f in retail (0x4479C000). Occupy-cell and muzzle/fire-offset points are built through the
+// by-value point helper, as retail copies each pair from a temporary. Observed delta: retail reserves an
+// 8-byte stack local and keeps three separate zero registers for the docking element; the anim-slot loop
+// stores through EBP-based pointers with two zero registers where this build uses one; the array-registration
+// tail differs by a jump and a register. Forms tried for the anim-slot loop: struct constructor (66.8%,
+// dropped), memset/assignment variants (82.6% to 83.4% on the older shape).
 // FUNCTION: GAMEMD 0x45DD90
 BuildingTypeClass::BuildingTypeClass(const char* id)
     : TechnoTypeClass(id, 0), ArrayIndex(-1), FoundationData(0), Buildup(0),
@@ -454,7 +452,7 @@ BuildingTypeClass::BuildingTypeClass(const char* id)
       ICBMLauncher(false), Artillary(false), Helipad(false), OrePurifier(false), FactoryPlant(false),
       InfantryCostBonus(1.0f), UnitsCostBonus(1.0f), AircraftCostBonus(1.0f), BuildingsCostBonus(1.0f),
       DefensesCostBonus(1.0f), GDIBarracks(false), NODBarracks(false), YuriBarracks(false),
-      ChargedAnimTime(1000.0f), DelayedFireDelay(0), SuperWeapon(-1), SuperWeapon2(-1), GateStages(9),
+      ChargedAnimTime(999.0f), DelayedFireDelay(0), SuperWeapon(-1), SuperWeapon2(-1), GateStages(9),
       PowersUpToLevel(-1), DamagedDoor(false), InvisibleInGame(false), TerrainPalette(false),
       PlaceAnywhere(false), ExtraDamageStage(true), AIBuildThis(false), IsBaseDefense(false),
       CloakRadiusInCells(20), ConcentricRadialIndicator(false), PsychicDetectionRadius(0),
@@ -507,18 +505,14 @@ BuildingTypeClass::BuildingTypeClass(const char* id)
     RoofDeployingAnimLoaded = false;
     UnderRoofDoorAnimLoaded = false;
     for (i = 0; i < 10; ++i) {
-        MuzzleFlash[i].X = TypesZeroCoord.X;
-        MuzzleFlash[i].Y = TypesZeroCoord.Y;
+        MuzzleFlash[i] = TypesMakePoint(TypesZeroCoord.X, TypesZeroCoord.Y);
     }
     for (i = 0; i < 8; ++i) {
-        DamageFireOffset[i].X = TypesZeroCoord.X;
-        DamageFireOffset[i].Y = TypesZeroCoord.Y;
+        DamageFireOffset[i] = TypesMakePoint(TypesZeroCoord.X, TypesZeroCoord.Y);
     }
     for (i = 0; i < 8; ++i) {
-        RemoveOccupy[i].X = 0xFFFF;
-        RemoveOccupy[i].Y = 0xFFFF;
-        AddOccupy[i].X = 0xFFFF;
-        AddOccupy[i].Y = 0xFFFF;
+        RemoveOccupy[i] = TypesMakePoint(0xFFFF, 0xFFFF);
+        AddOccupy[i] = TypesMakePoint(0xFFFF, 0xFFFF);
     }
     ImmuneToPsionics = true;
     ImmuneToPsionicWeapons = true;

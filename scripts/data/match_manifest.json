@@ -45702,9 +45702,9 @@
   "len": "0x6de",
   "name": "DSurface::unknown_4C",
   "status": "partial",
-  "pct": 0.9,
-  "best_pct": 0.9,
-  "best_at": "cf203011"
+  "pct": 3.3,
+  "best_pct": 3.3,
+  "best_at": "aebb4024"
  },
  {
   "tu": "match/dsurface_draw50.cpp",
@@ -49987,9 +49987,9 @@
   "len": "0x782",
   "name": "BuildingTypeClass::BuildingTypeClass",
   "status": "partial",
-  "pct": 0.3,
-  "best_pct": 0.3,
-  "best_at": "cf203011"
+  "pct": 82.9,
+  "best_pct": 82.9,
+  "best_at": "aebb4024"
  },
  {
   "tu": "match/tu039_building_type_class.cpp",
@@ -106306,9 +106306,9 @@
   "len": "0xAC5",
   "name": "BulletClass::FUN_0046A310",
   "status": "partial",
-  "pct": 2.4,
-  "best_pct": 2.4,
-  "best_at": "cf203011"
+  "pct": 7.3,
+  "best_pct": 7.3,
+  "best_at": "aebb4024"
  },
  {
   "tu": "match/foot_class_methods.cpp",
@@ -106335,9 +106335,10 @@
   "len": "0x1254",
   "name": "BulletClass::FUN_004690B0",
   "status": "partial",
-  "pct": 3.8,
+  "pct": 3.7,
   "best_pct": 3.8,
-  "best_at": "cf203011"
+  "best_at": "cf203011",
+  "lowered_reason": "signed divide by 256 written as / 256 (retail cdq/and/add/sar); positional 3.8 to 3.7 but aligned 46.1 to 46.5"
  },
  {
   "tu": "match/bullet_class_new_methods.cpp",
@@ -106806,9 +106807,9 @@
   "len": "0x6e2",
   "name": "Obj_00755D10::FUN_00755DB0",
   "status": "partial",
-  "pct": 43.3,
-  "best_pct": 43.3,
-  "best_at": "cf203011"
+  "pct": 43.4,
+  "best_pct": 43.4,
+  "best_at": "aebb4024"
  },
  {
   "tu": "match/object_type_class_voxel_load.cpp",

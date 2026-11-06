@@ -5,6 +5,7 @@
 // is CFG-closed from the entry disassembly.
 // This readable candidate remains partial; the source technique behind the unmatched retail instructions
 // is not established.
+#include <stdlib.h>
 #include "dsurface_class.h"
 #include "wwlib/surface/drawing.h"
 #include "wwlib/blitters/b_shared_alpha.h"
@@ -43,6 +44,15 @@ static inline unsigned short* Wrap(unsigned short* p, int stride)
     return p;
 }
 
+// Retail's diagonal arms test only the high bound when the minor axis steps (0x4C0A0F, 0x4C0AD8).
+static inline unsigned short* WrapHigh(unsigned short* p)
+{
+    RingLayer* layer = ((RingLayer*)gg_blit_alpha_wrap_global);
+    if (p >= layer->High)
+        p = (unsigned short*)((char*)p - layer->WrapBytes);
+    return p;
+}
+
 static inline int WrapPhase(int phase)
 {
     if (phase < 0)
@@ -56,15 +66,15 @@ static inline int WrapPhase(int phase)
 // Arguments (evidence: 0x4C0750 prologue loads [ESP+0x24], [ESP+0x38]; 0x4C087A reads the colour word at
 // [ESP+0x3C]; 0x4C086E the pattern at [ESP+0x40]; the phase at [ESP+0x44]; the invert flag at [ESP+0x48]):
 // (Point2D* from, Point2D* to, unsigned short color, unsigned char* pattern, int phase, bool invert).
-// Returns the phase after
-// the last pixel, or 0 when the surface is not 16-bit.
+// Returns the phase after the last pixel, or 0 when the surface is not 16-bit. Retail draws the whole line
+// twice, once per value of the invert flag (0x4C0832 / 0x4C0B25).
 int DSurface::unknown_4C(Point2D* from, Point2D* to, unsigned short color, unsigned char* pattern, int phase, bool invert)
 {
     int x1 = from->X;
     int y1 = from->Y;
+    int phaseStep = 1;
     int x2 = to->X;
     int y2 = to->Y;
-    int phaseStep = 1;
 
     if (GetBytesPerPixel() != 2)
         return 0;
@@ -75,6 +85,11 @@ int DSurface::unknown_4C(Point2D* from, Point2D* to, unsigned short color, unsig
         t = y1;
         y1 = y2;
         y2 = t;
+        int length = abs(x2 - x1);
+        int rows = abs(y2 - y1) + 1;
+        if (length < rows)
+            length = rows;
+        phase = (length + phase) % 16;
         phaseStep = -1;
     }
 
@@ -90,66 +105,136 @@ int DSurface::unknown_4C(Point2D* from, Point2D* to, unsigned short color, unsig
     if (!dst)
         return phase;
 
-    int dx = x2 - x1;
-    int dy = y2 - y1;
-    int rowBytes = (int)GetPitch();
-    if (dy < 0)
-        rowBytes = -rowBytes;
-
-    if (y1 == y2) {
-        for (int n = dx + 1; n > 0; n--) {
-            phase = WrapPhase(phase);
-            if (pattern[phase] && ((*layerPtr == 0) == invert))
-                *dst = color;
-            layerPtr = Wrap(layerPtr + 1, stride);
-            dst++;
-            phase += phaseStep;
-        }
-    } else if (x1 == x2) {
-        for (int n = (dy < 0 ? -dy : dy) + 1; n > 0; n--) {
-            phase = WrapPhase(phase);
-            if (pattern[phase] && ((*layerPtr == 0) == invert))
-                *dst = color;
-            dst = (unsigned short*)((char*)dst + rowBytes);
-            layerPtr = Wrap(layerPtr + stride, stride);
-            phase += phaseStep;
-        }
-    } else {
-        int ady = dy < 0 ? -dy : dy;
-        if (dx > ady) {
-            int err = -dx;
-            int i = 0;
-            for (int n = 0; n < dx; n++) {
-                err += ady * 2;
+    if (invert) {
+        if (y1 == y2) {
+            for (int n = x2 - x1; n >= 0; n--) {
                 phase = WrapPhase(phase);
-                if (pattern[phase] && ((*layerPtr == 0) == invert))
-                    dst[i] = color;
-                if (err > 0) {
-                    dst = (unsigned short*)((char*)dst + rowBytes);
-                    layerPtr = Wrap(layerPtr + stride, stride);
-                    err -= dx * 2;
-                }
+                if (pattern[phase] && *layerPtr == 0)
+                    *dst = color;
                 layerPtr = Wrap(layerPtr + 1, stride);
-                i++;
+                dst++;
+                phase += phaseStep;
+            }
+        } else if (x1 == x2) {
+            int rowBytes = (int)GetPitch();
+            if (y1 > y2)
+                rowBytes = -rowBytes;
+            for (int n = abs(y2 - y1); n >= 0; n--) {
+                phase = WrapPhase(phase);
+                if (pattern[phase] && *layerPtr == 0)
+                    *dst = color;
+                dst = (unsigned short*)((char*)dst + rowBytes);
+                layerPtr = Wrap(layerPtr + stride, stride);
                 phase += phaseStep;
             }
         } else {
-            int err = -ady;
-            char* row = (char*)dst;
-            int bytes = 0;
-            for (int n = 0; n < ady; n++) {
-                err += dx * 2;
-                phase = WrapPhase(phase);
-                if (pattern[phase] && ((*layerPtr == 0) == invert))
-                    *(unsigned short*)(row + bytes) = color;
-                if (err > 0) {
+            int dx = x2 - x1;
+            int dy = y2 - y1;
+            int rowBytes = (int)GetPitch();
+            if (dy < 0)
+                rowBytes = -rowBytes;
+            int ady = abs(dy);
+            int dx2 = dx * 2;
+            int ady2 = ady * 2;
+            if (dx > ady) {
+                int err = ady2 - dx;
+                int i = 0;
+                for (; i < dx; i++) {
+                    phase = WrapPhase(phase);
+                    if (pattern[phase] && *layerPtr == 0)
+                        dst[i] = color;
+                    if (err > 0) {
+                        dst = (unsigned short*)((char*)dst + rowBytes);
+                        layerPtr = WrapHigh(layerPtr + stride);
+                        err -= dx2;
+                    }
+                    err += ady2;
                     layerPtr = Wrap(layerPtr + 1, stride);
-                    bytes += 2;
-                    err -= ady * 2;
+                    phase += phaseStep;
                 }
-                layerPtr = Wrap(layerPtr + stride, stride);
-                row += rowBytes;
+            } else {
+                int err = dx2 - ady;
+                int bytes = 0;
+                for (int n = ady; n > 0; n--) {
+                    phase = WrapPhase(phase);
+                    if (pattern[phase] && *layerPtr == 0)
+                        *(unsigned short*)((char*)dst + bytes) = color;
+                    if (err > 0) {
+                        layerPtr = WrapHigh(layerPtr + 1);
+                        bytes += 2;
+                        err -= ady2;
+                    }
+                    err += dx2;
+                    layerPtr = Wrap(layerPtr + stride, stride);
+                    dst = (unsigned short*)((char*)dst + rowBytes);
+                    phase += phaseStep;
+                }
+            }
+        }
+    } else {
+        if (y1 == y2) {
+            for (int n = x2 - x1; n >= 0; n--) {
+                phase = WrapPhase(phase);
+                if (pattern[phase] && *layerPtr != 0)
+                    *dst = color;
+                layerPtr = Wrap(layerPtr + 1, stride);
+                dst++;
                 phase += phaseStep;
+            }
+        } else if (x1 == x2) {
+            int rowBytes = (int)GetPitch();
+            if (y1 > y2)
+                rowBytes = -rowBytes;
+            for (int n = abs(y2 - y1); n >= 0; n--) {
+                phase = WrapPhase(phase);
+                if (pattern[phase] && *layerPtr != 0)
+                    *dst = color;
+                dst = (unsigned short*)((char*)dst + rowBytes);
+                layerPtr = Wrap(layerPtr + stride, stride);
+                phase += phaseStep;
+            }
+        } else {
+            int dx = x2 - x1;
+            int dy = y2 - y1;
+            int rowBytes = (int)GetPitch();
+            if (dy < 0)
+                rowBytes = -rowBytes;
+            int ady = abs(dy);
+            int dx2 = dx * 2;
+            int ady2 = ady * 2;
+            if (dx > ady) {
+                int err = ady2 - dx;
+                int i = 0;
+                for (; i < dx; i++) {
+                    phase = WrapPhase(phase);
+                    if (pattern[phase] && *layerPtr != 0)
+                        dst[i] = color;
+                    if (err > 0) {
+                        dst = (unsigned short*)((char*)dst + rowBytes);
+                        layerPtr = WrapHigh(layerPtr + stride);
+                        err -= dx2;
+                    }
+                    err += ady2;
+                    layerPtr = Wrap(layerPtr + 1, stride);
+                    phase += phaseStep;
+                }
+            } else {
+                int err = dx2 - ady;
+                int bytes = 0;
+                for (int n = ady; n > 0; n--) {
+                    phase = WrapPhase(phase);
+                    if (pattern[phase] && *layerPtr != 0)
+                        *(unsigned short*)((char*)dst + bytes) = color;
+                    if (err > 0) {
+                        layerPtr = WrapHigh(layerPtr + 1);
+                        bytes += 2;
+                        err -= ady2;
+                    }
+                    err += dx2;
+                    layerPtr = Wrap(layerPtr + stride, stride);
+                    dst = (unsigned short*)((char*)dst + rowBytes);
+                    phase += phaseStep;
+                }
             }
         }
     }

@@ -83,7 +83,7 @@ int Obj_00755D10::FUN_00755DB0(FileClass* file, int unknown)
             }
             palette.RangeLow = low;
             palette.RangeHigh = high;
-            for (int color = 0; color < 256; ++color) {
+            for (unsigned int color = 0; color < 256; ++color) {
                 file->ReadBytes(&DAT_00b2fb78[color * 3], 1);
                 file->ReadBytes(&DAT_00b2fb78[color * 3 + 1], 1);
                 file->ReadBytes(&DAT_00b2fb78[color * 3 + 2], 1);
@@ -120,22 +120,14 @@ int Obj_00755D10::FUN_00755DB0(FileClass* file, int unknown)
                 Block1[record].unknown_0C = footer.unknown_0C;
                 Matrix3D converted;
                 Block1[record].unknown_10 = converted.FUN_005AE5E0(footer.unknown_10);
-                Vector3D corner0 = Vector3D(footer.unknown_4C.X, footer.unknown_4C.Y, footer.unknown_40.Z);
-                Vector3D corner1 = Vector3D(footer.unknown_4C.X, footer.unknown_40.Y, footer.unknown_40.Z);
-                Vector3D corner2 = Vector3D(footer.unknown_40.X, footer.unknown_40.Y, footer.unknown_40.Z);
-                Vector3D corner3 = Vector3D(footer.unknown_40.X, footer.unknown_4C.Y, footer.unknown_40.Z);
-                Vector3D corner4 = Vector3D(footer.unknown_4C.X, footer.unknown_4C.Y, footer.unknown_4C.Z);
-                Vector3D corner5 = Vector3D(footer.unknown_4C.X, footer.unknown_40.Y, footer.unknown_4C.Z);
-                Vector3D corner6 = Vector3D(footer.unknown_40.X, footer.unknown_40.Y, footer.unknown_4C.Z);
-                Vector3D corner7 = Vector3D(footer.unknown_40.X, footer.unknown_4C.Y, footer.unknown_4C.Z);
-                Block1[record].Corners[0] = corner0;
-                Block1[record].Corners[1] = corner1;
-                Block1[record].Corners[2] = corner2;
-                Block1[record].Corners[3] = corner3;
-                Block1[record].Corners[4] = corner4;
-                Block1[record].Corners[5] = corner5;
-                Block1[record].Corners[6] = corner6;
-                Block1[record].Corners[7] = corner7;
+                Block1[record].Corners[0] = Vector3D(footer.unknown_4C.X, footer.unknown_4C.Y, footer.unknown_40.Z);
+                Block1[record].Corners[1] = Vector3D(footer.unknown_4C.X, footer.unknown_40.Y, footer.unknown_40.Z);
+                Block1[record].Corners[2] = Vector3D(footer.unknown_40.X, footer.unknown_40.Y, footer.unknown_40.Z);
+                Block1[record].Corners[3] = Vector3D(footer.unknown_40.X, footer.unknown_4C.Y, footer.unknown_40.Z);
+                Block1[record].Corners[4] = Vector3D(footer.unknown_4C.X, footer.unknown_4C.Y, footer.unknown_4C.Z);
+                Block1[record].Corners[5] = Vector3D(footer.unknown_4C.X, footer.unknown_40.Y, footer.unknown_4C.Z);
+                Block1[record].Corners[6] = Vector3D(footer.unknown_40.X, footer.unknown_40.Y, footer.unknown_4C.Z);
+                Block1[record].Corners[7] = Vector3D(footer.unknown_40.X, footer.unknown_4C.Y, footer.unknown_4C.Z);
                 Block1[record].unknown_00 = Block2 + footer.unknown_00;
                 Block1[record].unknown_04 = Block2 + footer.unknown_04;
                 Block1[record].unknown_08 = Block2 + footer.unknown_08;
