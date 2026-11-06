@@ -125,6 +125,18 @@ struct Countdown_00774B30
         }
         return remain;
     }
+    int Left()
+    {
+        int remain = Delay;
+        if (Started == -1) {
+            return remain;
+        }
+        int elapsed = Clock.GetTime() - Started;
+        if (elapsed < remain) {
+            return remain - elapsed;
+        }
+        return 0;
+    }
 };
 GG_STATIC_ASSERT(offsetof(Countdown_00774B30, Delay) == 0x08);
 
@@ -645,13 +657,13 @@ int WinModemClass::Get_Modem_Result(int timeout, char* buffer, int length,
                 got += n;
                 quiet = Countdown_00774B30(perCharTimeout);
             }
-            if (!total.Time() || got >= length) {
+            if (!total.Left() || got >= length) {
                 break;
             }
             if (!strchr(buffer, '\r')) {
                 continue;
             }
-            if (perCharTimeout == -1 || !quiet.Time()) {
+            if (perCharTimeout == -1 || !quiet.Left()) {
                 break;
             }
         }
@@ -684,7 +696,7 @@ int WinModemClass::Get_Modem_Result(int timeout, char* buffer, int length,
     if (strrchr(buffer, '\r')) {
         *strrchr(buffer, '\r') = '\0';
     }
-    return total.Time();
+    return total.Left();
 }
 
 // FUNCTION: GAMEMD 0x774F50
