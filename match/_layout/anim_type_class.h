@@ -47,6 +47,8 @@ public:
     AnimTypeClass(int unknown_arg0 = 0);
     // The no-init construction Load re-runs through placement new (base 0x5F7320, then the vptrs).
     AnimTypeClass(const AbstractNoInit& noInit) : ObjectTypeClass(noInit) {}
+    // FUNCTION: GAMEMD 0x428DE0 (non-virtual) -- release the loaded image once demand-load and free-load both hold.
+    void FUN_00428DE0();
     // FUNCTION: GAMEMD 0x428EA0 -- scalar deleting form (slot 8).
     virtual ~AnimTypeClass();
     // Overrides of the slots ObjectTypeClass / AbstractClass leave pure (slots 3, 6, 11, 12, 32, 35).

@@ -19,7 +19,7 @@ class ParasiteClass : public AbstractClass
 {
 public:
     ParasiteClass();
-    ParasiteClass(void* owner);
+    ParasiteClass(FootClass* owner);
     ParasiteClass(const AbstractNoInit& noInit);
     virtual ~ParasiteClass();
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);

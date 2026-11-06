@@ -520,7 +520,7 @@ void ParasiteClass::vf_10(void* target, bool removed)
                         Owner->vf_83();
                     }
                     if (Owner->OldTeam != 0) {
-                        ((Team_006EA500*)Owner->OldTeam)->AddMember((Foot_006EA500*)Owner, false);
+                        Owner->OldTeam->AddMember(Owner, false);
                     }
                     if (!Owner->vf_299()) {
                         Owner->SetArchiveTarget(0);

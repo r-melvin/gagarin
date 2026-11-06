@@ -51,9 +51,9 @@ ParasiteClass::ParasiteClass() : TimerA(0), TimerB(0)
 
 // FUNCTION: GAMEMD 0x6292B0
 // Constructor taking the owner: clears the state words and registers the parasite.
-ParasiteClass::ParasiteClass(void* owner) : TimerA(0), TimerB(0)
+ParasiteClass::ParasiteClass(FootClass* owner) : TimerA(0), TimerB(0)
 {
-    Owner = (FootClass*)owner;
+    Owner = owner;
     unknown_28 = 0;
     TimerB = CDTimerClass(0);
     CDTimerClass restart(0);

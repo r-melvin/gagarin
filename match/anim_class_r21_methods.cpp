@@ -13,7 +13,6 @@
 #include "vector_class_dynamic_ctor.h"
 #include "vector_class_mutation.h"
 #include "vector_class_search.h"
-#include "small_misc49_methods.h"
 #include "_layout/world_effect_helpers.h"
 
 // GLOBAL: GAMEMD 0x89A1C0
@@ -111,7 +110,7 @@ AnimClass::~AnimClass()
     }
     DAT_00B0F670.RemoveItem(this);
     if (Type != 0) {
-        FUN_00428DE0((Obj_00428DE0*)Type);
+        Type->FUN_00428DE0();
     }
     StartSoundAudioController.EndLooping();
     StopSoundAudioController.EndLooping();

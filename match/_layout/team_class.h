@@ -98,6 +98,8 @@ public:
     // FUNCTION: GAMEMD 0x6EF610 (declaration; thiscall, RET 8).
     void FUN_006EF610(ScriptActionNode* action, bool enabled);
 
+    // FUNCTION: GAMEMD 0x6EA500 (decl; reloc) -- TeamClass::AddMember; the body is on the view in tu235_team_class.cpp.
+    bool AddMember(FootClass* member, bool flag);
     // FUNCTION: GAMEMD 0x6EA870 (decl; reloc) -- TeamClass::LiberateMember.
     void LiberateMember(FootClass* foot, int idx, unsigned char count);
     // FUNCTION: GAMEMD 0x6EBAD0 (decl; reloc)

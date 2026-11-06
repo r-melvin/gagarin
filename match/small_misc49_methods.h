@@ -9,6 +9,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/anim_type_class.h"
 
 extern "C" int  __cdecl FUN_007C8D20(const char* a, const char* b);
 extern "C" void __cdecl FUN_007C8B3D(void* block);
@@ -44,23 +45,7 @@ extern const char STR_00818688[];
 // FUNCTION: GAMEMD 0x4068E0 — the logger, __cdecl and variadic in effect.
 void __cdecl FUN_004068E0(const char* message, const char* subject);
 
-struct Obj_00428DE0
-{
-    char  _pad000[0x64];
-    char  Name[0xA4 - 0x64];   // +0x0064
-    void* Image;               // +0x00A4
-    char  ImageValid;          // +0x00A8
-    char  _pad0A9[0x35E - 0xA9];
-    char  Enabled;             // +0x035E
-    char  Loaded;              // +0x035F
-};
-GG_STATIC_ASSERT(offsetof(Obj_00428DE0, Image) == 0xA4);
-GG_STATIC_ASSERT(offsetof(Obj_00428DE0, ImageValid) == 0xA8);
-GG_STATIC_ASSERT(offsetof(Obj_00428DE0, Enabled) == 0x35E);
-GG_STATIC_ASSERT(offsetof(Obj_00428DE0, Loaded) == 0x35F);
 
-// FUNCTION: GAMEMD 0x428DE0
-void FUN_00428DE0(Obj_00428DE0* self);
 
 // ---------------------------------------------------------------------------
 #endif  // GG_MATCH_CORE_SMALL_MISC49_METHODS_H

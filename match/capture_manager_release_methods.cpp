@@ -43,10 +43,10 @@ CaptureManagerClass::CaptureManagerClass(const AbstractNoInit& noInit)
 // FUNCTION: GAMEMD 0x4717D0
 // Builds the control-node vector in place and registers the manager. Compiling
 // it here emits the class tables and so the scalar deleting destructor.
-CaptureManagerClass::CaptureManagerClass(void* owner, int maxControlNodes,
+CaptureManagerClass::CaptureManagerClass(TechnoClass* owner, int maxControlNodes,
                                          bool infiniteMindControl)
 {
-    Owner = (TechnoClass*)owner;
+    Owner = owner;
     MaxControlNodes = maxControlNodes;
     InfiniteMindControl = infiniteMindControl;
     OverloadDeathSoundPlayed = 0;

@@ -187,6 +187,7 @@ struct WeaponStruct;
 struct CellStruct;
 class CellClass;
 class HouseClass;
+class TeamClass;
 
 // TechnoClass  (0xF0..0x51F, sizeof = 0x520)
 // Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
@@ -666,7 +667,7 @@ public:
     unsigned char      IsMouseHovering;          // +0x431 (bool)
     unsigned char      ShouldBeReselectOnUnlimbo;// +0x432 (bool)
     unsigned char      align_433;                // +0x433
-    void*              OldTeam;                  // +0x434 TeamClass*
+    TeamClass*         OldTeam;                  // +0x434
     unsigned char      CountedAsOwnedSpecial;    // +0x438 (bool)
     unsigned char      Absorbed;                 // +0x439 (bool)
     unsigned char      unknown_bool_43A;         // +0x43A (bool)

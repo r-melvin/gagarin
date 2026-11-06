@@ -837,7 +837,7 @@
   "addr": "0x4717D0",
   "name": "CaptureManagerClass::CaptureManagerClass",
   "tu": "match/capture_manager_release_methods.cpp",
-  "sym": "??0CaptureManagerClass@@QAE@PAXH_N@Z",
+  "sym": "??0CaptureManagerClass@@QAE@PAVTechnoClass@@H_N@Z",
   "len": "0xBD",
   "manifest_pct": 82.4,
   "pct": 82.4,

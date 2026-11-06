@@ -11604,7 +11604,7 @@
  {
   "tu": "match/small_misc49_methods.cpp",
   "addr": "0x428de0",
-  "sym": "?FUN_00428DE0@@YIXPAUObj_00428DE0@@@Z",
+  "sym": "?FUN_00428DE0@AnimTypeClass@@QAEXXZ",
   "len": "0x51",
   "name": "FUN_00428DE0",
   "status": "matched",
@@ -62415,7 +62415,7 @@
  {
   "tu": "match/capture_manager_release_methods.cpp",
   "addr": "0x4717D0",
-  "sym": "??0CaptureManagerClass@@QAE@PAXH_N@Z",
+  "sym": "??0CaptureManagerClass@@QAE@PAVTechnoClass@@H_N@Z",
   "len": "0xBD",
   "name": "CaptureManagerClass::CaptureManagerClass",
   "status": "partial",
@@ -141553,7 +141553,7 @@
  {
   "tu": "match/w2_parasite_r13.cpp",
   "addr": "0x6292B0",
-  "sym": "??0ParasiteClass@@QAE@PAX@Z",
+  "sym": "??0ParasiteClass@@QAE@PAVFootClass@@@Z",
   "len": "0xd8",
   "name": "ParasiteClass::ParasiteClass(owner)",
   "status": "matched",

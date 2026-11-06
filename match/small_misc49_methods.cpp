@@ -19,15 +19,15 @@ int FUN_00422B20(const char* name)
 }
 
 // FUNCTION: GAMEMD 0x428DE0
-void FUN_00428DE0(Obj_00428DE0* self)
+void AnimTypeClass::FUN_00428DE0()
 {
-    if (self->Enabled && self->Image && self->Loaded) {
-        FUN_004068E0(STR_00818688, self->Name);
+    if (DemandLoad && Image && FreeLoad) {
+        FUN_004068E0(STR_00818688, Name);
 
-        FUN_007C8B3D(self->Image);
+        FUN_007C8B3D(Image);
 
-        self->Image      = 0;
-        self->ImageValid = 0;
+        Image          = 0;
+        ImageAllocated = false;
     }
 }
 
