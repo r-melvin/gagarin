@@ -4543,18 +4543,19 @@ Cell HouseClass::FUN_00506B90(BuildingTypeClass* upgrade)
 {
     int index = FUN_0045E7B0(upgrade->PowersUpBuilding);
     if (index == -1) {
-        return Cell(0, 0);
+        Cell none(0, 0);
+        return none;
     }
     BuildingClass* best = 0;
     BuildingTypeClass* target = DAT_00A83C6C[index];
-    bool anyLevel = upgrade->PowersUpToLevel == -1;
     int bestLevel = target->Upgrades + 10;
+    bool anyLevel = upgrade->PowersUpToLevel == -1;
     for (int i = 0; i < DAT_00A8EB40.Count; i++) {
         BuildingClass* building = DAT_00A8EB40.Items[i];
         if (building->Owner == this && building->Type == target && building->FUN_00452670(upgrade, this)) {
             char upgradeLevel = building->UpgradeLevel;
             if (anyLevel) {
-                if (upgradeLevel < bestLevel) {
+                if (bestLevel > upgradeLevel) {
                     bestLevel = upgradeLevel;
                     best = building;
                 }
@@ -4565,9 +4566,11 @@ Cell HouseClass::FUN_00506B90(BuildingTypeClass* upgrade)
         }
     }
     if (best != 0) {
-        return Cell((short)(best->Location.X / 256), (short)(best->Location.Y / 256));
+        CoordStruct location = best->Location;
+        return Cell((short)(location.X / 256), (short)(location.Y / 256));
     }
-    return Cell(0, 0);
+    Cell none(0, 0);
+    return none;
 }
 
 // FUNCTION: GAMEMD 0x508150
@@ -5129,6 +5132,33 @@ bool HouseClass::FUN_0050B760(BuildingTypeClass* type, CellStruct* cell)
         }
     }
     return false;
+}
+
+// FUNCTION: GAMEMD 0x50B840
+// Recomputes Color from the house's colour scheme (forcing scheme 5 when the entry is missing).
+void HouseClass::FUN_0050B840()
+{
+    if (ColorSchemeIndex < 0)
+        ColorSchemeIndex = 5;
+    SchemeView_00500B40* scheme = DAT_00B054D4[ColorSchemeIndex];
+    if (scheme == 0) {
+        FUN_004068E0("********* Forcing House %s [%s] to color WHITE (from %d) because he biffed the initialization process!!!!", PlainName, Type->Name.Data, ColorSchemeIndex);
+        ColorSchemeIndex = 5;
+        scheme = DAT_00B054D4[5];
+    }
+    int index = scheme->PixelIndex;
+    ConvertView_00500B40* convert = scheme->Convert;
+    int raw;
+    if (convert->Format == 1)
+        raw = convert->Pixels[index];
+    else
+        raw = ((unsigned short*)convert->Pixels)[index];
+    unsigned short pixel = raw;
+    ColorStruct shifted;
+    shifted.R = (pixel >> DAT_008A0DD0) << DAT_008A0DD4;
+    shifted.G = (pixel >> DAT_008A0DE0) << DAT_008A0DE4;
+    shifted.B = (pixel >> DAT_008A0DD8) << DAT_008A0DDC;
+    Color = shifted;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

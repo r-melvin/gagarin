@@ -251,6 +251,7 @@ public:
     bool FUN_0050CAD0(BaseNodeClass* node); // GAMEMD 0x50CAD0, RET 4
     int FUN_004F6EC0(int difficulty); // GAMEMD 0x4F6EC0, RET 4
     bool FUN_0050B760(BuildingTypeClass* type, CellStruct* cell); // GAMEMD 0x50B760, RET 8
+    void FUN_0050B840(); // GAMEMD 0x50B840
     void FUN_00508150();    // GAMEMD 0x508150
     int FUN_004FA910(int rtti, int index, bool naval); // GAMEMD 0x4FA910, RET 0xC
     void FUN_005054B0();    // GAMEMD 0x5054B0

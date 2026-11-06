@@ -156270,5 +156270,14 @@
   "name": "TechnoClass::vf_291",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/House.cpp",
+  "addr": "0x50B840",
+  "sym": "?FUN_0050B840@HouseClass@@QAEXXZ",
+  "len": "0xd5",
+  "name": "HouseClass::FUN_0050B840",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
