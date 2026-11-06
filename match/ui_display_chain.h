@@ -203,12 +203,20 @@ struct MapBucketTable
     }
 };
 
+// A ten-byte record per word (0x586990 clears its first word and tests it for zero).
+struct MapSubzoneRecord
+{
+    unsigned short Value;       // +0x00
+    char unknown_02[8];         // +0x02
+};
+GG_STATIC_ASSERT(sizeof(MapSubzoneRecord) == 10);
+
 // A four-byte record of the word table (two bytes set by the inline constructor).
 struct MapWordEntry
 {
     unsigned char a;
     unsigned char b;
-    unsigned char unknown_02[2];
+    unsigned short Value;       // +0x02 read by 0x56D3A0
     MapWordEntry() : a(7), b(0) {}
 };
 GG_STATIC_ASSERT(sizeof(MapWordEntry) == 4);
@@ -351,6 +359,15 @@ public:
     bool FUN_00578460(const CellStruct& cell, bool checkLevel);
     // FUNCTION: GAMEMD 0x5657E0 (decl; reloc) -- RET 4.
     bool FUN_005657E0(const CellStruct& cell);
+    // FUNCTION: GAMEMD 0x586780 -- whether no cell of the rectangle holds a terrain object, building, overlay, slope or flagged word (RET 8; `this` is only forwarded).
+    bool IsAreaFree(RectangleStruct* rect, int bit);
+    // FUNCTION: GAMEMD 0x584550 (decl; reloc) -- the per-cell zone rebuild.
+    void FUN_00584550(const CellStruct& cell);
+    // FUNCTION: GAMEMD 0x586990 -- second half of the pathfinding refresh over a list of dirtied cells (RET 4).
+    void Update_Pathfinding_2(DynamicVectorClass<CellStruct>* cells);
+    // FUNCTION: GAMEMD 0x578390 (decl; reloc) -- true when all four corner cells of the rectangle are in the usable area. Retail returns a
+    // full-width int (defined on the view Map_00578390); callers only propagate it as a bool.
+    bool FUN_00578390(RectangleStruct* rect, bool checkLevel);
     // FUNCTION: GAMEMD 0x577F30 (decl; reloc) -- RET 4; takes a house (null at 0x5C9430).
     void FUN_00577F30(void* house);
     // FUNCTION: GAMEMD 0x578290 (decl; reloc) -- the next cell of the diagonal walk over the cell table, or null (RET 0).
@@ -382,6 +399,8 @@ public:
     bool FUN_0056BAC0(Straw* straw);
     // FUNCTION: GAMEMD 0x4AE450 -- reset every cell's light after a detail-level change, then request a redraw.
     void FUN_004AE450();
+    // FUNCTION: GAMEMD 0x5865F0 -- walk up the isometric column above a cell, redrawing and telling the nearest techno the house discovered it (RET 0xC; `this` is not read).
+    void RevealCheck(CellClass* cell, HouseClass* house, bool redraw);
 
     // Methods defined by the matched map/ TUs (formerly per-TU partial views of this class).
     // FUNCTION: GAMEMD 0x588960 / 0x588990 -- clamp the capped count at +0x148.
@@ -440,7 +459,7 @@ public:
     DynamicVectorClass<ZoneConnectionClass> SaveItems; // +0x0050
     MapWordEntry* Words;                             // +0x0068
     int   WordCount;                                 // +0x006C
-    char* Records;                                   // +0x0070 ten bytes per word
+    MapSubzoneRecord* Records;                       // +0x0070 ten bytes per word
     char  unknown_74[0x80 - 0x74];                   // +0x0074
     MapBucketTable<MapBucketB>* BucketsB[3];         // +0x0080
     DynamicVectorClass<SubzoneTrackingStruct> Rings[3]; // +0x008C stride 0x18
@@ -713,6 +732,8 @@ public:
 
     // FUNCTION: GAMEMD 0x656EC0 (decl; reloc)
     void FUN_00656EC0();
+    // FUNCTION: GAMEMD 0x6565A0 (decl; reloc) -- redraw the cell at a coordinate (RET 4).
+    void FUN_006565A0(CellStruct* cell);
     // FUNCTION: GAMEMD 0x655A90
     void FUN_00655A90();
     // FUNCTION: GAMEMD 0x653FA0 (decl; reloc)

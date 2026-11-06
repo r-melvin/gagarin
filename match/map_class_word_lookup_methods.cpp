@@ -5,41 +5,14 @@
 //
 // Address index: 0x56D3A0
 
-#include <stddef.h>
-#include "_rt/gg_static_assert.h"
-#include "_layout/cell.h"
-
-struct MapWordView_0056D3A0
-{
-    short          unknown_0;
-    unsigned short Value;     // +0x02
-};
-GG_STATIC_ASSERT(sizeof(MapWordView_0056D3A0) == 4);
-
-// Minimal MapClass view: the size members and the word table.
-class MapView_56D3A0
-{
-public:
-    char                  unknown_000[0x68];
-    MapWordView_0056D3A0* Words;       // +0x68
-    int                   WordCount;   // +0x6C
-    char                  unknown_70[0xF4 - 0x70];
-    int                   Width;       // +0xF4
-    int                   Height;      // +0xF8
-
-    unsigned int FUN_0056D3A0(const CellStruct* cell) const;
-};
-GG_STATIC_ASSERT(offsetof(MapView_56D3A0, Words) == 0x68);
-GG_STATIC_ASSERT(offsetof(MapView_56D3A0, WordCount) == 0x6C);
-GG_STATIC_ASSERT(offsetof(MapView_56D3A0, Width) == 0xF4);
-GG_STATIC_ASSERT(offsetof(MapView_56D3A0, Height) == 0xF8);
+#include "ui_display_chain.h"
 
 // FUNCTION: GAMEMD 0x56D3A0
 // The word value for a cell, indexed row-major over (Width + Height + 1) columns and
 // clamped to the table (the sum of the size members, plus one, is the row width).
-unsigned int MapView_56D3A0::FUN_0056D3A0(const CellStruct* cell) const
+unsigned int MapClass::FUN_0056D3A0(const CellStruct* cell) const
 {
-    int index = (Height + Width + 1) * cell->Y + cell->X;
+    int index = (MapRect.Height + MapRect.Width + 1) * cell->Y + cell->X;
     if (index < 0) {
         index = 0;
     } else if (index >= WordCount) {

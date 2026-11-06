@@ -108,7 +108,7 @@ long MouseClass::vf_30(IStream* stream)
         delete[] Words;
         Words = 0;
     }
-    Records = new char[WordCount * 10];
+    Records = new MapSubzoneRecord[WordCount];
     Words = new MapWordEntry[WordCount];
     BucketsA = new MapBucketTable<MapBucketA>;
     for (i = 1; i < 4; i++) {

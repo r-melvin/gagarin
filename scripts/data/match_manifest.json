@@ -23874,11 +23874,11 @@
  {
   "tu": "match/map_class_area_free_methods.cpp",
   "addr": "0x586780",
-  "sym": "?IsAreaFree@Map_00586780@@QAE_NPAURect_00586780@@H@Z",
+  "sym": "?IsAreaFree@MapClass@@QAE_NPAURectangleStruct@@H@Z",
   "len": "0x116",
   "name": "MapClass::IsAreaFree",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map_class_area_methods.cpp",
@@ -23919,7 +23919,7 @@
  {
   "tu": "match/map_class_local_radar_methods.cpp",
   "addr": "0x578460",
-  "sym": "?IsWithinUsableArea@Map_00578390@@QAE_NPAUCellStruct@@_N@Z",
+  "sym": "?IsWithinUsableArea@MapClass@@QBE_NABUCellStruct@@_N@Z",
   "len": "0xd7",
   "name": "MapClass::IsWithinUsableArea",
   "status": "matched",
@@ -24100,11 +24100,11 @@
  {
   "tu": "match/map_class_reveal_check_methods.cpp",
   "addr": "0x5865F0",
-  "sym": "?RevealCheck@Map_005865F0@@QAEXPAUCellClass_005865F0@@PAUHouse_005865F0@@_N@Z",
+  "sym": "?RevealCheck@MapClass@@QAEXPAVCellClass@@PAVHouseClass@@_N@Z",
   "len": "0xca",
   "name": "MapClass::RevealCheck",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/layer_class_slots.cpp",
@@ -24163,11 +24163,11 @@
  {
   "tu": "match/map_class_update_pathfinding2_methods.cpp",
   "addr": "0x586990",
-  "sym": "?Update_Pathfinding_2@Map_00586990@@QAEXPAUCellVector_00586990@@@Z",
+  "sym": "?Update_Pathfinding_2@MapClass@@QAEXPAV?$DynamicVectorClass@UCellStruct@@@@@Z",
   "len": "0x121",
   "name": "MapClass::Update_Pathfinding_2",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map_class_usable_area_methods.cpp",
@@ -137898,11 +137898,11 @@
  {
   "tu": "match/map_class_word_lookup_methods.cpp",
   "addr": "0x56D3A0",
-  "sym": "?FUN_0056D3A0@MapView_56D3A0@@QBEIPBUCellStruct@@@Z",
+  "sym": "?FUN_0056D3A0@MapClass@@QBEIPBUCellStruct@@@Z",
   "len": "0x4e",
   "name": "MapClass::FUN_0056D3A0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/object_distance_squared_methods.cpp",
