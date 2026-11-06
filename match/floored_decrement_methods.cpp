@@ -168,9 +168,7 @@ int FUN_00403530(Pool_00402860* self, int count)
 
         int pending = self->Pending;
 
-        self->Pending = pending - 1;
-
-        if (pending - 1 < 0) {
+        if ((self->Pending = pending - 1) < 0) {
             self->Pending = 0;
         }
 

@@ -818,12 +818,12 @@ extern const char DAT_00831C8C[];
 
 // Is a real (non-singleton) player seated in the slot the extra-slot index
 // names, as an observer? The first test of both 0x5E9580 and 0x5E95E0.
-static inline bool Observer_At_Extra_Slot()
+static inline bool Observer_At_Extra_Slot(int extra)
 {
     for (int i = 0; i < 8; i++) {
         NodeNameType* node = Slots[i];
         if (node != 0 && node != OpenNode && node != ClosedNode && node != ObserverNode &&
-            node != WaitingNode && i == NoExtraSlot && node->unknown_6B == -1) {
+            node != WaitingNode && i == extra && node->unknown_6B == -1) {
             return true;
         }
     }
@@ -2091,20 +2091,15 @@ bool No_Observer_Slot()
 }
 
 // FUNCTION: GAMEMD 0x5E9580
-// PARTIAL: best 83.8% (31 of 37 instructions). Identical instruction multiset;
-// retail hoists the open node, the closed node and the extra-slot index into
-// registers and compares the observer and waiting nodes from memory, this build
-// hoists the open, closed and observer nodes instead. Matching it needs a
-// local copy of the extra-slot index (tried: 100%), which is a redundant alias
-// and is not used.
+// Retail hoists the open node, the closed node and the extra-slot index into
+// registers; the extra-slot index reaches the walk as a by-value argument.
 bool FUN_005E9580()
 {
-    return Observer_At_Extra_Slot();
+    return Observer_At_Extra_Slot(NoExtraSlot);
 }
 
 // FUNCTION: GAMEMD 0x5E95E0
-// PARTIAL: best 90.0% (54 of 60 instructions). The same register-hoisting
-// difference as 0x5E9580. The limit minimum is written as `limit >=
+// The limit minimum is written as `limit >=
 // SessionPlayerLimit` (retail's `CMP map,session; JL` order; the earlier
 // `SessionPlayerLimit <= limit` spelling gave 86.7%).
 //
@@ -2118,7 +2113,7 @@ bool FUN_005E95E0()
         limit = SessionPlayerLimit;
     }
     int count = PlayerNodes.Count;
-    bool observer = Observer_At_Extra_Slot();
+    bool observer = Observer_At_Extra_Slot(NoExtraSlot);
     if (count - observer > limit) {
         FUN_004068E0(DAT_00831C8C, SessionPlayerLimit);
         return true;

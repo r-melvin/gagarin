@@ -6091,36 +6091,23 @@ void TechnoReactivate::Reactivate()
 int TechnoClass::FUN_0070ED80(int flags)
 {
     int result = flags;
-    int frame = CurrentFrame;
-    int startTime = DisguiseBlinkTimer.StartTime;
-    int timeLeft = DisguiseBlinkTimer.TimeLeft;
-    if (startTime != -1) {
-        int elapsed = frame - startTime;
-        if (elapsed >= timeLeft) goto sample;
-        timeLeft -= elapsed;
-    }
-    if (timeLeft != 0) {
-        if (!Owner->IsControlledByCurrentPlayer()) {
-            return result;
-        }
-        frame = CurrentFrame;
-    }
-sample:
-    int phase = (frame - DisguiseCreationFrame + 0x40) % 256;
-    if (phase >= 0x40) {
-        if (phase < 0x44) {
-            result |= 2;
-        } else if (phase < 0x4C) {
-            result |= 4;
-        } else if (phase < 0x50) {
-            result |= 2;
-        } else if (phase >= 0x70) {
-            if (phase < 0x74) {
+    if (DisguiseBlinkTimer.GetTimeLeft() == 0 || Owner->IsControlledByCurrentPlayer()) {
+        int phase = (CurrentFrame - DisguiseCreationFrame + 0x40) % 256;
+        if (phase >= 0x40) {
+            if (phase < 0x44) {
                 result |= 2;
-            } else if (phase < 0x7C) {
+            } else if (phase < 0x4C) {
                 result |= 4;
-            } else if (phase < 0x80) {
+            } else if (phase < 0x50) {
                 result |= 2;
+            } else if (phase >= 0x70) {
+                if (phase < 0x74) {
+                    result |= 2;
+                } else if (phase < 0x7C) {
+                    result |= 4;
+                } else if (phase < 0x80) {
+                    result |= 2;
+                }
             }
         }
     }

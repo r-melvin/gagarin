@@ -4295,6 +4295,10 @@ bool Tactical::vf_24(const CoordStruct* first, const CoordStruct* second,
 
 
 // FUNCTION: GAMEMD 0x6DBD20
+// PARTIAL: 45.2% -- the tail now matches retail's shape (one merged result stored to both fields);
+// the residual is VC6 caching the constant zero in EDI from entry, so the three zero tests that retail
+// emits as TEST come out as CMP against it. Plain locals, FAILED(), do-while and a hoisted count
+// leave it unchanged.
 HRESULT __stdcall Tactical::Load(IStream* stream)
 {
     HRESULT hr = AbstractClass::Load(stream);
@@ -4306,12 +4310,14 @@ HRESULT __stdcall Tactical::Load(IStream* stream)
         DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_E4[i]);
     }
     Pair_006D9F80 point = unknown_D64;
+    Pair_006D9F80 result;
     if (FUN_006D8640(&point) && !DAT_00A8ED6B) {
-        unknown_D64 = point;
-        unknown_D74 = point;
+        result = point;
     } else {
-        unknown_D74 = unknown_D64;
+        result = unknown_D64;
     }
+    unknown_D64 = result;
+    unknown_D74 = result;
     FUN_006D8B30();
     unknown_D7D = true;
     return 0;

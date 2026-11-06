@@ -6626,9 +6626,9 @@
   "len": "0x76",
   "name": "FUN_00403530",
   "status": "partial",
-  "pct": 86.8,
-  "best_pct": 86.8,
-  "best_at": "cf203011"
+  "pct": 92.1,
+  "best_pct": 92.1,
+  "best_at": "e3815e72"
  },
  {
   "tu": "match/floored_decrement_methods.cpp",
@@ -95140,10 +95140,8 @@
   "sym": "?FUN_005E9580@@YI_NXZ",
   "len": "0x5c",
   "name": "FUN_005E9580",
-  "status": "partial",
-  "pct": 83.8,
-  "best_pct": 83.8,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/netshare.cpp",
@@ -95151,10 +95149,8 @@
   "sym": "?FUN_005E95E0@@YI_NXZ",
   "len": "0xba",
   "name": "FUN_005E95E0",
-  "status": "partial",
-  "pct": 90.0,
-  "best_pct": 90.0,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/netshare.cpp",
@@ -96152,9 +96148,9 @@
   "len": "0xd6",
   "name": "Tactical::Load",
   "status": "partial",
-  "pct": 39.1,
-  "best_pct": 39.1,
-  "best_at": "cf203011"
+  "pct": 45.2,
+  "best_pct": 45.2,
+  "best_at": "e3815e72"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -104561,11 +104557,8 @@
   "sym": "?FUN_006DA180@Tactical@@QAEXXZ",
   "len": "0xa8",
   "name": "Tactical::FUN_006DA180",
-  "status": "partial",
-  "pct": 100.0,
-  "best_pct": 100.0,
-  "best_at": "cf203011",
-  "note": "100% normalized function comparison; remains partial pending full DSurface vtable closure."
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Tactical.cpp",
@@ -150160,10 +150153,8 @@
   "sym": "?FUN_0070ED80@TechnoClass@@QAEHH@Z",
   "len": "0xa3",
   "name": "TechnoClass::FUN_0070ED80",
-  "status": "partial",
-  "pct": 87.3,
-  "best_pct": 87.3,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/wwlib/vqa/audio_frame_unpack_a_object.asm",
