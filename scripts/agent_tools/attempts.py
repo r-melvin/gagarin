@@ -106,14 +106,22 @@ def refusal(rows, addr, sha=None, reopen=False):
     return None
 
 
+def row_addr(r):
+    """The row's address, or None for a hand-written ledger row without a single hex address."""
+    try:
+        return int(r.get("addr", ""), 16)
+    except (TypeError, ValueError):
+        return None
+
+
 def tried_addrs(rows):
     """Addresses with any ledger row, including a defer."""
-    return {int(r["addr"], 16) for r in rows}
+    return {a for a in map(row_addr, rows) if a is not None}
 
 
 def for_addr(rows, addr):
     a = int(addr, 16)
-    return [r for r in rows if int(r["addr"], 16) == a]
+    return [r for r in rows if row_addr(r) == a]
 
 
 def best(rows, addr):
@@ -133,7 +141,7 @@ def tu_flags(path):
 
 
 def import_rows(existing):
-    seen = {(r["addr"], r.get("import_source")) for r in existing}
+    seen = {(r.get("addr"), r.get("import_source")) for r in existing}
     out = []
     root = common.WORKTREE
     for p in sorted(q for q in (root / "match").rglob("*") if q.suffix.lower() == ".cpp"):
