@@ -37,6 +37,8 @@ struct Map_0087F7E8
     bool FUN_005657E0(const CellStruct* cell);
     // FUNCTION: GAMEMD 0x56D230 (decl; reloc) -- the zone of a cell for a movement zone.
     int FUN_0056D230(const CellStruct& cell, int movementZone, bool isBridge);
+    // FUNCTION: GAMEMD 0x577C90 (decl; reloc) -- thiscall, one stack argument (RET 4): the house whose shroud is raised.
+    void FUN_00577C90(HouseClass* house);
     // FUNCTION: GAMEMD 0x568300 (decl; reloc) -- is the cell coordinate on the map (terrain-object cell view).
     bool FUN_00568300(const CellStruct* cell);
     // FUNCTION: GAMEMD 0x4F42F0

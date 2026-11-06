@@ -73,7 +73,7 @@
   "addr": "0x4155F0",
   "sym": "?FUN_004155F0@Aircraft_004155F0@@QAEHXZ",
   "len": "0x1cd",
-  "name": "Aircraft_004155F0::FUN_004155F0",
+  "name": "AircraftClass::FUN_004155F0",
   "status": "matched",
   "pct": 100.0
  },
@@ -74717,10 +74717,8 @@
   "sym": "?SetCapacity@?$VectorClass@V?$rc_ptr@VTerritory@WorldDominationTour@@@@@@UAE_NHPAV?$rc_ptr@VTerritory@WorldDominationTour@@@@@Z",
   "len": "0x11a",
   "name": "VectorClass<rc_ptr<WorldDominationTour::Territory>>::SetCapacity",
-  "status": "partial",
-  "pct": 53.9,
-  "best_pct": 53.9,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/vector_wdt_territory_methods.cpp",
@@ -74738,9 +74736,10 @@
   "len": "0x11d",
   "name": "DynamicVectorClass<rc_ptr<WorldDominationTour::Territory>>::SetCapacity",
   "status": "partial",
-  "pct": 57.0,
+  "pct": 16.7,
   "best_pct": 57.0,
-  "best_at": "cf203011"
+  "best_at": "cf203011",
+  "lowered_reason": "the Vector sibling SetCapacity rows go exact with the ternary copy count; this Dynamic one inlines the same body but retail keeps its first-loop rc_ptr ctor out of line (0x7670D0) and spills the loop counter, so the positional score drops from 57.0 to 16.7 while 88.6 percent of instructions stay aligned"
  },
  {
   "tu": "match/vector_wdt_territory_methods.cpp",
@@ -75289,10 +75288,8 @@
   "sym": "?SetCapacity@?$VectorClass@V?$rc_ptr@VGameOption@WorldDominationTour@@@@@@UAE_NHPAV?$rc_ptr@VGameOption@WorldDominationTour@@@@@Z",
   "len": "0x11a",
   "name": "VectorClass<rc_ptr<WorldDominationTour::GameOption>>::SetCapacity",
-  "status": "partial",
-  "pct": 53.9,
-  "best_pct": 53.9,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/wdt_conflict_options.cpp",
@@ -75310,9 +75307,10 @@
   "len": "0x11d",
   "name": "DynamicVectorClass<rc_ptr<WorldDominationTour::GameOption>>::SetCapacity",
   "status": "partial",
-  "pct": 57.0,
+  "pct": 16.7,
   "best_pct": 57.0,
-  "best_at": "cf203011"
+  "best_at": "cf203011",
+  "lowered_reason": "the Vector sibling SetCapacity rows go exact with the ternary copy count; this Dynamic one inlines the same body but retail keeps its first-loop rc_ptr ctor out of line (0x7670D0) and spills the loop counter, so the positional score drops from 57.0 to 16.7 while 88.6 percent of instructions stay aligned"
  },
  {
   "tu": "match/wdt_conflict_options.cpp",
@@ -75527,10 +75525,8 @@
   "sym": "?SetCapacity@?$VectorClass@V?$rc_ptr@VWDTTerritory@@@@@@UAE_NHPAV?$rc_ptr@VWDTTerritory@@@@@Z",
   "len": "0x11a",
   "name": "VectorClass<rc_ptr<WDTTerritory>>::SetCapacity",
-  "status": "partial",
-  "pct": 53.9,
-  "best_pct": 53.9,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/wdt_net.cpp",
@@ -75548,9 +75544,10 @@
   "len": "0x11d",
   "name": "DynamicVectorClass<rc_ptr<WDTTerritory>>::SetCapacity",
   "status": "partial",
-  "pct": 57.0,
+  "pct": 16.7,
   "best_pct": 57.0,
-  "best_at": "cf203011"
+  "best_at": "cf203011",
+  "lowered_reason": "the Vector sibling SetCapacity rows go exact with the ternary copy count; this Dynamic one inlines the same body but retail keeps its first-loop rc_ptr ctor out of line (0x7670D0) and spills the loop counter, so the positional score drops from 57.0 to 16.7 while 88.6 percent of instructions stay aligned"
  },
  {
   "tu": "match/wdt_net.cpp",
@@ -103368,10 +103365,8 @@
   "sym": "?FUN_00646E90@@YI_NHABUTargetClass@@U1@0@Z",
   "len": "0xd2",
   "name": "FUN_00646E90",
-  "status": "partial",
-  "pct": 44.6,
-  "best_pct": 44.6,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Queue.cpp",
@@ -103407,9 +103402,9 @@
   "len": "0xba",
   "name": "FUN_006471A0",
   "status": "partial",
-  "pct": 34.5,
-  "best_pct": 34.5,
-  "best_at": "cf203011"
+  "pct": 36.4,
+  "best_pct": 36.4,
+  "best_at": "81aa71d7"
  },
  {
   "tu": "match/Queue.cpp",
@@ -143954,7 +143949,7 @@
   "addr": "0x4FF980",
   "sym": "?FUN_004FF980@HouseClass@@QAEXPAVTechnoClass@@@Z",
   "len": "0x8b",
-  "name": "HouseView_004FF980::FUN_004FF980",
+  "name": "HouseClass::FUN_004FF980",
   "status": "matched",
   "pct": 100.0
  },
@@ -143963,7 +143958,7 @@
   "addr": "0x4FFA50",
   "sym": "?FUN_004FFA50@HouseClass@@QAEXPAVTechnoClass@@@Z",
   "len": "0x8b",
-  "name": "HouseView_004FF980::FUN_004FFA50",
+  "name": "HouseClass::FUN_004FFA50",
   "status": "matched",
   "pct": 100.0
  },
@@ -156195,7 +156190,7 @@
   "addr": "0x479B50",
   "sym": "?FUN_00479B50@@YG_NPAX@Z",
   "len": "0x45",
-  "name": "?FUN_00479B50@@YG_NPAX@Z",
+  "name": "FUN_00479B50",
   "status": "matched",
   "pct": 100.0
  }

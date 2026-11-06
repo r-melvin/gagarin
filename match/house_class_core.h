@@ -435,22 +435,6 @@ public:
         return false;
     }
 
-    // The same operation as the expansion retail has at the first three building-vector loads (0x5036xx
-    // ConYards / Buildings / UnitRepairStations): the grown capacity is `cap + increment`, not
-    // `increment + cap`.
-    bool AddItemCapFirst(const T& item)
-    {
-        int cap = this->Capacity;
-        if (Count < cap
-            || ((this->IsAllocated || cap == 0)
-                && CapacityIncrement > 0
-                && this->SetCapacity(cap + CapacityIncrement, 0))) {
-            (*this)[Count++] = item;
-            return true;
-        }
-        return false;
-    }
-
     // RemoveItem(index), expanded inline.
     bool RemoveItemAt(int index)
     {

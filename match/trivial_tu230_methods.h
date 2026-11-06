@@ -46,8 +46,6 @@ struct Obj_006E4020;
 // GLOBAL: GAMEMD 0xA83D10
 extern char DAT_00A83D10[];
 
-// FUNCTION: GAMEMD 0x577C90 (declaration)
-void FUN_00577C90(Map_0087F7E8*, int, int);
 // FUNCTION: GAMEMD 0x5BF390 (declaration)
 void FUN_005BF390(int, bool);
 // FUNCTION: GAMEMD 0x65D8E0 (declaration)

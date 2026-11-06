@@ -33,14 +33,16 @@ struct EventQueue
 
     // Inline append (no out-of-line copy in retail; e.g. inlined in 0x4436F0): stores the event and its send
     // time at Head when the queue has room. The user's TU declares timeGetTime.
-    void Add(const EventQueueItem& item)
+    bool Add(const EventQueueItem& item)
     {
         if (Count < N) {
             List[Head] = item;
             Time[Head] = timeGetTime();
             Head = (Head + 1) & (N - 1);
             Count++;
+            return true;
         }
+        return false;
     }
 
     EventQueue()

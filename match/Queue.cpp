@@ -1048,36 +1048,17 @@ Obj_00646CE0 DAT_00AC6660[256];
 bool FUN_00646E90(int mission, const TargetClass& target, TargetClass source,
                   const TargetClass& destination)
 {
-    // Canonical empty target semantics; its ID is initialized rather than
-    // reproducing the retail compiler's incidental preserved register value.
-    TargetClass follow = { 0, 0 };
-    EventClass event(DAT_00A83D4C->ArrayIndex, source, (unsigned char)mission,
-                     target, destination, follow);
-    if (DAT_00A802C8.Count >= 128) return false;
-    DAT_00A802C8.List[DAT_00A802C8.Head] = event;
-    DAT_00A802C8.Time[DAT_00A802C8.Head] = timeGetTime();
-    ++DAT_00A802C8.Count;
-    DAT_00A802C8.Head = (DAT_00A802C8.Head + 1) & 127;
-    return true;
-}
-
-static inline bool QueueEvent_Local(const EventClass& event)
-{
-    if (DAT_00A802C8.Count < 128) {
-        DAT_00A802C8.List[DAT_00A802C8.Head] = event;
-        DAT_00A802C8.Time[DAT_00A802C8.Head] = timeGetTime();
-        DAT_00A802C8.Head = (DAT_00A802C8.Head + 1) & 127;
-        ++DAT_00A802C8.Count;
-        return true;
-    }
-    return false;
+    TargetClass follow;
+    follow.RTTI = 0;
+    return DAT_00A802C8.Add(EventClass(DAT_00A83D4C->ArrayIndex, source, (unsigned char)mission,
+                                       target, destination, follow));
 }
 
 // FUNCTION: GAMEMD 0x646F70
 bool FUN_00646F70(int mission, const TargetClass& target, TargetClass source,
                   const TargetClass& destination, int speed, int maxSpeed)
 {
-    return QueueEvent_Local(EventClass(DAT_00A83D4C->ArrayIndex, source, (unsigned char)mission,
+    return DAT_00A802C8.Add(EventClass(DAT_00A83D4C->ArrayIndex, source, (unsigned char)mission,
                                        target, destination, speed, maxSpeed));
 }
 
@@ -1085,14 +1066,14 @@ bool FUN_00646F70(int mission, const TargetClass& target, TargetClass source,
 bool FUN_00647040()
 {
     if (DAT_00A83D4C->IsWinner || DAT_00A83D4C->IsLoser || DAT_00A83D4C->IsGameOver) return false;
-    return QueueEvent_Local(EventClass(DAT_00A83D4C->ArrayIndex, 0xc));
+    return DAT_00A802C8.Add(EventClass(DAT_00A83D4C->ArrayIndex, 0xc));
 }
 
 // FUNCTION: GAMEMD 0x6470F0
 bool FUN_006470F0()
 {
     if (DAT_00A83D4C->IsWinner || DAT_00A83D4C->IsLoser || DAT_00A83D4C->IsGameOver) return false;
-    return QueueEvent_Local(EventClass(DAT_00A83D4C->ArrayIndex, 0x22));
+    return DAT_00A802C8.Add(EventClass(DAT_00A83D4C->ArrayIndex, 0x22));
 }
 
 // FUNCTION: GAMEMD 0x6471A0
@@ -1101,12 +1082,7 @@ bool FUN_006471A0()
     unsigned char type = 0x13;
     if (Session_00A8B238.GameMode == 4 && Flag_00A8DBA0 && PlayerCount_00A8DA84 > 2 && Session_00A8B238.FUN_00697E70(0)) type = 0x27;
     EventClass event(DAT_00A83D4C->ArrayIndex, type);
-    if (DAT_00A802C8.Count >= 128) return false;
-    DAT_00A802C8.List[DAT_00A802C8.Head] = event;
-    DAT_00A802C8.Time[DAT_00A802C8.Head] = timeGetTime();
-    ++DAT_00A802C8.Count;
-    DAT_00A802C8.Head = (DAT_00A802C8.Head + 1) & 127;
-    return true;
+    return DAT_00A802C8.Add(event);
 }
 
 // FUNCTION: GAMEMD 0x647260

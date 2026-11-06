@@ -3391,8 +3391,9 @@ void FUN_005EE350(HWND dialog)
 extern int DAT_00A8DA8C;
 
 // The local handle compared with the blank name; its argument is evaluated before the compare's own pushes.
-static inline bool Is_BlankHandle(const wchar_t* handle)
+static inline bool Is_BlankHandle()
 {
+    wchar_t* handle = Widen_00735120(LocalHandle);
     return wcscmp(handle, BlankName) == 0;
 }
 
@@ -3427,7 +3428,7 @@ void FUN_005EE3A0()
                 continue;
             }
             if (node != 0 && (node == EasyAINode || node == MediumAINode || node == HardAINode)
-                && Is_BlankHandle(Widen_00735120(LocalHandle))) {
+                && Is_BlankHandle()) {
                 if (hostMode) {
                     EnableWindow(item, TRUE);
                 } else {
@@ -3442,13 +3443,13 @@ void FUN_005EE3A0()
                         EnableWindow(item, TRUE);
                     } else {
                         EnableWindow(item, FALSE);
-                        if (Is_BlankHandle(Widen_00735120(LocalHandle))) {
+                        if (Is_BlankHandle()) {
                             node->FUN_00697020(-2);
                         }
                         continue;
                     }
                 }
-                if (!hostMode && Is_BlankHandle(Widen_00735120(LocalHandle))) {
+                if (!hostMode && Is_BlankHandle()) {
                     node->FUN_00697020(-2);
                 }
             }

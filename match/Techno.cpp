@@ -6066,7 +6066,7 @@ void TechnoReactivate::Reactivate()
 
     // Retail tests this as a literal branch: test esi,esi / je 0x70FC18 at 0x70FBEE, then test [esi+0x14],4 (not a kind mask).
     // THISNULL: GAMEMD 0x459F40
-    if (this != 0 && (((AbstractClass*)(void*)this)->Flags.IsFoot))
+    if (this != 0 && (this->Flags.IsFoot))
     {
         FootClass* foot = (FootClass*)this;
         if (foot->Locomotor == 0)
@@ -6149,7 +6149,7 @@ void TechnoDeactivate::Deactivate()
 
     // Retail tests this as a literal branch: test esi,esi / je 0x70FD0E at 0x70FCE4, then test [esi+0x14],4 (not a kind mask).
     // THISNULL: GAMEMD 0x459F40
-    if (this != 0 && (((AbstractClass*)(void*)this)->Flags.IsFoot))
+    if (this != 0 && (this->Flags.IsFoot))
     {
         FootClass* foot = (FootClass*)this;
         if (foot->Locomotor == 0)

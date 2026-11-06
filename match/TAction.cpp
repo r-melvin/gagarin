@@ -1928,7 +1928,7 @@ bool TActionClass::FUN_006E28E0(HouseClass* house, ObjectClass* object, TriggerC
 // Calls other functions.
 bool FUN_006E2950(int a1, int a2, int a3, int a4, int a5, int a6)
 {
-    FUN_00577C90(&DAT_0087F7E8, a2, a3);
+    DAT_0087F7E8.FUN_00577C90((HouseClass*)a3);
     return true;
 }
 

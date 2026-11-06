@@ -124,9 +124,7 @@ template<class T> bool VectorClass<T>::SetCapacity(int capacity, T* pMem) {
             return false;
 
         if (this->Items != 0) {
-            int copyCount = this->Capacity;
-            if (capacity < copyCount)
-                copyCount = capacity;
+            int copyCount = capacity < this->Capacity ? capacity : this->Capacity;
             for (int i = 0; i < copyCount; ++i)
                 newItems[i] = this->Items[i];
             if (this->IsAllocated) {

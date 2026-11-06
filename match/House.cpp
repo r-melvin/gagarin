@@ -725,8 +725,7 @@ void __stdcall HouseQueryObjectInterface(void* object, const IID* riid, void** r
 void __stdcall HouseComIssueError(long hr);
 
 // GLOBAL: GAMEMD 0xA80228 - HouseClass::Array (Items at +0x04 = 0xA8022C, Count at +0x10 = 0xA80238). Kept for the
-// constructor only: retail expands AddItem here with the grown capacity as increment + cap, which the canonical
-// HouseClass_Array template expansion (cap + increment) does not reproduce.
+// constructor only.
 extern HouseDynVector<HouseClusterView*> HouseArray;
 // GLOBAL: GAMEMD 0xB0F670 / 0xB0F640 / 0xB0F5F0 / 0xB0F618 / 0xB0F720 - global object lists the
 // constructor registers the house in, one after the other (element types unproven, all house pointers).
