@@ -8495,7 +8495,7 @@ Obj_00459F40* Obj_00459F40::FUN_00459F40()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459F60
-int Triple3i::FUN_00459F60(const Triple3i* other) const
+bool Triple3i::FUN_00459F60(const Triple3i* other) const
 {
     return a == other->a && b == other->b && c == other->c;
 }

@@ -1038,7 +1038,7 @@ unsigned char Obj_00746D80::FUN_00746D80() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x746D90
 // Branching.
-int Obj_00746D90::FUN_00746D90()
+bool Obj_00746D90::FUN_00746D90()
 {
     return unknown_6E0 != 0 || unknown_6E1 != 0;
 }

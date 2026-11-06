@@ -37,16 +37,12 @@ double ObjectClass::GetHealthPercentage() const
 // FUNCTION: GAMEMD 0x5F5D20
 // Two separate virtual calls and ratio evaluations occur in retail. The
 // predicate returns an int; its original name is not confirmed by the binary.
-int ObjectClass::FUN_005F5D20() const
+bool ObjectClass::FUN_005F5D20() const
 {
-    if ((double)Health / (double)OBJECT_HEALTH_TYPE(this)->Strength
-        > RulesInstance->ConditionRed) {
-        if ((double)Health / (double)OBJECT_HEALTH_TYPE(this)->Strength
-            <= RulesInstance->ConditionYellow) {
-            return 1;
-        }
-    }
-    return 0;
+    return (double)Health / (double)OBJECT_HEALTH_TYPE(this)->Strength
+        > RulesInstance->ConditionRed
+        && (double)Health / (double)OBJECT_HEALTH_TYPE(this)->Strength
+        <= RulesInstance->ConditionYellow;
 }
 
 // FUNCTION: GAMEMD 0x5F5DD0

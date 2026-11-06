@@ -5433,12 +5433,9 @@ int TechnoClass::FUN_0070E1E0(int a1)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0070E240
 // True when `slot` is non-null and holds a non-zero value.
-int __stdcall FUN_0070E240(const int* slot)
+bool __stdcall FUN_0070E240(const int* slot)
 {
-    if (slot != NULL && *slot != 0) {
-        return 1;
-    }
-    return 0;
+    return slot != NULL && *slot != 0;
 }
 
 // FUNCTION: GAMEMD 0x70E260

@@ -1518,7 +1518,7 @@ CountedStringArray DAT_00B76970;
 Wstring DAT_00B76AC4;
 
 // FUNCTION: GAMEMD 0x77CF40
-int FUN_0077CF40()
+bool FUN_0077CF40()
 {
     return DAT_00A8B244 == 3 || DAT_00A8B244 == 1 || DAT_00A8B244 == 2;
 }

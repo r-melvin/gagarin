@@ -16,15 +16,13 @@ struct Obj_0074FFF0
     float Value;
 
     // FUNCTION: GAMEMD 0x74FFF0 (__thiscall)
-    int FUN_0074FFF0() const;
+    bool FUN_0074FFF0() const;
 };
 
 // FUNCTION: GAMEMD 0x74FFF0
-int Obj_0074FFF0::FUN_0074FFF0() const
+bool Obj_0074FFF0::FUN_0074FFF0() const
 {
-    if (Value < DAT_007E1748)
-        return 1;
-    return 0;
+    return Value < DAT_007E1748;
 }
 
 // EVA voice table helpers (the table is VoxClass::Array at 0xB1D4A0; the entries' name is at +0).

@@ -58,7 +58,7 @@ public:
     virtual void vf_310(FootClass* passenger);
     // FUNCTION: GAMEMD 0x00746D90 (decl; reloc)
     // UnitClass::FUN_00746D90
-    int FUN_00746D90();
+    bool FUN_00746D90();
     // GAMEMD 0x70FBD0 (decl; body in movement/unit_class_methods.cpp)
     bool IsDeactivated() const;
     // GAMEMD 0x740DF0 (decl). Sets FlagHouseIndex @0x6CC when it is -1, then

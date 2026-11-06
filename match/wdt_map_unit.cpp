@@ -221,12 +221,10 @@ void Map::FUN_007693F0(MSEngine* view, bool on)
 }
 
 // FUNCTION: GAMEMD 0x769440
-int Map::FUN_00769440(const WDTPoint* point)
+bool Map::FUN_00769440(const WDTPoint* point)
 {
-    if (point->X >= unknown_54.X && point->X < unknown_54.X + unknown_54.Width
-        && point->Y >= unknown_54.Y && point->Y < unknown_54.Y + unknown_54.Height)
-        return 1;
-    return 0;
+    return point->X >= unknown_54.X && point->X < unknown_54.X + unknown_54.Width
+        && point->Y >= unknown_54.Y && point->Y < unknown_54.Y + unknown_54.Height;
 }
 
 // FUNCTION: GAMEMD 0x769540

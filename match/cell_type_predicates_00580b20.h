@@ -7,7 +7,7 @@
 
 #include "cell_neighbor_flags_0057cbe0.h"
 
-int FUN_00580B20(NeighborCoord_0057CBE0* cell);
-int FUN_00580B70(NeighborCoord_0057CBE0* cell);
+bool FUN_00580B20(NeighborCoord_0057CBE0* cell);
+bool FUN_00580B70(NeighborCoord_0057CBE0* cell);
 
 #endif

@@ -2850,14 +2850,10 @@ unsigned int PackPixel_0063DAD0(const unsigned char* rgb)
 // EDX (the mirror of retail) and flips `JL` to `JG`, cascading through every
 // register role in the rest of the axis. The return value is a plain `int`
 // (`MOV EAX,1` / `XOR EAX,EAX`), not a `bool` (`MOV AL,1`).
-int Rect_0063DB20::Contains(const Point_0063DB20* pt) const
+bool Rect_0063DB20::Contains(const Point_0063DB20* pt) const
 {
-    if (pt->X >= this->X && pt->X < this->X + this->Width) {
-        if (pt->Y >= this->Y && pt->Y < this->Y + this->Height) {
-            return 1;
-        }
-    }
-    return 0;
+    return pt->X >= this->X && pt->X < this->X + this->Width
+        && pt->Y >= this->Y && pt->Y < this->Y + this->Height;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

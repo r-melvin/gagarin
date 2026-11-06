@@ -61,7 +61,7 @@ void __cdecl FUN_00406EE0()
 // FUNCTION: GAMEMD 0x432C50
 // Both comparisons are unsigned (`JNC`/`JC`), so a value past the halfway point
 // of the range reads as large rather than negative.
-int Obj_00432C50::FUN_00432C50() const
+bool Obj_00432C50::FUN_00432C50() const
 {
     return unknown_04->atC >= unknown_04->at8 || unknown_04->atC < unknown_30;
 }

@@ -183,8 +183,8 @@ bool __cdecl Is_005E8AE0_B();
 
 // --- the run ---------------------------------------------------------------
 
-int Node_Is_Blank_At(int index);
-int Local_Handle_Is_Blank();
+bool Node_Is_Blank_At(int index);
+bool Local_Handle_Is_Blank();
 int Name_Is_Local_Handle(const wchar_t* name);
 void Destroy_Slot_Nodes();
 void Reset_Slots();
@@ -198,9 +198,9 @@ void Select_Slot(int index);
 int Assign_Node_To_Slot(NodeNameType* node);
 void Release_Slot_By_Address(const IPXAddressClass* address);
 void Release_Slot_By_Handle(const char* handle);
-int Is_Player_Node(NodeNameType* node);
-int Is_AI_Node(NodeNameType* node);
-int Is_Occupied_Node(NodeNameType* node);
+bool Is_Player_Node(NodeNameType* node);
+bool Is_AI_Node(NodeNameType* node);
+bool Is_Occupied_Node(NodeNameType* node);
 int AI_Difficulty_Of(NodeNameType* node);
 int Count_AI_Slots();
 bool No_Open_Slot();

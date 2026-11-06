@@ -1608,7 +1608,7 @@ void FUN_005E7460()
 // Is the node sitting at `index` in the player vector still unnamed? The
 // blank name at 0xA8D610 is the "not filled in yet" sentinel, and the node
 // pointer is its own name because Name is the first member.
-int Node_Is_Blank_At(int index)
+bool Node_Is_Blank_At(int index)
 {
     return wcscmp(PlayerNodes.Vector[index]->Name, BlankName) == 0;
 }
@@ -1617,7 +1617,7 @@ int Node_Is_Blank_At(int index)
 //
 // The same question about the local player's own handle, which is stored
 // ANSI and widened for the comparison.
-int Local_Handle_Is_Blank()
+bool Local_Handle_Is_Blank()
 {
     wchar_t* handle = Widen_00735120(LocalHandle);
     return wcscmp(handle, BlankName) == 0;
@@ -1934,39 +1934,30 @@ void Release_Slot_By_Handle(const char* handle)
 //
 // Is this a real human player rather than one of the seven singletons? Not in
 // the Ghidra function list; found by the pad sweep.
-int Is_Player_Node(NodeNameType* node)
+bool Is_Player_Node(NodeNameType* node)
 {
-    if (node == 0 || node == OpenNode || node == ClosedNode ||
+    return !(node == 0 || node == OpenNode || node == ClosedNode ||
         node == WaitingNode || node == ObserverNode || node == EasyAINode ||
-        node == MediumAINode || node == HardAINode) {
-        return 0;
-    }
-    return 1;
+        node == MediumAINode || node == HardAINode);
 }
 
 // FUNCTION: GAMEMD 0x5E9440
 //
 // Is this one of the three AI singletons?
-int Is_AI_Node(NodeNameType* node)
+bool Is_AI_Node(NodeNameType* node)
 {
-    if (node != 0 &&
-        (node == EasyAINode || node == MediumAINode || node == HardAINode)) {
-        return 1;
-    }
-    return 0;
+    return node != 0 &&
+        (node == EasyAINode || node == MediumAINode || node == HardAINode);
 }
 
 // FUNCTION: GAMEMD 0x5E9470
 //
 // Does something actually occupy this slot? Open, Closed, Observer and
 // Waiting all mean no; the AI singletons and real players mean yes.
-int Is_Occupied_Node(NodeNameType* node)
+bool Is_Occupied_Node(NodeNameType* node)
 {
-    if (node == 0 || node == OpenNode || node == ClosedNode ||
-        node == ObserverNode || node == WaitingNode) {
-        return 0;
-    }
-    return 1;
+    return !(node == 0 || node == OpenNode || node == ClosedNode ||
+        node == ObserverNode || node == WaitingNode);
 }
 
 // FUNCTION: GAMEMD 0x5E94A0

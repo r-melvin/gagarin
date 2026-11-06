@@ -1281,18 +1281,13 @@ bool FUN_00602490(int nKey, GG_HWND hCtl)
 // written in retail's own comparison order because that order is the source
 // order: cl lays a disjunction of equality tests out verbatim, so any
 // re-sorting (or a switch, which would bring a jump table) loses the match.
-int FUN_00602AE0(int nID)
+bool FUN_00602AE0(int nID)
 {
-    if (nID == 0x125 || nID == 0xE7 || nID == 0x116 || nID == 0xC2 ||
+    return nID == 0x125 || nID == 0xE7 || nID == 0x116 || nID == 0xC2 ||
         nID == 0xC9 || nID == 0x11D || nID == 0x11C || nID == 0x114 ||
         nID == 0x2BC || nID == 0x113 || nID == 0x109 || nID == 0x10F ||
         nID == 0x117 || nID == 0xE6 || nID == 0xF3 || nID == 0xF4 ||
-        nID == 0x10E || nID == 0x112)
-    {
-        return 1;
-    }
-
-    return 0;
+        nID == 0x10E || nID == 0x112;
 }
 
 // FUNCTION: GAMEMD 0x602B90  FUN_00602B90 (__fastcall)

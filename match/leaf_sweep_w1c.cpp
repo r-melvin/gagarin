@@ -110,12 +110,10 @@ bool FUN_0046D460()
 
 // FUNCTION: GAMEMD 0x484AB0
 // True when the +0x116 index is within 0..DAT_008B4148 and mode +0xEC is 10.
-int CellClass::InRange()
+bool CellClass::InRange()
 {
     short index = TubeIndex;
-    if (index >= 0 && index < TunnelArrayCount && LandType == 10)
-        return 1;
-    return 0;
+    return index >= 0 && index < TunnelArrayCount && LandType == 10;
 }
 
 struct Rec_004A3840
@@ -226,7 +224,7 @@ struct Obj_004BAFE0
     char            Pad_10[0xC];
     Iface_004BAFE0* unknown_1C;
     // FUNCTION: GAMEMD 0x4BAFE0
-    int IsReady();
+    bool IsReady();
     // FUNCTION: GAMEMD 0x4BAD30
     int Release(int arg);
 };
@@ -243,11 +241,9 @@ int Obj_004BAFE0::Release(int arg)
 
 // FUNCTION: GAMEMD 0x4BAFE0
 // True when the interface's slot 24 returns the expected status.
-int Obj_004BAFE0::IsReady()
+bool Obj_004BAFE0::IsReady()
 {
-    if (unknown_1C && unknown_1C->Slot24() == (long)0x887601C2)
-        return 1;
-    return 0;
+    return unknown_1C && unknown_1C->Slot24() == (long)0x887601C2;
 }
 
 extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);

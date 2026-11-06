@@ -29,7 +29,7 @@ struct Triple3i
     int a, b, c;
 
     // FUNCTION: GAMEMD 0x459F60
-    int FUN_00459F60(const Triple3i* other) const;
+    bool FUN_00459F60(const Triple3i* other) const;
 };
 
 #endif  // GG_MATCH_CORE_SMALL_MISC19_METHODS_H

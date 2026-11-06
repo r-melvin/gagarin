@@ -27,7 +27,7 @@ struct Rect_0063DB20
     int Height;   // +0x0C
 
     // FUNCTION: GAMEMD 0x63DB20
-    int Contains(const Point_0063DB20* pt) const;
+    bool Contains(const Point_0063DB20* pt) const;
 };
 GG_STATIC_ASSERT(offsetof(Rect_0063DB20, Y)      == 0x04);
 GG_STATIC_ASSERT(offsetof(Rect_0063DB20, Width)  == 0x08);

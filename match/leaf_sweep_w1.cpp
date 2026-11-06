@@ -719,16 +719,14 @@ struct Obj_004E0080
     char unknown_690;
     char unknown_691;
     // FUNCTION: GAMEMD 0x4E0080
-    int AnySet();
+    bool AnySet();
 };
 GG_STATIC_ASSERT(offsetof(Obj_004E0080, unknown_691) == 0x691);
 
 // FUNCTION: GAMEMD 0x4E0080
-int Obj_004E0080::AnySet()
+bool Obj_004E0080::AnySet()
 {
-    if (unknown_68F || unknown_690 || unknown_691)
-        return 1;
-    return 0;
+    return unknown_68F || unknown_690 || unknown_691;
 }
 
 struct Obj_0048BAD0

@@ -15,6 +15,6 @@ extern int DAT_00A9FAB8;
 
 
 // FUNCTION: GAMEMD 0x53A0E0
-int __cdecl FUN_0053A0E0();
+bool __cdecl FUN_0053A0E0();
 
 #endif  // GG_MATCH_CORE_TRIVIAL_TU104_B_METHODS_H

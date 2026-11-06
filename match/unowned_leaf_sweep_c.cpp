@@ -98,7 +98,7 @@ int FUN_00711EB0(Obj_00711EB0* self)
 #include "_layout/obj_00717880.h"
 
 // FUNCTION: GAMEMD 0x00717880
-int FUN_00717880(Obj_00717880* self)
+bool FUN_00717880(Obj_00717880* self)
 {
     return self->unknown_808 > 0;
 }
@@ -138,21 +138,15 @@ int FUN_0074FEF0(const char* name)
 
 // FUNCTION: GAMEMD 0x0074FF90
 // Is the float in [1, 2).
-int FUN_0074FF90(const float* value)
+bool FUN_0074FF90(const float* value)
 {
-    if (*value >= 1.0f && *value < 2.0f) {
-        return 1;
-    }
-    return 0;
+    return *value >= 1.0f && *value < 2.0f;
 }
 
 // FUNCTION: GAMEMD 0x00750010
-int FUN_00750010(const float* value)
+bool FUN_00750010(const float* value)
 {
-    if (!(*value < 2.0f)) {
-        return 1;
-    }
-    return 0;
+    return !(*value < 2.0f);
 }
 
 #include "_layout/item_00751040.h"

@@ -9946,11 +9946,11 @@
  {
   "tu": "match/PlanMgr.cpp",
   "addr": "0x63DB20",
-  "sym": "?Contains@Rect_0063DB20@@QBEHPBUPoint_0063DB20@@@Z",
+  "sym": "?Contains@Rect_0063DB20@@QBE_NPBUPoint_0063DB20@@@Z",
   "len": "0x3a",
   "name": "Rect_0063DB20::Contains",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/registered_object_ctor_methods.cpp",
@@ -10656,7 +10656,7 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x459F60",
-  "sym": "?FUN_00459F60@Triple3i@@QBEHPBU1@@Z",
+  "sym": "?FUN_00459F60@Triple3i@@QBE_NPBU1@@Z",
   "len": "0x2e",
   "name": "FUN_00459F60",
   "status": "matched",
@@ -11907,7 +11907,7 @@
  {
   "tu": "match/small_misc5_methods.cpp",
   "addr": "0x432C50",
-  "sym": "?FUN_00432C50@Obj_00432C50@@QBEHXZ",
+  "sym": "?FUN_00432C50@Obj_00432C50@@QBE_NXZ",
   "len": "0x1d",
   "name": "FUN_00432C50",
   "status": "matched",
@@ -22929,20 +22929,20 @@
  {
   "tu": "match/netshare.cpp",
   "addr": "0x5E8740",
-  "sym": "?Node_Is_Blank_At@@YIHH@Z",
+  "sym": "?Node_Is_Blank_At@@YI_NH@Z",
   "len": "0x1c",
   "name": "Node_Is_Blank_At",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/netshare.cpp",
   "addr": "0x5E8760",
-  "sym": "?Local_Handle_Is_Blank@@YIHXZ",
+  "sym": "?Local_Handle_Is_Blank@@YI_NXZ",
   "len": "0x1e",
   "name": "Local_Handle_Is_Blank",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/netshare.cpp",
@@ -23073,29 +23073,29 @@
  {
   "tu": "match/netshare.cpp",
   "addr": "0x5E93F0",
-  "sym": "?Is_Player_Node@@YIHPAUNodeNameType@@@Z",
+  "sym": "?Is_Player_Node@@YI_NPAUNodeNameType@@@Z",
   "len": "0x45",
   "name": "Is_Player_Node",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/netshare.cpp",
   "addr": "0x5E9440",
-  "sym": "?Is_AI_Node@@YIHPAUNodeNameType@@@Z",
+  "sym": "?Is_AI_Node@@YI_NPAUNodeNameType@@@Z",
   "len": "0x25",
   "name": "Is_AI_Node",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/netshare.cpp",
   "addr": "0x5E9470",
-  "sym": "?Is_Occupied_Node@@YIHPAUNodeNameType@@@Z",
+  "sym": "?Is_Occupied_Node@@YI_NPAUNodeNameType@@@Z",
   "len": "0x2d",
   "name": "Is_Occupied_Node",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/netshare.cpp",
@@ -28974,11 +28974,11 @@
  {
   "tu": "match/ownrdraw.cpp",
   "addr": "0x602AE0",
-  "sym": "?FUN_00602AE0@@YIHH@Z",
+  "sym": "?FUN_00602AE0@@YI_NH@Z",
   "len": "0xa1",
   "name": "FUN_00602AE0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ownrdraw.cpp",
@@ -31077,21 +31077,21 @@
  },
  {
   "tu": "match/cell_type_predicates_00580b20.cpp",
-  "addr": "0x00580B20",
-  "sym": "?FUN_00580B20@@YIHPAUNeighborCoord_0057CBE0@@@Z",
+  "addr": "0x580B20",
+  "sym": "?FUN_00580B20@@YI_NPAUNeighborCoord_0057CBE0@@@Z",
   "len": "0x44",
   "name": "FUN_00580B20",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/cell_type_predicates_00580b20.cpp",
-  "addr": "0x00580B70",
-  "sym": "?FUN_00580B70@@YIHPAUNeighborCoord_0057CBE0@@@Z",
+  "addr": "0x580B70",
+  "sym": "?FUN_00580B70@@YI_NPAUNeighborCoord_0057CBE0@@@Z",
   "len": "0x48",
   "name": "FUN_00580B70",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/drive_timer_remaining_004b4d70.cpp",
@@ -34360,11 +34360,11 @@
  {
   "tu": "match/object_class_health_methods.cpp",
   "addr": "0x5F5D20",
-  "sym": "?FUN_005F5D20@ObjectClass@@QBEHXZ",
+  "sym": "?FUN_005F5D20@ObjectClass@@QBE_NXZ",
   "len": "0x70",
   "name": "ObjectClass::FUN_005F5D20",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "addr": "0x4E8ED0",
@@ -61353,7 +61353,7 @@
  {
   "tu": "match/tu050_cell_class.cpp",
   "addr": "0x485060",
-  "sym": "?FUN_00485060@@YIHPAUObj_00485060@@@Z",
+  "sym": "?FUN_00485060@@YI_NPAUObj_00485060@@@Z",
   "len": "0x1d",
   "name": "FUN_00485060",
   "status": "matched",
@@ -61362,7 +61362,7 @@
  {
   "tu": "match/tu050_cell_class.cpp",
   "addr": "0x4870B0",
-  "sym": "?FUN_004870B0@Obj_004870B0@@QBEHH@Z",
+  "sym": "?FUN_004870B0@Obj_004870B0@@QBE_NH@Z",
   "len": "0x1b",
   "name": "Obj_004870B0::FUN_004870B0",
   "status": "matched",
@@ -61710,20 +61710,20 @@
  {
   "tu": "match/Ion.cpp",
   "addr": "0x53BAD0",
-  "sym": "?FUN_0053BAD0@@YIHXZ",
+  "sym": "?FUN_0053BAD0@@YI_NXZ",
   "len": "0xe",
   "name": "FUN_0053BAD0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Ion.cpp",
   "addr": "0x53BAE0",
-  "sym": "?FUN_0053BAE0@@YIHXZ",
+  "sym": "?FUN_0053BAE0@@YI_NXZ",
   "len": "0xe",
   "name": "FUN_0053BAE0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/unowned_leaf_sweep_b.cpp",
@@ -62090,11 +62090,11 @@
  {
   "tu": "match/Techno.cpp",
   "addr": "0x70E240",
-  "sym": "?FUN_0070E240@@YGHPBH@Z",
+  "sym": "?FUN_0070E240@@YG_NPBH@Z",
   "len": "0x1a",
   "name": "FUN_0070E240",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/unowned_leaf_sweep_c.cpp",
@@ -62108,11 +62108,11 @@
  {
   "tu": "match/unowned_leaf_sweep_c.cpp",
   "addr": "0x717880",
-  "sym": "?FUN_00717880@@YIHPAUObj_00717880@@@Z",
+  "sym": "?FUN_00717880@@YI_NPAUObj_00717880@@@Z",
   "len": "0xe",
   "name": "FUN_00717880",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/unowned_leaf_sweep_c.cpp",
@@ -62144,20 +62144,20 @@
  {
   "tu": "match/unowned_leaf_sweep_c.cpp",
   "addr": "0x74FF90",
-  "sym": "?FUN_0074FF90@@YIHPBM@Z",
+  "sym": "?FUN_0074FF90@@YI_NPBM@Z",
   "len": "0x27",
   "name": "FUN_0074FF90",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/unowned_leaf_sweep_c.cpp",
   "addr": "0x750010",
-  "sym": "?FUN_00750010@@YIHPBM@Z",
+  "sym": "?FUN_00750010@@YI_NPBM@Z",
   "len": "0x18",
   "name": "FUN_00750010",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/unowned_leaf_sweep_c.cpp",
@@ -72285,11 +72285,11 @@
  {
   "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C0980",
-  "sym": "?FUN_005C0980@@YIHXZ",
+  "sym": "?FUN_005C0980@@YI_NXZ",
   "len": "0x1b",
   "name": "FUN_005C0980",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movie_handle_class.cpp",
@@ -74703,11 +74703,11 @@
  {
   "tu": "match/wdt_map_unit.cpp",
   "addr": "0x769440",
-  "sym": "?FUN_00769440@Map@WorldDominationTour@@QAEHPBUWDTPoint@@@Z",
+  "sym": "?FUN_00769440@Map@WorldDominationTour@@QAE_NPBUWDTPoint@@@Z",
   "len": "0x3b",
   "name": "WorldDominationTour::Map::FUN_00769440",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/wdt_map_unit.cpp",
@@ -76849,11 +76849,11 @@
  {
   "tu": "match/wonline.cpp",
   "addr": "0x77CF40",
-  "sym": "?FUN_0077CF40@@YIHXZ",
+  "sym": "?FUN_0077CF40@@YI_NXZ",
   "len": "0x1d",
   "name": "FUN_0077CF40",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/wonline.cpp",
@@ -85313,11 +85313,11 @@
  {
   "tu": "match/Ion.cpp",
   "addr": "0x53A0E0",
-  "sym": "?FUN_0053A0E0@@YAHXZ",
+  "sym": "?FUN_0053A0E0@@YA_NXZ",
   "len": "0x1b",
   "name": "FUN_0053A0E0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Ion.cpp",
@@ -89021,11 +89021,11 @@
  {
   "tu": "match/Unit.cpp",
   "addr": "0x746D90",
-  "sym": "?FUN_00746D90@Obj_00746D90@@QAEHXZ",
+  "sym": "?FUN_00746D90@Obj_00746D90@@QAE_NXZ",
   "len": "0x1d",
   "name": "Obj_00746D90::FUN_00746D90",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Unit.cpp",
@@ -93927,7 +93927,7 @@
  {
   "tu": "match/Infantry.cpp",
   "addr": "0x522510",
-  "sym": "?FUN_00522510@InfantryClass@@QAEHXZ",
+  "sym": "?FUN_00522510@InfantryClass@@QAE_NXZ",
   "len": "0x23",
   "name": "InfantryClass::FUN_00522510",
   "status": "matched",
@@ -93999,7 +93999,7 @@
  {
   "tu": "match/Infantry.cpp",
   "addr": "0x522CB0",
-  "sym": "?FUN_00522CB0@InfantryClass@@QAEHXZ",
+  "sym": "?FUN_00522CB0@InfantryClass@@QAE_NXZ",
   "len": "0x41",
   "name": "InfantryClass::FUN_00522CB0",
   "status": "matched",
@@ -95738,11 +95738,11 @@
  {
   "tu": "match/Radar.cpp",
   "addr": "0x656E50",
-  "sym": "?FUN_00656E50@Obj_00656E50@@QAEHXZ",
+  "sym": "?FUN_00656E50@Obj_00656E50@@QAE_NXZ",
   "len": "0x1b",
   "name": "Obj_00656E50::FUN_00656E50",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/trivial_tu188_b_methods.cpp",
@@ -95981,11 +95981,11 @@
  {
   "tu": "match/trivial_tu283_b_methods.cpp",
   "addr": "0x774070",
-  "sym": "?FUN_00774070@@YAHXZ",
+  "sym": "?FUN_00774070@@YA_NXZ",
   "len": "0x23",
   "name": "FUN_00774070",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/WOLPersonaInformation.cpp",
@@ -99519,20 +99519,20 @@
  {
   "tu": "match/UICmnds.cpp",
   "addr": "0x732580",
-  "sym": "?FUN_00732580@@YIHPAVTechnoClass@@@Z",
+  "sym": "?FUN_00732580@@YI_NPAVTechnoClass@@@Z",
   "len": "0x3d",
   "name": "FUN_00732580",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/UICmnds.cpp",
   "addr": "0x7325C0",
-  "sym": "?FUN_007325C0@@YIHPAVTechnoClass@@@Z",
+  "sym": "?FUN_007325C0@@YI_NPAVTechnoClass@@@Z",
   "len": "0x3a",
   "name": "FUN_007325C0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/UICmnds.cpp",
@@ -99593,11 +99593,11 @@
  {
   "tu": "match/UICmnds.cpp",
   "addr": "0x733C60",
-  "sym": "?FUN_00733C60@@YIHPAVTechnoClass@@PBD@Z",
+  "sym": "?FUN_00733C60@@YI_NPAVTechnoClass@@PBD@Z",
   "len": "0x63",
   "name": "FUN_00733C60",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/UICmnds.cpp",
@@ -100634,9 +100634,9 @@
   "len": "0x2fe",
   "name": "FUN_00732280",
   "status": "partial",
-  "pct": 1.8,
-  "best_pct": 1.8,
-  "best_at": "cf203011"
+  "pct": 2.1,
+  "best_pct": 2.1,
+  "best_at": "685ebdf1"
  },
  {
   "tu": "match/UICmnds.cpp",
@@ -100645,18 +100645,18 @@
   "len": "0x161",
   "name": "FUN_00732600",
   "status": "partial",
-  "pct": 27.1,
-  "best_pct": 27.1,
-  "best_at": "cf203011"
+  "pct": 27.8,
+  "best_pct": 27.8,
+  "best_at": "685ebdf1"
  },
  {
   "tu": "match/UICmnds.cpp",
   "addr": "0x732770",
-  "sym": "?FUN_00732770@@YIHPAVTechnoClass@@PBD@Z",
+  "sym": "?FUN_00732770@@YI_NPAVTechnoClass@@PBD@Z",
   "len": "0x53",
   "name": "FUN_00732770",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/UICmnds.cpp",
@@ -100665,9 +100665,9 @@
   "len": "0x173",
   "name": "FUN_007327D0",
   "status": "partial",
-  "pct": 24.1,
-  "best_pct": 24.1,
-  "best_at": "cf203011"
+  "pct": 24.8,
+  "best_pct": 24.8,
+  "best_at": "685ebdf1"
  },
  {
   "tu": "match/UICmnds.cpp",
@@ -100709,9 +100709,9 @@
   "len": "0x16d",
   "name": "FUN_00732FF0",
   "status": "partial",
-  "pct": 23.0,
-  "best_pct": 23.0,
-  "best_at": "cf203011"
+  "pct": 23.7,
+  "best_pct": 23.7,
+  "best_at": "685ebdf1"
  },
  {
   "tu": "match/UICmnds.cpp",
@@ -106895,9 +106895,9 @@
   "len": "0x254",
   "name": "ObjectTypeClass::FUN_005F9070",
   "status": "partial",
-  "pct": 3.8,
-  "best_pct": 3.8,
-  "best_at": "cf203011"
+  "pct": 5.5,
+  "best_pct": 5.5,
+  "best_at": "685ebdf1"
  },
  {
   "tu": "match/voxel_resource_ctors.cpp",
@@ -135519,7 +135519,7 @@
  {
   "tu": "match/leaf_sweep_w1.cpp",
   "addr": "0x4E0080",
-  "sym": "?AnySet@Obj_004E0080@@QAEHXZ",
+  "sym": "?AnySet@Obj_004E0080@@QAE_NXZ",
   "len": "0x27",
   "name": "Obj_004E0080::AnySet",
   "status": "matched",
@@ -139068,11 +139068,11 @@
  {
   "tu": "match/range3_leaves_w3.cpp",
   "addr": "0x74FFF0",
-  "sym": "?FUN_0074FFF0@Obj_0074FFF0@@QBEHXZ",
+  "sym": "?FUN_0074FFF0@Obj_0074FFF0@@QBE_NXZ",
   "len": "0x18",
   "name": "FUN_0074FFF0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/range3_leaves_w3.cpp",
@@ -139632,9 +139632,9 @@
   "len": "0xb9",
   "name": "MSBinkAnim::MSBinkAnim",
   "status": "partial",
-  "pct": 56.7,
-  "best_pct": 56.7,
-  "best_at": "cf203011"
+  "pct": 58.2,
+  "best_pct": 58.2,
+  "best_at": "685ebdf1"
  },
  {
   "tu": "match/msanim_early_methods.cpp",
@@ -139693,7 +139693,7 @@
  {
   "tu": "match/leaf_sweep_w1c.cpp",
   "addr": "0x484AB0",
-  "sym": "?InRange@CellClass@@QAEHXZ",
+  "sym": "?InRange@CellClass@@QAE_NXZ",
   "len": "0x2b",
   "name": "InRange",
   "status": "matched",
@@ -139738,11 +139738,11 @@
  {
   "tu": "match/leaf_sweep_w1c.cpp",
   "addr": "0x4BAFE0",
-  "sym": "?IsReady@Obj_004BAFE0@@QAEHXZ",
+  "sym": "?IsReady@Obj_004BAFE0@@QAE_NXZ",
   "len": "0x1d",
   "name": "IsReady",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/leaf_sweep_w1c.cpp",
@@ -151863,10 +151863,8 @@
   "sym": "?vf_219@TechnoClass@@UAEXXZ",
   "len": "0xaa",
   "name": "TechnoClass::vf_219",
-  "status": "partial",
-  "pct": 98.3,
-  "best_pct": 98.3,
-  "best_at": "2eeee861"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/MapGen.cpp",
@@ -155482,10 +155480,8 @@
   "sym": "?FUN_00728200@TubeClass@@SIXXZ",
   "len": "0x71",
   "name": "TubeClass::FUN_00728200",
-  "status": "partial",
-  "pct": 97.7,
-  "best_pct": 97.7,
-  "best_at": "11742d9d"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/deleting_dtor_w3_methods.cpp",
@@ -155494,9 +155490,9 @@
   "len": "0x140",
   "name": "FUN_00728280",
   "status": "partial",
-  "pct": 97.2,
-  "best_pct": 97.2,
-  "best_at": "11742d9d"
+  "pct": 98.1,
+  "best_pct": 98.1,
+  "best_at": "685ebdf1"
  },
  {
   "tu": "match/deleting_dtor_w3_methods.cpp",

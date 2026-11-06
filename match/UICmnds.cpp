@@ -801,21 +801,16 @@ void FUN_00732280(bool clear)
 }
 
 // FUNCTION: GAMEMD 0x732580
-int FUN_00732580(TechnoClass* object)
+bool FUN_00732580(TechnoClass* object)
 {
-    if (object && object->IsAlive) {
-        bool controlled = Session_00A8B238.GameMode == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
-        if (controlled) return 1;
-    }
-    return 0;
+    return object && object->IsAlive
+        && (Session_00A8B238.GameMode == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer());
 }
 
 // FUNCTION: GAMEMD 0x7325C0
-int FUN_007325C0(TechnoClass* object)
+bool FUN_007325C0(TechnoClass* object)
 {
-    if (object->vf_11() != 6 && object->vf_33()->IsSelectableCombatant && object->vf_79())
-        return 1;
-    return 0;
+    return object->vf_11() != 6 && object->vf_33()->IsSelectableCombatant && object->vf_79();
 }
 
 // FUNCTION: GAMEMD 0x732600
@@ -844,13 +839,11 @@ void FUN_00732600(const char* text)
 }
 
 // FUNCTION: GAMEMD 0x732770
-int FUN_00732770(TechnoClass* object, const char* text)
+bool FUN_00732770(TechnoClass* object, const char* text)
 {
-    if (object && object->IsAlive) {
-        bool controlled = Session_00A8B238.GameMode == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
-        if (controlled && object->FUN_005F3E50(text)) return 1;
-    }
-    return 0;
+    return object && object->IsAlive
+        && (Session_00A8B238.GameMode == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer())
+        && object->FUN_005F3E50(text);
 }
 
 // FUNCTION: GAMEMD 0x7327D0
@@ -1285,11 +1278,10 @@ void FUN_007339B0(bool clear)
 }
 
 // FUNCTION: GAMEMD 0x733C60
-int FUN_00733C60(TechnoClass* object, const char* text)
+bool FUN_00733C60(TechnoClass* object, const char* text)
 {
     const char* id = object->vf_34()->ID;
-    if (text && strcmp(id, text) == 0 && object->vf_79()) return 1;
-    return 0;
+    return text && strcmp(id, text) == 0 && object->vf_79();
 }
 
 // FUNCTION: GAMEMD 0x733CD0

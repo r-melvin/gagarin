@@ -917,7 +917,7 @@ struct Obj_004E0080
     char unknown_690;
     char unknown_691;
     // FUNCTION: GAMEMD 0x4E0080
-    int AnySet();
+    bool AnySet();
 };
 GG_STATIC_ASSERT(offsetof(Obj_004E0080, unknown_691) == 0x691);
 
@@ -2612,13 +2612,10 @@ int CellClass::GetContainedTiberiumValue() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x00485060
 // Is +0x38 inside the 14-wide window that starts at the global 0xAA0738.
-int FUN_00485060(Obj_00485060* self)
+bool FUN_00485060(Obj_00485060* self)
 {
     int value = self->unknown_38;
-    if (value >= DAT_00AA0738 && value < DAT_00AA0738 + 14) {
-        return 1;
-    }
-    return 0;
+    return value >= DAT_00AA0738 && value < DAT_00AA0738 + 14;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -3345,7 +3342,7 @@ bool CellClass::FUN_00486FF0()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x004870B0
 // Is bit `bit` of +0x78 set.
-int Obj_004870B0::FUN_004870B0(int bit) const
+bool Obj_004870B0::FUN_004870B0(int bit) const
 {
     return (unknown_78 & (1 << bit)) != 0;
 }

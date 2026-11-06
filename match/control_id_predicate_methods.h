@@ -22,6 +22,6 @@
 bool FUN_00601360(int nID);
 
 // FUNCTION: GAMEMD 0x602AE0 (__fastcall)
-int FUN_00602AE0(int nID);
+bool FUN_00602AE0(int nID);
 
 #endif  // GG_MATCH_UI_CONTROL_ID_PREDICATE_METHODS_H

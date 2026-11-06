@@ -109,7 +109,7 @@ struct Obj_00746D90
     bool unknown_6E0;   // +0x06E0
     bool unknown_6E1;   // +0x06E1
     // FUNCTION: GAMEMD 0x746D90
-    int FUN_00746D90();
+    bool FUN_00746D90();
 };
 GG_STATIC_ASSERT(offsetof(Obj_00746D90, unknown_6E0) == 0x6E0);
 GG_STATIC_ASSERT(offsetof(Obj_00746D90, unknown_6E1) == 0x6E1);

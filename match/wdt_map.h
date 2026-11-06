@@ -121,7 +121,7 @@ public:
     int FUN_00769330(const WDTPoint* point);
     void FUN_007693A0(MSEngine* view, bool on);
     void FUN_007693F0(MSEngine* view, bool on);
-    int FUN_00769440(const WDTPoint* point);
+    bool FUN_00769440(const WDTPoint* point);
 
     int unknown_08;                                    // +0x08
     int unknown_0C;                                    // +0x0C

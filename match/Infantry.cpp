@@ -705,13 +705,10 @@ unsigned char Obj_005224F0::FUN_005224F0() const
 }
 
 // FUNCTION: GAMEMD 0x522510
-int InfantryClass::FUN_00522510()
+bool InfantryClass::FUN_00522510()
 {
     int s = this->SequenceAnim;
-    if (s == 0x1B || s == 0x1C || s == 0x1D || s == 0x1E) {
-        return 1;
-    }
-    return 0;
+    return s == 0x1B || s == 0x1C || s == 0x1D || s == 0x1E;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -946,14 +943,11 @@ int InfantryClass::FUN_00522C60(int sequence)
 }
 
 // FUNCTION: GAMEMD 0x522CB0
-int InfantryClass::FUN_00522CB0()
+bool InfantryClass::FUN_00522CB0()
 {
     int s = this->SequenceAnim;
-    if (s == 11 || s == 12 || s == 13 || s == 14 || s == 15
-        || s == 0x22 || s == 0x23 || s == 0x24 || s == 0x14 || s == 0x15) {
-        return 1;
-    }
-    return 0;
+    return s == 11 || s == 12 || s == 13 || s == 14 || s == 15
+        || s == 0x22 || s == 0x23 || s == 0x24 || s == 0x14 || s == 0x15;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

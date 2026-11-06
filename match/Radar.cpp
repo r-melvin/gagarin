@@ -492,7 +492,7 @@ struct Obj_00656E50
     int unknown_14AC;   // +0x14AC
     int unknown_14B0;   // +0x14B0
     // FUNCTION: GAMEMD 0x656E50
-    int FUN_00656E50();
+    bool FUN_00656E50();
 };
 GG_STATIC_ASSERT(offsetof(Obj_00656E50, unknown_14AC) == 0x14AC);
 GG_STATIC_ASSERT(offsetof(Obj_00656E50, unknown_14B0) == 0x14B0);
@@ -733,7 +733,7 @@ void RadarClass::FUN_00656DF0(bool on)
 
 // FUNCTION: GAMEMD 0x656E50
 // Branching.
-int Obj_00656E50::FUN_00656E50()
+bool Obj_00656E50::FUN_00656E50()
 {
     return unknown_14B0 == 2 && unknown_14AC == 1;
 }

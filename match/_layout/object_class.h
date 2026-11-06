@@ -71,7 +71,7 @@ public:
     // FUNCTION: GAMEMD 0x5F5CD0
     bool IsRedHP() const;
     // FUNCTION: GAMEMD 0x5F5D20 (original name unconfirmed)
-    int FUN_005F5D20() const;
+    bool FUN_005F5D20() const;
     // FUNCTION: GAMEMD 0x5F5DD0
     int GetHealthStatus() const;
     // FUNCTION: GAMEMD 0x5F5F00

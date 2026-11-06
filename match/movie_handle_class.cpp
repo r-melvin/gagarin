@@ -461,7 +461,7 @@ MovieHandle* FUN_005C07D0(const char* name, Surface_005C07D0* surface, Rectangle
 }
 
 // FUNCTION: GAMEMD 0x5C0980
-int FUN_005C0980()
+bool FUN_005C0980()
 {
     return DAT_00ABF3F4 != 0 || DAT_00ABF3F8 != 0;
 }

@@ -430,7 +430,7 @@ void FUN_0053A0B0(int a1, int a2)
 
 // FUNCTION: GAMEMD 0x53A0E0
 // Branching.
-int __cdecl FUN_0053A0E0()
+bool __cdecl FUN_0053A0E0()
 {
     return DAT_00A9FAB4 != 0 || DAT_00A9FAB8 > 0;
 }
@@ -623,14 +623,14 @@ void FUN_0053B460(int value)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0053BAD0
-int FUN_0053BAD0()
+bool FUN_0053BAD0()
 {
     return DAT_00A9FAB0 != 0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0053BAE0
-int FUN_0053BAE0()
+bool FUN_0053BAE0()
 {
     return DAT_00A9FAB0 != 0;
 }

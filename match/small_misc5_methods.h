@@ -45,7 +45,7 @@ struct Obj_00432C50
     unsigned int       unknown_30;   // +0x0030
 
     // FUNCTION: GAMEMD 0x432C50
-    int FUN_00432C50() const;
+    bool FUN_00432C50() const;
 };
 GG_STATIC_ASSERT(offsetof(Obj_00432C50, unknown_30) == 0x30);
 

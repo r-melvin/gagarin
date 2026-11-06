@@ -11,7 +11,7 @@ struct Obj_004870B0
     char Pad_00[0x78];
     int unknown_78;
 
-    int FUN_004870B0(int bit) const;
+    bool FUN_004870B0(int bit) const;
 };
 GG_STATIC_ASSERT(offsetof(Obj_004870B0, unknown_78) == 0x78);
 #endif

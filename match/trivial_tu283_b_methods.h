@@ -26,6 +26,6 @@ GG_STATIC_ASSERT(offsetof(Gptr_00B72D0C, unknown_40C) == 0x40C);
 
 
 // FUNCTION: GAMEMD 0x774070
-int __cdecl FUN_00774070();
+bool __cdecl FUN_00774070();
 
 #endif  // GG_MATCH_CORE_TRIVIAL_TU283_B_METHODS_H
