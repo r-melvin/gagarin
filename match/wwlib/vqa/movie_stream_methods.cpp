@@ -1733,17 +1733,15 @@ int FUN_007c2d00(MovieHandle_007BD470* h, int mode, int flags)
                     rc = FUN_007c3750(h);
                     if (rc != -1) {
                         h->unknown_150 |= 6;
-                        h->unknown_1A0.unknown_4 &= ~6;
                     } else {
-                        h->unknown_1A0.unknown_4 &= ~6;
                         rc = h->unknown_1A0.unknown_530;
                     }
                 } else {
                     if (rc == -9 && (h->unknown_150 & 4)) {
                         h->unknown_150 |= 2;
                     }
-                    h->unknown_1A0.unknown_4 &= ~6;
                 }
+                h->unknown_1A0.unknown_4 &= ~6;
             } else {
                 h->unknown_150 |= 2;
                 h->unknown_1A0.unknown_0->unknown_14 = 0;
@@ -1769,17 +1767,15 @@ int FUN_007c2d00(MovieHandle_007BD470* h, int mode, int flags)
                 rc = FUN_007c3750(h);
                 if (rc != -1) {
                     h->unknown_150 |= 6;
-                    h->unknown_1A0.unknown_4 &= ~0x16;
                 } else {
-                    h->unknown_1A0.unknown_4 &= ~0x16;
                     rc = h->unknown_1A0.unknown_530;
                 }
             } else {
                 if (rc == -9 && (h->unknown_150 & 4)) {
                     h->unknown_150 |= 2;
                 }
-                h->unknown_1A0.unknown_4 &= ~0x16;
             }
+            h->unknown_1A0.unknown_4 &= ~0x16;
         } else {
             rc = -14;
         }
