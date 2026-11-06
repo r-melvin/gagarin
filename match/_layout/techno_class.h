@@ -427,7 +427,7 @@ public:
     virtual bool vf_230(AbstractClass* a1);                                 // 230 0x70EF00
     virtual bool vf_231(const CoordStruct& where, int a2);         // 231 0x709820
     virtual void vf_232();                                       // 232 0x6FCD40
-    virtual int vf_233(int a1);                                    // 233 0x6F7660
+    virtual bool vf_233(AbstractClass* target);                             // 233 0x6F7660
     virtual bool vf_234(AbstractClass* target, int weapon);            // 234 0x6F77B0: is the target in that weapon's range
     virtual bool IsCloseEnoughToAttack(AbstractClass* target);     // 235 0x6F7780
     virtual void vf_236(CoordStruct* a1);                                // 236 0x6F7930

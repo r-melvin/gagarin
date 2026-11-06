@@ -1038,7 +1038,7 @@ extern const double DAT_007E3808;
 extern const double DAT_007E1718;
 #include "_layout/session_class.h"
 
-// Unclaimed (below partial bar), GAMEMD 0x70B1D0
+// FUNCTION: GAMEMD 0x70B1D0
 // Reveal the map around where this object last looked. A pending reveal
 // (flag at +0x250) is spent here, for the given house when one is passed with
 // the third argument, else for the owner; otherwise it reveals only when the
@@ -1052,10 +1052,12 @@ void TechnoClass::vf_291(int a1, int a2, bool a3, HouseClass* a4)
             if (unknown_bool_250) {
                 range = LastSightRange;
                 unknown_bool_250 = 0;
-                if (range != 0 && a3 && a4) {
-                    DAT_0087F7E8.FUN_005678E0(LastSightCoords, range, a4, a1, a2, 0, 1, 1);
-                } else if (range != 0) {
-                    DAT_0087F7E8.FUN_005678E0(LastSightCoords, range, owner, a1, a2, 0, 1, 1);
+                if (range != 0) {
+                    if (a3 && a4) {
+                        DAT_0087F7E8.FUN_005678E0(LastSightCoords, range, a4, a1, a2, 0, 1, 1);
+                    } else if (LastSightRange != 0) {
+                        DAT_0087F7E8.FUN_005678E0(LastSightCoords, range, owner, a1, a2, 0, 1, 1);
+                    }
                 }
             } else if (a3 && LastSightRange != 0 && a4) {
                 DAT_0087F7E8.FUN_005678E0(LastSightCoords, LastSightRange, a4, a1, a2, 0, 1, 1);
@@ -2528,6 +2530,28 @@ int TechnoClass::FUN_006F70E0(AbstractClass* target)
         return (int)bonus << 8;
     }
     return 0;
+}
+
+// FUNCTION: GAMEMD 0x6F7660
+// Slot 233: is the target within the blast reach of the weapon this object would fire. The reach is the
+// warhead's cell spread less its inset, and the distance is taken between the two cells.
+bool TechnoClass::vf_233(AbstractClass* target)
+{
+    if (vf_248()) {
+        WarheadTypeClass* warhead = vf_252()->WeaponType->Warhead;
+        if (warhead) {
+            float reach = warhead->CellSpread - warhead->CellInset;
+            CellStruct from = CoordToCell(vf_18());
+            CellStruct to = CoordToCell(target->vf_18());
+            short dx = from.X - to.X;
+            short dy = from.Y - to.Y;
+            short dist = (short)(int)FUN_004CAC40((double)dy * dy + (double)dx * dx);
+            if (dist <= reach) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x6F7780  (__thiscall)
