@@ -61209,10 +61209,8 @@
   "sym": "?FUN_007c1150@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0x153",
   "name": "FUN_007c1150",
-  "status": "partial",
-  "pct": 78.8,
-  "best_pct": 78.8,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
@@ -61220,10 +61218,8 @@
   "sym": "?FUN_007c1a70@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0x161",
   "name": "FUN_007c1a70",
-  "status": "partial",
-  "pct": 78.6,
-  "best_pct": 78.6,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
@@ -61231,10 +61227,8 @@
   "sym": "?FUN_007c1be0@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0x152",
   "name": "FUN_007c1be0",
-  "status": "partial",
-  "pct": 78.8,
-  "best_pct": 78.8,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
@@ -92236,10 +92230,8 @@
   "sym": "?FUN_00597260@MapSeedClass@@QAEXH@Z",
   "len": "0x11a",
   "name": "MapSeedClass::FUN_00597260",
-  "status": "partial",
-  "pct": 75.6,
-  "best_pct": 75.6,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/MapGen.cpp",

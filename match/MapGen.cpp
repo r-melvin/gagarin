@@ -1490,11 +1490,21 @@ void MapSeedClass::FUN_00596C70(HWND__* window)
 // FUNCTION: GAMEMD 0x597260
 void MapSeedClass::FUN_00597260(int a1)
 {
-    unknown_4C = DAT_00886B88.FUN_0065C7E0(DAT_0082B0A8[a1], DAT_0082B0BC[a1]);
-    unknown_44 = DAT_00886B88.FUN_0065C7E0(DAT_0082B10C[a1], DAT_0082B120[a1]);
-    unknown_60 = DAT_00886B88.FUN_0065C7E0(DAT_00ABED40[a1], DAT_0082B0F8[a1]);
-    unknown_6C = DAT_00886B88.FUN_0065C7E0(DAT_00ABED18[a1], DAT_0082B0D0[a1]);
-    unknown_70 = DAT_00886B88.FUN_0065C7E0(DAT_0082B080[a1], DAT_0082B094[a1]);
+    int hi0 = DAT_0082B0BC[a1];
+    int lo0 = DAT_0082B0A8[a1];
+    unknown_4C = DAT_00886B88.FUN_0065C7E0(lo0, hi0);
+    int hi1 = DAT_0082B120[a1];
+    int lo1 = DAT_0082B10C[a1];
+    unknown_44 = DAT_00886B88.FUN_0065C7E0(lo1, hi1);
+    int hi2 = DAT_0082B0F8[a1];
+    int lo2 = DAT_00ABED40[a1];
+    unknown_60 = DAT_00886B88.FUN_0065C7E0(lo2, hi2);
+    int hi3 = DAT_0082B0D0[a1];
+    int lo3 = DAT_00ABED18[a1];
+    unknown_6C = DAT_00886B88.FUN_0065C7E0(lo3, hi3);
+    int hi4 = DAT_0082B094[a1];
+    int lo4 = DAT_0082B080[a1];
+    unknown_70 = DAT_00886B88.FUN_0065C7E0(lo4, hi4);
     unknown_54 = unknown_40 * 0x14;
     unknown_58 = DAT_00886B88.FUN_0065C7E0(0, 100);
     int lo = DAT_00ABE260[a1];

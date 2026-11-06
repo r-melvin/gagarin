@@ -1161,7 +1161,8 @@ int FUN_007c1150(MovieHandle_007BD470* h)
         return -4;
     }
     unsigned short* count = &h->unknown_714;
-    if (h->unknown_40.unknown_0(h, 5, count, CHUNK_LEN_BE(chunk.Size)) != 0) {
+    int len = CHUNK_LEN_BE(chunk.Size);
+    if (h->unknown_40.unknown_0(h, 5, count, len) != 0) {
         return -4;
     }
     if (*count > 0) {
@@ -1178,7 +1179,8 @@ int FUN_007c1150(MovieHandle_007BD470* h)
         if (chunk.Id != 0x444e494c) {
             return -4;
         }
-        if (h->unknown_40.unknown_0(h, 5, h->unknown_71C, CHUNK_LEN_BE(chunk.Size)) != 0) {
+        int len2 = CHUNK_LEN_BE(chunk.Size);
+        if (h->unknown_40.unknown_0(h, 5, h->unknown_71C, len2) != 0) {
             return -4;
         }
     }
@@ -1197,7 +1199,8 @@ int FUN_007c1a70(MovieHandle_007BD470* h)
         return -4;
     }
     unsigned short* count = &h->unknown_74C;
-    if (h->unknown_40.unknown_0(h, 5, count, CHUNK_LEN_BE(chunk.Size)) != 0) {
+    int len = CHUNK_LEN_BE(chunk.Size);
+    if (h->unknown_40.unknown_0(h, 5, count, len) != 0) {
         return -4;
     }
     if (h->unknown_E8.unknown_D == 0 && *count > 0) {
@@ -1214,7 +1217,8 @@ int FUN_007c1a70(MovieHandle_007BD470* h)
         if (chunk.Id != 0x444e4943) {
             return -4;
         }
-        if (h->unknown_40.unknown_0(h, 5, h->unknown_754, CHUNK_LEN_BE(chunk.Size)) != 0) {
+        int len2 = CHUNK_LEN_BE(chunk.Size);
+        if (h->unknown_40.unknown_0(h, 5, h->unknown_754, len2) != 0) {
             return -4;
         }
     }
@@ -1233,7 +1237,8 @@ int FUN_007c1be0(MovieHandle_007BD470* h)
         return -4;
     }
     unsigned short* count = &h->unknown_758;
-    if (h->unknown_40.unknown_0(h, 5, count, CHUNK_LEN_BE(chunk.Size)) != 0) {
+    int len = CHUNK_LEN_BE(chunk.Size);
+    if (h->unknown_40.unknown_0(h, 5, count, len) != 0) {
         return -4;
     }
     if (*count > 0) {
@@ -1250,7 +1255,8 @@ int FUN_007c1be0(MovieHandle_007BD470* h)
         if (chunk.Id != 0x444e4950) {
             return -4;
         }
-        if (h->unknown_40.unknown_0(h, 5, h->unknown_760, CHUNK_LEN_BE(chunk.Size)) != 0) {
+        int len2 = CHUNK_LEN_BE(chunk.Size);
+        if (h->unknown_40.unknown_0(h, 5, h->unknown_760, len2) != 0) {
             return -4;
         }
     }
