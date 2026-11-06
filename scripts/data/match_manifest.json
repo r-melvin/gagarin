@@ -156228,5 +156228,16 @@
   "pct": 80.6,
   "best_pct": 80.6,
   "best_at": "82f86b7f"
+ },
+ {
+  "tu": "match/wonline.cpp",
+  "addr": "0x797640",
+  "sym": "?FUN_00797640@@YIHH@Z",
+  "len": "0x1b1",
+  "name": "?FUN_00797640@@YIHH@Z",
+  "status": "partial",
+  "pct": 81.8,
+  "best_pct": 81.8,
+  "best_at": "82f86b7f"
  }
 ]

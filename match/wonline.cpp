@@ -3248,6 +3248,78 @@ void FUN_007975E0()
     FUN_00797640(mode);
 }
 
+// STRING: GAMEMD 0x84B7AC
+extern const char DAT_0084B7AC[];
+// STRING: GAMEMD 0x84B7B4
+extern const char DAT_0084B7B4[];
+extern int DAT_00B779CC;
+extern int DAT_00B77DE8;
+
+// FUNCTION: GAMEMD 0x797640
+// Starts the connection and pumps events until it is ready (0), failed (1) or cancelled (2).
+int FUN_00797640(int mode)
+{
+    bool saved = DAT_00B77DC0;
+    DAT_00B77DC0 = true;
+    DAT_00B778D8.count = 0;
+    DAT_00B76468 = 0;
+    DAT_00B779CC = 0;
+    DAT_00AC116C->Vtbl->At_10(DAT_00AC116C, DAT_00B77E50 | mode, 0x10001, DAT_0084B7AC, DAT_0084B7B4, 0x1E);
+    DAT_00AC116C->Vtbl->At_8C(DAT_00AC116C, DAT_0084A234);
+    bool seenFirst = false;
+    bool seenSecond = false;
+    int result;
+    int code;
+    for (;;) {
+        DWORD event = WaitForMultipleObjects(0x12, DAT_00B73684, FALSE, 0x32);
+        while (event == WAIT_TIMEOUT) {
+            FUN_0077F900();
+            event = WaitForMultipleObjects(0x12, DAT_00B73684, FALSE, 0x32);
+        }
+        ResetEvent(DAT_00B73684[event]);
+        if (event == 0) {
+            result = 1;
+            break;
+        }
+        if (event == 8) {
+            result = 2;
+            break;
+        }
+        if (event == 1) {
+            seenFirst = true;
+            if (seenSecond) {
+                result = 0;
+                break;
+            }
+        } else if (event == 9) {
+            code = DAT_00B77DE8;
+            if (code <= (int)0x8004006D) {
+                if (code >= (int)0x8004006C || (code >= (int)0x80040067 && code <= (int)0x8004006A)) {
+                    FUN_005E2CD0(FUN_00734E60("TXT_CANT_CONNECT", NULL, DAT_0084A430, 0x5F45), 0, FUN_0077D710, false);
+                    result = 1;
+                    break;
+                }
+            } else if (code == 0x4012F) {
+                seenSecond = true;
+                if (seenFirst) {
+                    result = 0;
+                    break;
+                }
+            }
+        }
+    }
+    HWND window = FUN_00775940(0xC4);
+    if (window != NULL) {
+        DAT_00B77DC8 = 0;
+        FUN_007757E0(window, 0);
+    }
+    HWND focus = GetDlgItem((HWND)FUN_00775B10(), 0x540);
+    if (focus != NULL)
+        SetFocus(focus);
+    DAT_00B77DC0 = saved;
+    return result;
+}
+
 // FUNCTION: GAMEMD 0x7982A0
 void __stdcall FUN_007982A0(int count, int unused, Member_7B46F0_wonline* items)
 {

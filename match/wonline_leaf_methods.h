@@ -280,7 +280,7 @@ extern int DAT_00B76440[8];
 void FUN_00792BE0(int mode, Obj_007B66D0* text, int flag);
 
 // FUNCTION: GAMEMD 0x797640 (decl; reloc)
-void FUN_00797640(int mode);
+int FUN_00797640(int mode);
 
 // GLOBAL: GAMEMD 0xA8B244
 extern int DAT_00A8B244;

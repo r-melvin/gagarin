@@ -18,7 +18,9 @@ struct Vtbl_00AC116C
 {
     char unknown_00[0x0C];
     void (__stdcall* At_0C)(Obj_00AC116C* self); // 0x48D19E, result ignored
-    char unknown_10[0x08];
+    // 0x797689: flags word, 0x10001, two literal strings and 0x1E.
+    long (__stdcall* At_10)(Obj_00AC116C* self, unsigned int flags, int value, const char* first, const char* second, int limit);
+    char unknown_14[0x04];
     long (__stdcall* At_18)(Obj_00AC116C* self, int value, int flag);   // 0x77EFBC
     char unknown_1C[0x08];
     long (__stdcall* At_24)(Obj_00AC116C* self);
@@ -77,6 +79,7 @@ GG_STATIC_ASSERT(sizeof(long) == 4);
 GG_STATIC_ASSERT(sizeof(int) == 4);
 GG_STATIC_ASSERT(sizeof(unsigned long) == 4);
 GG_STATIC_ASSERT(offsetof(Obj_00AC116C, Vtbl) == 0);
+GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_10) == 0x10);
 GG_STATIC_ASSERT(offsetof(Obj_00AC1170, Vtbl) == 0);
 GG_STATIC_ASSERT(sizeof(Obj_00AC116C) == 4);
 GG_STATIC_ASSERT(sizeof(Obj_00AC1170) == 4);
