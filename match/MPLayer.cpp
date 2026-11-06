@@ -64,6 +64,21 @@ unsigned int __fastcall FUN_005C6230(unsigned int len, unsigned char* out)
     return i;
 }
 
+// Writes a word array as a big-endian byte string; defined below. Returns the byte count.
+unsigned int __fastcall FUN_005C6490(unsigned char* out, const unsigned int* in, int n);
+
+// FUNCTION: GAMEMD 0x5C62B0
+// Stores the number as a tag-2 record: tag byte, length, value bytes. Returns the record size.
+int __fastcall FUN_005C62B0(const unsigned int* num, unsigned char* out, int n)
+{
+    unsigned char buf[0x104];
+    unsigned int len = FUN_005C6490(buf, num, n);
+    out[0] = 2;
+    unsigned int i = FUN_005C6230(len, out + 1);
+    memcpy(out + 1 + i, buf, len);
+    return len + i + 1;
+}
+
 // FUNCTION: GAMEMD 0x5C6370
 // Reads a tag-2 record (a one or two byte length, then the value bytes) and stores the value
 // big-endian bytes into the `words`-word little-endian buffer `out`, sign-extended.

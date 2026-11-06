@@ -154733,5 +154733,16 @@
   "name": "SliderClass::SliderClass",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/MPLayer.cpp",
+  "addr": "0x5C62B0",
+  "sym": "?FUN_005C62B0@@YIHPBIPAEH@Z",
+  "len": "0xb4",
+  "name": "?FUN_005C62B0@@YIHPBIPAEH@Z",
+  "status": "partial",
+  "pct": 98.5,
+  "best_pct": 98.5,
+  "best_at": "20d3fc7d"
  }
 ]
