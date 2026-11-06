@@ -3,7 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at each address below
 //   (AnimClass slots read from the RTTI table at 0x7E3354).
 //
-//   Address index: 0x425150, 0x425410, 0x425530, 0x4255B0, 0x4260F0, 0x4261D0, 0x426270, 0x426300
+//   Address index: 0x422BE0, 0x425150, 0x425410, 0x425530, 0x4255B0, 0x4260F0, 0x4261D0, 0x426270, 0x426300
 
 #include "_layout/anim_class.h"
 #include "_layout/anim_type_class.h"
@@ -123,6 +123,33 @@ AnimClass::~AnimClass()
     } else {
         DAT_00A8E9A8.RemoveItem(this);
     }
+}
+
+// The component-wise sum of two coordinates, inlined at its use below.
+static inline CoordStruct operator+(const CoordStruct& a, const CoordStruct& b)
+{
+    CoordStruct r;
+    r.X = a.X + b.X;
+    r.Y = a.Y + b.Y;
+    r.Z = a.Z + b.Z;
+    return r;
+}
+
+// FUNCTION: GAMEMD 0x422BE0
+// Slot 18 of AnimClass: the animation's own coordinate, offset by the coordinate of the
+// object it is attached to; with nothing attached, the unmodified base coordinate.
+//
+// PARTIAL: 40.4% (was 36.5% on a per-TU view). The call order, the two coordinate temporaries
+// and the in-place result are retail's; the residual is register naming in the three sums
+// (retail keeps the first call's result pointer in ESI and the second in EAX). The same body
+// written as a member operator on CoordStruct is byte-exact, but that touches the shared
+// coordinate header and collides with the existing per-TU operator+ in tu038.
+CoordStruct AnimClass::vf_18()
+{
+    if (OwnerObject != 0) {
+        return OwnerObject->vf_18() + ObjectClass::vf_18();
+    }
+    return ObjectClass::vf_18();
 }
 
 // FUNCTION: GAMEMD 0x425150

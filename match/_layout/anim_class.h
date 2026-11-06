@@ -56,6 +56,8 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
     virtual int vf_11();
     virtual int vf_12();
+    // FUNCTION: GAMEMD 0x422BE0 (slot 18) -- this animation's coordinate offset by its owner object's.
+    virtual CoordStruct vf_18();
     // FUNCTION: GAMEMD 0x425520 (slot 34; returns Type at +0xC8).
     virtual ObjectTypeClass* vf_34();
     // FUNCTION: GAMEMD 0x425530 (slot 53).

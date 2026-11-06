@@ -4627,15 +4627,15 @@
   "pct": 100
  },
  {
-  "tu": "match/combined_coords_methods.cpp",
+  "tu": "match/anim_class_r21_methods.cpp",
   "addr": "0x422BE0",
-  "sym": "?FUN_00422BE0@AnimClass_00422BE0@@QAE?AUCoord_00422BE0@@XZ",
+  "sym": "?vf_18@AnimClass@@UAE?AUCoordStruct@@XZ",
   "len": "0x85",
-  "name": "AnimClass_00422BE0::FUN_00422BE0",
+  "name": "AnimClass::vf_18",
   "status": "partial",
-  "pct": 36.5,
-  "best_pct": 36.5,
-  "best_at": "cf203011"
+  "pct": 40.4,
+  "best_pct": 40.4,
+  "best_at": "e3815e72"
  },
  {
   "tu": "match/const_return_stub_methods.cpp",
