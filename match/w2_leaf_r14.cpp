@@ -9,6 +9,7 @@
 #include "_rt/gg_static_assert.h"
 #include <string.h>
 #include "_layout/load_options_class.h"
+#include "_layout/obj_005bcc40.h"
 #include "vector_class_operations.h"
 #include "mapobj_globals.h"
 #include "runtime_misc_globals.h"
@@ -24,35 +25,9 @@ void MirrorMatrix256(unsigned char (*m)[256])
     }
 }
 
-// Text-grid message log (80 columns by 25 rows) placeholder view.
-struct Obj_005BCC90
-{
-    char cells[80][25];     // +0x0000
-    int attrs[80][25];      // +0x07D0
-    char unknown_2710[0x24];
-    unsigned char dirty;    // +0x2734
-    // FUNCTION: GAMEMD 0x5BD490 (decl; reloc)
-    void FUN_005BD490(int a, int b, int c, int d);
-    inline void Clear()
-    {
-        for (int i = 0; i < 25; i++) {
-            for (int j = 0; j < 80; j++) {
-                cells[j][i] = ' ';
-                attrs[j][i] = 0;
-            }
-        }
-        dirty = 1;
-        FUN_005BD490(0, 0, 80, 25);
-    }
-    // FUNCTION: GAMEMD 0x5BCC90
-    void FUN_005BCC90();
-};
-GG_STATIC_ASSERT(offsetof(Obj_005BCC90, attrs) == 0x7D0);
-GG_STATIC_ASSERT(offsetof(Obj_005BCC90, dirty) == 0x2734);
-
 // FUNCTION: GAMEMD 0x5BCC90
 // Blank the whole text grid and mark it dirty.
-void Obj_005BCC90::FUN_005BCC90()
+void Obj_005BCC40::FUN_005BCC90()
 {
     Clear();
 }
@@ -118,7 +93,7 @@ extern int DAT_00ABF168[];
 void FUN_005BC4D0()
 {
     for (int i = 0; i < 8; i++) {
-        ((Obj_005BCC90*)DAT_00ABF168[i])->Clear();
+        ((Obj_005BCC40*)DAT_00ABF168[i])->Clear();
     }
 }
 
@@ -325,7 +300,7 @@ extern int DAT_00ABF23C;
 
 // FUNCTION: GAMEMD 0x5BCCF0
 // Make this grid the active one (blanking it on a switch), then redraw the whole grid.
-void __fastcall FUN_005BCCF0(Obj_005BCC90* self)
+void __fastcall FUN_005BCCF0(Obj_005BCC40* self)
 {
     if (DAT_00ABF23A) {
         if (DAT_00ABF23C != (int)self) {
@@ -340,10 +315,10 @@ void __fastcall FUN_005BCCF0(Obj_005BCC90* self)
 // Make grid number `index` the active one, blank it and redraw it.
 void __fastcall FUN_005BC460(int index)
 {
-    Obj_005BCC90* grid = (Obj_005BCC90*)DAT_00ABF168[index];
+    Obj_005BCC40* grid = (Obj_005BCC40*)DAT_00ABF168[index];
     DAT_00ABF23C = (int)grid;
     grid->Clear();
-    ((Obj_005BCC90*)DAT_00ABF23C)->FUN_005BD490(0, 0, 80, 25);
+    ((Obj_005BCC40*)DAT_00ABF23C)->FUN_005BD490(0, 0, 80, 25);
 }
 
 // LIBRARY: GAMEMD 0x7C8EF4 -- sprintf.

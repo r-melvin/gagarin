@@ -142461,11 +142461,11 @@
  {
   "tu": "match/w2_leaf_r14.cpp",
   "addr": "0x5BCC90",
-  "sym": "?FUN_005BCC90@Obj_005BCC90@@QAEXXZ",
+  "sym": "?FUN_005BCC90@Obj_005BCC40@@QAEXXZ",
   "len": "0x48",
-  "name": "Obj_005BCC90::FUN_005BCC90",
+  "name": "Obj_005BCC40::FUN_005BCC90",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/w2_leaf_r14.cpp",
@@ -142551,11 +142551,11 @@
  {
   "tu": "match/w2_leaf_r14.cpp",
   "addr": "0x5BCCF0",
-  "sym": "?FUN_005BCCF0@@YIXPAUObj_005BCC90@@@Z",
+  "sym": "?FUN_005BCCF0@@YIXPAUObj_005BCC40@@@Z",
   "len": "0x72",
-  "name": "FUN_005BCCF0",
+  "name": "?FUN_005BCCF0@@YIXPAUObj_005BCC40@@@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/w2_leaf_r14.cpp",
@@ -155320,5 +155320,70 @@
   "pct": 99.0,
   "best_pct": 99.0,
   "best_at": "28e1da81"
+ },
+ {
+  "tu": "match/keyboard_ring_methods.cpp",
+  "addr": "0x54F200",
+  "sym": "?FUN_0054F200@InputManagerClass@@QAE_NH_N@Z",
+  "len": "0xe7",
+  "name": "InputManagerClass::FUN_0054F200",
+  "status": "partial",
+  "pct": 82.6,
+  "best_pct": 82.6,
+  "best_at": "c052d865"
+ },
+ {
+  "tu": "match/keyboard_ring_methods.cpp",
+  "addr": "0x54F450",
+  "sym": "?FUN_0054F450@InputManagerClass@@QAEDH@Z",
+  "len": "0xd2",
+  "name": "InputManagerClass::FUN_0054F450",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/debug_window_show_methods.cpp",
+  "addr": "0x5BC180",
+  "sym": "?FUN_005BC180@@YIXPAUHINSTANCE__@@PAUHWND__@@_N@Z",
+  "len": "0x17e",
+  "name": "?FUN_005BC180@@YIXPAUHINSTANCE__@@PAUHWND__@@_N@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/trivial_tu139_b_methods.cpp",
+  "addr": "0x5BCE10",
+  "sym": "?FUN_005BCE10@Obj_005BCC40@@QAEXH@Z",
+  "len": "0x17a",
+  "name": "Obj_005BCC40::FUN_005BCE10",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/trivial_tu139_b_methods.cpp",
+  "addr": "0x5BCF90",
+  "sym": "?FUN_005BCF90@Obj_005BCC40@@QAEXH@Z",
+  "len": "0x133",
+  "name": "Obj_005BCC40::FUN_005BCF90",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/trivial_tu139_b_methods.cpp",
+  "addr": "0x5BD3D0",
+  "sym": "?FUN_005BD3D0@Obj_005BCC40@@QAEXHHH@Z",
+  "len": "0xbb",
+  "name": "Obj_005BCC40::FUN_005BD3D0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/trivial_tu139_b_methods.cpp",
+  "addr": "0x5BD490",
+  "sym": "?FUN_005BD490@Obj_005BCC40@@QAEXHHHH@Z",
+  "len": "0xd0",
+  "name": "Obj_005BCC40::FUN_005BD490",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
