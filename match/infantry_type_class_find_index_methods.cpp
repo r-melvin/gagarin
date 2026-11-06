@@ -11,6 +11,8 @@
 #include "vector_class_mutation.h"
 #include "vector_class_search.h"
 #include "header_init_shapes.h"
+#include "_layout/obj_004a1d30.h"
+#include <objidl.h>
 
 // LIBRARY: GAMEMD 0x7C8D20 -- CRT _strcmpi.
 extern "C" int __cdecl _strcmpi(const char*, const char*);
@@ -78,6 +80,16 @@ InfantryTypeClass::InfantryTypeClass(const char* id)
     }
 }
 
+// FUNCTION: GAMEMD 0x5239D0
+// SYNTHETIC: GAMEMD 0x524D70 -- the scalar deleting destructor (??_G) with the destructor body expanded into it
+InfantryTypeClass::~InfantryTypeClass()
+{
+    AnnounceExpiredPointer(1);
+    DAT_00A8E348.RemoveItem(this);
+    delete Sequence;
+    Sequence = 0;
+}
+
 // FUNCTION: GAMEMD 0x523C20
 // SYNTHETIC: GAMEMD 0x523C80 -- exit-time destructor stub of the static below
 // GLOBAL: GAMEMD 0xA8F28C
@@ -107,11 +119,51 @@ int InfantryTypeClass::vf_45()
     return RulesInstance->IRepairStep;
 }
 
-// FUNCTION: GAMEMD 0x524D70
-InfantryTypeClass::~InfantryTypeClass()
+// FUNCTION: GAMEMD 0x524840
+// Slot 13: feed the type's pip, sequence table, firing and flag fields into the sync checksum.
+void InfantryTypeClass::vf_13(Obj_004A1D30* crc)
 {
-    AnnounceExpiredPointer(1);
-    DAT_00A8E348.RemoveItem(this);
-    delete Sequence;
-    Sequence = 0;
+    TechnoTypeClass::vf_13(crc);
+    crc->FUN_004A1D50(Pip);
+    crc->FUN_004A1DE0(Sequence, 0x5E8);
+    crc->FUN_004A1D50(FireUp);
+    crc->FUN_004A1D50(FireProne);
+    crc->FUN_004A1D50(VoiceComment.Count);
+    crc->FUN_004A1D50(DeadBodies.Count);
+    crc->FUN_004A1D50(DeathAnims.Count);
+    crc->FUN_004A1CA0(Fearless);
+    crc->FUN_004A1CA0(Crawls);
+    crc->FUN_004A1CA0(Infiltrate);
+    crc->FUN_004A1CA0(Fraidycat);
+    crc->FUN_004A1CA0(TiberiumProof);
+    crc->FUN_004A1CA0(Civilian);
+    crc->FUN_004A1CA0(C4);
+    crc->FUN_004A1CA0(Engineer);
+    crc->FUN_004A1CA0(Agent);
+    crc->FUN_004A1CA0(Thief);
+    crc->FUN_004A1CA0(VehicleThief);
+}
+
+// FUNCTION: GAMEMD 0x524B60
+// Saves the TechnoTypeClass part, then the three type lists (a count and the entries of each) and the
+// sequence table.
+HRESULT __stdcall InfantryTypeClass::Save(IStream* pStm, BOOL fClearDirty)
+{
+    HRESULT hr = TechnoTypeClass::Save(pStm, fClearDirty);
+    if (hr >= 0) {
+        int count = VoiceComment.Count;
+        pStm->Write(&count, 4, 0);
+        for (int i = 0; i < count; i++)
+            pStm->Write(&VoiceComment.Items[i], 4, 0);
+        count = DeadBodies.Count;
+        pStm->Write(&count, 4, 0);
+        for (int j = 0; j < count; j++)
+            pStm->Write(&DeadBodies.Items[j], 4, 0);
+        count = DeathAnims.Count;
+        pStm->Write(&count, 4, 0);
+        for (int k = 0; k < count; k++)
+            pStm->Write(&DeathAnims.Items[k], 4, 0);
+        pStm->Write(Sequence, 0x5E8, 0);
+    }
+    return hr;
 }

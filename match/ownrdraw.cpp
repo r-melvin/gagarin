@@ -330,7 +330,6 @@ struct CountedStringArray {
 };
 
 extern CountedBlock DAT_00AC1DE0;
-extern CountedBlock DAT_00B0BD50;
 extern char DAT_00B2FF78;
 extern CountedBlock DAT_00B72F38;
 extern CountedBlock DAT_00B73E10;

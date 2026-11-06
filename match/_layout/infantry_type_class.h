@@ -37,6 +37,7 @@ GG_STATIC_ASSERT(sizeof(SequenceStruct) == 0x24);
 class InfantryTypeClass : public TechnoTypeClass
 {
 public:
+    virtual void vf_13(Obj_004A1D30* crc);   // 13  0x524840
     virtual bool vf_32(const CellStruct* cell, HouseClass* house);   // 32  0x523B40
     virtual ObjectClass* vf_35(HouseClass* owner);   // 35  0x523B10
     virtual CellStruct* vf_36(int a1);   // 36  0x523C20: a lazily built static cell pair, a1 unused

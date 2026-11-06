@@ -76,10 +76,18 @@ ParasiteClass::ParasiteClass(void* owner) : TimerA(0), TimerB(0)
     v.Items[index] = this;
 }
 
-// SYNTHETIC: GAMEMD 0x62AF70 -- the scalar deleting destructor (??_G) with this body expanded into it
-// Releases the subject and leaves both registries; the base destructor runs last. Retail also keeps an
-// unreferenced out-of-line copy at 0x6293E0 that this build does not reproduce.
-inline ParasiteClass::~ParasiteClass()
+// FUNCTION: GAMEMD 0x6293E0
+// Releases the subject and leaves both registries; the base destructor runs last. The scalar deleting
+// destructor (0x62AF70) has this body expanded into it.
+ParasiteClass::~ParasiteClass()
+{
+    FUN_00629530();
+    DAT_00AC4910.RemoveItem(this);
+}
+
+// FUNCTION: GAMEMD 0x629530
+// Clears the state words, releases the subject and leaves the registry of parasites that hold a victim.
+void ParasiteClass::FUN_00629530()
 {
     unknown_4C = 0;
     unknown_50 = 0;
@@ -92,8 +100,9 @@ inline ParasiteClass::~ParasiteClass()
         DAT_00B0F5B8.RemoveItem(this);
         unknown_54 = false;
     }
-    DAT_00AC4910.RemoveItem(this);
 }
+
+// SYNTHETIC: GAMEMD 0x62AF70 -- the scalar deleting destructor (??_G) with the destructor expanded into it
 
 // FUNCTION: GAMEMD 0x6295B0
 // Loads the base state, rebuilds the object in place, re-registers it when it holds a victim and queues

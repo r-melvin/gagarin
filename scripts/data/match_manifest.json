@@ -155556,5 +155556,59 @@
   "name": "IPXAddressClass::FUN_0053F0E0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/infantry_type_class_find_index_methods.cpp",
+  "addr": "0x5239D0",
+  "sym": "??1InfantryTypeClass@@UAE@XZ",
+  "len": "0x137",
+  "name": "InfantryTypeClass::~InfantryTypeClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/infantry_type_class_find_index_methods.cpp",
+  "addr": "0x524840",
+  "sym": "?vf_13@InfantryTypeClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x114",
+  "name": "InfantryTypeClass::vf_13",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/infantry_type_class_find_index_methods.cpp",
+  "addr": "0x524B60",
+  "sym": "?Save@InfantryTypeClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x101",
+  "name": "InfantryTypeClass::Save",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/w2_parasite_r13.cpp",
+  "addr": "0x6293E0",
+  "sym": "??1ParasiteClass@@UAE@XZ",
+  "len": "0xe2",
+  "name": "ParasiteClass::~ParasiteClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/w2_parasite_r13.cpp",
+  "addr": "0x629530",
+  "sym": "?FUN_00629530@ParasiteClass@@QAEXXZ",
+  "len": "0x77",
+  "name": "ParasiteClass::FUN_00629530",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/trivial_tu222_methods.cpp",
+  "addr": "0x6C6D00",
+  "sym": "?FUN_006C6D00@@YAXXZ",
+  "len": "0xdc",
+  "name": "FUN_006C6D00",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

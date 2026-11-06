@@ -29,6 +29,9 @@ public:
     virtual int vf_12();
     virtual void vf_13(Obj_004A1D30* crc);
 
+    // FUNCTION: GAMEMD 0x629530 -- the destructor's first half: clears the state words, releases the subject
+    // and leaves the registry of parasites that hold a victim.
+    void FUN_00629530();
     // FUNCTION: GAMEMD 0x62A4A0 (decl; reloc) -- __thiscall, no stack arguments.
     void FUN_0062A4A0();
     // FUNCTION: GAMEMD 0x62A8E0 (decl; reloc) -- thiscall, one stack argument (RET 4).

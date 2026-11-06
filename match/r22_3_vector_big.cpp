@@ -9,21 +9,7 @@
 #include <stddef.h>
 #include <string.h>
 #include "_rt/gg_static_assert.h"
-
-struct VectorBig_006C8870
-{
-    int   Count;       // +0x00
-    int   Capacity;    // +0x04
-    char* Items;       // +0x08
-
-    // FUNCTION: GAMEMD 0x6C8900 (__thiscall)
-    bool FUN_006C8900();
-    // FUNCTION: GAMEMD 0x6C8870 (__thiscall)
-    bool FUN_006C8870();
-};
-GG_STATIC_ASSERT(offsetof(VectorBig_006C8870, Capacity) == 0x04);
-GG_STATIC_ASSERT(offsetof(VectorBig_006C8870, Items) == 0x08);
-GG_STATIC_ASSERT(sizeof(VectorBig_006C8870) == 0x0C);
+#include "vector_big_006c8870.h"
 
 // FUNCTION: GAMEMD 0x6C8900
 // Doubles the storage (at least ten elements) once the count reaches the
@@ -38,11 +24,11 @@ bool VectorBig_006C8870::FUN_006C8900()
     if (nNew < 10)
         nNew = 10;
 
-    char* pNew = new char[nNew * 0x8008];
-    memset(pNew, 0, nNew * 0x8008);
+    BigEntry_006C6B00* pNew = new BigEntry_006C6B00[nNew];
+    memset(pNew, 0, nNew * sizeof(BigEntry_006C6B00));
 
     if (Items)
-        memcpy(pNew, Items, Count * 0x8008);
+        memcpy(pNew, Items, Count * sizeof(BigEntry_006C6B00));
 
     delete Items;
     Capacity = nNew;
@@ -66,10 +52,10 @@ bool VectorBig_006C8870::FUN_006C8870()
     if (nNew >= Capacity)
         return false;
 
-    char* pNew = new char[nNew * 0x8008];
+    BigEntry_006C6B00* pNew = new BigEntry_006C6B00[nNew];
 
     if (Items)
-        memcpy(pNew, Items, Count * 0x8008);
+        memcpy(pNew, Items, Count * sizeof(BigEntry_006C6B00));
 
     delete Items;
     Items = pNew;
