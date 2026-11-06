@@ -85,6 +85,8 @@ extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 #include "radar_class.h"
 #include "foundation_dimensions.h"
 #include "ui_common.h"
+#include "wwlib/surface/bsurface_class.h"
+#include "dsurface_class.h"
 #include "tooltip_manager_shared.h"
 #include "shape_button_class.h"
 #include "_layout/rules_class.h"
@@ -1056,7 +1058,7 @@ void RadarClass::vf_16(bool forced)
 
     if (unknown_14D9 == 1) {
         Point2D pos(unknown_11E4, unknown_11E8);
-        Rect clip = DAT_00887300->GetRect();
+        RectangleStruct clip = DAT_00887300->GetRect();
         FUN_004AED70(DAT_00887300, (ColorConvert*)DAT_0087F6CC, DAT_00B0F9E0, 0,
                      &pos, &clip, 0, 0, 0, 0, 1000, 0, 0, 0,
                      Point2D(0, 0));
@@ -1105,7 +1107,7 @@ void RadarClass::vf_16(bool forced)
         unknown_14FC < (int)DAT_00B04A38->Frames) {
         ColorConvert* convert = (ColorConvert*)FUN_0072F510();
         Point2D pos(unknown_11E4, unknown_11EC);
-        Rect clip = DAT_00887300->GetRect();
+        RectangleStruct clip = DAT_00887300->GetRect();
         FUN_004AED70(DAT_00887300, convert, DAT_00B04A38, unknown_14FC,
                      &pos, &clip, 0, 0, 0, 0, 1000, 0, 0, 0,
                      Point2D(0, 0));
@@ -1129,7 +1131,7 @@ void RadarClass::vf_16(bool forced)
                 if (unknown_14DA != 0) {
                     ColorConvert* convert = (ColorConvert*)FUN_0072F510();
                     Point2D pos(unknown_11E4, unknown_11EC);
-                    Rect clip = DAT_00887300->GetRect();
+                    RectangleStruct clip = DAT_00887300->GetRect();
                     FUN_004AED70(DAT_00887300, convert, DAT_00B04A38, 0x20,
                                  &pos, &clip, 0, 0, 0, 0, 1000, 0, 0, 0,
                                  Point2D(0, 0));
@@ -1155,7 +1157,7 @@ void RadarClass::vf_16(bool forced)
                 unknown_14D9 = 0;
                 ColorConvert* convert = (ColorConvert*)FUN_0072F510();
                 Point2D pos(unknown_11E4, unknown_11EC);
-                Rect clip = DAT_00887300->GetRect();
+                RectangleStruct clip = DAT_00887300->GetRect();
                 FUN_004AED70(DAT_00887300, convert, DAT_00B04A38, 0,
                              &pos, &clip, 0, 0, 0, 0, 1000, 0, 0, 0,
                              Point2D(0, 0));
@@ -1512,14 +1514,11 @@ void RadarClass::FUN_00655990()
 void RadarClass::FUN_00655A90()
 {
     if (unknown_121C != 0) {
-        // RTTI-backed primary bases begin at offset zero. ui_common.h supplies
-        // the existing slot-0 deleting-destructor ABI view; renderer headers
-        // cannot be included here because they redefine that separate view.
-        reinterpret_cast<Surface*>(unknown_121C)->vf_00(1);
+        delete unknown_121C;
         unknown_121C = 0;
     }
     if (unknown_1220 != 0) {
-        reinterpret_cast<Surface*>(unknown_1220)->vf_00(1);
+        delete unknown_1220;
         unknown_1220 = 0;
     }
     if (unknown_123C != 0) {

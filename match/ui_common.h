@@ -18,81 +18,15 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
-// A screen rectangle: X, Y, Width, Height (four dwords).
-struct Rect
-{
-    int X;       // +0x00
-    int Y;       // +0x04
-    int Width;   // +0x08
-    int Height;  // +0x0C
-
-    Rect() {}
-    Rect(int x, int y, int w, int h) : X(x), Y(y), Width(w), Height(h) {}
-};
-GG_STATIC_ASSERT(sizeof(Rect) == 0x10);
+#include "_layout/geometry2d.h"
+#include "wwlib/surface/surface_class.h"
 
 // A point; returned by the print routines through a hidden pointer, so it has a user-declared constructor.
-#include "_layout/geometry2d.h"
 GG_STATIC_ASSERT(sizeof(Point2D) == 0x08);
-
-// A rectangle given as left, top, right and bottom edges (the surface outline slot +0x58 takes one).
-struct Box
-{
-    int Left;    // +0x00
-    int Top;     // +0x04
-    int Right;   // +0x08
-    int Bottom;  // +0x0C
-
-    Box() {}
-    Box(int l, int t, int r, int b) : Left(l), Top(t), Right(r), Bottom(b) {}
-};
-GG_STATIC_ASSERT(sizeof(Box) == 0x10);
 
 #include "shape_header.h"
 
-// The surface behind [0x887314] (and [0x887300]). Slots read in this module: +0x14 (rectangle, colour), +0x58
-// (box, colour), +0x70 (no arguments), +0x78 (returns a rectangle through the hidden return pointer) and +0x7C
-// (no arguments). The lists copy declared +0x14 as returning void; no caller reads the result, the controls
-// copy's int is kept. Native deleting-destructor entries 0x411650 and 0x4C1AC0
-// establish slot 0's flags word, returned this pointer, and callee cleanup.
-// This view has no no-argument slot-0 callers.
-class Surface
-{
-public:
-    virtual void* vf_00(unsigned int flags);
-    virtual bool CopyFromWhole(Surface* source, bool a, bool b);  // +0x04
-    virtual void vf_08();
-    virtual void HideCursor();             // +0x0C
-    virtual void ShowCursor();             // +0x10
-    virtual int  FillRect(Rect* area, unsigned colour);    // +0x14
-    virtual bool Fill(unsigned colour);                          // +0x18
-    virtual void vf_1C();
-    virtual void vf_20();
-    virtual void vf_24();
-    virtual void vf_28();
-    virtual void vf_2C();
-    virtual void vf_30();
-    virtual void vf_34();
-    virtual void vf_38();
-    virtual void vf_3C();
-    virtual void vf_40();
-    virtual void vf_44();
-    virtual void vf_48();
-    virtual void vf_4C();
-    virtual void vf_50();
-    virtual void vf_54();
-    virtual int  OutlineRect(Box* area, unsigned colour);  // +0x58
-    virtual void vf_5C();
-    virtual void vf_60();
-    virtual void vf_64();
-    virtual void vf_68();
-    virtual void vf_6C();
-    virtual int  GetBytesPerPixel();                      // +0x70
-    virtual void vf_74();
-    virtual Rect GetRect();                               // +0x78, struct return: hidden out pointer
-    virtual int  GetWidth();                              // +0x7C
-    virtual int  GetHeight();                             // +0x80 (named with GetWidth in the mouse view)
-};
+// The surface behind [0x887314] (and [0x887300]) is the canonical Surface (wwlib/surface/surface_class.h).
 // GLOBAL: GAMEMD 0x887314 -- the surface the gadgets draw on.
 extern Surface* DAT_00887314;
 // GLOBAL: GAMEMD 0x887300 -- the sidebar surface.
@@ -112,7 +46,7 @@ public:
     virtual void vf_14();
     virtual void vf_18();
     virtual void vf_1C();
-    virtual void HideRegion(Rect region);  // +0x20
+    virtual void HideRegion(RectangleStruct region);  // +0x20
     virtual void ShowRegion();             // +0x24
     virtual int  GetCursorCount();         // +0x28
     virtual int  GetX();                   // +0x2C
@@ -197,26 +131,26 @@ GG_STATIC_ASSERT(offsetof(Font, Height) == 0x1C);
 // 0x4A60D0: the font for a set of print flags (flags in ECX).
 Font* FUN_004A60D0(int flags);
 // 0x4A5A50: bevelled box. Rectangle in ECX, style in EDX, one stack argument (RET 4).
-void FUN_004A5A50(Rect* area, int style, int arg);
+void FUN_004A5A50(RectangleStruct* area, int style, int arg);
 // 0x4A6500: text draw. The hidden return buffer arrives in ECX and the text in EDX, the rest on the stack
 // (callee pops 0x20).
-Point2D FUN_004A6500(const wchar_t* text, Surface* surface, Rect* clip, Point2D* pos,
+Point2D FUN_004A6500(const wchar_t* text, Surface* surface, RectangleStruct* clip, Point2D* pos,
                      ColorScheme* scheme, int back, unsigned flags, int width, int tabStops);
 // 0x4A61C0: prints text on a surface inside a clip rectangle; the returned point comes back through the
 // hidden first stack word. Caller-cleaned (cdecl).
-Point2D __cdecl FUN_004A61C0(const wchar_t* text, Surface* surface, Rect* clip, Point2D* position,
+Point2D __cdecl FUN_004A61C0(const wchar_t* text, Surface* surface, RectangleStruct* clip, Point2D* position,
                              ColorScheme* scheme, int background, int flags);
 // 0x4A6010: print variant with one extra trailing argument. The result point is written through the pointer
 // in ECX and the text is in EDX; seven words follow on the stack (RET 0x1C).
-void FUN_004A6010(Point2D* result, const wchar_t* text, Surface* surface, Rect* clip,
+void FUN_004A6010(Point2D* result, const wchar_t* text, Surface* surface, RectangleStruct* clip,
                   Point2D* position, ColorScheme* scheme, int background, int flags, int extra);
 // 0x4AED70: shape blitter. Surface in ECX, the palette lookup in EDX, fourteen stack words; the last
 // two are one offset point passed by value (callers zero two registers for it).
 void FUN_004AED70(Surface* surface, ColorConvert* convert, ShapeHeader* shape, int frame,
-                  Point2D* position, Rect* clip, int flags, int a8, int a9, int a10, int a11,
+                  Point2D* position, RectangleStruct* clip, int flags, int a8, int a9, int a10, int a11,
                   int a12, int a13, int a14, Point2D offset);
 // 0x623880: draws a label's text. Surface in ECX, rectangle in EDX, nine stack words (RET 0x24).
-void FUN_00623880(Surface* surface, Rect* area, const wchar_t* text, int length, Font* font,
+void FUN_00623880(Surface* surface, RectangleStruct* area, const wchar_t* text, int length, Font* font,
                   unsigned colour, int* extra, int focused, int a8, int a9, int shown);
 
 #endif  // GG_MATCH_UI_INPUT_CONTROLS_UI_COMMON_H

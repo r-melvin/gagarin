@@ -54,16 +54,16 @@ void TextButtonClass::vf_36()
         if (HasOutline) {
             ColorConvert* lookup = DAT_00B054D0[GetColorScheme()]->Convert;
             unsigned colour = lookup->Lookup(0xC);
-            Box box;
-            box.Left = X - 1;
-            box.Top = Y - 1;
-            box.Right = X + Width + 2;
-            box.Bottom = Y + Height + 2;
-            DAT_00887314->OutlineRect(&box, colour);
+            RectangleStruct box;
+            box.X = X - 1;
+            box.Y = Y - 1;
+            box.Width = X + Width + 2;
+            box.Height = Y + Height + 2;
+            DAT_00887314->DrawRect(&box, colour);
         }
         int style = IsDisabled ? 3 : !unknown_2C;
         {
-            Rect area(X, Y, Width, Height);
+            RectangleStruct area = { X, Y, Width, Height };
             FUN_004A5A50(&area, style, 1);
         }
     }

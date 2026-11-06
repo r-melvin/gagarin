@@ -51,7 +51,7 @@ void CheckListClass::DrawItem(int index, int x, int y, int width, int selected)
                 } else {
                     color = ((unsigned short*)DAT_0087F6C4->ColorTable)[colorIndex];
                 }
-                Rect bar(x, y, width, LineHeight);
+                RectangleStruct bar = { x, y, width, LineHeight };
                 DAT_00887314->FillRect(&bar, color);
             } else if (!(flags & 0x4000)) {
                 flags |= 0x1000;

@@ -57,7 +57,7 @@ void StaticButtonClass::vf_34()
         if (Width > 0 && Height > 0) {
             new (&Background) MemoryBuffer(DAT_00887314->GetBytesPerPixel() * Height * Width);
             if (Background.Buffer) {
-                Rect area(X, Y, Width, Height);
+                RectangleStruct area = { X, Y, Width, Height };
                 FUN_004371D0(DAT_00887314, &area, &Background);
             }
         }
@@ -65,7 +65,7 @@ void StaticButtonClass::vf_34()
             return;
     }
     {
-        Rect area(X, Y, Width, Height);
+        RectangleStruct area = { X, Y, Width, Height };
         FUN_00437290(DAT_00887314, &area, &Background);
     }
 }

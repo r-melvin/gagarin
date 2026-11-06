@@ -155,14 +155,14 @@ int SliderClass::Step(int up)
 void SliderClass::vf_39()
 {
     if (unknown_2E) {
-        Rect area;
+        RectangleStruct area;
         area.X = unknown_50 + X;
         area.Y = Y;
         area.Width = unknown_4C;
         area.Height = Height;
         FUN_004A5A50(&area, 1, 1);
     } else {
-        Rect area;
+        RectangleStruct area;
         area.X = X;
         area.Y = unknown_50 + Y;
         area.Width = Width;
@@ -175,7 +175,7 @@ void SliderClass::vf_39()
 int SliderClass::Draw(int forced)
 {
     if (unknown_44 && ControlClass::Draw(forced)) {
-        Rect area(X, Y, Width, Height);
+        RectangleStruct area = { X, Y, Width, Height };
         FUN_004A5A50(&area, 0, 1);
         vf_39();
         return 1;

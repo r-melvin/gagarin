@@ -25,7 +25,7 @@ int TextLabelClass::Draw(int forced)
             ColorScheme* scheme = DAT_00B054D0.Items[index];
             if (scheme) {
                 Font* font = FUN_004A60D0(unknown_2C);
-                Rect area;
+                RectangleStruct area;
                 area.X = X;
                 area.Y = Y;
                 int width = MaxWidth;

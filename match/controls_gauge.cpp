@@ -117,14 +117,14 @@ void GaugeClass::vf_39()
     if (pos < X)
         pos = X;
     if (unknown_2E) {
-        Rect area;
+        RectangleStruct area;
         area.Y = Y;
         area.Height = Height;
         area.X = pos;
         area.Width = 4;
         FUN_004A5A50(&area, 1, 1);
     } else {
-        Rect area;
+        RectangleStruct area;
         area.X = X;
         area.Y = pos;
         area.Width = Width;
@@ -145,8 +145,9 @@ void GaugeClass::vf_39()
 int GaugeClass::Draw(int forced)
 {
     if (ControlClass::Draw(forced)) {
-        DAT_00887640->HideRegion(Rect(X, Y, Width, Height));
-        Rect area(X, Y, Width, Height);
+        RectangleStruct hide = { X, Y, Width, Height };
+        DAT_00887640->HideRegion(hide);
+        RectangleStruct area = { X, Y, Width, Height };
         FUN_004A5A50(&area, 0, 1);
 
         if (unknown_2C) {
@@ -232,8 +233,9 @@ int TriColorGaugeClass::Draw(int forced)
     if (!GaugeClass::Draw(forced))
         return 0;
 
-    DAT_00887640->HideRegion(Rect(X, Y, Width, Height));
-    Rect area(X, Y, Width, Height);
+    RectangleStruct hide = { X, Y, Width, Height };
+    DAT_00887640->HideRegion(hide);
+    RectangleStruct area = { X, Y, Width, Height };
     FUN_004A5A50(&area, IsDisabled != 0, 1);
 
     int redPixel = vf_41(unknown_3C);

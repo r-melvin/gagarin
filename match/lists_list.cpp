@@ -159,8 +159,10 @@ int ListClass::Action(unsigned flags, unsigned* key, int extra)
 int ListClass::Draw(int forced)
 {
     if (GadgetClass::Draw(forced)) {
-        DAT_00887640->HideRegion(Rect(X, Y, Width, Height));
-        FUN_004A5A50(&Rect(X, Y, Width, Height), 4, 1);
+        RectangleStruct hide = { X, Y, Width, Height };
+        DAT_00887640->HideRegion(hide);
+        RectangleStruct frame = { X, Y, Width, Height };
+        FUN_004A5A50(&frame, 4, 1);
         if (List.Count) {
             for (int line = 0; line < LineCount; line++) {
                 int index = CurrentTopIndex + line;
@@ -316,7 +318,7 @@ void ListClass::DrawItem(int index, int x, int y, int width, int selected)
         } else {
             color = ((unsigned short*)DAT_0087F6C4->ColorTable)[colorIndex];
         }
-        Rect bar(x, y, width, LineHeight);
+        RectangleStruct bar = { x, y, width, LineHeight };
         DAT_00887314->FillRect(&bar, color);
     } else if (!(flags & 0x4000)) {
         flags |= 0x1000;

@@ -50,7 +50,7 @@ int ShapeButtonClass::Draw(int forced)
         else
             frame = unknown_2C != 0;
         Surface* surface = UsesSidebarSurface ? DAT_00887300 : DAT_00887314;
-        Rect clip;
+        RectangleStruct clip;
         clip = surface->GetRect();
         {
             Point2D position(X + OffsetX, Y + OffsetY);

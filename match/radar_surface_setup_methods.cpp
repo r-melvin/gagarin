@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra.
 // Private migration note: this is a provisional canonical-renderer TU for the
-// Radar surface setup helper. Radar.cpp currently includes the legacy ui_common
-// Surface declaration, which conflicts with renderer/surface_class.h; keep this
-// body in the separate TU unless that ownership is explicitly revisited.
+// Radar surface setup helper; keep this body in the separate TU unless that
+// ownership is explicitly revisited.
 
 #include "ui_display_chain.h"
 #include "wwlib/surface/bsurface_class.h"

@@ -306,7 +306,8 @@ void EditClass::SetText(wchar_t* text, int size)
 int EditClass::Draw(int forced)
 {
     if (ControlClass::Draw(forced)) {
-        DAT_00887640->HideRegion(Rect(X, Y, Width, Height));
+        RectangleStruct area = { X, Y, Width, Height };
+        DAT_00887640->HideRegion(area);
         vf_36();
         DrawText(Text);
         DAT_00887640->ShowRegion();
@@ -361,7 +362,8 @@ int EditClass::Action(unsigned flags, unsigned* key, int modifier)
 // EditClass::vf_36 slot (+0x90): the sunken frame around the box.
 void EditClass::vf_36()
 {
-    FUN_004A5A50(&Rect(X, Y, Width, Height), 4, 1);
+    RectangleStruct area = { X, Y, Width, Height };
+    FUN_004A5A50(&area, 4, 1);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

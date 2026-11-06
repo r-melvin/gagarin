@@ -582,7 +582,7 @@ public:
     void FUN_004ADBA0(char* buffer);
     // FUNCTION: GAMEMD 0x4AE0B0 -- reveal around every techno of draw layer 2 within range of a location; RET 8.
     void FUN_004AE0B0(const CoordStruct* center, int range);
-    // FUNCTION: GAMEMD 0x4ADCD0 (decl; reloc) -- RET 8.
+    // FUNCTION: GAMEMD 0x4ADCD0 -- RET 8.
     void FUN_004ADCD0(bool skipBuildings, int arg);
     // FUNCTION: GAMEMD 0x4ADEE0 (decl; reloc) -- RET 8; reveal around, or run the gap generator of, every techno.
     void FUN_004ADEE0(bool skipBuildings, int arg);

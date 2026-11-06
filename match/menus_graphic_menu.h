@@ -50,7 +50,7 @@ struct MenusFlagSink
 // The sprite the image item places and redraws: 0x5D26C0 takes the item rectangle, 0x5D1E50 refreshes.
 struct MenusSprite
 {
-    void Func_5D26C0(::Rect* rect);
+    void Func_5D26C0(RectangleStruct* rect);
     void Func_5D1E50();
 };
 
@@ -172,7 +172,7 @@ public:
     virtual void Slot5(bool value);                   // 0x4F3720
 
     MenusSprite*   Sprite;     // +0x10
-    ::Rect        Rect;       // +0x14
+    RectangleStruct        Rect;       // +0x14
     MenusFlagSink* Sink24;     // +0x24
     MenusFlagSink* Sink28;     // +0x28
     MenusFlagSink* Sink2C;     // +0x2C
