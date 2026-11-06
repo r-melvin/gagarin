@@ -1553,23 +1553,23 @@ ready:
 // FUNCTION: GAMEMD 0x40A650
 int Voice_0040A6D0::FUN_0040A650()
 {
-    Sink_0040A6D0* sink = Aux->Sink;
-    if (sink) sink->Vptr->At_48(sink);
+    Aux_0040A6D0* state = Aux;
+    if (state->Sink) state->Sink->Vptr->At_48(state->Sink);
     return 0;
 }
 // FUNCTION: GAMEMD 0x40A670
 int Voice_0040A6D0::FUN_0040A670()
 {
-    Sink_0040A6D0* sink = Aux->Sink;
-    if (sink && sink->Vptr->At_30(sink, 0, 0, 1) == 0) return 0;
+    Aux_0040A6D0* state = Aux;
+    if (state->Sink && state->Sink->Vptr->At_30(state->Sink, 0, 0, 1) == 0) return 0;
     return 0x80040000;
 }
 // FUNCTION: GAMEMD 0x40A6A0
 int Voice_0040A6D0::FUN_0040A6A0()
 {
-    Sink_0040A6D0* sink = Aux->Sink;
+    Aux_0040A6D0* state = Aux;
     unsigned status;
-    if (sink && sink->Vptr->At_24(sink, &status) == 0) return status & 1;
+    if (state->Sink && state->Sink->Vptr->At_24(state->Sink, &status) == 0) return status & 1;
     return 0;
 }
 

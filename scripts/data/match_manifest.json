@@ -100121,10 +100121,8 @@
   "sym": "?FUN_0040A650@Voice_0040A6D0@@QAEHXZ",
   "len": "0x16",
   "name": "FUN_0040A650",
-  "status": "partial",
-  "pct": 77.8,
-  "best_pct": 77.8,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/module_tu002.cpp",
@@ -100132,10 +100130,8 @@
   "sym": "?FUN_0040A670@Voice_0040A6D0@@QAEHXZ",
   "len": "0x24",
   "name": "FUN_0040A670",
-  "status": "partial",
-  "pct": 86.7,
-  "best_pct": 86.7,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/module_tu002.cpp",
@@ -100143,10 +100139,8 @@
   "sym": "?FUN_0040A6A0@Voice_0040A6D0@@QAEHXZ",
   "len": "0x2a",
   "name": "FUN_0040A6A0",
-  "status": "partial",
-  "pct": 89.5,
-  "best_pct": 89.5,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/module_tu002.cpp",
