@@ -402,6 +402,8 @@ public:
     bool IsWithinUsableArea(Cell_00578540* pCell, bool checkLevel) const;
     // FUNCTION: GAMEMD 0x578080 -- the floor height at a coordinate (second name for FUN_00578080).
     int GetZPos(CoordStruct* coords);
+    // FUNCTION: GAMEMD 0x567DA0 (decl; reloc) -- four pushed words, RET 0x10; reveal the cells around a location.
+    void FUN_00567DA0(CoordStruct* where, int a, int range, int b);
     // FUNCTION: GAMEMD 0x581090 -- frees the map's tables, then the veinhole and tiberium logic.
     void FUN_00581090();
     // FUNCTION: GAMEMD 0x5864A0 -- whether the cell under a coordinate (or its facing-3 neighbour on odd levels) has a positive +0x13C.
@@ -574,6 +576,12 @@ public:
     void FUN_004ACC50(const CellStruct* cell);
     // FUNCTION: GAMEMD 0x4ACDA0 (decl; reloc) -- RET 4; put a lit cell's neighbours back to the unlit state.
     void FUN_004ACDA0(const CellStruct* cell);
+    // FUNCTION: GAMEMD 0x4ADA30 -- serialise the scenario state into a buffer; RET 8.
+    int FUN_004ADA30(char* buffer, int unused);
+    // FUNCTION: GAMEMD 0x4ADBA0 -- read the scenario state back from a buffer 0x4ADA30 wrote; RET 4.
+    void FUN_004ADBA0(char* buffer);
+    // FUNCTION: GAMEMD 0x4AE0B0 -- reveal around every techno of draw layer 2 within range of a location; RET 8.
+    void FUN_004AE0B0(const CoordStruct* center, int range);
     // FUNCTION: GAMEMD 0x4ADCD0 (decl; reloc) -- RET 8.
     void FUN_004ADCD0(bool skipBuildings, int arg);
     // FUNCTION: GAMEMD 0x4ADEE0 (decl; reloc) -- RET 8; reveal around, or run the gap generator of, every techno.

@@ -154773,5 +154773,43 @@
   "name": "?FUN_00679D90@@YIHXZ",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/Display.cpp",
+  "addr": "0x4ADA30",
+  "sym": "?FUN_004ADA30@DisplayClass@@QAEHPADH@Z",
+  "len": "0x16e",
+  "name": "DisplayClass::FUN_004ADA30",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Display.cpp",
+  "addr": "0x4ADBA0",
+  "sym": "?FUN_004ADBA0@DisplayClass@@QAEXPAD@Z",
+  "len": "0x123",
+  "name": "DisplayClass::FUN_004ADBA0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Display.cpp",
+  "addr": "0x4ADCD0",
+  "sym": "?FUN_004ADCD0@DisplayClass@@QAEX_NH@Z",
+  "len": "0x208",
+  "name": "DisplayClass::FUN_004ADCD0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Display.cpp",
+  "addr": "0x4AE0B0",
+  "sym": "?FUN_004AE0B0@DisplayClass@@QAEXPBUCoordStruct@@H@Z",
+  "len": "0x1d3",
+  "name": "DisplayClass::FUN_004AE0B0",
+  "status": "partial",
+  "pct": 96.7,
+  "best_pct": 96.7,
+  "best_at": "f2644f90"
  }
 ]

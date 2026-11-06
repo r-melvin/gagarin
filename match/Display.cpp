@@ -27,6 +27,7 @@
 #include "mathtbl_init_shapes.h"
 #include "_layout/house_class.h"
 #include "_layout/cell.h"
+#include "whatami_dispatch_methods.h"
 #include "leftover_trivial_leaf_sweep.h"
 
 #include "map_class_next_object_methods.h"
@@ -2117,6 +2118,147 @@ void DisplayClass::vf_32(DisplayScIni* ini)
     surface.Pixels.Clear();
 }
 
+// Keep this include here, after the static initialisers. Moved up with the headers above, it renumbers the
+// compiler-generated initialiser symbols of this TU, and the verifier loses seven rows: the dynamic initialisers of
+// DAT_008A0738, DAT_008A0628, DAT_008A0720, DisplayLayerStatics::Layers and DisplayButtonStatics::Button, and the exit
+// stubs of the last two.
+#include "_layout/tag_class.h"
+
+// FUNCTION: GAMEMD 0x4ADA30
+// Serialise the scenario state into `buffer`: the theater, two 16-byte blocks of
+// the display, the defined waypoints (index and packed cell), then one record per
+// map cell. Each list is preceded or closed by its count; returns the bytes written.
+int DisplayClass::FUN_004ADA30(char* buffer, int unused)
+{
+    char* p = buffer;
+    *(int*)p = DisplayScScenario_00A8B230->Theater;
+    p += 4;
+    *(RectangleStruct*)p = MapRect;
+    p += 16;
+    *(RectangleStruct*)p = LocalRect;
+    p += 16;
+    int* waypointCount = (int*)p;
+    p += 4;
+    int waypoints = 0;
+    for (int i = 0; i < 0x2BE; i++) {
+        if (DisplayScScenario_00A8B230->FUN_0068BD80(i)) {
+            *(int*)p = i;
+            p += 4;
+            CellStruct a;
+            CellStruct b;
+            *(int*)p = DisplayScScenario_00A8B230->FUN_0068BCC0(&b, i)->X + DisplayScScenario_00A8B230->FUN_0068BCC0(&a, i)->Y * 1000;
+            p += 4;
+            waypoints++;
+        }
+    }
+    *waypointCount = waypoints;
+    int* cellCount = (int*)p;
+    p += 4;
+    int cells = 0;
+    FUN_00578350();
+    for (CellClass* cell = FUN_00578290(); cell; cell = FUN_00578290()) {
+        *(CellStruct*)p = cell->MapCoords;
+        p += 4;
+        *(int*)p = cell->IsoTileTypeIndex;
+        p += 4;
+        *p++ = cell->Height;
+        *p++ = cell->Level;
+        *p++ = cell->SlopeIndex;
+        *(int*)p = cell->OverlayTypeIndex;
+        p += 4;
+        *p++ = cell->OverlayData;
+        *p++ = cell->IsIceGrowthAllowed;
+        int tag = 0;
+        if (cell->AttachedTag && cell->AttachedTag->Type) {
+            tag = (int)cell->AttachedTag->Type;
+        }
+        *(int*)p = tag;
+        p += 4;
+        cells++;
+    }
+    *cellCount = cells;
+    return p - buffer;
+}
+
+// FUNCTION: GAMEMD 0x4ADBA0
+// Read the scenario state back from the buffer 0x4ADA30 wrote: the theater, the two 16-byte blocks of the display,
+// the waypoints (index and packed cell), then one record per map cell, applied to the cells in walk order.
+void DisplayClass::FUN_004ADBA0(char* buffer)
+{
+    char* p = buffer;
+    DisplayScScenario_00A8B230->Theater = *(int*)p;
+    p += 4;
+    MapRect = *(RectangleStruct*)p;
+    p += 16;
+    LocalRect = *(RectangleStruct*)p;
+    p += 16;
+    int waypoints = *(int*)p;
+    p += 4;
+    for (int i = 0; i < waypoints; i++) {
+        int index = *(int*)p;
+        p += 4;
+        int packed = *(int*)p;
+        p += 4;
+        CellStruct cell;
+        cell.X = (short)(packed % 1000);
+        cell.Y = (short)(packed / 1000);
+        DisplayScScenario_00A8B230->FUN_0068BF50(index, cell);
+    }
+    p += 4;
+    FUN_00578350();
+    for (CellClass* cell = FUN_00578290(); cell; cell = FUN_00578290()) {
+        p += 4;
+        cell->IsoTileTypeIndex = *(int*)p;
+        p += 4;
+        cell->Height = *p++;
+        cell->Level = *p++;
+        cell->SlopeIndex = *p++;
+        cell->OverlayTypeIndex = *(int*)p;
+        p += 4;
+        cell->OverlayData = *p++;
+        cell->IsIceGrowthAllowed = *p++;
+        p += 4;
+    }
+}
+
+// FUNCTION: GAMEMD 0x4ADCD0
+void DisplayClass::FUN_004ADCD0(bool skipBuildings, int arg)
+{
+    int count = TechnoClass_Array.Count;
+    for (int i = 0; i < count; i++)
+    {
+        TechnoClass* techno = TechnoClass_Array.Items[i];
+        if (techno && !techno->InLimbo && (techno->vf_11() != 6 || !skipBuildings))
+        {
+            if (techno->Owner->IsControlledByCurrentPlayer())
+            {
+                if (techno->DiscoveredByCurrentPlayer)
+                {
+                    techno->vf_290(0, 0, 0, 0, 0);
+                    CoordStruct where = techno->Location;
+                    Map_0087F7E8.FUN_00567DA0(&where, 0, techno->LastSightRange + 3, 0);
+                    if (techno->vf_33()->GapGenerator)
+                        techno->vf_261();
+                }
+            }
+            else if (techno->vf_11() == 6 && Rules->AllyReveal && techno->Owner->IsAlliedWith(DAT_00A83D4C))
+            {
+                techno->vf_290(0, arg, 0, 0, 0);
+                CoordStruct where = techno->Location;
+                Map_0087F7E8.FUN_00567DA0(&where, 0, techno->LastSightRange + 3, 0);
+            }
+            else if (techno->vf_11() == 6 && techno->vf_33()->RevealToAll && !techno->Owner->IsControlledByCurrentPlayer())
+            {
+                techno->vf_290(0, 0, 1, DAT_00A83D4C, 0);
+                CoordStruct where = techno->Location;
+                Map_0087F7E8.FUN_00567DA0(&where, 0, techno->LastSightRange + 3, 0);
+            }
+            else if (techno->vf_33()->GapGenerator)
+                techno->vf_261();
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x4ADEE0
 void DisplayClass::FUN_004ADEE0(bool skipBuildings, int arg)
 {
@@ -2159,6 +2301,42 @@ void DisplayClass::FUN_004ADFF0(bool skipBuildings, int arg)
             }
             else if (object->vf_11() == 6 && Rules->AllyReveal && techno->Owner->IsAlliedWith(DAT_00A83D4C))
                 techno->vf_72(arg, 0);
+        }
+    }
+}
+
+inline int Distance3D(const CoordStruct& from, const CoordStruct& to)
+{
+    CoordStruct d;
+    d.X = from.X - to.X;
+    d.Y = from.Y - to.Y;
+    d.Z = from.Z - to.Z;
+    return (int)FUN_004CAC40((double)d.X * d.X + (double)d.Y * d.Y + (double)d.Z * d.Z);
+}
+
+// FUNCTION: GAMEMD 0x4AE0B0
+// Reveal around every techno of draw layer 2 that lies within its sight (plus `range`) of a location: the local
+// player's discovered ones, and the allies' buildings when the rules reveal allies.
+void DisplayClass::FUN_004AE0B0(const CoordStruct* center, int range)
+{
+    for (int i = 0; i < DisplayLayerStatics::Layers[2].Count; i++)
+    {
+        TechnoClass* techno = FUN_0040DD70(DisplayLayerStatics::Layers[2].Items[i]);
+        if (techno)
+        {
+            if (techno->Owner->IsControlledByCurrentPlayer())
+            {
+                if (techno->DiscoveredByCurrentPlayer)
+                {
+                    if (Distance3D(*center, techno->vf_18()) <= (techno->vf_33()->Sight << 8) + range)
+                        techno->vf_72(0, 0);
+                }
+            }
+            else if (techno->vf_11() == 6 && Rules->AllyReveal && techno->Owner->IsAlliedWith(DAT_00A83D4C))
+            {
+                if (Distance3D(techno->vf_18(), *center) <= (techno->vf_33()->Sight << 8) + range)
+                    techno->vf_72(0, 0);
+            }
         }
     }
 }
