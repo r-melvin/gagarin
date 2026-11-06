@@ -61,20 +61,6 @@ static inline int ShipTrackFacing8(unsigned char heading)
     return ((angle.Whole >> 12) + 1) >> 1 & 7;
 }
 
-// Frames left on a timer (the CDTimerClass value inlined by its readers).
-static inline int ShipTimeLeft(const CDTimerClass& timer)
-{
-    int startTime = timer.StartTime;
-    int timeLeft = timer.TimeLeft;
-    if (startTime != -1) {
-        int elapsed = CurrentFrame - startTime;
-        if (elapsed < timeLeft)
-            return timeLeft - elapsed;
-        return 0;
-    }
-    return timeLeft;
-}
-
 // Fraction of the slope timer that has run (the 1.0 at 0x7E1718 when the timer has no rate; retail reads it
 // from memory, so it is not folded against the same constant in the caller's compare).
 static inline double ShipSlopeFraction(const RateTimer& timer)
@@ -83,7 +69,7 @@ static inline double ShipSlopeFraction(const RateTimer& timer)
     if (timer.Rate == 0) {
         fraction = DAT_007E1718;
     } else {
-        fraction = (double)(timer.Rate - ShipTimeLeft(timer)) / timer.Rate;
+        fraction = (double)(timer.Rate - timer.GetTimeLeft()) / timer.Rate;
     }
     return fraction;
 }
@@ -209,7 +195,7 @@ bool __stdcall ShipLocomotionClass::IsOkToEnd()
 // FUNCTION: GAMEMD 0x69F1B0
 double ShipLocomotionClass::FUN_0069F1B0()
 {
-    return SlopeTimer.Rate == 0 ? 1.0 : (double)(SlopeTimer.Rate - ShipTimeLeft(SlopeTimer)) / SlopeTimer.Rate;
+    return SlopeTimer.Rate == 0 ? 1.0 : (double)(SlopeTimer.Rate - SlopeTimer.GetTimeLeft()) / SlopeTimer.Rate;
 }
 
 // FUNCTION: GAMEMD 0x69F210

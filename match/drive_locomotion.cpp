@@ -41,24 +41,10 @@ static inline bool DriveIsSet(const LocoCoord& c)
     return c.X != DAT_008A0790.X || c.Y != DAT_008A0790.Y || c.Z != DAT_008A0790.Z;
 }
 
-// Frames left on a timer (the CDTimerClass value inlined by every reader).
-static inline int DriveTimeLeft(const CDTimerClass& timer)
-{
-    int startTime = timer.StartTime;
-    int timeLeft = timer.TimeLeft;
-    if (startTime != -1) {
-        int elapsed = CurrentFrame - startTime;
-        if (elapsed < timeLeft)
-            return timeLeft - elapsed;
-        return 0;
-    }
-    return timeLeft;
-}
-
 // Fraction of the slope timer that has run (1.0 when the timer has no rate).
 static inline double DriveSlopeFraction(const RateTimer& timer)
 {
-    return timer.Rate == 0 ? 1.0 : (double)(timer.Rate - DriveTimeLeft(timer)) / timer.Rate;
+    return timer.Rate == 0 ? 1.0 : (double)(timer.Rate - timer.GetTimeLeft()) / timer.Rate;
 }
 
 // FUNCTION: GAMEMD 0x4AF540

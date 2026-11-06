@@ -2840,18 +2840,9 @@ cloakable:
     if (CloakState == 2) {
         return false;
     }
-    int startTime = RearmTimer.StartTime;
-    int timeLeft = RearmTimer.TimeLeft;
-    int elapsed;
-    if (startTime != -1) {
-        elapsed = CurrentFrame - startTime;
-        if (elapsed >= timeLeft) goto rearmed;
-        timeLeft -= elapsed;
-    }
-    if (timeLeft != 0) {
+    if (RearmTimer.GetTimeLeft() != 0) {
         return false;
     }
-rearmed:
     if (Target) {
         if (IsCloseEnoughToAttack(Target)) {
             return false;
@@ -2860,24 +2851,17 @@ rearmed:
     if (vf_11() != 6 && CloakProgress.Value) {
         return false;
     }
-    startTime = CloakDelayTimer.StartTime;
-    timeLeft = CloakDelayTimer.TimeLeft;
-    if (startTime != -1) {
-        elapsed = CurrentFrame - startTime;
-        if (elapsed >= timeLeft) goto delayed;
-        timeLeft -= elapsed;
-    }
-    if (timeLeft != 0) {
+    if (CloakDelayTimer.GetTimeLeft() != 0) {
         return false;
     }
-delayed:
     if (LocomotorSource) {
         FootClass* foot = foot_cast_007104C0(this);
         if (foot && foot->IsAttackedByLocomotor) {
             return false;
         }
     }
-    return vf_114() <= 0;
+    if (vf_114() <= 0) return true;
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x6FBFA0

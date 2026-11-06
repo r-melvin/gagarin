@@ -10,21 +10,6 @@
 #include "mission_class_methods.h"
 #include "_layout/obj_004a1d30.h"
 
-// Frames left on a count-down timer (-1 start = stopped). Descriptive local
-// helper for code retail has inlined; no original name is attested.
-static inline int Inline_005B3060(const CDTimerClass& t)
-{
-    int left = t.TimeLeft;
-    if (t.StartTime != -1) {
-        int elapsed = CurrentFrame - t.StartTime;
-        if (elapsed < left) {
-            return left - elapsed;
-        }
-        return 0;
-    }
-    return left;
-}
-
 // A timer temporary started now with `delay` frames left. Retail never
 // writes the middle word of the temporary it copies into the member.
 static inline CDTimerClass MissionTimer(int delay)
@@ -243,7 +228,7 @@ void MissionClass::vf_23()
     if (!IsAlive) {
         return;
     }
-    if (Inline_005B3060(UpdateTimer) != 0) {
+    if (UpdateTimer.GetTimeLeft() != 0) {
         return;
     }
     if (Health <= 0) {
@@ -425,7 +410,7 @@ void MissionClass::vf_13(Obj_004A1D30* crc)
     crc->FUN_004A1D50(SuspendedMission);
     crc->FUN_004A1D50(QueuedMission);
     crc->FUN_004A1D50(MissionStatus);
-    crc->FUN_004A1D50(Inline_005B3060(UpdateTimer));
+    crc->FUN_004A1D50(UpdateTimer.GetTimeLeft());
     crc->FUN_004A1D50(CurrentMissionStartTime);
 }
 

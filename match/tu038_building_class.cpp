@@ -218,20 +218,6 @@ extern int DAT_00ABAD1C;
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;
 
-// The frame timer's remaining time, expanded inline at each use: the whole
-// duration while unstarted, 0 once it has run out, otherwise what is left.
-static int TimeLeft(const CDTimerClass& timer)
-{
-    int left = timer.TimeLeft;
-    if (timer.StartTime != -1) {
-        int passed = CurrentFrame - timer.StartTime;
-        if (passed >= left)
-            return 0;
-        left -= passed;
-    }
-    return left;
-}
-
 #include "building_coord_00453840.h"
 
 #include "small_misc36_methods.h"
@@ -2460,7 +2446,7 @@ void BuildingClass::vf_23()
         return;
     }
 
-    if (TimeLeft(CashProductionTimer) == 1) {
+    if (CashProductionTimer.GetTimeLeft() == 1) {
         CashProductionTimer.StartTime = CurrentFrame;
         CashProductionTimer.TimeLeft = Type->ProduceCashDelay;
         if (!((HouseTypeClass*)Owner->Type)->MultiplayPassive && vf_212()) {
@@ -2540,7 +2526,7 @@ void BuildingClass::vf_23()
                 DamageFireAnims[i] = 0;
             }
         }
-        if (TimeLeft(C4Timer) != 0)
+        if (C4Timer.GetTimeLeft() != 0)
             return;
         vf_53();
         FUN_00442D90((int)C4AppliedBy);
@@ -2572,7 +2558,7 @@ void BuildingClass::vf_23()
         FUN_004500F0();
 
     if (C4Applied) {
-        if (TimeLeft(C4Timer) == 0) {
+        if (C4Timer.GetTimeLeft() == 0) {
             if (Type->BridgeRepairHut) {
                 bool special = false;
                 for (int y = -2; y < 3; y++) {

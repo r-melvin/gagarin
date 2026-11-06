@@ -21,13 +21,5 @@ GG_STATIC_ASSERT(sizeof(CDTimerClass) == 0x0C);
 // FUNCTION: GAMEMD 0x004B4D70
 int FUN_004B4D70(CDTimerClass* timer)
 {
-    int startTime = timer->StartTime;
-    int timeLeft = timer->TimeLeft;
-    if (startTime != -1) {
-        int elapsed = CurrentFrame - startTime;
-        if (elapsed < timeLeft)
-            return timeLeft - elapsed;
-        return 0;
-    }
-    return timeLeft;
+    return timer->GetTimeLeft();
 }

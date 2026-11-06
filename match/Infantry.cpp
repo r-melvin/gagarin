@@ -98,20 +98,6 @@ extern int DAT_00A8F234;
 // FUNCTION: GAMEMD 0x4810A0 (decl; reloc) -- the sub-cell slot a coordinate falls in.
 int FUN_004810A0(CoordStruct* coord);
 
-// The elapsed-time arithmetic of a CDTimerClass read, as retail inlines it (0x521C90).
-static inline int TimerRemaining(const CDTimerClass& timer)
-{
-    int timeLeft = timer.TimeLeft;
-    if (timer.StartTime != -1) {
-        int elapsed = CurrentFrame - timer.StartTime;
-        if (elapsed < timeLeft) {
-            return timeLeft - elapsed;
-        }
-        return 0;
-    }
-    return timeLeft;
-}
-
 // GLOBAL: GAMEMD 0x8871E0
 #include "_layout/rules_class.h"
 #include "_layout/techno_class.h"
@@ -630,7 +616,7 @@ void InfantryClass::vf_13(Obj_004A1D30* crc)
 {
     FootClass::vf_13(crc);
     crc->FUN_004A1D50(this->SequenceAnim);
-    crc->FUN_004A1D50(TimerRemaining(this->unknown_Timer_6C8));
+    crc->FUN_004A1D50(this->unknown_Timer_6C8.GetTimeLeft());
     crc->FUN_004A1D50(this->PanicDurationLeft);
     crc->FUN_004A1CA0(this->Technician);
     crc->FUN_004A1CA0(this->unknown_bool_6DA);

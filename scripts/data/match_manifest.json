@@ -148522,10 +148522,8 @@
   "sym": "?vf_168@TechnoClass@@UAE_NXZ",
   "len": "0x1d4",
   "name": "TechnoClass::vf_168",
-  "status": "partial",
-  "pct": 87.6,
-  "best_pct": 87.6,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Techno.cpp",

@@ -344,17 +344,6 @@ extern CDTimerClass DAT_00B0EA80;
 // GLOBAL: GAMEMD 0x00B73550
 extern HWND DAT_00B73550;
 
-// Inline countdown expansion at 0x68517E; no separate entry is claimed.
-inline int FUN_00685120_TimeLeft(const CDTimerClass& timer)
-{
-    int left = timer.TimeLeft;
-    if (timer.StartTime != -1) {
-        int elapsed = CurrentFrame - timer.StartTime;
-        left = elapsed < left ? left - elapsed : 0;
-    }
-    return left;
-}
-
 void __fastcall FUN_0072DDB0(); // GAMEMD 0x0072DDB0
 void __fastcall FUN_005BF450(); // GAMEMD 0x005BF450
 void __fastcall FUN_00406E80(); // GAMEMD 0x00406E80
@@ -1152,7 +1141,7 @@ void __fastcall FUN_00685120()
     FUN_006B5490(ScenarioInstance->unknown_1258);
     MapInstance.FUN_00655B20();
     if (DAT_00B0EA80.StartTime != -1) {
-        DAT_00B0EA80.TimeLeft = FUN_00685120_TimeLeft(DAT_00B0EA80);
+        DAT_00B0EA80.TimeLeft = DAT_00B0EA80.GetTimeLeft();
     }
     DAT_00B0EA80.StartTime = CurrentFrame;
     DAT_0087E8B8.FUN_0042AC00(&DAT_0087F8D4);
