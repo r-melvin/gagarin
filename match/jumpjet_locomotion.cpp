@@ -765,15 +765,17 @@ int JumpjetLocomotionClass::FUN_0054D820()
     return height;
 }
 
-// FUNCTION: GAMEMD 0x54D930 (partial: retail copies the returned coordinate into the local before comparing)
+// FUNCTION: GAMEMD 0x54D930
+// The virtual call returns the coordinate through a hidden buffer and hands back its address; retail
+// copies the three fields out of that returned address into the local before comparing.
 void __stdcall JumpjetLocomotionClass::MarkAllOccupationBits(int mark)
 {
     if (mark == 0) {
         LocoCoord head;
-        LocoCoord got = HeadToCoord();
-        head.X = got.X;
-        head.Y = got.Y;
-        head.Z = got.Z;
+        LocoCoord* got = &HeadToCoord();
+        head.X = got->X;
+        head.Y = got->Y;
+        head.Z = got->Z;
         if (JumpjetIsSet(head) && (unknown_50 == 0 || unknown_90)) {
             JumpjetFoot(this)->vf_0F4(&head);
             unknown_90 = 0;

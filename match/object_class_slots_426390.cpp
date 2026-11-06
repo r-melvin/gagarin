@@ -31,16 +31,12 @@ const wchar_t* ObjectClass::vf_36()
 }
 
 // FUNCTION: GAMEMD 0x4263D0
-// PARTIAL 42.9%: retail keeps the return pointer in ESI and returns it with
-// MOV EAX,ESI; cl reloads it from the stack. Tried copy-then-add, member-wise
-// copy and a brace-initialised local.
+// vf_18 returns through a hidden buffer and hands back its address; retail copies from that address.
 CoordStruct ObjectClass::vf_44(int a1, CoordStruct a2)
 {
-    CoordStruct coord = vf_18();
-    CoordStruct result;
-    result.X = coord.X;
-    result.Y = coord.Y;
-    result.Z = coord.Z + 50;
+    CoordStruct* coord = &vf_18();
+    CoordStruct result = *coord;
+    result.Z += 50;
     return result;
 }
 

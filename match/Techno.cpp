@@ -2224,26 +2224,26 @@ bool TechnoClass::vf_102(HouseClass* house)
         }
         DiscoveredByComputer = true;
     }
-    if (!ObjectClass::vf_102(house)) {
-        return false;
-    }
-    if (!house->IsControlledByHuman() && vf_97() == 14) {
-        vf_122(15, false);
-    }
-    if (house == CurrentPlayer) {
-        DiscoveredByCurrentPlayer = true;
-        Owner->RecheckPower = true;
-        Owner->RecheckRadar = true;
-        if (!IsOwnedByCurrentPlayer) {
-            if (!DAT_00A8E7AC && AttachedTag) {
-                AttachedTag->FUN_006E53A0(4, this, DAT_00B0EA50, false, 0);
-            }
-            Owner->DiscoveredByPlayer = true;
+    if (ObjectClass::vf_102(house)) {
+        if (!house->IsControlledByHuman() && vf_97() == 14) {
+            vf_122(15, false);
         }
-    } else {
-        DiscoveredByComputer = true;
+        if (house == CurrentPlayer) {
+            DiscoveredByCurrentPlayer = true;
+            Owner->RecheckPower = true;
+            Owner->RecheckRadar = true;
+            if (!IsOwnedByCurrentPlayer) {
+                if (!DAT_00A8E7AC && AttachedTag) {
+                    AttachedTag->FUN_006E53A0(4, this, DAT_00B0EA50, false, 0);
+                }
+                Owner->DiscoveredByPlayer = true;
+            }
+        } else {
+            DiscoveredByComputer = true;
+        }
+        return true;
     }
-    return true;
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x6F4A40

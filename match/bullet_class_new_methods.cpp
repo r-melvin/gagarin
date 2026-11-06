@@ -2620,18 +2620,18 @@ void BulletClass::FUN_0046A310()
 HRESULT __stdcall BulletClass::Load(IStream* stream)
 {
     HRESULT result = ObjectClass::Load(stream); // Native direct5F5E80.
-    if (result < 0)
-        return result;
-    new (this) BulletClass(AbstractNoInit());
-    if (NextAnim)
-        DAT_00B0F5B8.AddItem(this);
-    // Qualified calls are native direct6CF240, not interface dispatch.
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&Owner);
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&WH);
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&Target);
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&WeaponType);
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&NextAnim);
+    if (result >= 0) {
+        new (this) BulletClass(AbstractNoInit());
+        if (NextAnim)
+            DAT_00B0F5B8.AddItem(this);
+        // Qualified calls are native direct6CF240, not interface dispatch.
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Owner);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&WH);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Target);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&WeaponType);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&NextAnim);
+    }
     return result;
 }
 

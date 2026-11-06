@@ -68389,10 +68389,8 @@
   "sym": "?vf_44@ObjectClass@@UAE?AUCoordStruct@@HU2@@Z",
   "len": "0x32",
   "name": "ObjectClass::vf_44",
-  "status": "partial",
-  "pct": 42.9,
-  "best_pct": 42.9,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/object_class_slots_426390.cpp",
@@ -76682,10 +76680,8 @@
   "sym": "?vf_102@TechnoClass@@UAE_NPAVHouseClass@@@Z",
   "len": "0xdf",
   "name": "TechnoClass::vf_102",
-  "status": "partial",
-  "pct": 22.8,
-  "best_pct": 22.8,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/wonline.cpp",
@@ -100207,9 +100203,9 @@
   "len": "0x9d",
   "name": "?FUN_0060C930@@YI_NH@Z",
   "status": "partial",
-  "pct": 64.8,
-  "best_pct": 64.8,
-  "best_at": "cf203011"
+  "pct": 96.3,
+  "best_pct": 96.3,
+  "best_at": "53529d7b"
  },
  {
   "tu": "match/ownrdraw.cpp",
@@ -101774,10 +101770,8 @@
   "sym": "?MarkAllOccupationBits@JumpjetLocomotionClass@@UAGXH@Z",
   "len": "0x7A",
   "name": "JumpjetLocomotionClass::MarkAllOccupationBits",
-  "status": "partial",
-  "pct": 28.6,
-  "best_pct": 28.6,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/ship_locomotion.cpp",
@@ -105687,10 +105681,8 @@
   "sym": "?Load@BulletClass@@UAGJPAUIStream@@@Z",
   "len": "0x135",
   "name": "BulletClass::Load",
-  "status": "partial",
-  "pct": 14.4,
-  "best_pct": 14.4,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Radar.cpp",

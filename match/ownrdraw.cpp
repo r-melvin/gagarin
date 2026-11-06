@@ -4326,6 +4326,9 @@ bool FUN_0060C8D0(int nKey)
 }
 
 // FUNCTION: GAMEMD 0x60C930  FUN_0060C930 (__fastcall)
+// PARTIAL (96.3%): retail returns the stored byte through full EAX (`XOR EAX,EAX` / `MOV EAX,1`)
+// where this build uses AL; the instruction multiset is identical. Tried an int result (setne
+// conversion), a pre-set false result and other result types.
 bool FUN_0060C930(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
@@ -4334,14 +4337,11 @@ bool FUN_0060C930(int nKey)
         return false;
 
     int category = value->Field6C;
+    bool result = category == 0xBC || category == 0xBD || category == 0x102 ||
+        category == 0xC2 || category == 0xC9 || category == 0xBC6;
 
-    if (category == 0xBC || category == 0xBD || category == 0x102 ||
-        category == 0xC2 || category == 0xC9 || category == 0xBC6)
-    {
-        return value->FieldD6 = true;
-    }
-
-    return value->FieldD6 = false;
+    value->FieldD6 = result;
+    return result;
 }
 
 // FUNCTION: GAMEMD 0x60C9D0  FUN_0060C9D0 (__fastcall)
