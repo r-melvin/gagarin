@@ -15436,13 +15436,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/vector_ctor_pod_family_methods.cpp",
+  "tu": "match/vector_slavemanagerclass_slavecontrol_slot_methods.cpp",
   "addr": "0x6B1AB0",
-  "sym": "?Ctor@VectorClass_006B1AB0@@QAEPAU1@IPAUPodElem4@@@Z",
+  "sym": "??0?$VectorClass@PAUSlaveControl@SlaveManagerClass@@@@QAE@HPAPAUSlaveControl@SlaveManagerClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass_006B1AB0::Ctor",
+  "name": "VectorClass<SlaveManagerClass::SlaveControl*>::VectorClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/vector_ctor_pod_family_methods.cpp",

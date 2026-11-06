@@ -22,6 +22,8 @@
 // VectorClass<SlaveManagerClass::SlaveControl*>::Slot5 (slot 5)
 // TEMPLATE: GAMEMD 0x6B16A0
 // DynamicVectorClass<SlaveManagerClass::SlaveControl*>::FindItemIndex (slot 4)
+// TEMPLATE: GAMEMD 0x6B1AB0
+// VectorClass<SlaveManagerClass::SlaveControl*>::VectorClass(int, SlaveControl**): stores vtable 0x7F324C
 template class VectorClass<SlaveManagerClass::SlaveControl*>;
 template class DynamicVectorClass<SlaveManagerClass::SlaveControl*>;
 
