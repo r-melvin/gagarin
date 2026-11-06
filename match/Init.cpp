@@ -3350,9 +3350,12 @@ void __cdecl FUN_00538D40(void)
         int b0 = *src++;
         const unsigned char* other = DAT_00A8F918;
         for (int j = 0; j < 256; j++) {
-            int r = (*other++ + r0) >> 1;
-            int g = (*other++ + g0) >> 1;
-            int b = (*other++ + b0) >> 1;
+            int r1 = *other++;
+            int g1 = *other++;
+            int b1 = *other++;
+            int r = (r1 + r0) >> 1;
+            int g = (g1 + g0) >> 1;
+            int b = (b1 + b0) >> 1;
             int best = 0;
             int bestdist = 500000;
             const unsigned char* pal = DAT_00A8F918;

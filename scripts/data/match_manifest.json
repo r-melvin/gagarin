@@ -59931,10 +59931,8 @@
   "sym": "?FUN_00538D40@@YAXXZ",
   "len": "0x12D",
   "name": "FUN_00538D40",
-  "status": "partial",
-  "pct": 86.8,
-  "best_pct": 86.8,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/tu118_light_source_class.cpp",
@@ -143028,10 +143026,8 @@
   "sym": "?FUN_006EC250@@YIXHH@Z",
   "len": "0xAE",
   "name": "FUN_006EC250",
-  "status": "partial",
-  "pct": 89.7,
-  "best_pct": 89.7,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/w2_light_queue_global_r15.cpp",

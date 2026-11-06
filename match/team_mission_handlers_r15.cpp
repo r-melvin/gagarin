@@ -363,8 +363,6 @@ void Team_R15::StepToOccupant(MissionArg_R15* arg, bool first)
 }
 
 // FUNCTION: GAMEMD 0x6EC250
-// PARTIAL: 89.7% -- identical instruction multiset; retail addresses the timer through an LEA of
-// the slot at +0x64 where this build adds 0x64 to the team register.
 // Dissolve every team of the house whose type is below the threshold, and arm its cool-down.
 void __fastcall FUN_006EC250(int threshold, int house)
 {
@@ -376,8 +374,8 @@ void __fastcall FUN_006EC250(int threshold, int house)
             team->unknown_7E = true;
             team->unknown_7D = true;
             CDTimerClass timer((int)(DAT_008871E0_R15->unknown_14E8 * 900.0));
-            team->unknown_83 = true;
             team->unknown_64 = timer;
+            team->unknown_83 = true;
         }
     }
 }
