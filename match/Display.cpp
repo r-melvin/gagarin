@@ -2314,6 +2314,18 @@ inline int Distance3D(const CoordStruct& from, const CoordStruct& to)
     return (int)FUN_004CAC40((double)d.X * d.X + (double)d.Y * d.Y + (double)d.Z * d.Z);
 }
 
+inline int Distance3DAlly(const CoordStruct& from, const CoordStruct& to)
+{
+    CoordStruct d;
+    d.X = from.X - to.X;
+    d.Y = from.Y - to.Y;
+    d.Z = from.Z - to.Z;
+    double fy = d.Y;
+    double fz = d.Z;
+    double fx = d.X;
+    return (int)FUN_004CAC40(fx * fx + fy * fy + fz * fz);
+}
+
 // FUNCTION: GAMEMD 0x4AE0B0
 // Reveal around every techno of draw layer 2 that lies within its sight (plus `range`) of a location: the local
 // player's discovered ones, and the allies' buildings when the rules reveal allies.
@@ -2334,7 +2346,7 @@ void DisplayClass::FUN_004AE0B0(const CoordStruct* center, int range)
             }
             else if (techno->vf_11() == 6 && Rules->AllyReveal && techno->Owner->IsAlliedWith(DAT_00A83D4C))
             {
-                if (Distance3D(techno->vf_18(), *center) <= (techno->vf_33()->Sight << 8) + range)
+                if (Distance3DAlly(techno->vf_18(), *center) <= (techno->vf_33()->Sight << 8) + range)
                     techno->vf_72(0, 0);
             }
         }

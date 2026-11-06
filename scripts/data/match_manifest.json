@@ -154781,10 +154781,8 @@
   "sym": "?FUN_004AE0B0@DisplayClass@@QAEXPBUCoordStruct@@H@Z",
   "len": "0x1d3",
   "name": "DisplayClass::FUN_004AE0B0",
-  "status": "partial",
-  "pct": 96.7,
-  "best_pct": 96.7,
-  "best_at": "f2644f90"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/ccini_class_type_list_methods.cpp",
@@ -154987,10 +154985,8 @@
   "sym": "?FUN_00430F70@BeaconManagerClass@@QAE_NUCoordStruct@@@Z",
   "len": "0xed",
   "name": "BeaconManagerClass::FUN_00430F70",
-  "status": "partial",
-  "pct": 93.2,
-  "best_pct": 93.2,
-  "best_at": "7e727448"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Beacon.cpp",
@@ -154998,10 +154994,8 @@
   "sym": "?FUN_00431090@BeaconManagerClass@@QAEPAUBeaconClass@@UCoordStruct@@@Z",
   "len": "0xda",
   "name": "BeaconManagerClass::FUN_00431090",
-  "status": "partial",
-  "pct": 92.6,
-  "best_pct": 92.6,
-  "best_at": "7e727448"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Beacon.cpp",

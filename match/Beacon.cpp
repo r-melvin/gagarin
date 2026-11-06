@@ -294,7 +294,10 @@ bool BeaconManagerClass::FUN_00430F70(CoordStruct where)
                     diff.X = where.X - at.X;
                     diff.Y = where.Y - at.Y;
                     diff.Z = where.Z - at.Z;
-                    if ((int)FUN_004CAC40((double)diff.X * diff.X + (double)diff.Z * diff.Z + (double)diff.Y * diff.Y) < 0x80) {
+                    double fy = diff.Y;
+                    double fz = diff.Z;
+                    double fx = diff.X;
+                    if ((int)FUN_004CAC40(fx * fx + fz * fz + fy * fy) < 0x80) {
                         beacon = Beacons[house][slot];
                         if (beacon) {
                             MapView_5865E0::UnselectAll();
@@ -347,7 +350,10 @@ BeaconClass* BeaconManagerClass::FUN_00431090(CoordStruct where)
                     diff.X = where.X - at.X;
                     diff.Y = where.Y - at.Y;
                     diff.Z = where.Z - at.Z;
-                    if ((int)FUN_004CAC40((double)diff.X * diff.X + (double)diff.Z * diff.Z + (double)diff.Y * diff.Y) < 0x80) {
+                    double fy = diff.Y;
+                    double fz = diff.Z;
+                    double fx = diff.X;
+                    if ((int)FUN_004CAC40(fx * fx + fz * fz + fy * fy) < 0x80) {
                         return Beacons[house][slot];
                     }
                 }
