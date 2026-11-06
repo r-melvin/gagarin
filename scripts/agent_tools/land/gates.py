@@ -248,7 +248,7 @@ def static(ctx):
         if r["tu"] not in tracked:
             errs.append("manifest row %s names untracked TU %s" % (r["addr"], r["tu"]))
     known = {"tu", "addr", "sym", "len", "name", "status", "pct", "note", "qualification", "metric", "pct_metric",
-             "best_pct", "best_at"}
+             "best_pct", "best_at", "lowered_reason"}
     for r in ctx.added + ctx.changed_rows:
         extra = sorted(set(r) - known)
         if extra:

@@ -205,6 +205,16 @@ def tu_rel(e, tu):
     return os.path.relpath(tu, e["WT"])
 
 
+def cmd_forget(a):
+    """Drop rows from rows.tsv and rows_state.json, so a row scored earlier and abandoned stays out of the packet."""
+    e = load_env()
+    rows = merged_rows(e)
+    for va in {D.hx(x) for x in a.addrs}:
+        print("0x%X\t%s" % (va, "forgotten" if rows.pop(va, None) else "not in packet"))
+    write_rows(e, rows)
+    json.dump({"0x%X" % k: v for k, v in rows.items()}, open(os.path.join(e["PKT_DIR"], "rows_state.json"), "w"), indent=1)
+
+
 def cmd_score(a):
     e = load_env()
     tu = tu_rel(e, a.tu)
@@ -476,6 +486,7 @@ def main(argv=None):
     p = sp.add_parser("init"); p.add_argument("name"); p.add_argument("--base", default="HEAD"); p.add_argument("--force", action="store_true"); p.add_argument("--reuse", action="store_true", help="init in a packet dir that already has READY/patch.diff")
     p = sp.add_parser("span"); p.add_argument("addrs", nargs="+")
     p = sp.add_parser("score"); p.add_argument("tu"); p.add_argument("addrs", nargs="*")
+    p = sp.add_parser("forget"); p.add_argument("addrs", nargs="+")
     sp.add_parser("bind")
     p = sp.add_parser("finish"); p.add_argument("--no-backup", dest="backup", action="store_false")
     p = sp.add_parser("done"); p.add_argument("--force", action="store_true"); p.add_argument("--held", action="store_true", help="held-only packet (no READY): back up the worktree diff to the backup dir, then remove the worktree")
@@ -483,7 +494,7 @@ def main(argv=None):
     if a.cmd == "budget":
         ok, _ = budget()
         return 0 if ok else 1
-    return {"init": cmd_init, "span": cmd_span, "score": cmd_score, "bind": cmd_bind, "finish": cmd_finish, "done": cmd_done}[a.cmd](a) or 0
+    return {"init": cmd_init, "span": cmd_span, "score": cmd_score, "forget": cmd_forget, "bind": cmd_bind, "finish": cmd_finish, "done": cmd_done}[a.cmd](a) or 0
 
 
 if __name__ == "__main__":

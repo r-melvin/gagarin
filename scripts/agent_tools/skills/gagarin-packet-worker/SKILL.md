@@ -76,6 +76,7 @@ stack-slot, missing-extra); `scripts/permuter/source_perm.py` tries only non-ste
 
 ```bash
 python3 $DL/pkt.py score wt/match/<file>.cpp [0xADDR ...]
+python3 $DL/pkt.py forget 0xADDR ...   # drop a row you scored and abandoned; scored rows otherwise stay in the packet
 ```
 
 Compiles the TU with the project wrapper (VC6FLAGS honoured), finds each `// FUNCTION:` claim,
