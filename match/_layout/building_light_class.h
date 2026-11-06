@@ -34,6 +34,9 @@ public:
     virtual int vf_30();                                                  // 30 0x4369F0
     virtual ObjectTypeClass* vf_34();                                     // 34 0x4369E0
 
+    // FUNCTION: GAMEMD 0x436F40 -- slot 13, the synchronisation checksum.
+    virtual void vf_13(Obj_004A1D30* crc);                                // 13 0x436F40
+
     // FUNCTION: GAMEMD 0x436BE0 (decl; reloc) -- one stack argument.
     void FUN_00436BE0(int unknownStackArg0);
 
@@ -47,24 +50,20 @@ public:
     void FUN_00435BE0(int unknownStackArg0, int unknownStackArg1);
 
     int         unknown_AC;     // +0xAC
-    int         unknown_B0;     // +0xB0
-    int         unknown_B4;     // +0xB4
+    double      unknown_B0;     // +0xB0 (8 bytes; 0x436F40 feeds it to the checksum as one double)
     CoordStruct unknown_B8;     // +0xB8
     CoordStruct unknown_C4;     // +0xC4
-    int         unknown_D0;     // +0xD0
-    int         unknown_D4;     // +0xD4
+    double      unknown_D0;     // +0xD0 (8 bytes; the same)
     bool        unknown_D8;     // +0xD8
     unsigned char _padD9[3];    // +0xD9
     int         unknown_DC;     // +0xDC
-    int         unknown_E0;     // +0xE0
+    AbstractClass* unknown_E0;  // +0xE0 (0x436F40 reads its identity through the +4 interface)
     BuildingClass* source;      // +0xE4
 };
 GG_STATIC_ASSERT(offsetof(BuildingLightClass, unknown_B0) == 0xB0);
-GG_STATIC_ASSERT(offsetof(BuildingLightClass, unknown_B4) == 0xB4);
 GG_STATIC_ASSERT(offsetof(BuildingLightClass, unknown_B8) == 0xB8);
 GG_STATIC_ASSERT(offsetof(BuildingLightClass, unknown_C4) == 0xC4);
 GG_STATIC_ASSERT(offsetof(BuildingLightClass, unknown_D0) == 0xD0);
-GG_STATIC_ASSERT(offsetof(BuildingLightClass, unknown_D4) == 0xD4);
 GG_STATIC_ASSERT(offsetof(BuildingLightClass, unknown_D8) == 0xD8);
 GG_STATIC_ASSERT(offsetof(BuildingLightClass, unknown_DC) == 0xDC);
 GG_STATIC_ASSERT(offsetof(BuildingLightClass, unknown_E0) == 0xE0);

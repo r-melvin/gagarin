@@ -23,11 +23,9 @@ extern DynamicVectorClass<BuildingLightClass*> DAT_008B4190;
 BuildingLightClass::BuildingLightClass(BuildingClass* sourceBuilding)
 {
     unknown_B0 = 0;
-    unknown_B4 = 0;
     unknown_B8 = DAT_0089C510;
     unknown_C4 = DAT_0089C510;
     unknown_D0 = 0;
-    unknown_D4 = 0;
     unknown_D8 = false;
     unknown_DC = 0;
     unknown_E0 = 0;
@@ -91,6 +89,30 @@ HRESULT __stdcall BuildingLightClass::Load(IStream* pStm)
         DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_E0);
     }
     return hr;
+}
+
+// FUNCTION: GAMEMD 0x436F40
+// Slot 13: feed the object prefix, the accumulators, both spotlight coordinates, the flag and the
+// two referenced objects' identities to the synchronisation checksum.
+void BuildingLightClass::vf_13(Obj_004A1D30* crc)
+{
+    ObjectClass::vf_13(crc);
+    crc->FUN_004A1D90(unknown_B0);
+    crc->FUN_004A1D50(unknown_B8.X);
+    crc->FUN_004A1D50(unknown_B8.Y);
+    crc->FUN_004A1D50(unknown_B8.Z);
+    crc->FUN_004A1D50(unknown_C4.X);
+    crc->FUN_004A1D50(unknown_C4.Y);
+    crc->FUN_004A1D50(unknown_C4.Z);
+    crc->FUN_004A1D90(unknown_D0);
+    crc->FUN_004A1CA0(unknown_D8);
+    crc->FUN_004A1D50(unknown_DC);
+    if (unknown_E0) {
+        crc->FUN_004A1D50(unknown_E0->vf_rtti_4());
+    }
+    if (source) {
+        crc->FUN_004A1D50(source->vf_rtti_4());
+    }
 }
 
 // SYNTHETIC: GAMEMD 0x4370C0

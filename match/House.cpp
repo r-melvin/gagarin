@@ -4356,7 +4356,7 @@ void HouseClass::FUN_00505180()
     if (!IsControlledByHuman() && Session_00A8B238.GameMode != 0) {
         AllyAIHouses();
     }
-    if (Base.unknown_14 == 0) {
+    if (Base.unknown_04.Count == 0) {
         int saved = DAT_00A8E7AC;
         DAT_00A8E7AC = 0;
         FUN_005054B0();
@@ -5064,18 +5064,18 @@ void HouseClass::FUN_0050A490(BuildingClass* building)
     if (!DAT_00A8ED6B) {
         CoordStruct coord = building->Location;
         Cell cell((short)(coord.X / 256), (short)(coord.Y / 256));
-        for (int i = 0; i < Base.unknown_14; i++) {
-            BaseNodeClass* node = &Base.unknown_08[i];
+        for (int i = 0; i < Base.unknown_04.Count; i++) {
+            BaseNodeClass* node = &Base.unknown_04.Items[i];
             if (node->unknown_00 == building->Type->ArrayIndex && node->unknown_04 == cell) {
-                Cell nodeCell = Base.unknown_08[i].unknown_04;
-                for (int j = 0; j < Base.unknown_14; j++) {
-                    if (i != j && Base.unknown_08[j].unknown_04 == nodeCell) {
-                        Base.unknown_08[j].unknown_04 = DAT_00A8EF98;
+                Cell nodeCell = Base.unknown_04.Items[i].unknown_04;
+                for (int j = 0; j < Base.unknown_04.Count; j++) {
+                    if (i != j && Base.unknown_04.Items[j].unknown_04 == nodeCell) {
+                        Base.unknown_04.Items[j].unknown_04 = DAT_00A8EF98;
                     }
                 }
                 if (building->Type->bools_1700[6] && Session_00A8B238.GameMode != 0) {
-                    Base.unknown_08[i].unknown_00 = -1;
-                    Base.unknown_08[i].unknown_04 = DAT_00A8EF98;
+                    Base.unknown_04.Items[i].unknown_00 = -1;
+                    Base.unknown_04.Items[i].unknown_04 = DAT_00A8EF98;
                 }
                 return;
             }
@@ -5428,7 +5428,7 @@ void HouseClass::FUN_0050C210()
                     Cell cell((short)(location.X / 256), (short)(location.Y / 256));
                     BaseSpawnCell = cell;
                     FUN_00505180();
-                    Base.unknown_08[0].unknown_04 = cell;
+                    Base.unknown_04.Items[0].unknown_04 = cell;
                     Base.unknown_50 = cell;
                     return;
                 }

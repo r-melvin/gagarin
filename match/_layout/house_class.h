@@ -52,6 +52,7 @@ class WaypointClass;
 #include "techno_class.h"     // StorageClass
 #include "foot_class.h"       // CellStruct
 #include "vector_class.h"     // DynamicVectorClass
+#include "base_node_class.h"  // BaseNodeClass (BaseClass holds the node vector by value)
 #include "components.h"       // ColorStruct
 #include "../vector_class.h"
 class BuildingClass;
@@ -121,16 +122,17 @@ class BaseClass {
 public:
     // External native constructor42E6F0 installs7E3880. RTTI has no base.
     BaseClass();
+    // No-initialisation form used by LoadFromStream (0x42EE30): rebuilds the three vectors and the vptr only.
+    BaseClass(const AbstractNoInit& noInit);
     // Slots0/1: receiver and stream are stack arguments, RET8.
-    virtual void __stdcall LoadFromStream(IStream* stream);
+    virtual HRESULT __stdcall LoadFromStream(IStream* stream);   // 0x42EE30
     virtual void __stdcall SaveToStream(IStream* stream);
     // Slot2: ECX receiver and one checksum pointer, RET4.
     virtual void ComputeCrc(Obj_004A1D30* crc);
-    unsigned char unknown_04[4];
-    class BaseNodeClass* unknown_08;   // +0x08 node vector items
-    unsigned char unknown_0C[8];
-    int unknown_14;         // +0x14 node vector count
-    unsigned char unknown_18[0x38];
+    DynamicVectorClass<class BaseNodeClass> unknown_04;   // +0x04 node vector (vtable 0x7E38B0, RTTI names BaseNodeClass); 0x42EBE0 expands its AddItem
+    int unknown_1C;          // +0x1C "PercentBuilt" in the base section (0x42EBE0 reads it, 0x42ED60 writes it)
+    DynamicVectorClass<class Cell> unknown_20;   // +0x20 cell vector (vtable 0x7E3890)
+    DynamicVectorClass<class Cell> unknown_38;   // +0x38 cell vector
     CellStruct unknown_50;  // +0x50
     unsigned char unknown_54[0x20];
     HouseClass* unknown_74; // 0x6869DB writes containing House at +0x5774
@@ -147,11 +149,13 @@ public:
     void FUN_0042F260(BuildingClass* building);
     // FUNCTION: GAMEMD 0x42EBE0 (decl; reloc) -- reads the base layout of a house's section, RET 8.
     void FUN_0042EBE0(CCINIClass* ini, const char* section);
+    // FUNCTION: GAMEMD 0x42ED60 -- writes the base layout into a house's section, RET 8.
+    void FUN_0042ED60(CCINIClass* ini, const char* section);
 };
 GG_STATIC_ASSERT(offsetof(BaseClass, unknown_04) == 4);
-GG_STATIC_ASSERT(offsetof(BaseClass, unknown_08) == 0x08);
-GG_STATIC_ASSERT(offsetof(BaseClass, unknown_0C) == 0x0C);
-GG_STATIC_ASSERT(offsetof(BaseClass, unknown_14) == 0x14);
+GG_STATIC_ASSERT(offsetof(BaseClass, unknown_1C) == 0x1C);
+GG_STATIC_ASSERT(offsetof(BaseClass, unknown_20) == 0x20);
+GG_STATIC_ASSERT(offsetof(BaseClass, unknown_38) == 0x38);
 GG_STATIC_ASSERT(offsetof(BaseClass, unknown_50) == 0x50);
 GG_STATIC_ASSERT(offsetof(BaseClass, unknown_74) == 0x74);
 GG_STATIC_ASSERT(sizeof(BaseClass) == 0x78);

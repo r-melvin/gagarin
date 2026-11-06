@@ -155852,5 +155852,52 @@
   "pct": 87.1,
   "best_pct": 87.1,
   "best_at": "773de7d3"
+ },
+ {
+  "tu": "match/base_class_methods.cpp",
+  "addr": "0x42EBE0",
+  "sym": "?FUN_0042EBE0@BaseClass@@QAEXPAVCCINIClass@@PBD@Z",
+  "len": "0x173",
+  "name": "BaseClass::FUN_0042EBE0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/base_class_methods.cpp",
+  "addr": "0x42ED60",
+  "sym": "?FUN_0042ED60@BaseClass@@QAEXPAVCCINIClass@@PBD@Z",
+  "len": "0xc9",
+  "name": "BaseClass::FUN_0042ED60",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/base_class_methods.cpp",
+  "addr": "0x42EE30",
+  "sym": "?LoadFromStream@BaseClass@@UAGJPAUIStream@@@Z",
+  "len": "0x231",
+  "name": "BaseClass::LoadFromStream",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/base_class_methods.cpp",
+  "addr": "0x42F260",
+  "sym": "?FUN_0042F260@BaseClass@@QAEXPAVBuildingClass@@@Z",
+  "len": "0xd4",
+  "name": "BaseClass::FUN_0042F260",
+  "status": "partial",
+  "pct": 95.1,
+  "best_pct": 95.1,
+  "best_at": "773de7d3"
+ },
+ {
+  "tu": "match/building_light_class.cpp",
+  "addr": "0x436F40",
+  "sym": "?vf_13@BuildingLightClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0xe5",
+  "name": "BuildingLightClass::vf_13",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
