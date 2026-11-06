@@ -45,6 +45,8 @@ class AnimClass : public ObjectClass, public StageClass
 public:
     // CALLEE: GAMEMD 0x00422720 (decl; reloc) -- constructor as the class factory calls it.
     AnimClass();
+    // FUNCTION: GAMEMD 0x4228E0 (destructor; slot 0 is the scalar deleting wrapper at 0x426590)
+    virtual ~AnimClass();
     // FUNCTION: GAMEMD 0x421EA0 (declaration; constructor, RET 0x1C)
     AnimClass(AnimTypeClass* type, const CoordStruct& coord, int loopDelay, int loopCount,
               unsigned int flags, int forceZ, bool reverse) throw();
@@ -64,6 +66,10 @@ public:
     virtual int vf_123();                                          // 123 0x425510: Type+0x2C0 dword in EAX
     virtual void vf_10(void* a1, bool a2);
     virtual void vf_62();
+    // FUNCTION: GAMEMD 0x424CE0 (decl; reloc; non-virtual) -- start the animation: sound, first-frame setup, tiberium chain reaction.
+    void FUN_00424CE0();
+    // FUNCTION: GAMEMD 0x424F00 (decl; reloc; non-virtual) -- first-frame setup: spawn the type's particles and trigger its fire effects.
+    void FUN_00424F00();
     // FUNCTION: GAMEMD 0x4260F0 (non-virtual) -- whether the cell can take this animation.
     bool FUN_004260F0(CellStruct* cell);
     // FUNCTION: GAMEMD 0x424B50 (decl; reloc) -- AnimClass::SetOwnerObject, defined on a view in anim_class_owner_methods.cpp.
@@ -84,7 +90,7 @@ public:
     // +0xAC StageClass base (0x1C): retail CHD (COL 0x7FBA60) lists it at mdisp 0xAC;
     //   ctor stores @0x00421EB8..0x00421EDB.
     AnimTypeClass*  Type;                  // +0xC8; ctor421EE5; getter425520;6D91E9/EF reads Type->ShouldFogRemove374
-    void*           OwnerObject;           // +0xCC ObjectClass*; ctor @0x00421EEE
+    ObjectClass*    OwnerObject;           // +0xCC; ctor @0x00421EEE
     unsigned int    unknown_D0;            // +0xD0 ctor @0x00421EF4
     void*           LightConvert;          // +0xD4 LightConvertClass*; ctor @0x00421EFA
     int             LightConvertIndex;     // +0xD8 ctor @0x00421F00

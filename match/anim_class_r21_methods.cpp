@@ -12,6 +12,9 @@
 #include "_layout/map_0087f7e8.h"
 #include "vector_class_dynamic_ctor.h"
 #include "vector_class_mutation.h"
+#include "vector_class_search.h"
+#include "small_misc49_methods.h"
+#include "_layout/world_effect_helpers.h"
 
 // GLOBAL: GAMEMD 0x89A1C0
 extern int DAT_0089A1C0;
@@ -52,6 +55,12 @@ int __fastcall FUN_004810A0(CoordStruct* coord);
 // FUNCTION: GAMEMD 0x7509E0 (decl; reloc) -- play a sound index at a coordinate (index in ECX, coordinate in EDX).
 void* __fastcall FUN_007509E0(int index, const CoordStruct& where, AudioController* controller);
 
+// GLOBAL: GAMEMD 0xA8E9A0 -- destruction-time virtual cleanup guard.
+extern bool DAT_00A8E9A0;
+// GLOBAL: GAMEMD 0xB0F670 -- the registry every abstract object leaves when destroyed.
+extern DynamicVectorClass<AbstractClass*> DAT_00B0F670;
+// GLOBAL: GAMEMD 0xA83E00 -- the second animation array.
+extern DynamicVectorClass<AnimClass*> DAT_00A83E00;
 // GLOBAL: GAMEMD 0xA8E9A8 -- AnimClass::Array.
 extern DynamicVectorClass<AnimClass*> DAT_00A8E9A8;
 
@@ -67,6 +76,54 @@ AnimClass::AnimClass()
     StartSoundAudioController.FUN_00405BE0();
     StopSoundAudioController.FUN_00405BE0();
     IsAlive = true;
+}
+
+// FUNCTION: GAMEMD 0x4228E0
+// Destructor: announce the expired pointer; outside teardown release the owner's hold (clearing its parachute
+// flag when no other animation shares the owner), then leave the registries and the animation array, free the
+// type's loaded image and let both sound controllers go before the object base runs.
+AnimClass::~AnimClass()
+{
+    AnnounceExpiredPointer(1);
+    if (DAT_00A8E9A0) {
+        ObjectClass* owner = OwnerObject;
+        if (owner != 0) {
+            int index = 0;
+            int count = DAT_00A8E9A8.Count;
+            if (count > 0) {
+                AnimClass** item = DAT_00A8E9A8.Items;
+                do {
+                    AnimClass* other = *item;
+                    if (other != this && other->OwnerObject == owner) {
+                        break;
+                    }
+                    index++;
+                    item++;
+                } while (index < count);
+            }
+            if (index == count) {
+                owner->vf_95();
+                owner->HasParachute = false;
+            }
+            OwnerObject = 0;
+        }
+        vf_53();
+    }
+    DAT_00B0F670.RemoveItem(this);
+    if (Type != 0) {
+        FUN_00428DE0((Obj_00428DE0*)Type);
+    }
+    StartSoundAudioController.EndLooping();
+    StopSoundAudioController.EndLooping();
+    StartSoundAudioController.FUN_00405C00();
+    StopSoundAudioController.FUN_00405C00();
+    OwnerObject = 0;
+    Type = 0;
+    if (AbstractClass::vf_rtti_4() == -2) {
+        DAT_00A83E00.RemoveItem(this);
+    } else {
+        DAT_00A8E9A8.RemoveItem(this);
+    }
 }
 
 // FUNCTION: GAMEMD 0x425150
@@ -101,7 +158,7 @@ void AnimClass::vf_13(Obj_004A1D30* crc)
 {
     ObjectClass::vf_13(crc);
     if (OwnerObject) {
-        IRTTITypeInfo* info = reinterpret_cast<IRTTITypeInfo*>(static_cast<char*>(OwnerObject) + 4);
+        IRTTITypeInfo* info = reinterpret_cast<IRTTITypeInfo*>(reinterpret_cast<char*>(OwnerObject) + 4);
         crc->FUN_004A1D50(info->vf_rtti_4());
     }
     crc->FUN_004A1D50(unknown_D0);

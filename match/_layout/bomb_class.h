@@ -32,6 +32,8 @@ public:
     virtual int vf_11();
     virtual int vf_12();
 
+    // FUNCTION: GAMEMD 0x438720 (decl; reloc) -- set the bomb off: area damage, impact animation, bridge refresh.
+    void FUN_00438720();
     void Disarm();                      // GAMEMD 0x4389B0 __thiscall
     int  IsDeathBomb() const;           // GAMEMD 0x4389F0 __thiscall
     bool TimeToExplode() const;         // GAMEMD 0x438A70 __thiscall

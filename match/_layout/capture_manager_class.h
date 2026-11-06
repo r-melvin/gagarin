@@ -77,6 +77,8 @@ public:
     bool CanCapture(Techno_00471C90* target) const;
     // FUNCTION: GAMEMD 0x471C90 (decl; reloc) -- the same routine, called with a TechnoClass.
     bool CanCapture(TechnoClass* target) const;
+    // FUNCTION: GAMEMD 0x471A50 (decl; reloc) -- the per-frame overload step.
+    void FUN_00471A50();
     // CALLEE: GAMEMD 0x471D40 -- thiscall, mutable AbstractClass* stack argument, bool result.
     bool FUN_00471D40(AbstractClass* target);
     // FUNCTION: GAMEMD 0x471FF0
@@ -132,7 +134,7 @@ public:
     unsigned char OverloadDeathSoundPlayed;    // +0x41 ctor @0x00471828
     unsigned char align_42[2];                 // +0x42
     int           OverloadPipState;            // +0x44 ctor @0x00471832
-    void*         Owner;                       // +0x48 TechnoClass*; ctor = arg1 @0x00471800
+    TechnoClass*  Owner;                       // +0x48; ctor = arg1 @0x00471800
     int           OverloadDamageDelay;         // +0x4C ctor MOV [ESI+0x4C],0x1E @0x0047182B;
                                                //   closes the object at 0x50
 };

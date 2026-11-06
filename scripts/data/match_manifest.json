@@ -155731,5 +155731,32 @@
   "pct": 82.6,
   "best_pct": 82.6,
   "best_at": "9dc06d1c"
+ },
+ {
+  "tu": "match/anim_class_r21_methods.cpp",
+  "addr": "0x4228E0",
+  "sym": "??1AnimClass@@UAE@XZ",
+  "len": "0x23d",
+  "name": "AnimClass::~AnimClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu165_object_class.cpp",
+  "addr": "0x5F4160",
+  "sym": "?vf_59@ObjectClass@@UAEXXZ",
+  "len": "0xdd",
+  "name": "ObjectClass::vf_59",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu173_parasite_class.cpp",
+  "addr": "0x62A260",
+  "sym": "?vf_10@ParasiteClass@@UAEXPAX_N@Z",
+  "len": "0x23d",
+  "name": "ParasiteClass::vf_10",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

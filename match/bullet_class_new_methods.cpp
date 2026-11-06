@@ -1746,7 +1746,7 @@ void BulletClass::FUN_004690B0(const CoordStruct* impact)
             Target != 0 && Target->Flags.IsFoot ? Target : 0;
         // Native receiver is dword [Owner+0x69C], one stack argument is the
         // normalized pointer, callee cleanup RET 4.
-        static_cast<ParasiteClass_0062A8E0*>(
+        reinterpret_cast<ParasiteClass_0062A8E0*>(
             static_cast<FootClass*>(Owner)->ParasiteImUsing)
                 ->FUN_0062A980(normalizedTarget);
         goto common_impact_tail;

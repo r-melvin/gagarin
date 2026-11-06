@@ -577,9 +577,9 @@ struct RulesClass
     TypeList<int> AISuperDefenseProbability;  // +0x0EC4
     int AISuperDefenseFrames;   // +0xEE0
     int AISuperDefenseDistance;   // +0xEE4
-    TypeList<int> list_0EE8;  // +0x0EE8
-    TypeList<int> list_0F04;  // +0x0F04
-    TypeList<int> list_0F20;  // +0x0F20
+    TypeList<int> OverloadCount;  // +0x0EE8 (INI key OverloadCount, string 0x83AFC4)
+    TypeList<int> OverloadDamage;  // +0x0F04 (INI key OverloadDamage, string 0x83AFB4)
+    TypeList<int> OverloadFrames;  // +0x0F20 (INI key OverloadFrames, string 0x83AFA4)
     float PurifierBonus;   // +0xF3C
     float OccupyDamageMultiplier;   // +0xF40
     float OccupyROFMultiplier;   // +0xF44
@@ -1174,9 +1174,9 @@ GG_STATIC_ASSERT(offsetof(RulesClass, AICaptureWounded) == 0xE68);
 GG_STATIC_ASSERT(offsetof(RulesClass, AICaptureLowPower) == 0xE84);
 GG_STATIC_ASSERT(offsetof(RulesClass, AICaptureLowMoney) == 0xEA0);
 GG_STATIC_ASSERT(offsetof(RulesClass, AISuperDefenseProbability) == 0xEC4);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0EE8) == 0xEE8);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0F04) == 0xF04);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0F20) == 0xF20);
+GG_STATIC_ASSERT(offsetof(RulesClass, OverloadCount) == 0xEE8);
+GG_STATIC_ASSERT(offsetof(RulesClass, OverloadDamage) == 0xF04);
+GG_STATIC_ASSERT(offsetof(RulesClass, OverloadFrames) == 0xF20);
 GG_STATIC_ASSERT(offsetof(RulesClass, DefaultMirageDisguises) == 0xFF8);
 GG_STATIC_ASSERT(offsetof(RulesClass, TeamDelays) == 0x1158);
 GG_STATIC_ASSERT(offsetof(RulesClass, AIHateDelays) == 0x1174);

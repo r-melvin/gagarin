@@ -46,7 +46,7 @@ CaptureManagerClass::CaptureManagerClass(const AbstractNoInit& noInit)
 CaptureManagerClass::CaptureManagerClass(void* owner, int maxControlNodes,
                                          bool infiniteMindControl)
 {
-    Owner = owner;
+    Owner = (TechnoClass*)owner;
     MaxControlNodes = maxControlNodes;
     InfiniteMindControl = infiniteMindControl;
     OverloadDeathSoundPlayed = 0;

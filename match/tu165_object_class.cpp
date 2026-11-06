@@ -185,6 +185,9 @@ static inline CellPair_5F5B90 CellPairOf(short x, short y)
 
 // CALLEE: GAMEMD 0x7C5F00 -- __ftol, used by SetHealthPercentage.
 #include "rules_class.h"
+#include "_layout/foot_class.h"
+#include "_layout/map_0087f7e8.h"
+#include "loco_com.h"
 
 struct ObjectTagRefCountView
 {
@@ -402,6 +405,37 @@ Dir_005F3DB0* Obj_005F3DB0::FUN_005F3DB0(Dir_005F3DB0* result,
     *result = dir;
 
     return result;
+}
+
+static inline bool IsFootObject_005F4160(ObjectClass* object)
+{
+    if (object == 0) {
+        return false;
+    }
+    return object->Flags.IsFoot;
+}
+
+// FUNCTION: GAMEMD 0x5F4160
+// Re-seat the object on the map in its falling state: mark it falling and a bomb, take it off and put it
+// back, then (for a foot object) stop an idle locomotor or, when it is moving, notify the coordinate slot.
+void ObjectClass::vf_59()
+{
+    IsFallingDown = true;
+    IsABomb = true;
+    vf_73(0);
+    DAT_0087F7E8.FUN_004A9770(this);
+    OnBridge = false;
+    DAT_0087F7E8.FUN_004A9720(this);
+    vf_73(1);
+    if (IsFootObject_005F4160(this)) {
+        FootClass* foot = (FootClass*)this;
+        if (!foot->Locomotor->IsMoving()) {
+            CoordStruct here = Location;
+            vf_61(&here);
+        } else {
+            foot->Locomotor->MarkAllOccupationBits(0);
+        }
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

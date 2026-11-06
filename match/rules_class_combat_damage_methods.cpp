@@ -73,9 +73,9 @@ bool RulesClass::Read_CombatDamage(CCINIClass* pINI)
         OpenToppedDamageMultiplier = pINI->ReadDouble(CombatDamageSection, "OpenToppedDamageMultiplier", (double)OpenToppedDamageMultiplier);
         OpenToppedRangeBonus = pINI->ReadInteger(CombatDamageSection, "OpenToppedRangeBonus", OpenToppedRangeBonus);
         OpenToppedWarpDistance = pINI->ReadInteger(CombatDamageSection, "OpenToppedWarpDistance", OpenToppedWarpDistance);
-        list_0EE8 = pINI->ReadIntegerList(CombatDamageSection, "OverloadCount", list_0EE8);
-        list_0F04 = pINI->ReadIntegerList(CombatDamageSection, "OverloadDamage", list_0F04);
-        list_0F20 = pINI->ReadIntegerList(CombatDamageSection, "OverloadFrames", list_0F20);
+        OverloadCount = pINI->ReadIntegerList(CombatDamageSection, "OverloadCount", OverloadCount);
+        OverloadDamage = pINI->ReadIntegerList(CombatDamageSection, "OverloadDamage", OverloadDamage);
+        OverloadFrames = pINI->ReadIntegerList(CombatDamageSection, "OverloadFrames", OverloadFrames);
         MindControlAttackLineFrames = pINI->ReadInteger(CombatDamageSection, "MindControlAttackLineFrames", MindControlAttackLineFrames);
         DrainAnimationType = ReadAnimType(pINI, CombatDamageSection, "DrainAnimationType", DrainAnimationType, buffer);
         DrainMoneyFrameDelay = pINI->ReadInteger(CombatDamageSection, "DrainMoneyFrameDelay", DrainMoneyFrameDelay);

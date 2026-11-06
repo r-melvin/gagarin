@@ -36,6 +36,7 @@
 
 class TeamClass;
 class BuildingClass;
+class ParasiteClass;
 struct Matrix3D;
 struct VoxelStruct;
 #include "index.h"
@@ -207,9 +208,9 @@ public:
     unsigned char   ShouldEnterOccupiable;             // +0x690 (bool)
     unsigned char   ShouldGarrisonStructure;           // +0x691 (bool)
     unsigned char   align_692[2];                      // +0x692
-    void*           ParasiteEatingMe;                  // +0x694 FootClass*
+    FootClass*      ParasiteEatingMe;                  // +0x694
     int             LastBeParasitedStartFrame;         // +0x698
-    void*           ParasiteImUsing;                   // +0x69C ParasiteClass*
+    ParasiteClass*  ParasiteImUsing;                   // +0x69C
     CDTimerClass    ParalysisTimer;                    // +0x6A0 (0xC)
     unsigned char   unknown_bool_6AC;                  // +0x6AC (bool)
     unsigned char   IsAttackedByLocomotor;             // +0x6AD (bool)
@@ -242,6 +243,7 @@ public:
     virtual AbstractClass* vf_241(unsigned int threat, CoordStruct* coord, bool a3); // 241 0x4D9920 (IsScanLimited @0x688 wrapper of 0x6F8DF0)
     // Native primary slot 288: RET 8; this override receives the target and flag.
     virtual void SetDestination(AbstractClass* target, bool a2);   // 288 0x4D94B0
+    virtual bool EnterIdleMode(bool initial, bool a2);             // 289 0x4D82B0
     // Round 17 overrides of base slots (retail table 0x7E8C94).
     virtual CoordStruct vf_267();                                  // 267 0x4D8560
     virtual int vf_107(CellClass* cell, int a2, int a3, int a4, bool a5); // 107 0x4D9C10
@@ -311,6 +313,8 @@ GG_STATIC_ASSERT(offsetof(FootClass, BlockagePathTimer)         == 0x668);
 GG_STATIC_ASSERT(sizeof(((FootClass*)0)->Locomotor)             == 4);
 GG_STATIC_ASSERT(offsetof(FootClass, unknown_point3d_678)       == 0x678);
 GG_STATIC_ASSERT(offsetof(FootClass, TubeIndex)                 == 0x684);
+GG_STATIC_ASSERT(offsetof(FootClass, ParasiteEatingMe)          == 0x694);
+GG_STATIC_ASSERT(offsetof(FootClass, ParasiteImUsing)           == 0x69C);
 GG_STATIC_ASSERT(offsetof(FootClass, ParalysisTimer)            == 0x6A0);
 GG_STATIC_ASSERT(offsetof(FootClass, FrozenStill)               == 0x6B6);
 GG_STATIC_ASSERT(offsetof(FootClass, unused_6BC)                == 0x6BC);

@@ -25,6 +25,8 @@ public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
     virtual HRESULT __stdcall Load(IStream* pStm);
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
+    // FUNCTION: GAMEMD 0x62A260 (slot 10) -- drop the references held to an object that goes away.
+    virtual void vf_10(void* target, bool removed);
     virtual int vf_11();
     virtual int vf_12();
     virtual void vf_13(Obj_004A1D30* crc);
@@ -36,9 +38,13 @@ public:
     void FUN_0062A4A0();
     // FUNCTION: GAMEMD 0x62A8E0 (decl; reloc) -- thiscall, one stack argument (RET 4).
     bool CanInfect(FootClass* target);
+    // FUNCTION: GAMEMD 0x62A980 (decl; reloc) -- thiscall, one pointer stack argument (RET 4): release the current subject and latch onto the target.
+    void FUN_0062A980(FootClass* target);
+    // CALLEE: GAMEMD 0x62AC30 -- thiscall, one hidden result pointer (RET 4): a coordinate near the owner.
+    CoordStruct FUN_0062AC30();
 
-    void* Owner;          // +0x24
-    int unknown_28;       // +0x28
+    FootClass* Owner;     // +0x24
+    FootClass* unknown_28;// +0x28 (the object this parasite sits on; its +0x694 points back)
     CDTimerClass TimerA;  // +0x2C
     CDTimerClass TimerB;  // +0x38
     ObjectClass* Subject;     // +0x44
@@ -48,6 +54,8 @@ public:
     bool unknown_54;      // +0x54
 };
 GG_STATIC_ASSERT(offsetof(ParasiteClass, Owner) == 0x24);
+GG_STATIC_ASSERT(offsetof(ParasiteClass, unknown_28) == 0x28);
+GG_STATIC_ASSERT(sizeof(((ParasiteClass*)0)->Owner) == 4);
 GG_STATIC_ASSERT(offsetof(ParasiteClass, TimerA) == 0x2C);
 GG_STATIC_ASSERT(offsetof(ParasiteClass, TimerB) == 0x38);
 GG_STATIC_ASSERT(offsetof(ParasiteClass, Subject) == 0x44);

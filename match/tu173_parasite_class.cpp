@@ -479,6 +479,79 @@ void FootClass::CreateWakes(int x, int y, int z)
     } while (--i != 0);
 }
 
+#include "_layout/map_0087f7e8.h"
+#include "team_class_add_member_methods.h"
+#include "_layout/house_class.h"
+
+// GLOBAL: GAMEMD 0xA8ED5C (decl; reloc)
+extern bool DAT_00A8ED5C;
+// GLOBAL: GAMEMD 0xA8E7AC -- nonzero suppresses the EVA line.
+extern int DAT_00A8E7AC;
+// GLOBAL: GAMEMD 0xAC4948 -- the invalid coordinate.
+extern CoordStruct DAT_00AC4948;
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x62A260
+// Slot 10: an object this parasite refers to is going away. The owner just clears. The victim is
+// released (its back pointer cleared and the owner told) unless the countdown has run out or the
+// owner is unable to act, in which case the parasite is moved next to the owner if it can; the
+// subject only clears its own pointer, leaving the flag that it is gone.
+void ParasiteClass::vf_10(void* target, bool removed)
+{
+    if (target == Owner) {
+        Owner = 0;
+        return;
+    }
+    if (target == unknown_28) {
+        if (!DAT_00A8ED5C) {
+            unknown_28 = 0;
+            return;
+        }
+        if (TimerA.GetTimeLeft() <= 0 || Owner->vf_88()) {
+            CoordStruct spot = FUN_0062AC30();
+            DAT_00A8E7AC++;
+            if (spot.X != DAT_00AC4948.X || spot.Y != DAT_00AC4948.Y || spot.Z != DAT_00AC4948.Z) {
+                DirStruct tmp;
+                unsigned int whole = unknown_28->PrimaryFacing.FUN_004C93D0(&tmp)->Whole;
+                if (Owner->vf_54(spot, (whole >> 7) + 1 >> 1 & 0xFF)) {
+                    DAT_00A8E7AC--;
+                    if (Owner->ShouldBeReselectOnUnlimbo && Owner->Owner->IsControlledByCurrentPlayer()) {
+                        Owner->ShouldBeReselectOnUnlimbo = false;
+                        Owner->vf_83();
+                    }
+                    if (Owner->OldTeam != 0) {
+                        ((Team_006EA500*)Owner->OldTeam)->AddMember((Foot_006EA500*)Owner, false);
+                    }
+                    if (!Owner->vf_299()) {
+                        Owner->SetArchiveTarget(0);
+                        Owner->vf_242(0);
+                        Owner->SetDestination(0, true);
+                    }
+                    Owner->EnterIdleMode(false, true);
+                    Owner->vf_290(0, 0, 0, 0, 0);
+                    CoordStruct here = Owner->Location;
+                    DAT_0087F7E8.FUN_00567DA0(&here, Owner->LastSightRange - 3, Owner->LastSightRange + 3, 0);
+                    unknown_28 = 0;
+                    return;
+                }
+            }
+            DAT_00A8E7AC--;
+            Owner->Health = 0;
+            Owner->vf_62();
+            unknown_28 = 0;
+            return;
+        }
+        unknown_28->ParasiteEatingMe = 0;
+        unknown_28 = 0;
+        Owner->vf_62();
+        return;
+    }
+    if (target == Subject) {
+        Subject = 0;
+        unknown_54 = true;
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x62A8E0
 //
