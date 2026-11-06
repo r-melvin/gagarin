@@ -1079,6 +1079,17 @@ void Obj_005D7CD0::FUN_005D7CD0()
     unknown_00 = 0x7EEE74;
 }
 
+// FUNCTION: GAMEMD 0x5D7E50
+// Delete every registered game mode.
+void FUN_005D7E50()
+{
+    for (int i = 0; i < Modes_005D5F30().GetCount(); i++) {
+        MultiplayerGameMode* mode = Modes_005D5F30().Items[i];
+        if (mode != 0)
+            delete mode;
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // SYNTHETIC: GAMEMD 0x5D7F20
 // MultiplayerGameMode scalar deleting destructor, emitted with the vtable by

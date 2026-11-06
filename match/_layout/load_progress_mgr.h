@@ -14,6 +14,7 @@
 #include "abstract_interfaces.h"
 
 class Point2D;
+class MixFileClass;
 
 class LoadProgressMgr : public INoticeSink
 {
@@ -25,8 +26,8 @@ public:
     void FUN_00552CC0(); // FUNCTION: GAMEMD 0x552CC0 (decl; 0x6847D5)
     void FUN_00554370(); // FUNCTION: GAMEMD 0x554370 (decl; 0x684C00)
     virtual bool Notice(int id, int arg);                       // 0  0x554400: override (declaration from the base header)
-    int unknown_04;  // +0x4 store at 0x552ADA
-    int unknown_08;  // +0x8 store at 0x552ADD
+    MixFileClass* unknown_04;  // +0x4 store at 0x552ADA; LOAD.MIX, created at 0x552D1F
+    MixFileClass* unknown_08;  // +0x8 store at 0x552ADD; LOADMD.MIX, created at 0x552CEE
     unsigned char unknown_0C[48];  // +0xC
     int unknown_3C;  // +0x3C store at 0x552AE0
     int unknown_40;  // +0x40 store at 0x552AE3

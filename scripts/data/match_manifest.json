@@ -155174,5 +155174,43 @@
   "name": "?FUN_007B02A0@@YIXABV?$rc_ptr@VWDTState@@@@@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/LdPrgMgr.cpp",
+  "addr": "0x552A40",
+  "sym": "?FUN_00552A40@@YIXXZ",
+  "len": "0x5a",
+  "name": "?FUN_00552A40@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/LdPrgMgr.cpp",
+  "addr": "0x552CC0",
+  "sym": "?FUN_00552CC0@LoadProgressMgr@@QAEXXZ",
+  "len": "0x9f",
+  "name": "LoadProgressMgr::FUN_00552CC0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/LdPrgMgr.cpp",
+  "addr": "0x554280",
+  "sym": "?FUN_00554280@@YIXPBGPAVSurface@@PAURectangleStruct@@GI@Z",
+  "len": "0xca",
+  "name": "?FUN_00554280@@YIXPBGPAVSurface@@PAURectangleStruct@@GI@Z",
+  "status": "partial",
+  "pct": 95.3,
+  "best_pct": 95.3,
+  "best_at": "39177985"
+ },
+ {
+  "tu": "match/Multiplayer.cpp",
+  "addr": "0x5D7E50",
+  "sym": "?FUN_005D7E50@@YIXXZ",
+  "len": "0xcf",
+  "name": "?FUN_005D7E50@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

@@ -15,6 +15,16 @@
 #include "_rt/gg_static_assert.h"
 #include "_layout/load_progress_mgr.h"
 #include "_layout/session_class.h"
+#include "mix_file_class.h"
+#include "screen_palette_mgr_methods.h"
+#include "_layout/node_name_type.h"
+#include "conn_types.h"
+#include "scenario_class.h"
+#include "_layout/scenario_ptr_00a8b230.h"
+#include "global_getter_family_methods.h"
+#include "bit_font.h"
+#include "pixel_pack_methods.h"
+#include "_layout/components.h"
 
 // GLOBAL: GAMEMD 0x7ECF50
 extern const double DAT_007ECF50;
@@ -47,6 +57,17 @@ void FUN_00554370(int, int);
 // LIBRARY: GAMEMD 0x7C8B3D (decl; reloc)
 void __cdecl FUN_007C8B3D(int);
 
+
+// FUNCTION: GAMEMD 0x552A40
+// Creates the progress manager once.
+void FUN_00552A40()
+{
+    if (DAT_00ABC9BC == 0)
+    {
+        LoadProgressMgr* mgr = new LoadProgressMgr;
+        DAT_00ABC9BC = (int)mgr;
+    }
+}
 
 // FUNCTION: GAMEMD 0x552AA0
 void FUN_00552AA0(int a1, int a2);
@@ -105,6 +126,34 @@ int LoadProgressMgr::FUN_00552C90()
     return y;
 }
 
+// FUNCTION: GAMEMD 0x4A4AC0 (decl; reloc) -- variadic cdecl progress logger.
+extern "C" void __cdecl FUN_004A4AC0(const char* fmt, ...);
+// FUNCTION: GAMEMD 0x72B530 (decl; reloc)
+void FUN_0072B530(int index);
+
+// FUNCTION: GAMEMD 0x552CC0
+// Mounts LOADMD.MIX and LOAD.MIX once, then loads the screen palettes for the current side.
+void LoadProgressMgr::FUN_00552CC0()
+{
+    if (unknown_08 == 0)
+    {
+        FUN_004A4AC0(" loadmd.MIX");
+        unknown_08 = new MixFileClass("LOADMD.MIX");
+        if (unknown_08 == 0)
+            return;
+    }
+    if (unknown_04 == 0)
+    {
+        unknown_04 = new MixFileClass("LOAD.MIX");
+        if (unknown_04 == 0)
+            return;
+    }
+    if (Session_00A8B238.GameMode == 0)
+        EnsureLoadingScreenPalettes(DAT_00A8B230->unknown_34B8);
+    else
+        FUN_0072B530(Players_00A8DA78[0]->FUN_00696F10());
+}
+
 // A 2D point and a rectangle, as these layout helpers fill them in.
 struct Point_00554100 { int X; int Y; };
 struct Rect_00554150 { int X; int Y; int Width; int Height; };
@@ -150,6 +199,29 @@ Rect_00554150* __fastcall FUN_00554150(Rect_00554150* r)
     q.Y = y;
     *r = q;
     return r;
+}
+
+// FUNCTION: GAMEMD 0x621040 (decl; reloc) -- __fastcall: prints text into a rectangle with a font.
+int FUN_00621040(Surface* pSurface, const unsigned short* pText, BitFontBounds* pBounds,
+                 BitFont* pFont, unsigned long nColor, int nFlags, int nUnused1,
+                 int nUnused2, int nFadeStart, int nFadeLength);
+
+// FUNCTION: GAMEMD 0x554280
+// Prints text into a rectangle in a colour given as a display-format pixel value.
+void __fastcall FUN_00554280(const unsigned short* text, Surface* surface, RectangleStruct* area,
+                             unsigned short pixel, unsigned int flags)
+{
+    BitFontBounds bounds;
+    bounds.Left = area->X;
+    bounds.Top = area->Y;
+    bounds.Right = area->Width + area->X;
+    bounds.Bottom = area->Height + area->Y;
+    ColorStruct color;
+    color.R = (unsigned char)(pixel >> gg_b_translucent_pixel_format.pos0) << gg_b_translucent_pixel_format.loss0;
+    color.G = (unsigned char)(pixel >> gg_b_translucent_pixel_format.pos1) << gg_b_translucent_pixel_format.loss1;
+    color.B = (unsigned char)(pixel >> gg_b_translucent_pixel_format.pos2) << gg_b_translucent_pixel_format.loss2;
+    FUN_00621040(surface, text, &bounds, DAT_0089C4D0,
+                 ((color.B << 8 | color.G) << 8) | color.R, flags, 0xC, 0, 0, 0);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
