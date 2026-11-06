@@ -255,7 +255,7 @@ GG_STATIC_ASSERT(sizeof(StreamOpenParams) == 0x10);
 // FUNCTION: GAMEMD 0x412000 (decl; reloc)
 int __cdecl FUN_00412000(StreamSampleView* sample, void* arg, int size);
 // FUNCTION: GAMEMD 0x412540 (decl; reloc) -- retail's one-jump wrapper around the clock.
-unsigned FUN_00412540();
+unsigned __cdecl FUN_00412540(StreamSampleView* sample);
 // FUNCTION: GAMEMD 0x4123A0 (decl) -- the timer callback, defined below.
 void __stdcall FUN_004123a0(unsigned timer_id, unsigned message, StreamSampleView* sample,
                             unsigned param1, unsigned param2);

@@ -47806,9 +47806,10 @@
   "len": "0x53f",
   "name": "ParticleClass::ParticleClass",
   "status": "partial",
-  "pct": 62.3,
+  "pct": 61.2,
   "best_pct": 62.3,
-  "best_at": "cf203011"
+  "best_at": "cf203011",
+  "lowered_reason": "stored pct was stale; re-measured with diff_retail at base f10538e6"
  },
  {
   "tu": "match/tu174_particle_class.cpp",
@@ -71068,9 +71069,9 @@
   "len": "0x18f",
   "name": "AlphaShapeClass::AlphaShapeClass",
   "status": "partial",
-  "pct": 83.5,
-  "best_pct": 83.5,
-  "best_at": "53529d7b",
+  "pct": 84.2,
+  "best_pct": 84.2,
+  "best_at": "f10538e6",
   "note": "Re-measured at base 0f5aedbf: positional 83.5, aligned 90.1 (109/121). Exact through the vector appends; the residual is the inlined product-table build: retail clamps with compare-and-branch (jge/jmp/mov) where this build emits a branchless setl/dec/and sequence, and retail tests >255 before the 0..255 clamp; every source form tried folds to two compares."
  },
  {
@@ -101413,9 +101414,9 @@
   "len": "0x139",
   "name": "DynamicVectorClass<Wstring>::SetCapacity",
   "status": "partial",
-  "pct": 38.0,
-  "best_pct": 38.0,
-  "best_at": "cf203011"
+  "pct": 42.2,
+  "best_pct": 42.2,
+  "best_at": "f10538e6"
  },
  {
   "tu": "match/Session.cpp",
@@ -102946,10 +102947,8 @@
   "sym": "??1TeamClass@@UAE@XZ",
   "len": "0x268",
   "name": "TeamClass::~TeamClass",
-  "status": "partial",
-  "pct": 100,
-  "best_pct": 100,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/tu235_team_class.cpp",
@@ -106704,9 +106703,10 @@
   "len": "0x254",
   "name": "ObjectTypeClass::FUN_005F9070",
   "status": "partial",
-  "pct": 5.5,
+  "pct": 3.8,
   "best_pct": 5.5,
-  "best_at": "685ebdf1"
+  "best_at": "685ebdf1",
+  "lowered_reason": "stored pct was stale; re-measured with diff_retail at base f10538e6"
  },
  {
   "tu": "match/voxel_resource_ctors.cpp",
@@ -148109,10 +148109,8 @@
   "sym": "?FUN_006EDB50@TeamClass@@QAEXPAUScriptActionNode@@_N@Z",
   "len": "0x11e",
   "name": "TeamClass::FUN_006EDB50",
-  "status": "partial",
-  "pct": 100,
-  "best_pct": 100,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/tu235_team_class.cpp",
@@ -148120,10 +148118,8 @@
   "sym": "?FUN_006EF610@TeamClass@@QAEXPAUScriptActionNode@@_N@Z",
   "len": "0xC0",
   "name": "TeamClass::FUN_006EF610",
-  "status": "partial",
-  "pct": 100.0,
-  "best_pct": 100.0,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/map_class_iso_coord_methods.cpp",
@@ -155716,10 +155712,8 @@
   "sym": "?FUN_00411820@@YAHPAUStreamSampleView@@HPAUStreamOpenParams@@H@Z",
   "len": "0x2e0",
   "name": "?FUN_00411820@@YAHPAUStreamSampleView@@HPAUStreamOpenParams@@H@Z",
-  "status": "partial",
-  "pct": 96.8,
-  "best_pct": 96.8,
-  "best_at": "ad930565"
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/audio_stream_slot_methods.cpp",
