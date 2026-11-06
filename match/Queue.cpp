@@ -2499,13 +2499,14 @@ void FUN_0064CDA0(int first, int count)
 // Incoming ECX ignored; callers pass0. ev_7ec9fd5d2d67d92d6624fb6b66bc4d25e4584f29d0c05c1d6817487828cfb137.
 void FUN_0064D990(int)
 {
-    if (!DAT_008B41F8.Count) return;
-    int frame = CurrentFrame; // Snapshot matches single64D99B load for this drain.
-    while (DAT_008B41F8.Count &&
-           ((DAT_008B41F8.List[DAT_008B41F8.unknown_04].IsExecuted & 1) ||
-            int(DAT_008B41F8.List[DAT_008B41F8.unknown_04].Frame) < frame)) {
+    int count = DAT_008B41F8.Count;
+    if (!count) return;
+    int frame = CurrentFrame;
+    while ((DAT_008B41F8.List[DAT_008B41F8.unknown_04].IsExecuted & 1) ||
+           frame > int(DAT_008B41F8.List[DAT_008B41F8.unknown_04].Frame)) {
+        if (!count) break;
         DAT_008B41F8.unknown_04 = (DAT_008B41F8.unknown_04 + 1) & 0x3FFF;
-        --DAT_008B41F8.Count;
+        DAT_008B41F8.Count = --count;
     }
 }
 
@@ -3947,8 +3948,9 @@ void FUN_00652110(const Obj_00646D00* records, int index)
     if (Flag_00A8DBA0) {
         // FILD signedDWORD B558 and unsigned-qword representation B554 at
         // 652144..168. SHR65217B uses all32 bits of the record timestamp.
-        int correction = int(DAT_007F02A4 /
-            (double(DAT_00A8B558) / unsigned(DAT_00A8B554)));
+        float scale = DAT_007F02A4;
+        double rate = double(DAT_00A8B558) / unsigned(DAT_00A8B554);
+        int correction = int(scale / rate);
         elapsed = (unsigned(records[index].unknown_10) >> 1) - correction / 2 +
                   (DAT_00A8E2D4 >> 1);
     } else {

@@ -94256,10 +94256,8 @@
   "sym": "?FUN_006E2F50@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x31",
   "name": "TActionClass::FUN_006E2F50",
-  "status": "partial",
-  "pct": 25.0,
-  "best_pct": 25.0,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/TAction.cpp",
@@ -103583,9 +103581,9 @@
   "len": "0x49",
   "name": "?FUN_0064D990@@YIXH@Z",
   "status": "partial",
-  "pct": 31.8,
-  "best_pct": 31.8,
-  "best_at": "cf203011"
+  "pct": 95.5,
+  "best_pct": 95.5,
+  "best_at": "81aa71d7"
  },
  {
   "tu": "match/Queue.cpp",
@@ -103658,9 +103656,9 @@
   "len": "0xae",
   "name": "?FUN_00652110@@YIXPBUObj_00646D00@@H@Z",
   "status": "partial",
-  "pct": 30.4,
-  "best_pct": 30.4,
-  "best_at": "cf203011"
+  "pct": 33.9,
+  "best_pct": 33.9,
+  "best_at": "81aa71d7"
  },
  {
   "tu": "match/Queue.cpp",

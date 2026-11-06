@@ -2117,11 +2117,13 @@ bool TActionClass::FUN_006E2F00(HouseClass* house, ObjectClass* object, TriggerC
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x53A100 (decl; reloc) -- a global byte flag, read without a receiver.
+bool __cdecl FUN_0053A100();
 // FUNCTION: GAMEMD 0x6E2F50
 bool TActionClass::FUN_006E2F50(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
     DAT_00A8B230->unknown_3528 = unknown_90;
-    if (!DAT_00A8B230->FUN_0053A100()) {
+    if (!FUN_0053A100()) {
         DAT_00A8B230->unknown_3530 = DAT_00A8B230->unknown_3528;
     }
     return true;
@@ -2387,8 +2389,6 @@ bool TActionClass::FUN_006E3380(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
-// FUNCTION: GAMEMD 0x53A100 (decl; reloc) -- a global byte flag, read without a receiver.
-bool __cdecl FUN_0053A100();
 // FUNCTION: GAMEMD 0x539EB0 (decl; reloc)
 void __fastcall FUN_00539EB0(int a, int b, CellStruct cell, void* c);
 
