@@ -318,11 +318,6 @@ int EditClass::Draw(int forced)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4C3190
-// CAPPED at 2.9% after three attempts (early return then body; inverted if(!IsReadOnly){body}; flags=0 local before the
-// Escape-path base call). Remaining delta: the body is the same instruction multiset except for four instructions,
-// but retail pushes esi first and then ebx and edi after the read-only test (order esi, ebx, edi, each return
-// path popping only what it pushed), and pushes the zero arguments of the Escape-path base call through ebx;
-// this build pushes ebx, esi, edi in its prologue and pushes immediates, which shifts every later offset.
 // EditClass::Action slot (+0x7C): clicking takes the focus; while focused, Escape drops it and printable keys are
 // fed to vf_38 (and swallowed when accepted).
 int EditClass::Action(unsigned flags, unsigned* key, int modifier)
@@ -347,11 +342,14 @@ int EditClass::Action(unsigned flags, unsigned* key, int modifier)
                 flags &= ~0x100u;
                 *key = 0;
             }
-        } else if ((!(*key & 0x1000) && ascii >= 0x20 && ascii < 0x100) || *key == 0xD || *key == 8) {
+        } else if ((!(*key & 0x1000) && ascii >= 0x20 && ascii <= 0xFF) || *key == 0xD || *key == 8) {
             if (!(flags & 0x44) && vf_38(DAT_0087F770->FUN_0054F450(*key))) {
                 flags &= ~0x100u;
                 *key = 0;
             }
+        } else {
+            flags &= ~0x100u;
+            *key = 0;
         }
     }
     return ControlClass::Action(flags, key, 0);
