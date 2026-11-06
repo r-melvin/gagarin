@@ -2,43 +2,41 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x6BA580.
 
-#include "pcx_blit_surface_methods.h"
+#include "pcx_get_surface_methods.h"
+#include "wwlib/surface/surface_class.h"
 
 // FUNCTION: GAMEMD 0x6BA580
 //
 // Copy a source surface onto a destination at the rectangle's corner,
 // leaving pixels of the transparent colour alone. Both surfaces are locked
-// for the duration; a failed lock backs the other one out.
+// for the duration; a failed lock backs the other one out. Lock takes its
+// origin as a Point2D by value (the zero pair is built in registers).
 //
-// PARTIAL (1.0% by position, 100 instructions against retail's 105). The
-// lock pair with its back-out, the geometry reads, the halved stride, the
-// row walk and the keyed inner copy with its 16-bit compare (both pixel and
-// key are `unsigned short`, or the compare sign-extends through `movsx`)
-// are all present and in order. Retail materialises the four zero lock
-// arguments into registers before pushing them and keeps a separate
-// epilogue per exit, which is five instructions this build does not emit;
-// everything after the first of them is shifted, so the position score
-// understates the agreement badly. Recorded as the materialised
-// push-constant class.
-bool __stdcall PCX_BlitToSurface(const Rect_006BA580* area, Surface_006BA580* dst,
-                                 Surface_006BA580* src, unsigned short transparent)
+// PARTIAL (25.9%, was 1.0% on a private surface view with a pointer-to-member Lock(0, 0)). Written on the canonical
+// Surface / RectangleStruct / PCX: the Point2D argument reproduces the materialised zero pair and the signed pitch halve
+// needs an int local. Remaining delta (105 vs 108 instructions): retail copies the rectangle to a 16-byte local whose X/Y
+// stay in registers and spills Width/Height, uses a 0x14 frame with the destination in ESI and the source in EDI; this build
+// takes an extra callee-saved register (0x18 frame, EBX). Tried: scalar x/y/width/height (kept), whole-rectangle copy with
+// x/y locals, whole-rectangle copy with Width/Height written back, copy with direct member use.
+bool PCX::FUN_006BA580(const RectangleStruct* area, Surface* dst, Surface* src, unsigned short transparent)
 {
-    unsigned short* target = (unsigned short*)(dst->*dst->Vptr->Lock)(0, 0);
+    unsigned short* target = (unsigned short*)dst->Lock(Point2D(0, 0));
     if (target == 0) {
         return false;
     }
 
-    unsigned short* source = (unsigned short*)(src->*src->Vptr->Lock)(0, 0);
+    unsigned short* source = (unsigned short*)src->Lock(Point2D(0, 0));
     if (source == 0) {
-        (dst->*dst->Vptr->Unlock)();
+        dst->Unlock();
         return false;
     }
 
     int x = area->X;
     int y = area->Y;
-    int width = (src->*src->Vptr->GetWidth)();
-    int height = (src->*src->Vptr->GetHeight)();
-    int stride = (dst->*dst->Vptr->GetPitch)() / 2;
+    int width = src->GetWidth();
+    int height = src->GetHeight();
+    int pitch = dst->GetPitch();
+    int stride = pitch / 2;
 
     if (height > 0) {
         unsigned short* row = target + (y * stride + x);
@@ -62,7 +60,7 @@ bool __stdcall PCX_BlitToSurface(const Rect_006BA580* area, Surface_006BA580* ds
         } while (height != 0);
     }
 
-    (src->*src->Vptr->Unlock)();
-    (dst->*dst->Vptr->Unlock)();
+    src->Unlock();
+    dst->Unlock();
     return true;
 }

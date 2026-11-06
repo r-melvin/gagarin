@@ -28528,13 +28528,13 @@
  {
   "tu": "match/pcx_blit_surface_methods.cpp",
   "addr": "0x6BA580",
-  "sym": "?PCX_BlitToSurface@@YG_NPBURect_006BA580@@PAUSurface_006BA580@@1G@Z",
+  "sym": "?FUN_006BA580@PCX@@QAE_NPBURectangleStruct@@PAVSurface@@1G@Z",
   "len": "0xfa",
   "name": "PCX::BlitToSurface",
   "status": "partial",
-  "pct": 1.0,
-  "best_pct": 1.0,
-  "best_at": "cf203011"
+  "pct": 25.9,
+  "best_pct": 25.9,
+  "best_at": "0f5aedbf"
  },
  {
   "tu": "match/PlanMgr.cpp",
