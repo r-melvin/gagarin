@@ -83,6 +83,15 @@ GG_STATIC_ASSERT(sizeof(PhoneEntry_00631B20) == 0xB0);
 // GLOBAL: GAMEMD 0xA8DAC0 -- the default serial settings.
 extern SerialSettings_006956D0 DAT_00A8DAC0;
 
+// GLOBAL: GAMEMD 0xA8DABC -- the selected phone-book index.
+extern int DAT_00A8DABC;
+// GLOBAL: GAMEMD 0xA8DB38 -- the phone-book entries (PhoneEntry_00631B20; this name is the view
+// in w2_leaf_r16.cpp, which defines the symbol).
+struct Entry_00631300;
+extern Entry_00631300** DAT_00A8DB38;
+// GLOBAL: GAMEMD 0xA8DB44 -- the number of phone-book entries.
+extern int DAT_00A8DB44;
+
 // The phone-book dialog object.
 struct PhoneBookDialog_006316E0
 {
@@ -112,6 +121,8 @@ struct PhoneEditDialog_00630B90
     void FUN_00631060();
     // FUNCTION: GAMEMD 0x630B90
     bool FUN_00630B90();
+    // FUNCTION: GAMEMD 0x631500
+    void FUN_00631500();
 };
 GG_STATIC_ASSERT(offsetof(PhoneEditDialog_00630B90, Result) == 0x4);
 GG_STATIC_ASSERT(offsetof(PhoneEditDialog_00630B90, Changed) == 0x8);
@@ -140,6 +151,49 @@ bool PhoneEditDialog_00630B90::FUN_00630B90()
     return accepted;
 }
 
+// FUNCTION: GAMEMD 0x631500
+// PARTIAL: 99.0%. Same instructions; retail writes the table lookup with base and index the other way round.
+// Edit the selected entry on a copy, and on acceptance store it back, refill the list and reselect it.
+// The goto is retail's: the search hit at 0x6315C8 jumps past the -1 at 0x6315D2 to the store.
+void PhoneEditDialog_00630B90::FUN_00631500()
+{
+    HWND list = GetDlgItem(Window, 0x5E0);
+    if (list) {
+        DAT_00A8DABC = SendMessageA(list, 0x188, 0, 0);
+    }
+    if (DAT_00A8DABC > -1) {
+        PhoneEntry_00631B20* copy = new PhoneEntry_00631B20;
+        if (copy) {
+            PhoneEntry_00631B20* entry = (PhoneEntry_00631B20*)DAT_00A8DB38[DAT_00A8DABC];
+            *copy = *entry;
+            ShowWindow(Window, 0);
+            UpdateWindow(DAT_00B73550);
+            PhoneBookDialog_006316E0 dialog;
+            if (dialog.FUN_006316E0(copy) == 1) {
+                Changed = true;
+                *entry = *copy;
+                FUN_00631060();
+                int index = 0;
+                for (; index < DAT_00A8DB44; index++) {
+                    if ((PhoneEntry_00631B20*)DAT_00A8DB38[index] == entry) goto found;
+                }
+                index = -1;
+            found:
+                DAT_00A8DABC = index;
+                if (index > -1) {
+                    SendMessageA(list, 0x186, index, 0);
+                    HWND number = GetDlgItem(Window, 0x5E5);
+                    if (number) {
+                        SendMessageA(number, 0x4B4, 0, (LPARAM)entry->Number);
+                    }
+                }
+            }
+            ShowWindow(Window, 5);
+            delete copy;
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x6316E0
 // Run the phone-book dialog on an entry; no entry, no dialog. Returns whether it was accepted.
 bool PhoneBookDialog_006316E0::FUN_006316E0(PhoneEntry_00631B20* book)
@@ -159,8 +213,11 @@ bool PhoneBookDialog_006316E0::FUN_006316E0(PhoneEntry_00631B20* book)
         }
         FUN_00622720(Window);
     }
-    bool accepted = Result == 1;
-    return accepted;
+    if (Result == 1) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 // FUNCTION: GAMEMD 0x631760
