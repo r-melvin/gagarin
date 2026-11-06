@@ -989,12 +989,6 @@ void FUN_005C26D0()
 // houses, pick a random co-op spot and walk forward (wrapping) to a free one;
 // otherwise take the first free spot from the co-op count onwards. Mark it
 // taken and record the house on the scenario.
-//
-// PARTIAL (56.0%). cl loads the scenario pointer once before the branch;
-// retail loads it inside each arm (`MOV ECX,[0xA8B230]; MOV EAX,[ECX+0x11E4];
-// ADD ECX,0x218`). Swapping the arms gives 45.3%. Caching the spot count in a
-// local first reaches 90.7% (only the LEA/ADD colouring left) but is a value
-// copy with no semantic role, so it is not kept.
 void MPCooperative::FUN_005C2D00(int house, DynamicVectorClassLayout* spots, bool* taken)
 {
     int used = 0;
@@ -1015,8 +1009,8 @@ void MPCooperative::FUN_005C2D00(int house, DynamicVectorClassLayout* spots, boo
 
     int spot;
     if (used < humans) {
-        spot = MPCoopScenario_00A8B230->Random.FUN_0065C7E0(
-            0, MPCoopScenario_00A8B230->NumCoopHumanStartSpots - 1);
+        int coop = MPCoopScenario_00A8B230->NumCoopHumanStartSpots - 1;
+        spot = MPCoopScenario_00A8B230->Random.FUN_0065C7E0(0, coop);
         while (taken[spot]) {
             spot = (spot + 1) % MPCoopScenario_00A8B230->NumCoopHumanStartSpots;
         }

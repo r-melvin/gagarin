@@ -1980,9 +1980,11 @@ bool TechnoClass::FUN_006F3280()
 // current player, of a selectable type, and owned by the current player.
 bool TechnoClass::vf_25()
 {
-    return Health > 0 && !InLimbo && IsInPlayfield && vf_11() != 6
-        && DiscoveredByCurrentPlayer && vf_33()->Selectable
-        && Owner->IsControlledByCurrentPlayer();
+    if (Health > 0 && !InLimbo && IsInPlayfield && vf_11() != 6
+        && DiscoveredByCurrentPlayer && vf_33()->Selectable) {
+        return Owner->IsControlledByCurrentPlayer() ? true : false;
+    }
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x6F3330
@@ -2660,25 +2662,11 @@ void TechnoClass::vf_265()
     }
 
     int ammo = this->Ammo;
-    if (ammo >= typeAmmo) {
-        return;
+    if (ammo < typeAmmo && ReloadTimer.GetTimeLeft() == 0) {
+        this->Ammo = ammo + 1;
+        this->vf_73(2);
+        this->StartReloading();
     }
-
-    int timeLeft = this->ReloadTimer.TimeLeft;
-    int startTime = this->ReloadTimer.StartTime;
-    if (startTime != -1) {
-        int elapsed = CurrentFrame - startTime;
-        if (elapsed >= timeLeft) goto ready_to_reload;
-        timeLeft -= elapsed;
-    }
-    if (timeLeft != 0) {
-        return;
-    }
-
-ready_to_reload:
-    this->Ammo++;
-    this->vf_73(2);
-    this->StartReloading();
 }
 
 // FUNCTION: GAMEMD 0x6FB080

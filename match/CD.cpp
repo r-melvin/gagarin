@@ -605,14 +605,23 @@ bool __stdcall FUN_00479B00(HANDLE volume, bool prevent)
     return ok;
 }
 
+// FUNCTION: GAMEMD 0x479B50
+// Eject the media (IOCTL_STORAGE_EJECT_MEDIA); one attempt.
+bool __stdcall FUN_00479B50(HANDLE volume)
+{
+    DWORD returned;
+    bool ok = DeviceIoControl(volume, 0x2D4808, 0, 0, 0, 0, &returned, 0) != 0;
+    if (!ok)
+        FUN_004068E0("DeviceIoControl failed to eject media. Error %d - %s\n", GetLastError(), 0);
+    return ok;
+}
+
 // FUNCTION: GAMEMD 0x479BA0
 bool CDDriveControl::FUN_00479ba0(char drive)
 {
     bool ejected = false;
     char root[4];
     char name[8];
-    PreventRemoval removal;
-    DWORD returned;
     sprintf(root, "%c:\\", drive + 'A');
     DWORD access;
     switch (GetDriveTypeA(root))
@@ -634,34 +643,18 @@ bool CDDriveControl::FUN_00479ba0(char drive)
         FUN_004068E0("Unable to open drive %c: for ejection\n", drive + 'A');
         return false;
     }
-    for (int i = 0; i < 20; i++)
+    if (FUN_004799D0(device))
     {
-        if (DeviceIoControl(device, 0x90018, 0, 0, 0, 0, &returned, 0))
+        if (FUN_00479AB0(device))
         {
-            if (!DeviceIoControl(device, 0x90020, 0, 0, 0, 0, &returned, 0))
+            if (FUN_00479B00(device, false))
             {
-                FUN_004068E0("DeviceIoControl failed to dismount volume. Error %d - %s\n", GetLastError(), 0);
-            }
-            else
-            {
-                    removal.Prevent = 0;
-                if (!DeviceIoControl(device, 0x2D4804, &removal, 1, 0, 0, &returned, 0))
-                {
-                    FUN_004068E0("DeviceIoControl failed to prevent media removal. Error %d - %s\n", GetLastError(), 0);
-                }
-                else if (!DeviceIoControl(device, 0x2D4808, 0, 0, 0, 0, &returned, 0))
-                {
-                    FUN_004068E0("DeviceIoControl failed to eject media. Error %d - %s\n", GetLastError(), 0);
-                }
-                else
+                if (FUN_00479B50(device))
                 {
                     ejected = true;
                 }
             }
-            break;
         }
-        FUN_004068E0("DeviceIoControl failed to lock volume. Error %d - %s\n", GetLastError(), 0);
-        Sleep(500);
     }
     CloseHandle(device);
     return ejected;

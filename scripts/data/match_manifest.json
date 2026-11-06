@@ -59716,9 +59716,9 @@
   "len": "0x1BE",
   "name": "CDDriveControl::FUN_00479ba0",
   "status": "partial",
-  "pct": 56.6,
-  "best_pct": 56.6,
-  "best_at": "cf203011"
+  "pct": 99.4,
+  "best_pct": 99.4,
+  "best_at": "4ac5cd57"
  },
  {
   "tu": "match/CD.cpp",
@@ -72656,10 +72656,8 @@
   "sym": "?FUN_005C2D00@MPCooperative@@QAEXHPAUDynamicVectorClassLayout@@PA_N@Z",
   "len": "0xd2",
   "name": "MPCooperative::FUN_005C2D00",
-  "status": "partial",
-  "pct": 56.0,
-  "best_pct": 56.0,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/MPCoop.cpp",
@@ -76681,10 +76679,8 @@
   "sym": "?vf_25@TechnoClass@@UAE_NXZ",
   "len": "0x5c",
   "name": "TechnoClass::vf_25",
-  "status": "partial",
-  "pct": 63.6,
-  "best_pct": 63.6,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Techno.cpp",
@@ -105869,10 +105865,8 @@
   "sym": "?vf_44@TechnoTypeClass@@UAEHXZ",
   "len": "0x4a",
   "name": "TechnoTypeClass::vf_44",
-  "status": "partial",
-  "pct": 69.2,
-  "best_pct": 69.2,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Radar.cpp",
@@ -106381,10 +106375,8 @@
   "sym": "?vf_265@TechnoClass@@UAEXXZ",
   "len": "0x61",
   "name": "TechnoClass::vf_265",
-  "status": "partial",
-  "pct": 66.7,
-  "best_pct": 66.7,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Techno.cpp",
@@ -156213,6 +156205,15 @@
   "sym": "?FUN_006242B0@@YI_NH@Z",
   "len": "0x1ab",
   "name": "?FUN_006242B0@@YI_NH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/CD.cpp",
+  "addr": "0x479B50",
+  "sym": "?FUN_00479B50@@YG_NPAX@Z",
+  "len": "0x45",
+  "name": "?FUN_00479B50@@YG_NPAX@Z",
   "status": "matched",
   "pct": 100.0
  }

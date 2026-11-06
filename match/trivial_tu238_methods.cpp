@@ -87,9 +87,11 @@ SHPStruct* TechnoTypeClass::vf_38()
 // FUNCTION: GAMEMD 0x7120D0
 int TechnoTypeClass::vf_44()
 {
-    int quotient = vf_43();
-    quotient /= Strength / RulesInstance->RepairStep;
-    const int scaled = (int)(quotient * RulesInstance->RepairPercent);
+    int cost = vf_43();
+    RulesClass* rules = RulesInstance;
+    int steps = Strength / rules->RepairStep;
+    int quotient = cost / steps;
+    const int scaled = (int)(quotient * rules->RepairPercent);
     if (scaled <= 1) {
         return 1;
     }
