@@ -30439,9 +30439,9 @@
   "len": "0x1c4",
   "name": "TunnelLocomotionClass::ZAdjust (interface prefix)",
   "status": "partial",
-  "pct": 60.6,
-  "best_pct": 60.6,
-  "best_at": "cf203011"
+  "pct": 93.6,
+  "best_pct": 93.6,
+  "best_at": "4ac5cd57"
  },
  {
   "tu": "match/static_reset_004cb990.cpp",
@@ -49505,9 +49505,9 @@
   "len": "0x355",
   "name": "BuildingClass::vf_149",
   "status": "partial",
-  "pct": 69.0,
-  "best_pct": 69.0,
-  "best_at": "cf203011"
+  "pct": 69.4,
+  "best_pct": 69.4,
+  "best_at": "4ac5cd57"
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -68942,9 +68942,9 @@
   "len": "0x2e8",
   "name": "ObjectClass::vf_23",
   "status": "partial",
-  "pct": 68.9,
-  "best_pct": 68.9,
-  "best_at": "cf203011"
+  "pct": 71.6,
+  "best_pct": 71.6,
+  "best_at": "4ac5cd57"
  },
  {
   "tu": "match/object_class_slots_5f3e30.cpp",
@@ -73413,10 +73413,8 @@
   "sym": "?vf_1@MultiplayerSiegeDefenderTeam@@UAE_NH@Z",
   "len": "0x3f",
   "name": "MultiplayerSiegeDefenderTeam::vf_1",
-  "status": "partial",
-  "pct": 67.9,
-  "best_pct": 67.9,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/MPSiegeTeam.cpp",
@@ -94614,10 +94612,8 @@
   "sym": "?FUN_00635E90@PlanningNodeClass@@QAE?AURectangleStruct@@XZ",
   "len": "0x90",
   "name": "PlanningNodeClass::FUN_00635E90",
-  "status": "partial",
-  "pct": 50.0,
-  "best_pct": 50.0,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/PlanMgr.cpp",
@@ -96872,10 +96868,8 @@
   "sym": "?FUN_0069BC20@SessionClass@@QAEGH@Z",
   "len": "0x3f",
   "name": "SessionClass::FUN_0069BC20",
-  "status": "partial",
-  "pct": 65.4,
-  "best_pct": 65.4,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Session.cpp",

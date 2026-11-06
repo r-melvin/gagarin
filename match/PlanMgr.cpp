@@ -1222,18 +1222,19 @@ RectangleStruct PlanningNodeClass::FUN_00635DF0()
 }
 
 // FUNCTION: GAMEMD 0x635E90
-// The same rectangle grown by 4 twice (6339E0/634510 called).
+// The same rectangle grown by 4 twice (6339E0/634510 called); the first growth lands in its own copy before the second.
 RectangleStruct PlanningNodeClass::FUN_00635E90()
 {
     CoordStruct tmp;
     CoordStruct coord = *FUN_00633BC0(&tmp, *Members.Items[0]->Event);
     Point2D point;
     RectangleStruct rect;
-    RectangleStruct bounds = *FUN_00634510(&rect, 8, *FUN_006339E0(&point, coord));
-    bounds.X -= 4;
-    bounds.Y -= 4;
-    bounds.Width += 8;
-    bounds.Height += 8;
+    RectangleStruct first = *FUN_00634510(&rect, 8, *FUN_006339E0(&point, coord));
+    first.X -= 4;
+    first.Y -= 4;
+    first.Width += 8;
+    first.Height += 8;
+    RectangleStruct bounds = first;
     bounds.X -= 4;
     bounds.Y -= 4;
     bounds.Width += 8;

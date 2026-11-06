@@ -2576,7 +2576,8 @@ void SessionClass::FUN_0069BBF0(int index)
 // FUNCTION: GAMEMD 0x69BC20
 unsigned short SessionClass::FUN_0069BC20(int id)
 {
-    for (int index = 0; index < PlayerCount_00A8DA84; ++index) {
+    int count = PlayerCount_00A8DA84;
+    for (int index = 0; index < count; ++index) {
         if (Players_00A8DA78[index]->unknown_6F == id)
             return unknown_307A[index];
     }

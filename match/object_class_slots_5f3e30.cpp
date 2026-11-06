@@ -55,10 +55,11 @@ bool ObjectClass::FUN_005F3E50(const char* name)
 }
 
 // FUNCTION: GAMEMD 0x5F3E70
-// PARTIAL 68.9%: retail's frame is 0x10 (one 12-byte slot shared by every
-// coordinate temporary plus the damage word); cl gives the raised landing
-// coordinate its own slot (0x1C), which shifts every ESP offset, and
-// allocates EDI/EDX differently in the flaming-guy tail. Tried a flat
+// PARTIAL 71.6%: retail's frame is 0x10 (one 12-byte slot shared by every
+// coordinate temporary plus the damage word). The land-type probe's coordinate
+// lives in its own block so the raised landing coordinate reuses that slot, and
+// the flaming-guy timer is assigned before the rate (retail's store order).
+// cl still allocates EDI/EDX differently in the flaming-guy tail. Tried a flat
 // early-return layout (41.4%), retail's nesting (68.0%) and inline
 // temporaries for the timer and the raised coordinate (68.9%).
 // The per-frame update every object runs: ambient and custom sounds while on
@@ -123,11 +124,15 @@ void ObjectClass::vf_23()
                     AnimClass* anim = (AnimClass*)this;
                     if (((AnimTypeClass*)anim->Type)->IsFlamingGuy) {
                         anim->FlamingGuyExpire = 1;
-                        anim->Rate = 1;
                         anim->Timer = TimerStarted(1);
+                        anim->Rate = 1;
                         anim->Value = ((AnimTypeClass*)anim->Type)->RunningFrames * 8 + 1;
-                        CoordStruct coord = anim->Location;
-                        if (DAT_0087F7E8.FUN_00565730(&coord)->LandType == 2) {
+                        int landType;
+                        {
+                            CoordStruct coord = anim->Location;
+                            landType = DAT_0087F7E8.FUN_00565730(&coord)->LandType;
+                        }
+                        if (landType == 2) {
                             new AnimClass(const_cast<AnimTypeClass*>(DAT_008871E0->list_0BC0.Items[0]), CoordRaised(anim->Location, 3), 0, 1, 0x600, 0, false);
                         }
                     }

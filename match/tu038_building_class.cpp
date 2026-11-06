@@ -4872,10 +4872,10 @@ int BuildingClass::vf_149()
                     int left = GateTimer.Timer.TimeLeft;
                     if (GateTimer.Timer.StartTime != -1) {
                         int elapsed = CurrentFrame - GateTimer.Timer.StartTime;
-                        if (elapsed >= left) {
-                            left = 0;
+                        if (elapsed < left) {
+                            left -= elapsed;
                         } else {
-                            left = left - elapsed;
+                            left = 0;
                         }
                     }
                     if ((double)(duration - left) / duration != 1.0) {

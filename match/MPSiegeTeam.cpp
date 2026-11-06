@@ -59,14 +59,10 @@ MultiplayerSiegeDefenderTeam::~MultiplayerSiegeDefenderTeam()
 // FUNCTION: GAMEMD 0x5CAE70
 //
 // A player may join the defenders only while no other player is on team 1.
-//
-// PARTIAL (67.9%; mnemonic multiset identical). Retail keeps the player count
-// in EDX and walks the item pointer in ESI; VC6 here picks the opposite pair.
-// Tried: the operand order of the index test (64.3%), a `continue` on the
-// caller's own index (64.3%); a cached count/items local would be an alias.
 bool MultiplayerSiegeDefenderTeam::vf_1(int playerIndex)
 {
-    for (int i = 0; i < PlayerCount_00A8DA84; i++) {
+    int count = PlayerCount_00A8DA84;
+    for (int i = 0; i < count; i++) {
         if (playerIndex != i && Players_00A8DA78[i]->unknown_6B == 1) {
             return false;
         }

@@ -96,16 +96,16 @@ extern const double DAT_007E3550;
 extern "C" int __stdcall FUN_0055ABA0(TunnelLocomotionInterface_00729E50* resource);
 
 // FUNCTION: GAMEMD 0x729E50
-// PARTIAL (second look): 71 exact + 15 reloc of 151 instructions (57.0%)
-// over the full 0x1C4-byte retail span, which ends in the five-entry jump
+// PARTIAL (93.6%): the full 0x1C4-byte retail span ends in the five-entry jump
 // table at 0x72A000; cl's section carries the same table after the code. The switch cases and their values are recovered
-// from the binary table. Three corrections moved this from 22.1%: the mode-6
+// from the binary table. Case 2 assigns `yDelta` in both arms and returns it once (retail's
+// `add edi,[mem]` / `MOV EDI,EAX` before the shared epilogue). Three corrections moved this from 22.1%: the mode-6
 // and mode-2 arms add the vertical delta (`yDelta`, kept in the dead parameter
 // home), not `coord.Z`; the facing read is the by-value `Current()` (its hidden
 // temporary shares retail's [ESP+0x14] slot with the progress divisor, giving
 // retail's `SUB ESP,0x28`); and the elapsed test compares against the local copy.
-// Remaining delta: retail names the vertical delta EDI and the divisor EBX where
-// cl swaps them, and the elapsed-progress local is EAX in retail, ECX here.
+// Remaining delta: the elapsed-progress local is EAX in retail, ECX here (the
+// elapsed frame count is the other way round).
 extern "C" int __stdcall FUN_00729E50(TunnelLocomotionInterface_00729E50* resource)
 {
     Coord_00729E50 coord = resource->Base->Location;
@@ -148,15 +148,13 @@ extern "C" int __stdcall FUN_00729E50(TunnelLocomotionInterface_00729E50* resour
             resource->At_34 = 1;
         }
         if (direction > 0x46 && direction < 0x8C) {
-            return DAT_00844A9C + yDelta;
+            yDelta += DAT_00844A9C;
+        } else {
+            yDelta = (int)(DAT_00844A9C * progress + yDelta);
         }
-        return (int)(DAT_00844A9C * progress + yDelta);
+        return yDelta;
     case 3:
-    {
-        int result = yDelta;
-        result += DAT_00844A9C;
-        return result;
-    }
+        return DAT_00844A9C + yDelta;
     case 5:
     {
         int result = DAT_00844A98;
