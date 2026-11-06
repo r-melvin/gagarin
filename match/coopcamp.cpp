@@ -528,6 +528,30 @@ bool CoopCampaignClass::FUN_0049D390(char* map)
 }
 
 
+// GLOBAL: GAMEMD 0xA83C98 -- HouseTypeClass::Array.
+extern DynamicVectorClass<HouseTypeClass*> HouseTypeArray;
+
+// FUNCTION: GAMEMD 0x49D9F0
+// Resolve a country by its display name or INI ID and answer its position in the house-type array. The
+// "<random>" sentinel answers -2, an unknown name -1.
+int FUN_0049D9F0(const char* name)
+{
+    if (_stricmp(name, "<random>") == 0)
+        return -2;
+
+    if (name != 0) {
+        for (int i = 0; i < HouseTypeArray.Count; i++) {
+            HouseTypeClass* type = HouseTypeArray.Items[i];
+
+            if (_stricmp(type->Name, name) == 0 || _stricmp(type->ID, name) == 0)
+                return i;
+        }
+    }
+
+    return -1;
+}
+
+
 // TEMPLATE: GAMEMD 0x49E8E0
 // ??0?$List@PAUINISection@INIClass@@@@QAE@XZ
 // VC6 cannot instantiate a constructor alone; only its visible body is emitted.

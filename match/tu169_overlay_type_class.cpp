@@ -423,6 +423,4 @@ extern MapObjCell OverlayZeroCell;
 extern const double DAT_007EF5C0 = 60.0;
 // GLOBAL: GAMEMD 0x818668
 extern const char OverlayDemandLoadFormat[] = "Demand loading image for %s\n";
-// GLOBAL: GAMEMD 0x887180
-MapObjIniView MapObjArtIni;
 // END defined globals

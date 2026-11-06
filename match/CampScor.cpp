@@ -631,6 +631,48 @@ void FUN_0046F8F0(HWND_ dialog)
     }
 }
 
+// GLOBAL: GAMEMD 0xAC4848 -- the cache of loaded PCX pictures.
+extern PCX DAT_00AC4848;
+// GLOBAL: GAMEMD 0x81B1E0 -- the picture shown for the first player.
+extern const char* DAT_0081B1E0;
+// GLOBAL: GAMEMD 0x81B1E4 -- the picture shown for the second player.
+extern const char* DAT_0081B1E4;
+// FUNCTION: GAMEMD 0x603D30 (decl; reloc) -- put a picture on a control.
+void FUN_00603D30(HWND_ control, void* surface);
+
+// FUNCTION: GAMEMD 0x46FA20
+//
+// Put the picture of each of the two seat colours on the seat-one and seat-two controls of the dialog,
+// or none when that seat has no player.
+void FUN_0046FA20(HWND_ dialog)
+{
+    void* first = DAT_00AC4848.GetSurface(DAT_0081B1E0, 0);
+    void* second = DAT_00AC4848.GetSurface(DAT_0081B1E4, 0);
+    for (int i = 0; i < 8; i++) {
+        Entry_0046F810* entry = DAT_00A8DA90[i];
+        if (entry && entry->FUN_005E93F0()) {
+            int id;
+            if (i == 0)
+                id = 0x6d2;
+            else if (i == 1)
+                id = 0x6d3;
+            else
+                continue;
+            HWND_ item = GetDlgItem(dialog, id);
+            if (item != 0) {
+                if (DAT_0089E000[i]) {
+                    if (i == 0)
+                        FUN_00603D30(item, first);
+                    else
+                        FUN_00603D30(item, second);
+                } else {
+                    FUN_00603D30(item, 0);
+                }
+            }
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x46FAC0
 void FUN_0046FAC0(HWND_ dialog)
 {

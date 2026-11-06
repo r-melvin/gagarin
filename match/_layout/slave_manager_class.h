@@ -77,6 +77,8 @@ public:
     void GuardAllSlaves();
     // FUNCTION: GAMEMD 0x6B0A20 -- detaches a lost slave and restarts its timer.
     void LostSlave(SlaveObject* slave);
+    // FUNCTION: GAMEMD 0x6B0300 -- a free cell near the owner for its footprint; RET 8 (hidden result, the cell to stay close to by value).
+    Cell FUN_006B0300(CellStruct closeTo);
     // FUNCTION: GAMEMD 0x6B0750 (decl; reloc) -- the cell north of the owner's far corner when it is the building standing there; RET 4.
     Cell FUN_006B0750();
     // FUNCTION: GAMEMD 0x6B0A90 -- LostSlave by node index.

@@ -10,6 +10,7 @@
 //   FUNCTION: GAMEMD 0x6AF4A0  SlaveManagerClass::~SlaveManagerClass
 //   FUNCTION: GAMEMD 0x6AF5F0  SlaveManagerClass::vf_23
 //   FUNCTION: GAMEMD 0x6AF650  SlaveManagerClass::CreateSlave
+//   FUNCTION: GAMEMD 0x6B0300  SlaveManagerClass::FUN_006B0300
 //   FUNCTION: GAMEMD 0x6B0490  SlaveManagerClass::GuardAllSlaves
 //   FUNCTION: GAMEMD 0x6B0750  SlaveManagerClass::FUN_006B0750
 //   FUNCTION: GAMEMD 0x6B0A20  SlaveManagerClass::LostSlave
@@ -139,6 +140,46 @@ void SlaveManagerClass::CreateSlave(SlaveControl* Control)
         CDTimerClass timer(0);
         Control->RespawnTimer = timer;
     }
+}
+
+// FUNCTION: GAMEMD 0x6B0300
+// Search near the owner (the argument cell is the one to stay close to) for a free cell sized for its footprint (a
+// building's foundation, else what it deploys into, else 1x1). The invalid
+// cell comes back unchanged; otherwise a footprint wider or taller than two
+// cells moves the result one cell east or south.
+//
+// PARTIAL: 87.1% -- same instruction multiset; retail's frame is 0xC and ours 0x10 (one stack slot fewer in retail), which shifts the local offsets.
+Cell SlaveManagerClass::FUN_006B0300(CellStruct closeTo)
+{
+    int width;
+    int height;
+    if (this->Owner && this->Owner->vf_11() == 6) {
+        width = ((BuildingClass*)this->Owner->KindCast_00459F40(6))->Type->GetFoundationWidth();
+        height = ((BuildingClass*)this->Owner->KindCast_00459F40(6))->Type->GetFoundationHeight(false);
+    } else if (this->Owner->vf_33()->DeploysInto) {
+        width = this->Owner->vf_33()->DeploysInto->GetFoundationWidth();
+        height = this->Owner->vf_33()->DeploysInto->GetFoundationHeight(false);
+    } else {
+        width = 1;
+        height = 1;
+    }
+    CellStruct result;
+    CellStruct position;
+    result = *DAT_0087F7E8.FUN_0056DC20(&result, position, 1, DAT_0087F7E8.FUN_0056D230(this->Owner->vf_110(), 0, false), 0, false,
+                                                   width, height, true, false, false, false, closeTo, false, true);
+    if (result.X == DAT_00B0B5B8.X && result.Y == DAT_00B0B5B8.Y)
+        return DAT_00B0B5B8;
+    if (width > 2) {
+        closeTo.X = result.X + 1;
+        closeTo.Y = result.Y;
+        result = closeTo;
+    }
+    if (height > 2) {
+        closeTo.X = result.X;
+        closeTo.Y = result.Y + 1;
+        result = closeTo;
+    }
+    return result;
 }
 
 // FUNCTION: GAMEMD 0x6B0490

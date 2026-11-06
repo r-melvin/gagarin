@@ -83369,47 +83369,47 @@
  {
   "tu": "match/trivial_tu008_methods.cpp",
   "addr": "0x40E050",
-  "sym": "?FUN_0040E050@@YIXHH@Z",
+  "sym": "_$E2",
   "len": "0xa",
-  "name": "FUN_0040E050",
+  "name": "_$E2",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/trivial_tu008_methods.cpp",
   "addr": "0x40E100",
-  "sym": "?FUN_0040E100@@YIXHH@Z",
+  "sym": "_$E7",
   "len": "0xa",
-  "name": "FUN_0040E100",
+  "name": "_$E7",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/trivial_tu008_methods.cpp",
   "addr": "0x40E1B0",
-  "sym": "?FUN_0040E1B0@@YIXHH@Z",
+  "sym": "_$E12",
   "len": "0xa",
-  "name": "FUN_0040E1B0",
+  "name": "_$E12",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/trivial_tu008_methods.cpp",
   "addr": "0x40E260",
-  "sym": "?FUN_0040E260@@YIXHH@Z",
+  "sym": "_$E17",
   "len": "0xa",
-  "name": "FUN_0040E260",
+  "name": "_$E17",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/trivial_tu008_methods.cpp",
   "addr": "0x40E310",
-  "sym": "?FUN_0040E310@@YIXHH@Z",
+  "sym": "_$E22",
   "len": "0xa",
-  "name": "FUN_0040E310",
+  "name": "_$E22",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/header_init_0040e5b0.cpp",
@@ -155778,5 +155778,79 @@
   "name": "FUN_006EC130",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/trivial_tu008_methods.cpp",
+  "addr": "0x40DFB0",
+  "sym": "_$E4",
+  "len": "0x95",
+  "name": "_$E4",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/trivial_tu008_methods.cpp",
+  "addr": "0x40E060",
+  "sym": "_$E9",
+  "len": "0x95",
+  "name": "_$E9",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/trivial_tu008_methods.cpp",
+  "addr": "0x40E110",
+  "sym": "_$E14",
+  "len": "0x95",
+  "name": "_$E14",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/trivial_tu008_methods.cpp",
+  "addr": "0x40E1C0",
+  "sym": "_$E19",
+  "len": "0x95",
+  "name": "_$E19",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/trivial_tu008_methods.cpp",
+  "addr": "0x40E270",
+  "sym": "_$E24",
+  "len": "0x95",
+  "name": "_$E24",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/CampScor.cpp",
+  "addr": "0x46FA20",
+  "sym": "?FUN_0046FA20@@YIXPAUHWND__@@@Z",
+  "len": "0x98",
+  "name": "?FUN_0046FA20@@YIXPAUHWND__@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/coopcamp.cpp",
+  "addr": "0x49D9F0",
+  "sym": "?FUN_0049D9F0@@YIHPBD@Z",
+  "len": "0x70",
+  "name": "?FUN_0049D9F0@@YIHPBD@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/slave_manager_r19_5.cpp",
+  "addr": "0x6B0300",
+  "sym": "?FUN_006B0300@SlaveManagerClass@@QAE?AVCell@@UCellStruct@@@Z",
+  "len": "0x18a",
+  "name": "SlaveManagerClass::FUN_006B0300",
+  "status": "partial",
+  "pct": 87.1,
+  "best_pct": 87.1,
+  "best_at": "773de7d3"
  }
 ]
