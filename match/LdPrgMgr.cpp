@@ -50,12 +50,10 @@ GG_STATIC_ASSERT(sizeof(DAT_00ABC998) == 8);
 
 
 // GLOBAL: GAMEMD 0xABC9BC
-extern int DAT_00ABC9BC;
+extern LoadProgressMgr* DAT_00ABC9BC;
 
-// FUNCTION: GAMEMD 0x554370 (decl; reloc)
-void FUN_00554370(int, int);
 // LIBRARY: GAMEMD 0x7C8B3D (decl; reloc)
-void __cdecl FUN_007C8B3D(int);
+extern "C" void __cdecl FUN_007C8B3D(void* block);
 
 
 // FUNCTION: GAMEMD 0x552A40
@@ -65,20 +63,20 @@ void FUN_00552A40()
     if (DAT_00ABC9BC == 0)
     {
         LoadProgressMgr* mgr = new LoadProgressMgr;
-        DAT_00ABC9BC = (int)mgr;
+        DAT_00ABC9BC = mgr;
     }
 }
 
 // FUNCTION: GAMEMD 0x552AA0
-void FUN_00552AA0(int a1, int a2);
+void FUN_00552AA0();
 
 // FUNCTION: GAMEMD 0x552AA0
 // Branching.
-void FUN_00552AA0(int a1, int a2)
+void FUN_00552AA0()
 {
     if (DAT_00ABC9BC != 0)
     {
-        FUN_00554370(DAT_00ABC9BC, a2);
+        DAT_00ABC9BC->FUN_00554370();
         FUN_007C8B3D(DAT_00ABC9BC);
         DAT_00ABC9BC = 0;
     }
@@ -294,7 +292,7 @@ bool LoadProgressMgr::Notice(int id, int arg)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xABC9BC
-int DAT_00ABC9BC;
+LoadProgressMgr* DAT_00ABC9BC;
 // GLOBAL: GAMEMD 0x7F5BE0
 int DAT_007F5BE0 = 640;
 // GLOBAL: GAMEMD 0x7F5BE4

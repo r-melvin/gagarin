@@ -95603,7 +95603,7 @@
  {
   "tu": "match/LdPrgMgr.cpp",
   "addr": "0x552AA0",
-  "sym": "?FUN_00552AA0@@YIXHH@Z",
+  "sym": "?FUN_00552AA0@@YIXXZ",
   "len": "0x28",
   "name": "FUN_00552AA0",
   "status": "matched",
