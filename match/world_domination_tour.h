@@ -332,4 +332,9 @@ GG_STATIC_ASSERT(offsetof(CampaignProperties, Member_14) == 0x14);
 
 }  // namespace WorldDominationTour
 
+// FUNCTION: GAMEMD 0x764B30 (decl; reloc) -- the Campaign factory (wdt_campaign_factory.cpp).
+rc_ptr<WorldDominationTour::Campaign> FUN_00764B30(unsigned int first, const rc_ptr_base& source);
+// FUNCTION: GAMEMD 0x76BE90 (decl; reloc) -- the CampaignProperties factory (WDTProps.cpp).
+rc_ptr<WorldDominationTour::CampaignProperties> FUN_0076BE90(const rc_ptr<WDTState>& state);
+
 #endif

@@ -125,7 +125,8 @@ extern int DAT_00B72F48;
 // GLOBAL: GAMEMD 0xB73570
 extern int DAT_00B73570;
 // GLOBAL: GAMEMD 0xB77F68
-extern int DAT_00B77F68;
+namespace WorldDominationTour { class Campaign; }
+extern rc_ptr<WorldDominationTour::Campaign> DAT_00B77F68;
 // GLOBAL: GAMEMD 0xB780A0
 extern int DAT_00B780A0;
 

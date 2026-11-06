@@ -8,15 +8,19 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "wdt_rc_ptr_base.h"
+
+class WDTState;
 
 // GLOBAL: GAMEMD 0xB77F54
 extern int DAT_00B77F54;
 // GLOBAL: GAMEMD 0xB77F60
 extern int DAT_00B77F60;
 // GLOBAL: GAMEMD 0xB77F70
-extern char DAT_00B77F70[];
+extern rc_ptr<WDTState> DAT_00B77F70;
 // GLOBAL: GAMEMD 0xB77F78
-extern char DAT_00B77F78[];
+namespace WorldDominationTour { class Campaign; }
+extern rc_ptr<WorldDominationTour::Campaign> DAT_00B77F78;
 
 
 // FUNCTION: GAMEMD 0x7B0290

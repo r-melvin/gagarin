@@ -8,6 +8,8 @@
 
 #include "trivial_tu289_methods.h"
 #include "string_class.h"
+#include "world_domination_tour.h"
+#include "wonline.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -107,11 +109,30 @@ int FUN_007B0210()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x7B0220
+// Publishes the state handle and the campaign built over it into the two
+// file-scope handles at 0xB77F58 / 0xB77F68.
+void __fastcall FUN_007B0220(const rc_ptr<WDTState>& state)
+{
+    DAT_00B77F58 = state;
+    DAT_00B77F68 = FUN_00764B30((unsigned int)&DAT_00B73E40, FUN_0076BE90(state));
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x7B0290
 // Returns the address of a global.
 void* __cdecl FUN_007B0290()
 {
-    return DAT_00B77F70;
+    return &DAT_00B77F70;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x7B02A0
+// The same over the second pair of handles, 0xB77F70 / 0xB77F78.
+void __fastcall FUN_007B02A0(const rc_ptr<WDTState>& state)
+{
+    DAT_00B77F70 = state;
+    DAT_00B77F78 = FUN_00764B30((unsigned int)&DAT_00B73E40, FUN_0076BE90(state));
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -142,7 +163,7 @@ int FUN_007B0370()
 // Returns the address of a global.
 void* __cdecl FUN_007B0380()
 {
-    return DAT_00B77F78;
+    return &DAT_00B77F78;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -154,6 +175,4 @@ bool __cdecl FUN_007B0430()
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xB77F68
-extern int DAT_00B77F68;
 // END defined globals

@@ -146,10 +146,15 @@ public:
     bool FUN_00479ba0(char drive);
     bool FUN_00479d60(char drive);
     bool FUN_00479ef0(char drive);
-    bool FUN_0047a080(char drive);
+    void FUN_0047a080(char drive);
+    bool FUN_0047a1b0(char drive);
+    bool FUN_0047a2d0(char drive);
     bool FUN_0047a3f0(HANDLE device, char drive);
+    bool FUN_0047a560(HANDLE device, char drive);
+    static bool __stdcall FUN_0047a620(HANDLE device, char drive);
     static bool __stdcall FUN_0047a6f0(CDDriveControl* self, HANDLE device,
                                        BYTE drive, BYTE level, short permissions);
+    static bool __stdcall FUN_0047a920(CDDriveControl* self, HANDLE device, char drive);
 };
 
 #include <stddef.h>
@@ -171,6 +176,7 @@ GG_STATIC_ASSERT(offsetof(FindData, FileName) == 0x2C);
 GG_STATIC_ASSERT(sizeof(FindData) == 0x140);   // frame 0x244 = 0x104 path + 0x140
 
 extern "C" __declspec(dllimport) HANDLE __stdcall FindFirstFileA(char const* name, FindData* data);
+extern "C" __declspec(dllimport) int __stdcall FindNextFileA(HANDLE handle, FindData* data);
 extern "C" __declspec(dllimport) int __stdcall FindClose(HANDLE handle);
 
 // GLOBAL: GAMEMD 0x81C8EC -- open find handle, -1 when none.
@@ -772,6 +778,102 @@ bool CDDriveControl::FUN_00479ef0(char drive)
     return true;
 }
 
+// FUNCTION: GAMEMD 0x47A080
+void CDDriveControl::FUN_0047a080(char drive)
+{
+    drive++;
+    HANDLE device = CreateFileA("\\\\.\\vwin32", 0, 0, 0, 0, 0x4000000, 0);
+    if (!FUN_0047a6f0(this, device, drive, 0, 0))
+    {
+        FUN_004068E0("Unable to lock volume %c:\n", drive + '@');
+        return;
+    }
+    if (!FUN_0047a3f0(device, drive))
+    {
+        FUN_004068E0("Could not unlock media from drive %c:\n", drive + '@');
+        FUN_0047a920(this, device, drive);
+        return;
+    }
+    DiocRegisters regs = {0};
+    DWORD returned;
+    regs.EAX = 0x440D;
+    regs.EBX = drive;
+    regs.ECX = 0x849;
+    bool ok = DeviceIoControl(device, 1, &regs, sizeof(regs), &regs, sizeof(regs), &returned, 0) != 0;
+    if (!ok)
+    {
+        FUN_004068E0("DeviceIoControl failed to perform DOS IO control function. Error %d - %s\n", GetLastError(), 0);
+    }
+    if (!ok || (regs.Flags & 1))
+    {
+        FUN_004068E0("Could not eject media from drive %c:\n", drive + '@');
+    }
+    FUN_0047a920(this, device, drive);
+    CloseHandle(device);
+}
+
+// FUNCTION: GAMEMD 0x47A1B0
+bool CDDriveControl::FUN_0047a1b0(char drive)
+{
+    FUN_004068E0("CDControlClass::Lock_CD_Drive_95\n");
+    bool result = true;
+    FUN_004068E0("Preventing ejection on CD drive %c\n", drive + 'A');
+    drive++;
+    HANDLE device = CreateFileA("\\\\.\\vwin32", 0, 0, 0, 0, 0x4000000, 0);
+    FUN_004068E0("About to lock logical volume to enable exclusive access\n");
+    if (!FUN_0047a6f0(this, device, drive, 0, 0))
+    {
+        FUN_004068E0("Unable to lock volume %c:\n", drive + '@');
+        return false;
+    }
+    FUN_004068E0("Volume locked OK\n");
+    FUN_004068E0("About to prevent CD tray ejection\n");
+    if (!FUN_0047a560(device, drive))
+    {
+        FUN_004068E0("Could not lock CD tray in drive %c:\n", drive + '@');
+        result = false;
+    }
+    else
+    {
+        FUN_004068E0("CD tray ejection disabled OK\n");
+    }
+    FUN_0047a920(this, device, drive);
+    CloseHandle(device);
+    FUN_004068E0("CDControlClass::Lock_CD_Drive_95 returning %s\n", result ? "true" : "false");
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x47A2D0
+bool CDDriveControl::FUN_0047a2d0(char drive)
+{
+    FUN_004068E0("CDControlClass::Unlock_CD_Drive_95\n");
+    bool result = true;
+    FUN_004068E0("Allowing ejection on CD drive %c\n", drive + 'A');
+    drive++;
+    HANDLE device = CreateFileA("\\\\.\\vwin32", 0, 0, 0, 0, 0x4000000, 0);
+    FUN_004068E0("About to lock logical volume to enable exclusive access\n");
+    if (!FUN_0047a6f0(this, device, drive, 0, 0))
+    {
+        FUN_004068E0("Unable to lock volume %c:\n", drive + '@');
+        return false;
+    }
+    FUN_004068E0("Volume locked OK\n");
+    FUN_004068E0("About to allow CD tray ejection\n");
+    if (!FUN_0047a3f0(device, drive))
+    {
+        FUN_004068E0("Could not unlock CD tray in drive %c:\n", drive + '@');
+        result = false;
+    }
+    else
+    {
+        FUN_004068E0("CD tray ejection enabled OK\n");
+    }
+    FUN_0047a920(this, device, drive);
+    CloseHandle(device);
+    FUN_004068E0("CDControlClass::Unlock_CD_Drive_95 returning %s\n", result ? "true" : "false");
+    return result;
+}
+
 // FUNCTION: GAMEMD 0x47A3F0
 bool CDDriveControl::FUN_0047a3f0(HANDLE device, char drive)
 {
@@ -829,6 +931,60 @@ bool CDDriveControl::FUN_0047a3f0(HANDLE device, char drive)
     return result;
 }
 
+// FUNCTION: GAMEMD 0x47A560
+bool CDDriveControl::FUN_0047a560(HANDLE device, char drive)
+{
+    LockParams params;
+    DiocRegisters regs = {0};
+    DWORD returned;
+
+    params.Operation = 0;
+    params.NumLocks = 0;
+    FUN_0047a3f0(device, drive);
+    regs.EBX = drive;
+    regs.EDX = (DWORD)&params;
+    params.Operation = 0;
+    regs.EAX = 0x440D;
+    regs.ECX = 0x848;
+    bool ok = DeviceIoControl(device, 1, &regs, sizeof(regs), &regs, sizeof(regs), &returned, 0) != 0;
+    if (!ok)
+    {
+        FUN_004068E0("DeviceIoControl failed to perform DOS IO control function. Error %d - %s\n", GetLastError(), 0);
+    }
+    if (ok && !(regs.Flags & 1))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+// FUNCTION: GAMEMD 0x47A620
+bool __stdcall CDDriveControl::FUN_0047a620(HANDLE device, char drive)
+{
+    DiocRegisters regs = {0};
+    DWORD returned;
+
+    regs.EBX = drive;
+    regs.EAX = 0x440D;
+    regs.ECX = 0x849;
+    bool ok = DeviceIoControl(device, 1, &regs, sizeof(regs), &regs, sizeof(regs), &returned, 0) != 0;
+    if (!ok)
+    {
+        FUN_004068E0("DeviceIoControl failed to perform DOS IO control function. Error %d - %s\n", GetLastError(), 0);
+    }
+    if (ok && !(regs.Flags & 1))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 // FUNCTION: GAMEMD 0x47A6F0
 bool __stdcall CDDriveControl::FUN_0047a6f0(CDDriveControl* self, HANDLE device,
                                             BYTE drive, BYTE level, short permissions)
@@ -878,6 +1034,37 @@ bool __stdcall CDDriveControl::FUN_0047a6f0(CDDriveControl* self, HANDLE device,
         Sleep(1000);
     } while (retries > 0);
     return false;
+}
+
+// FUNCTION: GAMEMD 0x47A920
+bool __stdcall CDDriveControl::FUN_0047a920(CDDriveControl* self, HANDLE device, char drive)
+{
+    DiocRegisters regs = {0};
+    DWORD returned;
+    BYTE category = 0;
+    bool result = false;
+    do
+    {
+        category = category ? 0x08 : 0x48;
+        regs.ECX = MAKEWORD(0x6A, category);
+        regs.EAX = 0x440D;
+        regs.EBX = drive;
+        bool ok = DeviceIoControl(device, 1, &regs, sizeof(regs), &regs, sizeof(regs), &returned, 0) != 0;
+        if (!ok)
+        {
+            FUN_004068E0("DeviceIoControl failed to perform DOS IO control function. Error %d - %s\n", GetLastError(), 0);
+        }
+        if (ok && !(regs.Flags & 1))
+        {
+            result = true;
+            break;
+        }
+        else
+        {
+            result = false;
+        }
+    } while (category != 0x08);
+    return result;
 }
 
 // FUNCTION: GAMEMD 0x47A9D0
@@ -1009,6 +1196,23 @@ bool FUN_0047af70(char* name)
             return true;
         }
     }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x47B0C0
+bool FUN_0047b0c0(char* name)
+{
+    FindData data;
+    if (name == 0)
+    {
+        return false;
+    }
+    if (DAT_0081C8EC != (HANDLE)-1 && FindNextFileA(DAT_0081C8EC, &data) == 1)
+    {
+        strcpy(name, data.FileName);
+        return true;
+    }
+    name[0] = 0;
     return false;
 }
 

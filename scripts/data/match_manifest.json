@@ -59771,10 +59771,10 @@
   "tu": "match/CD.cpp",
   "addr": "0x47A6F0",
   "sym": "?FUN_0047a6f0@CDDriveControl@@SG_NPAV1@PAXEEF@Z",
-  "len": "0x224",
+  "len": "0x15a",
   "name": "CDDriveControl::FUN_0047a6f0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/CD.cpp",
@@ -155091,6 +155091,87 @@
   "sym": "?FUN_006CC080@SuperClass@@QAEX_N@Z",
   "len": "0x122",
   "name": "SuperClass::FUN_006CC080",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/CD.cpp",
+  "addr": "0x47A080",
+  "sym": "?FUN_0047a080@CDDriveControl@@QAEXD@Z",
+  "len": "0x12b",
+  "name": "CDDriveControl::FUN_0047a080",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/CD.cpp",
+  "addr": "0x47A1B0",
+  "sym": "?FUN_0047a1b0@CDDriveControl@@QAE_ND@Z",
+  "len": "0x111",
+  "name": "CDDriveControl::FUN_0047a1b0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/CD.cpp",
+  "addr": "0x47A2D0",
+  "sym": "?FUN_0047a2d0@CDDriveControl@@QAE_ND@Z",
+  "len": "0x111",
+  "name": "CDDriveControl::FUN_0047a2d0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/CD.cpp",
+  "addr": "0x47A560",
+  "sym": "?FUN_0047a560@CDDriveControl@@QAE_NPAXD@Z",
+  "len": "0xb1",
+  "name": "CDDriveControl::FUN_0047a560",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/CD.cpp",
+  "addr": "0x47A620",
+  "sym": "?FUN_0047a620@CDDriveControl@@SG_NPAXD@Z",
+  "len": "0x83",
+  "name": "CDDriveControl::FUN_0047a620",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/CD.cpp",
+  "addr": "0x47A920",
+  "sym": "?FUN_0047a920@CDDriveControl@@SG_NPAV1@PAXD@Z",
+  "len": "0xa1",
+  "name": "CDDriveControl::FUN_0047a920",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/CD.cpp",
+  "addr": "0x47B0C0",
+  "sym": "?FUN_0047b0c0@@YI_NPAD@Z",
+  "len": "0x64",
+  "name": "?FUN_0047b0c0@@YI_NPAD@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/WorldDom.cpp",
+  "addr": "0x7B0220",
+  "sym": "?FUN_007B0220@@YIXABV?$rc_ptr@VWDTState@@@@@Z",
+  "len": "0x63",
+  "name": "?FUN_007B0220@@YIXABV?$rc_ptr@VWDTState@@@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/WorldDom.cpp",
+  "addr": "0x7B02A0",
+  "sym": "?FUN_007B02A0@@YIXABV?$rc_ptr@VWDTState@@@@@Z",
+  "len": "0x63",
+  "name": "?FUN_007B02A0@@YIXABV?$rc_ptr@VWDTState@@@@@Z",
   "status": "matched",
   "pct": 100.0
  }
