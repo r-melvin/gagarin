@@ -3788,110 +3788,59 @@ bool FUN_00609CF0(GG_HWND hParent, GG_HWND hWnd)
     return false;
 }
 
-// Unclaimed (below partial bar), GAMEMD 0x609E20  FUN_00609E20 (__fastcall)
+// FUNCTION: GAMEMD 0x00609E20  FUN_00609E20
 // Whether the control id is one of the buttons that belongs to the dialog
 // category stored for the key.
-int FUN_00609E20(int nKey, GG_HWND hCtl)
+bool FUN_00609E20(int nKey, GG_HWND hCtl)
 {
     MapValue_00602B90* value = Inline_00600CA0(nKey);
     int category = value ? value->Field6C : 0;
     int nCtlID = GetDlgCtrlID(hCtl);
 
     if (category == 0x10D)
-    {
-        if (nCtlID == 0x5C1 || nCtlID == 0x5C0)
-            return true;
-    }
+        return nCtlID == 0x5C1 || nCtlID == 0x5C0;
     else if (category == 0xD9)
-    {
-        if (nCtlID == 0x5C1 || nCtlID == 0x6CA)
-            return true;
-    }
+        return nCtlID == 0x5C1 || nCtlID == 0x6CA;
     else if (category == 0xA3)
-    {
-        if (nCtlID == 0x4CF || nCtlID == 0x4D0)
-            return true;
-    }
+        return nCtlID == 0x4CF || nCtlID == 0x4D0;
     else if (category == 0x105)
-    {
-        if (nCtlID == 0x620 || nCtlID == 0x621)
-            return true;
-    }
+        return nCtlID == 0x620 || nCtlID == 0x621;
     else if (category == 0xF0)
         return nCtlID == 0x5C0;
     else if (category == 0xCE)
         return nCtlID == 0x5AE;
     else if (category == 0x120)
-    {
-        if (nCtlID == 0x5AE || nCtlID == 0x2)
-            return true;
-    }
+        return nCtlID == 0x5AE || nCtlID == 0x2;
     else if (category == 0x121)
-    {
-        if (nCtlID == 0x5AE || nCtlID == 0x5AF || nCtlID == 0x2)
-            return true;
-    }
+        return nCtlID == 0x5AE || nCtlID == 0x5AF || nCtlID == 0x2;
     else if (category == 0xEA)
-    {
-        if (nCtlID == 0x640 || nCtlID == 0x642 || nCtlID == 0x641 || nCtlID == 0x643 || nCtlID == 0x644 || nCtlID == 0x645 || nCtlID == 0x646 || nCtlID == 0x647)
-            return true;
-    }
+        return nCtlID == 0x640 || nCtlID == 0x642 || nCtlID == 0x641 || nCtlID == 0x643 || nCtlID == 0x644 || nCtlID == 0x645 || nCtlID == 0x646 || nCtlID == 0x647;
     else if (category == 0xB8)
-    {
-        if (nCtlID == 0x531 || nCtlID == 0x535)
-            return true;
-    }
+        return nCtlID == 0x531 || nCtlID == 0x535;
     else if (category == 0x11F)
         return nCtlID == 0x5C0;
     else if (category == 0x115)
-    {
-        if (nCtlID == 0x702 || nCtlID == 0x686)
-            return true;
-    }
+        return nCtlID == 0x702 || nCtlID == 0x686;
     else if (category == 0xD3)
         return nCtlID == 0x2;
     else if (category == 0xCF)
-    {
-        if (nCtlID == 0x5C2 || nCtlID == 0x2)
-            return true;
-    }
+        return nCtlID == 0x5C2 || nCtlID == 0x2;
     else if (category == 0xC3)
-    {
-        if (nCtlID == 0x1 || nCtlID == 0x2)
-            return true;
-    }
+        return nCtlID == 0x1 || nCtlID == 0x2;
     else if (category == 0x11B)
-    {
-        if (nCtlID == 0x5C2 || nCtlID == 0x686)
-            return true;
-    }
+        return nCtlID == 0x5C2 || nCtlID == 0x686;
     else if (category == 0xE1)
-    {
-        if (nCtlID == 0x1 || nCtlID == 0x2)
-            return true;
-    }
+        return nCtlID == 0x1 || nCtlID == 0x2;
     else if (category == 0x11E)
-    {
-        if (nCtlID == 0x5C2 || nCtlID == 0x686)
-            return true;
-    }
+        return nCtlID == 0x5C2 || nCtlID == 0x686;
     else if (category == 0xC4)
-    {
-        if (nCtlID == 0x58D || nCtlID == 0x58E)
-            return true;
-    }
+        return nCtlID == 0x58D || nCtlID == 0x58E;
     else if (category == 0xD0)
         return nCtlID == 0x1;
     else if (category == 0xFC)
-    {
-        if (nCtlID == 0x1 || nCtlID == 0x2)
-            return true;
-    }
+        return nCtlID == 0x1 || nCtlID == 0x2;
     else if (category == 0x126)
-    {
-        if (nCtlID == 0x6 || nCtlID == 0x7)
-            return true;
-    }
+        return nCtlID == 0x6 || nCtlID == 0x7;
 
     return false;
 }
@@ -5867,14 +5816,14 @@ int FUN_006241F0(unsigned short nDialogId, int (__stdcall* pProc)(GG_HWND, unsig
 // IAT 0x7E14B? : USER32!GetClassNameA.
 extern "C" __declspec(dllimport) int __stdcall GetClassNameA(GG_HWND hWnd, char* pszClass, int nMax);
 
-// Unclaimed (below partial bar), GAMEMD 0x6242B0  FUN_006242B0 (__fastcall)
+// FUNCTION: GAMEMD 0x006242B0  FUN_006242B0
 // Whether a child window is one of the text-entry kinds: an edit control, the
 // custom edit class, a list box whose recorded kind is 1, or a combo box that
 // is not a drop-list.
-bool FUN_006242B0(GG_HWND hWnd)
+bool FUN_006242B0(int nKey)
 {
     char szClass[128];
-    GetClassNameA(hWnd, szClass, 128);
+    GetClassNameA((GG_HWND)nKey, szClass, 128);
 
     if (strcmp(szClass, "Edit") == 0)
         return true;
@@ -5884,13 +5833,22 @@ bool FUN_006242B0(GG_HWND hWnd)
 
     if (strcmp(szClass, "ListBox") == 0)
     {
-        MapValue_00602B90* value = Inline_00600CA0((int)hWnd);
-        if (value)
-            return value->Field68 == 1;
+        MapNode_00602B90* node = 0;
+        if (DAT_00AC1B00.Count != 0)
+        {
+            unsigned hash = DAT_00AC1B00.Hash(&nKey);
+            node = DAT_00AC1B00.Buckets[hash & ((1u << DAT_00AC1B00.Shift) - 1u)];
+
+            while (node != 0 && node->Key != nKey)
+                node = node->Next;
+        }
+
+        if (node)
+            return node->Value.Field68 == 1;
     }
 
     if (strcmp(szClass, "ComboBox") == 0)
-        return (GetWindowLongA(hWnd, -16) & 3) != 3;
+        return (GetWindowLongA((GG_HWND)nKey, -16) & 3) != 3;
 
     return false;
 }

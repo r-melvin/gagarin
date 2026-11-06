@@ -156279,5 +156279,23 @@
   "name": "HouseClass::FUN_0050B840",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ownrdraw.cpp",
+  "addr": "0x609E20",
+  "sym": "?FUN_00609E20@@YI_NHPAX@Z",
+  "len": "0x2d5",
+  "name": "?FUN_00609E20@@YI_NHPAX@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ownrdraw.cpp",
+  "addr": "0x6242B0",
+  "sym": "?FUN_006242B0@@YI_NH@Z",
+  "len": "0x1ab",
+  "name": "?FUN_006242B0@@YI_NH@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
