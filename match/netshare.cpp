@@ -3390,12 +3390,13 @@ void FUN_005EE350(HWND dialog)
 // GLOBAL: GAMEMD 0xA8DA8C -- the seat the local player holds.
 extern int DAT_00A8DA8C;
 
+// The local handle compared with the blank name; its argument is evaluated before the compare's own pushes.
+static inline bool Is_BlankHandle(const wchar_t* handle)
+{
+    return wcscmp(handle, BlankName) == 0;
+}
+
 // FUNCTION: GAMEMD 0x5EE3A0
-// PARTIAL: best 94.8% positional, 98.3% aligned (114 of 116 instructions). Retail reaches
-// the BlankName argument is pushed after the handle widening call; this build pushes it first.
-// Tried: shared EnableWindow tail through a BOOL local, a local for the widened handle, and
-// the out-of-line blank-handle helper (inlined to a shorter body).
-//
 // Enable or disable the team-choice control of every slot: a free or AI slot is left to
 // the host, an occupied one only to its owner.
 void FUN_005EE3A0()
@@ -3426,7 +3427,7 @@ void FUN_005EE3A0()
                 continue;
             }
             if (node != 0 && (node == EasyAINode || node == MediumAINode || node == HardAINode)
-                && wcscmp(Widen_00735120(LocalHandle), BlankName) == 0) {
+                && Is_BlankHandle(Widen_00735120(LocalHandle))) {
                 if (hostMode) {
                     EnableWindow(item, TRUE);
                 } else {
@@ -3441,13 +3442,13 @@ void FUN_005EE3A0()
                         EnableWindow(item, TRUE);
                     } else {
                         EnableWindow(item, FALSE);
-                        if (wcscmp(Widen_00735120(LocalHandle), BlankName) == 0) {
+                        if (Is_BlankHandle(Widen_00735120(LocalHandle))) {
                             node->FUN_00697020(-2);
                         }
                         continue;
                     }
                 }
-                if (!hostMode && wcscmp(Widen_00735120(LocalHandle), BlankName) == 0) {
+                if (!hostMode && Is_BlankHandle(Widen_00735120(LocalHandle))) {
                     node->FUN_00697020(-2);
                 }
             }

@@ -12,12 +12,6 @@
 extern const unsigned int DAT_00817A78[8];
 
 // FUNCTION: GAMEMD 0x4155F0
-// PARTIAL: 98.6% (142/144 instructions). All instructions and registers match;
-// only JG at +0x116 and JZ at +0x177 select the two cold epilogues in the
-// opposite order. Retail chooses +0x1A7/+0x1BA, VC6 +0x1BA/+0x1A7.
-// Source control-flow/comparison variants, /Og- and /G6 bisection, and a
-// five-minute targeted permuter run produced no full match (branch scoring on).
-// No assembly workaround is used.
 int Aircraft_004155F0::FUN_004155F0()
 {
     int distance = FUN_005F6440(Target);
@@ -42,15 +36,10 @@ int Aircraft_004155F0::FUN_004155F0()
         Cell_004155F0 out;
         Cell_004155F0 cell = *DAT_0087F7E8.FUN_004AA440(&out,
             side, &DAT_00889E68, &DAT_00889E68, 4, 1, 0);
-        if (cell != DAT_00889E68) {
+        if (cell != DAT_00889E68)
             (this->*Vptr->SetDestination)(DAT_0087F7E8.FUN_005657A0(cell), 1);
-            return RulesInstance_004155F0->At_290;
-        } else {
-            return RulesInstance_004155F0->At_290;
-        }
-    } else {
-        return RulesInstance_004155F0->At_290;
     }
+    return RulesInstance_004155F0->At_290;
 }
 
 // FUNCTION: GAMEMD 0x4157C0

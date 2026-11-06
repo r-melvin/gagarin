@@ -73,11 +73,9 @@
   "addr": "0x4155F0",
   "sym": "?FUN_004155F0@Aircraft_004155F0@@QAEHXZ",
   "len": "0x1cd",
-  "name": "AircraftClass::FUN_004155F0",
-  "status": "partial",
-  "pct": 98.6,
-  "best_pct": 98.6,
-  "best_at": "cf203011"
+  "name": "Aircraft_004155F0::FUN_004155F0",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/aircraft_tracker_class.cpp",
@@ -150834,10 +150832,8 @@
   "sym": "?FUN_0056B8A0@MapClass@@QAE_NPAVStraw@@@Z",
   "len": "0xfa",
   "name": "MapClass::FUN_0056B8A0",
-  "status": "partial",
-  "pct": 96.4,
-  "best_pct": 96.4,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/tu127_cell_pack_readers.cpp",
@@ -152832,10 +152828,8 @@
   "sym": "?FUN_005EE3A0@@YIXXZ",
   "len": "0x169",
   "name": "?FUN_005EE3A0@@YIXXZ",
-  "status": "partial",
-  "pct": 94.8,
-  "best_pct": 94.8,
-  "best_at": "00c20b70"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/TAction.cpp",

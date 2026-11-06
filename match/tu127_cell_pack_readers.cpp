@@ -126,10 +126,8 @@ bool MapClass::FUN_0056B8A0(Straw* straw)
 {
     CellStruct coord;
     char skipped[6];
-    for (;;) {
-        straw->FUN_006C98E0(&coord, 4);
-        if (coord.X == DAT_00ABD480.X && coord.Y == DAT_00ABD480.Y)
-            break;
+    straw->FUN_006C98E0(&coord, 4);
+    while (coord.X != DAT_00ABD480.X || coord.Y != DAT_00ABD480.Y) {
         CellClass* cell;
         int idx = (coord.Y << 9) + coord.X;
         if (idx >= 0 && idx < 0x40000 && Owned.Items[idx] != 0) {
@@ -148,10 +146,9 @@ bool MapClass::FUN_0056B8A0(Straw* straw)
             straw->FUN_006C98E0(&cell->Level, 1);
         }
         coord = DAT_00ABD480;
+        straw->FUN_006C98E0(&coord, 4);
     }
-    CellClass* invalid;
-    invalid = &DAT_00ABDC50;
-    new (invalid) CellClass();
+    new (&DAT_00ABDC50) CellClass;
     return true;
 }
 
