@@ -462,17 +462,14 @@ void __cdecl FUN_00456970();
 
 #include "building_class_garrison_owner_methods.h"
 
-#include "building_class_go_online_methods.h"
 
 #include "building_class_impassable_rows_methods.h"
 
-#include "building_class_occupy_methods.h"
 
 #include "building_class_offline_methods.h"
 
 #include "building_class_radial_methods.h"
 
-#include "building_class_traversable_methods.h"
 
 #include "building_class_unload_bunker_methods.h"
 
@@ -5763,7 +5760,7 @@ int BuildingClass::vf_321()
 // end post and enabled animations come back (EnableStuff, expanded inline),
 // any factory queue the building serves is re-evaluated, and the local
 // player hears the EVA line.
-void BuildingClass_00452260::GoOnline()
+void BuildingClass::FUN_00452260()
 {
     if (this->HasPower)
         return;
@@ -5772,14 +5769,14 @@ void BuildingClass_00452260::GoOnline()
 
     this->HasPower = 1;
     this->NeedsRedraw = 1;
-    this->Owner->PowerBlackoutWasActivated = 1;
-    this->Owner->RadarBlackoutWasActivated = 1;
+    this->Owner->RecheckPower = 1;
+    this->Owner->RecheckRadar = 1;
     this->Owner->RecheckTechTree = 1;
     this->EnableStuff();
     if (this->Type->Factory != 0)
         this->Owner->Update_FactoriesQueues(this->Type->Factory, this->Type->Naval, 0);
     if (this->Owner->IsControlledByCurrentPlayer())
-        VoxClass_00452260::Play(EvaBuildingOnLine_00452260, -1, -1);
+        VoxClass_00452360::Play(EvaBuildingOnLine_00452260, -1, -1);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5877,21 +5874,21 @@ void BuildingClass::DisableStuff()
 // "opening" (10) nor "closed" (00) answers with IsTraversable (open and
 // settled). Otherwise the gate is forced out of its current mission, Open
 // is queued and started, and the caller is told to wait.
-bool BuildingClass_00452540::MakeTraversable()
+bool BuildingClass::MakeTraversable()
 {
     if (!this->Type->Gate)
         return true;
 
-    if ((this->*this->Vtbl->GetCurrentMission)() == MISSION_OPEN_00452540
-        && !this->GateTimer.AreStates10()
-        && !this->GateTimer.AreStates00())
+    if (this->vf_97() == 0x18
+        && !this->UnloadTimer.FUN_004A5130()
+        && !this->UnloadTimer.FUN_004A51D0())
     {
         return this->IsTraversable();
     }
 
-    (this->*this->Vtbl->ForceMission)(-1);
-    (this->*this->Vtbl->QueueMission)(MISSION_OPEN_00452540, false);
-    (this->*this->Vtbl->NextMission)();
+    this->vf_124(-1);
+    this->vf_122(0x18, false);
+    this->vf_123();
     return false;
 }
 
@@ -6219,15 +6216,19 @@ void BuildingClass::vf_61(CoordStruct* coord)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x453E20
-HRESULT __stdcall BuildingBView::Load(IStream* pStm)
+HRESULT __stdcall BuildingClass::Load(IStream* pStm)
 {
-    int id = Rtti.Fetch_ID();
-    AbstractIndexView.RemoveIndexByFind(id);
-    HRESULT hr = Func_70BF50(pStm);
+    HRESULT hr;
+    int count;
+    {
+        int id = vf_rtti_4();
+        AbstractIndexView.RemoveIndexByFind(id);
+        hr = TechnoClass::Load(pStm);
+    }
     if (hr < 0)
         return hr;
-    new (this) BuildingBView(HBNoInit());
-    int newId = Rtti.Fetch_ID();
+    new (this) BuildingClass(AbstractNoInit());
+    int newId = vf_rtti_4();
     AbstractIndexView.AddIndexOutOfLine(newId, this);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&Factory);
@@ -6235,16 +6236,15 @@ HRESULT __stdcall BuildingBView::Load(IStream* pStm)
     DAT_00B0C110.SwizzleManagerClass::vf_4(&FirestormAnim);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&PsiWarnAnim);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&Spotlight);
-    Audio7.Func_405BE0();
-    Audio8.Func_405BE0();
+    Audio7.FUN_00405BE0();
+    Audio8.FUN_00405BE0();
     DAT_00B0C110.SwizzleManagerClass::vf_4(&SecretProduction);
-    int count;
     int i;
     HRESULT r = pStm->Read(&count, 4, 0);
     if (r < 0)
         return r;
     for (i = 0; i < count; i++) {
-        void* item;
+        TechnoClass* item;
         r = pStm->Read(&item, 4, 0);
         if (r < 0)
             return r;
@@ -6256,7 +6256,7 @@ HRESULT __stdcall BuildingBView::Load(IStream* pStm)
     if (r < 0)
         return r;
     for (i = 0; i < count; i++) {
-        BuildingBOccupantView* item;
+        InfantryClass* item;
         r = pStm->Read(&item, 4, 0);
         if (r < 0)
             return r;
@@ -7558,35 +7558,34 @@ void BuildingClass::vf_85(int a, int b, bool c)
 //
 // The two branches are an if/else that fall into one shared `return true`;
 // separate true returns per branch turn the last tests into SETE/SETNE.
-bool Obj_00457CE0::CanBeOccupiedBy(Obj_00457CE0* infantry)
+bool BuildingClass::CanBeOccupiedBy(InfantryClass* infantry)
 {
     if (infantry == 0) {
         return false;
     }
-    if (!BuildingType->CanBeOccupied) {
+    if (!Type->CanBeOccupied) {
         return false;
     }
     if (CurrentMission == 0x12 || CurrentMission == 0x13) {
         return false;
     }
 
-    Coord_00457CE0 buf;
-    if (!MapInstance_00457CE0.IsWithinUsableArea((this->*Vptr->GetCoords)(&buf))) {
+    if (!DAT_0087F7E8.FUN_005785F0(vf_18())) {
         return false;
     }
-    if ((this->*Vptr->IsBeingWarpedOut)()) {
+    if (vf_117()) {
         return false;
     }
 
-    InfantryType_00457CE0* type = infantry->InfantryType;
+    InfantryTypeClass* type = infantry->Type;
     if (type->Occupier) {
         if (Owner != infantry->Owner && !Owner->Type->MultiplayPassive) {
             return false;
         }
-        if ((this->*Vptr->GetOccupantCount)() == BuildingType->MaxNumberOccupants) {
+        if (vf_258() == Type->MaxNumberOccupants) {
             return false;
         }
-        if (reinterpret_cast<ObjectClass*>(this)->IsRedHP()) {
+        if (IsRedHP()) {
             return false;
         }
         if (infantry->IsMindControlled()) {
@@ -7599,7 +7598,7 @@ bool Obj_00457CE0::CanBeOccupiedBy(Obj_00457CE0* infantry)
         if (Owner->IsAlliedWith(infantry)) {
             return false;
         }
-        if ((this->*Vptr->GetOccupantCount)() == 0) {
+        if (vf_258() == 0) {
             return false;
         }
     }

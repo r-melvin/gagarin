@@ -1679,11 +1679,11 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x452260",
-  "sym": "?GoOnline@BuildingClass_00452260@@QAEXXZ",
+  "sym": "?FUN_00452260@BuildingClass@@QAEXXZ",
   "len": "0xFC",
   "name": "BuildingClass::GoOnline",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -1730,11 +1730,11 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x457CE0",
-  "sym": "?CanBeOccupiedBy@Obj_00457CE0@@QAE_NPAU1@@Z",
+  "sym": "?CanBeOccupiedBy@BuildingClass@@QAE_NPAVInfantryClass@@@Z",
   "len": "0xff",
   "name": "BuildingClass::CanBeOccupiedBy",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -1759,11 +1759,11 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x452540",
-  "sym": "?MakeTraversable@BuildingClass_00452540@@QAE_NXZ",
+  "sym": "?MakeTraversable@BuildingClass@@QAE_NXZ",
   "len": "0xa1",
   "name": "BuildingClass::MakeTraversable",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -49622,13 +49622,13 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x453E20",
-  "sym": "?Load@BuildingBView@@UAGJPAUIStream@@@Z",
+  "sym": "?Load@BuildingClass@@UAGJPAUIStream@@@Z",
   "len": "0x366",
   "name": "BuildingClass::Load",
   "status": "partial",
-  "pct": 8.9,
-  "best_pct": 8.9,
-  "best_at": "cf203011"
+  "pct": 13.7,
+  "best_pct": 13.7,
+  "best_at": "59739866"
  },
  {
   "tu": "match/tu038_building_class.cpp",

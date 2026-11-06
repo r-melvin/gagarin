@@ -222,8 +222,7 @@ inline void AbstractIndexTable::RemoveIndexByFind(const int& id)
         int found = node - IndexTable;
         if (found != -1) {
             for (int i = found + 1; i < IndexCount; i++) {
-                IndexTable[i - 1].ID = IndexTable[i].ID;
-                IndexTable[i - 1].Data = IndexTable[i].Data;
+                IndexTable[i - 1] = IndexTable[i];
             }
             IndexCount--;
             IndexTable[IndexCount].ID = 0;

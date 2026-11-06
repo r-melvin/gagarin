@@ -88,9 +88,12 @@ public:
     // FUNCTION: GAMEMD 0x43B740 (decl; reloc) -- (type, owner), RET 8; allocated
     // with PUSH 0x720 / operator new (e.g. 0x5CAB4B).
     BuildingClass(BuildingTypeClass* type = 0, HouseClass* owner = 0);
+    // FUNCTION: GAMEMD 0x43B680 (decl; reloc) -- the no-initialisation constructor the Load path places over the object.
+    BuildingClass(const AbstractNoInit& noInit);
     // The primary-table (0x7E3EBC) overrides of AbstractClass's pure slots.
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);              // 3  0x459E80
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);    // 6  0x454190
+    virtual HRESULT __stdcall Load(IStream* pStm);                      // 5  0x453E20
     virtual int vf_11();                                                // 11 0x459EC0
     virtual int vf_12();                                                // 12 0x459E70
     // FUNCTION: GAMEMD 0x43FB20 (slot 23; the per-frame update)
@@ -245,6 +248,7 @@ public:
     bool FUN_004598D0();                 // GAMEMD 0x4598D0
     void DisableTemporal();              // GAMEMD 0x4521C0
     void EnableTemporal();               // GAMEMD 0x452210
+    bool MakeTraversable();              // GAMEMD 0x452540
     bool IsTraversable();                // GAMEMD 0x4525F0
     // CALLEE: GAMEMD 0x452820 -- thiscall, one TechnoClass* stack argument, RET 4.
     void FUN_00452820(TechnoClass* owner);
