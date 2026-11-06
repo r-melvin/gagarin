@@ -511,7 +511,9 @@ void InfantryClass::vf_61(CoordStruct* coord)
 {
     int slot = FUN_004810A0(coord);
     CellClass* cell = MapClass_Instance.GetTargetCell(*coord);
-    if (DAT_00A8F234 + MapClass_Instance.GetCellFloorHeight(*coord) <= coord->Z) {
+    int level = MapClass_Instance.GetCellFloorHeight(*coord);
+    level += DAT_00A8F234;
+    if (level <= coord->Z) {
         cell->AltOccupationBits &= ~(1 << slot);
         if (!(cell->AltOccupationBits & 0x1C)) {
             cell->AltInfantryOwnerIndex = -1;

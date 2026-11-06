@@ -93853,10 +93853,8 @@
   "sym": "?vf_61@InfantryClass@@UAEXPAUCoordStruct@@@Z",
   "len": "0x89",
   "name": "InfantryClass::vf_61",
-  "status": "partial",
-  "pct": 75.5,
-  "best_pct": 75.5,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Infantry.cpp",
@@ -96633,9 +96631,9 @@
   "len": "0x14f",
   "name": "?FUN_0068C500@@YIPAVConvertClass@@PBUScenarioHSVRecord@@PBUPaletteClass@@PAUColorStruct_0072ADE0@@PAXPAU3@@Z",
   "status": "partial",
-  "pct": 77.1,
-  "best_pct": 77.1,
-  "best_at": "cf203011"
+  "pct": 80.7,
+  "best_pct": 80.7,
+  "best_at": "6a1d87f1"
  },
  {
   "tu": "match/Scenario.cpp",
@@ -100046,9 +100044,9 @@
   "len": "0x14a",
   "name": "FUN_00409C40",
   "status": "partial",
-  "pct": 78.7,
-  "best_pct": 78.7,
-  "best_at": "cf203011"
+  "pct": 83.1,
+  "best_pct": 83.1,
+  "best_at": "6a1d87f1"
  },
  {
   "tu": "match/module_tu002.cpp",
@@ -106384,10 +106382,8 @@
   "sym": "?vf_166@TechnoClass@@UAE_NXZ",
   "len": "0x31",
   "name": "TechnoClass::vf_166",
-  "status": "partial",
-  "pct": 70.0,
-  "best_pct": 70.0,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Techno.cpp",

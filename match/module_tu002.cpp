@@ -1296,14 +1296,16 @@ void FUN_00409C40(Aux_0040A6D0* state)
     if (static_cast<int>(state->unknown_88) < static_cast<int>(state->unknown_8C))
     {
         if (state->unknown_7C) FUN_007C93E8(state->unknown_7C);
-        state->unknown_7C = static_cast<unsigned char*>(FUN_007C9430(state->unknown_8C));
+        unsigned size = state->unknown_8C;
+        state->unknown_7C = static_cast<unsigned char*>(FUN_007C9430(size));
         if (!state->unknown_7C) state->unknown_88 = 0;
         else state->unknown_88 = state->unknown_8C;
     }
     if (static_cast<int>(state->unknown_9C) < static_cast<int>(state->unknown_A0))
     {
         if (state->unknown_90) FUN_007C93E8(state->unknown_90);
-        state->unknown_90 = static_cast<unsigned char*>(FUN_007C9430(state->unknown_A0));
+        unsigned size = state->unknown_A0;
+        state->unknown_90 = static_cast<unsigned char*>(FUN_007C9430(size));
         if (!state->unknown_90) state->unknown_9C = 0;
         else state->unknown_9C = state->unknown_A0;
     }

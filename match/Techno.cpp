@@ -2646,7 +2646,8 @@ bool TechnoClass::vf_166()
     }
 
     type = this->vf_33();
-    return ((const unsigned char*)type->MainVoxel.unknown_00)[0] == 0;
+    bool empty = ((const unsigned char*)type->MainVoxel.unknown_00)[0] == 0;
+    return empty;
 }
 
 // FUNCTION: GAMEMD 0x6FB010

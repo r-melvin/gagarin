@@ -2619,8 +2619,8 @@ ConvertClass* __fastcall FUN_0068C500(const ScenarioHSVRecord* hsv,
         if (!i) angle = 0.19634954084936207;
         ScenarioHSVRecord color;
         color.unknown_01 = (unsigned char)(int)(FUN_004CACB0(other) * saturation);
-        color.unknown_02 = (unsigned char)(int)(FUN_004CAD00(angle) * value);
         color.unknown_00 = hue;
+        color.unknown_02 = (unsigned char)(int)(FUN_004CAD00(angle) * value);
         ColorStruct_0072ADE0 rgb = color.FUN_00517440();
         memcpy(&palette.unknown_000[((i + 16) % 256) * 3], &rgb, 3);
     }
