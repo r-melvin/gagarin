@@ -13,6 +13,7 @@
 #include "_layout/session_class.h"
 #include "_rt/gg_static_assert.h"
 #include <string.h>
+#include <wchar.h>
 
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;
@@ -50,10 +51,81 @@ void __fastcall UI_FocusOnWindow(HWND window);
 void __fastcall FUN_00622720(HWND window);
 // FUNCTION: GAMEMD 0x532100 (decl; reloc)
 void __fastcall FUN_00532100(bool flag);
+// FUNCTION: GAMEMD 0x622B50 (decl; reloc) -- the common dialog handling; non-zero when it consumed the message.
+int __fastcall FUN_00622B50(HWND window, unsigned int message, unsigned int wParam, long lParam);
 // FUNCTION: GAMEMD 0x630C10 (decl; reloc) -- the phone-entry dialog procedure.
 int __stdcall FUN_00630C10(HWND window, unsigned int message, unsigned int wParam, long lParam);
-// FUNCTION: GAMEMD 0x631760 (decl; reloc) -- the phone-book dialog procedure.
+// The phone-book dialog procedure (defined below).
 int __stdcall FUN_00631760(HWND window, unsigned int message, unsigned int wParam, long lParam);
+// FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- localised text for a label (label, 0, file, line).
+const wchar_t* __fastcall FUN_00734E60(const char* label, int* index, const char* file, int line);
+// FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- debug log, printf style.
+void __cdecl FUN_004068E0(const char* format, ...);
+// FUNCTION: GAMEMD 0x727CF0 (decl; reloc) -- normalise a text field in place.
+void __fastcall FUN_00727CF0(char* text);
+// FUNCTION: GAMEMD 0x727D60 (decl; reloc) -- normalise a wide text field in place.
+void __fastcall FUN_00727D60(wchar_t* text);
+// GLOBAL: GAMEMD 0xB73550 -- the main window.
+extern HWND DAT_00B73550;
+
+// The serial settings block copied into the dialog: 0x70 bytes.
+struct PhoneSettings_00631B20
+{
+    int Port;                       // +0x00 zero = not set
+    int unknown_04;                 // +0x04 -1 = not set
+    int Baud;                       // +0x08 -1 = not set
+    int unknown_0C;                 // +0x0C
+    int unknown_10;                 // +0x10
+    int unknown_14;                 // +0x14
+    int unknown_18[2];              // +0x18
+    unsigned char unknown_20;       // +0x20
+    unsigned char pad_21[3];
+    int unknown_24[0x13];           // +0x24
+};
+GG_STATIC_ASSERT(sizeof(PhoneSettings_00631B20) == 0x70);
+GG_STATIC_ASSERT(offsetof(PhoneSettings_00631B20, unknown_14) == 0x14);
+GG_STATIC_ASSERT(offsetof(PhoneSettings_00631B20, unknown_20) == 0x20);
+
+// A phone-book entry: the serial settings, then its name and number strings.
+struct PhoneEntry_00631B20
+{
+    PhoneSettings_00631B20 Serial;  // +0x00
+    wchar_t Name[21];               // +0x70
+    char Number[0x16];              // +0x9A
+};
+GG_STATIC_ASSERT(offsetof(PhoneEntry_00631B20, Name) == 0x70);
+GG_STATIC_ASSERT(offsetof(PhoneEntry_00631B20, Number) == 0x9A);
+GG_STATIC_ASSERT(sizeof(PhoneEntry_00631B20) == 0xB0);
+
+// GLOBAL: GAMEMD 0xA8DAC0 -- the default serial settings.
+extern PhoneSettings_00631B20 DAT_00A8DAC0;
+
+// The serial-port editor dialog object (its own translation unit); only its size and entry matter here.
+struct SerialEdDialog_006956D0
+{
+    unsigned char unknown_00[0x374];
+    // FUNCTION: GAMEMD 0x6956D0 (decl; reloc)
+    bool FUN_006956D0(PhoneSettings_00631B20* settings);
+};
+
+// The phone-book dialog object.
+struct PhoneBookDialog_006316E0
+{
+    HWND Window;                    // +0x00
+    int Result;                     // +0x04 1 = accepted, set by the dialog procedure
+    PhoneEntry_00631B20* Book;      // +0x08 the entry being edited
+    PhoneSettings_00631B20 Settings;// +0x0C
+    // FUNCTION: GAMEMD 0x6319C0
+    void FUN_006319C0();
+    // FUNCTION: GAMEMD 0x631B20
+    void FUN_00631B20();
+    // FUNCTION: GAMEMD 0x6316E0
+    bool FUN_006316E0(PhoneEntry_00631B20* book);
+};
+GG_STATIC_ASSERT(offsetof(PhoneBookDialog_006316E0, Result) == 0x4);
+GG_STATIC_ASSERT(offsetof(PhoneBookDialog_006316E0, Book) == 0x8);
+GG_STATIC_ASSERT(offsetof(PhoneBookDialog_006316E0, Settings) == 0xC);
+GG_STATIC_ASSERT(sizeof(PhoneBookDialog_006316E0) == 0x7C);
 
 // The phone-entry editor dialog object.
 struct PhoneEditDialog_00630B90
@@ -93,45 +165,6 @@ bool PhoneEditDialog_00630B90::FUN_00630B90()
     return accepted;
 }
 
-// The serial settings block copied into the dialog: 0x70 bytes.
-struct PhoneSettings_00631B20
-{
-    int Port;                       // +0x00 zero = not set
-    int unknown_04;                 // +0x04 -1 = not set
-    int Baud;                       // +0x08 -1 = not set
-    int unknown_0C[0x19];           // +0x0C
-};
-GG_STATIC_ASSERT(sizeof(PhoneSettings_00631B20) == 0x70);
-
-// A phone-book entry: the serial settings, then its name and number strings.
-struct PhoneEntry_00631B20
-{
-    PhoneSettings_00631B20 Serial;  // +0x00
-    char Name[0x2A];                // +0x70
-    char Number[1];                 // +0x9A
-};
-GG_STATIC_ASSERT(offsetof(PhoneEntry_00631B20, Name) == 0x70);
-GG_STATIC_ASSERT(offsetof(PhoneEntry_00631B20, Number) == 0x9A);
-
-// GLOBAL: GAMEMD 0xA8DAC0 -- the default serial settings.
-extern PhoneSettings_00631B20 DAT_00A8DAC0;
-
-// The phone-book dialog object.
-struct PhoneBookDialog_006316E0
-{
-    HWND Window;                    // +0x00
-    int Result;                     // +0x04 1 = accepted, set by the dialog procedure
-    PhoneEntry_00631B20* Book;      // +0x08 the entry being edited
-    PhoneSettings_00631B20 Settings;// +0x0C
-    // FUNCTION: GAMEMD 0x631B20
-    void FUN_00631B20();
-    // FUNCTION: GAMEMD 0x6316E0
-    bool FUN_006316E0(PhoneEntry_00631B20* book);
-};
-GG_STATIC_ASSERT(offsetof(PhoneBookDialog_006316E0, Result) == 0x4);
-GG_STATIC_ASSERT(offsetof(PhoneBookDialog_006316E0, Book) == 0x8);
-GG_STATIC_ASSERT(offsetof(PhoneBookDialog_006316E0, Settings) == 0xC);
-
 // FUNCTION: GAMEMD 0x6316E0
 // Run the phone-book dialog on an entry; no entry, no dialog. Returns whether it was accepted.
 bool PhoneBookDialog_006316E0::FUN_006316E0(PhoneEntry_00631B20* book)
@@ -153,6 +186,121 @@ bool PhoneBookDialog_006316E0::FUN_006316E0(PhoneEntry_00631B20* book)
     }
     bool accepted = Result == 1;
     return accepted;
+}
+
+// FUNCTION: GAMEMD 0x631760
+// The phone-book dialog procedure: name/number edits, OK/cancel, and the two serial-settings radios.
+int __stdcall FUN_00631760(HWND window, unsigned int message, unsigned int wParam, long lParam)
+{
+    int handled = FUN_00622B50(window, message, wParam, lParam);
+    if (handled == 0) {
+        PhoneBookDialog_006316E0* dialog = (PhoneBookDialog_006316E0*)GetWindowLongA(window, DWL_USER);
+        wchar_t text[64];
+        switch (message) {
+        case WM_COMMAND:
+            switch (LOWORD(wParam)) {
+            case 0x5E5:
+                if (HIWORD(wParam) == 0x501 || HIWORD(wParam) == 0x200) {
+                    SendMessageA((HWND)lParam, 0x4B3, 0x40, (LPARAM)text);
+                    FUN_00727D60(text);
+                    SendMessageA((HWND)lParam, 0x4B2, 0, (LPARAM)text);
+                    return 0;
+                }
+                break;
+            case 1:
+                if (HIWORD(wParam) == 0) {
+                    dialog->FUN_006319C0();
+                    dialog->Result = 1;
+                    return 0;
+                }
+                break;
+            case 2:
+                if (HIWORD(wParam) == 0) {
+                    dialog->Result = 2;
+                    return 0;
+                }
+                break;
+            case 0x5DF:
+                if (HIWORD(wParam) == 0x501 || HIWORD(wParam) == 0x200) {
+                    SendMessageA((HWND)lParam, 0x4B5, 0x40, (LPARAM)text);
+                    FUN_00727CF0((char*)text);
+                    SendMessageA((HWND)lParam, 0x4B4, 0, (LPARAM)text);
+                    return 0;
+                }
+                break;
+            case 0x663:
+                if (HIWORD(wParam) != 0) {
+                    SendMessageA((HWND)lParam, 0xF1, 1, 0);
+                    SendDlgItemMessageA(window, 0x664, 0xF1, 0, 0);
+                }
+                break;
+            case 0x664:
+                if (HIWORD(wParam) != 0) {
+                    SendMessageA((HWND)lParam, 0xF1, 1, 0);
+                    SendDlgItemMessageA(window, 0x663, 0xF1, 0, 0);
+                    UpdateWindow(window);
+                    ShowWindow(window, 0);
+                    UpdateWindow(DAT_00B73550);
+                    SerialEdDialog_006956D0 serial;
+                    serial.FUN_006956D0(&dialog->Settings);
+                    ShowWindow(window, 5);
+                    return 0;
+                }
+                break;
+            }
+            break;
+        case 0x497:
+            SendDlgItemMessageA(window, 0x5E5, 0xC5, 0x14, 0);
+            SendDlgItemMessageA(window, 0x5DF, 0xC5, 0x14, 0);
+            return 0;
+        }
+        handled = 0;
+    }
+    return handled;
+}
+
+// Is the radio button or box checked (BM_GETCHECK).
+inline bool IsChecked(HWND button)
+{
+    if (button == 0) {
+        return false;
+    }
+    return SendMessageA(button, 0xF0, 0, 0) == 1;
+}
+
+// FUNCTION: GAMEMD 0x6319C0
+// Save the controls into the entry: its name (upper-cased, or the default name when empty), its
+// number, and either the dialog's serial settings or the unset defaults.
+void PhoneBookDialog_006316E0::FUN_006319C0()
+{
+    HWND item = GetDlgItem(Window, 0x5E5);
+    if (item) {
+        SendMessageA(item, 0x4B3, 0x15, (LPARAM)Book->Name);
+        if (wcslen(Book->Name) > 0) {
+            _wcsupr(Book->Name);
+        } else {
+            wcscpy(Book->Name, FUN_00734E60("TXT_NONAME", 0, "D:\\ra2mdpost\\PhoneEd.cpp", 0x2F5));
+        }
+    }
+    FUN_004068E0("Name: %ls\n", Book->Name);
+    item = GetDlgItem(Window, 0x5DF);
+    if (item) {
+        SendMessageA(item, 0x4B5, 0x15, (LPARAM)Book->Number);
+    }
+    FUN_004068E0("Number: %s\n", Book->Number);
+    item = GetDlgItem(Window, 0x664);
+    if (IsChecked(item) == 1) {
+        Book->Serial = Settings;
+    } else {
+        Book->Serial.Port = 0;
+        Book->Serial.unknown_04 = -1;
+        Book->Serial.Baud = -1;
+        Book->Serial.unknown_0C = 0;
+        Book->Serial.unknown_10 = -1;
+        Book->Serial.unknown_14 = 3;
+        Book->Serial.unknown_20 = 0;
+    }
+    FUN_004068E0("Settings: Port %d, Baud %d\n", Book->Serial.Port, Book->Serial.Baud);
 }
 
 // FUNCTION: GAMEMD 0x631B20

@@ -154941,5 +154941,70 @@
   "name": "?FUN_004C19B0@@YIXXZ",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/PhoneEd.cpp",
+  "addr": "0x631760",
+  "sym": "?FUN_00631760@@YGHPAUHWND__@@IIJ@Z",
+  "len": "0x25f",
+  "name": "?FUN_00631760@@YGHPAUHWND__@@IIJ@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/PhoneEd.cpp",
+  "addr": "0x6319C0",
+  "sym": "?FUN_006319C0@PhoneBookDialog_006316E0@@QAEXXZ",
+  "len": "0x152",
+  "name": "PhoneBookDialog_006316E0::FUN_006319C0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu196_random_straw.cpp",
+  "addr": "0x65FA70",
+  "sym": "?FUN_0065FA70@@YI_NHUCellStruct@@@Z",
+  "len": "0xe5",
+  "name": "?FUN_0065FA70@@YI_NHUCellStruct@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu196_random_straw.cpp",
+  "addr": "0x65FE00",
+  "sym": "?FUN_0065FE00@Obj_0065FE00@@QAEXXZ",
+  "len": "0x1f3",
+  "name": "Obj_0065FE00::FUN_0065FE00",
+  "status": "partial",
+  "pct": 97.4,
+  "best_pct": 97.4,
+  "best_at": "7e727448"
+ },
+ {
+  "tu": "match/tu196_random_straw.cpp",
+  "addr": "0x660460",
+  "sym": "?FUN_00660460@@YI_NHUCellStruct@@@Z",
+  "len": "0xca",
+  "name": "?FUN_00660460@@YI_NHUCellStruct@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu196_random_straw.cpp",
+  "addr": "0x660950",
+  "sym": "?FUN_00660950@Obj_0065FE00@@QAE?AVRGBClass@@XZ",
+  "len": "0x9c",
+  "name": "Obj_0065FE00::FUN_00660950",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu196_random_straw.cpp",
+  "addr": "0x660A10",
+  "sym": "?FUN_00660A10@Obj_0065FE00@@QAE?AVRGBClass@@XZ",
+  "len": "0x9c",
+  "name": "Obj_0065FE00::FUN_00660A10",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

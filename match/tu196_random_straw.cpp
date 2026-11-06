@@ -180,6 +180,7 @@ extern unsigned char DAT_008464AC;
 extern int DAT_00B780A0;
 
 #include <string.h>
+#include <math.h>
 // Zero-run byte codec. The caller at 0x6C8BB7 passes ECX = a stack local and
 // three stack arguments (source, destination, length); none of the three
 // bodies reads ECX, so the owning object carries no state touched here.
@@ -198,7 +199,11 @@ struct ZeroRunCodec_00661530
 struct Item_0065FD50;
 // GLOBAL: GAMEMD 0xB04DA8 -- the registry.
 extern DynamicVectorClass<Item_0065FD50*> DAT_00B04DA8;
-struct Item_0065FD50 {
+#include "_layout/obj_0065fe00.h"
+// The radar event record: the data and the update/draw/colour methods are on its shared view.
+struct Item_0065FD50 : Obj_0065FE00 {
+    // FUNCTION: GAMEMD 0x65FB80 (decl; reloc)
+    Item_0065FD50(int type, CellStruct cell);
     ~Item_0065FD50() { Item_0065FD50* self = this; DAT_00B04DA8.RemoveItem(self); }
 };
 
@@ -213,6 +218,13 @@ struct Obj_0065FB60;
 
 // GLOBAL: GAMEMD 0x87F7E8
 extern char DAT_0087F7E8[];
+#include "_layout/rules_class.h"
+#include "_layout/cell.h"
+
+// GLOBAL: GAMEMD 0x8871E0
+extern RulesClass* DAT_008871E0;
+// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- the square root.
+double __cdecl FUN_004CAC40(double value);
 
 // FUNCTION: GAMEMD 0x6562D0 (decl; reloc)
 void FUN_006562D0(void*, int, Obj_0065FB60*);
@@ -285,6 +297,30 @@ void __cdecl FUN_0065FA60()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x65FA70
+// RadarEventClass::Create: when the type does not allow near duplicates, or no live event of the
+// same type lies within the type's radius of the cell, make a new event.
+bool __fastcall FUN_0065FA70(int type, CellStruct cell)
+{
+    if (DAT_007F0998[type].f0C) {
+        for (int i = 0; i < DAT_00B04DA8.Count; i++) {
+            Item_0065FD50* event = DAT_00B04DA8.Items[i];
+            if (event->Type == type) {
+                CellStruct delta = cell - event->Cell;
+                double fy = delta.Y;
+                double fx = delta.X;
+                short distance = (short)(int)FUN_004CAC40(fx * fx + fy * fy);
+                if (distance < DAT_007F0998[DAT_00B04DA8.Items[i]->Type].f00) {
+                    return false;
+                }
+            }
+        }
+    }
+    new Item_0065FD50(type, cell);
+    return true;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x65FB60
 // Calls other functions.
 void FUN_0065FB60(Obj_0065FB60* a1, int a2)
@@ -302,6 +338,118 @@ void FUN_0065FD50()
             delete item;
         }
     }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x65FE00
+// Per-frame update of one event: shrink the ring, and turn the angle and the fade.
+void Obj_0065FE00::FUN_0065FE00()
+{
+    if (Active) {
+        if (!Running) {
+            if (Life.GetTimeLeft() == 0) {
+                Active = false;
+            }
+        }
+        FUN_00660540();
+        float shrunk = Radius - DAT_008871E0->RadarEventSpeed;
+        float floor = (float)DAT_008871E0->RadarEventMinRadius;
+        Radius = shrunk > floor ? shrunk : floor;
+        double turn = Angle + 0.7853981633974483;
+        float rest = (float)(turn - (int)(turn * 0.6366197723675814) * 1.5707963267948966);
+        if (Running) {
+            if (fabs(Radius - DAT_008871E0->RadarEventMinRadius) < 0.01) {
+                if (rest < AngleStep) {
+                    Angle = rest + Angle;
+                    Running = false;
+                    Life = CDTimerClass(DAT_007F0998[Type].f04);
+                    Pulse = CDTimerClass(DAT_007F0998[Type].f08);
+                } else {
+                    Angle = AngleStep + Angle;
+                    float lowest = DAT_008871E0->RadarEventRotationSpeed * 0.33333334f;
+                    float slower = AngleStep - DAT_008871E0->RadarEventRotationSpeed * 0.02f;
+                    AngleStep = lowest > slower ? lowest : slower;
+                }
+            } else {
+                Angle = AngleStep + Angle;
+            }
+        }
+        if (Angle > 6.283185307179586) {
+            Angle = Angle - 6.283185307179586;
+        }
+        Fade = FadeStep + Fade;
+        if (Fade < 0.0f && FadeStep < 0.0f) {
+            FadeStep = -FadeStep;
+            Fade = 0.0f;
+        } else if (Fade > 1.0f && FadeStep > 0.0f) {
+            FadeStep = -FadeStep;
+            Fade = 1.0f;
+        }
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x660460
+// Is a live event of this type already near the cell (the same test Create refuses on)?
+bool __fastcall FUN_00660460(int type, CellStruct cell)
+{
+    if (DAT_007F0998[type].f0C) {
+        for (int i = 0; i < DAT_00B04DA8.Count; i++) {
+            Item_0065FD50* event = DAT_00B04DA8.Items[i];
+            if (event->Type == type) {
+                CellStruct delta = cell - event->Cell;
+                double fy = delta.Y;
+                double fx = delta.X;
+                short distance = (short)(int)FUN_004CAC40(fx * fx + fy * fy);
+                if (distance < DAT_007F0998[DAT_00B04DA8.Items[i]->Type].f00) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x660950
+// The event's bright colour: by type, magenta, yellow or cyan, else black.
+RGBClass Obj_0065FE00::FUN_00660950()
+{
+    switch (Type) {
+    case 0:
+    case 3:
+    case 4:
+        return RGBClass(255, 0, 255);
+    case 1:
+    case 2:
+    case 11:
+    case 12:
+        return RGBClass(255, 255, 0);
+    case 5:
+        return RGBClass(0, 255, 255);
+    }
+    return RGBClass(0, 0, 0);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x660A10
+// The same colours at half brightness.
+RGBClass Obj_0065FE00::FUN_00660A10()
+{
+    switch (Type) {
+    case 0:
+    case 3:
+    case 4:
+        return RGBClass(128, 0, 128);
+    case 1:
+    case 2:
+    case 11:
+    case 12:
+        return RGBClass(128, 128, 0);
+    case 5:
+        return RGBClass(0, 128, 128);
+    }
+    return RGBClass(0, 0, 0);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

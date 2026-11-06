@@ -6,5 +6,5 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Rec16_007F0998 { int f00; int f04; int f08; int f0C; };
+struct Rec16_007F0998 { int f00; int f04; int f08; unsigned char f0C; unsigned char pad_0D[3]; };
 #endif
