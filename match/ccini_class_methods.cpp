@@ -21,7 +21,21 @@
 //   LIBRARY:  GAMEMD 0x7C8EF4   sprintf (CRT; cdecl; excluded from match target)
 
 #include "ccini_class_methods.h"
+#include "ccfile_class.h"
 #include <stdio.h>
+
+// GLOBAL: GAMEMD 0x887180 -- the art INI.
+extern CCINIClass DAT_00887180;
+
+// FUNCTION: GAMEMD 0x679EE0
+//
+// Empty the art INI, then read ARTMD.INI into it.
+void FUN_00679EE0()
+{
+    DAT_00887180.Clear(0, 0);
+    CCFileClass file("ARTMD.INI");
+    DAT_00887180.ReadCCFile(&file, false, false);
+}
 
 
 

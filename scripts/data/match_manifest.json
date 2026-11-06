@@ -154628,5 +154628,52 @@
   "name": "?FUN_005C6490@@YIIPAEPBIH@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/rad_beam_allocate_methods.cpp",
+  "addr": "0x659590",
+  "sym": "?FUN_00659590@RadBeam@@QAEXPBUCoordStruct@@0F@Z",
+  "len": "0xbb",
+  "name": "RadBeam::FUN_00659590",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/rad_beam_allocate_methods.cpp",
+  "addr": "0x659A30",
+  "sym": "?FUN_00659A30@RadBeam@@QAEXXZ",
+  "len": "0x88",
+  "name": "RadBeam::FUN_00659A30",
+  "status": "partial",
+  "pct": 92.6,
+  "best_pct": 92.6,
+  "best_at": "7cf6fb49"
+ },
+ {
+  "tu": "match/rad_beam_allocate_methods.cpp",
+  "addr": "0x659CA0",
+  "sym": "?FUN_00659CA0@RadBeam@@QAE_NXZ",
+  "len": "0x184",
+  "name": "RadBeam::FUN_00659CA0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/rad_beam_allocate_methods.cpp",
+  "addr": "0x659EE0",
+  "sym": "?FUN_00659EE0@RadBeam@@QAEXXZ",
+  "len": "0x108",
+  "name": "RadBeam::FUN_00659EE0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ccini_class_methods.cpp",
+  "addr": "0x679EE0",
+  "sym": "?FUN_00679EE0@@YIXXZ",
+  "len": "0x60",
+  "name": "?FUN_00679EE0@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
