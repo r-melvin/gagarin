@@ -52,6 +52,32 @@ inline BigInt_00632740 MakePrimeFromSieve(Straw* random, int bits)
     return b;
 }
 
+// Retail expands the prime search twice with different break tests: the first loop compares via the 0x5C69E0 result, the second via operator>.
+inline BigInt_00632740 MakeSecondPrimeFromSieve(Straw* random, int bits)
+{
+    BigInt_00632740 low = BigInt_00632740(1) << (unsigned short)(bits - 2);
+    BigInt_00632740 high = (BigInt_00632740(1) << (unsigned short)(bits - 1)) - 1;
+    BigInt_00632740 a;
+    BigInt_00632740 b;
+    PrimeSieve_00632050 sieve_a;
+    PrimeSieve_00632050 sieve_b;
+
+    do {
+        a.Randomize(random, low, high);
+        b = a * 2 + 1;
+        sieve_a.Set(a);
+        sieve_b.Set(b);
+        while (sieve_a.Composite || sieve_b.Composite || !a.Call_005C9020() || !b.Call_005C9020()) {
+            a += BigInt_00632740(2);
+            b += BigInt_00632740(4);
+            if (a > high) break;
+            sieve_a.Step(2);
+            sieve_b.Step(4);
+        }
+    } while (a > high);
+    return b;
+}
+
 // FUNCTION: GAMEMD 0x632050
 void FUN_00632050(Straw* random, int bits, PKey_00632740* fast, PKey_00632740* slow)
 {
@@ -60,7 +86,7 @@ void FUN_00632050(Straw* random, int bits, PKey_00632740* fast, PKey_00632740* s
 
     do {
         BigInt_00632740 p = MakePrimeFromSieve(random, bits);
-        BigInt_00632740 q = MakePrimeFromSieve(random, bits);
+        BigInt_00632740 q = MakeSecondPrimeFromSieve(random, bits);
         BigInt_00632740 e(0x10001);
         BigInt_00632740 n = p * q;
         BigInt_00632740 phi = p.MinusOneCopy() * q.MinusOneCopy();
