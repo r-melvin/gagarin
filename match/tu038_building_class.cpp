@@ -7291,19 +7291,10 @@ int BuildingClass::vf_281(int a)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x456FB0
-//
-// BLOCK-ORDER DELTA (status partial, 76.2% - 32/42). Everything through the
-// branchless cast and the holder comparison is exact. What is left is which of
-// the two tails VC6 lays down first: retail puts the override call at 0x457002
-// and the plain return at 0x45700F, and we emit them the other way round, which
-// inverts the last two branches with them. Four layouts were tried - the
-// override as the last statement, as an `else`, reached by `goto` with the
-// plain return labelled after it, and with both guards inverted - and VC6 keeps
-// the plain return first every time. The instruction stream is otherwise
-// identical.
 int Obj_00456FB0::FUN_00456FB0(int value)
 {
     int answer = vt_464(value);
+    int result = answer;
 
     if (!vt_160()) {
         // Positive guard: retail's `JZ` at 0x456FDB jumps forward to the plain
@@ -7330,13 +7321,11 @@ int Obj_00456FB0::FUN_00456FB0(int value)
     }
 
     // The override takes the *answer*, not the original argument: retail pushes
-    // EDI, which `MOV EDI,EAX` loaded from the first call's result. It is
-    // written before the plain return so VC6 lays its block out first, matching
-    // retail's 0x457002-then-0x45700F order.
-    return FUN_0070E360(answer);
+    // EDI, which `MOV EDI,EAX` loaded from the first call's result.
+    result = FUN_0070E360(answer);
 
 plain:
-    return answer;
+    return result;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

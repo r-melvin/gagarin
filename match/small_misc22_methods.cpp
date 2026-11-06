@@ -73,22 +73,12 @@ Obj_00432690* Obj_00432690::FUN_00432690(int arg)
     return this;
 }
 
-// PROLOGUE DELTA (status partial, 72.2% - 13/18). The seven field stores and
-// the call are byte-exact; the four prologue instructions differ in which
-// register holds which argument and where the zeroing XOR sits. Retail loads
-// the call's argument into EDX and pushes it before the first field store; we
-// load it into EAX, store the field first, then zero EAX and push from ECX.
-// The sibling at 0x432690 matches with plain field stores; an earlier
-// volatile-store spelling of this function scored lower (33.3%) and is not
-// used under the no-steering rule.
-//
 // FUNCTION: GAMEMD 0x4326C0
 Obj_00432690* Obj_00432690::FUN_004326C0(int arg, int extra)
 {
-    unknown_0C = extra;
-
     unknown_00 = 0;
     unknown_04 = 0;
+    unknown_0C = extra;
     unknown_20 = 0;
     unknown_28 = -1;
     unknown_2C = 1;

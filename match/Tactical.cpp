@@ -1793,9 +1793,7 @@ extern ColorConvert* DAT_00A8F798;
 extern BitFont* DAT_0089C4D0;
 // Declaration: LIBRARY GAMEMD 0x7CA405, CRT wcslen
 unsigned int __cdecl FUN_007CA405(const unsigned short* text);
-// Declaration: GAMEMD 0x434B90, seven stack words, RET28
-int __stdcall FUN_00434B90(BitFont* font, Surface* surface, const unsigned short* text,
-    int x, int y, int a, int b);
+#include "bit_font_print_methods.h"
 // Declaration: GAMEMD 0x4AED70, ECXsurface/EDXconvert, RET56
 void FUN_004AED70(Surface* surface, ColorConvert* convert, ShapeHeader* shape,
     int frame, Point2D* position, RectangleStruct* clip, int flags,
@@ -1836,7 +1834,7 @@ void Tactical::FUN_006D4E20(const unsigned short* text)
     font->FUN_00433C90(1);
     font->FUN_00433CA0(&bounds);
     font->FUN_00433C70((unsigned short)white);
-    FUN_00434B90(font, DAT_0088731C, text, x, y, 0, 0);
+    DAT_0089C4B8->FUN_00434B90(font, DAT_0088731C, text, x, y, 0, 0);
 }
 
 

@@ -493,8 +493,6 @@ int __cdecl FUN_00411df0(StreamSampleView* sample)
 }
 
 // FUNCTION: GAMEMD 0x412230
-// PARTIAL: 78.6%. Same instructions; retail interleaves the Leave argument push
-// between the flag load and the OR, we push it first. Not steered.
 // Pause a streaming sample: stop its sound buffer under the slot's lock and
 // flag the slot as paused. Always returns -1.
 int __cdecl FUN_00412230(StreamSampleView* sample)
@@ -504,8 +502,8 @@ int __cdecl FUN_00412230(StreamSampleView* sample)
     if (slot->Active == 1 && slot->Buffer != 0)
     {
         slot->Buffer->lpVtbl->Stop(slot->Buffer);
-        slot->Flags |= 1;
     }
+    slot->Flags |= 1;
     LeaveCriticalSection(&slot->Lock);
     return -1;
 }

@@ -10754,10 +10754,8 @@
   "sym": "?FUN_004326C0@Obj_00432690@@QAEPAU1@HH@Z",
   "len": "0x34",
   "name": "FUN_004326C0",
-  "status": "partial",
-  "pct": 72.2,
-  "best_pct": 72.2,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/small_misc23_methods.cpp",
@@ -11819,10 +11817,8 @@
   "sym": "?FUN_00456FB0@Obj_00456FB0@@QAEHH@Z",
   "len": "0x66",
   "name": "Obj_00456FB0::FUN_00456FB0",
-  "status": "partial",
-  "pct": 76.2,
-  "best_pct": 76.2,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -59617,10 +59613,8 @@
   "sym": "?FUN_00412230@@YAHPAUStreamSampleView@@@Z",
   "len": "0x50",
   "name": "FUN_00412230",
-  "status": "partial",
-  "pct": 78.6,
-  "best_pct": 78.6,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/audio_stream_slot_methods.cpp",
@@ -72256,9 +72250,9 @@
   "len": "0x18a",
   "name": "FUN_005C0640",
   "status": "partial",
-  "pct": 71.8,
-  "best_pct": 71.8,
-  "best_at": "cf203011"
+  "pct": 92.4,
+  "best_pct": 92.4,
+  "best_at": "6a1d87f1"
  },
  {
   "tu": "match/movie_handle_class.cpp",
@@ -104475,9 +104469,9 @@
   "len": "0x202",
   "name": "Tactical::FUN_006D4E20",
   "status": "partial",
-  "pct": 79.1,
-  "best_pct": 79.1,
-  "best_at": "cf203011"
+  "pct": 86.6,
+  "best_pct": 86.6,
+  "best_at": "6a1d87f1"
  },
  {
   "tu": "match/Tactical.cpp",

@@ -404,8 +404,10 @@ Obj_005C01A0* FUN_005BFAA0(const char* name, Surface_005C07D0* surface,
                            RectangleStruct a, RectangleStruct b, int c, int d);
 
 // FUNCTION: GAMEMD 0x5C0640
-// PARTIAL (71.8%): the .VQA strcpy is scheduled differently. Tried: nested
-// ifs (45.1%), one || condition (38.3%), a found flag (best, both forms).
+// PARTIAL (92.4%): the .VQA strcpy is scheduled differently (retail forms the
+// buffer address for the file object before the copy, we form it after). Tried:
+// nested ifs and a separate vqa flag (71.8%), a named file object (57.3%); the
+// found/else shape with a single `if (found)` arm is the best.
 // Strip the extension, tell the options object the bare name, then look for
 // NAME.BIK and then NAME.VQA; copy the one found to `out` when given.
 bool FUN_005C0640(const char* name, char* out, int unused)
@@ -423,11 +425,12 @@ bool FUN_005C0640(const char* name, char* out, int unused)
         strcpy(ext, ".VQA");
         found = CCFileClass(buffer).Exists(false);
     }
-    if (!found)
-        return false;
-    if (out != 0)
-        strcpy(out, buffer);
-    return true;
+    if (found) {
+        if (out != 0)
+            strcpy(out, buffer);
+        return true;
+    }
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x5C07D0
