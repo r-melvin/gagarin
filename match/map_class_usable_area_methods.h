@@ -16,21 +16,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
-// CellClass — only the map coordinate and the two level bytes are read.
-struct Cell_00578540
-{
-    char          _pad000[0x24];         // +0x0000
-    short         X;                     // +0x0024 MapCoords.X
-    short         Y;                     // +0x0026 MapCoords.Y
-    char          _pad028[0x11B - 0x28]; // +0x0028
-    signed char   Level;                 // +0x011B
-    unsigned char SlopeIndex;            // +0x011C
-};
-GG_STATIC_ASSERT(offsetof(Cell_00578540, X)          == 0x24);
-GG_STATIC_ASSERT(offsetof(Cell_00578540, Y)          == 0x26);
-GG_STATIC_ASSERT(offsetof(Cell_00578540, Level)      == 0x11B);
-GG_STATIC_ASSERT(offsetof(Cell_00578540, SlopeIndex) == 0x11C);
-
+#include "_layout/cell_class.h"
 #include "ui_display_chain.h"
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_USABLE_AREA_METHODS_H

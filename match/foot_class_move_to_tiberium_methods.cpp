@@ -16,13 +16,13 @@ bool Obj_004DCFE0::MoveToTiberium(int radius, int scanClose)
         return false;
     }
 
-    Cell_004DCFE0 buf;
-    Cell_004DCFE0 cell = *(this->*this->Vtbl->At_338)(&buf, radius, scanClose);
+    CellStruct buf;
+    CellStruct cell = *(this->*this->Vtbl->At_338)(&buf, radius, scanClose);
 
     if (cell.X != NoCell_004DCFE0.X || cell.Y != NoCell_004DCFE0.Y) {
         Coord_004DCFE0 coordBuf;
         Coord_004DCFE0* coords = (this->*this->Vtbl->GetCoords)(&coordBuf);
-        Cell_004DCFE0 mine;
+        CellStruct mine;
         mine.X = (short)(coords->X / 256);
         mine.Y = (short)(coords->Y / 256);
         if (cell.X == mine.X && cell.Y == mine.Y) {
@@ -35,5 +35,5 @@ bool Obj_004DCFE0::MoveToTiberium(int radius, int scanClose)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x8B3D88
-extern Cell_004DCFE0 NoCell_004DCFE0;
+extern CellStruct NoCell_004DCFE0;
 // END defined globals

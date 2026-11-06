@@ -280,12 +280,12 @@ void Display_004A8BF0::SetActiveFoundation(Foundation_004A8BF0* foundation)
         copy = *foundation;
         Active = &copy;
 
-        Cell_004A8BF0 size;
-        Cell_004A8BF0 span = *GetFoundationSize(&size, &copy);
+        CellStruct size;
+        CellStruct span = *GetFoundationSize(&size, &copy);
         span.X--;
         span.Y--;
 
-        Cell_004A8BF0 half;
+        CellStruct half;
         half.X = (short)(-span.X / 2);
         half.Y = (short)(-span.Y / 2);
         Offset = half;

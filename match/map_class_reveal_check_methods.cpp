@@ -6,7 +6,7 @@
 
 // MapClass::operator[](CellStruct) as VC6 inlines it: the fixed 512x512
 // bound, then the fallback cell with the coordinate stamped into it.
-static inline CellClass_005865F0* CellAt_005865F0(Cell_005865F0 pos)
+static inline CellClass_005865F0* CellAt_005865F0(CellStruct pos)
 {
     int idx = (pos.Y << 9) + pos.X;
     if (idx >= 0 && idx < 0x40000) {
@@ -28,7 +28,7 @@ static inline CellClass_005865F0* CellAt_005865F0(Cell_005865F0 pos)
 // through the global instance.
 void Map_005865F0::RevealCheck(CellClass_005865F0* cell, House_005865F0* house, bool redraw)
 {
-    Cell_005865F0 pos = cell->MapCoords;
+    CellStruct pos = cell->MapCoords;
 
     for (int level = 1; level < 15; level += 2) {
         CellClass_005865F0* pCell = CellAt_005865F0(pos);

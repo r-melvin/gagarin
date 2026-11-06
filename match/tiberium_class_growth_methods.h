@@ -21,12 +21,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
-struct Cell_007235A0
-{
-    short X;   // +0x0000
-    short Y;   // +0x0002
-};
-GG_STATIC_ASSERT(sizeof(Cell_007235A0) == 0x4);
+#include "_layout/cell.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
 #include "frame_counter.h"
@@ -48,7 +43,7 @@ struct Map_007235A0
 {
     char opaque[4];
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass_007235A0* GetCellAt(const Cell_007235A0& cell);
+    CellClass_007235A0* GetCellAt(const CellStruct& cell);
 };
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer).
 extern Map_007235A0 DAT_0087F7E8;
@@ -56,14 +51,14 @@ extern Map_007235A0 DAT_0087F7E8;
 // PriorityQueueClassNode — a cell and its float priority.
 struct QueueNode_007235A0
 {
-    Cell_007235A0 Cell;    // +0x0000
+    CellStruct Cell;    // +0x0000
     float         Value;   // +0x0004
 };
 GG_STATIC_ASSERT(sizeof(QueueNode_007235A0) == 0x8);
 
 // FUNCTION: GAMEMD 0x42B1C0 (decl; reloc) — PriorityQueueClassNode
 // surface index of a cell (cell reference in ECX).
-int ToSurfaceIndex_007235A0(const Cell_007235A0& cell);
+int ToSurfaceIndex_007235A0(const CellStruct& cell);
 // FUNCTION: GAMEMD 0x42B1F0 (decl; reloc) — PriorityQueueClassNode surface
 // data count.
 int __stdcall SurfaceDataCount_007235A0();
@@ -133,7 +128,7 @@ struct Tiberium_007235A0
     void FUN_007233A0();
 
     // FUNCTION: GAMEMD 0x7235A0 — TiberiumClass::RegisterForGrowth.
-    void RegisterForGrowth(Cell_007235A0* cell);
+    void RegisterForGrowth(CellStruct* cell);
 };
 GG_STATIC_ASSERT(offsetof(Tiberium_007235A0, GrowthLogic.Count) == 0x10C);
 GG_STATIC_ASSERT(offsetof(Tiberium_007235A0, GrowthLogic.Queue) == 0x110);

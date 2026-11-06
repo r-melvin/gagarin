@@ -40,7 +40,7 @@ void VeinholeMonsterClass::UpdateAllVeinholes()
 // FUNCTION: GAMEMD 0x74D670
 // Reject a candidate that is too close to an existing monster or whose 3x3
 // cell neighborhood is not flat, above ground and of land type zero.
-bool VeinholeMonsterClass::IsCellEligibleForVeinHole(const Cell_0074D670* cell)
+bool VeinholeMonsterClass::IsCellEligibleForVeinHole(const CellStruct* cell)
 {
     if (DAT_00A8E7AC > 0)
         return true;
@@ -58,7 +58,7 @@ bool VeinholeMonsterClass::IsCellEligibleForVeinHole(const Cell_0074D670* cell)
 
     for (int dy = -1; dy <= 1; ++dy) {
         for (int dx = -1; dx <= 1; ++dx) {
-            Cell_0074D670 spot;
+            CellStruct spot;
             spot.X = cell->X + dx;
             spot.Y = cell->Y + dy;
             CellClass_0074D670* c = MapInstance_0074D670.Cell(spot);

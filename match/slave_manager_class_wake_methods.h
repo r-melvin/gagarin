@@ -45,13 +45,7 @@ struct House_006B1020
 };
 GG_STATIC_ASSERT(offsetof(House_006B1020, IsHumanPlayer) == 0x1EC);
 
-// CellClass — only the int at +0xEC (the land type; 5 == ore) is read.
-struct Cell_006B1020
-{
-    char _pad000[0xEC];    // +0x0000
-    int  At_EC;            // +0x00EC
-};
-GG_STATIC_ASSERT(offsetof(Cell_006B1020, At_EC) == 0xEC);
+#include "_layout/cell_class.h"
 
 // RulesClass — the two slave-miner tunables read here.
 struct Rules_006B1020
@@ -81,7 +75,7 @@ struct Techno_006B1020
 };
 GG_STATIC_ASSERT(offsetof(Techno_006B1020, Owner) == 0x21C);
 
-typedef Cell_006B1020* (Techno_006B1020::*Fn1BC_006B1020)();
+typedef CellClass* (Techno_006B1020::*Fn1BC_006B1020)();
 typedef CellStruct (Techno_006B1020::*Fn338_006B1020)(int range, int flag);
 
 struct TechnoVtbl_006B1020

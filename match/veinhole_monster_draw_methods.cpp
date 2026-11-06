@@ -34,18 +34,18 @@ void Monster_0074D490::DrawIt()
     void* shape = VeinSHPData;
     void* palette = unknown_FC;
 
-    Coord_0074D490 coord;
+    CoordStruct coord;
     coord.X = Cell.X * 256 + 0x80;
     coord.Y = Cell.Y * 256 + 0x80;
     coord.Z = 0;
 
-    if (DAT_0087F7E8.GetCellAtCoord(coord)->Flags & 0x400000)
+    if (DAT_0087F7E8.FUN_00565730(coord)->Flags & 0x400000)
         palette = 0;
 
     Point_0074D490 point;
     DAT_00887324->CoordsToClient(&coord, &point);
 
-    int lift = DAT_0087F7E8.GetCellAt(Cell)->Level * 15;
+    int lift = DAT_0087F7E8.FUN_005657A0(Cell)->Level * 15;
     point.Y = point.Y - 0x3A - lift;
 
     DAT_00887324->AddSelectable(this, point.X, DAT_00886FA4 + point.Y + 0x3A);
@@ -55,6 +55,6 @@ void Monster_0074D490::DrawIt()
     Point_0074D490 offset = {0, 0};
     FUN_004AED70(DAT_00887314, remap, shape, palette, &point, &DAT_00886FA0,
                  0x2E00, 0, -0x11 - lift, 0,
-                 DAT_0087F7E8.GetCellAtCoord(coord)->unknown_10C,
+                 DAT_0087F7E8.FUN_00565730(coord)->Intensity_Terrain,
                  0, 0, 0, offset);
 }

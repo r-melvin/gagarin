@@ -7,7 +7,7 @@
 // MapClass::operator[](CellStruct) as VC6 inlines it: the fixed 512x512
 // bound through the global instance, then the fallback cell with the
 // coordinate stamped into it.
-static inline CellClass_00578390* CellAt_00578390(Cell_00578390* pos)
+static inline CellClass_00578390* CellAt_00578390(CellStruct* pos)
 {
     int idx = (pos->Y << 9) + pos->X;
     if (idx >= 0 && idx < 0x40000) {
@@ -27,7 +27,7 @@ static inline CellClass_00578390* CellAt_00578390(Cell_00578390* pos)
 // height level shifts the x+y band; a sloped cell just inside the top edge
 // counts one level higher. `x` is declared before `y` so the y + x sums
 // take y as the LEA base, as retail has them.
-bool Map_00578390::IsWithinUsableArea(Cell_00578390* cell, bool checkLevel)
+bool Map_00578390::IsWithinUsableArea(CellStruct* cell, bool checkLevel)
 {
     int level = 0;
     int x = cell->X;

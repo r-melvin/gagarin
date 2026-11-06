@@ -24,41 +24,28 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
-struct Cell_0056BEC0
-{
-    short X;   // +0x00
-    short Y;   // +0x02
-};
-GG_STATIC_ASSERT(sizeof(Cell_0056BEC0) == 4);
+#include "_layout/cell.h"
 
-struct CellClass_0056BEC0
-{
-    char          _pad000[0xEC];              // +0x0000
-    int           LandType;                   // +0x00EC
-    char          _pad0F0[0x11E - 0xF0];      // +0x00F0
-    unsigned char OverlayData;                // +0x011E
-};
-GG_STATIC_ASSERT(offsetof(CellClass_0056BEC0, LandType)    == 0xEC);
-GG_STATIC_ASSERT(offsetof(CellClass_0056BEC0, OverlayData) == 0x11E);
+#include "_layout/cell_class.h"
 
 // GLOBAL: GAMEMD 0x87F924 — MapClass::Instance.Cells item base.
-extern CellClass_0056BEC0** Cells_0056BEC0;
+extern CellClass** Cells_0056BEC0;
 // GLOBAL: GAMEMD 0xABDC50 — MapClass::InvalidCell (MapCoords at 0xABDC74).
-extern CellClass_0056BEC0 InvalidCell_0056BEC0;
+extern CellClass InvalidCell_0056BEC0;
 // GLOBAL: GAMEMD 0xABDC74 — InvalidCell::MapCoords, stamped on every miss.
-extern Cell_0056BEC0 InvalidCellCoords_0056BEC0;
+extern CellStruct InvalidCellCoords_0056BEC0;
 // GLOBAL: GAMEMD 0xABD480 — the "slot is free" CellStruct sentinel.
-extern Cell_0056BEC0 DAT_00ABD480;
+extern CellStruct DAT_00ABD480;
 
 // One powerup-crate slot: a CDTimerClass (0xC bytes) plus the cell it sits in.
 struct Crate_0056BEC0
 {
     char           _pad000[0xC];   // +0x0000  CDTimerClass
-    Cell_0056BEC0  Location;       // +0x000C
+    CellStruct  Location;       // +0x000C
 
     // FUNCTION: GAMEMD 0x4A17C0 (decl; reloc) — move this crate to the cell,
     // re-arming its timer; false when the cell will not take it.
-    bool FUN_004A17C0(Cell_0056BEC0& cell);
+    bool FUN_004A17C0(CellStruct& cell);
 };
 GG_STATIC_ASSERT(offsetof(Crate_0056BEC0, Location) == 0xC);
 GG_STATIC_ASSERT(sizeof(Crate_0056BEC0) == 0x10);
@@ -69,28 +56,28 @@ struct Map_0056BEC0
     Crate_0056BEC0 Crates[0x100];        // +0x0158
 
     // FUNCTION: GAMEMD 0x56DC20 (decl; reloc) — MapClass::NearByLocation.
-    Cell_0056BEC0* NearByLocation(Cell_0056BEC0* out, const Cell_0056BEC0& position,
+    CellStruct* NearByLocation(CellStruct* out, const CellStruct& position,
                                   int speedType, int a4, int movementZone, bool alt,
                                   int spaceSizeX, int spaceSizeY, bool a9, bool a10,
                                   bool a11, bool ignoreOccupied,
-                                  const Cell_0056BEC0& closeTo, bool a14, bool buildable);
+                                  const CellStruct& closeTo, bool a14, bool buildable);
     // The by-value wrapper (YRpp's spelling), expanded inline at the call
     // site: its constant parameters become the shared 1/0 registers and the
     // result is read back through the returned pointer.
-    Cell_0056BEC0 NearByLocation(const Cell_0056BEC0& position, int speedType, int a4,
+    CellStruct NearByLocation(const CellStruct& position, int speedType, int a4,
                                  int movementZone, bool alt, int spaceSizeX,
                                  int spaceSizeY, bool a9, bool a10, bool a11,
-                                 bool ignoreOccupied, const Cell_0056BEC0& closeTo,
+                                 bool ignoreOccupied, const CellStruct& closeTo,
                                  bool a14, bool buildable)
     {
-        Cell_0056BEC0 outBuffer;
+        CellStruct outBuffer;
         return *NearByLocation(&outBuffer, position, speedType, a4, movementZone, alt,
                                spaceSizeX, spaceSizeY, a9, a10, a11, ignoreOccupied,
                                closeTo, a14, buildable);
     }
 
     // FUNCTION: GAMEMD 0x56BEC0 — MapClass::PlacePowerupCrate.
-    bool PlacePowerupCrate(Cell_0056BEC0 cell, int type);
+    bool PlacePowerupCrate(CellStruct cell, int type);
 };
 GG_STATIC_ASSERT(offsetof(Map_0056BEC0, Crates) == 0x158);
 

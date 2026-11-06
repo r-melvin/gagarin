@@ -70,7 +70,7 @@ public:
     static void LoadVeinholeArt(int idxTheatre);  // 0x74D450
     static void DeleteAll();                   // 0x74D760
     static void DeleteVeinholeGrowthData();    // 0x74E880
-    static bool IsCellEligibleForVeinHole(const struct Cell_0074D670* cell);  // 0x74D670
+    static bool IsCellEligibleForVeinHole(const struct CellStruct* cell);  // 0x74D670
     static void UpdateAllVeinholes();           // 0x74CDF0
     static void DestroyAll();                   // 0x74EA30
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty); // 6, 0x74EEE0

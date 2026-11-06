@@ -69,12 +69,12 @@ void __stdcall FlyLocoStop::StopMoving()
     // cell conversion consumes and overwrites the coordinate's X and Y later,
     // so a whole-struct copy of the location stores one component too many.
     Coord_004CCFD0 coord = client->Location;
-    Cell_004CCFD0 cell = CellOf_004CCFD0(coord.X, coord.Y);
+    CellStructInit cell = CellOf_004CCFD0(coord.X, coord.Y);
 
     if (client->At_3D4 == 0) {
         if (MapInstance_004CCFD0.At_578460(&cell, 1) == 0) {
             if ((client->*client->Vtbl->At_4DC)() == 0) {
-                Cell_004CCFD0 nudged;
+                CellStructInit nudged;
                 cell = *MapInstance_004CCFD0.At_586AC0(&nudged, &cell, 1);
             }
         }
@@ -103,11 +103,11 @@ void __stdcall FlyLocoStop::StopMoving()
             return;
         }
     } else {
-        Cell_004CCFD0 nearby;
-        Cell_004CCFD0 buffer;
+        CellStructInit nearby;
+        CellStructInit buffer;
         nearby.X = 0;
         nearby.Y = 0;
-        Cell_004CCFD0 found =
+        CellStructInit found =
             *MapInstance_004CCFD0.NearByLocation(&buffer, &cell, 1, -1, 9, 0,
                                                  1, 1, 0, 0, 0, 1, &nearby,
                                                  0, 0);

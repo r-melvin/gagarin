@@ -21,41 +21,18 @@
 #include "_rt/gg_static_assert.h"
 #include "vox_audio_globals.h"
 
-struct Cell_0074D490  { short X; short Y; };
+#include "_layout/cell.h"
 struct Point_0074D490 { int X; int Y; };
-struct Coord_0074D490 { int X; int Y; int Z; };
-GG_STATIC_ASSERT(sizeof(Cell_0074D490)  == 4);
 GG_STATIC_ASSERT(sizeof(Point_0074D490) == 8);
-GG_STATIC_ASSERT(sizeof(Coord_0074D490) == 0xC);
 
-struct CellClass_0074D490
-{
-    char        _pad0000[0x10C];          // +0x0000
-    short       unknown_10C;              // +0x010C  handed to the blitter
-    char        _pad010E[0x11B - 0x10E];  // +0x010E
-    signed char Level;                    // +0x011B
-    char        _pad011C[0x140 - 0x11C];  // +0x011C
-    int         Flags;                    // +0x0140  0x400000 = hidden
-};
-GG_STATIC_ASSERT(offsetof(CellClass_0074D490, unknown_10C) == 0x10C);
-GG_STATIC_ASSERT(offsetof(CellClass_0074D490, Level)       == 0x11B);
-GG_STATIC_ASSERT(offsetof(CellClass_0074D490, Flags)       == 0x140);
-
-struct Map_0074D490
-{
-    // FUNCTION: GAMEMD 0x565730 (decl; reloc) -- MapClass::GetTargetCell.
-    CellClass_0074D490* GetCellAtCoord(const Coord_0074D490& coord);
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) -- MapClass::GetCellAt.
-    CellClass_0074D490* GetCellAt(const Cell_0074D490& cell);
-};
-
-// GLOBAL: GAMEMD 0x87F7E8 -- MapClass::Instance (used by address, ECX).
-extern Map_0074D490 DAT_0087F7E8;
+#include "_layout/cell_class.h"
+#include "_layout/map_0087f7e8.h"
+#include "_layout/coord_struct.h"
 
 struct Tactical_0074D490
 {
     // FUNCTION: GAMEMD 0x6D2140 (decl; reloc) -- Tactical::CoordsToClient.
-    bool CoordsToClient(const Coord_0074D490* coord, Point_0074D490* dest);
+    bool CoordsToClient(const CoordStruct* coord, Point_0074D490* dest);
     // FUNCTION: GAMEMD 0x6D9EF0 (decl; reloc) -- Tactical::AddSelectable.
     bool AddSelectable(void* object, int x, int y);
 };
@@ -95,7 +72,7 @@ void FUN_004AED70(void* surface, void* remap, void* shape, void* palette,
 struct Monster_0074D490
 {
     char            _pad0000[0xF8];    // +0x0000
-    Cell_0074D490   Cell;              // +0x00F8
+    CellStruct   Cell;              // +0x00F8
     void*           unknown_FC;        // +0x00FC
     char            IsDead;            // +0x0100
 

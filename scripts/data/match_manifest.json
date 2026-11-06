@@ -2673,7 +2673,7 @@
  {
   "tu": "match/Techno.cpp",
   "addr": "0x703590",
-  "sym": "?NearbyLocation@Obj_00703590@@QAE?AUCell_00703590@@PAU1@@Z",
+  "sym": "?NearbyLocation@Obj_00703590@@QAE?AUCellStructInit@@PAU1@@Z",
   "len": "0x123",
   "name": "TechnoClass::NearbyLocation",
   "status": "partial",
@@ -2767,11 +2767,11 @@
  {
   "tu": "match/tu241_temporal_class.cpp",
   "addr": "0x71AE50",
-  "sym": "?CanWarpTarget@TemporalClass_0071AE50@@QAE_NPAUTechno_0071AE50@@@Z",
+  "sym": "?FUN_0071AE50@TemporalClass@@QAE_NPAVTechnoClass@@@Z",
   "len": "0xcc",
   "name": "TemporalClass::CanWarpTarget",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Unit.cpp",
@@ -23263,11 +23263,11 @@
  {
   "tu": "match/tiberium_class_growth_methods.cpp",
   "addr": "0x7235A0",
-  "sym": "?RegisterForGrowth@Tiberium_007235A0@@QAEXPAUCell_007235A0@@@Z",
+  "sym": "?RegisterForGrowth@Tiberium_007235A0@@QAEXPAUCellStruct@@@Z",
   "len": "0x12A",
   "name": "TiberiumClass::RegisterForGrowth",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/adjacent_cell_methods.cpp",
@@ -23369,7 +23369,7 @@
  {
   "tu": "match/tu050_cell_class.cpp",
   "addr": "0x486920",
-  "sym": "?ActivateVeins@Cell_00486920@@QAEXXZ",
+  "sym": "?ActivateVeins@CellClass@@QAEXXZ",
   "len": "0x14c",
   "name": "CellClass::ActivateVeins",
   "status": "matched",
@@ -23506,7 +23506,7 @@
  {
   "tu": "match/tu050_cell_class.cpp",
   "addr": "0x47C3D0",
-  "sym": "?FindTechnoNearestTo@Cell_0047C3D0@@QAEPAUObj_0047C3D0@@PAUPoint_0047C3D0@@_NPAU2@@Z",
+  "sym": "?FindTechnoNearestTo@CellClass@@QAEPAVObjectClass@@PAVPoint2D@@_NPAV2@@Z",
   "len": "0xfa",
   "name": "CellClass::FindTechnoNearestTo",
   "status": "matched",
@@ -23542,7 +23542,7 @@
  {
   "tu": "match/tu050_cell_class.cpp",
   "addr": "0x480510",
-  "sym": "?ConnectsToOverlay@Cell_00480510@@QAE_NHH@Z",
+  "sym": "?ConnectsToOverlay@CellClass@@QAE_NHH@Z",
   "len": "0x11b",
   "name": "Cell_00480510::ConnectsToOverlay",
   "status": "matched",
@@ -23733,7 +23733,7 @@
  {
   "tu": "match/tu050_cell_class.cpp",
   "addr": "0x483780",
-  "sym": "?SpreadTiberium@Cell_00483780@@QAE_ND@Z",
+  "sym": "?SpreadTiberium@CellClass@@QAE_ND@Z",
   "len": "0x154",
   "name": "CellClass::SpreadTiberium",
   "status": "partial",
@@ -23762,7 +23762,7 @@
  {
   "tu": "match/tu050_cell_class.cpp",
   "addr": "0x4838E0",
-  "sym": "?CanTiberiumGerminate@Cell_004838E0@@QAE_NPAX@Z",
+  "sym": "?CanTiberiumGerminate@CellClass@@QAE_NPAX@Z",
   "len": "0x110",
   "name": "CellClass::CanTiberiumGerminate",
   "status": "matched",
@@ -23919,11 +23919,11 @@
  {
   "tu": "match/map_class_local_radar_methods.cpp",
   "addr": "0x578460",
-  "sym": "?IsWithinUsableArea@Map_00578390@@QAE_NPAUCell_00578390@@_N@Z",
+  "sym": "?IsWithinUsableArea@Map_00578390@@QAE_NPAUCellStruct@@_N@Z",
   "len": "0xd7",
   "name": "MapClass::IsWithinUsableArea",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map_class_location_shrouded_methods.cpp",
@@ -24047,7 +24047,7 @@
  {
   "tu": "match/map_class_powerup_crate_methods.cpp",
   "addr": "0x56BEC0",
-  "sym": "?PlacePowerupCrate@Map_0056BEC0@@QAE_NUCell_0056BEC0@@H@Z",
+  "sym": "?PlacePowerupCrate@Map_0056BEC0@@QAE_NUCellStruct@@H@Z",
   "len": "0x155",
   "name": "MapClass::PlacePowerupCrate",
   "status": "partial",
@@ -24080,11 +24080,11 @@
  {
   "tu": "match/map_class_reset_zones_methods.cpp",
   "addr": "0x56D460",
-  "sym": "?ResetZones@Map_0056D460@@QAEXABUCell_0056D460@@@Z",
+  "sym": "?ResetZones@Map_0056D460@@QAEXABUCellStruct@@@Z",
   "len": "0x13B",
   "name": "MapClass::ResetZones",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Map.cpp",
@@ -24172,11 +24172,11 @@
  {
   "tu": "match/map_class_usable_area_methods.cpp",
   "addr": "0x578540",
-  "sym": "?IsWithinUsableArea@MapClass@@QBE_NPAUCell_00578540@@_N@Z",
+  "sym": "?IsWithinUsableArea@MapClass@@QBE_NPAVCellClass@@_N@Z",
   "len": "0xaf",
   "name": "MapClass::IsWithinUsableArea",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Display.cpp",
@@ -24801,18 +24801,18 @@
   "len": "0x139",
   "name": "VeinholeMonsterClass::DrawIt",
   "status": "partial",
-  "pct": 20.7,
-  "best_pct": 20.7,
-  "best_at": "cf203011"
+  "pct": 28.3,
+  "best_pct": 28.3,
+  "best_at": "d4f74e94"
  },
  {
   "tu": "match/veinhole_monster_methods.cpp",
   "addr": "0x74D670",
-  "sym": "?IsCellEligibleForVeinHole@VeinholeMonsterClass@@SI_NPBUCell_0074D670@@@Z",
+  "sym": "?IsCellEligibleForVeinHole@VeinholeMonsterClass@@SI_NPBUCellStruct@@@Z",
   "len": "0xee",
   "name": "VeinholeMonsterClass::IsCellEligibleForVeinHole",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/veinhole_monster_methods.cpp",
@@ -61731,11 +61731,11 @@
  {
   "tu": "match/unowned_leaf_sweep_b.cpp",
   "addr": "0x56BC50",
-  "sym": "?FUN_0056BC50@@YGHPBUCell_0050DEF0@@@Z",
+  "sym": "?FUN_0056BC50@@YGHPBVCell@@@Z",
   "len": "0x30",
   "name": "FUN_0056BC50",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/mission_class_methods.cpp",
@@ -105904,20 +105904,20 @@
  {
   "tu": "match/House.cpp",
   "addr": "0x501AA0",
-  "sym": "?FUN_00501AA0@Obj_00501AA0@@QAEPAUCell_004FFD90@@PAU2@HH@Z",
+  "sym": "?FUN_00501AA0@Obj_00501AA0@@QAEPAUCellStruct@@PAU2@HH@Z",
   "len": "0x1b",
   "name": "Obj_00501AA0::FUN_00501AA0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/House.cpp",
   "addr": "0x50E470",
-  "sym": "?FUN_0050E470@Cell_0050E470@@QAE_NPBUCell_004FFD90@@@Z",
+  "sym": "?FUN_0050E470@CellStruct@@QAE_NPBU1@@Z",
   "len": "0x23",
   "name": "Cell_0050E470::FUN_0050E470",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/House.cpp",
@@ -135968,11 +135968,11 @@
  {
   "tu": "match/Radar.cpp",
   "addr": "0x655050",
-  "sym": "?FUN_00655050@RadarClass@@QAE?AURadarDiamond@@ABUCell_0050DEF0@@@Z",
+  "sym": "?FUN_00655050@RadarClass@@QAE?AURadarDiamond@@ABVCell@@@Z",
   "len": "0x61",
   "name": "RadarClass::FUN_00655050",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Radar.cpp",
@@ -136013,7 +136013,7 @@
  {
   "tu": "match/Radar.cpp",
   "addr": "0x655150",
-  "sym": "?FUN_00655150@RadarClass@@QAE?AUCell_0050DEF0@@PBVPoint2D@@@Z",
+  "sym": "?FUN_00655150@RadarClass@@QAE?AVCell@@PBVPoint2D@@@Z",
   "len": "0x62",
   "name": "RadarClass::FUN_00655150",
   "status": "partial",
@@ -140617,11 +140617,11 @@
  {
   "tu": "match/leaf_sweep_r13_w1.cpp",
   "addr": "0x42AA40",
-  "sym": "?FUN_0042AA40@@YIHPAUCell_0042AA40@@0@Z",
+  "sym": "?FUN_0042AA40@@YIHPAUCellStruct@@0@Z",
   "len": "0x47",
   "name": "FUN_0042AA40",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/leaf_sweep_r13_w1.cpp",
@@ -143420,11 +143420,11 @@
  {
   "tu": "match/Radar.cpp",
   "addr": "0x6550C0",
-  "sym": "?FUN_006550C0@RadarClass@@QAE?AURadarDiamond@@PBUCell_0050DEF0@@@Z",
+  "sym": "?FUN_006550C0@RadarClass@@QAE?AURadarDiamond@@PBVCell@@@Z",
   "len": "0x8e",
   "name": "RadarClass: map cell to radar screen position",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Radar.cpp",
@@ -146604,7 +146604,7 @@
  {
   "tu": "match/tu050_cell_class.cpp",
   "addr": "0x486E30",
-  "sym": "?FUN_00486E30@Cell_00486E30@@QAEHXZ",
+  "sym": "?FUN_00486E30@CellClass@@QAEHXZ",
   "len": "0x36",
   "name": "Cell_00486E30::FUN_00486E30",
   "status": "matched",
@@ -150745,7 +150745,7 @@
  {
   "tu": "match/aircraft_mission_004155f0.cpp",
   "addr": "0x4195A0",
-  "sym": "?FUN_004195A0@Aircraft_004155F0@@QAEHPAU1@PAUCell_004155F0@@@Z",
+  "sym": "?FUN_004195A0@Aircraft_004155F0@@QAEHPAU1@PAUCellStruct@@@Z",
   "len": "0x104",
   "name": "Aircraft_004155F0::FUN_004195A0",
   "status": "matched",

@@ -288,9 +288,7 @@ GG_STATIC_ASSERT(offsetof(RadarArrayHolder, unknown_04) == 0x04);
 GG_STATIC_ASSERT(offsetof(RadarArrayHolder, unknown_08) == 0x08);
 GG_STATIC_ASSERT(offsetof(RadarArrayHolder, unknown_0C) == 0x0C);
 GG_STATIC_ASSERT(sizeof(RadarArrayHolder) == 0x10);
-struct Cell_00578540;           // map_class_usable_area_methods.cpp
 struct WarheadType_00489180;    // map_class_total_damage_methods.cpp
-struct Cell_0050DEF0;   // radar_class.h
 struct RadarDiamond;    // Radar.cpp
 class Pipe;
 class Straw;
@@ -403,7 +401,7 @@ public:
     // FUNCTION: GAMEMD 0x578460 (decl; reloc), const view / 0x5785F0 / 0x578540 -- usable-area tests.
     bool IsWithinUsableArea(const CellStruct& cell, bool checkLevel) const;
     bool IsWithinUsableArea(const CoordStruct& coords) const;
-    bool IsWithinUsableArea(Cell_00578540* pCell, bool checkLevel) const;
+    bool IsWithinUsableArea(CellClass* pCell, bool checkLevel) const;
     // FUNCTION: GAMEMD 0x578080 -- the floor height at a coordinate (second name for FUN_00578080).
     int GetZPos(CoordStruct* coords);
     // FUNCTION: GAMEMD 0x567DA0 (decl; reloc) -- four pushed words, RET 0x10; reveal the cells around a location.
@@ -729,11 +727,11 @@ public:
     // FUNCTION: GAMEMD 0x652E50 (decl; reloc) -- RET 4.
     void FUN_00652E50(bool on);
     // FUNCTION: GAMEMD 0x655050 -- cell to radar-space record {x, y, mode, 1}; RET 8.
-    struct RadarDiamond FUN_00655050(const Cell_0050DEF0& cell);
+    struct RadarDiamond FUN_00655050(const Cell& cell);
     // FUNCTION: GAMEMD 0x655150 -- radar-space point to cell; hidden result, RET 8.
-    Cell_0050DEF0 FUN_00655150(const Point2D* point);
+    Cell FUN_00655150(const Point2D* point);
     // FUNCTION: GAMEMD 0x6550C0 -- map cell to radar screen position; RET 4.
-    struct RadarDiamond FUN_006550C0(const Cell_0050DEF0* cell);
+    struct RadarDiamond FUN_006550C0(const Cell* cell);
     // FUNCTION: GAMEMD 0x6551C0 -- queue a cell for redraw once; RET 4.
     void FUN_006551C0(const Cell* cell);
     // FUNCTION: GAMEMD 0x6557F0 -- map point to radar pixel position, optionally clamped; RET 0xC.
@@ -753,7 +751,7 @@ public:
     // FUNCTION: GAMEMD 0x655740 (decl; reloc) -- forget a tracked building at a radar point; RET 0xC.
     void FUN_00655740(BuildingClass* building, Point2D point);
     // FUNCTION: GAMEMD 0x656750 -- tracked object and cell at a radar-space point; RET 0xC.
-    void FUN_00656750(const Point2D* point, struct Cell_0050DEF0* out, TechnoClass** found);
+    void FUN_00656750(const Point2D* point, Cell* out, TechnoClass** found);
 
     // Retail constructor 0x6A4F20: vector members at +0x1224/+0x125C/+0x1278,
     // followed by the timer at +0x1500. Other bytes remain unclassified.

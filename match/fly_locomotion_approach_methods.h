@@ -39,13 +39,7 @@ struct Coord_004CE680
 };
 GG_STATIC_ASSERT(sizeof(Coord_004CE680) == 0xC);
 
-// CellClass — only the flag dword @0x140 is touched.
-struct Cell_004CE680
-{
-    char _pad000[0x140];   // +0x0000
-    int  Flags;            // +0x0140
-};
-GG_STATIC_ASSERT(offsetof(Cell_004CE680, Flags) == 0x140);
+#include "_layout/cell_class.h"
 
 // MapClass singleton — opaque; only the coordinate-to-cell lookup is called.
 struct Map_004CE680
@@ -53,7 +47,7 @@ struct Map_004CE680
     char opaque[4];
 
     // FUNCTION: GAMEMD 0x565730 (decl; reloc) — MapClass::GetCellAt(coord).
-    Cell_004CE680* GetCellAt(const Coord_004CE680& coord);
+    CellClass* GetCellAt(const Coord_004CE680& coord);
 };
 
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance.

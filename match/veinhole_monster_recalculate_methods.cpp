@@ -42,14 +42,14 @@
 // function must clone the class, not lift the body out of it.
 void VeinholeMonsterClass::Recalculate()
 {
-    Cell_0074E930* cell = MapInstance.GetCellAt(this->Position);
+    CellClass* cell = DAT_0087F7E8.FUN_005657A0(this->Position);
     cell->OverlayTypeIndex = 0x7E;
     cell->OverlayData = 0;
-    cell->RecalcAttributes(-1);
+    cell->FUN_0047D2B0(-1);
 
     int i;
     for (i = 0; i < 8; i++) {
-        Cell_0074E930* neighbour = cell->GetNeighbourCell(i);
+        CellClass* neighbour = cell->GetNeighbourCell(i);
         if (i % 2 != 0) {
             neighbour->OverlayTypeIndex = -1;
         } else {
@@ -62,14 +62,14 @@ void VeinholeMonsterClass::Recalculate()
     for (dy = -2; dy <= 2; dy++) {
         int dx;
         for (dx = -2; dx <= 2; dx++) {
-            Cell_0074E930* around = MapInstance.GetCellAt(CellOffset(this->Position, dx, dy));
+            CellClass* around = DAT_0087F7E8.FUN_005657A0(CellOffset(this->Position, dx, dy));
             around->FUN_00485AF0();
-            around->RecalcAttributes(-1);
+            around->FUN_0047D2B0(-1);
         }
     }
 
     this->RecalculateSpread();
-    MapInstance.ResetZones(this->Position);
-    MapInstance.RecalculateSubZones(this->Position);
+    DAT_0087F7E8.FUN_0056D460(this->Position);
+    DAT_0087F7E8.FUN_00584550(this->Position);
     this->IsDead = 1;
 }

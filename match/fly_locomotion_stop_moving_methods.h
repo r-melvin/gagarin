@@ -41,27 +41,21 @@ GG_STATIC_ASSERT(sizeof(Coord_004CCFD0) == 0xC);
 // is non-POD and a by-value result is built in a temporary and copied - which
 // is retail's `MOV EAX,[ESP+0x24]; MOV [ESP+0x24],EAX` self-copy at 0x4CD024,
 // the temporary and the named cell having been given the same slot.
-struct Cell_004CCFD0
-{
-    short X;   // +0x00
-    short Y;   // +0x02
-    Cell_004CCFD0() {}
-};
-GG_STATIC_ASSERT(sizeof(Cell_004CCFD0) == 4);
+#include "_layout/cell.h"
 
 // The signed divide-by-256 idiom, taken as two ints: retail reads the two
 // components straight off the client's location and never materialises its
 // address a second time.
-inline Cell_004CCFD0 CellOf_004CCFD0(int x, int y)
+inline CellStructInit CellOf_004CCFD0(int x, int y)
 {
-    Cell_004CCFD0 r;
+    CellStructInit r;
     r.X = (short)(x / 256);
     r.Y = (short)(y / 256);
     return r;
 }
 
 // GLOBAL: GAMEMD 0x8B3C58 — the engine's unset cell.
-extern const Cell_004CCFD0 UnsetCell_008B3C58;
+extern const CellStructInit UnsetCell_008B3C58;
 // GLOBAL: GAMEMD 0x8B3C78 — the engine's unset coordinate.
 extern const Coord_004CCFD0 UnsetCoord_008B3C78;
 
@@ -84,14 +78,14 @@ struct Map_004CCFD0
     char opaque[4];
 
     // FUNCTION: GAMEMD 0x578460 (decl; reloc) — is the cell usable?
-    char At_578460(Cell_004CCFD0* cell, int flag);
+    char At_578460(CellStructInit* cell, int flag);
     // FUNCTION: GAMEMD 0x586AC0 (decl; reloc) — nudge to a usable cell; the
     // result comes back through the buffer whose address is handed in and is
     // read straight off the returned register.
-    Cell_004CCFD0* At_586AC0(Cell_004CCFD0* out, Cell_004CCFD0* cell,
+    CellStructInit* At_586AC0(CellStructInit* out, CellStructInit* cell,
                              int flag);
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCell(cell).
-    CellClass_004CCFD0* GetCell(Cell_004CCFD0* cell);
+    CellClass_004CCFD0* GetCell(CellStructInit* cell);
     // FUNCTION: GAMEMD 0x565730 (decl; reloc) — MapClass::GetCellAt(coord).
     CellClass_004CCFD0* GetCellAt(Coord_004CCFD0* coord, int flag);
     // FUNCTION: GAMEMD 0x578080 (decl; reloc) — the ground height at a coord.
@@ -100,10 +94,10 @@ struct Map_004CCFD0
     // Fifteen stacked arguments plus the receiver; the first is the buffer
     // the cell comes back in, and retail reads the cell off the returned
     // register, so it is an explicit out-parameter and not a hidden return.
-    Cell_004CCFD0* NearByLocation(Cell_004CCFD0* out, Cell_004CCFD0* cell,
+    CellStructInit* NearByLocation(CellStructInit* out, CellStructInit* cell,
                                   int a3, int a4, int a5, int a6, int a7,
                                   int a8, int a9, int a10, int a11, int a12,
-                                  Cell_004CCFD0* a13, int a14, int a15);
+                                  CellStructInit* a13, int a14, int a15);
 };
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance.
 extern Map_004CCFD0 MapInstance_004CCFD0;

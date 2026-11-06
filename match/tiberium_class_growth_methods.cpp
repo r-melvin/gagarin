@@ -25,7 +25,7 @@
 // (retail's `MOV EDX,ECX; SHR EDX,1` before `CMP ECX,EAX`), and it is
 // declared before the float key copy so the key travels through EAX and
 // Capacity is loaded after the spill.
-void Tiberium_007235A0::RegisterForGrowth(Cell_007235A0* cell)
+void Tiberium_007235A0::RegisterForGrowth(CellStruct* cell)
 {
     int index = ToSurfaceIndex_007235A0(*cell);
     if (DAT_0087F7E8.GetCellAt(*cell)->OverlayData < 0xB) {

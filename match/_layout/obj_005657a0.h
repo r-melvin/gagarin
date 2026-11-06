@@ -5,7 +5,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "cell_0050def0.h"
+#include "cell.h"
 #include "entry_005657a0.h"
 
 struct Obj_005657A0
@@ -13,7 +13,7 @@ struct Obj_005657A0
     char Pad_00[0x13C];
     Entry_005657A0** unknown_13C;
 
-    Entry_005657A0* FUN_005657A0(const Cell_0050DEF0& cell) const;
+    Entry_005657A0* FUN_005657A0(const Cell& cell) const;
 };
 GG_STATIC_ASSERT(offsetof(Obj_005657A0, unknown_13C) == 0x13C);
 #endif

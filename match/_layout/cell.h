@@ -35,6 +35,8 @@ struct CellStruct
     void FUN_00453240();
     // FUNCTION: GAMEMD 0x660B80 (decl; reloc) -- thiscall on the cell value.
     void FUN_00660B80();
+    // FUNCTION: GAMEMD 0x50E470 -- whether both components equal those of `other`.
+    bool FUN_0050E470(const CellStruct* other);
     // FUNCTION: GAMEMD 0x42D510 (decl; reloc) -- this offset plus `base`, returned by value through a hidden pointer.
     class Cell FUN_0042D510(const CellStruct& base) const;
 };

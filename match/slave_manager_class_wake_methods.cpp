@@ -23,7 +23,7 @@ bool SlaveManagerView_006B1020::ShouldWakeUpNow()
         return true;
     }
 
-    if ((this->Owner->*this->Owner->Vtbl->At_1BC)()->At_EC == 5) {
+    if ((this->Owner->*this->Owner->Vtbl->At_1BC)()->LandType == 5) {
         return true;
     }
 

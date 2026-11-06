@@ -437,7 +437,7 @@ void __fastcall FUN_006F1AB0(CCINIClass* ini, int flag); // GAMEMD 0x006F1AB0
 void __fastcall FUN_0041F490(CCINIClass* ini, int flag); // GAMEMD 0x0041F490
 
 // A two-short cell value copied as one dword.
-#include "_layout/cell_0050def0.h"
+#include "_layout/cell.h"
 
 // GLOBAL: GAMEMD 0x008B40F8
 extern "C" int DAT_008B40F8;
@@ -2237,7 +2237,7 @@ int ScenarioClass::FUN_00689D10()
 // member-wise copy and a const reference to the returned cell (82.2%).
 bool Scenario_00689D30::ReadStartPoints(CCINI_00689D30* ini)
 {
-    Cell_00689D30* slot = Waypoints;
+    Point2D* slot = Waypoints;
 
     StartX = -1;
     StartY = -1;
@@ -2245,9 +2245,9 @@ bool Scenario_00689D30::ReadStartPoints(CCINI_00689D30* ini)
     Height = -1;
     NumberStartingPoints = -1;
 
-    Cell_00689D30* clear = slot;
+    Point2D* clear = slot;
     for (int n = 8; n != 0; n--) {
-        *clear = Cell_00689D30(0, 0);
+        *clear = Point2D(0, 0);
         clear++;
     }
 

@@ -19,17 +19,12 @@
 
 // CellStruct — passed by const reference, which is why retail stores the two
 // words and then copies the pair as one dword into the argument slot.
-struct Cell_004A8BF0
-{
-    short X;   // +0x0000
-    short Y;   // +0x0002
-};
-GG_STATIC_ASSERT(sizeof(Cell_004A8BF0) == 4);
+#include "_layout/cell.h"
 
 // A cell built in place and handed straight to a const-reference parameter.
-inline Cell_004A8BF0 MakeCell_004A8BF0(int x, int y)
+inline CellStruct MakeCell_004A8BF0(int x, int y)
 {
-    Cell_004A8BF0 cell;
+    CellStruct cell;
     cell.X = (short)x;
     cell.Y = (short)y;
     return cell;
@@ -50,16 +45,16 @@ GG_STATIC_ASSERT(sizeof(Foundation_004A8BF0) == 0x1E0);
 struct Display_004A8BF0
 {
     char                 _pad0000[0x1174];   // +0x0000
-    Cell_004A8BF0        unknown_1174;         // +0x1174
-    Cell_004A8BF0        Offset;             // +0x1178
+    CellStruct        unknown_1174;         // +0x1174
+    CellStruct        Offset;             // +0x1178
     Foundation_004A8BF0* Active;             // +0x117C
 
     // FUNCTION: GAMEMD 0x4A94F0 (decl; reloc) — the foundation's size in
     // cells, written through the out pointer and returned.
-    Cell_004A8BF0* GetFoundationSize(Cell_004A8BF0* out, Foundation_004A8BF0* foundation);
+    CellStruct* GetFoundationSize(CellStruct* out, Foundation_004A8BF0* foundation);
     // FUNCTION: GAMEMD 0x4A95A0 (decl; reloc) — redraw the footprint at a
     // cell; the flag selects drawing it or erasing it.
-    void RedrawFoundation(const Cell_004A8BF0& cell, int draw);
+    void RedrawFoundation(const CellStruct& cell, int draw);
 
     // FUNCTION: GAMEMD 0x4A8BF0 — DisplayClass::SetActiveFoundation.
     void SetActiveFoundation(Foundation_004A8BF0* foundation);

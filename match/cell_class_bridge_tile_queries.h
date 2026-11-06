@@ -5,7 +5,7 @@
 //
 //   Receiver: the cell. `[ECX+0x38]` is IsoTileTypeIndex, which is the offset
 //   already pinned in this tree by match/map/cell_class_tiberium_germinate_
-//   methods.h (`Cell_004838E0::IsoTileTypeIndex == 0x38`), and the three bodies
+//   methods.h (`CellClass::IsoTileTypeIndex == 0x38`), and the three bodies
 //   here sit in the 0x486xxx CellClass run.
 //
 //   The disassembly shows 0x00486750 testing the half-open iso-tile range

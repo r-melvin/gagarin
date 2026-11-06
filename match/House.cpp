@@ -437,11 +437,6 @@ GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex2) == 0xB8);
 
 
 // A cell as two shorts (read through a pointer at 0x4FFD90).
-struct Cell_004FFD90
-{
-    short X;   // +0x0000
-    short Y;   // +0x0002
-};
 
 // GLOBAL: GAMEMD 0xA83C6C — BuildingTypeClass::Array items.
 extern BuildingTypeClass** DAT_00A83C6C;
@@ -493,7 +488,7 @@ static inline int TypeIndex_004FD060(BuildingTypeClass* type)
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
 // A two-short cell value copied as one dword.
-#include "_layout/cell_0050def0.h"
+#include "_layout/cell.h"
 
 // GLOBAL: GAMEMD 0x008B40F8
 extern "C" int DAT_008B40F8;
@@ -941,7 +936,7 @@ static inline void AssignName32(char* destination, const char* source)
 struct Obj_00501AA0
 {
     // FUNCTION: GAMEMD 0x501AA0
-    Cell_004FFD90* FUN_00501AA0(Cell_004FFD90* out, int a2, int a3);
+    CellStruct* FUN_00501AA0(CellStruct* out, int a2, int a3);
 };
 
 // GLOBAL: GAMEMD 0xA8B230 -- ScenarioClass::Instance.
@@ -956,13 +951,6 @@ extern const float DAT_007E2AC8;
 
 // GLOBAL: GAMEMD 0xA8ED6B -- when set, base-node bookkeeping is skipped.
 extern unsigned char DAT_00A8ED6B;
-
-// The receiver of the cell comparison at 0x50E470 is a cell itself.
-struct Cell_0050E470 : Cell_004FFD90
-{
-    // FUNCTION: GAMEMD 0x50E470
-    bool FUN_0050E470(const Cell_004FFD90* other);
-};
 
 // Retail's starting-unit record: a type pointer and a cell copied as one dword
 // (0x50D560 stores both as dwords into the 8-byte allocation).
@@ -3387,9 +3375,9 @@ void FUN_00501A20()
 
 // FUNCTION: GAMEMD 0x501AA0
 // Writes the zero cell to `out` and returns it; the other two arguments are ignored.
-Cell_004FFD90* Obj_00501AA0::FUN_00501AA0(Cell_004FFD90* out, int a2, int a3)
+CellStruct* Obj_00501AA0::FUN_00501AA0(CellStruct* out, int a2, int a3)
 {
-    Cell_004FFD90 cell;
+    CellStruct cell;
     cell.X = 0;
     cell.Y = 0;
     *out = cell;
@@ -6229,7 +6217,7 @@ Obj_0050E450* Obj_0050E450::FUN_0050E450(int a1, Arg2_0050E450* a2)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50E470
 // True when both coordinates of the two cells are equal.
-bool Cell_0050E470::FUN_0050E470(const Cell_004FFD90* other)
+bool CellStruct::FUN_0050E470(const CellStruct* other)
 {
     return X == other->X && Y == other->Y;
 }

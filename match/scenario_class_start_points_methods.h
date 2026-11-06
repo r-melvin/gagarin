@@ -19,22 +19,15 @@
 
 // A map cell pair. The user-declared constructor is what selects the
 // hidden-pointer return convention for the waypoint read.
-struct Cell_00689D30
-{
-    int X;   // +0x0000
-    int Y;   // +0x0004
-    Cell_00689D30() {}
-    Cell_00689D30(int x, int y) : X(x), Y(y) {}
-};
-GG_STATIC_ASSERT(sizeof(Cell_00689D30) == 8);
+#include "_layout/geometry2d.h"
 
 struct CCINI_00689D30
 {
     // FUNCTION: GAMEMD 0x5276D0 (decl; reloc) — INIClass::ReadInteger.
     int ReadInteger(const char* section, const char* key, int defaultValue);
     // FUNCTION: GAMEMD 0x529880 (decl; reloc) — read a waypoint cell.
-    Cell_00689D30 ReadWaypoint(const char* section, const char* key,
-                               const Cell_00689D30& defaultValue);
+    Point2D ReadWaypoint(const char* section, const char* key,
+                               const Point2D& defaultValue);
 };
 
 // LIBRARY: GAMEMD 0x7C8EF4 (decl; reloc) — CRT sprintf.
@@ -65,7 +58,7 @@ struct Scenario_00689D30
     int            Width;              // +0x1134
     int            Height;             // +0x1138
     int            NumberStartingPoints; // +0x113C
-    Cell_00689D30  Waypoints[8];       // +0x1140
+    Point2D  Waypoints[8];       // +0x1140
     char           _pad1180[0x11E4 - 0x1180]; // +0x1180
     int            NumCoopHumanStartSpots;    // +0x11E4
 

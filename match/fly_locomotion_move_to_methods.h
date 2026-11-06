@@ -49,21 +49,16 @@ GG_STATIC_ASSERT(sizeof(Coord_004CCC80) == 0xC);
 // idiom cl emits as `CDQ; AND EDX,0xFF; ADD EAX,EDX; SAR EAX,8`, and the two
 // components are compared sixteen bits at a time (`CMP SI,CX`), which is what
 // pins them as shorts rather than ints.
-struct Cell_004CCC80
-{
-    short X;   // +0x00
-    short Y;   // +0x02
-};
-GG_STATIC_ASSERT(sizeof(Cell_004CCC80) == 4);
+#include "_layout/cell.h"
 
 // Taken as two ints rather than as a coordinate: retail reads the two
 // components straight off their member displacements (`[EBX+0x18]`,
 // `[EBX+0x1C]`) and never materialises the coordinate's address, which a
 // reference parameter forces and a by-value parameter turns into a third
 // load of the unused Z.
-inline Cell_004CCC80 CellOf_004CCC80(int x, int y)
+inline CellStruct CellOf_004CCC80(int x, int y)
 {
-    Cell_004CCC80 r;
+    CellStruct r;
     r.X = (short)(x / 256);
     r.Y = (short)(y / 256);
     return r;
@@ -71,7 +66,7 @@ inline Cell_004CCC80 CellOf_004CCC80(int x, int y)
 
 // Written with the arguments by value so cl's right-to-left evaluation runs
 // the destination's conversion first, which is retail's order.
-inline int operator==(Cell_004CCC80 a, Cell_004CCC80 b)
+inline int operator==(CellStruct a, CellStruct b)
 {
     return a.X == b.X && a.Y == b.Y;
 }

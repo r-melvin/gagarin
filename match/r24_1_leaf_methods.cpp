@@ -41,49 +41,6 @@ void Box_0042E150::FUN_0042E150()
 }
 
 // ---------------------------------------------------------------------------
-// 0x486E30: a cell's veinhole check. The coordinate pair sits at +0x24.
-struct Coord_00486E30 { short X; short Y; };
-GG_STATIC_ASSERT(sizeof(Coord_00486E30) == 4);
-
-struct Cell_00486E30;
-
-// The veinhole monster found for a coordinate (receiver of the 0x74EF10 handler).
-struct Vein_00486E30
-{
-    // FUNCTION: GAMEMD 0x74EF10 (decl; reloc) -- react to the cell.
-    void FUN_0074EF10(Cell_00486E30* cell);
-};
-
-// The cell a map lookup returns (receiver of the 0x485590 handler).
-struct CellRef_00486E30
-{
-    // FUNCTION: GAMEMD 0x485590 (decl; reloc) -- react to the cell.
-    void FUN_00485590();
-};
-
-struct Map_00486E30
-{
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) -- MapClass::GetCellAt.
-    CellRef_00486E30* GetCellAt(const Coord_00486E30* coord);
-};
-
-// GLOBAL: GAMEMD 0x87F7E8 -- the map object (used by address, ECX).
-extern Map_00486E30 DAT_0087F7E8_00486E30;
-
-// FUNCTION: GAMEMD 0x74CDB0 (decl; reloc) -- the veinhole monster covering a coordinate, or 0.
-Vein_00486E30* FUN_0074CDB0(const Coord_00486E30* coord);
-
-struct Cell_00486E30
-{
-    char           _pad000[0x24];  // +0x0000
-    Coord_00486E30 MapCoords;      // +0x0024
-
-    int FUN_00486E30();
-};
-GG_STATIC_ASSERT(offsetof(Cell_00486E30, MapCoords) == 0x24);
-
-
-// ---------------------------------------------------------------------------
 // 0x488210: a toggle-style gadget press handler (the +0x2D byte is the on flag).
 struct Obj_00488210
 {

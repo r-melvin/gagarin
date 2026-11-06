@@ -9,7 +9,7 @@
 //   +0x24, +0x28, +0x40, +0x44, +0x38 and +0x3C.
 //
 //   The older address-local views (combat/temporal_class_methods.h,
-//   temporal_class_let_go_methods.h, temporal_class_warp_target_methods.h)
+//   temporal_class_let_go_methods.h; the warp-target view is retired)
 //   disagree about which of +0x40 / +0x44 is the forward link; nothing in this
 //   header's bodies decides it, so both keep placeholder names here.
 //   GetWarpPerStep and Detach are declared under the names their matched

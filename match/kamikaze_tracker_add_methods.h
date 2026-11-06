@@ -24,13 +24,7 @@
 // CellStruct — the user-declared constructor gives the by-value helper the
 // hidden-pointer convention retail shows (words in the parameter slot, dword
 // copy into the frame temp whose address is pushed).
-struct Cell_0054E3B0
-{
-    short X;   // +0x0000
-    short Y;   // +0x0002
-    Cell_0054E3B0() {}
-};
-GG_STATIC_ASSERT(sizeof(Cell_0054E3B0) == 0x4);
+#include "_layout/cell.h"
 
 struct Coord_0054E3B0
 {
@@ -40,9 +34,9 @@ struct Coord_0054E3B0
 };
 GG_STATIC_ASSERT(sizeof(Coord_0054E3B0) == 0xC);
 
-inline Cell_0054E3B0 CoordToCell_0054E3B0(const Coord_0054E3B0* c)
+inline CellStructInit CoordToCell_0054E3B0(const Coord_0054E3B0* c)
 {
-    Cell_0054E3B0 r;
+    CellStructInit r;
     r.X = (short)(c->X / 256);
     r.Y = (short)(c->Y / 256);
     return r;
@@ -76,7 +70,7 @@ struct Map_0054E3B0
 {
     char opaque[4];
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass_0054E3B0* GetCellAt(const Cell_0054E3B0& cell);
+    CellClass_0054E3B0* GetCellAt(const CellStructInit& cell);
 };
 // GLOBAL: GAMEMD 0x87F7E8 — the map instance.
 extern Map_0054E3B0 MapInstance_0054E3B0;

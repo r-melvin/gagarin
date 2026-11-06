@@ -40,12 +40,12 @@ struct Coord_004CE5A0
 GG_STATIC_ASSERT(sizeof(Coord_004CE5A0) == 12);
 
 // The cell the coordinate resolves to; only one method is reached.
-#include "cell_class_activate_veins_methods.h"
+#include "_layout/cell_class.h"
 
 struct MapClass_00565730
 {
     // FUNCTION: GAMEMD 0x565730 (decl; reloc)
-    Cell_00486920* GetCellAt(Coord_004CE5A0* coord);
+    CellClass* GetCellAt(Coord_004CE5A0* coord);
 };
 
 // GLOBAL: GAMEMD 0x87F7E8 — the map.

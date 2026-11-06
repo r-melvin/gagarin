@@ -9,16 +9,16 @@
 // Radar's tracking-list cell has the same two-short ABI as CellStruct. Keep a
 // distinct value type because its nontrivial default constructor is part of
 // the recovered by-value return convention in SetVisibleRect.
-#include "_layout/cell_0050def0.h"
+#include "_layout/cell.h"
 
 struct RadarTrackNode
 {
     char _pad[0x24];
-    Cell_0050DEF0 Cell;
+    ::Cell Cell;
 
-    Cell_0050DEF0 GetCell() const
+    ::Cell GetCell() const
     {
-        Cell_0050DEF0 result = Cell;
+        ::Cell result = Cell;
         return result;
     }
 };

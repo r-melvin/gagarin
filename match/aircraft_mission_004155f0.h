@@ -18,26 +18,6 @@ GG_STATIC_ASSERT(offsetof(Coord_004155F0, X) == 0);
 GG_STATIC_ASSERT(offsetof(Coord_004155F0, Y) == 4);
 GG_STATIC_ASSERT(offsetof(Coord_004155F0, Z) == 8);
 GG_STATIC_ASSERT(sizeof(Coord_004155F0) == 12);
-struct Cell_004155F0
-{
-    short X, Y;
-    // Inlined value comparison at retail 0x41574E / 0x415760.
-    bool operator!=(const Cell_004155F0& other) const
-    {
-        return X != other.X || Y != other.Y;
-    }
-    // CellStruct::operator+ written out: the sum of two cells.
-    Cell_004155F0 operator+(const CellStruct& offset) const
-    {
-        Cell_004155F0 sum;
-        sum.X = X + offset.X;
-        sum.Y = Y + offset.Y;
-        return sum;
-    }
-};
-GG_STATIC_ASSERT(offsetof(Cell_004155F0, X) == 0);
-GG_STATIC_ASSERT(offsetof(Cell_004155F0, Y) == 2);
-GG_STATIC_ASSERT(sizeof(Cell_004155F0) == 4);
 
 struct House_004155F0
 {
@@ -105,7 +85,7 @@ struct Aircraft_004155F0
     // FUNCTION: GAMEMD 0x415A50
     int FUN_00415A50();
     // FUNCTION: GAMEMD 0x4195A0
-    int FUN_004195A0(Aircraft_004155F0* other, Cell_004155F0* out);
+    int FUN_004195A0(Aircraft_004155F0* other, CellStruct* out);
     // FUNCTION: GAMEMD 0x41A940
     int FUN_0041A940();
     // FUNCTION: GAMEMD 0x65AE30 (decl; reloc) -- ECX receiver, no stack arguments.
@@ -195,19 +175,19 @@ GG_STATIC_ASSERT(offsetof(Vtbl_004155F0, At_48C) == 0x48C);
 struct Map_004155F0
 {
     // FUNCTION: GAMEMD 0x4AA440 — seven pushed words, RET 0x1C.
-    Cell_004155F0* FUN_004AA440(Cell_004155F0* out, int side,
-        const Cell_004155F0* a, const Cell_004155F0* b, int c, int d, int e);
+    CellStruct* FUN_004AA440(CellStruct* out, int side,
+        const CellStruct* a, const CellStruct* b, int c, int d, int e);
     // FUNCTION: GAMEMD 0x5657A0 — one pushed cell pointer, RET 4.
-    void* FUN_005657A0(const Cell_004155F0& cell);
+    void* FUN_005657A0(const CellStruct& cell);
     // FUNCTION: GAMEMD 0x567DA0 — four pushed words, RET 0x10.
     void FUN_00567DA0(const Coord_004155F0* location, int a, int range, int b);
     // FUNCTION: GAMEMD 0x568300 (decl; reloc) -- whether a cell coordinate is on the map (RET 4).
-    bool FUN_00568300(const Cell_004155F0* cell);
+    bool FUN_00568300(const CellStruct* cell);
 };
 // GLOBAL: GAMEMD 0x87F7E8
 extern Map_004155F0 DAT_0087F7E8;
 // GLOBAL: GAMEMD 0x889E68 — the two-word sentinel read by the final comparison.
-extern Cell_004155F0 DAT_00889E68;
+extern CellStruct DAT_00889E68;
 // FUNCTION: GAMEMD 0x7509E0 — index in ECX, coordinates in EDX, RET 4.
 void* FUN_007509E0(int index, const Coord_004155F0* location, void* controller);
 

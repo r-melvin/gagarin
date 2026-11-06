@@ -17,6 +17,7 @@
 #include "vector_class.h"
 #include "vector_class_operations.h"
 #include "shared_constants_globals.h"
+#include "_layout/cell.h"
 
 // ---------------------------------------------------------------------------
 // 0x402900 / 0x402BB0 / 0x402C40 - walkers over the pending-node list that hangs
@@ -168,23 +169,17 @@ void* Obj_004115A0::Destroy(unsigned char flags)
 
 // ---------------------------------------------------------------------------
 // 0x42AA40 - facing between two adjacent cells, or 8 when they are not neighbours.
-struct Cell_0042AA40
-{
-    short unknown_00;
-    short unknown_02;
-};
-
 // GLOBAL: GAMEMD 0x818760
 extern int DAT_00818760[9];
 
 // FUNCTION: GAMEMD 0x42AA40
-int __fastcall FUN_0042AA40(Cell_0042AA40* from, Cell_0042AA40* to)
+int __fastcall FUN_0042AA40(CellStruct* from, CellStruct* to)
 {
-    int dy = to->unknown_02 - from->unknown_02;
+    int dy = to->Y - from->Y;
     if (abs(dy) <= 1)
     {
-        int fx = from->unknown_00;
-        int tx = to->unknown_00;
+        int fx = from->X;
+        int tx = to->X;
         if (abs(tx - fx) <= 1)
             return DAT_00818760[dy * 3 - fx + tx];
     }

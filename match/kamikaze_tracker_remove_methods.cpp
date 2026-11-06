@@ -6,9 +6,9 @@
 
 // The cell a coordinate falls in (the inlined coord-to-cell conversion: a
 // signed divide by 256 of X and Y).
-static inline Cell_0054E590 CoordToCell_0054E590(const Coord_0054E590* coord)
+static inline CellStruct CoordToCell_0054E590(const Coord_0054E590* coord)
 {
-    Cell_0054E590 cell;
+    CellStruct cell;
     cell.X = (short)(coord->X / 256);
     cell.Y = (short)(coord->Y / 256);
     return cell;

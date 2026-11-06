@@ -108,6 +108,7 @@
 #include "_layout/cell_class.h"
 #include "_layout/map_0087f7e8.h"
 #include "_layout/object_class.h"
+#include "_layout/anim_class.h"
 #include "_layout/iso_tile_type_class.h"
 #include "engine_core_globals.h"
 #include "mapobj_globals.h"
@@ -387,12 +388,6 @@ struct Obj_004115A0
 
 // ---------------------------------------------------------------------------
 // 0x42AA40 - facing between two adjacent cells, or 8 when they are not neighbours.
-struct Cell_0042AA40
-{
-    short unknown_00;
-    short unknown_02;
-};
-
 // GLOBAL: GAMEMD 0x818760
 extern int DAT_00818760[9];
 
@@ -974,26 +969,15 @@ extern Surface* DAT_00887314;
 
 // ---------------------------------------------------------------------------
 // 0x486E30: a cell's veinhole check. The coordinate pair sits at +0x24.
-struct Cell_00486E30;
-
 // The veinhole monster found for a coordinate (receiver of the 0x74EF10 handler).
 struct Vein_00486E30
 {
     // FUNCTION: GAMEMD 0x74EF10 (decl; reloc) -- react to the cell.
-    void FUN_0074EF10(Cell_00486E30* cell);
+    void FUN_0074EF10(CellClass* cell);
 };
 
 // FUNCTION: GAMEMD 0x74CDB0 (decl; reloc) -- the veinhole monster covering a coordinate, or 0.
 Vein_00486E30* FUN_0074CDB0(const CellStruct* coord);
-
-struct Cell_00486E30
-{
-    char           _pad000[0x24];  // +0x0000
-    CellStruct     MapCoords;      // +0x0024
-
-    int FUN_00486E30();
-};
-GG_STATIC_ASSERT(offsetof(Cell_00486E30, MapCoords) == 0x24);
 
 // ---------------------------------------------------------------------------
 // 0x488210: a toggle-style gadget press handler (the +0x2D byte is the on flag).
@@ -1527,6 +1511,7 @@ int TunnelArrayCount;
 
 #include "cell_class_sensor_methods.h"
 
+#include "cell_step_tables.h"
 #include "cell_class_spread_tiberium_methods.h"
 
 #include "cell_class_threat_methods.h"
@@ -1556,34 +1541,6 @@ extern DynamicVectorClass_HousePtr HouseArray;
 extern RegionLookupClass RegionLookup;
 
 #include "cell_class_tiberium_germinate_methods.h"
-
-// First building / terrain object occupying the cell, or null. Both walks are
-// gated by the IsActive byte and are inlined by retail (WhatAmI == 6 for a
-// building, 0x24 for a terrain object); the not-found exit of each walk is
-// threaded straight past the caller's null test.
-inline Obj_004838E0* Cell_004838E0::GetBuilding() const
-{
-    if (DAT_00A8E9A0) {
-        for (Obj_004838E0* obj = this->FirstObject; obj; obj = obj->NextObject) {
-            if ((obj->*obj->Vtbl->WhatAmI)() == 6) {
-                return obj;
-            }
-        }
-    }
-    return 0;
-}
-
-inline Obj_004838E0* Cell_004838E0::GetTerrain() const
-{
-    if (DAT_00A8E9A0) {
-        for (Obj_004838E0* obj = this->FirstObject; obj; obj = obj->NextObject) {
-            if ((obj->*obj->Vtbl->WhatAmI)() == 0x24) {
-                return obj;
-            }
-        }
-    }
-    return 0;
-}
 
 #include "cell_class_tiberium_methods.h"
 
@@ -1702,27 +1659,25 @@ CellClass::~CellClass()
 // loop lets the null path return the zero register; and the X/Y difference is
 // a 12-byte CoordStruct whose Z is never written, which gives the FILD slots
 // their own 12 bytes and pushes the hidden-return temporary up to 0x28.
-Obj_0047C3D0* Cell_0047C3D0::FindTechnoNearestTo(Point_0047C3D0* offset,
-                                                 bool alt,
-                                                 Obj_0047C3D0* exclude)
+ObjectClass* CellClass::FindTechnoNearestTo(Point2D* offset, bool alt, ObjectClass* exclude)
 {
-    Obj_0047C3D0* best = 0;
+    ObjectClass* best = 0;
     int bestDist = 0;
     int x = offset->X * 7;
     int y = offset->Y * 7;
     bool techno;
 
-    Obj_0047C3D0* head = alt ? AltObject : FirstObject;
+    ObjectClass* head = alt ? AltObject : FirstObject;
     if (head != 0) {
-        Obj_0047C3D0* obj = head;
+        ObjectClass* obj = head;
         do {
             techno = false;
             if (obj != 0) {
-                techno = (obj->AbstractFlags & 1) != 0;
+                techno = obj->Flags.IsTechno;
             }
             if (techno && obj != exclude) {
-                Coord_0047C3D0 c = (obj->*obj->Vptr->GetCoords)();
-                Coord_0047C3D0 d;
+                CoordStruct c = obj->vf_18();
+                CoordStruct d;
                 d.X = (c.X & 0xFF) - x;
                 d.Y = (c.Y & 0xFF) - y;
                 int dist = (int)FUN_004CAC40((double)d.X * d.X + (double)d.Y * d.Y);
@@ -1731,7 +1686,7 @@ Obj_0047C3D0* Cell_0047C3D0::FindTechnoNearestTo(Point_0047C3D0* offset,
                     bestDist = dist;
                 }
             }
-            obj = obj->NextObject;
+            obj = (ObjectClass*)obj->NextObject;
         } while (obj != 0);
     }
     return best;
@@ -2014,7 +1969,7 @@ void CellClass::FUN_004801F0(const Point2D* point, const RectangleStruct* clip)
 // Health and Type are both read into locals before the health test: retail
 // loads the type ahead of `TEST ECX,ECX`, and testing `obj->Health` in the
 // same condition as WhatAmI defers the type load past the rules load.
-bool Cell_00480510::ConnectsToOverlay(int overlay, int direction)
+bool CellClass::ConnectsToOverlay(int overlay, int direction)
 {
     if (OverlayTypeIndex == overlay && OverlayTypeIndex != -1) {
         return true;
@@ -2025,10 +1980,10 @@ bool Cell_00480510::ConnectsToOverlay(int overlay, int direction)
         }
     } else {
         if (overlay == 2 || overlay == 0) {
-            for (Obj_00480510* obj = FirstObject; obj != 0; obj = obj->NextObject) {
-                if ((obj->*obj->Vptr->WhatAmI)() == 6) {
+            for (ObjectClass* obj = FirstObject; obj != 0; obj = (ObjectClass*)obj->NextObject) {
+                if (WHAT_AM_I(obj) == ABS_BUILDING) {
                     int health = obj->Health;
-                    BuildingType_00480510* type = obj->Type;
+                    BuildingTypeClass* type = ((BuildingClass*)obj)->Type;
                     if (health > 0) {
                     if (type == Rules->GDIGateOne && (direction == 2 || direction == 6)) {
                         return true;
@@ -2044,10 +1999,10 @@ bool Cell_00480510::ConnectsToOverlay(int overlay, int direction)
             }
         }
         if (overlay == 0x1A) {
-            for (Obj_00480510* obj = FirstObject; obj != 0; obj = obj->NextObject) {
-                if ((obj->*obj->Vptr->WhatAmI)() == 6) {
+            for (ObjectClass* obj = FirstObject; obj != 0; obj = (ObjectClass*)obj->NextObject) {
+                if (WHAT_AM_I(obj) == ABS_BUILDING) {
                     int health = obj->Health;
-                    BuildingType_00480510* type = obj->Type;
+                    BuildingTypeClass* type = ((BuildingClass*)obj)->Type;
                     if (health > 0) {
                     if (type == Rules->NodGateOne && (direction == 2 || direction == 6)) {
                         return true;
@@ -2336,6 +2291,29 @@ bool Cell_R13::FUN_00483710()
     return false;
 }
 
+// The bounds-checked neighbour lookup, expanded inline at its one call site:
+// out-of-range facings answer the cell itself.
+static inline CellStructInit operator+(CellStructInit a, const CellStruct& b)
+{
+    a.X = a.X + b.X;
+    a.Y = b.Y + a.Y;
+    return a;
+}
+
+static inline CellClass* NeighbourCell_00483780(CellClass* self, unsigned int facing)
+{
+    CellClass* result;
+    if (facing >= 8) {
+        result = self;
+    } else {
+        CellStructInit cell;
+        cell = self->MapCoords;
+        cell = cell + DAT_0089F688[facing & 7];
+        result = DAT_0087F7E8.FUN_005657A0(&cell);
+    }
+    return result;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x483780
 //
@@ -2368,23 +2346,23 @@ bool Cell_R13::FUN_00483710()
 // cell must be empty. The eight neighbours are then visited starting from a
 // random facing, and the first one that will accept germination gets three
 // units of this cell's tiberium laid into it.
-bool Cell_00483780::SpreadTiberium(char forced)
+bool CellClass::SpreadTiberium(char forced)
 {
     if (forced == 0) {
         if ((DAT_00A8B230->unknown_0000 & 0x80) == 0) {
             return false;
         }
-        int index = OverlayTypeIndexToTiberium_00483780(this->OverlayTypeIndex);
+        int index = OverlayTypeIndexToTiberium(this->OverlayTypeIndex);
         if (index == -1) {
             return false;
         }
         if (this->OverlayData <= index / 2) {
             return false;
         }
-        if (this->At_11C != 0) {
+        if (this->SlopeIndex != 0) {
             return false;
         }
-        if (TiberiumArrayItems_00483780[index]->At_0A0 < DAT_007E3810) {
+        if (TiberiumArrayItems[index]->SpreadPercentage < DAT_007E3810) {
             return false;
         }
         if (this->FirstObject != 0) {
@@ -2392,7 +2370,7 @@ bool Cell_00483780::SpreadTiberium(char forced)
         }
     }
 
-    int tiberium = OverlayTypeIndexToTiberium_00483780(this->OverlayTypeIndex);
+    int tiberium = OverlayTypeIndexToTiberium(this->OverlayTypeIndex);
     if (forced == 0) {
         if (tiberium == -1) {
             return false;
@@ -2403,11 +2381,11 @@ bool Cell_00483780::SpreadTiberium(char forced)
         }
     }
 
-    Tiberium_00483780* type = TiberiumArrayItems_00483780[tiberium];
+    TiberiumClass* type = TiberiumArrayItems[tiberium];
     int start = DAT_00A8B230->unknown_0218.RandomRanged(0, 7);
 
     for (int i = 0; i < 8; i++) {
-        Cell_00483780* neighbour = this->GetNeighbourCell((i + start) & 7);
+        CellClass* neighbour = NeighbourCell_00483780(this, (i + start) & 7);
         if (neighbour != 0 && neighbour->CanTiberiumGerminate(type)) {
             return neighbour->FUN_00487190(tiberium, 3);
         }
@@ -2426,22 +2404,22 @@ bool Cell_00483780::SpreadTiberium(char forced)
 // +0x11C, and its isometric tile type (when in range) must allow tiberium.
 // The tiberium argument is not consulted.  Written as one conjunction so every
 // failing guard shares the single trailing `return false` block.
-bool Cell_004838E0::CanTiberiumGerminate(void* tiberium)
+bool CellClass::CanTiberiumGerminate(void* tiberium)
 {
-    Building_004838E0* bld;
+    BuildingClass* bld;
     Terrain_004838E0* ter;
     int idx;
     if (DAT_0087F7E8.FUN_00578460(&this->MapCoords, true)
         && !(this->Flags & 0x500)
-        && !((bld = (Building_004838E0*)this->GetBuilding()) != 0
-             && ((Obj_004838E0*)bld)->Health > 0
-             && !bld->Type->At_C9A
-             && !bld->Type->At_1701)
-        && !((ter = (Terrain_004838E0*)this->GetTerrain()) != 0
+        && !((bld = this->GetBuilding()) != 0
+             && bld->Health > 0
+             && !bld->Type->Invisible
+             && !bld->Type->InvisibleInGame)
+        && !((ter = (Terrain_004838E0*)this->GetTerrain(false)) != 0
              && ter->Type->At_2B1)
         && GroundTable_004838E0[this->LandType].At_000
         && this->OverlayTypeIndex == -1
-        && !this->At_11C
+        && !this->SlopeIndex
         && ((idx = this->IsoTileTypeIndex) < 0
             || idx >= IsometricTileTypeClass_Array.Count
             || IsometricTileTypeClass_Array.Items[idx]->unknown_306)) {
@@ -3028,23 +3006,47 @@ unsigned char Obj_00486900::FUN_00486900()
 // out as LEAs rather than in-place subtractions, and the techno flag is
 // assigned inside the guard chain so it is stored to the frame while its
 // own AND sets the flags.
-void Cell_00486920::ActivateVeins()
+// The cell's corner coordinate: the centre with the half-cell offset taken
+// back off each axis, which is how retail spells it.
+static inline CoordStruct GetCellCoords_00486920(CellClass* cell)
+{
+    CellStruct map = cell->MapCoords;
+
+    CoordStruct coord;
+    coord.X = map.X * 256 + 0x80;
+    coord.Y = map.Y * 256 + 0x80;
+
+    Point2D offset;
+    offset.X = 0x80;
+    offset.Y = 0x80;
+
+    coord.Z = cell->GetFloorHeight(offset);
+    return coord;
+}
+
+static inline CoordStruct GetCornerCoords_00486920(CellClass* cell)
+{
+    CoordStruct centre = GetCellCoords_00486920(cell);
+    CoordStruct corner;
+    corner.X = centre.X - 0x80;
+    corner.Y = centre.Y - 0x80;
+    corner.Z = centre.Z;
+    return corner;
+}
+
+void CellClass::ActivateVeins()
 {
     if (OverlayTypeIndex == 0x7E && OverlayData >= 0x30 && SlopeIndex == 0
         && !(Flags & 0x20000)) {
         bool techno;
-        for (Obj_00486920* obj = FirstObject; obj != 0; obj = obj->NextObject) {
-            if ((obj->*obj->Vptr->GetHeight)() <= 5 && obj != 0
-                && (techno = (obj->AbstractFlags & 1) != 0) != false) {
+        for (ObjectClass* obj = FirstObject; obj != 0; obj = (ObjectClass*)obj->NextObject) {
+            if (obj->vf_114() <= 5 && obj != 0
+                && (techno = obj->Flags.IsTechno) != false) {
                 if (techno
-                    && !(obj->*obj->Vptr->GetTechnoType)()->At_C91
-                    && !obj->FUN_0070D0D0(8)) {
-                    Anim_00486920* anim =
-                        (Anim_00486920*)operator new(sizeof(Anim_00486920));
-                    if (anim != 0) {
-                        Coord_00486920 at = GetCornerCoords();
-                        anim->Construct(Rules->VeinAttack, &at, 0, 1, 0x600, 0, 0);
-                    }
+                    && !obj->vf_33()->ImmuneToVeins
+                    && !((TechnoClass*)obj)->FUN_0070D0D0(8)) {
+                    new AnimClass(Rules->VeinAttack, GetCornerCoords_00486920(this),
+                                                    0, 1, 0x600, 0, false);
                     Flags |= 0x20000;
                 }
             }
@@ -3243,7 +3245,7 @@ void CellClass::ClearFoggedObjects()
 //
 // If a veinhole monster covers this cell, hand the cell to it; otherwise let the
 // map's cell record for these coordinates react. Always returns 0.
-int Cell_00486E30::FUN_00486E30()
+int CellClass::FUN_00486E30()
 {
     Vein_00486E30* vein = FUN_0074CDB0(&MapCoords);
     if (vein) {

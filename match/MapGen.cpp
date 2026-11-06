@@ -540,33 +540,13 @@ struct Rect_005A7250
 };
 GG_STATIC_ASSERT(offsetof(Rect_005A7250, Height) == 0x0C);
 
-struct CellStruct_005A7250
-{
-    short X;   // +0x00
-    short Y;   // +0x02
-};
-
-struct Cell_005A7250
-{
-    // FUNCTION: GAMEMD 0x4866D0 (decl; reloc)
-    bool FUN_004866D0();
-    // FUNCTION: GAMEMD 0x4866F0 (decl; reloc)
-    bool FUN_004866F0();
-    // FUNCTION: GAMEMD 0x486380 (decl; reloc)
-    bool FUN_00486380();
-    // FUNCTION: GAMEMD 0x486650 (decl; reloc)
-    bool FUN_00486650();
-    // FUNCTION: GAMEMD 0x486670 (decl; reloc)
-    bool FUN_00486670();
-};
-
 // GLOBAL: GAMEMD 0xABED04
 extern int DAT_00ABED04;
 // GLOBAL: GAMEMD 0xABED08
 extern int DAT_00ABED08;
 
 // The diamond test the four corners go through.
-static inline bool CellInsideMap(const CellStruct_005A7250& cell)
+static inline bool CellInsideMap(const CellStruct& cell)
 {
     int x = cell.X;
     int y = cell.Y;
@@ -577,9 +557,9 @@ static inline bool CellInsideMap(const CellStruct_005A7250& cell)
     return true;
 }
 
-static inline CellStruct_005A7250 InlineCell_005A7250(int x, int y)
+static inline CellStruct InlineCell_005A7250(int x, int y)
 {
-    CellStruct_005A7250 cell;
+    CellStruct cell;
     cell.X = (short)x;
     cell.Y = (short)y;
     return cell;
@@ -2174,7 +2154,7 @@ bool FUN_005A7250(const Rect_005A7250* rect, bool allow_first, bool allow_second
 
     for (int y = top; y < rect->Y + rect->Height; y++) {
         for (int x = left; x < rect->X + rect->Width; x++) {
-            Cell_005A7250* cell = DAT_0087F7E8.GetCell(InlineCell_005A7250(x, y));
+            CellClass* cell = DAT_0087F7E8.FUN_005657A0(InlineCell_005A7250(x, y));
             if (cell->FUN_004866D0()) {
                 if (!allow_first) {
                     return false;

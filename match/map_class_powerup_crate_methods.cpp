@@ -7,11 +7,11 @@
 // MapClass::GetCellAt, expanded inline (twice) at 0x56BEC0: the flat index is
 // bounds-checked against 0x40000, and a miss stamps the requested coordinates
 // into InvalidCell and hands that back.
-static inline CellClass_0056BEC0* GetCellAt_0056BEC0(Cell_0056BEC0 cell)
+static inline CellClass* GetCellAt_0056BEC0(CellStruct cell)
 {
     int index = cell.Y * 512 + cell.X;
     if (index >= 0 && index < 0x40000) {
-        CellClass_0056BEC0* p = Cells_0056BEC0[index];
+        CellClass* p = Cells_0056BEC0[index];
         if (p != 0) {
             return p;
         }
@@ -49,17 +49,17 @@ static inline CellClass_0056BEC0* GetCellAt_0056BEC0(Cell_0056BEC0 cell)
 // `&Crates[i].Location` each iteration — the cursor half of that is kept
 // because it moves the loop base from `EDI+0x166`/`[ECX-2]` to retail's
 // `EDI+0x164`/`[ECX]`, the `one` half is reverted as a no-op.
-bool Map_0056BEC0::PlacePowerupCrate(Cell_0056BEC0 cell, int type)
+bool Map_0056BEC0::PlacePowerupCrate(CellStruct cell, int type)
 {
     if (GetCellAt_0056BEC0(cell)->LandType == 2) {
-        Cell_0056BEC0 closeTo;
+        CellStruct closeTo;
         closeTo.X = 0;
         closeTo.Y = 0;
         cell = DAT_0087F7E8.NearByLocation(cell, 5, -1, 0, false, 1, 1,
                                            false, false, false, true, closeTo,
                                            false, false);
     } else {
-        Cell_0056BEC0 closeTo;
+        CellStruct closeTo;
         closeTo.X = 0;
         closeTo.Y = 0;
         cell = DAT_0087F7E8.NearByLocation(cell, 1, -1, 0, false, 1, 1,
@@ -68,7 +68,7 @@ bool Map_0056BEC0::PlacePowerupCrate(Cell_0056BEC0 cell, int type)
     }
 
     int i = 0;
-    Cell_0056BEC0* loc = &this->Crates[0].Location;
+    CellStruct* loc = &this->Crates[0].Location;
     do {
         if (loc->X == DAT_00ABD480.X && loc->Y == DAT_00ABD480.Y) {
             break;

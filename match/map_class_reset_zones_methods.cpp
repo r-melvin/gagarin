@@ -13,7 +13,7 @@
 // and the neighbourhood spans at most four distinct connected zones, the cell
 // simply inherits that neighbour's zone id; otherwise the whole map's zones
 // are recalculated.
-void Map_0056D460::ResetZones(const Cell_0056D460& cell)
+void Map_0056D460::ResetZones(const CellStruct& cell)
 {
     int index = (unknown_F8 + unknown_F4 + 1) * cell.Y + cell.X;
     if (index < 0)

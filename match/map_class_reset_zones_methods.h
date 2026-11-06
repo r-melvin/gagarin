@@ -19,8 +19,7 @@
 #include "_rt/gg_static_assert.h"
 #include "engine_core_globals.h"
 
-struct Cell_0056D460 { short X; short Y; };
-GG_STATIC_ASSERT(sizeof(Cell_0056D460) == 4);
+#include "_layout/cell.h"
 
 // One zone-grid record (4 bytes).
 struct Zone_0056D460
@@ -51,7 +50,7 @@ struct Map_0056D460
     void FUN_0056C510();
 
     // FUNCTION: GAMEMD 0x56D460 -- MapClass::ResetZones.
-    void ResetZones(const Cell_0056D460& cell);
+    void ResetZones(const CellStruct& cell);
 };
 GG_STATIC_ASSERT(offsetof(Map_0056D460, ZoneConnections) == 0x18);
 GG_STATIC_ASSERT(offsetof(Map_0056D460, Zones)           == 0x68);

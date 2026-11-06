@@ -56,7 +56,9 @@ GG_STATIC_ASSERT(sizeof(TemporalClass*) == 4);
 
 #include "temporal_class_let_go_methods.h"
 
-#include "temporal_class_warp_target_methods.h"
+#include "_layout/building_class.h"
+#include "_layout/cell_class.h"
+#include "_layout/map_0087f7e8.h"
 
 #include "vector_class_operations.h"
 
@@ -314,25 +316,25 @@ void TemporalClass::Detach()
 // whose first radio link is a building (WhatAmI == 6) of a type flagged at
 // +0x16BD is refused when that building is the one standing on the unit's
 // own cell — i.e. the unit is garrisoned inside it. Everything else warps.
-bool TemporalClass_0071AE50::CanWarpTarget(Techno_0071AE50* target)
+bool TemporalClass::FUN_0071AE50(TechnoClass* target)
 {
     if (target == 0)
         return false;
 
-    if (!(target->*target->Vtbl->GetTechnoType)()->At_D3A)
+    if (!target->vf_33()->Warpable)
         return false;
 
-    if ((target->*target->Vtbl->At_160)())
+    if (target->vf_88())
         return false;
 
-    if ((target->*target->Vtbl->WhatAmI)() == 1) {
-        Techno_0071AE50* link = target->FUN_0065AD30(0);
+    if (target->vf_11() == 1) {
+        TechnoClass* link = target->FUN_0065AD30(0);
         if (link != 0
-            && (link->*link->Vtbl->WhatAmI)() == 6
-            && link->Type->At_16BD)
+            && link->vf_11() == 6
+            && ((BuildingClass*)link)->Type->WeaponsFactory)
         {
-            CoordStruct_0071AE50 crd = target->Location;
-            if (MapInstance_0071AE50->GetTargetCell(crd)->GetBuilding() == link)
+            CoordStruct crd = target->Location;
+            if (DAT_0087F7E8.FUN_00565730(crd)->GetBuilding() == (BuildingClass*)link)
                 return false;
         }
     }

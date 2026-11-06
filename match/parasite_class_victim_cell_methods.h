@@ -26,23 +26,7 @@ GG_STATIC_ASSERT(offsetof(Type_0062AB40, Naval) == 0xCCE);
 
 struct Obj_0062AB40;
 
-struct Cell_0062AB40
-{
-    char _pad0000[0x44];      // +0x0000
-    int  OverlayTypeIndex;    // +0x0044
-    char _pad0048[0xEC - 0x48];   // +0x0048
-    int  LandType;            // +0x00EC
-    char _pad00F0[0x140 - 0xF0];  // +0x00F0
-    int  Flags;               // +0x0140
-
-    // FUNCTION: GAMEMD 0x47C550 (decl; reloc) — object of a kind on the cell.
-    Obj_0062AB40* FUN_0047C550(int kind);
-    // FUNCTION: GAMEMD 0x47C520 (decl; reloc) — the building on the cell.
-    Obj_0062AB40* FUN_0047C520();
-};
-GG_STATIC_ASSERT(offsetof(Cell_0062AB40, OverlayTypeIndex) == 0x44);
-GG_STATIC_ASSERT(offsetof(Cell_0062AB40, LandType) == 0xEC);
-GG_STATIC_ASSERT(offsetof(Cell_0062AB40, Flags) == 0x140);
+#include "_layout/cell_class.h"
 
 struct Vtbl_0062AB40;
 
@@ -54,7 +38,7 @@ struct Obj_0062AB40
 typedef int  (Obj_0062AB40::*Fn2C_0062AB40)();
 typedef bool (Obj_0062AB40::*Fn54_0062AB40)();
 typedef Type_0062AB40* (Obj_0062AB40::*Fn84_0062AB40)();
-typedef Cell_0062AB40* (Obj_0062AB40::*Fn1BC_0062AB40)();
+typedef CellClass* (Obj_0062AB40::*Fn1BC_0062AB40)();
 
 struct Vtbl_0062AB40
 {

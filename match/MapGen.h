@@ -78,8 +78,6 @@ inline bool operator==(const Rect_4i& a, const Rect_4i& b)
 inline bool operator!=(const Rect_4i& a, const Rect_4i& b) { return !(a == b); }
 
 // The map object at 0x87F7E8 (immediate ECX at every call): only the entry points called from here.
-struct Cell_005A7250;
-struct CellStruct_005A7250;
 
 #include "_layout/gbl_0087f7e8.h"
 #include "_layout/session_class.h"

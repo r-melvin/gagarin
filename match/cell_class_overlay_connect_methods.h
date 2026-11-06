@@ -12,53 +12,7 @@
 #ifndef GG_MATCH_MAP_CELL_CLASS_OVERLAY_CONNECT_METHODS_H
 #define GG_MATCH_MAP_CELL_CLASS_OVERLAY_CONNECT_METHODS_H
 
-#include <stddef.h>
-#include "_rt/gg_static_assert.h"
-#include "_rt/gg_vslot.h"
-
-struct BuildingType_00480510;
-
-struct Vtbl_00480510;
-
-// ObjectClass / BuildingClass as seen from the occupier walk.
-struct Obj_00480510
-{
-    Vtbl_00480510*          Vptr;             // +0x0000
-    char                    _pad004[0x2C];    // +0x0004
-    Obj_00480510*           NextObject;       // +0x0030
-    char                    _pad034[0x38];    // +0x0034
-    int                     Health;           // +0x006C
-    char                    _pad070[0x4B0];   // +0x0070
-    BuildingType_00480510*  Type;             // +0x0520
-};
-GG_STATIC_ASSERT(offsetof(Obj_00480510, NextObject) == 0x30);
-GG_STATIC_ASSERT(offsetof(Obj_00480510, Health)     == 0x6C);
-GG_STATIC_ASSERT(offsetof(Obj_00480510, Type)       == 0x520);
-
-typedef int (Obj_00480510::*Fn2C_00480510)();
-
-struct Vtbl_00480510
-{
-    char           _pad000[0x2C];   // +0x0000
-    Fn2C_00480510  WhatAmI;         // +0x002C
-};
-GG_STATIC_ASSERT(offsetof(Vtbl_00480510, WhatAmI) == 0x2C);
-
 // GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance, declared by rules_class.h as `Rules`.
 #include "_layout/rules_class.h"
-
-// CellClass — OverlayTypeIndex and the ground occupier list head.
-struct Cell_00480510
-{
-    char           _pad000[0x44];           // +0x0000
-    int            OverlayTypeIndex;        // +0x0044
-    char           _pad048[0xE4 - 0x48];    // +0x0048
-    Obj_00480510*  FirstObject;             // +0x00E4
-
-    // FUNCTION: GAMEMD 0x480510 — CellClass::ConnectsToOverlay.
-    bool ConnectsToOverlay(int overlay, int direction);
-};
-GG_STATIC_ASSERT(offsetof(Cell_00480510, OverlayTypeIndex) == 0x44);
-GG_STATIC_ASSERT(offsetof(Cell_00480510, FirstObject)      == 0xE4);
 
 #endif  // GG_MATCH_MAP_CELL_CLASS_OVERLAY_CONNECT_METHODS_H

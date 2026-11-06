@@ -180,11 +180,8 @@ struct HWND__;
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
-struct CellStruct_00554D50
-{
-    short X;   // +0x00
-    short Y;   // +0x02
-};
+#include "_layout/map_0087f7e8.h"
+#include "_layout/cell_class.h"
 
 // One queued cell: the six saved light values and the cell coordinates.
 struct LightQueueItem_00554D50
@@ -195,27 +192,11 @@ struct LightQueueItem_00554D50
     unsigned short Value3;   // +0x0A
     unsigned short Value4;   // +0x0C
     unsigned short Value5;   // +0x0E
-    CellStruct_00554D50 Cell;   // +0x10
+    CellStruct Cell;   // +0x10
 };
 GG_STATIC_ASSERT(offsetof(LightQueueItem_00554D50, Value2) == 0x08);
 GG_STATIC_ASSERT(offsetof(LightQueueItem_00554D50, Value5) == 0x0E);
 GG_STATIC_ASSERT(offsetof(LightQueueItem_00554D50, Cell) == 0x10);
-
-struct Cell_00554D50
-{
-    // FUNCTION: GAMEMD 0x484050 (decl; reloc)
-    void GetLight(int* v0, int* v1, int* v2, int* v3, int* v4, int* v5);
-    // FUNCTION: GAMEMD 0x483E30 (decl; reloc)
-    void SetLight(int v0, int v1, int v2, int v3, int v4, int v5);
-};
-
-struct Map_00554D50
-{
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc)
-    Cell_00554D50* GetCell(const CellStruct_00554D50& cell);
-    // FUNCTION: GAMEMD 0x4F42F0 (decl; reloc)
-    void Redraw(int flag);
-};
 
 struct Clock_00554D50
 {
@@ -239,8 +220,6 @@ GG_STATIC_ASSERT(offsetof(LightQueue_00554D50, Count) == 0x10);
 
 // GLOBAL: GAMEMD 0x884D88
 extern Clock_00554D50 DAT_00884D88;
-// GLOBAL: GAMEMD 0x87F7E8
-extern Map_00554D50 DAT_0087F7E8;
 // GLOBAL: GAMEMD 0xABCA40
 extern LightQueue_00554D50 DAT_00ABCA40;
 // GLOBAL: GAMEMD 0xABCA74
@@ -307,7 +286,7 @@ void FUN_00554D50(int budget, bool force)
                 int v3;
                 int v4;
                 int v5;
-                DAT_0087F7E8.GetCell(DAT_00ABCA40.Items[DAT_00ABCA7C]->Cell)->GetLight(&v0, &v1, &v2, &v3, &v4, &v5);
+                DAT_0087F7E8.FUN_005657A0(&DAT_00ABCA40.Items[DAT_00ABCA7C]->Cell)->FUN_00484050(&v0, &v1, &v2, &v3, &v4, &v5);
                 DAT_00ABCA40.Items[DAT_00ABCA7C]->Value0 = v0;
                 DAT_00ABCA40.Items[DAT_00ABCA7C]->Value1 = v1;
                 DAT_00ABCA40.Items[DAT_00ABCA7C]->Value2 = v2;
@@ -328,7 +307,7 @@ void FUN_00554D50(int budget, bool force)
         if (force || left >= budget - 1) {
             for (int i = 0; i < DAT_00ABCA40.Count; i++) {
                 LightQueueItem_00554D50* item = DAT_00ABCA40.Items[i];
-                DAT_0087F7E8.GetCell(item->Cell)->SetLight(item->Value0, item->Value1,
+                DAT_0087F7E8.FUN_005657A0(&item->Cell)->FUN_00483E30(item->Value0, item->Value1,
                     item->Value2, item->Value3, item->Value4, item->Value5);
                 delete item;
             }
@@ -340,7 +319,7 @@ void FUN_00554D50(int budget, bool force)
             DAT_00ABCA40.IsAllocated = false;
             DAT_00ABCA40.Capacity = 0;
             DAT_00ABCA84 = false;
-            DAT_0087F7E8.Redraw(1);
+            DAT_0087F7E8.FUN_004F42F0(1);
         }
     }
 

@@ -25,14 +25,7 @@ struct Type_0062A8E0
 GG_STATIC_ASSERT(offsetof(Type_0062A8E0, Naval)  == 0xCCE);
 GG_STATIC_ASSERT(offsetof(Type_0062A8E0, At_D38) == 0xD38);
 
-// CellClass — opaque; only the water-tile predicate is called.
-struct Cell_0062A8E0
-{
-    char opaque[4];
-
-    // FUNCTION: GAMEMD 0x485060 (decl; reloc) — CellClass::Tile_Is_Water.
-    bool Tile_Is_Water();
-};
+#include "_layout/cell_class.h"
 
 // Declaration order matters — see match/_rt/gg_vslot.h: the class must be
 // complete before the member-function-pointer types.
@@ -62,7 +55,7 @@ GG_STATIC_ASSERT(offsetof(FootInfect, BunkerLinkedItem) == 0x2E4);
 GG_STATIC_ASSERT(offsetof(FootInfect, ParasiteEatingMe) == 0x694);
 
 typedef Type_0062A8E0* (FootInfect::*Fn084_Infect)();
-typedef Cell_0062A8E0* (FootInfect::*Fn1BC_Infect)();
+typedef CellClass* (FootInfect::*Fn1BC_Infect)();
 
 struct InfectVtbl
 {

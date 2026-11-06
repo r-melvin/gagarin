@@ -16,7 +16,7 @@
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
 // A two-short cell value copied as one dword.
-#include "_layout/cell_0050def0.h"
+#include "_layout/cell.h"
 
 // GLOBAL: GAMEMD 0x008B40F8
 extern "C" int DAT_008B40F8;
@@ -94,7 +94,7 @@ void Obj_00542FC0::FUN_00542FC0(int value)
 }
 
 // FUNCTION: GAMEMD 0x0056BC50
-int __stdcall FUN_0056BC50(const Cell_0050DEF0* cell)
+int __stdcall FUN_0056BC50(const Cell* cell)
 {
     return cell->X / 4 + (cell->Y / 4) * 130 + 0x83;
 }

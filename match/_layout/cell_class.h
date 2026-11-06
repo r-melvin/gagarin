@@ -100,6 +100,20 @@ public:
     void FUN_00485130(void* target);
     // FUNCTION: GAMEMD 0x4852D0 (decl; reloc)
     void FUN_004852D0();
+    // FUNCTION: GAMEMD 0x485AF0 (decl; reloc)
+    void FUN_00485AF0();
+    // FUNCTION: GAMEMD 0x485060 (decl; reloc) -- whether the cell's tile is water; called through the cell slot of a foot.
+    bool FUN_00485060();
+    // FUNCTION: GAMEMD 0x484050 (decl; reloc) -- read the six saved light values into the out slots.
+    void FUN_00484050(int* v0, int* v1, int* v2, int* v3, int* v4, int* v5);
+    // FUNCTION: GAMEMD 0x483780 -- push this cell's tiberium into the first neighbour that accepts it (unless forced, only when spreading is enabled).
+    bool SpreadTiberium(char forced);
+    // FUNCTION: GAMEMD 0x4838E0 -- whether ore or gems can grow in this cell; the argument is not read.
+    bool CanTiberiumGerminate(void* tiberium);
+    // FUNCTION: GAMEMD 0x487190 (decl; reloc) -- lay the given tiberium index down in this cell.
+    bool FUN_00487190(int tiberiumIndex, int amount);
+    // FUNCTION: GAMEMD 0x486E30 -- hand the cell to the veinhole monster covering it, else react through the map record; returns 0.
+    int FUN_00486E30();
     // FUNCTION: GAMEMD 0x486E70 (decl; reloc)
     void FUN_00486E70();
 
@@ -139,6 +153,14 @@ public:
     bool FUN_004870D0(int index);
     // FUNCTION: GAMEMD 0x47B3A0 (decl; reloc)
     int GetFloorHeight(const Point2D& subcoords) const;
+    // FUNCTION: GAMEMD 0x4866D0 (decl; reloc)
+    bool FUN_004866D0();
+    // FUNCTION: GAMEMD 0x4866F0 (decl; reloc)
+    bool FUN_004866F0();
+    // FUNCTION: GAMEMD 0x486650 (decl; reloc)
+    bool FUN_00486650();
+    // FUNCTION: GAMEMD 0x486670 (decl; reloc)
+    bool FUN_00486670();
     // FUNCTION: GAMEMD 0x486380 (decl; reloc)
     bool FUN_00486380();
     // FUNCTION: GAMEMD 0x4863D0 (decl; reloc)

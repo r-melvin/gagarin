@@ -12,10 +12,10 @@
 // rectangle scaled by two. With `checkLevel` the cell's height level shifts
 // the x+y band, and a sloped cell just inside the top edge counts one level
 // higher.
-bool MapClass::IsWithinUsableArea(Cell_00578540* pCell, bool checkLevel) const
+bool MapClass::IsWithinUsableArea(CellClass* pCell, bool checkLevel) const
 {
-    int x = pCell->X;
-    int y = pCell->Y;
+    int x = pCell->MapCoords.X;
+    int y = pCell->MapCoords.Y;
     int level = 0;
 
     if (checkLevel) {

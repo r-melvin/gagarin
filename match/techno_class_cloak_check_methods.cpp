@@ -40,7 +40,7 @@ static inline bool CloaksByRank_006FBC90(Techno_006FBC90* self)
 bool Techno_006FBC90::ShouldNotBeCloaked()
 {
     Coord_006FBC90 buf;
-    Cell_006FBC90 cell;
+    CellStructInit cell;
     if ((!((this->*GG_VTBL_006FBC90(this)->IsCloakable)() || this->Cloakable != 0)
          || (this->*GG_VTBL_006FBC90(this)->At_37C)()
          || (this->*GG_VTBL_006FBC90(this)->At_380)()

@@ -24,8 +24,6 @@ struct Triple_00747EB0;
 struct Triple_005247D0;
 struct MapObjCell;
 struct Rect_4i;
-struct Cell_005A7250;
-struct CellStruct_005A7250;
 
 struct Map_0087F7E8
 {
@@ -75,8 +73,6 @@ struct Map_0087F7E8
     void FUN_00581F50();
     // FUNCTION: GAMEMD 0x657CE0 (declaration)
     void FUN_00657CE0();
-    // The same entry point 0x5657A0 as the 0x5A7250 TU spelled it (by reference, its own cell view).
-    Cell_005A7250* GetCell(const CellStruct_005A7250& cell);
     // FUNCTION: GAMEMD 0x5673A0 (decl; reloc)
     void FUN_005673A0(CoordStruct* where, int sight, HouseClass* house, int a, int b, int c, int d, int e);
     // The same entry point 0x5673A0, taking the coordinate by reference.
@@ -210,6 +206,8 @@ struct Map_0087F7E8
     int FUN_0056D3F0(const CellStruct& cell);
     // FUNCTION: GAMEMD 0x56D460 (decl; reloc) -- one cell argument (RET 4).
     void FUN_0056D460(const CellStruct* cell);
+    // FUNCTION: GAMEMD 0x56D460 (decl; reloc) -- the same entry point taking the cell by reference.
+    void FUN_0056D460(const CellStruct& cell);
     // FUNCTION: GAMEMD 0x56D5A0 (decl; reloc) -- one cell argument (RET 4).
     void FUN_0056D5A0(const CellStruct* cell);
     // FUNCTION: GAMEMD 0x56D6E0 (decl; reloc)
@@ -264,6 +262,8 @@ struct Map_0087F7E8
     void FUN_00577F30(HouseClass* house);
     // FUNCTION: GAMEMD 0x584550 (decl; reloc) -- one cell argument (RET 4).
     void FUN_00584550(const CellStruct* cell);
+    // FUNCTION: GAMEMD 0x584550 (decl; reloc) -- the same entry point taking the cell by reference.
+    void FUN_00584550(const CellStruct& cell);
     // FUNCTION: GAMEMD 0x5840C0 (decl; reloc) -- zone-edge collection around a cell (RET 0x10). The fourth word is the mover:
     // the decompile calls a vtable slot on it; it is kept as the int the callers pass.
     bool FUN_005840C0(CellClass* cell, int zone, DynamicVectorClass<unsigned short>* zones, int arg);

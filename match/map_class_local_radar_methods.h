@@ -19,8 +19,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
-struct Cell_00578390 { short X; short Y; };
-GG_STATIC_ASSERT(sizeof(Cell_00578390) == 0x4);
+#include "_layout/cell.h"
 
 struct Rect_00578390
 {
@@ -34,7 +33,7 @@ GG_STATIC_ASSERT(sizeof(Rect_00578390) == 0x10);
 struct CellClass_00578390
 {
     char _pad0000[0x24];              // +0x0000
-    Cell_00578390 MapCoords;          // +0x0024
+    CellStruct MapCoords;          // +0x0024
     char _pad0028[0x11B - 0x28];      // +0x0028
     signed char Level;                // +0x011B
     char SlopeIndex;                  // +0x011C
@@ -69,7 +68,7 @@ struct Map_00578390
     // FUNCTION: GAMEMD 0x578390 — MapClass::InLocalRadar.
     int InLocalRadar(Rect_00578390* rect, bool checkLevel);
     // FUNCTION: GAMEMD 0x578460 — MapClass::IsWithinUsableArea.
-    bool IsWithinUsableArea(Cell_00578390* cell, bool checkLevel);
+    bool IsWithinUsableArea(CellStruct* cell, bool checkLevel);
     // FUNCTION: GAMEMD 0x578460 (decl) - is the cell inside the usable area.
     bool IsWithinUsableArea(const CellPos_00578390& cell, bool checkLevel);
 

@@ -22,12 +22,7 @@
 #include "_rt/gg_static_assert.h"
 #include "_rt/gg_vslot.h"
 
-struct Cell_0054E590
-{
-    short X;   // +0x00
-    short Y;   // +0x02
-};
-GG_STATIC_ASSERT(sizeof(Cell_0054E590) == 4);
+#include "_layout/cell.h"
 
 struct Coord_0054E590
 {
@@ -42,7 +37,7 @@ struct CellClass_0054E590;
 struct Map_0054E590
 {
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass_0054E590* GetCellAt(const Cell_0054E590& cell);
+    CellClass_0054E590* GetCellAt(const CellStruct& cell);
 };
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer).
 extern Map_0054E590 DAT_0087F7E8;

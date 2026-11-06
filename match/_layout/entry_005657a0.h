@@ -5,11 +5,11 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "cell_0050def0.h"
+#include "cell.h"
 
 struct Entry_005657A0
 {
     char Pad_00[0x24];
-    Cell_0050DEF0 unknown_24;
+    Cell unknown_24;
 };
 #endif

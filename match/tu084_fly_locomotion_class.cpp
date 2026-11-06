@@ -298,7 +298,7 @@ void FlyLocoSpin::ProcessSpin()
 
     IsSpinning = 0;
     Coord_004CE5A0 where = LinkedTo->Location;
-    Map_0087F7E8.GetCellAt(&where)->Touch();
+    Map_0087F7E8.GetCellAt(&where)->ActivateVeins();
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

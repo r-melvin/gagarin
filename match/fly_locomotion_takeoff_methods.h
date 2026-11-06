@@ -30,21 +30,15 @@
 
 // A cell address: two 16-bit components, compared word by word against the
 // engine's unset cell.
-struct Cell_004CF950
-{
-    short X;   // +0x00
-    short Y;   // +0x02
-    Cell_004CF950() {}
-};
-GG_STATIC_ASSERT(sizeof(Cell_004CF950) == 4);
+#include "_layout/cell.h"
 
 // GLOBAL: GAMEMD 0x8B3C58 — the engine's unset cell.
-extern const Cell_004CF950 UnsetCell_008B3C58;
+extern const CellStructInit UnsetCell_008B3C58;
 
 // Retail calls the cell slot once and reads both components off the returned
 // hidden pointer; writing the two comparisons as two call expressions calls
 // it twice. A whole-cell comparison is what folds them back into one call.
-inline int operator==(const Cell_004CF950& a, const Cell_004CF950& b)
+inline int operator==(const CellStructInit& a, const CellStructInit& b)
 {
     return a.X == b.X && a.Y == b.Y;
 }
@@ -115,7 +109,7 @@ GG_STATIC_ASSERT(offsetof(Foot_004CF950, Location) == 0x9C &&
 typedef char (Foot_004CF950::*FnChar_004CF950)();
 typedef int (Foot_004CF950::*FnInt_004CF950)();
 typedef FootType_004CF950* (Foot_004CF950::*FnType_004CF950)();
-typedef Cell_004CF950 (Foot_004CF950::*FnCell_004CF950)();
+typedef CellStructInit (Foot_004CF950::*FnCell_004CF950)();
 
 struct FootVtbl_004CF950
 {

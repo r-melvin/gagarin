@@ -570,7 +570,7 @@ void Obj_00653F90::FUN_00653F90(int a)
 
 // FUNCTION: GAMEMD 0x655050
 // Convert a map cell to the radar's diamond coordinates; mode 1 marks an edge column.
-RadarDiamond RadarClass::FUN_00655050(const Cell_0050DEF0& cell)
+RadarDiamond RadarClass::FUN_00655050(const Cell& cell)
 {
     int cx = cell.X;
     int cy = cell.Y;
@@ -593,7 +593,7 @@ RadarDiamond RadarClass::FUN_00655050(const Cell_0050DEF0& cell)
 
 // FUNCTION: GAMEMD 0x6550C0
 // Convert a map cell to the radar's screen position (scaled by the radar zoom).
-RadarDiamond RadarClass::FUN_006550C0(const Cell_0050DEF0* cell)
+RadarDiamond RadarClass::FUN_006550C0(const Cell* cell)
 {
     int cx = cell->X;
     int cy = cell->Y;
@@ -614,11 +614,11 @@ RadarDiamond RadarClass::FUN_006550C0(const Cell_0050DEF0* cell)
 // FUNCTION: GAMEMD 0x655150
 // Convert a radar-space point back to the map cell under it.
 // PARTIAL: 91.3% -- same instructions; retail stores the first result word before the second multiply.
-Cell_0050DEF0 RadarClass::FUN_00655150(const Point2D* point)
+Cell RadarClass::FUN_00655150(const Point2D* point)
 {
     double x = (double)point->X / *(float*)&unknown_1488 - unknown_1490;
     double y = (double)point->Y / *(float*)&unknown_1488 + unknown_1498;
-    Cell_0050DEF0 result;
+    Cell result;
     int ix = (int)((x + y) * DAT_007E5168 + 0.5);
     double d = y - x;
     result.X = (short)ix;
@@ -1400,8 +1400,8 @@ void RadarClass::vf_29(RectangleStruct* mapRect)
     RadarBounds.Y      = 10000;
     RadarBounds.X      = 10000;
 
-    Cell_0050DEF0 b;
-    Cell_0050DEF0 a;
+    Cell b;
+    Cell a;
     int ax = LocalRect.Y + LocalRect.X + 1;                // [0x100] + [0xFC] + 1
     int ay = (MapRect.Width - LocalRect.X) + LocalRect.Y;  // [0xF4]
     a.X = (short)ax;
@@ -1412,7 +1412,7 @@ void RadarClass::vf_29(RectangleStruct* mapRect)
     b.X = (short)bx;
     b.Y = (short)by;
     unknown_1498 = -1;
-    Cell_0050DEF0 c = a + b;
+    Cell c = a + b;
     unknown_1494 = c.X - c.Y;
     unknown_1490 = a.Y - a.X;
 
@@ -1429,7 +1429,7 @@ void RadarClass::vf_29(RectangleStruct* mapRect)
         {
             if (unknown_1498 == -1)
                 unknown_1498 = node->Cell.Y + node->Cell.X;
-            Cell_0050DEF0 cell = node->GetCell();
+            Cell cell = node->GetCell();
             int x = (unknown_1490 - cell.Y) + cell.X;
             int y = (cell.Y - unknown_1498) + cell.X;
             int span = 2;

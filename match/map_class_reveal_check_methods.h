@@ -16,8 +16,7 @@
 #include "_rt/gg_static_assert.h"
 #include "_rt/gg_vslot.h"
 
-struct Cell_005865F0 { short X; short Y; };
-GG_STATIC_ASSERT(sizeof(Cell_005865F0) == 0x4);
+#include "_layout/cell.h"
 
 struct Point_005865F0 { int X; int Y; };
 GG_STATIC_ASSERT(sizeof(Point_005865F0) == 0x8);
@@ -42,7 +41,7 @@ GG_STATIC_ASSERT(offsetof(Vtbl_005865F0, DiscoveredBy) == 0x198);
 struct CellClass_005865F0
 {
     char _pad0000[0x24];              // +0x0000
-    Cell_005865F0 MapCoords;          // +0x0024
+    CellStruct MapCoords;          // +0x0024
     char _pad0028[0x11B - 0x28];      // +0x0028
     signed char Level;                // +0x011B
 
@@ -64,7 +63,7 @@ struct Map_005865F0
     // FUNCTION: GAMEMD 0x5865F0 — MapClass::RevealCheck (`this` never read).
     void RevealCheck(CellClass_005865F0* cell, House_005865F0* house, bool redraw);
     // FUNCTION: GAMEMD 0x6565A0 (decl; reloc) — redraw at a cell.
-    void FUN_006565A0(Cell_005865F0* cell);
+    void FUN_006565A0(CellStruct* cell);
 };
 GG_STATIC_ASSERT(offsetof(Map_005865F0, Cells) == 0x13C);
 

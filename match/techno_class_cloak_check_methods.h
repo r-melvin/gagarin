@@ -32,13 +32,7 @@ bool FUN_00750010(VeterancyStruct* vet);
 
 // CellStruct — the user-declared constructor selects the hidden-pointer
 // return convention for the inline coordinate-to-cell helper.
-struct Cell_006FBC90
-{
-    short X;   // +0x0000
-    short Y;   // +0x0002
-    Cell_006FBC90() {}
-};
-GG_STATIC_ASSERT(sizeof(Cell_006FBC90) == 0x4);
+#include "_layout/cell.h"
 
 struct Coord_006FBC90
 {
@@ -49,9 +43,9 @@ struct Coord_006FBC90
 GG_STATIC_ASSERT(sizeof(Coord_006FBC90) == 0xC);
 
 // Coordinate to cell (signed division by 256 per axis), by value.
-inline Cell_006FBC90 CoordToCell_006FBC90(const Coord_006FBC90* c)
+inline CellStructInit CoordToCell_006FBC90(const Coord_006FBC90* c)
 {
-    Cell_006FBC90 r;
+    CellStructInit r;
     r.X = (short)(c->X / 256);
     r.Y = (short)(c->Y / 256);
     return r;
@@ -76,7 +70,7 @@ struct Map_006FBC90
 {
     char opaque[4];
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass_006FBC90* GetCellAt(const Cell_006FBC90& cell);
+    CellClass_006FBC90* GetCellAt(const CellStructInit& cell);
 };
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer).
 extern Map_006FBC90 DAT_0087F7E8;

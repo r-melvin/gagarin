@@ -13,8 +13,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
-struct Cell_0074D670 { short X; short Y; };
-GG_STATIC_ASSERT(sizeof(Cell_0074D670) == 4);
+#include "_layout/cell.h"
 
 // GLOBAL: GAMEMD 0xA8E7AC — Unsorted::ScenarioInit.
 extern int DAT_00A8E7AC;
@@ -22,7 +21,7 @@ extern int DAT_00A8E7AC;
 struct Monster_0074D670
 {
     char _pad0000[0xF8];    // +0x0000
-    Cell_0074D670 Cell;     // +0x00F8
+    CellStruct Cell;     // +0x00F8
 };
 GG_STATIC_ASSERT(offsetof(Monster_0074D670, Cell) == 0xF8);
 
@@ -46,11 +45,11 @@ GG_STATIC_ASSERT(offsetof(CellClass_0074D670, SlopeIndex) == 0x11C);
 struct Map_0074D670
 {
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass_0074D670* GetCellAt(const Cell_0074D670* cell);
+    CellClass_0074D670* GetCellAt(const CellStruct* cell);
 
     // MapClass::operator[](CellStruct) as inlined: the by-value cell is copied
     // into the argument temporary and handed on by address.
-    CellClass_0074D670* Cell(Cell_0074D670 cell) { return GetCellAt(&cell); }
+    CellClass_0074D670* Cell(CellStruct cell) { return GetCellAt(&cell); }
 };
 // GLOBAL: GAMEMD 0x87F7E8 — the map instance.
 extern Map_0074D670 MapInstance_0074D670;

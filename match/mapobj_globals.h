@@ -14,11 +14,10 @@ class TagClass;
 struct CellStruct;
 
 
-struct Cell_004A8BF0;
 
 
 // GLOBAL: GAMEMD 0x8A03F8 -- the "no cell" sentinel pair MarkFoundation refuses.
-extern Cell_004A8BF0 DAT_008A03F8;
+extern CellStruct DAT_008A03F8;
 // GLOBAL: GAMEMD 0x8A3838 -- this unit's copy of the "no cell" value.
 extern CellStruct DAT_008A3838;
 // GLOBAL: GAMEMD 0x008B40C8

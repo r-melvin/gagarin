@@ -575,7 +575,7 @@ bool ParasiteClass_0062A8E0::CanInfect(FootInfect* target)
         if (owner == 0
             || !(owner->*INFECT_VT(owner)->GetTechnoType)()->Naval
             || (target->*INFECT_VT(target)->GetCell)() == 0
-            || (target->*INFECT_VT(target)->GetCell)()->Tile_Is_Water()) {
+            || (target->*INFECT_VT(target)->GetCell)()->FUN_00485060()) {
             return true;
         }
     }
@@ -601,7 +601,7 @@ bool Parasite_0062AB40::CanExistOnVictimCell()
 
     if ((Owner->*Owner->Vptr->GetTechnoType)()->Naval == 0) {
         if (Owner != 0 && (Owner->*Owner->Vptr->WhatAmI)() == 1) {
-            if ((Victim->*Victim->Vptr->GetCell)()->FUN_0047C550(0) != 0)
+            if ((Victim->*Victim->Vptr->GetCell)()->FUN_0047C550(false) != 0)
                 return false;
         }
 
@@ -620,7 +620,7 @@ bool Parasite_0062AB40::CanExistOnVictimCell()
 
     // A named bool gives retail's TEST/SETZ; returning the compare directly
     // materialises it as NEG/SBB/INC.
-    bool clear = (Victim->*Victim->Vptr->GetCell)()->FUN_0047C520() == 0;
+    bool clear = (Victim->*Victim->Vptr->GetCell)()->GetBuilding() == 0;
     return clear;
 }
 

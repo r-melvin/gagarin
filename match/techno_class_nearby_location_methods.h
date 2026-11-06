@@ -18,22 +18,15 @@
 
 // CellStruct — the user-declared constructor selects the hidden-pointer
 // return convention (see the banked "Struct returns" rule).
-struct Cell_00703590
-{
-    short X;   // +0x0000
-    short Y;   // +0x0002
-    Cell_00703590() {}
-    Cell_00703590(int x, int y) { X = (short)x; Y = (short)y; }
-};
+#include "_layout/cell.h"
 
-inline Cell_00703590 ZeroCell_00703590()
+inline CellStructInit ZeroCell_00703590()
 {
-    Cell_00703590 r;
+    CellStructInit r;
     r.X = 0;
     r.Y = 0;
     return r;
 }
-GG_STATIC_ASSERT(sizeof(Cell_00703590) == 0x4);
 
 struct Coord_00703590
 {
@@ -44,9 +37,9 @@ struct Coord_00703590
 GG_STATIC_ASSERT(sizeof(Coord_00703590) == 0xC);
 
 // Coordinate to cell (signed division by 256 per axis), by value.
-inline Cell_00703590 CoordToCell_00703590(const Coord_00703590* c)
+inline CellStructInit CoordToCell_00703590(const Coord_00703590* c)
 {
-    Cell_00703590 r;
+    CellStructInit r;
     r.X = (short)(c->X / 256);
     r.Y = (short)(c->Y / 256);
     return r;
@@ -73,7 +66,7 @@ struct Obj_00703590
     bool           OnBridge;       // +0x008C
 
     // FUNCTION: GAMEMD 0x703590 — TechnoClass::NearbyLocation.
-    Cell_00703590 NearbyLocation(Obj_00703590* object);
+    CellStructInit NearbyLocation(Obj_00703590* object);
 };
 GG_STATIC_ASSERT(offsetof(Obj_00703590, OnBridge) == 0x8C);
 
@@ -95,21 +88,21 @@ struct Map_00703590
 {
     char opaque[4];
     // FUNCTION: GAMEMD 0x56D230 (decl; reloc) — MapClass::GetMovementZoneType.
-    int GetMovementZoneType(const Cell_00703590& cell, int movementZone, bool isBridge);
+    int GetMovementZoneType(const CellStructInit& cell, int movementZone, bool isBridge);
     // FUNCTION: GAMEMD 0x56DC20 (decl; reloc) — MapClass::NearByLocation.
-    Cell_00703590* NearByLocation(Cell_00703590* out, const Cell_00703590& position,
+    CellStructInit* NearByLocation(CellStructInit* out, const CellStructInit& position,
                                   int speedType, int a4, int movementZone, bool alt,
                                   int spaceSizeX, int spaceSizeY, bool a9, bool a10,
                                   bool a11, bool ignoreOccupied,
-                                  const Cell_00703590& closeTo, bool a14, bool buildable);
+                                  const CellStructInit& closeTo, bool a14, bool buildable);
     // The by-value form, expanded inline at the call site.
-    Cell_00703590 NearByLocation(const Cell_00703590& position, int speedType, int a4,
+    CellStructInit NearByLocation(const CellStructInit& position, int speedType, int a4,
                                  int movementZone, bool alt, int spaceSizeX,
                                  int spaceSizeY, bool a9, bool a10, bool a11,
-                                 bool ignoreOccupied, const Cell_00703590& closeTo,
+                                 bool ignoreOccupied, const CellStructInit& closeTo,
                                  bool a14, bool buildable)
     {
-        Cell_00703590 outBuffer;
+        CellStructInit outBuffer;
         return *NearByLocation(&outBuffer, position, speedType, a4, movementZone, alt,
                                spaceSizeX, spaceSizeY, a9, a10, a11, ignoreOccupied,
                                closeTo, a14, buildable);

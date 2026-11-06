@@ -3593,17 +3593,17 @@ void TechnoClass::FUN_007018C0(HouseClass* house)
 // argument list; the by-value NearByLocation wrapper (homes the bool
 // argument in a byte slot and reloads it as a dword); bool member passed
 // with and without `!= 0`.
-Cell_00703590 Obj_00703590::NearbyLocation(Obj_00703590* object)
+CellStructInit Obj_00703590::NearbyLocation(Obj_00703590* object)
 {
     int speed = (this->*Vptr->GetTechnoType)()->SpeedType;
     if (speed == 4) {
         speed = 1;
     }
-    Cell_00703590 closeTo;
+    CellStructInit closeTo;
     closeTo.X = 0;
     closeTo.Y = 0;
 
-    Cell_00703590 cell;
+    CellStructInit cell;
     Coord_00703590 buf;
     if (object != 0) {
         cell = CoordToCell_00703590((object->*object->Vptr->GetCoords)(&buf));
@@ -3619,7 +3619,7 @@ Cell_00703590 Obj_00703590::NearbyLocation(Obj_00703590* object)
         zoneType = -1;
     }
 
-    Cell_00703590 out;
+    CellStructInit out;
     return *MapInstance_00703590.NearByLocation(&out, cell, speed, zoneType, zone,
                                                 OnBridge, 1, 1, false, false,
                                                 false, true, closeTo, false, false);

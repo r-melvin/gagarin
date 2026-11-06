@@ -480,7 +480,7 @@ inline const unsigned short* FindTablePrime(unsigned short key)
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
 // A two-short cell value copied as one dword.
-#include "_layout/cell_0050def0.h"
+#include "_layout/cell.h"
 
 // GLOBAL: GAMEMD 0x008B40F8
 extern "C" int DAT_008B40F8;

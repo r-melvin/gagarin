@@ -17,12 +17,7 @@
 #include "_rt/gg_static_assert.h"
 #include "_rt/gg_vslot.h"
 
-struct Cell_004DCFE0
-{
-    short X;   // +0x0000
-    short Y;   // +0x0002
-};
-GG_STATIC_ASSERT(sizeof(Cell_004DCFE0) == 4);
+#include "_layout/cell.h"
 
 struct Coord_004DCFE0
 {
@@ -37,7 +32,7 @@ struct CellClass_004DCFE0;
 struct Map_004DCFE0
 {
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass_004DCFE0* GetCellAt(Cell_004DCFE0 const& cell);
+    CellClass_004DCFE0* GetCellAt(CellStruct const& cell);
 };
 
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer:
@@ -45,7 +40,7 @@ struct Map_004DCFE0
 extern Map_004DCFE0 MapInstance_004DCFE0;
 
 // GLOBAL: GAMEMD 0x8B3D88 — the "no cell" CellStruct sentinel.
-extern Cell_004DCFE0 NoCell_004DCFE0;
+extern CellStruct NoCell_004DCFE0;
 
 // Declaration order per match/_rt/gg_vslot.h.
 struct Vtbl_004DCFE0;
@@ -62,7 +57,7 @@ struct Obj_004DCFE0
 GG_STATIC_ASSERT(offsetof(Obj_004DCFE0, Destination) == 0x5A4);
 
 typedef Coord_004DCFE0* (Obj_004DCFE0::*Fn48_004DCFE0)(Coord_004DCFE0* out);
-typedef Cell_004DCFE0* (Obj_004DCFE0::*Fn338_004DCFE0)(Cell_004DCFE0* out, int radius, int scanClose);
+typedef CellStruct* (Obj_004DCFE0::*Fn338_004DCFE0)(CellStruct* out, int radius, int scanClose);
 typedef void (Obj_004DCFE0::*Fn480_004DCFE0)(CellClass_004DCFE0* target, int flag);
 
 struct Vtbl_004DCFE0

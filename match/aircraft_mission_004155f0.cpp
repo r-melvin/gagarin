@@ -33,8 +33,8 @@ int Aircraft_004155F0::FUN_004155F0()
         (this->*Vptr->QueueMission)(0x1F, 0);
         IsLocked = 1;
         int side = Owner->FUN_0050DAC0();
-        Cell_004155F0 out;
-        Cell_004155F0 cell = *DAT_0087F7E8.FUN_004AA440(&out,
+        CellStruct out;
+        CellStruct cell = *DAT_0087F7E8.FUN_004AA440(&out,
             side, &DAT_00889E68, &DAT_00889E68, 4, 1, 0);
         if (cell != DAT_00889E68)
             (this->*Vptr->SetDestination)(DAT_0087F7E8.FUN_005657A0(cell), 1);
@@ -54,8 +54,8 @@ int Aircraft_004155F0::FUN_004157C0()
     }
     if (!Destination) {
         int side = Owner->FUN_0050DAC0();
-        Cell_004155F0 out;
-        Cell_004155F0 cell = *DAT_0087F7E8.FUN_004AA440(&out,
+        CellStruct out;
+        CellStruct cell = *DAT_0087F7E8.FUN_004AA440(&out,
             side, &DAT_00889E68, &DAT_00889E68, 4, 1, 0);
         if (cell != DAT_00889E68)
             (this->*Vptr->SetDestination)(DAT_0087F7E8.FUN_005657A0(cell), 1);
@@ -67,24 +67,24 @@ int Aircraft_004155F0::FUN_004157C0()
 // The first facing of the table at 0x817A78 whose neighbouring cell (of this one's cell) is on the map, is not
 // the cell `other` stands over, and is clear to move into; its coordinate is left in `out` (the empty cell when
 // none).
-int Aircraft_004155F0::FUN_004195A0(Aircraft_004155F0* other, Cell_004155F0* out)
+int Aircraft_004155F0::FUN_004195A0(Aircraft_004155F0* other, CellStruct* out)
 {
     Coord_004155F0 scratch;
     *out = DAT_00889E68;
     Coord_004155F0* c = (this->*Vptr->GetCoords)(&scratch);
-    Cell_004155F0 base;
+    CellStruct base;
     base.X = c->X / 256;
     base.Y = c->Y / 256;
     int i;
     for (i = 0; i < 8; ++i) {
-        Cell_004155F0 next;
+        CellStruct next;
         const CellStruct& step = DAT_0089F688[DAT_00817A78[i] & 7];
         next.X = base.X + step.X;
         next.Y = base.Y + step.Y;
         *out = next;
         if (DAT_0087F7E8.FUN_00568300(out)) {
             Coord_004155F0* here = (other->*other->Vptr->GetCoords)(&scratch);
-            Cell_004155F0 hereCell;
+            CellStruct hereCell;
             hereCell.X = here->X / 256;
             hereCell.Y = here->Y / 256;
             if (!(hereCell != *out))
@@ -103,8 +103,8 @@ int Aircraft_004155F0::FUN_00415A50()
         int side = Owner->At_1E0;
         if (side < 0 || side > 3)
             side = Owner->FUN_0050DA80();
-        Cell_004155F0 out;
-        Cell_004155F0 cell = *DAT_0087F7E8.FUN_004AA440(&out,
+        CellStruct out;
+        CellStruct cell = *DAT_0087F7E8.FUN_004AA440(&out,
             side, &DAT_00889E68, &DAT_00889E68, 4, 1, 0);
         if (cell != DAT_00889E68) {
             (this->*Vptr->SetDestination)(DAT_0087F7E8.FUN_005657A0(cell), 1);
