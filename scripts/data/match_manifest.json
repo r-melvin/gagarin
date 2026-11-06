@@ -15445,11 +15445,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/vector_ctor_pod_family_methods.cpp",
+  "tu": "match/tu218_spawn_manager_class.cpp",
   "addr": "0x6B8880",
-  "sym": "?Ctor@VectorClass_006B8880@@QAEPAU1@IPAUPodElem4@@@Z",
+  "sym": "??0?$VectorClass@PAUSpawnControl@SpawnManagerClass@@@@QAE@HPAPAUSpawnControl@SpawnManagerClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass_006B8880::Ctor",
+  "name": "VectorClass<SpawnManagerClass::SpawnControl*>::VectorClass",
   "status": "matched",
   "pct": 100
  },

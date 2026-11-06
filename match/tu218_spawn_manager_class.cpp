@@ -477,6 +477,8 @@ int SpawnManagerClass::vf_11()
 // VectorClass<SpawnManagerClass::SpawnControl*>::Slot5 (slot 5)
 // TEMPLATE: GAMEMD 0x6B84B0
 // DynamicVectorClass<SpawnManagerClass::SpawnControl*>::FindItemIndex (slot 4)
+// TEMPLATE: GAMEMD 0x6B8880
+// VectorClass<SpawnManagerClass::SpawnControl*> (capacity, array) constructor; seats vtable 0x7F36D4
 template class VectorClass<SpawnManagerClass::SpawnControl*>;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
