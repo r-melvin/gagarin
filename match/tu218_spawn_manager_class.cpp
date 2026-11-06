@@ -157,6 +157,12 @@ struct HWND__;
 
 
 #include "vector_resize_family_methods.h"
+#include "_layout/aircraft_class.h"
+#include "_layout/aircraft_type_class.h"
+#include "_layout/rules_class.h"
+#include "vector_class_dynamic_ctor.h"
+#include "vector_class_mutation.h"
+#include "vector_class_search.h"
 
 // Globals read by this TU's static initialisers (placeholder names).
 // GLOBAL: GAMEMD 0x7E1718
@@ -176,6 +182,52 @@ double DAT_00B0B860 = DAT_007E1718 / DAT_00B0B878;
 
 // The canonical class headers follow the static initialisers: VC6 numbers the _$E/_$S
 // stubs in parse order and the type-list headers consume a number when seen earlier.
+
+// GLOBAL: GAMEMD 0xB0B880 -- SpawnManagerClass::Array, every live spawn manager.
+extern DynamicVectorClass<SpawnManagerClass*> DAT_00B0B880;
+// GLOBAL: GAMEMD 0x8871E0 -- RulesClass::Instance.
+extern RulesClass* DAT_008871E0;
+
+// FUNCTION: GAMEMD 0x6B6C90
+// Build the manager for an owner and a spawn type: one node per spawn, each
+// holding a fresh unit made for the owner's house (flagged when the spawn type
+// is one of the missile rules types), then register the manager.
+SpawnManagerClass::SpawnManagerClass(TechnoClass* owner, AircraftTypeClass* type, int count, int regenRate,
+                                     int reloadRate)
+    : SpawnedNodes(0, 0), SpawnTimer(0), UpdateTimer(0)
+{
+    Owner = owner;
+    SpawnType = type;
+    SpawnCount = count;
+    unknown_30 = regenRate;
+    unknown_34 = reloadRate;
+    for (int i = 0; i < SpawnCount; ++i) {
+        SpawnControl* node = new SpawnControl;
+        if (node == 0)
+            break;
+        node->Timer.StartTime = CurrentFrame;
+        node->Timer.TimeLeft = 0;
+        node->Unit = (AircraftClass*)SpawnType->vf_35(Owner->vf_15());
+        if (node->Unit != 0) {
+            if (SpawnType == DAT_008871E0->V3RocketType || SpawnType == DAT_008871E0->DMislType
+                || SpawnType == DAT_008871E0->CMislType)
+                node->unknown_14 = 1;
+            else
+                node->unknown_14 = 0;
+            node->Unit->vf_53();
+            node->Unit->SpawnOwner = Owner;
+            node->Status = 0;
+            node->Timer = CDTimerClass(0);
+            SpawnedNodes.AddItem(node);
+        }
+    }
+    SpawnTimer = CDTimerClass(0x14);
+    Target = 0;
+    NewTarget = 0;
+    unknown_70 = 0;
+    UpdateTimer = CDTimerClass(0);
+    DAT_00B0B880.AddItem(this);
+}
 
 // FUNCTION: GAMEMD 0x6B6FA0
 // NoInit constructor (save-game load path): base NoInit constructor, an empty

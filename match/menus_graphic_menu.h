@@ -209,6 +209,8 @@ public:
 class GraphicMenuShortcutItem : public GraphicMenuItem
 {
 public:
+    // FUNCTION: GAMEMD 0x4F3C40 -- reads the comma-separated key names into the key list.
+    GraphicMenuShortcutItem(int id, Wstring& keys);
     virtual ~GraphicMenuShortcutItem();               // 0x4F3E90 body, 0x4F3F60 scalar deleting
     virtual bool Slot1(unsigned key);                    // 0x4F3EE0
 

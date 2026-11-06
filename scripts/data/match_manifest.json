@@ -83081,9 +83081,9 @@
  {
   "tu": "match/string_char_at_methods.cpp",
   "addr": "0x7B5410",
-  "sym": "?FUN_007B5410@Obj_007B5410@@QAEDI@Z",
+  "sym": "?FUN_007B5410@Wstring@@QAEDI@Z",
   "len": "0x23",
-  "name": "FUN_007B5410",
+  "name": "Wstring::FUN_007B5410",
   "status": "matched",
   "pct": 100.0
  },
@@ -156060,6 +156060,33 @@
   "sym": "?FUN_0067B8F0@@YI?AV?$TypeList@PBVAircraftTypeClass@@@@PAVCCINIClass@@PBD1ABV1@@Z",
   "len": "0x1d0",
   "name": "?FUN_0067B8F0@@YI?AV?$TypeList@PBVAircraftTypeClass@@@@PAVCCINIClass@@PBD1ABV1@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/menus_graphic_menu_shortcut.cpp",
+  "addr": "0x4F3C40",
+  "sym": "??0GraphicMenuShortcutItem@@QAE@HAAVWstring@@@Z",
+  "len": "0xf9",
+  "name": "??0GraphicMenuShortcutItem@@QAE@HAAVWstring@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/menus_graphic_menu_shortcut.cpp",
+  "addr": "0x4F3D40",
+  "sym": "?FUN_004F3D40@@YIIPAVWstring@@@Z",
+  "len": "0x148",
+  "name": "?FUN_004F3D40@@YIIPAVWstring@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu218_spawn_manager_class.cpp",
+  "addr": "0x6B6C90",
+  "sym": "??0SpawnManagerClass@@QAE@PAVTechnoClass@@PAVAircraftTypeClass@@HHH@Z",
+  "len": "0x204",
+  "name": "??0SpawnManagerClass@@QAE@PAVTechnoClass@@PAVAircraftTypeClass@@HHH@Z",
   "status": "matched",
   "pct": 100.0
  }

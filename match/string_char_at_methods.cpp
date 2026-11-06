@@ -4,23 +4,18 @@
 // Bounds-checked character read of a string holder (character pointer at
 // +0x00), repeated unchanged for three owners: the byte at `index` when it is
 // below the string length, otherwise zero. strlen is expanded inline. The
-// owners are placeholders `Obj_<ADDR>`.
+// other two owners are placeholders `Obj_<ADDR>`; the first is the canonical Wstring.
 
 #include <stddef.h>
 #include <string.h>
 #include "_rt/gg_static_assert.h"
-
-struct Obj_007B5410 {
-    const char* text; // +0x00
-    char FUN_007B5410(unsigned int index);
-};
-GG_STATIC_ASSERT(offsetof(Obj_007B5410, text) == 0x00);
+#include "string_class.h"
 
 // FUNCTION: GAMEMD 0x007B5410
-char Obj_007B5410::FUN_007B5410(unsigned int index)
+char Wstring::FUN_007B5410(unsigned int index)
 {
-    if (index < strlen(text))
-        return text[index];
+    if (index < strlen(unknown_00))
+        return unknown_00[index];
     return 0;
 }
 

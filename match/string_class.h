@@ -43,6 +43,8 @@ public:
     const char* FUN_007B5440() const;
     // Declaration: GAMEMD 0x7B54B0
     int Length() const;
+    // Declaration: GAMEMD 0x7B5410
+    char FUN_007B5410(unsigned int index);
     // Declaration: GAMEMD 0x7B5F10
     int FUN_007B5F10(int cursor, const char* delimiters, Wstring* token);
     // Declaration: GAMEMD 0x7B6280 -- integer value of the text (atoi), RET 0.

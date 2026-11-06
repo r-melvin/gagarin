@@ -366,7 +366,7 @@ struct RulesClass
     int CMislBodyLength;   // +0x540
     bool CMislLazyCurve;   // +0x544
     char unknown_545[0x3];
-    int CMislType;   // +0x548
+    AircraftTypeClass* CMislType;   // +0x548 compared against a spawn type (SpawnManagerClass 0x6B6C90)
     int ParadropRadius;
     double ZoomInFactor;   // +0x550
     double ConditionRedSparkingProbability;   // +0x558
