@@ -57975,9 +57975,9 @@
   "len": "0x909",
   "name": "DisplayClass::vf_46",
   "status": "partial",
-  "pct": 1.2,
-  "best_pct": 1.2,
-  "best_at": "cf203011"
+  "pct": 16.2,
+  "best_pct": 16.2,
+  "best_at": "aebb4024"
  },
  {
   "tu": "match/Display.cpp",
@@ -106020,9 +106020,9 @@
   "len": "0xAC9",
   "name": "TechnoTypeClass::Load",
   "status": "partial",
-  "pct": 13.0,
-  "best_pct": 13.0,
-  "best_at": "cf203011"
+  "pct": 98.3,
+  "best_pct": 98.3,
+  "best_at": "aebb4024"
  },
  {
   "tu": "match/bullet_class_new_methods.cpp",

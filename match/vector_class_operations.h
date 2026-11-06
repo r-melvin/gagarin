@@ -155,6 +155,7 @@ template<class T> bool DynamicVectorClass<T>::SetCapacity(int capacity, T* pMem)
 // The list copy constructor is a separate function in retail (0x5255F0 for animation type lists);
 // callers that do not include this header see only the declaration and call it.
 #include "type_list.h"
+#include "type_list_default_ctor.h"
 template<class T> TypeList<T>::TypeList(const TypeList<T>& other) : DynamicVectorClass<T>(other) {}
 
 #endif

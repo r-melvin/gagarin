@@ -7,6 +7,7 @@
 //   into the same slots.
 #include "_layout/rules_class.h"
 #include "vector_class_dynamic_ctor.h"
+#include "type_list_default_ctor.h"
 
 // Here the zeroing default constructor is visible inline (retail expands it as a loop over ColorAdd);
 // the no-init constructor TU only sees the out-of-line copy at 0x4B9BD0.

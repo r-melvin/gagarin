@@ -16,7 +16,8 @@ template<class T> class TypeList : public DynamicVectorClass<T>
 {
 public:
     // Default-constructor stores are verified in the int and pointer TUs.
-    TypeList() : DynamicVectorClass<T>() {}
+    // Body in type_list_default_ctor.h: a TU that does not include it calls the out-of-line instantiation.
+    TypeList();
     // Capacity constructor, expanded inline in the INI readers (call 0x525250, then the list vptr store).
     // A member template, so that the explicit instantiations that stand for retail's out-of-line list
     // functions do not emit a function retail does not have.

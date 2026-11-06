@@ -854,6 +854,10 @@ void DisplayClass::vf_49(int)
 }
 
 // FUNCTION: GAMEMD 0x4AAE90
+// CAPPED at 16.2% (aligned 55.7%): cl caches integer zero in EBX (three constant-zero stores) and moves the cell
+// parameter to EBP, where retail keeps the cell in EBX and tests with `test`/`mov al`; the waypoint Z store through
+// DisplayCmdVec3::Set gained 15 points over direct member stores. Variants tried: local zero variable, init order of
+// object/unknown_11D0, CoordStructInit temporary (steering cast, dropped).
 void DisplayClass::vf_46(CellStruct* cell, int a2, DisplayCmdAbstract* target, int a4, bool a5)
 {
     DisplayCmdAbstract* object = 0;
@@ -880,9 +884,7 @@ void DisplayClass::vf_46(CellStruct* cell, int a2, DisplayCmdAbstract* target, i
         && DisplayCmdMap_0087F7E8.IsWithinUsableArea_00578460(cell, 1))
     {
         DisplayCmdVec3* where = WaypointCoord;
-        where->X = (cell->X << 8) + 0x80;
-        where->Y = (cell->Y << 8) + 0x80;
-        where->Z = 0;
+        where->Set((cell->X << 8) + 0x80, (cell->Y << 8) + 0x80, 0);
         DisplayCmdCellObj* cellObj = DisplayCmdMap_0087F7E8.GetCellAt_005657A0(cell);
         WaypointCoord->Z = ((cellObj->Flags140 & 0x100) ? DisplayCmdZBias_008A0730 : 0)
                          + DisplayCmdMap_0087F7E8.GetZPos_00578080(WaypointCoord);

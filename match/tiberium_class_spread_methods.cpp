@@ -10,6 +10,7 @@
 
 #include "_layout/tiberium_class.h"
 #include "_layout/cell_class.h"
+#include "type_list_default_ctor.h"
 #include "scenario_class_methods.h"
 #include "scenario_class.h"
 #include "frame_counter.h"

@@ -165,6 +165,10 @@ extern const char STR_PALETTE[]; // "Palette"
 extern const char STR_DEFAULT_ICON[]; // "XXICON.SHP"
 
 // FUNCTION: GAMEMD 0x7162F0
+// CAPPED at 98.3%: identical instruction multiset; the residue is the frame size (retail 0x210, here 0x20C) and the
+// callee-saved register that holds the cached zero (retail EBP, here EBX).
+// The twenty list constructors are retail's out-of-line TypeList<T>::TypeList() instantiations; this file does not
+// include type_list_default_ctor.h, so the constructor body stays invisible and is called.
 HRESULT __stdcall TechnoTypeClass::Load(IStream* stream)
 {
     // The entry stream first dispatches Clear through each existing list's
@@ -281,6 +285,8 @@ HRESULT __stdcall TechnoTypeClass::Load(IStream* stream)
                                    cameoPath, sizeof(cameoPath));
     }
     FUN_007C9FF0(imagePath, 0, 0, cameoPath, TypesShpExtension);
+    // Retail stores the cleared pointer (0x716CFE, 0x716D69 via the cached zero) before each SHP load.
+    Cameo = 0;
     Cameo = FUN_005B40B0(imagePath, 0);
     if (Cameo == 0) {
         Cameo = FUN_005B40B0(STR_DEFAULT_ICON, 0);
@@ -289,6 +295,7 @@ HRESULT __stdcall TechnoTypeClass::Load(IStream* stream)
     DAT_00887180.FUN_00528A10(ImageFile, STR_ALT_CAMEO, DAT_00889F64,
                                cameoPath, sizeof(cameoPath));
     FUN_007C9FF0(imagePath, 0, 0, cameoPath, TypesShpExtension);
+    AltCameo = 0;
     AltCameo = FUN_005B40B0(imagePath, 0);
 
     DAT_00887180.FUN_00528A10(ImageFile, STR_PALETTE, DAT_00889F64,

@@ -8,6 +8,7 @@
 //   declarations only), never vector_class_operations.h, so it is a separate object from
 //   match/Scenario.cpp; the original file name is not known and is not claimed.
 #include "scenario_class.h"
+#include "type_list_default_ctor.h"
 #include "conn_types.h"   // EmptyName_00887734 (GLOBAL: GAMEMD 0x887734)
 
 // STRING: GAMEMD 0x83D838 "D:\ra2mdpost\Scenario.CPP"

@@ -9,6 +9,7 @@
 //   0x7F0CFC. The 0x665650 constructor performs the same member construction between its
 //   scalar stores.
 #include "_layout/rules_class.h"
+#include "type_list_default_ctor.h"
 
 // FUNCTION: GAMEMD 0x664D20
 // PARTIAL: 95.1%. One TypeList<int> default ctor (+0x12AC) is called where retail expands it inline. VC6
