@@ -347,8 +347,6 @@ extern CountedStringArray DAT_00B76980;
 extern CountedStringArray DAT_00B779B0;
 extern CountedStringArray DAT_00B76AD0;
 extern CountedStringArray DAT_00B76970;
-extern char DAT_00B77F70;
-extern char DAT_00B77F78;
 extern char DAT_0084E7C0;
 extern char DAT_0084E7C4;
 
