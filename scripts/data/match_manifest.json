@@ -76264,9 +76264,9 @@
   "len": "0xd9",
   "name": "DriveLocomotionClass::WillJumpTracks",
   "status": "partial",
-  "pct": 13.7,
-  "best_pct": 13.7,
-  "best_at": "cf203011"
+  "pct": 34.2,
+  "best_pct": 34.2,
+  "best_at": "e3815e72"
  },
  {
   "tu": "match/drive_locomotion.cpp",
@@ -91945,10 +91945,8 @@
   "sym": "?FUN_004353F0@BitText@@QAE_NPAVBitFont@@PAVSurface@@PBGHHHHHHH@Z",
   "len": "0xd3",
   "name": "BitText::FUN_004353F0",
-  "status": "partial",
-  "pct": 13.2,
-  "best_pct": 13.2,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/building_light_class.cpp",
@@ -103375,13 +103373,13 @@
  {
   "tu": "match/Queue.cpp",
   "addr": "0x64A000",
-  "sym": "?FUN_0064A000@@YIXPAVConnManClass@@G@Z",
+  "sym": "?FUN_0064A000@@YIXPAVConnManClass@@I@Z",
   "len": "0xb2",
-  "name": "?FUN_0064A000@@YIXPAVConnManClass@@G@Z",
+  "name": "?FUN_0064A000@@YIXPAVConnManClass@@I@Z",
   "status": "partial",
-  "pct": 86.2,
-  "best_pct": 86.2,
-  "best_at": "cf203011"
+  "pct": 87.9,
+  "best_pct": 87.9,
+  "best_at": "e3815e72"
  },
  {
   "tu": "match/Queue.cpp",

@@ -172,16 +172,18 @@ bool BitText::FUN_004353F0(BitFont* font, Surface* surface, const unsigned short
                                 int x, int y, int maxWidth, int maxHeight, int alignment,
                                 int fadeStart, int fadeLength)
 {
-    if (font) {
-        font->FUN_00434110(x);
-        if (!font->unknown_40)
-            return FUN_00434CD0(font, surface, text, x, y, maxWidth, maxHeight, alignment, fadeStart, fadeLength);
+    if (!font)
+        return false;
+    font->FUN_00434110(x);
+    bool result;
+    if (font->unknown_40) {
         font->unknown_2C = 2;
         FUN_00434CD0(font, surface, text, x, y, maxWidth, maxHeight, alignment, fadeStart, fadeLength);
-        bool result = FUN_00434CD0(font, surface, text, x + 1, y, maxWidth, maxHeight,
-                                   alignment, fadeStart, fadeLength);
+        result = FUN_00434CD0(font, surface, text, x + 1, y, maxWidth, maxHeight,
+                              alignment, fadeStart, fadeLength);
         font->unknown_2C = 1;
-        return result;
+    } else {
+        result = FUN_00434CD0(font, surface, text, x, y, maxWidth, maxHeight, alignment, fadeStart, fadeLength);
     }
-    return false;
+    return result;
 }

@@ -226,7 +226,7 @@ extern QueueWord_00AFA400 DAT_00AFA400;
 // Declaration: GAMEMD 0x649CA0 (decl; reloc)
 int FUN_00649CA0(ConnManClass*, char*, int, int, unsigned short);
 // Declaration: GAMEMD 0x64A000 (decl; reloc)
-void FUN_0064A000(ConnManClass*, unsigned short);
+void FUN_0064A000(ConnManClass*, unsigned);
 // Declaration: GAMEMD 0x64A0C0 (decl; reloc)
 int FUN_0064A0C0(ConnManClass*, char*, int, unsigned, Obj_00646D00*, GameTimerClass*);
 // Declaration: GAMEMD 0x64A630 (decl; reloc)
@@ -1347,7 +1347,11 @@ int FUN_00649CA0(ConnManClass* manager, char* data, int capacity,
 }
 
 // FUNCTION: GAMEMD 0x64A000
-void FUN_0064A000(ConnManClass* manager, unsigned short sent)
+// PARTIAL 87.9%: the sent count is a full-width argument (retail keeps it with `MOV EBP,EDX`), which
+// took the score from 86.2%. Residual: retail forms both frame sums with LEA where cl emits MOV/ADD
+// (2 LEA vs 2 ADD); a (B550 + B554 + now - 1) order, a CurrentFrame/B550 local and an unsigned cast
+// on the divisor did not change that.
+void FUN_0064A000(ConnManClass* manager, unsigned sent)
 {
     EventClass event;
     memset(&event, 0, sizeof(event));

@@ -18,6 +18,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
+#include "_layout/facing_class.h"
 #include "_layout/drive_guid_data.h"
 #include "drive_locomotion.h"
 
@@ -488,23 +489,34 @@ bool __stdcall DriveLocomotionClass::IsMovingHere(LocoCoord to)
 // direction): `SHR 0xC; INC; SHR 1; AND 7` at 0x4B4B61.
 static inline int DriveTrackFacing8(unsigned char heading)
 {
-    unsigned short raw = (unsigned short)(heading << 8);
-    return ((raw >> 12) + 1) >> 1 & 7;
+    DirStruct angle;
+    angle.Raw = (unsigned short)(heading << 8);
+    return ((angle.Whole >> 12) + 1) >> 1 & 7;
 }
 
 // FUNCTION: GAMEMD 0x4B4B00
+// PARTIAL 34.2% (was 13.7%): the facing nibble goes through the canonical DirStruct (Raw word store, Whole
+// dword read, as retail does) and the control index is chosen by if/else so it widens in the arms. Residual:
+// retail reads the short-track flag into DL before forming the entry pointer in ECX and keeps a dead
+// address of the target entry (one LEA); cl assigns the flag to CL and the entry to EDX. A flag local, a
+// reference entry and a `target` reference were tried.
 bool __stdcall DriveLocomotionClass::WillJumpTracks()
 {
     int dir = Foot()->unknown_5E0;
     if (dir >= -1 && dir <= 8) {
-        DriveTrackEntry& entry = DriveTrackEntries_007E7B28[TrackNumber];
-        int control = IsOnShortTrack ? entry.unknown_1 : entry.unknown_0;
+        DriveTrackEntry* entry = &DriveTrackEntries_007E7B28[TrackNumber];
+        int control;
+        if (IsOnShortTrack)
+            control = entry->unknown_1;
+        else
+            control = entry->unknown_0;
         bool turning = false;
-        if (dir != 8 && dir != -1 && DriveTrackFacing8(entry.unknown_4) != dir)
+        if (dir != 8 && dir != -1 && DriveTrackFacing8(entry->unknown_4) != dir)
             turning = true;
         if (dir != -1 && turning
             && DriveTrackControls_007E7A28[control].unknown_4 == TrackIndex && TrackIndex != 0) {
-            int next = DriveTrackEntries_007E7B28[dir + DriveTrackFacing8(entry.unknown_4) * 8].unknown_0;
+            DriveTrackEntry* target = &DriveTrackEntries_007E7B28[dir + DriveTrackFacing8(entry->unknown_4) * 8];
+            char next = target->unknown_0;
             if (next && DriveTrackControls_007E7A28[next].unknown_8)
                 return true;
         }
