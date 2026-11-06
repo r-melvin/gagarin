@@ -2295,16 +2295,18 @@ int FUN_0064C380(int, int, ConnManClass* manager, const ScenarioTimer* timer,
 }
 
 // FUNCTION: GAMEMD 0x64CD30
+// PARTIAL 23.3%: retail does not strength-reduce the ring index (keeps the head in ESI, id in EBX) and loops
+// with `JG exit; JMP top`; cl adds an induction register and a second epilogue.
 void FUN_0064CD30(int first, int count, int id, unsigned char type, const TargetClass* destination)
 {
     int last = first + count;
-    while (first <= last) {
+    for (; first <= last; first++) {
         EventClass& event = DAT_00A83ED0.List[(DAT_00A83ED0.unknown_04 + first) & 255];
-        if (event.Data.MegaMission.Whom.RTTI == type && event.Data.MegaMission.Whom.ID == id) break;
-        ++first;
+        if (type == event.Data.MegaMission.Whom.RTTI && id == event.Data.MegaMission.Whom.ID) {
+            DAT_00A83ED0.List[(DAT_00A83ED0.unknown_04 + first) & 255].Data.MegaMission.Destination = *destination;
+            break;
+        }
     }
-    if (first > last) return;
-    DAT_00A83ED0.List[(DAT_00A83ED0.unknown_04 + first) & 255].Data.MegaMission.Destination = *destination;
 }
 
 // Declaration: GAMEMD 0x5F6790 (decl; reloc) -- result pointer ECX, vector EDX.
@@ -3948,9 +3950,7 @@ void FUN_00652110(const Obj_00646D00* records, int index)
     if (Flag_00A8DBA0) {
         // FILD signedDWORD B558 and unsigned-qword representation B554 at
         // 652144..168. SHR65217B uses all32 bits of the record timestamp.
-        float scale = DAT_007F02A4;
-        double rate = double(DAT_00A8B558) / unsigned(DAT_00A8B554);
-        int correction = int(scale / rate);
+        int correction = int(DAT_007F02A4 / (float)(double(DAT_00A8B558) / unsigned(DAT_00A8B554)));
         elapsed = (unsigned(records[index].unknown_10) >> 1) - correction / 2 +
                   (DAT_00A8E2D4 >> 1);
     } else {

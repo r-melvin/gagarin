@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include "_layout/ship_locomotion_class.h"
 #include "drive_support_views.h"
+#include "mathtbl_consts.h"
 
 GG_STATIC_ASSERT(sizeof(((ShipLocomotionClass*)0)->SpeedAccum) == 4);
 GG_STATIC_ASSERT(sizeof(((ShipLocomotionClass*)0)->Piggybackee) == 4);
@@ -74,10 +75,17 @@ static inline int ShipTimeLeft(const CDTimerClass& timer)
     return timeLeft;
 }
 
-// Fraction of the slope timer that has run (1.0 when the timer has no rate).
+// Fraction of the slope timer that has run (the 1.0 at 0x7E1718 when the timer has no rate; retail reads it
+// from memory, so it is not folded against the same constant in the caller's compare).
 static inline double ShipSlopeFraction(const RateTimer& timer)
 {
-    return timer.Rate != 0 ? (double)(timer.Rate - ShipTimeLeft(timer)) / timer.Rate : 1.0;
+    double fraction;
+    if (timer.Rate == 0) {
+        fraction = DAT_007E1718;
+    } else {
+        fraction = (double)(timer.Rate - ShipTimeLeft(timer)) / timer.Rate;
+    }
+    return fraction;
 }
 
 // FUNCTION: GAMEMD 0x69EC50
@@ -300,10 +308,10 @@ void __stdcall ShipLocomotionClass::StopMoving()
     DestCoord = DAT_00B077F8;
 }
 
-// FUNCTION: GAMEMD 0x69FB20 (partial: retail branches on Rate != 0 into the compute block and loads key after the FPU test)
+// FUNCTION: GAMEMD 0x69FB20
 Matrix3D __stdcall ShipLocomotionClass::ShadowMatrix(unsigned int* key)
 {
-    bool settled = ShipSlopeFraction(SlopeTimer) == 1.0
+    bool settled = ShipSlopeFraction(SlopeTimer) == DAT_007E1718
         && fabs(ShipFoot(this)->unknown_328) < 0.005
         && fabs(ShipFoot(this)->unknown_32C) < 0.005;
     if (!settled && key)

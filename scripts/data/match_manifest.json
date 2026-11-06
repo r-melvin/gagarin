@@ -102039,10 +102039,8 @@
   "sym": "?ShadowMatrix@ShipLocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0xB2",
   "name": "ShipLocomotionClass::ShadowMatrix",
-  "status": "partial",
-  "pct": 26.7,
-  "best_pct": 26.7,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/ship_locomotion.cpp",
@@ -103529,9 +103527,9 @@
   "len": "0x6a",
   "name": "?FUN_0064CD30@@YIXHHHEPBUTargetClass@@@Z",
   "status": "partial",
-  "pct": 13.0,
-  "best_pct": 13.0,
-  "best_at": "cf203011"
+  "pct": 23.3,
+  "best_pct": 23.3,
+  "best_at": "53529d7b"
  },
  {
   "tu": "match/Queue.cpp",
@@ -103625,10 +103623,8 @@
   "sym": "?FUN_00652110@@YIXPBUObj_00646D00@@H@Z",
   "len": "0xae",
   "name": "?FUN_00652110@@YIXPBUObj_00646D00@@H@Z",
-  "status": "partial",
-  "pct": 33.9,
-  "best_pct": 33.9,
-  "best_at": "81aa71d7"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Queue.cpp",
@@ -106150,9 +106146,9 @@
   "len": "0x139",
   "name": "TechnoTypeClass::vf_42",
   "status": "partial",
-  "pct": 12.5,
-  "best_pct": 12.5,
-  "best_at": "cf203011"
+  "pct": 92.3,
+  "best_pct": 92.3,
+  "best_at": "53529d7b"
  },
  {
   "tu": "match/Radar.cpp",

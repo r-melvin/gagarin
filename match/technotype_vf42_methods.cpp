@@ -20,6 +20,8 @@ GG_STATIC_ASSERT(sizeof(((CellStruct*)0)->Y) == 2);
 extern CellStruct DAT_00B0EB58;
 
 // FUNCTION: GAMEMD 0x716150
+// PARTIAL 92.3%: multiset identical; retail compares both terminator words straight against memory where cl
+// reuses the first compare's 0x7FFF in AX.
 bool TechnoTypeClass::vf_42(CellStruct* cell, HouseClass* owner)
 {
     if (cell->X == DAT_00B0EB58.X && cell->Y == DAT_00B0EB58.Y) {
@@ -33,30 +35,23 @@ bool TechnoTypeClass::vf_42(CellStruct* cell, HouseClass* owner)
 
     while (offsets != 0 &&
            !(offsets->X == 0x7FFF && offsets->Y == 0x7FFF)) {
-        CellStruct candidate;
-        candidate.X = cell->X + offsets->X;
-        candidate.Y = cell->Y + offsets->Y;
-        ++offsets;
+        CellStruct candidate = *cell + *offsets++;
 
-        const int speedType = SpeedType;
-        DisplayScCellObject* cellView = Map_0087F7E8.FUN_005657A0(&candidate);
-        // Native passes this result unchanged in ECX to 0x47C620/0x4834A0;
-        // CellClass's AbstractClass base is at offset 0.
-        CellClass* mapCell = reinterpret_cast<CellClass*>(cellView);
-        bool accepted;
         if (isBuilding) {
             // Native slot 11 == 7 selects its BuildingTypeClass path.
-            accepted = mapCell->FUN_0047C620(
-                speedType, static_cast<BuildingTypeClass*>(this), owner);
+            if (!reinterpret_cast<CellClass*>(Map_0087F7E8.FUN_005657A0(&candidate))->FUN_0047C620(
+                    SpeedType, static_cast<BuildingTypeClass*>(this), owner)) {
+                rejectedAny = true;
+            } else {
+                acceptedAny = true;
+            }
         } else {
-            accepted = mapCell->IsClearToMove(
-                speedType, false, false, -1, 0, -1, true);
-        }
-
-        if (accepted) {
-            acceptedAny = true;
-        } else {
-            rejectedAny = true;
+            if (!reinterpret_cast<CellClass*>(Map_0087F7E8.FUN_005657A0(&candidate))->IsClearToMove(
+                    SpeedType, false, false, -1, 0, -1, true)) {
+                rejectedAny = true;
+            } else {
+                acceptedAny = true;
+            }
         }
     }
 
