@@ -145,6 +145,8 @@ public:
     bool FUN_004863D0();
     // FUNCTION: GAMEMD 0x4865B0 (decl; reloc)
     bool FUN_004865B0();
+    // FUNCTION: GAMEMD 0x4863A0 (decl; reloc)
+    bool FUN_004863A0();
     // FUNCTION: GAMEMD 0x4865D0 (decl; reloc)
     char FUN_004865D0();
     // FUNCTION: GAMEMD 0x58C800 (decl; reloc) -- record for this cell (MapGen).

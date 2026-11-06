@@ -156239,5 +156239,16 @@
   "pct": 81.8,
   "best_pct": 81.8,
   "best_at": "82f86b7f"
+ },
+ {
+  "tu": "match/MapGen.cpp",
+  "addr": "0x5A7D00",
+  "sym": "?FUN_005A7D00@@YI_NHPAUCellStruct@@_N1@Z",
+  "len": "0x189",
+  "name": "?FUN_005A7D00@@YI_NHPAUCellStruct@@_N1@Z",
+  "status": "partial",
+  "pct": 97.5,
+  "best_pct": 97.5,
+  "best_at": "82f86b7f"
  }
 ]

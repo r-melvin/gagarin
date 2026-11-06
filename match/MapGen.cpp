@@ -2212,6 +2212,40 @@ Rect_4i* __fastcall FUN_005A7640(Rect_4i* out, DynamicVectorClass<Cell>* list)
     return out;
 }
 
+// FUNCTION: GAMEMD 0x5A7D00
+// PARTIAL: 97.5% -- same instructions as retail (multiset identical); retail forms the cell's y coordinate
+// (mov cx,bx; add cx,[edi+2]) before the x load, the compiled body loads the y word first.
+// Walk the sub-tiles of tile `a1` placed at `a2`: a sub-tile with image data needs a cell passing one of the
+// two cell tests whose slope byte equals the sub-tile's +0x2A byte (and, with `a3`, a clear +0x46 record byte);
+// `a4` rejects off-map cells.
+bool FUN_005A7D00(int a1, CellStruct* a2, bool a3, bool a4)
+{
+    IsometricTileTypeClass* t = DAT_00A8ED2C[a1];
+    TileImageHeader* d = t->GetTileData();
+    if (d != 0) {
+        for (int y = 0; y < t->unknown_2E8; y++) {
+            for (int x = 0; x < t->unknown_2E4; x++) {
+                CellStruct c = Cell(a2->X + x, a2->Y + y);
+                if (Inline_005942F0(c)) {
+                    CellClass* cell = DAT_0087F7E8.FUN_005657A0(&c);
+                    SubTileImage* sub = d->SubTiles[t->unknown_2E4 * y + x];
+                    if (sub != 0) {
+                        if (!cell->FUN_00486380() && !cell->FUN_004863A0())
+                            return false;
+                        if (cell->SlopeIndex != sub->MorphType)
+                            return false;
+                        if (a3 && DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_46 != 0)
+                            return false;
+                    }
+                } else if (a4) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x5A7E90
 // For each sub-tile cell of tile `a1` placed at `a2` that lies on the map,
 // fetch the cell; where the tile has image data, reset its +0x38 word to
