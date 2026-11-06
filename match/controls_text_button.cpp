@@ -92,7 +92,7 @@ void TextButtonClass::DrawText(const wchar_t* text)
             if (scheme) {
                 Point2D position(X + (Width >> 1) - 1, Y + 1);
                 Point2D result;
-                FUN_004A6010(&result, text, DAT_00887314, &DAT_00887314->GetRect(),
+                FUN_004A6010(&result, text, DAT_00887314, DAT_00887314->GetRect(),
                                     &position, scheme, 0, unknown_3C | flags | 0x100, 1);
             }
         }

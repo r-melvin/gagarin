@@ -187,7 +187,7 @@ bool ObjectClass::vf_83()
 RectangleStruct ObjectClass::vf_74()
 {
     Point2D point;
-    DAT_00887324->CoordsToClient(&vf_43(), &point);
+    DAT_00887324->CoordsToClient(vf_43(), &point);
     ShapeView_5F4730* shape = (ShapeView_5F4730*)vf_27();
     if (shape == NULL) {
         return DAT_00AC1350;
@@ -261,7 +261,7 @@ static inline RectangleStruct Union(RectangleStruct a, const RectangleStruct& b)
 RectangleStruct ObjectClass::vf_75()
 {
     Point2D point;
-    DAT_00887324->CoordsToClient(&vf_43(), &point);
+    DAT_00887324->CoordsToClient(vf_43(), &point);
     ShapeView_5F4730* shape = (ShapeView_5F4730*)vf_34()->vf_39();
     if (shape == NULL) {
         return DAT_00AC1350;
@@ -334,7 +334,7 @@ bool ObjectClass::vf_65(RectangleStruct* a1, bool a2, int a3)
     }
     NeedsRedraw = false;
     Point2D point;
-    if (!DAT_00887324->CoordsToClient(&vf_43(), &point) && vf_11() != 0x18) {
+    if (!DAT_00887324->CoordsToClient(vf_43(), &point) && vf_11() != 0x18) {
         return false;
     }
     *a1 = Intersect(DAT_00886FA0, *a1);

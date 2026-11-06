@@ -550,7 +550,7 @@ bool DSurface::FUN_004BB000()
 // FUNCTION: GAMEMD 0x4BB080
 bool DSurface::CopyFromPart(RectangleStruct* dest, Surface* src, RectangleStruct* srcRect, bool a, bool b)
 {
-    return CopyFrom(&GetRect(), dest, src, &src->GetRect(), srcRect, a, b);
+    return CopyFrom(&GetRect(), dest, src, &src->GetRect(), srcRect, a, b); // ADDRCALL: GAMEMD 0x4BB0AD // ADDRCALL: GAMEMD 0x4BB0BC
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -589,8 +589,8 @@ bool DSurface::CopyFrom(RectangleStruct* destClip, RectangleStruct* destRect, Su
 
     RectangleStruct dest = *destRect;
     RectangleStruct from = *srcRect;
-    RectangleStruct srcVisible = Intersect(srcClip, &src->GetRect());
-    RectangleStruct destVisible = Intersect(destClip, &GetRect());
+    RectangleStruct srcVisible = Intersect(srcClip, &src->GetRect()); // ADDRCALL: GAMEMD 0x4BB2EF
+    RectangleStruct destVisible = Intersect(destClip, &GetRect()); // ADDRCALL: GAMEMD 0x4BB449
     if (!ClipBlitRects(&dest, &destVisible, &from, &srcVisible))
         return false;
 
@@ -611,7 +611,7 @@ bool DSurface::CopyFrom(RectangleStruct* destClip, RectangleStruct* destRect, Su
 // FUNCTION: GAMEMD 0x4BB5F0
 bool DSurface::FillRect(RectangleStruct* rect, unsigned int color)
 {
-    return DSurface::FillRectEx(&GetRect(), rect, color);
+    return DSurface::FillRectEx(&GetRect(), rect, color); // ADDRCALL: GAMEMD 0x4BB60C
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -628,7 +628,7 @@ bool DSurface::FillRectEx(RectangleStruct* clip, RectangleStruct* rect, unsigned
         if (!Recover())
             return false;
         RectangleStruct scratch;
-        RectangleStruct* surfaceRect = &GetRect();
+        RectangleStruct* surfaceRect = &GetRect(); // ADDRCALL: GAMEMD 0x4BB709
         RectangleStruct visible = *RectIntersect(&scratch, clip, surfaceRect, 0, 0);
         RectangleStruct target = *rect;
         target.X += clip->X;
@@ -662,7 +662,7 @@ bool DSurface::unknown_1C(RectangleStruct* rect, RectangleStruct* colorBytes, in
         return false;
 
     RectangleStruct scratch;
-    RectangleStruct* surfaceRect = &GetRect();
+    RectangleStruct* surfaceRect = &GetRect(); // ADDRCALL: GAMEMD 0x4BB882
     RectangleStruct area = *RectIntersect(&scratch, surfaceRect, rect, 0, 0);
     if (area.Width <= 0 || area.Height <= 0)
         return false;
@@ -770,7 +770,7 @@ int FUN_004BBC90()
 bool DSurface::unknown_38(RectangleStruct* clip, Point2D* from, Point2D* to, int brightness, int zFrom, int zTo, bool writeZ)
 {
     RectangleStruct scratch;
-    RectangleStruct* surfaceRect = &GetRect();
+    RectangleStruct* surfaceRect = &GetRect(); // ADDRCALL: GAMEMD 0x4BBCBD
     RectangleStruct bounds = *RectIntersect(&scratch, clip, surfaceRect, 0, 0);
     if (bounds.Width == 0 && bounds.Height == 0)
         return false;
@@ -980,7 +980,7 @@ bool DSurface::DrawLineGradient(RectangleStruct* clip, Point2D* from, Point2D* t
                                 const unsigned char* colorB, float* step, float* blend)
 {
     RectangleStruct scratch;
-    RectangleStruct* surfaceRect = &GetRect();
+    RectangleStruct* surfaceRect = &GetRect(); // ADDRCALL: GAMEMD 0x4BF771
     RectangleStruct area = *RectIntersect(&scratch, clip, surfaceRect, 0, 0);
 
     Point2D p1;
@@ -1065,7 +1065,7 @@ bool DSurface::DrawLineGradient(RectangleStruct* clip, Point2D* from, Point2D* t
 bool DSurface::unknown_34(RectangleStruct* clip, Point2D* from, Point2D* to, unsigned int color, int zEnd, int zStart, bool writeZ)
 {
     RectangleStruct scratch;
-    RectangleStruct* surfaceRect = &GetRect();
+    RectangleStruct* surfaceRect = &GetRect(); // ADDRCALL: GAMEMD 0x4BFD4D
     RectangleStruct area = *RectIntersect(&scratch, clip, surfaceRect, 0, 0);
     if (area.Width == 0 && area.Height == 0)
         return false;

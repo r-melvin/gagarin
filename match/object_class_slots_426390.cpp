@@ -32,9 +32,10 @@ const wchar_t* ObjectClass::vf_36()
 
 // FUNCTION: GAMEMD 0x4263D0
 // vf_18 returns through a hidden buffer and hands back its address; retail copies from that address.
+// By-value, named-local, assignment, brace-init and per-field forms score 42.9 (w37 attempts).
 CoordStruct ObjectClass::vf_44(int a1, CoordStruct a2)
 {
-    CoordStruct* coord = &vf_18();
+    CoordStruct* coord = &vf_18(); // ADDRCALL: GAMEMD 0x4263E3
     CoordStruct result = *coord;
     result.Z += 50;
     return result;

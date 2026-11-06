@@ -81,7 +81,7 @@ void ColorListClass::SetStyle(int style, int selectColor)
 void ColorListClass::DrawItem(int index, int x, int y, int width, int selected)
 {
     if (!selected) {
-        FUN_004A6500(List[index], DAT_00887314, &DAT_00887314->GetRect(), &Point2D(x, y),
+        FUN_004A6500(List[index], DAT_00887314, DAT_00887314->GetRect(), Point2D(x, y),
                      DAT_00B054D0[Colors[index]], 0, TextFlags, width, Tabs);
         return;
     }
@@ -91,16 +91,16 @@ void ColorListClass::DrawItem(int index, int x, int y, int width, int selected)
     }
     switch (Style) {
     case 0:
-        FUN_004A6500(List[index], DAT_00887314, &DAT_00887314->GetRect(), &Point2D(x, y),
+        FUN_004A6500(List[index], DAT_00887314, DAT_00887314->GetRect(), Point2D(x, y),
                      DAT_00B054D0[Colors[index]], 0, TextFlags, width, Tabs);
         return;
     case 1:
         if (TextFlags & 6) {
-            FUN_004A6500(List[index], DAT_00887314, &DAT_00887314->GetRect(), &Point2D(x, y),
+            FUN_004A6500(List[index], DAT_00887314, DAT_00887314->GetRect(), Point2D(x, y),
                          DAT_00B054D0[scheme], 0, TextFlags | 0x2000, width, Tabs);
             return;
         }
-        FUN_004A6500(List[index], DAT_00887314, &DAT_00887314->GetRect(), &Point2D(x, y),
+        FUN_004A6500(List[index], DAT_00887314, DAT_00887314->GetRect(), Point2D(x, y),
                      DAT_00B054D0[scheme], 0, TextFlags, width, Tabs);
         return;
     case 2:
@@ -109,7 +109,7 @@ void ColorListClass::DrawItem(int index, int x, int y, int width, int selected)
         colour_outline = PixelOf(DAT_00B054D0[scheme]->BarColorIndex);
         outline.X = x; outline.Y = y; outline.Width = x + width - 2; outline.Height = y + LineHeight - 2;
         DAT_00887314->DrawRect(&outline, colour_outline);
-        FUN_004A6500(List[index], DAT_00887314, &DAT_00887314->GetRect(), &Point2D(x, y),
+        FUN_004A6500(List[index], DAT_00887314, DAT_00887314->GetRect(), Point2D(x, y),
                      DAT_00B054D0[Colors[index]], 0, TextFlags, width, Tabs);
         return;
     case 3:
@@ -119,8 +119,8 @@ void ColorListClass::DrawItem(int index, int x, int y, int width, int selected)
             colour_bar = PixelOf(DAT_00B054D0[scheme]->BarColorIndex);
             bar.X = x; bar.Y = y; bar.Width = width; bar.Height = LineHeight;
             DAT_00887314->FillRect(&bar, colour_bar);
-            FUN_004A6500(List[index], DAT_00887314, &DAT_00887314->GetRect(),
-                         &Point2D(x, y), DAT_00B054D0[Colors[index]], 0, TextFlags | 0x2000, width, Tabs);
+            FUN_004A6500(List[index], DAT_00887314, DAT_00887314->GetRect(),
+                         Point2D(x, y), DAT_00B054D0[Colors[index]], 0, TextFlags | 0x2000, width, Tabs);
             return;
         }
         RectangleStruct inner;
@@ -128,7 +128,7 @@ void ColorListClass::DrawItem(int index, int x, int y, int width, int selected)
         colour_inner = PixelOf(DAT_00B054D0[scheme]->BarColorIndex);
         inner.X = x; inner.Y = y; inner.Width = width - 1; inner.Height = LineHeight - 1;
         DAT_00887314->FillRect(&inner, colour_inner);
-        FUN_004A6500(List[index], DAT_00887314, &DAT_00887314->GetRect(), &Point2D(x, y),
+        FUN_004A6500(List[index], DAT_00887314, DAT_00887314->GetRect(), Point2D(x, y),
                      DAT_00B054D0[Colors[index]], 0, TextFlags, width, Tabs);
         return;
     case 4:

@@ -84,7 +84,7 @@ bool DSurface::unknown_40(RectangleStruct* clip, Point2D* from, Point2D* to, uns
         return false;
 
     RectangleStruct scratch;
-    RectangleStruct* surfaceRectTemp = &GetRect();
+    RectangleStruct* surfaceRectTemp = &GetRect(); // ADDRCALL: GAMEMD 0x4BDFAA
     RectangleStruct bounds = *RectIntersect(&scratch, clip, surfaceRectTemp, 0, 0);
     if (bounds.Width == 0 && bounds.Height == 0)
         return false;

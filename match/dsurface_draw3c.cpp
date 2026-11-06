@@ -67,8 +67,7 @@ bool DSurface::unknown_3C(RectangleStruct* clip, Point2D* from, Point2D* to, uns
     }
 
     RectangleStruct scratch;
-    RectangleStruct* surfaceRect = &GetRect();
-    RectangleStruct inner = *surfaceRect;
+    RectangleStruct inner = GetRect();
     inner.X += 1;
     inner.Y += 1;
     inner.Width -= 2;

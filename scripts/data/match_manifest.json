@@ -24069,13 +24069,11 @@
  {
   "tu": "match/map_class_redraw_tiles_methods.cpp",
   "addr": "0x657CE0",
-  "sym": "?Redraw@Map_00657CE0@@QAEXXZ",
+  "sym": "?FUN_00657CE0@MouseClass@@QAEXXZ",
   "len": "0xb2",
-  "name": "MapClass::Redraw",
-  "status": "partial",
-  "pct": 64.8,
-  "best_pct": 64.8,
-  "best_at": "cf203011"
+  "name": "MouseClass::FUN_00657CE0",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/map_class_reset_zones_methods.cpp",
@@ -45680,9 +45678,9 @@
   "len": "0x17B0",
   "name": "DSurface::unknown_3C",
   "status": "partial",
-  "pct": 0.6,
-  "best_pct": 0.6,
-  "best_at": "cf203011"
+  "pct": 0.8,
+  "best_pct": 0.8,
+  "best_at": "51736322"
  },
  {
   "tu": "match/dsurface_draw40.cpp",

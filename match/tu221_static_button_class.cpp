@@ -87,7 +87,7 @@ void StaticButtonClass::DrawText(const wchar_t* text)
             x += Width - 1;
         ColorScheme* scheme = DAT_00B054D0[GetColorScheme()];
         Point2D position(x, Y);
-        FUN_004A61C0(text, DAT_00887314, &DAT_00887314->GetRect(), &position,
+        FUN_004A61C0(text, DAT_00887314, DAT_00887314->GetRect(), &position,
                           scheme, 0, unknown_34);
     }
 }

@@ -136,13 +136,19 @@ void FUN_004A5A50(RectangleStruct* area, int style, int arg);
 // (callee pops 0x20).
 Point2D FUN_004A6500(const wchar_t* text, Surface* surface, RectangleStruct* clip, Point2D* pos,
                      ColorScheme* scheme, int back, unsigned flags, int width, int tabStops);
+Point2D FUN_004A6500(const wchar_t* text, Surface* surface, const RectangleStruct& clip, const Point2D& pos,
+                     ColorScheme* scheme, int back, unsigned flags, int width, int tabStops);
 // 0x4A61C0: prints text on a surface inside a clip rectangle; the returned point comes back through the
 // hidden first stack word. Caller-cleaned (cdecl).
 Point2D __cdecl FUN_004A61C0(const wchar_t* text, Surface* surface, RectangleStruct* clip, Point2D* position,
                              ColorScheme* scheme, int background, int flags);
+Point2D __cdecl FUN_004A61C0(const wchar_t* text, Surface* surface, const RectangleStruct& clip, Point2D* position,
+                             ColorScheme* scheme, int background, int flags);
 // 0x4A6010: print variant with one extra trailing argument. The result point is written through the pointer
 // in ECX and the text is in EDX; seven words follow on the stack (RET 0x1C).
 void FUN_004A6010(Point2D* result, const wchar_t* text, Surface* surface, RectangleStruct* clip,
+                  Point2D* position, ColorScheme* scheme, int background, int flags, int extra);
+void FUN_004A6010(Point2D* result, const wchar_t* text, Surface* surface, const RectangleStruct& clip,
                   Point2D* position, ColorScheme* scheme, int background, int flags, int extra);
 // 0x4AED70: shape blitter. Surface in ECX, the palette lookup in EDX, fourteen stack words; the last
 // two are one offset point passed by value (callers zero two registers for it).

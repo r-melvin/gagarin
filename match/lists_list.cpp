@@ -323,7 +323,7 @@ void ListClass::DrawItem(int index, int x, int y, int width, int selected)
     } else if (!(flags & 0x4000)) {
         flags |= 0x1000;
     }
-    FUN_004A6500(List[index], DAT_00887314, &DAT_00887314->GetRect(), &Point2D(x, y),
+    FUN_004A6500(List[index], DAT_00887314, DAT_00887314->GetRect(), Point2D(x, y),
                  DAT_00B054D0[scheme], 0, flags, width, Tabs);
 }
 

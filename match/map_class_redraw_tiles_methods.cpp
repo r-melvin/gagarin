@@ -1,57 +1,37 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x657CE0.
+//   The receiver is the canonical MouseClass (ui_display_chain.h): +0x121C is the DSurface and +0x1220 the
+//   BSurface of the RadarClass. The two [+0x78] calls are Surface::GetRect (RET 4); the trailing arguments
+//   retail pushed first stay on the stack as the arguments of the following [+0x8] call, which is
+//   CopyFromPart(dest, src, srcRect, false, true) (RET 0x14); [+0x7C]/[+0x80] are GetWidth/GetHeight.
 
-#include "map_class_redraw_tiles_methods.h"
+#include "ui_display_chain.h"
+#include "wwlib/surface/bsurface_class.h"
+#include "dsurface_class.h"
+
+// GLOBAL: GAMEMD 0xB73550 -- non-zero while the map draws tile by tile.
+extern int DAT_00B73550;
 
 // FUNCTION: GAMEMD 0x657CE0
 //
 // Redraw the map. In tile mode every tile of the tile surface is drawn in
-// turn; otherwise the screen's rectangle is mapped onto the tile surface
-// and handed back in one piece.
-//
-// PARTIAL (64.8%, up from 14.1%; multiset now identical, 71 vs 71).
-// The lever: capture the tile surface's slot-8 entry into a
-// pointer-to-member-function local BEFORE the screen call that sits between
-// the two uses, and take the receiver for that call from `this->Tiles` again
-// rather than from the cached pointer. Retail reads the tile vtable once,
-// early, and re-reads `this->Tiles` for the receiver; every spelling that
-// caches only the *object* and lets cl read the vtable after the intervening
-// call comes out one MOV short of retail (11.3-12.7%, 70 vs 71 instructions)
-// -- measured as: vtable cached in a local (all four receiver spellings), a
-// volatile lvalue read of the vptr, `tiles[0].Vptr`, a reference alias, a
-// `__forceinline VptrOf()` helper, two separate `this->Tiles` locals, and the
-// whole chain written as one nested expression.
-//
-// The residual is scheduling and colouring only: retail keeps `this` in EDI
-// and the tile surface in ESI where cl 8804 takes ESI and EDI respectively,
-// sinks the `PUSH 1`/`PUSH 0` pair above the two vtable loads rather than
-// interleaving them, and reverses the `LEA`/`PUSH` order of the second call.
-// The caveat worth recording: retail's cached value is the *vtable* and its
-// call is `CALL [EBX+8]`, while this form caches the *slot* and calls
-// `CALL EBX` -- the same mnemonic and the same count, so the multiset agrees
-// and the score is real, but the spelling is one indirection away from
-// retail's own. Declaration order of the two rectangles, a `Screen` local and
-// the chained form are all byte-identical to this at 64.8%.
-void Map_00657CE0::Redraw()
+// turn; otherwise the screen is copied onto the tile surface in one piece.
+void MouseClass::FUN_00657CE0()
 {
     if (DAT_00B73550 == 0) {
-        Surface_00657CE0* tiles = this->Tiles;
-        Fn08_00657CE0 f = tiles->Vptr->At_08;
-        Rect_00657CE0 whole;
-        Rect_00657CE0 mapped;
-        Rect_00657CE0* r = (Screen->*Screen->Vptr->At_78a)(&whole, 0, 1);
-        Rect_00657CE0* m = (tiles->*tiles->Vptr->At_78b)(&mapped, Screen, r);
-        (this->Tiles->*f)(m);
+        // The by-value local (4.7%) and by-reference helper (9.9%) forms of w39 do not match.
+        // ADDRCALL: GAMEMD 0x657D18 (the source rectangle's returned address is pushed on) and 0x657D2A (the destination's)
+        unknown_121C->CopyFromPart(&unknown_121C->GetRect(), unknown_1220, &unknown_1220->GetRect(), false, true);
         FUN_00656150();
         return;
     }
 
-    int across = (Tiles->*Tiles->Vptr->TilesAcross)();
-    int down = (Tiles->*Tiles->Vptr->TilesDown)();
+    int across = unknown_121C->GetWidth();
+    int down = unknown_121C->GetHeight();
     for (int y = 0; y < down; y++) {
         for (int x = 0; x < across; x++) {
-            Tile_00657CE0 tile;
+            Point2D tile;
             tile.X = x;
             tile.Y = y;
             FUN_00655C50(tile);

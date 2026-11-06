@@ -1386,6 +1386,10 @@ public:
 
     // FUNCTION: GAMEMD 0x657CE0 (decl; reloc) -- ECX only; the map redraw request Reshroud makes on the map object.
     void FUN_00657CE0();
+    // FUNCTION: GAMEMD 0x655C50 (decl; reloc) -- draw one tile; the tile position travels by address.
+    void FUN_00655C50(const Point2D& tile);
+    // FUNCTION: GAMEMD 0x656150 (decl; reloc) -- finish the whole-surface path of the redraw.
+    void FUN_00656150();
 
     // Shared inline step of vf_19 / vf_21 (mouse_mouse_class_methods.cpp).
     void ApplyCursorRow(int index, bool flag);

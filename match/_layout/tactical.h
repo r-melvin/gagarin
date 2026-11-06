@@ -123,6 +123,7 @@ public:
     void FUN_006DA5C0(const TRect<int>* rectangle, Callback_006DA5C0 callback); // 0x6DA5C0; RET 8
     // Methods recovered in the renderer/ and ui/ TUs (consolidated from per-TU views).
     bool CoordsToClient(const CoordStruct* coord, Point2D* point);
+    bool CoordsToClient(const CoordStruct& coord, Point2D* point);
     int* AdjustForZShapeMove(int* pDest, const int* pClient);
     int* ApplyMatrix_Pixel(int* pOut, const int* pIn);
     bool AddSelectable(void* pTechno, int x, int y);

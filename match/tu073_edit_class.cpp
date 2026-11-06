@@ -370,14 +370,14 @@ void EditClass::vf_36()
 void EditClass::DrawText(wchar_t const* text)
 {
     unsigned focusFlag = IsFocused() ? 0x2000 : 0;
-    FUN_004A6500(text, DAT_00887314, &DAT_00887314->GetRect(), &Point2D(X + 1, Y + 1),
+    FUN_004A6500(text, DAT_00887314, DAT_00887314->GetRect(), Point2D(X + 1, Y + 1),
                  DAT_00B054D0[SchemeIndex], 0, TextFlags | focusFlag, Width - 2, 0);
     Font* font = FUN_004A60D0(TextFlags);
     if (IsFocused()) {
         if (wcslen(text) < MaxLength) {
             if (font->TextWidth(text, 0) + font->TextWidth(DAT_0082076C, 0) < Width - 2) {
-                FUN_004A6500(DAT_0082076C, DAT_00887314, &DAT_00887314->GetRect(),
-                             &Point2D(font->TextWidth(text, 0) + X + 1, Y + 1), DAT_00B054D0[SchemeIndex], 0,
+                FUN_004A6500(DAT_0082076C, DAT_00887314, DAT_00887314->GetRect(),
+                             Point2D(font->TextWidth(text, 0) + X + 1, Y + 1), DAT_00B054D0[SchemeIndex], 0,
                              TextFlags | focusFlag, -1, 0);
             }
         }

@@ -169,7 +169,7 @@ int FootClass::vf_133()
     }
     if (Destination == 0) {
         EnterIdleMode(false, true);
-        if (DAT_0087F7E8.FUN_00565730(&vf_18())->GetBuilding() != 0) {
+        if (DAT_0087F7E8.FUN_00565730(vf_18())->GetBuilding() != 0) {
             vf_93(DAT_008B3DA8, true, false);
         }
     }
@@ -206,7 +206,7 @@ int FootClass::vf_134()
     }
     if (Destination == 0) {
         EnterIdleMode(false, true);
-        if (DAT_0087F7E8.FUN_00565730(&vf_18())->GetBuilding() != 0) {
+        if (DAT_0087F7E8.FUN_00565730(vf_18())->GetBuilding() != 0) {
             vf_93(DAT_008B3DA8, true, false);
         }
     }

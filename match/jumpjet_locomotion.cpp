@@ -768,11 +768,12 @@ int JumpjetLocomotionClass::FUN_0054D820()
 // FUNCTION: GAMEMD 0x54D930
 // The virtual call returns the coordinate through a hidden buffer and hands back its address; retail
 // copies the three fields out of that returned address into the local before comparing.
+// By-value, init, assignment, temp-copy and per-field forms score 28.6 (w37 attempts).
 void __stdcall JumpjetLocomotionClass::MarkAllOccupationBits(int mark)
 {
     if (mark == 0) {
         LocoCoord head;
-        LocoCoord* got = &HeadToCoord();
+        LocoCoord* got = &HeadToCoord(); // ADDRCALL: GAMEMD 0x54D94C
         head.X = got->X;
         head.Y = got->Y;
         head.Z = got->Z;
