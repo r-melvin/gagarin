@@ -111,9 +111,10 @@ against an instruction in the binary before it lands as a repo fact.
   `// NOVPTR: GAMEMD 0xADDR` in the body.
 
 - One original TU is one file, and a new file may not hold rows inside a migrated file's window, with one exception:
-  retail calls a callee that VC6 inlines when both share a file, and no ordinary source shape keeps the call. This is a
-  measured byte workaround, not evidence of an original file boundary: the cause is unknown, and binary file windows
-  place these callees in the same original file as their callers. The new file carries
+  retail calls a callee that VC6 inlines when both share a file, and no ordinary source shape keeps the call. VC6 decides
+  by a parse-tree cost of the callee against a cap and a per-caller budget, so try the callee's natural form first. A
+  split is a measured byte workaround, not evidence of an original file boundary: binary file windows place these
+  callees in the same original file as their callers. The new file carries
   `// TUSPLIT: GAMEMD 0xCALLER same-file N% separate M%` with the caller's measured score in each placement, and its
   header says the placement is a workaround. Do not add a split that regresses another row.
 
