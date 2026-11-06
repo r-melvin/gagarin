@@ -54,6 +54,36 @@ HRESULT __stdcall CStreamClass::QueryInterface(REFIID riid, void** ppv)
     return S_OK;
 }
 
+// FUNCTION: GAMEMD 0x4A2A20
+HRESULT __stdcall CStreamClass::vf_3(IUnknown* p)
+{
+    if (p == 0)
+        return E_POINTER;
+    if (Stream != 0)
+        return E_FAIL;
+    Stream = p;
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x4A2AB0
+HRESULT __stdcall CStreamClass::vf_4(IStream** out)
+{
+    FUN_004A30E0();
+    if (Stream == 0)
+        return E_FAIL;
+    if (out != 0) {
+        Stream->AddRef();
+        *out = Stream;
+    }
+    HRESULT hr = Stream->Commit(0);
+    if (hr >= 0) {
+        Stream->Release();
+        Stream.Detach();
+        hr = 0;
+    }
+    return hr;
+}
+
 // FUNCTION: GAMEMD 0x4A2B60
 HRESULT __stdcall CStreamClass::Read(void* pv, ULONG cb, ULONG* read)
 {

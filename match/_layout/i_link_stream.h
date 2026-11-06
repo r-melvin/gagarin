@@ -6,12 +6,12 @@
 #ifndef GG_MATCH_LAYOUT_I_LINK_STREAM_H
 #define GG_MATCH_LAYOUT_I_LINK_STREAM_H
 
-#include <unknwn.h>
+#include <objidl.h>
 
 struct __declspec(novtable) ILinkStream : public IUnknown
 {
-    virtual void vf_3() = 0;   // 3
-    virtual void vf_4() = 0;   // 4
+    virtual HRESULT __stdcall vf_3(IUnknown* p) = 0;   // 3
+    virtual HRESULT __stdcall vf_4(IStream** out) = 0;   // 4
 };
 
 #endif  // GG_MATCH_LAYOUT_I_LINK_STREAM_H

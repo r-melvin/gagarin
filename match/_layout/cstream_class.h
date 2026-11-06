@@ -62,8 +62,8 @@ public:
                                            DWORD dwLockType);             // 11 0x4A2F80
     virtual HRESULT __stdcall Stat(STATSTG* pstatstg, DWORD grfStatFlag); // 12 0x4A2FC0
     virtual HRESULT __stdcall Clone(IStream** ppstm);                    // 13 0x4A2FF0
-    virtual void vf_3();                                                  // ILinkStream 3  0x4A2A20
-    virtual void vf_4();                                                  // ILinkStream 4  0x4A2AB0
+    virtual HRESULT __stdcall vf_3(IUnknown* p);                                            // ILinkStream 3  0x4A2A20
+    virtual HRESULT __stdcall vf_4(IStream** out);                                            // ILinkStream 4  0x4A2AB0
     // Slot 14: the scalar deleting destructor 0x4A3110 carries this body inline.
     virtual ~CStreamClass();
 

@@ -22,14 +22,10 @@ struct Image_0045E8F0
 };
 GG_STATIC_ASSERT(offsetof(Image_0045E8F0, Height) == 0x4);
 
-struct Source_0045E8F0 { char opaque[4]; };
-// GLOBAL: GAMEMD 0x8193F4
-extern Source_0045E8F0 DAT_008193F4;
+// GLOBAL: GAMEMD 0x8193F4 -- the file name "BUILDNGZ.SHA".
+extern const char DAT_008193F4[];
 // GLOBAL: GAMEMD 0x89DDBC — loaded once and kept.
 extern Image_0045E8F0* DAT_0089DDBC;
-
-// FUNCTION: GAMEMD 0x5B40B0
-Image_0045E8F0* FUN_005B40B0(Source_0045E8F0* source, char flag);
 
 // FUNCTION: GAMEMD 0x45E8F0
 void FUN_0045E8F0();

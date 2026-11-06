@@ -106,6 +106,11 @@ void __cdecl FUN_0045EC80();
 
 
 #include "find_by_name_methods.h"
+#include "ccini_class_methods.h"
+#include "_layout/dib_surface.h"
+#include "_layout/iso_tile_type_class.h"
+// GLOBAL: GAMEMD 0x89DDC0 - the building-art surface.
+extern DibSurface* DAT_0089DDC0;
 
 #include "small_misc51_methods.h"
 
@@ -202,6 +207,12 @@ void __cdecl FUN_0045EC80();
 // are as retail.
 
 #include "font_bias_methods.h"
+#include "beacon_manager_class_art_methods.h"
+#include "smudge_type_class_load_methods.h"
+// GLOBAL: GAMEMD 0x89DDC4 - the power-off overlay shape.
+extern void* DAT_0089DDC4;
+// GLOBAL: GAMEMD 0x89DDC8 - the repair wrench shape.
+extern void* DAT_0089DDC8;
 
 // Globals read by this TU's static initialisers (placeholder names).
 // GLOBAL: GAMEMD 0x7E1718
@@ -641,7 +652,7 @@ void FUN_0045E8F0()
         return;
     }
 
-    DAT_0089DDBC = FUN_005B40B0(&DAT_008193F4, 0);
+    DAT_0089DDBC = (Image_0045E8F0*)FUN_005B40B0(DAT_008193F4, 0);
     DAT_0089DDBC->FUN_0069E7E0(scratch, 0);
     char* pixels = DAT_0089DDBC->FUN_0069E740(0);
 
@@ -662,6 +673,73 @@ void FUN_0045E8F0()
         row += width;
         rows--;
     } while (rows != 0);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// PARTIAL (98.2%, 168/171): identical multiset. Three instructions of the buildup frame-count read use EAX
+// where retail holds the shape pointer in ECX; a local for the shape pointer does not change the allocation.
+// FUNCTION: GAMEMD 0x45E970
+void __fastcall FUN_0045E970(int theater)
+{
+    FUN_0045E8F0();
+    DAT_0089DDC4 = FUN_005B40B0("POWEROFF.SHP", 0);
+    DAT_0089DDC8 = FUN_005B40B0("WRENCH.SHP", 0);
+    int radius = 0;
+    int i;
+    for (i = 0; i < DAT_00A83C78; i++) {
+        BuildingTypeView_0045DD90* type = (BuildingTypeView_0045DD90*)DAT_00A83C6C[i];
+        signed char r = type->CloakRadiusInCells;
+        if (radius <= r) {
+            radius = r;
+        }
+        if (type->unknown_22C[0] != 0) {
+            char path[0x200];
+            if (type->DemandLoad == 0) {
+                _makepath(path, 0, 0, type->ImageFile, DAT_007E1B78[theater].Extension);
+                type->Image = FUN_005B40B0(path, 0);
+            } else if (type->Image != 0) {
+                FUN_007C8B3D(type->Image);
+                type->Image = 0;
+                type->ImageAllocated = 0;
+            }
+            if (type->DemandLoadBuildup == 0) {
+                _makepath(path, 0, 0, type->BuildupFile, DAT_007E1B78[theater].Extension);
+                type->Buildup = FUN_005B40B0(path, 0);
+            } else if (type->Buildup != 0) {
+                FUN_007C8B3D(type->Buildup);
+                type->Buildup = 0;
+                type->BuildupLoaded = 0;
+            }
+            if (type->Buildup != 0) {
+                int frames = ((Shp_004309D0*)type->Buildup)->Frames;
+                int rate = 1;
+                if (frames != 0) {
+                    rate = 0x4B / frames;
+                }
+                type->BuildingAnimFrame[0].Start = 0;
+                type->BuildingAnimFrame[0].Count = frames;
+                type->BuildingAnimFrame[0].Rate = rate;
+            }
+        } else if (type->unknown_22C[0xB] != 0) {
+            if (type->DemandLoad != 0 && type->Image != 0) {
+                FUN_007C8B3D(type->Image);
+                type->Image = 0;
+                type->ImageAllocated = 0;
+            }
+            if (type->DemandLoadBuildup != 0 && type->Buildup != 0) {
+                FUN_007C8B3D(type->Buildup);
+                type->Buildup = 0;
+                type->BuildupLoaded = 0;
+            }
+            type->StampTheater(theater);
+        }
+    }
+    if (radius != 0) {
+        if (DAT_0089DDC0 != 0) {
+            delete DAT_0089DDC0;
+        }
+        DAT_0089DDC0 = new DibSurface(radius + 16, radius + 16, 1, 0);
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -1613,6 +1691,40 @@ char* FUN_004653C0(const char* name)
     }
 
     return 0;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// PARTIAL (97.6%, 80/82): identical multiset. The one remaining delta is the register of the vtable load in
+// the inlined `delete` of the old surface (retail EAX, here EDX); a local for the old pointer and a base-typed
+// global both leave it unchanged.
+// FUNCTION: GAMEMD 0x465450
+void FUN_00465450()
+{
+    int radius = 0;
+    int i;
+    for (i = 0; i < DAT_00A83C78; i++) {
+        signed char r = ((BuildingTypeView_0045DD90*)DAT_00A83C6C[i])->CloakRadiusInCells;
+        if (radius <= r) {
+            radius = r;
+        }
+    }
+    if (radius != 0) {
+        if (DAT_0089DDC0 != 0) {
+            delete DAT_0089DDC0;
+        }
+        DAT_0089DDC0 = new DibSurface(radius + 16, radius + 16, 1, 0);
+    }
+
+    for (i = 0; i < DAT_00A83C78; i++) {
+        BuildingTypeView_0045DD90* type = (BuildingTypeView_0045DD90*)DAT_00A83C6C[i];
+        char buffer[0x3C];
+        buffer[0] = 0;
+        DAT_00887048->ReadString(type->ID, "ToTile", 0, buffer, 0x3C);
+        int tile = IsometricTileTypeClass::FUN_00544CE0(buffer);
+        if (tile >= 0 && tile < IsometricTileTypeClass_Array.Count) {
+            type->ToTile = IsometricTileTypeClass_Array.Items[tile];
+        }
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

@@ -55,6 +55,10 @@
 #include "_layout/aircraft_class.h"
 #include "_layout/aircraft_type_class.h"
 #include "mapobj_globals.h"
+#include "_layout/map_0087f7e8.h"
+#include "_layout/house_class.h"
+#include "_layout/team_class.h"
+#include "small_misc41_methods.h"
 
 // Native DrawMatrix fields: 0x4CF610 entry-origin instruction offsets.
 GG_STATIC_ASSERT(offsetof(TechnoClass, AngleRotatedSideways) == 0x328);
@@ -216,6 +220,36 @@ LocoCoord __stdcall FlyLocomotionClass::Destination()
     result.Y = UnsetCoord_008B3C78.Y;
     result.Z = UnsetCoord_008B3C78.Z;
     return result;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4CD510
+bool FlyLocomotionClass::FUN_004CD510()
+{
+    CoordStruct location = LinkedTo->Location;
+    if (!DAT_0087F7E8.FUN_005785F0(location)) {
+        if (LinkedTo->vf_97() == 4) {
+            while (LinkedTo->Passengers.FirstPassenger != 0) {
+                FootClass* passenger = LinkedTo->Passengers.RemoveFirstPassenger();
+                if (FUN_00413CD0((Obj_00413CD0*)passenger)) {
+                    passenger->Owner->CiviliansEvacuated = 1;
+                }
+                if (passenger->Team != 0) {
+                    passenger->Team->Flag82 = 1;
+                }
+                delete passenger;
+            }
+            if (LinkedTo->Team != 0) {
+                LinkedTo->Team->Flag82 = 1;
+            }
+            LinkedTo->vf_232();
+            LinkedTo->vf_62();
+            return 1;
+        }
+    } else {
+        LinkedTo->IsInPlayfield = 1;
+    }
+    return 0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

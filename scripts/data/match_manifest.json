@@ -156152,5 +156152,54 @@
   "name": "WinModemClass::Leave_Failsafe_Mode",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/tu039_building_type_class.cpp",
+  "addr": "0x45E970",
+  "sym": "?FUN_0045E970@@YIXH@Z",
+  "len": "0x252",
+  "name": "FUN_0045E970",
+  "status": "partial",
+  "pct": 98.2,
+  "best_pct": 98.2,
+  "best_at": "0125be29"
+ },
+ {
+  "tu": "match/tu039_building_type_class.cpp",
+  "addr": "0x465450",
+  "sym": "?FUN_00465450@@YIXXZ",
+  "len": "0xf8",
+  "name": "FUN_00465450",
+  "status": "partial",
+  "pct": 97.6,
+  "best_pct": 97.6,
+  "best_at": "0125be29"
+ },
+ {
+  "tu": "match/cstream_forward_methods.cpp",
+  "addr": "0x4A2A20",
+  "sym": "?vf_3@CStreamClass@@UAGJPAUIUnknown@@@Z",
+  "len": "0x81",
+  "name": "CStreamClass::vf_3",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/cstream_forward_methods.cpp",
+  "addr": "0x4A2AB0",
+  "sym": "?vf_4@CStreamClass@@UAGJPAPAUIStream@@@Z",
+  "len": "0xa7",
+  "name": "CStreamClass::vf_4",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu084_fly_locomotion_class.cpp",
+  "addr": "0x4CD510",
+  "sym": "?FUN_004CD510@FlyLocomotionClass@@QAE_NXZ",
+  "len": "0xee",
+  "name": "FlyLocomotionClass::FUN_004CD510",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
