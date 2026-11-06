@@ -374,15 +374,6 @@ GG_STATIC_ASSERT(offsetof(HouseScenarioView, Difficulty) == 0x610);
 // GLOBAL: GAMEMD 0xA8B230 - the scenario instance.
 extern HouseScenarioView* HouseScenario;
 
-// SuperClass-shaped (0x80 bytes, allocated at 0x4F6221; constructor read-only here).
-struct HouseSuperObject : public HouseSuperRef
-{
-    // FUNCTION: GAMEMD 0x6CAF90 (read-only here)
-    HouseSuperObject(void* superType, HouseClusterView* owner);
-    unsigned char unknown_2C[0x54];
-};
-GG_STATIC_ASSERT(sizeof(HouseSuperObject) == 0x80);
-
 // GLOBAL: GAMEMD 0xA8E334 / 0xA8E340 - the super-weapon type array (Items / Count).
 extern void** HouseSuperTypeItems;
 

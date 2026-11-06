@@ -1315,11 +1315,11 @@ void DisplayClass::vf_48(int, CellStruct* cell, DisplayCmdObject* target, int ac
     if (action == 0x3D)
     {
         DisplayCmdCellObj* cellObj = DisplayCmdMap_0087F7E8.GetCellAt_005657A0(cell);
-        DisplayCmdVec3 where;
+        CoordStruct where;
         where.X = (cell->X << 8) + 0x80;
         where.Y = (cell->Y << 8) + 0x80;
         where.Z = cellObj->unknown_11B * DisplayCmdScale_008A0740;
-        DisplayCmdMarker_0089C3B0.FUN_00430F70(where);
+        DAT_0089C3B0.FUN_00430F70(where);
         goto done;
     }
     if (action == 0)
@@ -1356,11 +1356,11 @@ process:
         if (!DAT_00A8B538)
         {
             DisplayCmdCellObj* cellObj = DisplayCmdMap_0087F7E8.GetCellAt_005657A0(cell);
-            DisplayCmdVec3 where;
+            CoordStruct where;
             where.X = (cell->X << 8) + 0x80;
             where.Y = (cell->Y << 8) + 0x80;
             where.Z = cellObj->unknown_11B * DisplayCmdScale_008A0740;
-            DisplayCmdMarker_0089C3B0.FUN_00430BA0(DisplayCmdPlayer_00A83D4C->unknown_30, where, -1);
+            DAT_0089C3B0.FUN_00430BA0(DisplayCmdPlayer_00A83D4C->unknown_30, where, -1);
         }
         DisplayCmdMap_0087F7E8.SetBeaconMode_004AC960(0);
         vf_18(0, a5);
@@ -1683,7 +1683,7 @@ void MapView_4AC960::SetPlaceBeaconMode(int mode)
 
     if (want != PlaceBeaconMode && unknown_11A8 == 0)
     {
-        if (want && !BeaconManager.CanPlaceBeacon(CurrentPlayer->ArrayIndex)) {
+        if (want && !DAT_0089C3B0.CanPlaceBeacon(CurrentPlayer->ArrayIndex)) {
             want = false;
         }
 
@@ -2577,8 +2577,6 @@ int DAT_00820030[3] = {2, 3, 4};
 extern const double DAT_007E6018 = 60.0;
 // GLOBAL: GAMEMD 0x8A03FC
 void* DisplayPlaceShape_008A03FC;
-// GLOBAL: GAMEMD 0x89C3B0
-extern BeaconManagerClass BeaconManager;
 // GLOBAL: GAMEMD 0xABDC84
 int DAT_00ABDC84;
 // END defined globals

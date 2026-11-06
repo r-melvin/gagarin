@@ -23,14 +23,9 @@ GG_STATIC_ASSERT(offsetof(HouseClass, ArrayIndex) == 0x30);
 extern HouseClass* CurrentPlayer;
 
 // The beacon manager singleton; the call passes its address in ECX directly.
-struct BeaconManagerClass
-{
-    char opaque[4];
-    // FUNCTION: GAMEMD 0x430F30 (decl; reloc) — BeaconManagerClass::CanPlaceBeacon.
-    bool CanPlaceBeacon(int houseIndex);
-};
+#include "beacon_manager_class.h"
 // GLOBAL: GAMEMD 0x89C3B0 — BeaconManagerClass::Instance.
-extern BeaconManagerClass BeaconManager;
+extern BeaconManagerClass DAT_0089C3B0;
 
 // FUNCTION: GAMEMD 0x48DC90 (decl; reloc) — the no-argument notify run after a
 // mode is entered (the same call the other mode setters make).

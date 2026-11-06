@@ -9,6 +9,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "com_member_release_family_methods.h"
+#include "display_layer.h"
 
 // Two plain ints written as one pair value.
 struct IntPair_00430F60
@@ -26,16 +27,6 @@ IntPair_00430F60* __stdcall FUN_00430F60(IntPair_00430F60* out)
     *out = IntPair_00430F60();
     return out;
 }
-
-// Two owned COM interface pointers at +0x70 and +0x74.
-struct ComPair_004A3370
-{
-    char  Pad_00[0x70];
-    IUnk* Second;   // +0x70
-    IUnk* First;    // +0x74
-};
-GG_STATIC_ASSERT(offsetof(ComPair_004A3370, Second) == 0x70);
-GG_STATIC_ASSERT(offsetof(ComPair_004A3370, First) == 0x74);
 
 // FUNCTION: GAMEMD 0x004A3370
 // Release the interface at +0x74, then the one at +0x70, clearing each.

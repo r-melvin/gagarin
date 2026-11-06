@@ -12,6 +12,7 @@
 #include "ui_updated_methods.h"
 #include "_layout/session_class.h"
 #include "_rt/gg_static_assert.h"
+#include "serial_ed_dialog.h"
 #include <string.h>
 #include <wchar.h>
 
@@ -68,28 +69,10 @@ void __fastcall FUN_00727D60(wchar_t* text);
 // GLOBAL: GAMEMD 0xB73550 -- the main window.
 extern HWND DAT_00B73550;
 
-// The serial settings block copied into the dialog: 0x70 bytes.
-struct PhoneSettings_00631B20
-{
-    int Port;                       // +0x00 zero = not set
-    int unknown_04;                 // +0x04 -1 = not set
-    int Baud;                       // +0x08 -1 = not set
-    int unknown_0C;                 // +0x0C
-    int unknown_10;                 // +0x10
-    int unknown_14;                 // +0x14
-    int unknown_18[2];              // +0x18
-    unsigned char unknown_20;       // +0x20
-    unsigned char pad_21[3];
-    int unknown_24[0x13];           // +0x24
-};
-GG_STATIC_ASSERT(sizeof(PhoneSettings_00631B20) == 0x70);
-GG_STATIC_ASSERT(offsetof(PhoneSettings_00631B20, unknown_14) == 0x14);
-GG_STATIC_ASSERT(offsetof(PhoneSettings_00631B20, unknown_20) == 0x20);
-
 // A phone-book entry: the serial settings, then its name and number strings.
 struct PhoneEntry_00631B20
 {
-    PhoneSettings_00631B20 Serial;  // +0x00
+    SerialSettings_006956D0 Serial;  // +0x00
     wchar_t Name[21];               // +0x70
     char Number[0x16];              // +0x9A
 };
@@ -98,15 +81,7 @@ GG_STATIC_ASSERT(offsetof(PhoneEntry_00631B20, Number) == 0x9A);
 GG_STATIC_ASSERT(sizeof(PhoneEntry_00631B20) == 0xB0);
 
 // GLOBAL: GAMEMD 0xA8DAC0 -- the default serial settings.
-extern PhoneSettings_00631B20 DAT_00A8DAC0;
-
-// The serial-port editor dialog object (its own translation unit); only its size and entry matter here.
-struct SerialEdDialog_006956D0
-{
-    unsigned char unknown_00[0x374];
-    // FUNCTION: GAMEMD 0x6956D0 (decl; reloc)
-    bool FUN_006956D0(PhoneSettings_00631B20* settings);
-};
+extern SerialSettings_006956D0 DAT_00A8DAC0;
 
 // The phone-book dialog object.
 struct PhoneBookDialog_006316E0
@@ -114,7 +89,7 @@ struct PhoneBookDialog_006316E0
     HWND Window;                    // +0x00
     int Result;                     // +0x04 1 = accepted, set by the dialog procedure
     PhoneEntry_00631B20* Book;      // +0x08 the entry being edited
-    PhoneSettings_00631B20 Settings;// +0x0C
+    SerialSettings_006956D0 Settings;// +0x0C
     // FUNCTION: GAMEMD 0x6319C0
     void FUN_006319C0();
     // FUNCTION: GAMEMD 0x631B20

@@ -1484,8 +1484,8 @@ HouseClusterView::HouseClusterView(HouseTypeView* type)
 
     memset(ThreatPosedEstimates, 0, sizeof(ThreatPosedEstimates));
     for (int i = 0; i < HouseSuperTypeCount; i++) {
-        HouseSuperObject* super = new HouseSuperObject(HouseSuperTypeItems[i], this);
-        Supers.AddItem(super);
+        SuperClass* super = new SuperClass((SuperWeaponTypeClass*)HouseSuperTypeItems[i], (HouseClass*)this);
+        Supers.AddItem((HouseSuperRef*)super);
     }
     memset(KilledUnitsOfHouses, 0, sizeof(KilledUnitsOfHouses));
     memset(KilledBuildingsOfHouses, 0, sizeof(KilledBuildingsOfHouses));

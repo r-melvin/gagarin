@@ -83,18 +83,7 @@ struct DisplayTriangle
 };
 GG_STATIC_ASSERT(sizeof(DisplayTriangle) == 0x60);
 
-// The three objects of the overlay pass (0x8A0E08, 0x8A0E0C, 0x8A0E10). Their methods are contiguous
-// (0x4A33A0, 0x4A3660, 0x4A3840), so one class is assumed; the binary does not state it.
-struct DisplayLayer
-{
-    char opaque[4];
-    // FUNCTION: GAMEMD 0x4A33A0 (decl; reloc)
-    int FUN_004A33A0(int arg);
-    // FUNCTION: GAMEMD 0x4A3660 (decl; reloc)
-    void FUN_004A3660(DDSurface* surface);
-    // FUNCTION: GAMEMD 0x4A3840 (decl; reloc)
-    void FUN_004A3840(DisplayTriangle* batch);
-};
+#include "display_layer.h"
 // GLOBAL: GAMEMD 0x8A0E08
 extern DisplayLayer* DisplayLayer_008A0E08;
 // GLOBAL: GAMEMD 0x8A0E0C

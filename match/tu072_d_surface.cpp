@@ -1349,27 +1349,11 @@ extern const _GUID DAT_007F80B0;
 // GLOBAL: GAMEMD 0x7E3D90 -- the falloff scale (3.0).
 extern const double DAT_007E3D90;
 
-// FUNCTION: GAMEMD 0x4A3370 (decl; reloc) -- release both interfaces of a texture (defined in leaf_sweep_w1b.cpp).
-struct ComPair_004A3370;
-void __fastcall FUN_004A3370(ComPair_004A3370* self);
-
-// The 0x78-byte texture object of the overlay pass (0x8A0E04 / 0x8A0E08 / 0x8A0E0C): the layer methods
-// 0x4A33A0 / 0x4A3660 / 0x4A3840 act on it (DisplayLayer), 0x4A3370 releases its two interfaces at +0x70 / +0x74.
-struct ComPair_004A3370 : public DisplayLayer
-{
-    char unknown_04[0x78 - 4];
-    // FUNCTION: GAMEMD 0x4A3270 (decl; reloc) -- the constructor: width, height and kind (0 plain, 1 filled, 2 target).
-    ComPair_004A3370(int width, int height, int kind);
-};
-GG_STATIC_ASSERT(sizeof(ComPair_004A3370) == 0x78);
-
 // GLOBAL: GAMEMD 0x8A0E04 / 0x8A0E08 / 0x8A0E0C -- the light texture, the texture the batch binds and the second one.
 extern ComPair_004A3370* DAT_008A0E04;
 extern ComPair_004A3370* DAT_008A0E08;
 extern ComPair_004A3370* DAT_008A0E0C;
-// GLOBAL: GAMEMD 0x8A0E10 -- the triangle batch (0x18004 bytes). Built through Obj_004A3630 (0x4A3630) and
-// reset through Obj_004A3640 (0x4A3640): both placeholder views of the same object (the only store of each is
-// the count at +0x18000), so the global is typed by the first and reached through the second where it is reset.
+// GLOBAL: GAMEMD 0x8A0E10 -- the triangle batch (0x18004 bytes), built by 0x4A3630 and reset by 0x4A3640.
 extern Obj_004A3630* DAT_008A0E10;
 
 // FUNCTION: GAMEMD 0x4C16A0
@@ -1454,7 +1438,7 @@ int FUN_004C16A0()
 // Direct3D interface and DirectDraw interface.
 void FUN_004C19B0()
 {
-    Obj_004A3640* batch = (Obj_004A3640*)DAT_008A0E10;
+    Obj_004A3630* batch = DAT_008A0E10;
     if (batch != 0) {
         batch->FUN_004A3640();
         delete batch;

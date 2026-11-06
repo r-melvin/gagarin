@@ -10,7 +10,6 @@
 #include "_rt/gg_static_assert.h"
 
 struct Obj_004A3630;
-struct Obj_004A3640;
 struct Obj_004A3C00;
 
 struct Obj_004A3630
@@ -19,17 +18,10 @@ struct Obj_004A3630
     int unknown_18000;   // +0x18000
     // FUNCTION: GAMEMD 0x4A3630
     Obj_004A3630* FUN_004A3630();
-};
-GG_STATIC_ASSERT(offsetof(Obj_004A3630, unknown_18000) == 0x18000);
-
-struct Obj_004A3640
-{
-    char unknown_00[0x18000];
-    int unknown_18000;   // +0x18000
     // FUNCTION: GAMEMD 0x4A3640
     void FUN_004A3640();
 };
-GG_STATIC_ASSERT(offsetof(Obj_004A3640, unknown_18000) == 0x18000);
+GG_STATIC_ASSERT(offsetof(Obj_004A3630, unknown_18000) == 0x18000);
 
 struct Obj_004A3C00
 {

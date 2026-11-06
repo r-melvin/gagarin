@@ -16,7 +16,7 @@ Obj_004A3630* Obj_004A3630::FUN_004A3630()
 
 // FUNCTION: GAMEMD 0x4A3640
 // Stores its argument in a member.
-void Obj_004A3640::FUN_004A3640()
+void Obj_004A3630::FUN_004A3640()
 {
     unknown_18000 = 0;
 }

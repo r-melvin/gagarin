@@ -84413,9 +84413,9 @@
  {
   "tu": "match/trivial_tu064_methods.cpp",
   "addr": "0x4A3640",
-  "sym": "?FUN_004A3640@Obj_004A3640@@QAEXXZ",
+  "sym": "?FUN_004A3640@Obj_004A3630@@QAEXXZ",
   "len": "0xb",
-  "name": "Obj_004A3640::FUN_004A3640",
+  "name": "Obj_004A3630::FUN_004A3640",
   "status": "matched",
   "pct": 100
  },

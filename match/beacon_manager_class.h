@@ -44,6 +44,8 @@ public:
     // Referenced callee matched in its own TU; declared (no body) so cl emits
     // a __thiscall call (relocation-normalised by the harness).
     void DeleteBeacon(int houseId, int houseBeaconId);  // GAMEMD 0x4311C0
+    // FUNCTION: GAMEMD 0x430BA0 (decl; reloc)
+    void FUN_00430BA0(int house, CoordStruct where, int arg);
 
     BeaconClass* Beacons[8][3];   // +0x00
     int          AllocatedCount;  // +0x60

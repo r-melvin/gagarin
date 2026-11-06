@@ -396,18 +396,6 @@ struct DisplayCmdActionInfo
 };
 GG_STATIC_ASSERT(offsetof(DisplayCmdActionInfo, unknown_98) == 0x98);
 
-// A cell-sized thing at 0x89C3B0 that takes world coordinates by value.
-struct DisplayCmdMarker
-{
-    char opaque[4];
-    // FUNCTION: GAMEMD 0x430F70 (decl; reloc)
-    void FUN_00430F70(DisplayCmdVec3 where);
-    // FUNCTION: GAMEMD 0x430BA0 (decl; reloc)
-    void FUN_00430BA0(int house, DisplayCmdVec3 where, int arg);
-};
-// GLOBAL: GAMEMD 0x89C3B0
-extern DisplayCmdMarker DisplayCmdMarker_0089C3B0;
-
 // GLOBAL: GAMEMD 0xA8ED5C (byte)
 extern bool DisplayCmdFlag_00A8ED5C;
 // GLOBAL: GAMEMD 0xA8E9A0 (byte)
