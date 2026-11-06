@@ -200,6 +200,34 @@ Wstring& Wstring::operator=(const Wstring& other)
     return *this;
 }
 
+// FUNCTION: GAMEMD 0x7B4A10
+// Appends the whole text, reallocating the buffer; null text changes nothing.
+// Retail 0x7B63C0 calls this; the null-text early return with the body in its else arm is the
+// shape that keeps cl from expanding it there (the early-return-only form is expanded).
+bool Wstring::FUN_007B4A10(const char* text)
+{
+    if (!text) {
+        return true;
+    } else {
+        char* old = unknown_00;
+        unsigned int total = strlen(text) + 1;
+        if (old) {
+            total += strlen(old);
+        }
+        unknown_00 = new char[total];
+        if (old) {
+            strcpy(unknown_00, old);
+        } else {
+            unknown_00[0] = 0;
+        }
+        strcat(unknown_00, text);
+        if (old) {
+            delete old;
+        }
+        return true;
+    }
+}
+
 // FUNCTION: GAMEMD 0x7B4AC0
 // Appends up to `count` characters of the text, reallocating the buffer.
 bool Wstring::FUN_007B4AC0(int count, const char* text)

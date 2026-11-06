@@ -751,9 +751,8 @@ bool MPCooperative::FUN_005C1DC0()
 // Make sure the helper exists, note when its position changes, and hand the
 // new position and the vector to the helper. MPCooperative vtable slot 22.
 //
-// Exact (100%) now that 0x5C3EC0 lives in coop_helper_reset_005C3EC0.cpp (TUSPLIT; 9.4% when it
-// shares this file, where cl expands its body inline). The vector argument is passed by value
-// through 0x4779E0 as retail does.
+// The vector argument is passed by value through 0x4779E0 as retail does. The call to 0x5C3EC0
+// stays a call because that helper's result is built with a result variable and an if/else.
 bool MPCooperative::vf_22(int a, MPGameModeArgVector v, int b, int c)
 {
     if (unknown_40 == 0) {
@@ -1172,6 +1171,33 @@ bool MPCooperative::vf_35()
 bool MPCooperative::vf_15()
 {
     return false;
+}
+
+// FUNCTION: GAMEMD 0x5C3EC0
+// (A result variable set in an if/else keeps cl from expanding this into 0x5C2040; the
+// ternary form is expanded there.)
+// Replace the helper at +0x40 with a fresh one, run its 0x49CAF0(0), and with
+// exactly two entries in the game-mode array hand both to 0x49B760. True when
+// the helper exists.
+bool MPCooperative::FUN_005C3EC0()
+{
+    if (unknown_40 != 0) {
+        delete unknown_40;
+    }
+    unknown_40 = 0;
+    unknown_40 = new CoopCampaignClass;
+    unknown_40->FUN_0049CAF0(0);
+    if (MPGameModeArray.Count == 2) {
+        unknown_40->FUN_0049B760(((void**)MPGameModeArray.Items)[0],
+                                 ((void**)MPGameModeArray.Items)[1]);
+    }
+    bool result;
+    if (unknown_40) {
+        result = true;
+    } else {
+        result = false;
+    }
+    return result;
 }
 
 // FUNCTION: GAMEMD 0x5C3F80
