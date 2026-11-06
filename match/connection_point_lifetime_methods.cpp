@@ -3,6 +3,7 @@
 #include "_layout/connection_point_class.h"
 #include "_layout/enum_connections_class.h"
 #include "_layout/enum_connection_points_class.h"
+#include "vector_class_operations.h"
 #include "vector_class_dynamic_ctor.h"
 // Native 4A045F/466, 4A047A-4A04A6; 4A0DBF/C6 and 4A0DDA-4A0E06.
 GG_STATIC_ASSERT(offsetof(tagCONNECTDATA, pUnk) == 0);
@@ -36,7 +37,7 @@ ULONG __stdcall ConnectionPointClass::Release() {
 }
 // FUNCTION: GAMEMD 0x4A0870
 ConnectionPointClass::ConnectionPointClass(const IID* iid, IUnknown* container)
-    : Iid(*iid), RefCount(0), Container(container), Connections() { Container->AddRef(); }
+    : Iid(*iid), RefCount(0), Container(container), Connections() { container->AddRef(); }
 // FUNCTION: GAMEMD 0x4A08D0
 ConnectionPointClass::~ConnectionPointClass() { Container->Release(); Connections.Clear(); }
 // FUNCTION: GAMEMD 0x4A09B0

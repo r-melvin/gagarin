@@ -1209,16 +1209,21 @@ RectangleStruct PlanningNodeClass::FUN_00635DF0()
     point.X += DAT_00886FA0.X;
     point.Y += DAT_00886FA0.Y;
     int size = 8;
+    int half = -(size / 2);
+    Point2D corner = point;
+    corner.X += half;
+    corner.Y += half;
     RectangleStruct rect;
-    rect.X = point.X - size / 2;
-    rect.Y = point.Y - size / 2;
+    rect.X = corner.X;
+    rect.Y = corner.Y;
     rect.Width = size;
     rect.Height = size;
-    rect.X -= 4;
-    rect.Y -= 4;
-    rect.Width += 8;
-    rect.Height += 8;
-    return rect;
+    RectangleStruct bounds = rect;
+    bounds.X -= 4;
+    bounds.Y -= 4;
+    bounds.Width += 8;
+    bounds.Height += 8;
+    return bounds;
 }
 
 // FUNCTION: GAMEMD 0x635E90
@@ -1909,6 +1914,8 @@ bool FUN_00638C40(int mission, TargetClass target)
 
 // FUNCTION: GAMEMD 0x638C70
 // Whether this unit's current mission is one the planner takes (5, or the 0x638C40 cases against its target).
+// PARTIAL 69.8%: the target is copied by value as retail does; remaining delta is the block order of the
+// expanded 0x638C40 tail (retail falls through to the true return, cl puts it first).
 bool FUN_00638C70(TechnoClass* techno)
 {
     if (techno == 0) {
@@ -1918,8 +1925,8 @@ bool FUN_00638C70(TechnoClass* techno)
     if (mission == 5) {
         return true;
     }
-    TargetClass target;
-    target.FUN_006E6AB0(techno->Target);
+    TargetClass id;
+    TargetClass target = *id.FUN_006E6AB0(techno->Target);
     return PlanningMissionTargetOk(mission, target);
 }
 

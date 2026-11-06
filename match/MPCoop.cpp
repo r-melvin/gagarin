@@ -622,11 +622,7 @@ bool MPCooperative::FUN_005C18A0()
 // The last record one of whose three names prefixes-matches (case-blind, for
 // the name's own length) the selected entry's name, or -1.
 //
-// PARTIAL (11.9%). Same blocks and calls; retail keeps the result in a stack
-// slot (`SUB ESP,8`, record index in EBP, name offset in EBX) where cl gives
-// the result a register, so every instruction shifts. Tried a nested if with a
-// name local (10.2%), one && condition (11.9%) and the names as char[][0x104]
-// (11.9%).
+// The selected entry's name is read into a local before the names are scanned.
 int FUN_005C1980()
 {
     int found = -1;
@@ -634,10 +630,11 @@ int FUN_005C1980()
         Rec_0049E3B0* rec;
         DAT_0089F518.FUN_0049E3B0(i, &rec);
         for (int j = 0; j < 3; j++) {
-            if (DAT_00A8B254 != 0
-                && _strnicmp(DAT_00A8B8CC[DAT_00A8B254]->Name, rec->Names[j],
-                             strlen(rec->Names[j])) == 0) {
-                found = i;
+            if (DAT_00A8B254 != 0) {
+                const char* selected = DAT_00A8B8CC[DAT_00A8B254]->Name;
+                if (_strnicmp(selected, rec->Names[j], strlen(rec->Names[j])) == 0) {
+                    found = i;
+                }
             }
         }
     }

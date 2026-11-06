@@ -49,6 +49,17 @@ extern TechnoClass* SidebarTabObjectB;   // 0x00B0FE60
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
+// The checked techno test the selection walks expand inline: a null guard, then the flag-bit read,
+// carried through a result local (retail keeps that local's byte in the frame).
+inline bool UICmndsIsTechno(ObjectClass* object)
+{
+    bool result = false;
+    if (object != 0) {
+        result = object->Flags.IsTechno;
+    }
+    return result;
+}
+
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x7F5C08
@@ -270,8 +281,8 @@ void __cdecl FUN_00730D60()
 // FUNCTION: GAMEMD 0x730EA0
 void __cdecl FUN_00730EA0()
 {
-    int count = DAT_00A8ECB8.Count;
-    if (count > 0) {
+    if (DAT_00A8ECB8.Count > 0) {
+        int count = DAT_00A8ECB8.Count;
         bool result = true;
         for (int i = 0; i < count; ++i) {
             TechnoClass* object = DAT_00A8ECB8.Items[i];
@@ -280,7 +291,7 @@ void __cdecl FUN_00730EA0()
                 if (!result) return;
             }
         }
-        if (result) VocClass::PlayGlobal(RulesInstance->ScatterSound, 0x2000, 1.0f, 0);
+        if (result) VocClass::PlayGlobal(RulesInstance->StopSound, 1.0f, 0x2000, 0);
     }
 }
 
@@ -296,8 +307,8 @@ void __cdecl FUN_00730F30()
 // FUNCTION: GAMEMD 0x730FE0
 void __cdecl FUN_00730FE0()
 {
-    int count = DAT_00A8ECB8.Count;
-    if (count > 0) {
+    if (DAT_00A8ECB8.Count > 0) {
+        int count = DAT_00A8ECB8.Count;
         bool result = true;
         for (int i = 0; i < count; ++i) {
             TechnoClass* object = DAT_00A8ECB8.Items[i];
@@ -306,7 +317,7 @@ void __cdecl FUN_00730FE0()
                 if (!result) return;
             }
         }
-        if (result) VocClass::PlayGlobal(RulesInstance->ScatterSound, 0x2000, 1.0f, 0);
+        if (result) VocClass::PlayGlobal(RulesInstance->ScatterSound, 1.0f, 0x2000, 0);
     }
 }
 
@@ -512,7 +523,7 @@ bool __cdecl FUN_00731AA0()
     int count = DAT_00A8ECB8.Count;
     for (int i = 0; i < count; ++i) {
         TechnoClass* object = DAT_00A8ECB8.Items[i];
-        if (object && object->Flags.IsTechno && !object->CanAttackOnTheMove())
+        if (UICmndsIsTechno(object) && !object->CanAttackOnTheMove())
             return false;
     }
     return true;
@@ -521,16 +532,16 @@ bool __cdecl FUN_00731AA0()
 // FUNCTION: GAMEMD 0x731AF0
 void __cdecl FUN_00731AF0()
 {
-    int count = DAT_00A8ECB8.Count;
-    if (!count) {
+    if (!DAT_00A8ECB8.Count) {
         const wchar_t* text = FUN_00734E60(DAT_00845584, 0, DAT_00845598, 0x358);
         int color = 3;
         if (DAT_00A83D4C) color = DAT_00A83D4C->ColorSchemeIndex;
         DAT_00A8BC60.FUN_005D3BA0(0, 0, text, color, 0x4046, 240, true);
     } else {
+        int count = DAT_00A8ECB8.Count;
         for (int i = 0; i < count; ++i) {
             TechnoClass* object = DAT_00A8ECB8.Items[i];
-            if (object && object->Flags.IsTechno && !object->CanAttackOnTheMove()) {
+            if (UICmndsIsTechno(object) && !object->CanAttackOnTheMove()) {
                 const wchar_t* text = FUN_00734E60(DAT_00845568, 0, DAT_00845598, 0x35E);
                 int color = 3;
                 if (DAT_00A83D4C) color = DAT_00A83D4C->ColorSchemeIndex;
@@ -550,6 +561,7 @@ void __cdecl FUN_00731BE0()
 }
 
 // FUNCTION: GAMEMD 0x731BF0
+// PARTIAL 83.8%: identical instruction multiset; the key arguments after the first land in ECX/EDX where retail uses EAX.
 bool __cdecl FUN_00731BF0()
 {
     if (DAT_00B0FE58) return true;
@@ -559,7 +571,7 @@ bool __cdecl FUN_00731BF0()
     int count = DAT_00A8ECB8.Count;
     for (int i = 0; i < count; ++i) {
         TechnoClass* object = DAT_00A8ECB8.Items[i];
-        if (object && object->Flags.IsTechno && !object->CanAttackOnTheMove()) return false;
+        if (UICmndsIsTechno(object) && !object->CanAttackOnTheMove()) return false;
     }
     return true;
 }
@@ -653,7 +665,7 @@ UICmndsVector* FUN_00731F70(bool (__fastcall *predicate)(TechnoClass*, void*), v
     int count = DAT_00887324->FUN_006DC420();
     for (int i = 0; i < count; ++i) {
         ObjectClass* object = DAT_00887324->FUN_006DC430(i);
-        if (object && object->Flags.IsTechno) {
+        if (UICmndsIsTechno(object)) {
             TechnoClass* techno = static_cast<TechnoClass*>(object);
             if (predicate(techno, context)) result->AddItem(techno);
         }
@@ -668,7 +680,7 @@ UICmndsVector* __cdecl FUN_00732050()
     int count = DAT_00A8ECB8.Count;
     for (int i = 0; i < count; ++i) {
         TechnoClass* object = DAT_00A8ECB8.Items[i];
-        if (object && object->Flags.IsTechno) result->AddItem(object);
+        if (UICmndsIsTechno(object)) result->AddItem(object);
     }
     return result;
 }

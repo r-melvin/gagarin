@@ -145,13 +145,6 @@ struct LineTrail_5F5280
     void FUN_00556B30();
 };
 
-// The owning house, as slot 15 returns it.
-struct House_5F5280
-{
-    // CALLEE: GAMEMD 0x50B6F0 (declaration)
-    bool IsControlledByCurrentPlayer() const;
-};
-
 // GLOBAL: GAMEMD 0xAC13BC -- the height a bridge adds.
 extern int DAT_00AC13BC;
 
@@ -186,6 +179,7 @@ static inline CellPair_5F5B90 CellPairOf(short x, short y)
 // CALLEE: GAMEMD 0x7C5F00 -- __ftol, used by SetHealthPercentage.
 #include "rules_class.h"
 #include "_layout/foot_class.h"
+#include "_layout/house_class.h"
 #include "_layout/map_0087f7e8.h"
 #include "loco_com.h"
 
@@ -576,15 +570,21 @@ void ObjectClass::vf_10(void* target, bool removed)
     }
 }
 
+// The checked techno test expanded inline: a null guard, then the flag-bit read, carried through a
+// result local (retail keeps that local's byte in the frame).
+static inline bool ObjectFlagIsTechno(ObjectClass* object)
+{
+    bool result = false;
+    if (object != 0) {
+        result = object->Flags.IsTechno;
+    }
+    return result;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5F5280
-// PARTIAL 1.8% positional (82.1% aligned): retail keeps a one-byte stack copy
-// of the techno bit (`PUSH ECX` frame, `AND CL,1; MOV [ESP+0xF],CL`) that cl
-// tests in place (`TEST byte ptr [ESI+0x14],1`), shifting every offset. Tried
-// the plain test below, the bit assigned to a bool local inside the condition
-// and an inline techno-cast helper (0.0%).
-// Detach the line trailer; deselect unless this object is neither `removed`
-// nor (owned by the player's side or a techno whose slot 202 holds); drop the
+// Detach the line trailer; deselect when `removed`, when it has no house, or
+// unless the house is the player's or the object is a techno whose slot 202 holds; drop the
 // map's focus if it is on this object; announce the expiring pointer.
 void ObjectClass::vf_55(bool removed)
 {
@@ -592,19 +592,19 @@ void ObjectClass::vf_55(bool removed)
         ((LineTrail_5F5280*)LineTrailer)->FUN_00556B30();
         LineTrailer = 0;
     }
-    House_5F5280* house = (House_5F5280*)vf_15();
+    HouseClass* house = vf_15();
     bool keep = false;
     if (!removed) {
         // Retail tests this as a literal branch: test esi,esi / je 0x5F52D2 at 0x5F52B2, then the +0x14 bit-0 read (not a kind mask).
         // THISNULL: GAMEMD 0x459F40
-        if (this != 0 && Flags.IsTechno) {
+        if (ObjectFlagIsTechno(this)) {
             Techno_5F5850* techno = (Techno_5F5850*)this;
             if ((techno->*techno->Vtbl->At_328)()) {
                 keep = true;
             }
         }
     }
-    if (removed || !((house != 0 && house->IsControlledByCurrentPlayer()) || keep)) {
+    if (removed || house == 0 || !(house->IsControlledByCurrentPlayer() || keep)) {
         vf_84();
     }
     if (DAT_0087F7E8.FUN_004AEB10() == this) {

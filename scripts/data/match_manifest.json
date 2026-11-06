@@ -28481,9 +28481,9 @@
   "len": "0xF5",
   "name": "Matrix3D::FromQuaternion",
   "status": "partial",
-  "pct": 5.1,
-  "best_pct": 5.1,
-  "best_at": "cf203011"
+  "pct": 19.8,
+  "best_pct": 19.8,
+  "best_at": "81aa71d7"
  },
  {
   "tu": "match/matrix3d_build_methods.cpp",
@@ -70630,10 +70630,8 @@
   "sym": "?vf_55@ObjectClass@@UAEX_N@Z",
   "len": "0x9b",
   "name": "ObjectClass::vf_55",
-  "status": "partial",
-  "pct": 1.8,
-  "best_pct": 1.8,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/tu165_object_class.cpp",
@@ -72601,10 +72599,8 @@
   "sym": "?FUN_005C1980@@YIHXZ",
   "len": "0x8e",
   "name": "FUN_005C1980",
-  "status": "partial",
-  "pct": 11.9,
-  "best_pct": 11.9,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/MPCoop.cpp",
@@ -94590,10 +94586,8 @@
   "sym": "?FUN_00635DF0@PlanningNodeClass@@QAE?AURectangleStruct@@XZ",
   "len": "0x91",
   "name": "PlanningNodeClass::FUN_00635DF0",
-  "status": "partial",
-  "pct": 45.8,
-  "best_pct": 45.8,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/PlanMgr.cpp",
@@ -94827,9 +94821,9 @@
   "len": "0x62",
   "name": "FUN_638C70",
   "status": "partial",
-  "pct": 37.0,
-  "best_pct": 37.0,
-  "best_at": "cf203011"
+  "pct": 69.8,
+  "best_pct": 69.8,
+  "best_at": "81aa71d7"
  },
  {
   "tu": "match/PlanMgr.cpp",
@@ -99386,10 +99380,8 @@
   "sym": "?FUN_00731AA0@@YA_NXZ",
   "len": "0x44",
   "name": "FUN_00731AA0",
-  "status": "partial",
-  "pct": 3.1,
-  "best_pct": 3.1,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/UICmnds.cpp",
@@ -99415,10 +99407,8 @@
   "sym": "?FUN_00732050@@YAPAV?$DynamicVectorClass@PAVTechnoClass@@@@XZ",
   "len": "0xb5",
   "name": "FUN_00732050",
-  "status": "partial",
-  "pct": 34.7,
-  "best_pct": 34.7,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/UICmnds.cpp",
@@ -100433,10 +100423,8 @@
   "sym": "?FUN_00730EA0@@YAXXZ",
   "len": "0x81",
   "name": "FUN_00730EA0",
-  "status": "partial",
-  "pct": 5.9,
-  "best_pct": 5.9,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/UICmnds.cpp",
@@ -100453,10 +100441,8 @@
   "sym": "?FUN_00730FE0@@YAXXZ",
   "len": "0x74",
   "name": "FUN_00730FE0",
-  "status": "partial",
-  "pct": 6.5,
-  "best_pct": 6.5,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/UICmnds.cpp",
@@ -100522,10 +100508,8 @@
   "sym": "?FUN_00731AF0@@YAXXZ",
   "len": "0xe5",
   "name": "FUN_00731AF0",
-  "status": "partial",
-  "pct": 2.6,
-  "best_pct": 2.6,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/UICmnds.cpp",
@@ -100534,9 +100518,9 @@
   "len": "0xb9",
   "name": "FUN_00731BF0",
   "status": "partial",
-  "pct": 2.7,
-  "best_pct": 2.7,
-  "best_at": "cf203011"
+  "pct": 83.8,
+  "best_pct": 83.8,
+  "best_at": "81aa71d7"
  },
  {
   "tu": "match/UICmnds.cpp",
@@ -100555,10 +100539,8 @@
   "sym": "?FUN_00731F70@@YIPAV?$DynamicVectorClass@PAVTechnoClass@@@@P6I_NPAVTechnoClass@@PAX@Z1@Z",
   "len": "0xd6",
   "name": "FUN_00731F70",
-  "status": "partial",
-  "pct": 34.1,
-  "best_pct": 34.1,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/UICmnds.cpp",
@@ -147809,14 +147791,11 @@
  {
   "tu": "match/connection_point_lifetime_methods.cpp",
   "addr": "0x4A0870",
-  "len": "0x5c",
   "sym": "??0ConnectionPointClass@@QAE@PBU_GUID@@PAUIUnknown@@@Z",
+  "len": "0x5c",
   "name": "ConnectionPointClass::ConnectionPointClass",
-  "status": "partial",
-  "pct": 9.1,
-  "best_pct": 9.1,
-  "best_at": "cf203011",
-  "note": "Candidate calls an unresolved VectorClass constructor; retail inlines initialization. Do not assume a retail call target."
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/connection_point_lifetime_methods.cpp",

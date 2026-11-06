@@ -854,21 +854,24 @@ Quaternion FUN_00646730(const Matrix3D& m)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x646980
 // Rotation matrix of a unit quaternion; the fourth column is zero.
+// PARTIAL 19.8%: identical instruction multiset (the matrix is stored element by element as retail
+// does); remaining delta is x87 scheduling and which products retail spills.
 Matrix3D Matrix3D::FromQuaternion(const Quaternion& q)
 {
-    return Matrix3D(
-        1.0f - 2.0f * (q.Y * q.Y + q.Z * q.Z),
-        2.0f * (q.X * q.Y - q.W * q.Z),
-        2.0f * (q.X * q.Z + q.W * q.Y),
-        0.0f,
-        2.0f * (q.X * q.Y + q.W * q.Z),
-        1.0f - 2.0f * (q.X * q.X + q.Z * q.Z),
-        2.0f * (q.Y * q.Z - q.W * q.X),
-        0.0f,
-        2.0f * (q.X * q.Z - q.W * q.Y),
-        2.0f * (q.Y * q.Z + q.W * q.X),
-        1.0f - 2.0f * (q.X * q.X + q.Y * q.Y),
-        0.0f);
+    Matrix3D m;
+    m.Row[0][0] = 1.0f - 2.0f * (q.Y * q.Y + q.Z * q.Z);
+    m.Row[0][1] = 2.0f * (q.X * q.Y - q.W * q.Z);
+    m.Row[0][2] = 2.0f * (q.X * q.Z + q.W * q.Y);
+    m.Row[0][3] = 0.0f;
+    m.Row[1][0] = 2.0f * (q.X * q.Y + q.W * q.Z);
+    m.Row[1][1] = 1.0f - 2.0f * (q.X * q.X + q.Z * q.Z);
+    m.Row[1][2] = 2.0f * (q.Y * q.Z - q.W * q.X);
+    m.Row[1][3] = 0.0f;
+    m.Row[2][0] = 2.0f * (q.X * q.Z - q.W * q.Y);
+    m.Row[2][1] = 2.0f * (q.Y * q.Z + q.W * q.X);
+    m.Row[2][2] = 1.0f - 2.0f * (q.X * q.X + q.Y * q.Y);
+    m.Row[2][3] = 0.0f;
+    return m;
 }
 
 // BEGIN defined globals (define_globals.py)
