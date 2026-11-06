@@ -102956,11 +102956,8 @@
   "sym": "?Load@TeamClass@@UAGJPAUIStream@@@Z",
   "len": "0xF0",
   "name": "TeamClass::Load",
-  "status": "partial",
-  "pct": 100.0,
-  "best_pct": 100.0,
-  "best_at": "cf203011",
-  "note": "Raw bytes and function relocation targets match; TeamClass vtable/provider closure remains open."
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/tu235_team_class.cpp",
@@ -102968,10 +102965,8 @@
   "sym": "?vf_13@TeamClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x183",
   "name": "TeamClass::vf_13",
-  "status": "partial",
-  "pct": 100.0,
-  "best_pct": 100.0,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/mathtbl_init_6f0470.cpp",
@@ -103319,9 +103314,10 @@
   "len": "0x375",
   "name": "FUN_00647260",
   "status": "partial",
-  "pct": 3.2,
+  "pct": 3.0,
   "best_pct": 3.2,
-  "best_at": "cf203011"
+  "best_at": "cf203011",
+  "lowered_reason": "stored pct was stale; re-measured with partial_score at base 5cb47647"
  },
  {
   "tu": "match/Queue.cpp",
@@ -103505,9 +103501,10 @@
   "len": "0xbe8",
   "name": "?FUN_0064CDA0@@YIXHH@Z",
   "status": "partial",
-  "pct": 1.8,
+  "pct": 1.5,
   "best_pct": 1.8,
-  "best_at": "cf203011"
+  "best_at": "cf203011",
+  "lowered_reason": "stored pct was stale; re-measured with partial_score at base 5cb47647"
  },
  {
   "tu": "match/Queue.cpp",
