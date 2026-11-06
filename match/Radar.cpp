@@ -1261,23 +1261,23 @@ void RadarClass::vf_10(int* key, Point2D* where)
 {
     DisplayClass::vf_10(key, where);
     int offset = MouseDrawFlag ? MouseViewBoundWidth : 0;
-    if (DAT_00B04A00 + offset <= where->X &&
-        where->X < DAT_00B04A00 + offset + DAT_00B04A08 &&
-        DAT_00B04A04 <= where->Y &&
+    int base = DAT_00B04A00 + offset;
+    if (where->X >= base &&
+        where->X < DAT_00B04A08 + base &&
+        where->Y >= DAT_00B04A04 &&
         where->Y < DAT_00B04A04 + DAT_00B04A0C)
         Map_0087F7E8.MouseClass::vf_19(0, false);
-    if (DAT_00B048C8 + offset <= where->X &&
-        where->X < DAT_00B048C8 + offset + DAT_00B048D0 &&
-        DAT_00B048CC <= where->Y &&
+    base = DAT_00B048C8 + offset;
+    if (where->X >= base &&
+        where->X < DAT_00B048D0 + base &&
+        where->Y >= DAT_00B048CC &&
         where->Y < DAT_00B048CC + DAT_00B048D4)
         Map_0087F7E8.MouseClass::vf_19(0, false);
 
     if (*key == 0x80F2) {
-        if (Session_00A8B238.GameMode == 0) {
-            DAT_00A8EDA0 = 9;
-        } else if ((Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) &&
-                   DAT_00A8B23C != 0 && DAT_00A8B23C->vf_2() &&
-                   DAT_00A8B23C->vf_1()) {
+        if (Session_00A8B238.GameMode == 0 ||
+            ((Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) &&
+             DAT_00A8B23C != 0 && DAT_00A8B23C->vf_2() && DAT_00A8B23C->vf_1())) {
             DAT_00A8EDA0 = 9;
         } else {
             DAT_00A8EDA0 = 8;

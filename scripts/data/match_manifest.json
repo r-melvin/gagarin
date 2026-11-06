@@ -58263,9 +58263,9 @@
   "len": "0x161",
   "name": "GaugeClass::Action",
   "status": "partial",
-  "pct": 45.7,
-  "best_pct": 45.7,
-  "best_at": "cf203011"
+  "pct": 67.9,
+  "best_pct": 67.9,
+  "best_at": "0f5aedbf"
  },
  {
   "tu": "match/controls_gauge.cpp",
@@ -59576,9 +59576,9 @@
   "len": "0x171",
   "name": "FUN_004116a0",
   "status": "partial",
-  "pct": 4.4,
-  "best_pct": 4.4,
-  "best_at": "cf203011"
+  "pct": 18.4,
+  "best_pct": 18.4,
+  "best_at": "0f5aedbf"
  },
  {
   "tu": "match/audio_stream_slot_methods.cpp",
@@ -105724,9 +105724,9 @@
   "len": "0x173",
   "name": "RadarClass::vf_10",
   "status": "partial",
-  "pct": 4.1,
-  "best_pct": 4.1,
-  "best_at": "cf203011"
+  "pct": 6.7,
+  "best_pct": 6.7,
+  "best_at": "0f5aedbf"
  },
  {
   "tu": "match/Radar.cpp",

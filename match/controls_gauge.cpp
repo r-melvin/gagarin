@@ -180,11 +180,11 @@ int GaugeClass::Draw(int forced)
 }
 
 // FUNCTION: GAMEMD 0x4E2830
-// CAPPED at 45.7% (64 of 140 instructions; multiset delta: retail has 1 `jl`; ours has 1 `mov`, 1 `test`,
-// 1 `jge`, 1 `jg` more). The control flow and the lazily saved EBP match. The loop temporaries
-// `unknown_38` (read before each `vf_40` call) use ECX/EDX in retail, but ours uses the EBP that is
-// still allocated to `thumbStart`, and the `mov`/`test` count differs by one pair. Variants tried: goto-based flow, a `pressed` local, an inline `MouseAlongAxis()`
-// helper, and the else-branch form that now builds the shared forward tail.
+// PARTIAL 67.9% (multiset identical). The thumb walk-back is `while (level < Value && unknown_38 > 0)`, which
+// gives retail's rotated loop (bottom `jl` back to the unknown_38 test). Residual: retail saves EBP lazily and
+// holds only the thumb start in it (unknown_38 reloads use ECX); here EBP stays live to the end and the reloads
+// use it. Variants tried: goto flow, a `pressed` local, an inline MouseAlongAxis() helper, `mouse` reused as the
+// loop value, the grab distance in a local (63.5%).
 int GaugeClass::Action(unsigned flags, unsigned* key, int modifier)
 {
     if (!unknown_2D)
@@ -200,12 +200,10 @@ int GaugeClass::Action(unsigned flags, unsigned* key, int modifier)
             else
                 unknown_38 = 0;
 
-            if (vf_40(MouseAlongAxis() - unknown_38) < Value) {
-                while (unknown_38 > 0) {
-                    unknown_38--;
-                    if (vf_40(MouseAlongAxis() - unknown_38) >= Value)
-                        break;
-                }
+            int level = vf_40(MouseAlongAxis() - unknown_38);
+            while (level < Value && unknown_38 > 0) {
+                unknown_38--;
+                level = vf_40(MouseAlongAxis() - unknown_38);
             }
         }
         if (!SetValue(vf_40(MouseAlongAxis() - unknown_38))) {

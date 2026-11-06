@@ -195,17 +195,14 @@ unsigned __cdecl FUN_004116a0(StreamSampleView* sample)
         }
         else
         {
-            unsigned half = size >> 1;
-            if (play < half)
+            size >>= 1;
+            if (play >= size)
             {
-                if (position > 0)
-                {
-                    position += half + play;
-                }
+                position += play - size;
             }
-            else
+            else if (position > 0)
             {
-                position += play - half;
+                position += play + size;
             }
         }
     }
@@ -215,7 +212,7 @@ unsigned __cdecl FUN_004116a0(StreamSampleView* sample)
     {
         bytes = 0;
     }
-    else if (bytes != 0 && bytes <= slot->LastBytes)
+    else if (bytes > 0 && bytes <= slot->LastBytes)
     {
         if (elapsed > slot->LastTime)
         {
