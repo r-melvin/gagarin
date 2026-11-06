@@ -1577,7 +1577,7 @@ int BuildingClass::vf_101(int a1, int message, int a3)
             return 0;
         }
         if (vf_97() == 0x12 || vf_97() == 0x13 || BState == 0
-            || (!DAT_00A8E7AC && !HasFreeLinkFor(from) && !Type->bools_16A4[10] && !Type->bools_16A4[11])) {
+            || (!DAT_00A8E7AC && !HasFreeLinkFor(from) && !Type->UnitAbsorb && !Type->InfantryAbsorb)) {
             return 10;
         }
         if (from->vf_33()->MovementZone != 5) {
@@ -1589,8 +1589,8 @@ int BuildingClass::vf_101(int a1, int message, int a3)
         if (from->vf_33()->BalloonHover || !HasPower) {
             return 10;
         }
-        if (Type->bools_16A4[10] || Type->bools_16A4[11]) {
-            if ((from->vf_11() == 1 && !Type->bools_16A4[10]) || (from->vf_11() == 0xF && !Type->bools_16A4[11])) {
+        if (Type->UnitAbsorb || Type->InfantryAbsorb) {
+            if ((from->vf_11() == 1 && !Type->UnitAbsorb) || (from->vf_11() == 0xF && !Type->InfantryAbsorb)) {
                 return 10;
             }
             if (from->CaptureManager && static_cast<CaptureManagerClass*>(from->CaptureManager)->IsControllingSomething()) {
@@ -1600,22 +1600,22 @@ int BuildingClass::vf_101(int a1, int message, int a3)
                 return 1;
             }
         }
-        if (Type->bools_16A4[9]) {
+        if (Type->Grinding) {
             return 1;
         }
-        if (Type->bools_16A4[7]) {
+        if (Type->Bunker) {
             if (!from->FUN_0070FB50() || vf_158(0x23, from) == 1) {
                 return 10;
             }
             return 1;
         }
-        if (Type->bools_16A4[5]) {
+        if (Type->UnitRepair) {
             if ((from->vf_11() != 1 && from->vf_11() != 2) || vf_158(0x23, from) == 1) {
                 return 10;
             }
             return 1;
         }
-        if ((Type->bools_16A4[30] || Type->bools_16A4[29]) && from->vf_11() == 0xF) {
+        if ((Type->Armory || Type->Hospital) && from->vf_11() == 0xF) {
             TechnoClass* other = !from ? 0 : (from->vf_11() == 0xF ? from : 0);
             if (other->CaptureManager && static_cast<CaptureManagerClass*>(other->CaptureManager)->IsControllingSomething()) {
                 return 10;
@@ -1625,15 +1625,15 @@ int BuildingClass::vf_101(int a1, int message, int a3)
             }
             return Ammo ? 1 : 10;
         }
-        if (Type->bools_16A4[39]) {
+        if (Type->Helipad) {
             return from->vf_rtti_3() == 2 ? 1 : 10;
         }
-        if (Type->bools_16A4[15] && from->vf_11() == 1 && static_cast<UnitTypeClass*>(static_cast<UnitClass*>(from)->Type)->Harvester) {
+        if (Type->DockUnload && from->vf_11() == 1 && static_cast<UnitTypeClass*>(static_cast<UnitClass*>(from)->Type)->Harvester) {
             if (DAT_00A8E7AC || !Passengers.FirstPassenger) {
                 return 1;
             }
         }
-        if (Type->bools_16A4[24] && from->vf_11() == 1 && static_cast<UnitTypeClass*>(static_cast<UnitClass*>(from)->Type)->Weeder) {
+        if (Type->Weeder && from->vf_11() == 1 && static_cast<UnitTypeClass*>(static_cast<UnitClass*>(from)->Type)->Weeder) {
             if (DAT_00A8E7AC || !Passengers.FirstPassenger) {
                 return 1;
             }
@@ -1643,21 +1643,21 @@ int BuildingClass::vf_101(int a1, int message, int a3)
         if (vf_97() == 0x13) {
             return 10;
         }
-        if (Type->bools_16A4[10] || Type->bools_16A4[11]) {
+        if (Type->UnitAbsorb || Type->InfantryAbsorb) {
             return 1;
         }
-        if (Type->bools_16A4[5] || Type->bools_16A4[6] || Type->bools_16A4[29] || Type->bools_16A4[30]) {
+        if (Type->UnitRepair || Type->UnitReload || Type->Hospital || Type->Armory) {
             IsReadyToCommence = 1;
             vf_122(0x14, 0);
             from->vf_122(0, 0);
             return 1;
         }
-        if (Type->bools_16A4[7]) {
+        if (Type->Bunker) {
             IsReadyToCommence = 1;
             vf_122(0x14, 0);
             return 1;
         }
-        if (Type->bools_16A4[15]) {
+        if (Type->DockUnload) {
             from->vf_122(0x10, 0);
             return 1;
         }
@@ -1667,26 +1667,26 @@ int BuildingClass::vf_101(int a1, int message, int a3)
         if (!HasPower) {
             return 10;
         }
-        if (Type->bools_16A4[5] && ContainsLink(from) && vf_158(0x22, from) == 10) {
+        if (Type->UnitRepair && ContainsLink(from) && vf_158(0x22, from) == 10) {
             return 10;
         }
-        if (Type->bools_16A4[7] && ContainsLink(from) && !from->FUN_0070FB50()) {
+        if (Type->Bunker && ContainsLink(from) && !from->FUN_0070FB50()) {
             return 10;
         }
-        if (!Type->bools_16A4[29] && !Type->bools_16A4[30]) {
+        if (!Type->Hospital && !Type->Armory) {
             if (!ContainsLink(from) && HasFreeLinkFor(from)) {
                 vf_158(2, from);
                 ContainsLink(from);
             }
             bool needsRetry = false;
-            if (ContainsLink(from) && (Type->bools_16A4[15] || Type->bools_16A4[24])) {
+            if (ContainsLink(from) && (Type->DockUnload || Type->Weeder)) {
                 FootClass* other = !from ? 0 : (from->Flags.IsFoot ? static_cast<FootClass*>(from) : 0);
                 CellClass* cell = DAT_0087F7E8.FUN_00565730(vf_42(other));
                 if (other->Destination && cell != other->Destination) {
                     needsRetry = true;
                 }
             }
-            if (FUN_0065AD30(0) && (Type->bools_16A4[5] || Type->bools_16A4[7])) {
+            if (FUN_0065AD30(0) && (Type->UnitRepair || Type->Bunker)) {
                 CoordStruct there = FUN_0065AD30(0)->vf_18();
                 CoordStruct here = vf_18();
                 if (BuildingDistance(here, there) > 0x80) {
@@ -1697,7 +1697,7 @@ int BuildingClass::vf_101(int a1, int message, int a3)
                 return 1;
             }
             *param = this;
-            if (Type->bools_16A4[15] || Type->bools_16A4[24]) {
+            if (Type->DockUnload || Type->Weeder) {
                 Cell here = vf_110();
                 Cell target = Cell(here.X + 3, here.Y + 1);
                 *param = DAT_0087F7E8.FUN_005657A0(&target);
@@ -1711,7 +1711,7 @@ int BuildingClass::vf_101(int a1, int message, int a3)
                 from->vf_93(DAT_0089C848, 1, 1);
                 return 1;
             }
-            if (!Type->bools_16A4[39]) {
+            if (!Type->Helipad) {
                 return 1;
             }
             *param = this;
@@ -1743,7 +1743,7 @@ int BuildingClass::vf_101(int a1, int message, int a3)
         if (Passengers.FirstPassenger != 0 || !HasFreeLinkFor(from) || InLimbo || Owner != from->vf_15()) {
             return 10;
         }
-        if (Type->bools_16A4[23] || Type->bools_16A4[5] || Type->bools_16A4[24]) {
+        if (Type->Refinery || Type->UnitRepair || Type->Weeder) {
             return 1;
         }
         return 10;
@@ -1754,7 +1754,7 @@ int BuildingClass::vf_101(int a1, int message, int a3)
     case 0xC:
         if (vf_97() != 0x13) {
             vf_122(5, 0);
-            if (Type->bools_16A4[21]) {
+            if (Type->ConstructionYard) {
                 DestroyNthAnim(7);
                 DestroyNthAnim(0x12);
                 double ratio = FUN_005F5C60();
@@ -1772,7 +1772,7 @@ int BuildingClass::vf_101(int a1, int message, int a3)
         FUN_006F4AB0(a1, message, a3);
         return 1;
     case 8:
-        if (Type->bools_16A4[5] || Type->bools_16A4[7]) {
+        if (Type->UnitRepair || Type->Bunker) {
             CoordStruct there = from->vf_18();
             CoordStruct here = vf_18();
             if (BuildingDistance(here, there) < 0x180) {
@@ -1780,12 +1780,12 @@ int BuildingClass::vf_101(int a1, int message, int a3)
             }
         }
         FUN_006F4AB0(a1, message, a3);
-        if (!Type->bools_16A4[25] && !Type->bools_16A4[5] && !Type->bools_16A4[7]) {
+        if (!Type->WeaponsFactory && !Type->UnitRepair && !Type->Bunker) {
             return 1;
         }
         return 0x17;
     case 0xD:
-        if (Type->bools_16A4[25]) {
+        if (Type->WeaponsFactory) {
             return 1;
         }
         break;
@@ -1849,7 +1849,7 @@ void BuildingClass::vf_70(Point2D* point, RectangleStruct* clip)
     SHPStruct* shape = static_cast<SHPStruct*>(vf_27());
     if (!shape)
         return;
-    if (Type->bools_1700[1])
+    if (Type->InvisibleInGame)
         return;
     if (vf_97() == 0x18 && !UnloadTimer.FUN_004A51D0())
         return;
@@ -1973,7 +1973,7 @@ void BuildingClass::vf_313(Point2D* pos, RectangleStruct* clip)
             if (frame < 0) {
                 frame = 0;
             }
-            if (FUN_005F5C60() <= RulesInstance->ConditionYellow && Type->bools_1700[0]) {
+            if (FUN_005F5C60() <= RulesInstance->ConditionYellow && Type->DamagedDoor) {
                 frame += Type->DoorStages;
             }
             int sortKey = -5 - FUN_006D20E0(FUN_005F5F30());
@@ -1985,14 +1985,14 @@ void BuildingClass::vf_313(Point2D* pos, RectangleStruct* clip)
         }
     }
 
-    if (Type->bools_16A4[33]) {
+    if (Type->TurretAnimIsVoxel) {
         bool inSale = false;
         if (CurrentMission == 0x12 || QueuedMission == 0x12) {
             if (StageClass::Value < Type->BuildingAnimFrame[0].Count + Type->BuildingAnimFrame[0].Frame - 1) {
                 inSale = true;
             }
         }
-        if (((CurrentMission != 0x13 || StageClass::Value < 1) && !inSale) || Type->bools_16A4[38]) {
+        if (((CurrentMission != 0x13 || StageClass::Value < 1) && !inSale) || Type->Artillary) {
             int tint;
             int shadowTint;
             if (DAT_00887418) {
@@ -2086,7 +2086,7 @@ void BuildingClass::vf_313(Point2D* pos, RectangleStruct* clip)
                        BA4At(cell)->Intensity_Normal, color, 0);
             }
         }
-    } else if (Type->bools_16A4[34]) {
+    } else if (Type->BarrelAnimIsVoxel) {
         bool inSale = false;
         if (CurrentMission == 0x12 || QueuedMission == 0x12) {
             if (StageClass::Value < Type->BuildingAnimFrame[0].Count + Type->BuildingAnimFrame[0].Frame - 1) {
@@ -2134,7 +2134,7 @@ int BuildingClass::vf_187()
 
     BuildingTypeClass* type = Type;
 
-    if (type->bools_16A4[0x16C5 - 0x16A4]) {
+    if (type->TurretAnimIsVoxel) {
         return type->BuildingAnim[9].ZAdjust + value;
     }
 
@@ -2285,7 +2285,7 @@ bool BuildingClass::vf_73(int mark)
             TechnoClass::vf_73(0);
             goto refuse;
         }
-        if (Type->bools_1570[1]) {
+        if (Type->Wall) {
             BA4Spawned* spawned = new BA4Spawned(Type->ToOverlay, &cell, Owner->Type->ArrayIndex2);
             vf_160(3);
             vf_62();
@@ -2418,7 +2418,7 @@ void BuildingClass::vf_23()
     }
 
     unsigned char damaged;
-    if (Type->bools_1570[0xB])
+    if (Type->CanBeOccupied)
         damaged = GetHealthPercentage() <= RulesInstance->ConditionRed;
     else
         damaged = GetHealthPercentage() <= RulesInstance->ConditionYellow;
@@ -2487,7 +2487,7 @@ void BuildingClass::vf_23()
     if (Airstrike != 0 && ((AirstrikeClass*)Airstrike)->Target == this)
         vf_73(2);
 
-    if (Type->bools_16A4[0x14] && Target != 0 && !((AbstractClass*)Target)->IsInAir())
+    if (Type->SAM && Target != 0 && !((AbstractClass*)Target)->IsInAir())
         vf_242(0);
 
     FUN_004509D0();
@@ -2500,7 +2500,7 @@ void BuildingClass::vf_23()
     if (vf_33()->IsGattling && FUN_0070DDF0() > 0)
         TurretAnimFrame++;
 
-    if (Ammo == 0 && !Type->bools_16A4[0x1D] && !Type->bools_16A4[0x1E])
+    if (Ammo == 0 && !Type->Hospital && !Type->Armory)
         Ammo = Type->Ammo;
 
     if (vf_97() != 1) {
@@ -2563,7 +2563,7 @@ void BuildingClass::vf_23()
     }
 
     FUN_004503F0();
-    if (Type->bools_1570[5]) {
+    if (Type->Overpowerable) {
         TechnoClass** list = Overpowerers.Items;
         for (int i = Overpowerers.GetCount() - 1; i >= 0; i--) {
             if (list[i]->Target != this && i < Overpowerers.GetCount()) {
@@ -2578,7 +2578,7 @@ void BuildingClass::vf_23()
         else
             IsOverpowered = false;
     }
-    if (Type->bools_1570[0xB])
+    if (Type->CanBeOccupied)
         FUN_00458200();
     FUN_00450630();
     if (Type->Factory != 0)
@@ -2586,7 +2586,7 @@ void BuildingClass::vf_23()
 
     if (C4Applied) {
         if (TimeLeft(C4Timer) == 0) {
-            if (Type->bools_16A4[0x12]) {
+            if (Type->BridgeRepairHut) {
                 bool special = false;
                 for (int y = -2; y < 3; y++) {
                     for (int x = -2; x < 3; x++) {
@@ -2660,7 +2660,7 @@ bool BuildingClass::vf_54(const CoordStruct& where, int dir)
             if (cellOwner == Owner && mc->OverlayTypeIndex == Type->ToOverlay->ArrayIndex) {
                 Owner->FUN_004FCE80(&mc->MapCoords, 1);
             }
-        } else if (Type->bools_16A4[19]) {
+        } else if (Type->Gate) {
             CellStruct cell = BA4Off(where.X / 256, where.Y / 256);
             for (CellStruct* p = Type->vf_36(1); !(p->X == 0x7FFF && p->Y == 0x7FFF); p++) {
                 CellClass* mc = BA4At(*p + cell);
@@ -2672,7 +2672,7 @@ bool BuildingClass::vf_54(const CoordStruct& where, int dir)
                     Owner->FUN_004FCE80(&mc->MapCoords, 1);
                 }
                 BuildingClass* neighbour = mc->GetBuilding();
-                if (neighbour && neighbour->Type->bools_16A4[27]) {
+                if (neighbour && neighbour->Type->LaserFence) {
                     if (neighbour->vf_14() == vf_14()) {
                         CellStruct copy = mc->MapCoords;
                         copy.FUN_00453240();
@@ -2682,7 +2682,7 @@ bool BuildingClass::vf_54(const CoordStruct& where, int dir)
         }
     }
 
-    if (Type->bools_1570[1]) {
+    if (Type->Wall) {
         if (vf_107(DAT_0087F7E8.FUN_00565730(where), -1, -1, 0, 1) == 0) {
             ObjectClass* created = Type->ToOverlay->vf_35(Owner);
             if (created && created->vf_54(where, 0)) {
@@ -2744,14 +2744,14 @@ bool BuildingClass::vf_54(const CoordStruct& where, int dir)
         other->Upgrades[other->UpgradeLevel] = Type;
         Owner->FUN_0050B1D0();
         Owner->RecheckTechTree = 1;
-        if (Type->bools_1760[3]) {
+        if (Type->IsThreatRatingNode) {
             Owner->AcquiredThreatNode();
         }
         vf_62();
         return true;
     }
 
-    if (Type->bools_16A4[27]) {
+    if (Type->LaserFence) {
         DirStruct facing;
         facing.Whole = dir;
         if ((((facing.Whole >> 12) + 1) & 6) == 4) {
@@ -2760,11 +2760,11 @@ bool BuildingClass::vf_54(const CoordStruct& where, int dir)
             LaserFenceFrame = 12;
         }
     }
-    if (ok && Type->bools_16A4[26]) {
+    if (ok && Type->LaserFencePost) {
         LaserFenceFrame = 0;
         CellStruct cell = BA4Off(where.X / 256, where.Y / 256);
         BuildingClass* other = BA4At(cell)->GetBuilding();
-        if (other && other->Type->bools_16A4[27]) {
+        if (other && other->Type->LaserFence) {
             if (other->vf_14() == vf_14()) {
                 other->vf_62();
             }
@@ -2773,7 +2773,7 @@ bool BuildingClass::vf_54(const CoordStruct& where, int dir)
     if (!TechnoClass::vf_54(where, dir)) {
         goto refuse;
     }
-    if (Type->bools_16A4[35]) {
+    if (Type->CloakGenerator) {
         Owner->HasCloakingRanges = 1;
     }
     if (!IsAlive) {
@@ -2819,7 +2819,7 @@ skip:
         }
         LightSource->Activate(0);
     }
-    if (Type->bools_16A4[26] && !DAT_00A8E7AC && IsAlive && !InLimbo) {
+    if (Type->LaserFencePost && !DAT_00A8E7AC && IsAlive && !InLimbo) {
         FUN_00452DC0(0);
         FUN_00452DC0(2);
         FUN_00452DC0(4);
@@ -2859,7 +2859,7 @@ skip:
         BA4At(base + BA4Off(0, -1))->FUN_00480630(0);
         BA4At(base + BA4Off(0, 3))->FUN_00480630(0);
     }
-    if (Type->bools_154B[0]) {
+    if (Type->HasSpotlight) {
         Spotlight = new BuildingLightClass(this);
     }
     IsPrimaryFactory = 0;
@@ -2872,31 +2872,31 @@ skip:
             break;
         }
     }
-    if (Type->bools_16A4[5]) {
+    if (Type->UnitRepair) {
         Owner->UnitRepairStations.AddItem(this);
     }
-    if (Type->bools_16A4[9]) {
+    if (Type->Grinding) {
         Owner->Grinders.AddItem(this);
     }
-    if (Type->bools_16A4[10] || Type->bools_16A4[11]) {
+    if (Type->UnitAbsorb || Type->InfantryAbsorb) {
         Owner->Absorbers.AddItem(this);
     }
-    if (Type->bools_16A4[7]) {
+    if (Type->Bunker) {
         Owner->Bunkers.AddItem(this);
     }
-    if (Type->bools_1570[11] && Type->TechLevel > -1) {
+    if (Type->CanBeOccupied && Type->TechLevel > -1) {
         Owner->Occupiables.AddItem(this);
     }
-    if (Type->bools_16A4[8]) {
+    if (Type->Cloning) {
         Owner->CloningVats.AddItem(this);
     }
-    if (Type->bools_16A4[12]) {
+    if (Type->SecretLab) {
         Owner->SecretLabs.AddItem(this);
     }
     if (Type->PsychicDetectionRadius > 0) {
         Owner->PsychicDetectionBuildings.AddItem(this);
     }
-    if (Type->bools_16A4[41]) {
+    if (Type->FactoryPlant) {
         Owner->FactoryPlants.AddItem(this);
         Owner->CalculateCostMultipliers();
     }
@@ -2980,10 +2980,10 @@ int BuildingClass::vf_91(int* damage, int distance, void* warheadArg, void* sour
         }
     }
 
-    if (Type->bools_16A4[27] && !ignoreDefenses) {
+    if (Type->LaserFence && !ignoreDefenses) {
         return 0;
     }
-    if (Type->bools_16A4[18] && Type->Immune) {
+    if (Type->BridgeRepairHut && Type->Immune) {
         return 0;
     }
 
@@ -3012,7 +3012,7 @@ int BuildingClass::vf_91(int* damage, int distance, void* warheadArg, void* sour
                 CoordStruct from = occupant->vf_18();
                 CoordStruct to = vf_18();
                 CoordStruct delta = *c.FUN_0041C230(to.X - from.X, to.Y - from.Y, to.Z - from.Z);
-                if (delta.FUN_0041C380() >= 256 && !Type->bools_16A4[39]) {
+                if (delta.FUN_0041C380() >= 256 && !Type->Helipad) {
                     vf_158(0x17, occupant);
                     occupant->QueueUpToEnter = 0;
                 } else {
@@ -3025,7 +3025,7 @@ int BuildingClass::vf_91(int* damage, int distance, void* warheadArg, void* sour
                 occupants.Clear();
                 occupants.SetCapacity(capacity, 0);
             }
-            if (Type->bools_1570[11]) {
+            if (Type->CanBeOccupied) {
                 FUN_00457DE0(0, 0);
             }
             if (LightSource) {
@@ -3178,7 +3178,7 @@ void BuildingClass::vf_9()
             Veterancy.FUN_00750090(1);
         }
     }
-    if (Type && Type->bools_16A4[0x16B0 - 0x16A4]) {
+    if (Type && Type->SecretLab) {
         DAT_008B41E0.AddItem(this);
     }
 }
@@ -3192,7 +3192,7 @@ bool BuildingClass::vf_80(int mode, CellStruct* cell, int a3, int a4)
         vf_222(1, DAT_0087F7E8.FUN_005657A0(cell), 0, 0);
     } else if (mode == 6 || mode == 1) {
         bool blocked = false;
-        if (!Type->bools_16A4[0x16B9 - 0x16A4]
+        if (!Type->ConstructionYard
             || (Owner->IsControlledByHuman() && Session_00A8B238.GameMode && Session_00A8B238.unknown_18.MCVRedeploy && MindControlledBy == 0)) {
             if (Type->UndeploysInto != 0 || vf_161()) {
                 FUN_00443860(cell, 1);
@@ -3219,7 +3219,7 @@ void BuildingClass::vf_242(AbstractClass* target)
     if (CurrentMission != 0x13 && vf_212()) {
         if (target && vf_254(0)->WeaponType && !vf_254(0)->WeaponType->Projectile->AA && !IsCloseEnoughToAttack(target)) {
             TechnoClass::vf_242(0);
-            if (Type->bools_16A4[0x16C4 - 0x16A4] || Type->bools_16A4[0x16CA - 0x16A4]) {
+            if (Type->TickTank || Type->Artillary) {
                 if (!Owner->IsControlledByHuman() && !IsUnderEMP()) {
                     vf_122(0x13, 0);
                     vf_123();
@@ -3293,13 +3293,13 @@ bool BuildingClass::vf_53()
                 DamageFireAnims[i] = 0;
             }
         }
-        if (Type->bools_16A4[40] && ActuallyPlacedOnMap) {
+        if (Type->OrePurifier && ActuallyPlacedOnMap) {
             Owner->NumOrePurifiers--;
             if (Owner->NumOrePurifiers < 0) {
                 Owner->NumOrePurifiers = 0;
             }
         }
-        if (Type->bools_16A4[39] && ActuallyPlacedOnMap) {
+        if (Type->Helipad && ActuallyPlacedOnMap) {
             Owner->AirportDocks -= Type->NumberOfDocks;
             if (Owner->AirportDocks < 0) {
                 Owner->AirportDocks = 0;
@@ -3317,11 +3317,11 @@ bool BuildingClass::vf_53()
                 Owner->UnitsSelfHeal = 0;
             }
         }
-        if (Type->bools_16A4[26]) {
+        if (Type->LaserFencePost) {
             FUN_00452A40(0);
         }
         if (!DAT_00A8E7AC) {
-            if (Type->bools_16A4[36]) {
+            if (Type->SensorArray) {
                 vf_318(DAT_0089C818.raw_dword);
             }
             if (Type->bools_D20[17]) {
@@ -3332,13 +3332,13 @@ bool BuildingClass::vf_53()
             }
         }
         for (i = 0; i < 3; i++) {
-            if (Upgrades[i] && Upgrades[i]->bools_1760[3]) {
+            if (Upgrades[i] && Upgrades[i]->IsThreatRatingNode) {
                 anyUpgradeFlag = true;
                 break;
             }
         }
         if (!DAT_00A8E9A0) {
-            if (Type->bools_16A4[26] && !DAT_00A8E7AC) {
+            if (Type->LaserFencePost && !DAT_00A8E7AC) {
                 LaserFenceFrame = 0;
             }
             return true;
@@ -3395,7 +3395,7 @@ bool BuildingClass::vf_53()
     if (Type->Factory) {
         Owner->Update_FactoriesQueues(Type->Factory, Type->Naval, 0);
     }
-    if (Type->bools_16A4[26] && !DAT_00A8E7AC) {
+    if (Type->LaserFencePost && !DAT_00A8E7AC) {
         LaserFenceFrame = 0;
     }
     return result;
@@ -3485,7 +3485,7 @@ void BuildingClass::vf_103(int mode)
 void BuildingClass::vf_104(int mode)
 {
     if (!HasBuildUp) {
-        if (Type->bools_16A4[0x16C0 - 0x16A4]) {
+        if (Type->FirestormWall) {
             Type->vf_33(Owner);
             Owner->IsControlledByHuman();
             vf_53();
@@ -3526,10 +3526,10 @@ void BuildingClass::vf_104(int mode)
 int BuildingClass::vf_29(ObjectClass* obj, char flag)
 {
     int r;
-    if (Type->bools_1700[1]) {
+    if (Type->InvisibleInGame) {
         return 0;
     }
-    if (obj->vf_11() == 6 && ((BuildingClass*)obj)->Type->bools_1700[1]) {
+    if (obj->vf_11() == 6 && ((BuildingClass*)obj)->Type->InvisibleInGame) {
         return 0;
     }
     r = FUN_006FFEC0(obj, flag);
@@ -3544,7 +3544,7 @@ int BuildingClass::vf_29(ObjectClass* obj, char flag)
                     return r;
                 }
             }
-        } else if (!((Type->bools_16A4[0x16AE - 0x16A4] || Type->bools_16A4[0x16AF - 0x16A4]) && Passengers.NumPassengers > 0)) {
+        } else if (!((Type->UnitAbsorb || Type->InfantryAbsorb) && Passengers.NumPassengers > 0)) {
             if (vf_258() <= 0 && Type->Factory == 0) {
                 r = 0;
                 return r;
@@ -3560,7 +3560,7 @@ int BuildingClass::vf_29(ObjectClass* obj, char flag)
         if (vf_254(0)->WeaponType == 0) {
             goto checkTarget;
         }
-        if (!vf_254(0)->WeaponType->Projectile->AG || Type->bools_16A4[0x16C3 - 0x16A4]) {
+        if (!vf_254(0)->WeaponType->Projectile->AG || Type->EMPulseCannon) {
             r = 0;
         }
         if (CurrentMission == 0x13) {
@@ -3617,7 +3617,7 @@ checkTarget:
 int BuildingClass::vf_28(CellStruct* cell, char a, char b)
 {
     int r;
-    if (Type->bools_1700[1]) {
+    if (Type->InvisibleInGame) {
         return 0;
     }
     if (Type->UndeploysInto != 0 && a != 0) {
@@ -3661,7 +3661,7 @@ int BuildingClass::vf_28(CellStruct* cell, char a, char b)
         if (vf_254(0)->WeaponType == 0) {
             return r;
         }
-        if (!vf_254(0)->WeaponType->Projectile->AG || Type->bools_16A4[0x16C3 - 0x16A4]) {
+        if (!vf_254(0)->WeaponType->Projectile->AG || Type->EMPulseCannon) {
             r = 0;
         }
         if (CurrentMission == 0x13) {
@@ -3702,7 +3702,7 @@ CoordStruct BuildingClass::vf_18()
 CoordStruct BuildingClass::vf_42(AbstractClass* arg)
 {
     CoordStruct r;
-    if (Type->bools_16A4[0x16BC - 0x16A4]) {
+    if (Type->Weeder) {
         CellStruct c = vf_110();
         CellStruct shifted;
         shifted.X = c.X + 2;
@@ -3712,14 +3712,14 @@ CoordStruct BuildingClass::vf_42(AbstractClass* arg)
         r.Z = Location.Z;
         return r;
     }
-    if (Type->bools_16A4[0x16BB - 0x16A4]) {
+    if (Type->Refinery) {
         const CoordStruct& p = ObjectClass::vf_42(arg);
         r.X = p.X + 0x80;
         r.Y = p.Y;
         r.Z = p.Z;
         return r;
     }
-    if (Type->bools_16A4[0x16AB - 0x16A4] && arg) {
+    if (Type->Bunker && arg) {
         const CoordStruct& pa = arg->vf_18();
         const CoordStruct& pb = vf_18();
         int bx = pb.X;
@@ -3744,7 +3744,7 @@ CoordStruct BuildingClass::vf_42(AbstractClass* arg)
         r.Z = pc.Z;
         return r;
     }
-    if (!Type->bools_16A4[0x16CB - 0x16A4] && !Type->bools_16A4[0x16A9 - 0x16A4]) {
+    if (!Type->Helipad && !Type->UnitRepair) {
         return ObjectClass::vf_42(arg);
     }
     switch (Type->NumberOfDocks) {
@@ -3752,7 +3752,7 @@ CoordStruct BuildingClass::vf_42(AbstractClass* arg)
         return vf_18();
     case 1: {
         const CoordStruct& pc = vf_18();
-        CoordStruct* off = Type->DockingOffsets.Items;
+        TPoint3D<int>* off = Type->DockingOffsets.Items;
         r.X = off->X + pc.X;
         r.Y = off->Y + pc.Y;
         r.Z = off->Z + pc.Z;
@@ -3761,7 +3761,7 @@ CoordStruct BuildingClass::vf_42(AbstractClass* arg)
     default: {
         int idx = FindLinkIndex(arg);
         if (idx >= 0 && idx < Type->NumberOfDocks) {
-            CoordStruct* off = &Type->DockingOffsets.Items[idx];
+            TPoint3D<int>* off = &Type->DockingOffsets.Items[idx];
             const CoordStruct& pc = vf_18();
             r.X = off->X + pc.X;
             r.Y = off->Y + pc.Y;
@@ -3790,10 +3790,10 @@ int BuildingClass::vf_310(AbstractClass* target)
 // FUNCTION: GAMEMD 0x447E90
 CoordStruct BuildingClass::vf_19(AbstractClass* arg)
 {
-    if (Type->bools_16A4[0x16CB - 0x16A4]) {
+    if (Type->Helipad) {
         return vf_42(arg);
     }
-    if (!Type->bools_16A4[0x16A9 - 0x16A4] && !Type->bools_16A4[0x16AB - 0x16A4]) {
+    if (!Type->UnitRepair && !Type->Bunker) {
         return vf_18();
     }
     return vf_42(arg);
@@ -3807,9 +3807,9 @@ CoordStruct BuildingClass::vf_19(AbstractClass* arg)
 // before the absolute value of the facing difference; every operand order tried evaluates them the other way.
 int BuildingClass::vf_240(AbstractClass* target, int b, bool c)
 {
-    if (!Type->bools_1570[0x157B - 0x1570] || (Type->bools_1570[0x157C - 0x1570] && vf_258())) {
+    if (!Type->CanBeOccupied || (Type->CanOccupyFire && vf_258())) {
         if (!IsBeingDrained()) {
-            if (Type->bools_16A4[0x16C3 - 0x16A4]) {
+            if (Type->EMPulseCannon) {
                 return 6;
             }
             if (vf_97() != 0x13 && vf_97() != 0x12) {
@@ -3822,7 +3822,7 @@ int BuildingClass::vf_240(AbstractClass* target, int b, bool c)
                 int r = TechnoClass::vf_240(target, b, c);
                 if (r == 0 && vf_255()) {
                     DirStruct want = vf_314(target);
-                    int quant = Type->bools_16A4[0x16C5 - 0x16A4] ? 0 : 8;
+                    int quant = Type->TurretAnimIsVoxel ? 0 : 8;
                     short diff = PrimaryFacing.FUN_004C93D0().Raw;
                     diff -= want.Raw;
                     if (abs((short)(quant << 8)) < abs(diff)) {
@@ -3887,10 +3887,10 @@ bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
 {
     int i;
 
-    if (newOwner != Owner) {        if (AttachedBomb && !Type->bools_1570[11]) {
+    if (newOwner != Owner) {        if (AttachedBomb && !Type->CanBeOccupied) {
             AttachedBomb->Disarm();
         }
-        if (Type->bools_16A4[35]) {
+        if (Type->CloakGenerator) {
             newOwner->HasCloakingRanges = 1;
         }
         if (Owner->Type->MultiplayPassive && Type->ProduceCashStartup) {
@@ -3900,12 +3900,12 @@ bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
         unsigned int bit = 1 << (newOwner->Type->ArrayIndex2);
         if ((bit & DisplayProductionTo) != 0) {
             DisplayProductionTo = DisplayProductionTo - bit;
-            if (Type->bools_16A4) {
+            if (&Type->Radar) {
                 Owner->RadarVisibleTo = 0;
                 int count = Owner->Buildings.Count;
             for (i = 0; i < count; i++) {
                     BuildingClass* b = Owner->Buildings.Items[i];
-                    if (b && !b->InLimbo && b->Type->bools_16A4) {
+                    if (b && !b->InLimbo && &b->Type->Radar) {
                         Owner->RadarVisibleTo |= b->DisplayProductionTo;
                     }
                 }
@@ -3913,12 +3913,12 @@ bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
             }
         }
         IsPrimaryFactory = 0;
-        if (Type->bools_16A4[26]) {
+        if (Type->LaserFencePost) {
             FUN_00452A40(0);
         }
         if (Owner->IsControlledByCurrentPlayer() || newOwner->IsControlledByCurrentPlayer()) {
             if (!newOwner->Type->MultiplayPassive && announce) {
-                if (Type->bools_154B[7]) {
+                if (Type->NeedsEngineer) {
                     if (Owner != newOwner) {
                         if (Owner->IsControlledByCurrentPlayer()) {
                             FUN_00752700(s_EVA_TechBuildingLost_00818FC4, -1, -1);
@@ -3938,12 +3938,12 @@ bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
         }
         NeedsRedraw = 1;
         HasEngineer = 1;
-        if (Type->bools_154B[7]) {
+        if (Type->NeedsEngineer) {
             StuffEnabled = 1;
             if (LightSource) {
                 LightSource->Activate(0);
             }
-            if (Type->bools_16A4[26]) {
+            if (Type->LaserFencePost) {
                 CreateEndPost(false);
             }
             for (int k = 0; k < 21; k++) {
@@ -3964,7 +3964,7 @@ bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
                     object = 0;
                 } else if (vf_158(0x13, object) == 1) {
                     bool inRange = false;
-                    if (!Type->bools_16A4[25]) {
+                    if (!Type->WeaponsFactory) {
                         CoordStruct a = vf_42(object);
                         CoordStruct b = object->vf_18();
                         CoordStruct scratchC;
@@ -4007,36 +4007,36 @@ bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
                 break;
             }
         }
-        if (Type->bools_16A4[5]) {
+        if (Type->UnitRepair) {
             oldOwner->UnitRepairStations.RemoveItem(this);
         }
-        if (Type->bools_16A4[9]) {
+        if (Type->Grinding) {
             oldOwner->Grinders.RemoveItem(this);
         }
-        if (Type->bools_16A4[10] || Type->bools_16A4[11]) {
+        if (Type->UnitAbsorb || Type->InfantryAbsorb) {
             oldOwner->Absorbers.RemoveItem(this);
         }
-        if (Type->bools_16A4[7]) {
+        if (Type->Bunker) {
             oldOwner->Bunkers.RemoveItem(this);
         }
-        if (Type->bools_1570[11] && Type->TechLevel > -1) {
+        if (Type->CanBeOccupied && Type->TechLevel > -1) {
             oldOwner->Occupiables.RemoveItem(this);
         }
-        if (Type->bools_16A4[8]) {
+        if (Type->Cloning) {
             oldOwner->CloningVats.RemoveItem(this);
         }
-        if (Type->bools_16A4[12]) {
+        if (Type->SecretLab) {
             oldOwner->SecretLabs.RemoveItem(this);
         }
         if (Type->PsychicDetectionRadius > 0) {
             oldOwner->PsychicDetectionBuildings.RemoveItem(this);
         }
-        if (Type->bools_16A4[41]) {
+        if (Type->FactoryPlant) {
             oldOwner->FactoryPlants.RemoveItem(this);
             oldOwner->CalculateCostMultipliers();
         }
         oldOwner->Buildings.RemoveItem(this);
-        if (Type->bools_16A4[40]) {
+        if (Type->OrePurifier) {
             oldOwner->NumOrePurifiers--;
         }
         if (Type->InfantryGainSelfHeal && ActuallyPlacedOnMap) {
@@ -4051,10 +4051,10 @@ bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
                 Owner->UnitsSelfHeal = 0;
             }
         }
-        if (Type->bools_16A4[39]) {
+        if (Type->Helipad) {
             oldOwner->AirportDocks -= Type->NumberOfDocks;
         }
-        if (Type->bools_16A4[35]) {
+        if (Type->CloakGenerator) {
             HasCloakingData = 0xFF;
             if (!CloakRadius) {
                 CloakRadius = Type->CloakRadiusInCells;
@@ -4068,7 +4068,7 @@ bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
         }
         vf_291(0, 0, 0, 0);
         TechnoClass::vf_245(newOwner, true);
-        if (Type->bools_16A4[35] && vf_212() && Type->bools_16A4[35]) {
+        if (Type->CloakGenerator && vf_212() && Type->CloakGenerator) {
             HasCloakingData = 1;
             if (CloakRadius == Type->CloakRadiusInCells) {
                 CloakRadius = 0;
@@ -4085,7 +4085,7 @@ bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
         if (Owner->ToCapture == this) {
             Owner->ToCapture = 0;
         }
-        if (oldOwner->IsControlledByCurrentPlayer() && Type->bools_16A4[21]) {
+        if (oldOwner->IsControlledByCurrentPlayer() && Type->ConstructionYard) {
             DAT_0088098C = 0;
             DAT_00880990 = 0;
             OverlayParkedValue = -1;
@@ -4094,7 +4094,7 @@ bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
         Owner->FUN_004FFA50(this);
         IsBeingRepaired = 0;
         vf_311(1);
-        if (Type->bools_16A4[26] && !DAT_00A8E7AC) {
+        if (Type->LaserFencePost && !DAT_00A8E7AC) {
             if (IsAlive && !InLimbo) {
                 FUN_00452DC0(0);
                 FUN_00452DC0(2);
@@ -4105,7 +4105,7 @@ bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
                     goto afterFacing;
                 }
             }
-            if (Type->bools_16A4[26]) {
+            if (Type->LaserFencePost) {
                 LaserFenceFrame = 0;
             }
         }
@@ -4133,36 +4133,36 @@ bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
                 break;
             }
         }
-        if (Type->bools_16A4[5]) {
+        if (Type->UnitRepair) {
             newOwner->UnitRepairStations.AddItem(this);
         }
-        if (Type->bools_16A4[9]) {
+        if (Type->Grinding) {
             newOwner->Grinders.AddItem(this);
         }
-        if (Type->bools_16A4[10] || Type->bools_16A4[11]) {
+        if (Type->UnitAbsorb || Type->InfantryAbsorb) {
             newOwner->Absorbers.AddItem(this);
         }
-        if (Type->bools_16A4[7]) {
+        if (Type->Bunker) {
             newOwner->Bunkers.AddItem(this);
         }
-        if (Type->bools_1570[11] && Type->TechLevel > -1) {
+        if (Type->CanBeOccupied && Type->TechLevel > -1) {
             newOwner->Occupiables.AddItem(this);
         }
-        if (Type->bools_16A4[8]) {
+        if (Type->Cloning) {
             newOwner->CloningVats.AddItem(this);
         }
-        if (Type->bools_16A4[12]) {
+        if (Type->SecretLab) {
             newOwner->SecretLabs.AddItem(this);
         }
         if (Type->PsychicDetectionRadius > 0) {
             newOwner->PsychicDetectionBuildings.AddItem(this);
         }
-        if (Type->bools_16A4[41]) {
+        if (Type->FactoryPlant) {
             newOwner->FactoryPlants.AddItem(this);
             newOwner->CalculateCostMultipliers();
         }
         newOwner->Buildings.AddItem(this);
-        if (Type->bools_16A4[40]) {
+        if (Type->OrePurifier) {
             Owner->NumOrePurifiers++;
         }
         if (Type->InfantryGainSelfHeal) {
@@ -4171,7 +4171,7 @@ bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
         if (Type->UnitsGainSelfHeal) {
             Owner->UnitsSelfHeal += Type->UnitsGainSelfHeal;
         }
-        if (Type->bools_16A4[39]) {
+        if (Type->Helipad) {
             Owner->AirportDocks += Type->NumberOfDocks;
         }
         if (Type->Factory) {
@@ -4211,7 +4211,7 @@ int BuildingClass::GetYSort() const
 
     BuildingTypeClass* flags = Type;
 
-    return base + ((flags->bools_16A4[0x16C5 - 0x16A4] ? 0x20 : 0) - (flags->bools_16A4[0x16B7 - 0x16A4] ? 0x10 : 0));
+    return base + ((flags->TurretAnimIsVoxel ? 0x20 : 0) - (flags->Gate ? 0x10 : 0));
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -4232,13 +4232,13 @@ int BuildingClass::vf_107(CellClass* target, int a2, int a3, int a4, bool a5)
 // FUNCTION: GAMEMD 0x4494C0
 bool BuildingClass::vf_38()
 {
-    if (!IsBeingDrained() && !Type->bools_1570[0x1579 - 0x1570]) {
+    if (!IsBeingDrained() && !Type->Unsellable) {
         if (HasBuildUp && BState != 0) {
             if (vf_97() != 0x13 && vf_97() != 0x12) {
                 return true;
             }
         }
-        if (Type->bools_16A4[0x16C0 - 0x16A4] && !Owner->FirestormActive) {
+        if (Type->FirestormWall && !Owner->FirestormActive) {
             return true;
         }
     }
@@ -4260,7 +4260,7 @@ int BuildingClass::vf_135()
     }
     if (IsArmed()) {
         IsReadyToCommence = 1;
-        if (!Type->bools_16A4[0x16C3 - 0x16A4]) {
+        if (!Type->EMPulseCannon) {
             int idx = Type->SuperWeapon;
             HBIdx3View* link;
             if (idx == -1 || (link = DAT_00A83CBC[idx]->unknown_28->unknown_C8) == 0
@@ -4269,7 +4269,7 @@ int BuildingClass::vf_135()
                     goto price;
                 }
             }
-            if (!Type->bools_1570[0x157B - 0x1570] || vf_258() > 0) {
+            if (!Type->CanBeOccupied || vf_258() > 0) {
                 if (Target) {
                     vf_122(1, 0);
                     vf_123();
@@ -4281,7 +4281,7 @@ int BuildingClass::vf_135()
         int price = (int)(DAT_007E27F8 * FUN_005B3A00()->AARate);
         return DAT_00A8B230->unknown_0218.RandomRanged(0, 2) + price;
     }
-    if (Type->bools_16A4[0x16B5 - 0x16A4]) {
+    if (Type->HasStupidGuardMode) {
         return 100;
     }
     switch (MissionStatus) {
@@ -4290,7 +4290,7 @@ int BuildingClass::vf_135()
         MissionStatus = 1;
         break;
     case 1:
-        if (Type->bools_16A4[0x16A9 - 0x16A4] || Type->bools_16A4[0x16AA - 0x16A4] || Type->bools_16A4[0x16AB - 0x16A4]) {
+        if (Type->UnitRepair || Type->UnitReload || Type->Bunker) {
             for (i = 0; i < RadioLinks.Capacity; i++) {
                 TechnoClass* o = FUN_0065AD30(i);
                 if (o && (active = o->Flags.IsTechno) != 0) {
@@ -4309,17 +4309,17 @@ int BuildingClass::vf_135()
                 }
             }
         }
-        if (Type->bools_16A4[0x16BD - 0x16A4]) {
+        if (Type->WeaponsFactory) {
             FUN_00449540();
         }
         break;
     }
-    if (Type->bools_16A4[0x16AA - 0x16A4] && HasAnyLink()) {
+    if (Type->UnitReload && HasAnyLink()) {
         if (vf_157(0x1D) != 1 && vf_157(0x13) == 1) {
             vf_122(0x14, 0);
         }
     }
-    if (Type->bools_16A4[0x16A9 - 0x16A4]) {
+    if (Type->UnitRepair) {
         int price = (int)(DAT_007E27F8 * FUN_005B3A00()->Rate);
         return DAT_00A8B230->unknown_0218.RandomRanged(0, 2) + price;
     }
@@ -4365,7 +4365,7 @@ int BuildingClass::vf_145()
             FUN_00447780(1);
             vf_311(0);
             vf_122(5, 0);
-            if (!Type->bools_16A4[0x16BF - 0x16A4]) {
+            if (!Type->LaserFence) {
                 DirStruct dir;
                 dir.Raw = (unsigned char)Type->field_ED8 << 8;
                 PrimaryFacing.FUN_004C9300(&dir);
@@ -4454,11 +4454,11 @@ void Building_0044ABD0::FireLaser(Coord_0044ABD0 target)
 // FUNCTION: GAMEMD 0x44ACF0
 int BuildingClass::vf_132()
 {
-    if (Type->bools_16A4[20]) {
+    if (Type->SAM) {
         switch (MissionStatus) {
         case 0:
             {
-                if (Type->bools_1570[3] && Type->PowerDrain > 0 && Owner->GetPowerPercentage() < 1.0) {
+                if (Type->Powered && Type->PowerDrain > 0 && Owner->GetPowerPercentage() < 1.0) {
                     return 1;
                 }
                 ObjectClass* techno = BA4As<ObjectClass>(Target, 2);
@@ -4530,7 +4530,7 @@ int BuildingClass::vf_132()
     IsReadyToCommence = 1;
     int result = vf_240(Target, direction, 1);
     if (result == 2) {
-        if (vf_255() && Type->bools_16A4[33]) {
+        if (vf_255() && Type->TurretAnimIsVoxel) {
             DirStruct wanted = vf_314(Target);
             int turn = Type->ROT;
             if (!turn || !(abs((short)(turn << 8)) < abs((short)(PrimaryFacing.FUN_004C93D0().Raw - wanted.Raw)))) {
@@ -4615,7 +4615,7 @@ int BuildingClass::vf_132()
             if (text && *text) {
                 PlayAnim(text, 10, flag, 0, 0);
             }
-        } else if (Type->bools_16A4[3]) {
+        } else if (Type->IsAnimDelayedFire) {
             CoordStruct cleared = {0, 0, 0};
             DelayBeforeFiring = Type->DelayedFireDelay;
             PrismTargetCoords = cleared;
@@ -4773,7 +4773,7 @@ int BuildingClass::vf_174()
     BuildingTypeClass* type = Type;
     switch (type->PipScale) {
     case 2:
-        if (type->bools_16A4[0x16BC - 0x16A4]) {
+        if (type->Weeder) {
             double d = Owner->GetWeedStoragePercentage();
             return (int)(type->vf_29() * d);
         }
@@ -4807,7 +4807,7 @@ HBDir* BuildingAView::vf_194(HBDir* out)
     if (Target == 0) {
         unsigned int raw = Facing.FUN_004C93D0().Whole;
         out->Raw = (short)((unsigned char)(((raw >> 7) + 1) >> 1) << 8);
-    } else if (vf_255() && !Type->bools_16A4[0x16C5 - 0x16A4]) {
+    } else if (vf_255() && !Type->TurretAnimIsVoxel) {
         unsigned int raw = Facing.FUN_004C93D0().Whole;
         out->Raw = (short)(((((raw >> 10) + 1) >> 1) & 0x1F) * 0x800);
     } else {
@@ -4828,7 +4828,7 @@ HBDir* BuildingAView::vf_194(HBDir* out)
 int BuildingClass::vf_149()
 {
     CoordStruct where;   // declared up front: the retail frame keeps it apart from the later temporaries
-    if (Type->bools_16A4[19]) {
+    if (Type->Gate) {
         switch (MissionStatus) {
         case 0:
             if (UnloadTimer.FUN_004A51B0()) {
@@ -4946,7 +4946,7 @@ int BuildingClass::GetPowerOutput()
     // with the count bound first and the bonus re-read second is what makes
     // the bonus the destination operand.
     BuildingTypeClass* type = this->Type;
-    if ((type->bools_16A4[0x16AE - 0x16A4] || type->bools_16A4[0x16AF - 0x16A4]) && type->ExtraPowerBonus > 0)
+    if ((type->UnitAbsorb || type->InfantryAbsorb) && type->ExtraPowerBonus > 0)
     {
         int n = this->Passengers.NumPassengers;
         if (n > 0)
@@ -5079,7 +5079,7 @@ void BuildingAView::vf_10(BAObjView* ptr, bool removed)
             FUN_00451890(name, 0x12, low, 0, 0);
         }
     }
-    if (Type->bools_16A4[0x16AD - 0x16A4] && Anims[10] == ptr) {
+    if (Type->Grinding && Anims[10] == ptr) {
         double ratio = FUN_005F5C60();
         char* name;
         int low;
@@ -5231,25 +5231,25 @@ Cell BuildingClass::vf_309(ObjectClass* who, Cell preferred)
     Cell base = vf_110();
     Cell c;
 
-    if (Type->bools_16E4[0]) {
+    if (Type->GDIBarracks) {
         c = Cell(base.X + 1, base.Y + 2);
         if (DAT_0087F7E8.FUN_00568300(&c) && !who->vf_107(DAT_0087F7E8.FUN_005657A0(&c), -1, -1, 0, 1)) {
             return c;
         }
     }
-    if (Type->bools_16E4[1]) {
+    if (Type->NODBarracks) {
         c = Cell(base.X + 2, base.Y + 2);
         if (DAT_0087F7E8.FUN_00568300(&c) && !who->vf_107(DAT_0087F7E8.FUN_005657A0(&c), -1, -1, 0, 1)) {
             return c;
         }
     }
-    if (Type->bools_16E4[2]) {
+    if (Type->YuriBarracks) {
         c = Cell(base.X + 2, base.Y + 1);
         if (DAT_0087F7E8.FUN_00568300(&c) && !who->vf_107(DAT_0087F7E8.FUN_005657A0(&c), -1, -1, 0, 1)) {
             return c;
         }
     }
-    if (Type->Naval && Type->bools_16A4[25]) {
+    if (Type->Naval && Type->WeaponsFactory) {
         c = Coord2Cell(vf_42(who));
         c.X++;
         c.Y++;
@@ -5274,7 +5274,7 @@ Cell BuildingClass::vf_309(ObjectClass* who, Cell preferred)
     }
 
     CellStruct* offsets = Type->FoundationOutside;
-    if (offsets && !Type->bools_16A4[29]) {
+    if (offsets && !Type->Hospital) {
         while (!(offsets->X == 0x7FFF && offsets->Y == 0x7FFF)) {
             CellStruct* entry = offsets++;
             c = Cell(base.X + entry->X, base.Y + entry->Y);
@@ -5318,7 +5318,7 @@ bool BuildingClass::vf_40()
         return false;
     if (vf_161())
         return true;
-    if (Type->bools_16A4[0x16B9 - 0x16A4]) {
+    if (Type->ConstructionYard) {
         if (!Owner->IsControlledByHuman())
             goto refuse;
         if (Session_00A8B238.GameMode == 0)
@@ -5400,7 +5400,7 @@ void BuildingClass::FUN_0044F7A0()
     int count = Owner->Buildings.Count;
     for (int i = 0; i < count; i++) {
         BuildingClass* building = Owner->Buildings.Items[i];
-        if (building != 0 && !building->InLimbo && building->Type->bools_16A4[0]) {
+        if (building != 0 && !building->InLimbo && building->Type->Radar) {
             Owner->RadarVisibleTo |= building->DisplayProductionTo;
         }
     }
@@ -5416,7 +5416,7 @@ void FUN_0044FE60(Ini_0044FE60* ini)
     for (int i = 0; i < DAT_00A8EB40.Count; i++) {
         BuildingClass* entry = DAT_00A8EB40.Items[i];
 
-        if (!entry->InLimbo && !entry->Type->bools_16A4[0x1B]) {
+        if (!entry->InLimbo && !entry->Type->LaserFence) {
             entry->FUN_0044FEC0(ini);
         }
     }
@@ -5828,7 +5828,7 @@ void BuildingClass::GoOffline()
         return;
 
     BuildingTypeClass* type = this->Type;
-    if (type->PowerDrain > 0 || type->bools_1570[0x1573 - 0x1570]) {
+    if (type->PowerDrain > 0 || type->Powered) {
         this->HasPower = 0;
         this->NeedsRedraw = 1;
         this->Owner->RecheckPower = 1;
@@ -5858,7 +5858,7 @@ void BuildingClass::EnableStuff()
     if (LightSource != 0)
         LightSource->Activate(0);
 
-    if (Type->bools_16A4[0x16BE - 0x16A4])
+    if (Type->LaserFencePost)
         CreateEndPost(false);
 
     for (int i = 0; i < 0x15; i++)
@@ -5882,7 +5882,7 @@ void BuildingClass::DisableStuff()
     if (LightSource != 0)
         LightSource->Deactivate(0);
     BuildingTypeClass* type = Type;
-    if (type->bools_16A4[0x16C7 - 0x16A4]) {
+    if (type->CloakGenerator) {
         HasCloakingData = -1;
         if (CloakRadius == 0)
             CloakRadius = type->CloakRadiusInCells;
@@ -5890,7 +5890,7 @@ void BuildingClass::DisableStuff()
     }
     if (type->GapGenerator && GeneratingGap)
         vf_262();
-    if (Type->bools_16A4[0x16BE - 0x16A4])
+    if (Type->LaserFencePost)
         CreateEndPost(0);
     for (int i = 0; i < 0x15; ++i) {
         if (Type->BuildingAnim[i].Powered && Anims[i])
@@ -5932,7 +5932,7 @@ bool BuildingClass_00452540::MakeTraversable()
 // a passable cell qualify. WhatAmI is the virtual at vtable slot 0x184.
 bool BuildingClass::IsTraversable()
 {
-    if (!this->Type->bools_16A4[0x16B7 - 0x16A4])
+    if (!this->Type->Gate)
         return true;
 
     int kind = this->vf_97();
@@ -5949,7 +5949,7 @@ bool BuildingClass::vf_37()
 {
     if (Health == 0)
         return false;
-    if (!Type->bools_1570[0x157A - 0x1570])
+    if (!Type->ClickRepairable)
         return false;
     if (vf_32())
         return false;
@@ -6061,7 +6061,7 @@ bool BuildingClass::FUN_004528A0(AbstractClass* target)
 // flag at +0x16BE set, refresh sides 0, 2, 4 and 6 and then the end post.
 void BuildingClass::FUN_004529E0()
 {
-    if (ScenarioInit_00A8E7AC == 0 && Type->bools_16A4[0x1A] && IsAlive && !InLimbo) {
+    if (ScenarioInit_00A8E7AC == 0 && Type->LaserFencePost && IsAlive && !InLimbo) {
         FUN_00452DC0(0);
         FUN_00452DC0(2);
         FUN_00452DC0(4);
@@ -6091,7 +6091,7 @@ void FUN_00452D40()
     while (i < DAT_00A8EB40.Count) {
         BuildingClass* obj = DAT_00A8EB40.Items[i];
 
-        if (obj != 0 && obj->Type->bools_16A4[0x16BE - 0x16A4] != 0 && DAT_00A8E7AC == 0
+        if (obj != 0 && obj->Type->LaserFencePost != 0 && DAT_00A8E7AC == 0
             && obj->IsAlive != 0 && obj->InLimbo == 0) {
             obj->FUN_00452DC0(0);
             obj->FUN_00452DC0(2);
@@ -6430,7 +6430,7 @@ void BuildingClass::FUN_004545D0()
                 Anims[slot]->FUN_00425270();
             }
         } else if (Type->BuildingAnim[slot].PoweredLight) {
-            if (!Anims[slot] && ActuallyPlacedOnMap && (!Type->bools_16A4[3] || slot != 0xA)) {
+            if (!Anims[slot] && ActuallyPlacedOnMap && (!Type->IsAnimDelayedFire || slot != 0xA)) {
                 int damaged = GetHealthPercentage() <= RulesInstance->ConditionYellow;
                 const char* animName;
                 if (damaged) {
@@ -6501,7 +6501,7 @@ void BuildingClass::FUN_004547C0()
         } else if (Type->BuildingAnim[slot].PoweredLight) {
             if (Anims[slot]) {
                 DestroyNthAnim(slot);
-                if (slot == 0xA && Type->bools_16A4[3] && Type->BuildingAnim[3].Powered) {
+                if (slot == 0xA && Type->IsAnimDelayedFire && Type->BuildingAnim[3].Powered) {
                     int damaged = GetHealthPercentage() <= RulesInstance->ConditionYellow;
                     const char* animName;
                     if (damaged) {
@@ -6566,7 +6566,7 @@ void BuildingClass::FUN_00454930()
 // the radius when it equals the type's, and request a redraw.
 void BuildingClass::FUN_00454CF0()
 {
-    if (Type->bools_16A4[0x23])
+    if (Type->CloakGenerator)
     {
         unsigned char radius = CloakRadius;
         HasCloakingData = 1;
@@ -6584,7 +6584,7 @@ void BuildingClass::FUN_00454CF0()
 // type when it is zero, and request a redraw.
 void BuildingClass::FUN_00454D30()
 {
-    if (Type->bools_16A4[0x23])
+    if (Type->CloakGenerator)
     {
         unsigned char radius = CloakRadius;
         HasCloakingData = -1;
@@ -6802,20 +6802,20 @@ bool BuildingClass::vf_212()
         goto refuse;
     if (Health == 0)
         goto refuse;
-    if (Type->bools_1570[0x1573 - 0x1570] && Type->PowerDrain > 0 && Owner->GetPowerPercentage() < 1.0) {
+    if (Type->Powered && Type->PowerDrain > 0 && Owner->GetPowerPercentage() < 1.0) {
         if (Overpowerers.Count < two)
             goto refuse;
     }
     {
         BuildingTypeClass* type = Type;
-        if (type->bools_1570[0x1574 - 0x1570]) {
+        if (type->PoweredSpecial) {
             HouseClass* owner = Owner;
             if (owner->PowerBlackoutTimer.GetTimeLeft() != 0)
                 goto refuse;
             if (owner->IsBeingDrained)
                 goto refuse;
         }
-        if (type->bools_154B[0x1552 - 0x154B] && !HasEngineer)
+        if (type->NeedsEngineer && !HasEngineer)
             goto refuse;
     }
     if (vf_97() != 0x12 && vf_97() != 0x13)
@@ -6975,7 +6975,7 @@ unsigned int BuildingClass::FUN_00455B90()
     CellClass* cell = DAT_0087F7E8.FUN_00565730(&here);
     for (int dir = 0; dir < 8; dir += 2) {
         BuildingClass* neighbour = cell->GetNeighbourCell(dir)->GetBuilding();
-        if (neighbour != 0 && neighbour->Type->bools_16A4[0x1C] && !neighbour->InLimbo && neighbour->IsAlive) {
+        if (neighbour != 0 && neighbour->Type->FirestormWall && !neighbour->InLimbo && neighbour->IsAlive) {
             mask |= 1 << (dir >> 1);
         }
     }
@@ -7017,7 +7017,7 @@ void BuildingClass::SetDestination(AbstractClass* target, bool a2)
 {
     if (CurrentMission == 0x13)
         return;
-    if (vf_161() || Type->bools_16A4[0x16B9 - 0x16A4])
+    if (vf_161() || Type->ConstructionYard)
         SetArchiveTarget(target);
     TechnoClass::SetDestination(target, a2);
 }
@@ -7029,7 +7029,7 @@ bool BuildingClass::vf_161()
 {
     BuildingTypeClass* type = Type;
     int mode = type->Factory;
-    if (mode != 0x28 && mode != 0x10 && !type->bools_16A4[0x16AC - 0x16A4] && !type->bools_16A4[0x16A9 - 0x16A4])
+    if (mode != 0x28 && mode != 0x10 && !type->Cloning && !type->UnitRepair)
         return false;
     return true;
 }
@@ -7955,7 +7955,7 @@ bool BuildingClass::IsCellImpassable(CellClass* cell)
     if (Type->NumberImpassableRows == -1) {
         return true;
     }
-    if (Type->bools_16A4[0x16AB - 0x16A4] && BunkerLinkedItem != 0) {
+    if (Type->Bunker && BunkerLinkedItem != 0) {
         return true;
     }
 
@@ -8041,7 +8041,7 @@ bool BuildingClass::IsArmed()
 // FUNCTION: GAMEMD 0x458DD0
 bool BuildingClass::vf_256()
 {
-    return Type->bools_1570[0x157B - 0x1570] && Type->bools_1570[0x157C - 0x1570] && vf_258() > 0;
+    return Type->CanBeOccupied && Type->CanOccupyFire && vf_258() > 0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

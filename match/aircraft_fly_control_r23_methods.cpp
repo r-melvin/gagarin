@@ -42,7 +42,7 @@ int __stdcall AircraftClass::vf_03()
         TechnoClass* partner = FUN_0065AD40(0);
         if (vf_97() == 7 && partner && partner->vf_11() == 6) {
             BuildingTypeClass* partnerType = ((BuildingClass*)partner)->Type;
-            if (partnerType->bools_16A4[5] || partnerType->bools_16A4[0x27]) {
+            if (partnerType->UnitRepair || partnerType->Helipad) {
                 return 0;
             }
         }

@@ -45,7 +45,7 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
             Owner->RadarVisibleTo = 0;
             for (int i = 0; i < Owner->Buildings.Count; ++i) {
                 BuildingClass* other = Owner->Buildings.Items[i];
-                if (other && !other->InLimbo && other->Type->bools_16A4[0]) {
+                if (other && !other->InLimbo && other->Type->Radar) {
                     Owner->RadarVisibleTo |= other->DisplayProductionTo;
                 }
             }

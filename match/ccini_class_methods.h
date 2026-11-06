@@ -14,6 +14,7 @@
 #include "_rt/gg_static_assert.h"
 
 #include "_layout/ini_class.h"
+#include "_layout/coord_struct.h"
 
 
 class FileClass;
@@ -120,6 +121,18 @@ public:
     TypeList<int> ReadIntegerList(const char* section, const char* key, TypeList<int> defaultValue);
     // FUNCTION: GAMEMD 0x4759F0 (decl; reloc) -- string read through the 0x48DE70 parser, RET 0xC.
     int FUN_004759F0(const char* section, const char* key, int defaultValue);
+    // FUNCTION: GAMEMD 0x474F50 (decl; reloc) -- super weapon type name read, RET 0xC.
+    int FUN_00474F50(const char* section, const char* key, int defaultValue);
+    // FUNCTION: GAMEMD 0x474FA0 (decl; reloc) -- EVA event name read, RET 0xC.
+    int FUN_00474FA0(const char* section, const char* key, int defaultValue);
+    // FUNCTION: GAMEMD 0x474FF0 (decl; reloc) -- factory type name read, RET 0xC.
+    int FUN_00474FF0(const char* section, const char* key, int defaultValue);
+    // FUNCTION: GAMEMD 0x475060 (decl; reloc) -- build category name read, RET 0xC.
+    int FUN_00475060(const char* section, const char* key, int defaultValue);
+    // FUNCTION: GAMEMD 0x529880 (decl; reloc) -- a point pair; the result comes back through a hidden pointer, the default by reference.
+    Point2D ReadPoint(const char* section, const char* key, const Point2D& defaultValue);
+    // FUNCTION: GAMEMD 0x529CA0 (decl; reloc) -- a coordinate triple, same convention.
+    CoordStructInit ReadCoord(const char* section, const char* key, const CoordStruct& defaultValue);
 
     bool          DigestValid;     // +0x40
     unsigned char Digest[0x14];    // +0x41

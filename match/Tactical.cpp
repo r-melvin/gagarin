@@ -183,7 +183,7 @@ template class DynamicVectorClass<Cell>;
 
 template class DynamicVectorClass<BaseNodeClass>;
 
-template<class T> class TPoint3D { public: T X; T Y; T Z; TPoint3D() {} bool operator==(const TPoint3D<T>& o) const { return X==o.X && Y==o.Y && Z==o.Z; } bool operator!=(const TPoint3D<T>& o) const { return !(*this==o); } };
+#include "_layout/tpoint3d.h"
 
 template class DynamicVectorClass<Point2D>;
 
@@ -1845,7 +1845,7 @@ extern ColorConvert* DAT_0087F6C4;
 // GLOBAL: GAMEMD 0x8A03FC (declaration)
 extern ShapeHeader* DisplayPlaceShape_008A03FC;
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, GuardRange) == 0x5B8);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4) + (0x16BE - 0x16A4) == 0x16BE);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, LaserFencePost) == 0x16BE);
 
 #include "overlay_type_class.h"
 #include "mouse_ww_mouse_class.h"
@@ -1868,7 +1868,7 @@ extern short DAT_0088096C;
 extern short DAT_0088096E;
 // GLOBAL: GAMEMD 0x880970 (declaration)
 extern short DAT_00880970;
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4) + (0x16B7 - 0x16A4) == 0x16B7);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Gate) == 0x16B7);
 GG_STATIC_ASSERT(offsetof(OverlayTypeClass, Wall) == 0x2A8);
 
 // FUNCTION: GAMEMD 0x6D5030
@@ -1887,7 +1887,7 @@ void Tactical::FUN_006D5030(bool argument)
             return;
         CellStruct end;
         int kind = PlacementType_00880990->vf_11();
-        if (kind == 7 && static_cast<BuildingTypeClass*>(PlacementType_00880990)->bools_16A4[0x16B7 - 0x16A4]) {
+        if (kind == 7 && static_cast<BuildingTypeClass*>(PlacementType_00880990)->Gate) {
             end.X = 3;
             end.Y = 3;
             begin.X = -1;
@@ -1943,11 +1943,11 @@ void Tactical::FUN_006D5030(bool argument)
         if (all && PlacementObject_0088098C && PlacementObject_0088098C->vf_11() == 6) {
             BuildingClass* building = static_cast<BuildingClass*>(PlacementObject_0088098C);
             BuildingTypeClass* type = building->Type;
-            if (type->bools_16A4[0x16BE - 0x16A4]) {
+            if (type->LaserFencePost) {
                 Cell origin(begin.X, begin.Y);
                 CellStruct coordinate = origin + DAT_0088095C + DAT_00880960;
                 FUN_006D5730(argument, coordinate);
-            } else if (type->bools_16A4[0x16C0 - 0x16A4]) {
+            } else if (type->FirestormWall) {
                 Cell origin(begin.X, begin.Y);
                 CellStruct coordinate = origin + DAT_0088095C + DAT_00880960;
                 FUN_006D59D0(argument, coordinate);
@@ -1961,7 +1961,7 @@ void Tactical::FUN_006D5030(bool argument)
     if (!DAT_00A8ED6B && DAT_0088097C) {
         CellStruct end;
         int kind = DAT_0088097C->vf_11();
-        if (kind == 7 && static_cast<BuildingTypeClass*>(DAT_0088097C)->bools_16A4[0x16B7 - 0x16A4]) {
+        if (kind == 7 && static_cast<BuildingTypeClass*>(DAT_0088097C)->Gate) {
             end.X = 3;
             end.Y = 3;
             begin.X = -1;
@@ -2018,7 +2018,7 @@ void Tactical::FUN_006D5730(unsigned char mode, CellStruct origin)
                 break;
             ++count;
         }
-        if (!building || !building->Type->bools_16A4[0x16BE - 0x16A4] ||
+        if (!building || !building->Type->LaserFencePost ||
             !building->Owner->IsControlledByCurrentPlayer() || count <= 0)
             continue;
         unsigned int flags = mode ? 0x10606 : 0x20606;
@@ -2051,7 +2051,7 @@ void Tactical::FUN_006D5730(unsigned char mode, CellStruct origin)
 #include "overlay_type_class.h"
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, SpeedType) == 0x67C);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ToOverlay) == 0xE54);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4) + (0x16C0 - 0x16A4) == 0x16C0);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, FirestormWall) == 0x16C0);
 
 // FUNCTION: GAMEMD 0x6D59D0
 void Tactical::FUN_006D59D0(unsigned char mode, CellStruct origin)
@@ -2069,7 +2069,7 @@ void Tactical::FUN_006D59D0(unsigned char mode, CellStruct origin)
         while (count < range) {
             current = current + step;
             BuildingClass* building = MapInstance.FUN_005657A0(&current)->GetBuilding();
-            if (building && building->Type->bools_16A4[0x16C0 - 0x16A4] &&
+            if (building && building->Type->FirestormWall &&
                 building->Owner->IsControlledByCurrentPlayer()) {
                 found = true;
                 break;
@@ -3434,7 +3434,7 @@ void Tactical::FUN_006D9A50(RectangleStruct viewport)
 }
 
 
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_1700) + sizeof(bool) == 0x1701);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, InvisibleInGame) == 0x1701);
 
 // FUNCTION: GAMEMD 0x6D9B50
 bool Tactical::FUN_006D9B50(RectangleStruct viewport)
@@ -3470,7 +3470,7 @@ void Tactical::FUN_006D9CE0(int x, int y, int width, int height)
     int bottom = unknown_B0.unknown_04 + height + y;
     for (int index = 0; index < DAT_00A8EB40.Count; ++index) {
         BuildingClass* building = DAT_00A8EB40.Items[index];
-        if (building->IsAlive && building->IsOnMap && !building->Type->bools_1700[1]) {
+        if (building->IsAlive && building->IsOnMap && !building->Type->InvisibleInGame) {
             // Native reads Location directly; do not replace with vf43.
             CoordStruct coordinate = building->Location;
             Point2D projected;

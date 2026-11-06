@@ -2008,7 +2008,7 @@ int TechnoClass::vf_185(AbstractClass* target)
                 }
                 if (secondary->Warhead->Airstrike) {
                     if (target->vf_11() == 6) {
-                        if (AsBuilding(target)->Type->bools_1570[7]) {
+                        if (AsBuilding(target)->Type->CanC4) {
                             if (AsBuilding(target)->vf_33()->ResourceDestination) {
                                 if (!AsBuilding(target)->vf_33()->ResourceGatherer) {
                                     return 1;
@@ -2034,7 +2034,7 @@ int TechnoClass::vf_185(AbstractClass* target)
                     }
                     if (target->vf_11() == 6 && Owner->CanOverpower((TechnoClass*)target)
                         && secondary->Warhead->ElectricAssault
-                        && ((BuildingClass*)target)->Type->bools_1570[5]) {
+                        && ((BuildingClass*)target)->Type->Overpowerable) {
                         return 1;
                     }
                     if (vf_11() == 2 && ((AircraftClass*)this)->IsKamikaze) {
@@ -2706,7 +2706,7 @@ void TechnoClass::vf_260(int)
             }
         }
         TechnoClass* link = FUN_0065AD30(0);
-        if (link && link->vf_11() == 6 && ((BuildingClass*)link)->Type->bools_16A4[25]) {
+        if (link && link->vf_11() == 6 && ((BuildingClass*)link)->Type->WeaponsFactory) {
             return;
         }
         AdvanceStage(CloakProgress);
@@ -5096,7 +5096,7 @@ bool TechnoClass::FUN_0070D7E0()
                 }
                 if (ahead->vf_11() == 6 && vf_11() == 2) {
                     BuildingTypeClass* type = ((BuildingClass*)ahead)->Type;
-                    if (type->bools_16A4[6] && !type->bools_16A4[5]) {
+                    if (type->UnitReload && !type->UnitRepair) {
                         vf_158(14, ahead);
                         return false;
                     }

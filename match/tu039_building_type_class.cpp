@@ -50,6 +50,8 @@
 //   out-of-line _$E thunk behind a jump).
 
 #include "types_building_shared.h"
+#include "_layout/building_class.h"
+#include "_layout/obj_004a1d30.h"
 #include "_layout/swizzle_manager_class.h"
 #include "display_objects_globals.h"
 #include "shared_constants_globals.h"
@@ -81,7 +83,7 @@ template class DynamicVectorClass<Cell>;
 template class VectorClass<BaseNodeClass>;
 template class DynamicVectorClass<BaseNodeClass>;
 
-template<class T> class TPoint3D { public: T X; T Y; T Z; TPoint3D() {} bool operator==(const TPoint3D<T>& o) const { return X==o.X && Y==o.Y && Z==o.Z; } bool operator!=(const TPoint3D<T>& o) const { return !(*this==o); } };
+#include "_layout/tpoint3d.h"
 
 // VTABLE: GAMEMD 0x007E4638 -- VectorClass<TPoint3D<int>>.
 template class VectorClass<TPoint3D<int> >;
@@ -114,7 +116,6 @@ extern DibSurface* DAT_0089DDC0;
 
 #include "small_misc51_methods.h"
 
-#include "threat_budget_methods.h"
 
 #include "buffer_holder_dtor_methods.h"
 
@@ -152,10 +153,10 @@ extern DibSurface* DAT_0089DDC0;
     (strlen((ANIM).Anim) || strlen((ANIM).Damaged) || strlen((ANIM).Garrisoned))
 
 #define TYPES_ANIM_VALUES(INI, SECTION, ANIM, PREFIX, DEFX, DEFY)            \
-    (ANIM).X = (INI).ReadInt(SECTION, PREFIX "X", DEFX);                     \
-    (ANIM).Y = (INI).ReadInt(SECTION, PREFIX "Y", DEFY);                     \
-    (ANIM).ZAdjust = (INI).ReadInt(SECTION, PREFIX "ZAdjust", (ANIM).ZAdjust); \
-    (ANIM).YSort = (INI).ReadInt(SECTION, PREFIX "YSort", (ANIM).YSort);
+    (ANIM).X = (INI).ReadInteger(SECTION, PREFIX "X", DEFX);                     \
+    (ANIM).Y = (INI).ReadInteger(SECTION, PREFIX "Y", DEFY);                     \
+    (ANIM).ZAdjust = (INI).ReadInteger(SECTION, PREFIX "ZAdjust", (ANIM).ZAdjust); \
+    (ANIM).YSort = (INI).ReadInteger(SECTION, PREFIX "YSort", (ANIM).YSort);
 
 #define TYPES_ANIM_FLAGS(INI, SECTION, ANIM, PREFIX)                         \
     (ANIM).Powered = (INI).ReadBool(SECTION, PREFIX "Powered", (ANIM).Powered); \
@@ -164,23 +165,23 @@ extern DibSurface* DAT_0089DDC0;
     (ANIM).PoweredSpecial = (INI).ReadBool(SECTION, PREFIX "PoweredSpecial", (ANIM).PoweredSpecial);
 
 #define TYPES_READ_ANIM(ANIM, PREFIX)                                        \
-    TYPES_ANIM_NAMES(TypesArtIni, ImageFile, ANIM, PREFIX)                   \
+    TYPES_ANIM_NAMES(DAT_00887180, ImageFile, ANIM, PREFIX)                   \
     if (TYPES_ANIM_PRESENT(ANIM)) {                                          \
-        TYPES_ANIM_VALUES(TypesArtIni, ImageFile, ANIM, PREFIX, (ANIM).X, (ANIM).Y) \
-        TYPES_ANIM_FLAGS(TypesArtIni, ImageFile, ANIM, PREFIX)               \
+        TYPES_ANIM_VALUES(DAT_00887180, ImageFile, ANIM, PREFIX, (ANIM).X, (ANIM).Y) \
+        TYPES_ANIM_FLAGS(DAT_00887180, ImageFile, ANIM, PREFIX)               \
     }
 
 #define TYPES_READ_ANIM_QUIRK(ANIM, PREFIX, DEFX, DEFY)                      \
-    TYPES_ANIM_NAMES(TypesArtIni, ImageFile, ANIM, PREFIX)                   \
+    TYPES_ANIM_NAMES(DAT_00887180, ImageFile, ANIM, PREFIX)                   \
     if (TYPES_ANIM_PRESENT(ANIM)) {                                          \
-        TYPES_ANIM_VALUES(TypesArtIni, ImageFile, ANIM, PREFIX, DEFX, DEFY)  \
-        TYPES_ANIM_FLAGS(TypesArtIni, ImageFile, ANIM, PREFIX)               \
+        TYPES_ANIM_VALUES(DAT_00887180, ImageFile, ANIM, PREFIX, DEFX, DEFY)  \
+        TYPES_ANIM_FLAGS(DAT_00887180, ImageFile, ANIM, PREFIX)               \
     }
 
 #define TYPES_READ_ANIM_NOBOOLS(ANIM, PREFIX)                                \
-    TYPES_ANIM_NAMES(TypesArtIni, ImageFile, ANIM, PREFIX)                   \
+    TYPES_ANIM_NAMES(DAT_00887180, ImageFile, ANIM, PREFIX)                   \
     if (TYPES_ANIM_PRESENT(ANIM)) {                                          \
-        TYPES_ANIM_VALUES(TypesArtIni, ImageFile, ANIM, PREFIX, (ANIM).X, (ANIM).Y) \
+        TYPES_ANIM_VALUES(DAT_00887180, ImageFile, ANIM, PREFIX, (ANIM).X, (ANIM).Y) \
     }
 
 // The turret slot is read from the rules INI under the object ID.
@@ -421,15 +422,15 @@ int FUN_0045DD50(const char* name)
 // unconstructed with its three zero stores moved to the end (83.4%, kept); the anim-slot loop as a struct
 // constructor (66.8%, dropped) and as a memset/assignment variants (82.6% to 83.4%).
 // FUNCTION: GAMEMD 0x45DD90
-BuildingTypeView_0045DD90::BuildingTypeView_0045DD90(const char* id)
-    : TypesBuildingTypeTechnoView(id, 0), ArrayIndex(-1), FoundationData(0), Buildup(0),
+BuildingTypeClass::BuildingTypeClass(const char* id)
+    : TechnoTypeClass(id, 0), ArrayIndex(-1), FoundationData(0), Buildup(0),
       BuildupLoaded(false), BuildCat(0), HalfDamageSmokeLocation1(TypesZeroCoord),
       HalfDamageSmokeLocation2(TypesZeroCoord), GateCloseDelay(0.0), LightVisibility(5000),
       LightIntensity(0), LightRedTint(1000000), LightGreenTint(1000000), LightBlueTint(1000000),
       PrimaryFirePixelOffset(TypesMakePoint(0xFFFF, 0xFFFF)), SecondaryFirePixelOffset(TypesMakePoint(0xFFFF, 0xFFFF)), ToOverlay(0), ToTile(0), BuildupSound(-1), PackupSound(-1), CreateUnitSound(-1),
       UnitEnterSound(-1), UnitExitSound(-1), WorkingSound(-1), NotWorkingSound(-1), FreeUnit(0),
-      SecretInfantry(0), SecretUnit(0), SecretBuilding(0), unknown_EB0(-1), Adjacent(3), Factory(0),
-      TargetCoordOffset(0, 0, 0), ExitCoord(0, 0, 0), FoundationOutside(0), unknown_ED8(0), DeployFacing(0x80), PowerBonus(0), PowerDrain(0),
+      SecretInfantry(0), SecretUnit(0), SecretBuilding(0), field_EB0(-1), Adjacent(3), Factory(0),
+      TargetCoordOffset(0, 0, 0), ExitCoord(0, 0, 0), FoundationOutside(0), field_ED8(0), DeployFacing(0x80), PowerBonus(0), PowerDrain(0),
       ExtraPowerBonus(0), ExtraPowerDrain(0), Foundation(0), Height(2), OccupyHeight(2), MidPoint(0),
       DoorStages(0), Upgrades(0), DeployingAnim(0), UnderDoorAnim(0), Rubble(0), RoofDeployingAnim(0),
       UnderRoofDoorAnim(0), DoorAnim(0), SpecialZOverlay(0), SpecialZOverlayZAdjust(0), BibShape(0),
@@ -462,27 +463,27 @@ BuildingTypeView_0045DD90::BuildingTypeView_0045DD90(const char* id)
       CanHideThings(true), CrateBeneath(false), LeaveRubble(false), CrateBeneathIsMoney(false),
       NumberOfDocks(1), DockingOffsets(1, 0)
 {
-    HBRttiBase::Create_ID();
-    TypesAddItemEarlyOut(TypesBuildingTypeArray, this);
-    ArrayIndex = TypesFindIndex(TypesBuildingTypeArray, this);
-    BuildingAnimFrame[0].Start = 0;
+    AbstractClass::vf_rtti_5();
+    TypesAddItemEarlyOut(DAT_00A83C68, this);
+    ArrayIndex = TypesFindIndex(DAT_00A83C68, this);
+    BuildingAnimFrame[0].Frame = 0;
     BuildingAnimFrame[0].Count = 1;
     BuildingAnimFrame[0].Rate = 0;
-    BuildingAnimFrame[1].Start = 0;
+    BuildingAnimFrame[1].Frame = 0;
     BuildingAnimFrame[1].Count = 1;
     BuildingAnimFrame[1].Rate = 0;
-    BuildingAnimFrame[2].Start = 0;
+    BuildingAnimFrame[2].Frame = 0;
     BuildingAnimFrame[2].Count = 1;
     BuildingAnimFrame[2].Rate = 0;
-    BuildingAnimFrame[4].Start = 0;
+    BuildingAnimFrame[4].Frame = 0;
     BuildingAnimFrame[4].Count = 1;
     BuildingAnimFrame[4].Rate = 0;
-    BuildingAnimFrame[5].Start = 0;
+    BuildingAnimFrame[5].Frame = 0;
     BuildingAnimFrame[5].Count = 1;
     BuildingAnimFrame[5].Rate = 0;
     int i;
     for (i = 0; i < 21; ++i) {
-        BuildingTypeAnim& anim = BuildingAnim[i];
+        BuildingAnimStruct& anim = BuildingAnim[i];
         memset(anim.Anim, 0, sizeof(anim.Anim));
         memset(anim.Damaged, 0, sizeof(anim.Damaged));
         memset(anim.Garrisoned, 0, sizeof(anim.Garrisoned));
@@ -499,7 +500,7 @@ BuildingTypeView_0045DD90::BuildingTypeView_0045DD90(const char* id)
     PowersUpBuilding[0] = 0;
     TheaterSpecificID[0] = 0;
     VoxelBarrelFile[0] = 0;
-    unknown_C8E = false;
+    Trainable = false;
     DeployingAnimLoaded = false;
     UnderDoorAnimLoaded = false;
     RubbleLoaded = false;
@@ -519,14 +520,14 @@ BuildingTypeView_0045DD90::BuildingTypeView_0045DD90(const char* id)
         AddOccupy[i].X = 0xFFFF;
         AddOccupy[i].Y = 0xFFFF;
     }
-    unknown_D35 = true;
-    unknown_D36 = true;
-    unknown_D3B = false;
-    unknown_D38 = false;
-    unknown_D97 = false;
-    unknown_D96 = false;
-    unknown_D2E = false;
-    TypesDockCoord* dock = DockingOffsets.Items;
+    ImmuneToPsionics = true;
+    ImmuneToPsionicWeapons = true;
+    ImmuneToPoison = false;
+    Parasiteable = false;
+    Organic = false;
+    ConsideredAircraft = false;
+    Bunkerable = false;
+    TPoint3D<int>* dock = DockingOffsets.Items;
     dock->X = 0;
     dock->Y = 0;
     dock->Z = 0;
@@ -534,26 +535,53 @@ BuildingTypeView_0045DD90::BuildingTypeView_0045DD90(const char* id)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45E520
-// PARTIAL, 78.9% (15/19). Plain stores: cl lifts the `field_1790 = 1` byte
-// store ahead of the three zero stores; retail emits it after them.
-Obj_0045E520* Obj_0045E520::FUN_0045E520(int value)
+BuildingTypeClass::BuildingTypeClass(const AbstractNoInit& noInit)
+    : TechnoTypeClass(noInit), Buildup(0)
 {
-    FUN_00711840(value);
+}
 
-    field_E00  = 0;
-    field_1788 = 0;
-    field_178C = 0;
-    field_1790 = 1;
-    field_1791 = 0;
-
-    Secondary = &VT_007E4638;
-
-    vt0 = &VT_007E4570;
-    vt1 = &VT_007E4554;
-    vt2 = &VT_007E454C;
-    vt3 = &VT_007E4544;
-
-    return this;
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x45E580
+// SYNTHETIC: GAMEMD 0x465DC0 -- the scalar deleting destructor expands this body.
+BuildingTypeClass::~BuildingTypeClass()
+{
+    if (BuildupLoaded && Buildup != 0) {
+        FUN_007C8B3D(Buildup);
+        Buildup = 0;
+        BuildupLoaded = false;
+    }
+    if (BibShapeLoaded && BibShape != 0) {
+        FUN_007C8B3D(BibShape);
+        BibShape = 0;
+        BibShapeLoaded = false;
+    }
+    if (DeployingAnimLoaded && DeployingAnim != 0) {
+        FUN_007C8B3D(DeployingAnim);
+        DeployingAnim = 0;
+        DeployingAnimLoaded = false;
+    }
+    if (UnderDoorAnimLoaded && UnderDoorAnim != 0) {
+        FUN_007C8B3D(UnderDoorAnim);
+        UnderDoorAnim = 0;
+        UnderDoorAnimLoaded = false;
+    }
+    if (RubbleLoaded && Rubble != 0) {
+        FUN_007C8B3D(Rubble);
+        Rubble = 0;
+        RubbleLoaded = false;
+    }
+    if (RoofDeployingAnimLoaded && RoofDeployingAnim != 0) {
+        FUN_007C8B3D(RoofDeployingAnim);
+        RoofDeployingAnim = 0;
+        RoofDeployingAnimLoaded = false;
+    }
+    if (UnderRoofDoorAnimLoaded && UnderRoofDoorAnim != 0) {
+        FUN_007C8B3D(UnderRoofDoorAnim);
+        UnderRoofDoorAnim = 0;
+        UnderRoofDoorAnimLoaded = false;
+    }
+    AnnounceExpiredPointer(1);
+    DAT_00A83C68.RemoveItem(this);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -588,25 +616,24 @@ int FUN_0045E7B0(const char* name)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45E800
-bool BuildingTypeView_0045DD90::vf_32(void* where, void* owner)
+bool BuildingTypeClass::vf_32(const CellStruct* cell, HouseClass* owner)
 {
-    TypesBuildingView* building = new TypesBuildingView(this, owner);
+    BuildingClass* building = new BuildingClass(this, owner);
     if (building) {
-        const HBCell* cell = (const HBCell*)where;
-        HBCoord coord;
+        CoordStruct coord;
         coord.X = cell->X * 256 + 128;
         coord.Y = cell->Y * 256 + 128;
         coord.Z = 0;
-        return building->Unlimbo(&coord, 0);
+        return building->vf_54(coord, 0);
     }
     return false;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45E880
-void* BuildingTypeView_0045DD90::vf_35(void* owner)
+ObjectClass* BuildingTypeClass::vf_35(HouseClass* owner)
 {
-    return new TypesBuildingView(this, owner);
+    return new BuildingClass(this, owner);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -687,12 +714,12 @@ void __fastcall FUN_0045E970(int theater)
     int radius = 0;
     int i;
     for (i = 0; i < DAT_00A83C78; i++) {
-        BuildingTypeView_0045DD90* type = (BuildingTypeView_0045DD90*)DAT_00A83C6C[i];
+        BuildingTypeClass* type = (BuildingTypeClass*)DAT_00A83C6C[i];
         signed char r = type->CloakRadiusInCells;
         if (radius <= r) {
             radius = r;
         }
-        if (type->unknown_22C[0] != 0) {
+        if (type->Theater != 0) {
             char path[0x200];
             if (type->DemandLoad == 0) {
                 _makepath(path, 0, 0, type->ImageFile, DAT_007E1B78[theater].Extension);
@@ -704,7 +731,7 @@ void __fastcall FUN_0045E970(int theater)
             }
             if (type->DemandLoadBuildup == 0) {
                 _makepath(path, 0, 0, type->BuildupFile, DAT_007E1B78[theater].Extension);
-                type->Buildup = FUN_005B40B0(path, 0);
+                type->Buildup = (SHPStruct*)FUN_005B40B0(path, 0);
             } else if (type->Buildup != 0) {
                 FUN_007C8B3D(type->Buildup);
                 type->Buildup = 0;
@@ -716,11 +743,11 @@ void __fastcall FUN_0045E970(int theater)
                 if (frames != 0) {
                     rate = 0x4B / frames;
                 }
-                type->BuildingAnimFrame[0].Start = 0;
+                type->BuildingAnimFrame[0].Frame = 0;
                 type->BuildingAnimFrame[0].Count = frames;
                 type->BuildingAnimFrame[0].Rate = rate;
             }
-        } else if (type->unknown_22C[0xB] != 0) {
+        } else if (type->NewTheater != 0) {
             if (type->DemandLoad != 0 && type->Image != 0) {
                 FUN_007C8B3D(type->Image);
                 type->Image = 0;
@@ -744,7 +771,7 @@ void __fastcall FUN_0045E970(int theater)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45EBD0
-HBCoord BuildingTypeView_0045DD90::vf_30()
+CoordStruct BuildingTypeClass::vf_30()
 {
     int width;
     int height;
@@ -757,7 +784,7 @@ HBCoord BuildingTypeView_0045DD90::vf_30()
         width = 0;
         height = 0;
     }
-    HBCoord coord;
+    CoordStruct coord;
     coord.X = width;
     coord.Y = width;
     coord.Z = height;
@@ -768,7 +795,7 @@ HBCoord BuildingTypeView_0045DD90::vf_30()
 // FUNCTION: GAMEMD 0x45EC20
 // The function-local static (guard bit 0 of 0x89C890, cell at 0x89C8E8) is built through a temporary;
 // its destructor stub is the bare RET at 0x45EC80 (compiler-generated atexit entry).
-CellStruct* BuildingTypeView_0045DD90::vf_36(bool arg)
+CellStruct* BuildingTypeClass::vf_36(int arg)
 {
     static TypesStaticCell list = TypesMakeStaticCell(0x7FFF, 0x7FFF);
     CellStruct* data = FoundationData;
@@ -784,22 +811,29 @@ void __cdecl FUN_0045EC80()
 {
 }
 
+#include "_layout/rules_class.h"
+#include "_layout/aircraft_type_class.h"
+#include "_layout/unit_type_class.h"
+
+// GLOBAL: GAMEMD 0x8871E0 -- RulesClass::Instance.
+extern RulesClass* DAT_008871E0;
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45ECE0
-int BuildingTypeView_0045DD90::vf_29()
+int BuildingTypeClass::vf_29()
 {
     int pips = FoundationWidth[Foundation] * 60 / 8;
-    switch (unknown_3D4) {
+    switch (PipScale) {
     case 2:
         if (Weeder) {
-            int limit = TypesRules->unknown_17D0;
+            int limit = DAT_008871E0->WeedCapacity;
             if (limit < 0)
                 return 0;
             if (limit > pips)
                 return pips;
             return limit;
         } else {
-            int limit = unknown_800;
+            int limit = Storage;
             if (limit < 0)
                 return 0;
             if (limit > pips)
@@ -809,7 +843,7 @@ int BuildingTypeView_0045DD90::vf_29()
     case 4:
         return pips;
     }
-    return TypesBuildingTypeTechnoView::vf_29();
+    return TechnoTypeClass::vf_29();
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -849,23 +883,23 @@ int BuildingTypeView_0045DD90::vf_29()
 // number of epilogues agrees, and the compiled block order already matches,
 // so there are no merged return blocks to split. The residual is register
 // naming downstream of that, not a prologue hoist.
-int BuildingTypeClass_0045ED50::FUN_0045ED50()
+int BuildingTypeClass::vf_43()
 {
-    int budget = FUN_00711EB0();
-    Host_0045ED50* host = DAT_008871E0;
-    BuildingTypeClass_0045ED50** pair = host->At_B5C;
-    BuildingTypeClass_0045ED50* first = pair[0];
+    int budget = TechnoTypeClass::vf_43();
+    RulesClass* host = DAT_008871E0;
+    const AircraftTypeClass** pair = host->PadAircraft.Items;
+    AircraftTypeClass* first = const_cast<AircraftTypeClass*>(pair[0]);
 
-    if (this == *first->At_3EC && host->At_17E8 == 0) {
-        BuildingTypeClass_0045ED50* second = pair[1];
+    if (this == *first->Dock.Items && host->SeparateAircraft == 0) {
+        AircraftTypeClass* second = const_cast<AircraftTypeClass*>(pair[1]);
 
-        budget += -(((second->*second->Vptr->At_AC)()
-                     + (first->*first->Vptr->At_AC)()) / 2);
+        budget += -((second->vf_43()
+                     + first->vf_43()) / 2);
     }
 
-    BuildingTypeClass_0045ED50* trailing = this->At_EA0;
+    UnitTypeClass* trailing = FreeUnit;
     if (trailing != 0) {
-        int result = budget - (trailing->*trailing->Vptr->At_AC)();
+        int result = budget - trailing->vf_43();
         return result > 0 ? result : 0;
     }
 
@@ -880,19 +914,20 @@ int BuildingTypeClass_0045ED50::FUN_0045ED50()
 // (cached rules pointer or not, second-first and first-first call order, an explicit temporary for each cost,
 // early-return and fall-through tails, `freeUnit` loaded early or late).
 // FUNCTION: GAMEMD 0x45EDD0
-int BuildingTypeView_0045DD90::vf_33(HouseClass* house)
+int BuildingTypeClass::vf_33(HouseClass* house)
 {
-    int cost = TypesBuildingTypeTechnoView::vf_33(house);
-    TypesCostTypeView** padAircraft = TypesRules->PadAircraft;
-    TypesCostTypeView* first = padAircraft[0];
-    if ((void*)this == (void*)first->DockItems[0] && !TypesRules->unknown_17E8) {
-        int a = padAircraft[1]->GetCost(house);
-        int b = first->GetCost(house);
+    int cost = TechnoTypeClass::vf_33(house);
+    RulesClass* host = DAT_008871E0;
+    const AircraftTypeClass** padAircraft = host->PadAircraft.Items;
+    AircraftTypeClass* first = const_cast<AircraftTypeClass*>(padAircraft[0]);
+    if (this == *first->Dock.Items && host->SeparateAircraft == 0) {
+        int a = const_cast<AircraftTypeClass*>(padAircraft[1])->vf_33(house);
+        int b = first->vf_33(house);
         cost += (a + b) / 2;
     }
-    TypesCostTypeView* freeUnit = (TypesCostTypeView*)FreeUnit;
+    UnitTypeClass* freeUnit = FreeUnit;
     if (freeUnit) {
-        cost += freeUnit->GetCost(house);
+        cost += freeUnit->vf_33(house);
         return cost <= 0 ? 0 : cost;
     }
     return cost;
@@ -900,7 +935,7 @@ int BuildingTypeView_0045DD90::vf_33(HouseClass* house)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45F040
-void* BuildingTypeView_0045DD90::vf_39()
+void* BuildingTypeClass::vf_39()
 {
     if (Image == 0 && DemandLoad) {
         const char* theater = TheaterSpecificID;
@@ -995,13 +1030,13 @@ bool Obj_0045F1D0::FUN_0045F1D0(Shape_0045F1D0** shape, int* half)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45FE50
-bool BuildingTypeView_0045DD90::ReadINI(TypesIniView* ini)
+bool BuildingTypeClass::vf_25(CCINIClass* ini)
 {
     int i;
-    HBCoord coordDefault;
+    CoordStruct coordDefault;
     char animName[0x80];
-    TypesPoint2D pointDefault;
-    TypesPoint2D pointDefault2;
+    Point2D pointDefault;
+    Point2D pointDefault2;
     char name[0x80];
     char frameText[0x40];
     char frameDefault[0x40];
@@ -1013,19 +1048,19 @@ bool BuildingTypeView_0045DD90::ReadINI(TypesIniView* ini)
     char zKey[0x40];
     char xKey[0x40];
 
-    ini->ClearCache();
-    if (TypesBuildingTypeTechnoView::ReadINI(ini)) {
-        BuildCat = ini->ReadBuildCat(ID, "BuildCat", BuildCat);
-        AntiInfantryValue = ini->ReadInt(ID, "AntiInfantryValue", AntiInfantryValue);
-        AntiArmorValue = ini->ReadInt(ID, "AntiArmorValue", AntiArmorValue);
-        AntiAirValue = ini->ReadInt(ID, "AntiAirValue", AntiAirValue);
+    ini->Reset();
+    if (TechnoTypeClass::vf_25(ini)) {
+        BuildCat = ini->FUN_00475060(ID, "BuildCat", BuildCat);
+        AntiInfantryValue = ini->ReadInteger(ID, "AntiInfantryValue", AntiInfantryValue);
+        AntiArmorValue = ini->ReadInteger(ID, "AntiArmorValue", AntiArmorValue);
+        AntiAirValue = ini->ReadInteger(ID, "AntiAirValue", AntiAirValue);
         HasSpotlight = ini->ReadBool(ID, "HasSpotlight", HasSpotlight);
         HalfDamageSmokeLocation1 = ini->ReadCoord(ID, "HalfDamageSmokeLocation1", HalfDamageSmokeLocation1);
         HalfDamageSmokeLocation2 = ini->ReadCoord(ID, "HalfDamageSmokeLocation2", HalfDamageSmokeLocation2);
         Radar = ini->ReadBool(ID, "Radar", Radar);
         SpySat = ini->ReadBool(ID, "SpySat", SpySat);
-        unknown_67C = ini->ReadBool(ID, "WaterBound", unknown_67C == 5) ? 5 : -1;
-        Adjacent = ini->ReadInt(ID, "Adjacent", Adjacent);
+        SpeedType = ini->ReadBool(ID, "WaterBound", SpeedType == 5) ? 5 : -1;
+        Adjacent = ini->ReadInteger(ID, "Adjacent", Adjacent);
         Capturable = ini->ReadBool(ID, "Capturable", Capturable);
         Powered = ini->ReadBool(ID, "Powered", Powered);
         PoweredSpecial = ini->ReadBool(ID, "PoweredSpecial", PoweredSpecial);
@@ -1039,19 +1074,19 @@ bool BuildingTypeView_0045DD90::ReadINI(TypesIniView* ini)
         CanBeOccupied = ini->ReadBool(ID, "CanBeOccupied", CanBeOccupied);
         CanOccupyFire = ini->ReadBool(ID, "CanOccupyFire", CanOccupyFire);
         ShowOccupantPips = ini->ReadBool(ID, "ShowOccupantPips", ShowOccupantPips);
-        MaxNumberOccupants = ini->ReadInt(ID, "MaxNumberOccupants", MaxNumberOccupants);
-        NumberImpassableRows = ini->ReadInt(ID, "NumberImpassableRows", NumberImpassableRows);
-        ProduceCashStartup = ini->ReadInt(ID, "ProduceCashStartup", ProduceCashStartup);
-        ProduceCashAmount = ini->ReadInt(ID, "ProduceCashAmount", ProduceCashAmount);
-        ProduceCashDelay = ini->ReadInt(ID, "ProduceCashDelay", ProduceCashDelay);
-        InfantryGainSelfHeal = ini->ReadInt(ID, "InfantryGainSelfHeal", InfantryGainSelfHeal);
-        UnitsGainSelfHeal = ini->ReadInt(ID, "UnitsGainSelfHeal", UnitsGainSelfHeal);
-        RefinerySmokeFrames = ini->ReadInt(ID, "RefinerySmokeFrames", RefinerySmokeFrames);
+        MaxNumberOccupants = ini->ReadInteger(ID, "MaxNumberOccupants", MaxNumberOccupants);
+        NumberImpassableRows = ini->ReadInteger(ID, "NumberImpassableRows", NumberImpassableRows);
+        ProduceCashStartup = ini->ReadInteger(ID, "ProduceCashStartup", ProduceCashStartup);
+        ProduceCashAmount = ini->ReadInteger(ID, "ProduceCashAmount", ProduceCashAmount);
+        ProduceCashDelay = ini->ReadInteger(ID, "ProduceCashDelay", ProduceCashDelay);
+        InfantryGainSelfHeal = ini->ReadInteger(ID, "InfantryGainSelfHeal", InfantryGainSelfHeal);
+        UnitsGainSelfHeal = ini->ReadInteger(ID, "UnitsGainSelfHeal", UnitsGainSelfHeal);
+        RefinerySmokeFrames = ini->ReadInteger(ID, "RefinerySmokeFrames", RefinerySmokeFrames);
         BaseNormal = ini->ReadBool(ID, "BaseNormal", BaseNormal);
         EligibileForAllyBuilding = ini->ReadBool(ID, "EligibileForAllyBuilding", EligibileForAllyBuilding);
         EligibleForDelayKill = ini->ReadBool(ID, "EligibleForDelayKill", EligibleForDelayKill);
         NeedsEngineer = ini->ReadBool(ID, "NeedsEngineer", NeedsEngineer);
-        CaptureEvaEvent = ini->ReadEvaEvent(ID, "CaptureEvaEvent", CaptureEvaEvent);
+        CaptureEvaEvent = ini->FUN_00474FA0(ID, "CaptureEvaEvent", CaptureEvaEvent);
         ProtectWithWall = ini->ReadBool(ID, "ProtectWithWall", ProtectWithWall);
         for (i = 0; i < MaxNumberOccupants; ++i) {
             char number[0x10];
@@ -1059,7 +1094,7 @@ bool BuildingTypeView_0045DD90::ReadINI(TypesIniView* ini)
             itoa(i, number, 10);
             strcat(animName, number);
             pointDefault = TypesMakePoint(0xFFFF, 0xFFFF);
-            MuzzleFlash[i] = TypesArtIni.ReadPoint(ImageFile, animName, pointDefault);
+            MuzzleFlash[i] = DAT_00887180.ReadPoint(ImageFile, animName, pointDefault);
             if (MuzzleFlash[i].X == 0xFFFF && MuzzleFlash[i].Y == 0xFFFF) {
                 MuzzleFlash[i].X = 0;
                 MuzzleFlash[i].Y = 0;
@@ -1071,7 +1106,7 @@ bool BuildingTypeView_0045DD90::ReadINI(TypesIniView* ini)
             itoa(i, number, 10);
             strcat(animName, number);
             pointDefault = TypesMakePoint(0xFFFF, 0xFFFF);
-            DamageFireOffset[i] = TypesArtIni.ReadPoint(ImageFile, animName, pointDefault);
+            DamageFireOffset[i] = DAT_00887180.ReadPoint(ImageFile, animName, pointDefault);
             if (DamageFireOffset[i].X == 0xFFFF && DamageFireOffset[i].Y == 0xFFFF) {
                 DamageFireOffset[i].X = TypesZeroCoord.X;
                 DamageFireOffset[i].Y = TypesZeroCoord.Y;
@@ -1083,25 +1118,25 @@ bool BuildingTypeView_0045DD90::ReadINI(TypesIniView* ini)
         Helipad = ini->ReadBool(ID, "Helipad", Helipad);
         OrePurifier = ini->ReadBool(ID, "OrePurifier", OrePurifier);
         FactoryPlant = ini->ReadBool(ID, "FactoryPlant", FactoryPlant);
-        Factory = ini->ReadFactory(ID, "Factory", Factory);
+        Factory = ini->FUN_00474FF0(ID, "Factory", Factory);
         {
-            void* old = FreeUnit;
-            FreeUnit = ini->ReadString(ID, "FreeUnit", TypesEmptyText, name, 0x80) ? (void*)TypesFindUnitType(name) : old;
+            UnitTypeClass* old = FreeUnit;
+            FreeUnit = ini->ReadString(ID, "FreeUnit", TypesEmptyText, name, 0x80) ? TypesFindUnitType(name) : old;
         }
         HoverPad = ini->ReadBool(ID, "HoverPad", HoverPad);
         IsTemple = ini->ReadBool(ID, "IsTemple", IsTemple);
         IsPlug = ini->ReadBool(ID, "IsPlug", IsPlug);
         {
-            void* old = SecretInfantry;
-            SecretInfantry = ini->ReadString(ID, "SecretInfantry", TypesEmptyText, name, 0x80) ? (void*)TypesFindInfantryType(name) : old;
+            InfantryTypeClass* old = SecretInfantry;
+            SecretInfantry = ini->ReadString(ID, "SecretInfantry", TypesEmptyText, name, 0x80) ? TypesFindInfantryType(name) : old;
         }
         {
-            void* old = SecretUnit;
-            SecretUnit = ini->ReadString(ID, "SecretUnit", TypesEmptyText, name, 0x80) ? (void*)TypesFindUnitType(name) : old;
+            UnitTypeClass* old = SecretUnit;
+            SecretUnit = ini->ReadString(ID, "SecretUnit", TypesEmptyText, name, 0x80) ? TypesFindUnitType(name) : old;
         }
         {
-            void* old = SecretBuilding;
-            SecretBuilding = ini->ReadString(ID, "SecretBuilding", TypesEmptyText, name, 0x80) ? TypesFindBuildingType(name, &TypesBuildingTypeArray) : old;
+            BuildingTypeClass* old = SecretBuilding;
+            SecretBuilding = ini->ReadString(ID, "SecretBuilding", TypesEmptyText, name, 0x80) ? TypesFindBuildingType(name, &DAT_00A83C68) : old;
         }
         InfantryCostBonus = (float)ini->ReadDouble(ID, "InfantryCostBonus", InfantryCostBonus);
         UnitsCostBonus = (float)ini->ReadDouble(ID, "UnitsCostBonus", UnitsCostBonus);
@@ -1198,15 +1233,15 @@ bool BuildingTypeView_0045DD90::ReadINI(TypesIniView* ini)
         EMPulseCannon = ini->ReadBool(ID, "EMPulseCannon", EMPulseCannon);
         TickTank = ini->ReadBool(ID, "TickTank", TickTank);
         ChargedAnimTime = (float)ini->ReadDouble(ID, "ChargedAnimTime", ChargedAnimTime);
-        SuperWeapon = ini->ReadSuperWeapon(ID, "SuperWeapon", SuperWeapon);
-        SuperWeapon2 = ini->ReadSuperWeapon(ID, "SuperWeapon2", SuperWeapon2);
+        SuperWeapon = ini->FUN_00474F50(ID, "SuperWeapon", SuperWeapon);
+        SuperWeapon2 = ini->FUN_00474F50(ID, "SuperWeapon2", SuperWeapon2);
         CloakGenerator = ini->ReadBool(ID, "CloakGenerator", CloakGenerator);
         SensorArray = ini->ReadBool(ID, "SensorArray", SensorArray);
-        CloakRadiusInCells = (unsigned char)ini->ReadInt(ID, "CloakRadiusInCells", (signed char)CloakRadiusInCells);
-        PsychicDetectionRadius = ini->ReadInt(ID, "PsychicDetectionRadius", PsychicDetectionRadius);
-        BarrelStartPitch = ini->ReadInt(ID, "BarrelStartPitch", BarrelStartPitch >> 5) << 5;
-        DeployFacing = ini->ReadInt(ID, "DeployFacing", DeployFacing >> 5) << 5;
-        LightVisibility = ini->ReadInt(ID, "LightVisibility", LightVisibility);
+        CloakRadiusInCells = (unsigned char)ini->ReadInteger(ID, "CloakRadiusInCells", (signed char)CloakRadiusInCells);
+        PsychicDetectionRadius = ini->ReadInteger(ID, "PsychicDetectionRadius", PsychicDetectionRadius);
+        BarrelStartPitch = ini->ReadInteger(ID, "BarrelStartPitch", BarrelStartPitch >> 5) << 5;
+        DeployFacing = ini->ReadInteger(ID, "DeployFacing", DeployFacing >> 5) << 5;
+        LightVisibility = ini->ReadInteger(ID, "LightVisibility", LightVisibility);
         LightIntensity = (int)(ini->ReadDouble(ID, "LightIntensity", (double)(LightIntensity / 1000)) * 1000.0 + 0.1);
         LightRedTint = (int)(ini->ReadDouble(ID, "LightRedTint", (double)(LightRedTint / 1000)) * 1000.0 + 0.1);
         LightGreenTint = (int)(ini->ReadDouble(ID, "LightGreenTint", (double)(LightGreenTint / 1000)) * 1000.0 + 0.1);
@@ -1218,7 +1253,7 @@ bool BuildingTypeView_0045DD90::ReadINI(TypesIniView* ini)
             if (strlen(animName))
                 strcpy(PowersUpBuilding, animName);
         }
-        PowersUpToLevel = ini->ReadInt(ID, "PowersUpToLevel", PowersUpToLevel);
+        PowersUpToLevel = ini->ReadInteger(ID, "PowersUpToLevel", PowersUpToLevel);
         BridgeRepairHut = ini->ReadBool(ID, "BridgeRepairHut", BridgeRepairHut);
         HasStupidGuardMode = ini->ReadBool(ID, "HasStupidGuardMode", HasStupidGuardMode);
         CrateBeneath = ini->ReadBool(ID, "CrateBeneath", CrateBeneath);
@@ -1239,10 +1274,10 @@ bool BuildingTypeView_0045DD90::ReadINI(TypesIniView* ini)
         IsBaseDefense = ini->ReadBool(ID, "IsBaseDefense", IsBaseDefense);
         IsThreatRatingNode = ini->ReadBool(ID, "IsThreatRatingNode", IsThreatRatingNode);
         ConcentricRadialIndicator = ini->ReadBool(ID, "ConcentricRadialIndicator", ConcentricRadialIndicator);
-        unknown_718 = unknown_CA1 ? 0x20 : 1;
+        RotCount = Turret ? 0x20 : 1;
         {
             int power = PowerBonus > 0 ? PowerBonus : -PowerDrain;
-            power = ini->ReadInt(ID, "Power", power);
+            power = ini->ReadInteger(ID, "Power", power);
             PowerBonus = power;
             if (power < 0) {
                 PowerDrain = -power;
@@ -1253,85 +1288,85 @@ bool BuildingTypeView_0045DD90::ReadINI(TypesIniView* ini)
         }
         {
             int power = ExtraPowerBonus > 0 ? ExtraPowerBonus : -ExtraPowerDrain;
-            power = ini->ReadInt(ID, "ExtraPower", power);
+            power = ini->ReadInteger(ID, "ExtraPower", power);
             ExtraPowerBonus = power;
             if (power < 0) {
                 ExtraPowerDrain = -power;
                 ExtraPowerBonus = 0;
             }
         }
-        Height = TypesArtIni.ReadInt(ImageFile, "Height", Height);
-        OccupyHeight = TypesArtIni.ReadInt(ImageFile, "OccupyHeight", Height);
-        Recoilless = TypesArtIni.ReadBool(ImageFile, "Recoilless", Recoilless);
-        DoubleThick = TypesArtIni.ReadBool(ImageFile, "DoubleThick", DoubleThick);
-        Flat = TypesArtIni.ReadBool(ImageFile, "Flat", Flat);
-        SiloDamage = TypesArtIni.ReadBool(ImageFile, "SiloDamage", SiloDamage);
-        ChargeAnim = TypesArtIni.ReadBool(ImageFile, "ChargeAnim", ChargeAnim);
-        IsAnimDelayedFire = TypesArtIni.ReadBool(ImageFile, "IsAnimDelayedFire", IsAnimDelayedFire);
-        DelayedFireDelay = TypesArtIni.ReadInt(ImageFile, "DelayedFireDelay", DelayedFireDelay);
+        Height = DAT_00887180.ReadInteger(ImageFile, "Height", Height);
+        OccupyHeight = DAT_00887180.ReadInteger(ImageFile, "OccupyHeight", Height);
+        Recoilless = DAT_00887180.ReadBool(ImageFile, "Recoilless", Recoilless);
+        DoubleThick = DAT_00887180.ReadBool(ImageFile, "DoubleThick", DoubleThick);
+        Flat = DAT_00887180.ReadBool(ImageFile, "Flat", Flat);
+        SiloDamage = DAT_00887180.ReadBool(ImageFile, "SiloDamage", SiloDamage);
+        ChargeAnim = DAT_00887180.ReadBool(ImageFile, "ChargeAnim", ChargeAnim);
+        IsAnimDelayedFire = DAT_00887180.ReadBool(ImageFile, "IsAnimDelayedFire", IsAnimDelayedFire);
+        DelayedFireDelay = DAT_00887180.ReadInteger(ImageFile, "DelayedFireDelay", DelayedFireDelay);
         {
-            void* old = ToOverlay;
-            ToOverlay = TypesArtIni.ReadString(ImageFile, "ToOverlay", TypesEmptyText, name, 0x80) ? TypesFindOverlay(name) : old;
+            OverlayTypeClass* old = ToOverlay;
+            ToOverlay = DAT_00887180.ReadString(ImageFile, "ToOverlay", TypesEmptyText, name, 0x80) ? TypesFindOverlay(name) : old;
         }
-        Foundation = TypesArtIni.ReadFoundation(ImageFile, "Foundation", Foundation);
+        Foundation = DAT_00887180.ReadFoundation(ImageFile, "Foundation", Foundation);
         {
-            int foundation = TypesArtIni.ReadFoundation(ID, "Foundation", Foundation);
+            int foundation = DAT_00887180.ReadFoundation(ID, "Foundation", Foundation);
             if (foundation)
                 Foundation = foundation;
         }
-        MidPoint = TypesArtIni.ReadInt(ImageFile, "MidPoint", MidPoint);
-        DoorStages = TypesArtIni.ReadInt(ImageFile, "DoorStages", DoorStages);
-        DamagedDoor = TypesArtIni.ReadBool(ImageFile, "DamagedDoor", DamagedDoor);
-        TerrainPalette = TypesArtIni.ReadBool(ImageFile, "TerrainPalette", TerrainPalette);
-        GateStages = TypesArtIni.ReadInt(ImageFile, "GateStages", GateStages);
-        PrimaryFirePixelOffset = TypesArtIni.ReadPoint(ImageFile, "PrimaryFirePixelOffset", PrimaryFirePixelOffset);
-        SecondaryFirePixelOffset = TypesArtIni.ReadPoint(ImageFile, "SecondaryFirePixelOffset", SecondaryFirePixelOffset);
-        PrimaryFireDualOffset = TypesArtIni.ReadBool(ImageFile, "PrimaryFireDualOffset", PrimaryFireDualOffset);
-        ExtraDamageStage = TypesArtIni.ReadBool(ImageFile, "ExtraDamageStage", ExtraDamageStage);
-        SpecialZOverlayZAdjust = TypesArtIni.ReadInt(ImageFile, "SpecialZOverlayZAdjust", SpecialZOverlayZAdjust);
-        NormalZAdjust = TypesArtIni.ReadInt(ImageFile, "NormalZAdjust", NormalZAdjust);
-        ZShapePointMove = TypesArtIni.ReadPoint(ImageFile, "ZShapePointMove", ZShapePointMove);
-        ExtraLight = (short)TypesArtIni.ReadInt(ImageFile, "ExtraLight", (short)ExtraLight);
-        CanHideThings = TypesArtIni.ReadBool(ID, "CanHideThings", CanHideThings);
+        MidPoint = DAT_00887180.ReadInteger(ImageFile, "MidPoint", MidPoint);
+        DoorStages = DAT_00887180.ReadInteger(ImageFile, "DoorStages", DoorStages);
+        DamagedDoor = DAT_00887180.ReadBool(ImageFile, "DamagedDoor", DamagedDoor);
+        TerrainPalette = DAT_00887180.ReadBool(ImageFile, "TerrainPalette", TerrainPalette);
+        GateStages = DAT_00887180.ReadInteger(ImageFile, "GateStages", GateStages);
+        PrimaryFirePixelOffset = DAT_00887180.ReadPoint(ImageFile, "PrimaryFirePixelOffset", PrimaryFirePixelOffset);
+        SecondaryFirePixelOffset = DAT_00887180.ReadPoint(ImageFile, "SecondaryFirePixelOffset", SecondaryFirePixelOffset);
+        PrimaryFireDualOffset = DAT_00887180.ReadBool(ImageFile, "PrimaryFireDualOffset", PrimaryFireDualOffset);
+        ExtraDamageStage = DAT_00887180.ReadBool(ImageFile, "ExtraDamageStage", ExtraDamageStage);
+        SpecialZOverlayZAdjust = DAT_00887180.ReadInteger(ImageFile, "SpecialZOverlayZAdjust", SpecialZOverlayZAdjust);
+        NormalZAdjust = DAT_00887180.ReadInteger(ImageFile, "NormalZAdjust", NormalZAdjust);
+        ZShapePointMove = DAT_00887180.ReadPoint(ImageFile, "ZShapePointMove", ZShapePointMove);
+        ExtraLight = (short)DAT_00887180.ReadInteger(ImageFile, "ExtraLight", (short)ExtraLight);
+        CanHideThings = DAT_00887180.ReadBool(ID, "CanHideThings", CanHideThings);
         for (i = 1; i <= 8; ++i) {
             wsprintfA(animName, "RemoveOccupy%d", i);
             pointDefault = TypesMakePoint(0xFFFF, 0xFFFF);
-            RemoveOccupy[i - 1] = TypesArtIni.ReadPoint(ImageFile, animName, pointDefault);
+            RemoveOccupy[i - 1] = DAT_00887180.ReadPoint(ImageFile, animName, pointDefault);
             wsprintfA(animName, "AddOccupy%d", i);
             pointDefault2 = TypesMakePoint(0xFFFF, 0xFFFF);
-            AddOccupy[i - 1] = TypesArtIni.ReadPoint(ImageFile, animName, pointDefault2);
+            AddOccupy[i - 1] = DAT_00887180.ReadPoint(ImageFile, animName, pointDefault2);
         }
         {
             pointDefault = TypesMakePoint(0, 0);
-            QueueingCell = TypesArtIni.ReadPoint(ImageFile, "QueueingCell", pointDefault);
+            QueueingCell = DAT_00887180.ReadPoint(ImageFile, "QueueingCell", pointDefault);
         }
         FoundationData = TypesFoundationCells[Foundation];
-        FoundationOutside = &TypesFoundationOutsideCells[Foundation];
+        FoundationOutside = TypesFoundationOutsideCells[Foundation];
         {
-            TypesArtIni.ReadString(ImageFile, "Buildup", TypesEmptyText, animName, 0x10);
+            DAT_00887180.ReadString(ImageFile, "Buildup", TypesEmptyText, animName, 0x10);
             if (strlen(animName))
                 strcpy(BuildupFile, animName);
         }
         StampTheater(TypesScenario->TheaterIndex);
         {
-            sprintf(frameDefault, "%d,%d,%d", BuildingAnimFrame[1].Start, BuildingAnimFrame[1].Count, BuildingAnimFrame[1].Rate);
-            if (TypesArtIni.ReadString(ImageFile, "AnimIdle", frameDefault, frameText, 0x40) > 0)
-                sscanf(frameText, "%d,%d,%d", &BuildingAnimFrame[1].Start, &BuildingAnimFrame[1].Count, &BuildingAnimFrame[1].Rate);
+            sprintf(frameDefault, "%d,%d,%d", BuildingAnimFrame[1].Frame, BuildingAnimFrame[1].Count, BuildingAnimFrame[1].Rate);
+            if (DAT_00887180.ReadString(ImageFile, "AnimIdle", frameDefault, frameText, 0x40) > 0)
+                sscanf(frameText, "%d,%d,%d", &BuildingAnimFrame[1].Frame, &BuildingAnimFrame[1].Count, &BuildingAnimFrame[1].Rate);
         }
         {
-            sprintf(frameDefault, "%d,%d,%d", BuildingAnimFrame[2].Start, BuildingAnimFrame[2].Count, BuildingAnimFrame[2].Rate);
-            if (TypesArtIni.ReadString(ImageFile, "AnimActive", frameDefault, frameText, 0x40) > 0)
-                sscanf(frameText, "%d,%d,%d", &BuildingAnimFrame[2].Start, &BuildingAnimFrame[2].Count, &BuildingAnimFrame[2].Rate);
+            sprintf(frameDefault, "%d,%d,%d", BuildingAnimFrame[2].Frame, BuildingAnimFrame[2].Count, BuildingAnimFrame[2].Rate);
+            if (DAT_00887180.ReadString(ImageFile, "AnimActive", frameDefault, frameText, 0x40) > 0)
+                sscanf(frameText, "%d,%d,%d", &BuildingAnimFrame[2].Frame, &BuildingAnimFrame[2].Count, &BuildingAnimFrame[2].Rate);
         }
         {
-            sprintf(frameDefault, "%d,%d,%d", BuildingAnimFrame[4].Start, BuildingAnimFrame[4].Count, BuildingAnimFrame[4].Rate);
-            if (TypesArtIni.ReadString(ImageFile, "AnimAux1", frameDefault, frameText, 0x40) > 0)
-                sscanf(frameText, "%d,%d,%d", &BuildingAnimFrame[4].Start, &BuildingAnimFrame[4].Count, &BuildingAnimFrame[4].Rate);
+            sprintf(frameDefault, "%d,%d,%d", BuildingAnimFrame[4].Frame, BuildingAnimFrame[4].Count, BuildingAnimFrame[4].Rate);
+            if (DAT_00887180.ReadString(ImageFile, "AnimAux1", frameDefault, frameText, 0x40) > 0)
+                sscanf(frameText, "%d,%d,%d", &BuildingAnimFrame[4].Frame, &BuildingAnimFrame[4].Count, &BuildingAnimFrame[4].Rate);
         }
         {
-            sprintf(frameDefault, "%d,%d,%d", BuildingAnimFrame[5].Start, BuildingAnimFrame[5].Count, BuildingAnimFrame[5].Rate);
-            if (TypesArtIni.ReadString(ImageFile, "AnimAux2", frameDefault, frameText, 0x40) > 0)
-                sscanf(frameText, "%d,%d,%d", &BuildingAnimFrame[5].Start, &BuildingAnimFrame[5].Count, &BuildingAnimFrame[5].Rate);
+            sprintf(frameDefault, "%d,%d,%d", BuildingAnimFrame[5].Frame, BuildingAnimFrame[5].Count, BuildingAnimFrame[5].Rate);
+            if (DAT_00887180.ReadString(ImageFile, "AnimAux2", frameDefault, frameText, 0x40) > 0)
+                sscanf(frameText, "%d,%d,%d", &BuildingAnimFrame[5].Frame, &BuildingAnimFrame[5].Count, &BuildingAnimFrame[5].Rate);
         }
         TYPES_READ_ANIM(BuildingAnim[3], "ActiveAnim")
         TYPES_READ_ANIM(BuildingAnim[4], "ActiveAnimTwo")
@@ -1370,35 +1405,35 @@ bool BuildingTypeView_0045DD90::ReadINI(TypesIniView* ini)
             coordDefault = VoxelBarrelOffsetToBarrelEnd;
             VoxelBarrelOffsetToBarrelEnd = ini->ReadCoord(ID, "VoxelBarrelOffsetToBarrelEnd", coordDefault);
         }
-        Upgrades = ini->ReadInt(ID, "Upgrades", Upgrades);
+        Upgrades = ini->ReadInteger(ID, "Upgrades", Upgrades);
         if (Upgrades > 0) {
             for (i = 1; i - 1 < Upgrades; ++i) {
-                BuildingTypeAnim& slot = BuildingAnim[i - 1];
+                BuildingAnimStruct& slot = BuildingAnim[i - 1];
                 sprintf(animKey, "PowerUp%01dAnim", i);
                 sprintf(damagedKey, "PowerUp%01dDamagedAnim", i);
                 sprintf(xKey, "PowerUp%01dLocXX", i);
                 sprintf(yKey, "PowerUp%01dLocYY", i);
                 sprintf(zKey, "PowerUp%01dLocZZ", i);
                 sprintf(sortKey, "PowerUp%01dYSort", i);
-                TypesArtIni.ReadString(ImageFile, animKey, TypesEmptyText, animName, 0x10);
+                DAT_00887180.ReadString(ImageFile, animKey, TypesEmptyText, animName, 0x10);
                 if (strlen(animName))
                     strcpy(slot.Anim, animName);
-                TypesArtIni.ReadString(ImageFile, damagedKey, TypesEmptyText, animName, 0x10);
+                DAT_00887180.ReadString(ImageFile, damagedKey, TypesEmptyText, animName, 0x10);
                 if (strlen(animName))
                     strcpy(slot.Damaged, animName);
-                slot.X = TypesArtIni.ReadInt(ImageFile, xKey, slot.X);
-                slot.Y = TypesArtIni.ReadInt(ImageFile, yKey, slot.Y);
-                slot.ZAdjust = TypesArtIni.ReadInt(ImageFile, zKey, slot.ZAdjust);
-                slot.YSort = TypesArtIni.ReadInt(ImageFile, sortKey, slot.YSort);
+                slot.X = DAT_00887180.ReadInteger(ImageFile, xKey, slot.X);
+                slot.Y = DAT_00887180.ReadInteger(ImageFile, yKey, slot.Y);
+                slot.ZAdjust = DAT_00887180.ReadInteger(ImageFile, zKey, slot.ZAdjust);
+                slot.YSort = DAT_00887180.ReadInteger(ImageFile, sortKey, slot.YSort);
             }
         }
         {
             int oldDocks = NumberOfDocks;
-            NumberOfDocks = ini->ReadInt(ID, "NumberOfDocks", oldDocks);
+            NumberOfDocks = ini->ReadInteger(ID, "NumberOfDocks", oldDocks);
             if (NumberOfDocks > DockingOffsets.Capacity) {
                 DockingOffsets.SetCapacity(NumberOfDocks, 0);
                 for (i = oldDocks; i < NumberOfDocks; ++i) {
-                    TypesDockCoord zero;
+                    TPoint3D<int> zero;
                     zero.X = 0;
                     zero.Y = 0;
                     zero.Z = 0;
@@ -1407,9 +1442,9 @@ bool BuildingTypeView_0045DD90::ReadINI(TypesIniView* ini)
             }
             for (i = 0; i < NumberOfDocks; ++i) {
                 sprintf(dockKey, "DockingOffset%d", i);
-                coordDefault = *(HBCoord*)&DockingOffsets.Items[i];
-                HBCoord result = TypesArtIni.ReadCoord(ImageFile, dockKey, coordDefault);
-                *(HBCoord*)&DockingOffsets.Items[i] = result;
+                coordDefault = *(CoordStruct*)&DockingOffsets.Items[i];
+                CoordStruct result = DAT_00887180.ReadCoord(ImageFile, dockKey, coordDefault);
+                *(CoordStruct*)&DockingOffsets.Items[i] = result;
             }
         }
         return true;
@@ -1419,27 +1454,27 @@ bool BuildingTypeView_0045DD90::ReadINI(TypesIniView* ini)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x464A70
-HBCoord BuildingTypeView_0045DD90::vf_27(const HBCoord* in)
+CoordStruct BuildingTypeClass::vf_27(const CoordStruct& in)
 {
-    HBCoord coord = *in;
+    CoordStruct coord = in;
     coord.Z = TypesMap.GetFloorHeight(&coord);
     return coord;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x464AC0
-bool BuildingTypeView_0045DD90::vf_42(void* arg1, void* arg2)
+bool BuildingTypeClass::vf_42(CellStruct* arg1, HouseClass* arg2)
 {
     if (PlaceAnywhere)
         return true;
-    return TypesBuildingTypeTechnoView::vf_42(arg1, arg2);
+    return TechnoTypeClass::vf_42(arg1, arg2);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x464AF0
-HBCoord BuildingTypeView_0045DD90::vf_31()
+CoordStruct BuildingTypeClass::vf_31()
 {
-    HBCoord coord;
+    CoordStruct coord;
     coord.X = FoundationWidth[Foundation] << 8;
     coord.Y = FoundationHeight[Foundation] << 8;
     coord.Z = Height * TypesLevelHeight;
@@ -1448,94 +1483,94 @@ HBCoord BuildingTypeView_0045DD90::vf_31()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x464B30
-void BuildingTypeView_0045DD90::ComputeCRC(TypesCrcView& crc)
+void BuildingTypeClass::vf_13(Obj_004A1D30* crc)
 {
-    TypesBuildingTypeTechnoView::ComputeCRC(crc);
-    crc.AddDouble(GateCloseDelay);
-    crc.AddInt(LightVisibility);
-    crc.AddInt(LightIntensity);
-    crc.AddInt(LightRedTint);
-    crc.AddInt(LightGreenTint);
-    crc.AddInt(LightBlueTint);
-    crc.FUN_004A1DB0(BuildupFile);
-    crc.FUN_004A1DB0(PowersUpBuilding);
-    crc.AddInt(Adjacent);
-    crc.AddInt(Factory);
-    crc.AddInt(PowerBonus);
-    crc.AddInt(PowerDrain);
-    crc.AddInt(ExtraPowerBonus);
-    crc.AddInt(ExtraPowerDrain);
-    crc.AddInt(Foundation);
-    crc.AddInt(Height);
-    crc.AddInt(OccupyHeight);
-    crc.AddInt(MidPoint);
-    crc.AddInt(DoorStages);
-    crc.AddBytes(BuildingAnimFrame, sizeof(BuildingAnimFrame));
-    crc.AddBytes(BuildingAnim, sizeof(BuildingAnim));
-    crc.AddInt(Upgrades);
-    crc.AddInt(SpecialZOverlayZAdjust);
-    crc.AddBool(HoverPad);
-    crc.AddBool(IsPlug);
-    crc.AddBool(IsTemple);
-    crc.AddBool(HasSpotlight);
-    crc.AddBool(BaseNormal);
-    crc.AddBool(EligibileForAllyBuilding);
-    crc.AddBool(NeedsEngineer);
-    crc.AddBool(Bib);
-    crc.AddBool(Wall);
-    crc.AddBool(Capturable);
-    crc.AddBool(Powered);
-    crc.AddBool(Unsellable);
-    crc.AddBool(Radar);
-    crc.AddBool(SpySat);
-    crc.AddBool(ChargeAnim);
-    crc.AddBool(IsAnimDelayedFire);
-    crc.AddInt(DelayedFireDelay);
-    crc.AddBool(SiloDamage);
-    crc.AddBool(UnitRepair);
-    crc.AddBool(UnitReload);
-    crc.AddBool(Cloning);
-    crc.AddBool(Grinding);
-    crc.AddBool(UnitAbsorb);
-    crc.AddBool(InfantryAbsorb);
-    crc.AddBool(SecretLab);
-    crc.AddBool(Flat);
-    crc.AddBool(DockUnload);
-    crc.AddBool(Recoilless);
-    crc.AddBool(BridgeRepairHut);
-    crc.AddBool(Gate);
-    crc.AddBool(SAM);
-    crc.AddBool(ConstructionYard);
-    crc.AddBool(NukeSilo);
-    crc.AddBool(Refinery);
-    crc.AddBool(WeaponsFactory);
-    crc.AddBool(LaserFencePost);
-    crc.AddBool(LaserFence);
-    crc.AddBool(FirestormWall);
-    crc.AddBool(Helipad);
-    crc.AddBool(OrePurifier);
-    crc.AddBool(ExtraDamageStage);
-    crc.AddBool(Hospital);
-    crc.AddBool(Armory);
-    crc.AddInt(GateStages);
-    crc.AddInt(PowersUpToLevel);
-    crc.AddBool(DamagedDoor);
-    crc.AddBool(InvisibleInGame);
-    crc.AddBool(TerrainPalette);
-    crc.AddBool(TurretAnimIsVoxel);
-    crc.AddBool(BarrelAnimIsVoxel);
-    crc.FUN_004A1DB0(VoxelBarrelFile);
-    crc.AddDouble(unknown_1728);
-    crc.AddBytes(&VoxelBarrelOffsetToPitchPivotPoint, sizeof(HBCoord));
-    crc.AddBytes(&VoxelBarrelOffsetToRotatePivotPoint, sizeof(HBCoord));
-    crc.AddBytes(&VoxelBarrelOffsetToBuildingPivotPoint, sizeof(HBCoord));
-    crc.AddBytes(&VoxelBarrelOffsetToBarrelEnd, sizeof(HBCoord));
-    crc.AddBool(CrateBeneath);
-    crc.AddBool(LeaveRubble);
-    crc.AddBool(CrateBeneathIsMoney);
-    crc.AddInt(NumberOfDocks);
-    crc.AddInt(BarrelStartPitch);
-    crc.AddBool(ConcentricRadialIndicator);
+    TechnoTypeClass::vf_13(crc);
+    crc->FUN_004A1D90(GateCloseDelay);
+    crc->FUN_004A1D50(LightVisibility);
+    crc->FUN_004A1D50(LightIntensity);
+    crc->FUN_004A1D50(LightRedTint);
+    crc->FUN_004A1D50(LightGreenTint);
+    crc->FUN_004A1D50(LightBlueTint);
+    crc->FUN_004A1DB0(BuildupFile);
+    crc->FUN_004A1DB0(PowersUpBuilding);
+    crc->FUN_004A1D50(Adjacent);
+    crc->FUN_004A1D50(Factory);
+    crc->FUN_004A1D50(PowerBonus);
+    crc->FUN_004A1D50(PowerDrain);
+    crc->FUN_004A1D50(ExtraPowerBonus);
+    crc->FUN_004A1D50(ExtraPowerDrain);
+    crc->FUN_004A1D50(Foundation);
+    crc->FUN_004A1D50(Height);
+    crc->FUN_004A1D50(OccupyHeight);
+    crc->FUN_004A1D50(MidPoint);
+    crc->FUN_004A1D50(DoorStages);
+    crc->FUN_004A1DE0(BuildingAnimFrame, sizeof(BuildingAnimFrame));
+    crc->FUN_004A1DE0(BuildingAnim, sizeof(BuildingAnim));
+    crc->FUN_004A1D50(Upgrades);
+    crc->FUN_004A1D50(SpecialZOverlayZAdjust);
+    crc->FUN_004A1CA0(HoverPad);
+    crc->FUN_004A1CA0(IsPlug);
+    crc->FUN_004A1CA0(IsTemple);
+    crc->FUN_004A1CA0(HasSpotlight);
+    crc->FUN_004A1CA0(BaseNormal);
+    crc->FUN_004A1CA0(EligibileForAllyBuilding);
+    crc->FUN_004A1CA0(NeedsEngineer);
+    crc->FUN_004A1CA0(Bib);
+    crc->FUN_004A1CA0(Wall);
+    crc->FUN_004A1CA0(Capturable);
+    crc->FUN_004A1CA0(Powered);
+    crc->FUN_004A1CA0(Unsellable);
+    crc->FUN_004A1CA0(Radar);
+    crc->FUN_004A1CA0(SpySat);
+    crc->FUN_004A1CA0(ChargeAnim);
+    crc->FUN_004A1CA0(IsAnimDelayedFire);
+    crc->FUN_004A1D50(DelayedFireDelay);
+    crc->FUN_004A1CA0(SiloDamage);
+    crc->FUN_004A1CA0(UnitRepair);
+    crc->FUN_004A1CA0(UnitReload);
+    crc->FUN_004A1CA0(Cloning);
+    crc->FUN_004A1CA0(Grinding);
+    crc->FUN_004A1CA0(UnitAbsorb);
+    crc->FUN_004A1CA0(InfantryAbsorb);
+    crc->FUN_004A1CA0(SecretLab);
+    crc->FUN_004A1CA0(Flat);
+    crc->FUN_004A1CA0(DockUnload);
+    crc->FUN_004A1CA0(Recoilless);
+    crc->FUN_004A1CA0(BridgeRepairHut);
+    crc->FUN_004A1CA0(Gate);
+    crc->FUN_004A1CA0(SAM);
+    crc->FUN_004A1CA0(ConstructionYard);
+    crc->FUN_004A1CA0(NukeSilo);
+    crc->FUN_004A1CA0(Refinery);
+    crc->FUN_004A1CA0(WeaponsFactory);
+    crc->FUN_004A1CA0(LaserFencePost);
+    crc->FUN_004A1CA0(LaserFence);
+    crc->FUN_004A1CA0(FirestormWall);
+    crc->FUN_004A1CA0(Helipad);
+    crc->FUN_004A1CA0(OrePurifier);
+    crc->FUN_004A1CA0(ExtraDamageStage);
+    crc->FUN_004A1CA0(Hospital);
+    crc->FUN_004A1CA0(Armory);
+    crc->FUN_004A1D50(GateStages);
+    crc->FUN_004A1D50(PowersUpToLevel);
+    crc->FUN_004A1CA0(DamagedDoor);
+    crc->FUN_004A1CA0(InvisibleInGame);
+    crc->FUN_004A1CA0(TerrainPalette);
+    crc->FUN_004A1CA0(TurretAnimIsVoxel);
+    crc->FUN_004A1CA0(BarrelAnimIsVoxel);
+    crc->FUN_004A1DB0(VoxelBarrelFile);
+    crc->FUN_004A1D90(unknown_1728);
+    crc->FUN_004A1DE0(&VoxelBarrelOffsetToPitchPivotPoint, sizeof(CoordStruct));
+    crc->FUN_004A1DE0(&VoxelBarrelOffsetToRotatePivotPoint, sizeof(CoordStruct));
+    crc->FUN_004A1DE0(&VoxelBarrelOffsetToBuildingPivotPoint, sizeof(CoordStruct));
+    crc->FUN_004A1DE0(&VoxelBarrelOffsetToBarrelEnd, sizeof(CoordStruct));
+    crc->FUN_004A1CA0(CrateBeneath);
+    crc->FUN_004A1CA0(LeaveRubble);
+    crc->FUN_004A1CA0(CrateBeneathIsMoney);
+    crc->FUN_004A1D50(NumberOfDocks);
+    crc->FUN_004A1D50(BarrelStartPitch);
+    crc->FUN_004A1CA0(ConcentricRadialIndicator);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -1547,7 +1582,7 @@ void BuildingTypeView_0045DD90::ComputeCRC(TypesCrcView& crc)
 // scope; an initialised count; a named no-init tag; an extra stream alias; the count and loop in a nested block
 // (kept, 94.6% against 89.7% without).
 // FUNCTION: GAMEMD 0x465010
-HRESULT __stdcall BuildingTypeView_0045DD90::Load(IStream* pStm)
+HRESULT __stdcall BuildingTypeClass::Load(IStream* pStm)
 {
     if (FreeBuildup && Buildup) {
         gg_free(Buildup);
@@ -1585,11 +1620,11 @@ HRESULT __stdcall BuildingTypeView_0045DD90::Load(IStream* pStm)
         UnderRoofDoorAnimLoaded = false;
     }
 
-    HRESULT hr = TypesBuildingTypeTechnoView::Load(pStm);
+    HRESULT hr = TechnoTypeClass::Load(pStm);
     if (hr < 0)
         return hr;
 
-    new (this) BuildingTypeView_0045DD90(HBNoInit());
+    new (this) BuildingTypeClass(AbstractNoInit());
 
     {
     int count;
@@ -1597,10 +1632,10 @@ HRESULT __stdcall BuildingTypeView_0045DD90::Load(IStream* pStm)
     if (hr < 0)
         return hr;
 
-    new (&DockingOffsets) VectorClass<TypesDockCoord>;
+    new (&DockingOffsets) VectorClass<TPoint3D<int> >;
     DockingOffsets.SetCapacity(count, 0);
     for (int i = 0; i < count; ++i) {
-        TypesDockCoord coord;
+        TPoint3D<int> coord;
         coord.X = 0;
         coord.Y = 0;
         coord.Z = 0;
@@ -1612,9 +1647,9 @@ HRESULT __stdcall BuildingTypeView_0045DD90::Load(IStream* pStm)
     }
 
     LoadFixup();
-    PostLoad();
+    FUN_005F9070();
     FoundationData = TypesFoundationCells[Foundation];
-    FoundationOutside = &TypesFoundationOutsideCells[Foundation];
+    FoundationOutside = TypesFoundationOutsideCells[Foundation];
     ToTile = 0;
     DAT_00B0C110.SwizzleManagerClass::vf_4(&ToOverlay);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&FreeUnit);
@@ -1642,9 +1677,9 @@ HRESULT __stdcall BuildingTypeView_0045DD90::Load(IStream* pStm)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x465300
-HRESULT __stdcall BuildingTypeView_0045DD90::Save(IStream* pStm, BOOL fClearDirty)
+HRESULT __stdcall BuildingTypeClass::Save(IStream* pStm, BOOL fClearDirty)
 {
-    HRESULT hr = TypesBuildingTypeTechnoView::Save(pStm, fClearDirty);
+    HRESULT hr = TechnoTypeClass::Save(pStm, fClearDirty);
     if (hr < 0)
         return hr;
 
@@ -1653,7 +1688,7 @@ HRESULT __stdcall BuildingTypeView_0045DD90::Save(IStream* pStm, BOOL fClearDirt
     if (hr < 0)
         return hr;
     for (int i = 0; i < count; ++i) {
-        hr = pStm->Write(&DockingOffsets.Items[i], sizeof(TypesDockCoord), 0);
+        hr = pStm->Write(&DockingOffsets.Items[i], sizeof(TPoint3D<int>), 0);
         if (hr < 0)
             return hr;
     }
@@ -1662,7 +1697,7 @@ HRESULT __stdcall BuildingTypeView_0045DD90::Save(IStream* pStm, BOOL fClearDirt
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x465380
-HRESULT __stdcall BuildingTypeView_0045DD90::GetClassID(CLSID* pClassID)
+HRESULT __stdcall BuildingTypeClass::GetClassID(CLSID* pClassID)
 {
     if (pClassID == 0)
         return E_POINTER;
@@ -1703,7 +1738,7 @@ void FUN_00465450()
     int radius = 0;
     int i;
     for (i = 0; i < DAT_00A83C78; i++) {
-        signed char r = ((BuildingTypeView_0045DD90*)DAT_00A83C6C[i])->CloakRadiusInCells;
+        signed char r = ((BuildingTypeClass*)DAT_00A83C6C[i])->CloakRadiusInCells;
         if (radius <= r) {
             radius = r;
         }
@@ -1716,7 +1751,7 @@ void FUN_00465450()
     }
 
     for (i = 0; i < DAT_00A83C78; i++) {
-        BuildingTypeView_0045DD90* type = (BuildingTypeView_0045DD90*)DAT_00A83C6C[i];
+        BuildingTypeClass* type = (BuildingTypeClass*)DAT_00A83C6C[i];
         char buffer[0x3C];
         buffer[0] = 0;
         DAT_00887048->ReadString(type->ID, "ToTile", 0, buffer, 0x3C);
@@ -1743,7 +1778,7 @@ bool BuildingTypeClass::vf_41()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x465960
-void* BuildingTypeView_0045DD90::vf_48()
+void* BuildingTypeClass::vf_48()
 {
     if (Buildup == 0 && DemandLoadBuildup) {
         if (strlen(BuildupFile)) {
@@ -1757,7 +1792,7 @@ void* BuildingTypeView_0045DD90::vf_48()
                 TypesFileView file2(path);
                 shape = file2.ReadShape();
             }
-            Buildup = shape;
+            Buildup = (SHPStruct*)shape;
             if (shape) {
                 BuildupLoaded = true;
                 int rate = 1;
@@ -1765,8 +1800,8 @@ void* BuildingTypeView_0045DD90::vf_48()
                 if (Gate)
                     frames = GateStages + 1;
                 if (frames > 0)
-                    rate = (int)(TypesRules->unknown_1518 * 900.0 / frames);
-                BuildingAnimFrame[0].Start = 0;
+                    rate = (int)(DAT_008871E0->BuildupTime * 900.0 / frames);
+                BuildingAnimFrame[0].Frame = 0;
                 BuildingAnimFrame[0].Count = frames;
                 BuildingAnimFrame[0].Rate = rate;
             }

@@ -1115,7 +1115,7 @@ bool TActionClass::FUN_006E0B60(HouseClass* house, ObjectClass* object, TriggerC
         TechnoClass* t = DAT_00A8EC7C[i];
         if (t->Owner == house) {
             if (t == 0 || t->vf_11() != 6 || ((BuildingClass*)t)->Type == 0
-                || (!((BuildingClass*)t)->Type->bools_1570[3] && !((BuildingClass*)t)->Type->bools_1570[4])) {
+                || (!((BuildingClass*)t)->Type->Powered && !((BuildingClass*)t)->Type->PoweredSpecial)) {
                 DAT_00A8EC7C[i]->vf_245(target, false);
                 result = true;
             }
@@ -1124,7 +1124,7 @@ bool TActionClass::FUN_006E0B60(HouseClass* house, ObjectClass* object, TriggerC
     for (int j = 0; j < DAT_00A8EC88; j++) {
         TechnoClass* t = DAT_00A8EC7C[j];
         if (t->Owner == house && t != 0 && t->vf_11() == 6 && ((BuildingClass*)t)->Type != 0
-            && (((BuildingClass*)t)->Type->bools_1570[3] || ((BuildingClass*)t)->Type->bools_1570[4])) {
+            && (((BuildingClass*)t)->Type->Powered || ((BuildingClass*)t)->Type->PoweredSpecial)) {
             DAT_00A8EC7C[j]->vf_245(target, false);
             ((BuildingClass*)t)->FUN_004549B0();
             result = true;
@@ -1940,7 +1940,7 @@ bool TActionClass::FUN_006E2970(HouseClass* house, ObjectClass* object, TriggerC
     bool result = false;
     for (int i = 0; i < DAT_00A8EB50; i++) {
         BuildingClass* b = DAT_00A8EB44[i];
-        if (b->Health > 0 && b->IsAlive && b->IsOnMap && !b->InLimbo && b->Type->bools_154B[0] && b->Spotlight
+        if (b->Health > 0 && b->IsAlive && b->IsOnMap && !b->InLimbo && b->Type->HasSpotlight && b->Spotlight
             && b->AttachedTag && b->AttachedTag->ContainsTrigger(trigger)) {
             b->Spotlight->FUN_00436BE0(unknown_90);
             result = true;

@@ -31,7 +31,7 @@ void FootClass::QueueNavigationList(AbstractClass* target)
         TechnoClass* link = this->FUN_0065AD30(0);
         if (link == 0
             || link->vf_11() != 6
-            || ((BuildingClass*)link)->Type->bools_16A4[0x16BD - 0x16A4] == 0) {
+            || ((BuildingClass*)link)->Type->WeaponsFactory == 0) {
             this->EnterIdleMode(0, 1);
         }
     }

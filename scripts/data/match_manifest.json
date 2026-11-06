@@ -862,13 +862,11 @@
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x45ED50",
-  "sym": "?FUN_0045ED50@BuildingTypeClass_0045ED50@@QAEHXZ",
+  "sym": "?vf_43@BuildingTypeClass@@UAEHXZ",
   "len": "0x7f",
-  "name": "BuildingTypeClass_0045ED50::FUN_0045ED50",
-  "status": "partial",
-  "pct": 56.6,
-  "best_pct": 56.6,
-  "best_at": "cf203011"
+  "name": "BuildingTypeClass::vf_43",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/tu022_ai_trigger_type_class.cpp",
@@ -4791,7 +4789,7 @@
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x465DC0",
-  "sym": "??_GBuildingTypeView_0045DD90@@UAEPAXI@Z",
+  "sym": "??_GBuildingTypeClass@@UAEPAXI@Z",
   "len": "0x1e",
   "name": "BuildingTypeClass::`scalar deleting destructor'",
   "status": "matched",
@@ -10557,7 +10555,7 @@
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x45E880",
-  "sym": "?vf_35@BuildingTypeView_0045DD90@@UAEPAXPAX@Z",
+  "sym": "?vf_35@BuildingTypeClass@@UAEPAVObjectClass@@PAVHouseClass@@@Z",
   "len": "0x2b",
   "name": "BuildingTypeClass::vf_35",
   "status": "matched",
@@ -11749,14 +11747,12 @@
  },
  {
   "tu": "match/tu039_building_type_class.cpp",
-  "addr": "0x45e520",
-  "sym": "?FUN_0045E520@Obj_0045E520@@QAEPAU1@H@Z",
+  "addr": "0x45E520",
+  "sym": "??0BuildingTypeClass@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0x59",
-  "name": "Obj_0045E520::FUN_0045E520",
-  "status": "partial",
-  "pct": 78.9,
-  "best_pct": 78.9,
-  "best_at": "cf203011"
+  "name": "BuildingTypeClass::BuildingTypeClass",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/small_misc51_methods.cpp",
@@ -50010,7 +50006,7 @@
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x45DD90",
-  "sym": "??0BuildingTypeView_0045DD90@@QAE@PBD@Z",
+  "sym": "??0BuildingTypeClass@@QAE@PBD@Z",
   "len": "0x782",
   "name": "BuildingTypeClass::BuildingTypeClass",
   "status": "partial",
@@ -50021,7 +50017,7 @@
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x45E800",
-  "sym": "?vf_32@BuildingTypeView_0045DD90@@UAE_NPAX0@Z",
+  "sym": "?vf_32@BuildingTypeClass@@UAE_NPBUCellStruct@@PAVHouseClass@@@Z",
   "len": "0x76",
   "name": "BuildingTypeClass::vf_32",
   "status": "matched",
@@ -50030,7 +50026,7 @@
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x45EBD0",
-  "sym": "?vf_30@BuildingTypeView_0045DD90@@UAE?AUHBCoord@@XZ",
+  "sym": "?vf_30@BuildingTypeClass@@UAE?AUCoordStruct@@XZ",
   "len": "0x4c",
   "name": "BuildingTypeClass::vf_30",
   "status": "matched",
@@ -50039,7 +50035,7 @@
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x45EC20",
-  "sym": "?vf_36@BuildingTypeView_0045DD90@@UAEPAUCellStruct@@_N@Z",
+  "sym": "?vf_36@BuildingTypeClass@@UAEPAUCellStruct@@H@Z",
   "len": "0x53",
   "name": "BuildingTypeClass::vf_36",
   "status": "matched",
@@ -50048,7 +50044,7 @@
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x45ECE0",
-  "sym": "?vf_29@BuildingTypeView_0045DD90@@UAEHXZ",
+  "sym": "?vf_29@BuildingTypeClass@@UAEHXZ",
   "len": "0x6c",
   "name": "BuildingTypeClass::vf_29",
   "status": "matched",
@@ -50057,7 +50053,7 @@
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x45EDD0",
-  "sym": "?vf_33@BuildingTypeView_0045DD90@@UAEHPAVHouseClass@@@Z",
+  "sym": "?vf_33@BuildingTypeClass@@UAEHPAVHouseClass@@@Z",
   "len": "0x91",
   "name": "BuildingTypeClass::vf_33",
   "status": "partial",
@@ -50068,7 +50064,7 @@
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x45F040",
-  "sym": "?vf_39@BuildingTypeView_0045DD90@@UAEPAXXZ",
+  "sym": "?vf_39@BuildingTypeClass@@UAEPAXXZ",
   "len": "0x11e",
   "name": "BuildingTypeClass::vf_39",
   "status": "matched",
@@ -50077,9 +50073,9 @@
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x45FE50",
-  "sym": "?ReadINI@BuildingTypeView_0045DD90@@UAE_NPAVTypesIniView@@@Z",
+  "sym": "?vf_25@BuildingTypeClass@@UAE_NPAVCCINIClass@@@Z",
   "len": "0x4c06",
-  "name": "BuildingTypeClass::ReadINI",
+  "name": "BuildingTypeClass::vf_25",
   "status": "partial",
   "pct": 7.6,
   "best_pct": 7.8,
@@ -50088,7 +50084,7 @@
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x464A70",
-  "sym": "?vf_27@BuildingTypeView_0045DD90@@UAE?AUHBCoord@@PBU2@@Z",
+  "sym": "?vf_27@BuildingTypeClass@@UAE?AUCoordStruct@@ABU2@@Z",
   "len": "0x4a",
   "name": "BuildingTypeClass::vf_27",
   "status": "matched",
@@ -50097,7 +50093,7 @@
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x464AC0",
-  "sym": "?vf_42@BuildingTypeView_0045DD90@@UAE_NPAX0@Z",
+  "sym": "?vf_42@BuildingTypeClass@@UAE_NPAUCellStruct@@PAVHouseClass@@@Z",
   "len": "0x21",
   "name": "BuildingTypeClass::vf_42",
   "status": "matched",
@@ -50106,7 +50102,7 @@
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x464AF0",
-  "sym": "?vf_31@BuildingTypeView_0045DD90@@UAE?AUHBCoord@@XZ",
+  "sym": "?vf_31@BuildingTypeClass@@UAE?AUCoordStruct@@XZ",
   "len": "0x3f",
   "name": "BuildingTypeClass::vf_31",
   "status": "matched",
@@ -50115,16 +50111,16 @@
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x464B30",
-  "sym": "?ComputeCRC@BuildingTypeView_0045DD90@@UAEXAAVTypesCrcView@@@Z",
+  "sym": "?vf_13@BuildingTypeClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x4d6",
-  "name": "BuildingTypeClass::ComputeCRC",
+  "name": "BuildingTypeClass::vf_13",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x465010",
-  "sym": "?Load@BuildingTypeView_0045DD90@@UAGJPAUIStream@@@Z",
+  "sym": "?Load@BuildingTypeClass@@UAGJPAUIStream@@@Z",
   "len": "0x2e7",
   "name": "BuildingTypeClass::Load",
   "status": "partial",
@@ -50135,7 +50131,7 @@
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x465300",
-  "sym": "?Save@BuildingTypeView_0045DD90@@UAGJPAUIStream@@H@Z",
+  "sym": "?Save@BuildingTypeClass@@UAGJPAUIStream@@H@Z",
   "len": "0x71",
   "name": "BuildingTypeClass::Save",
   "status": "matched",
@@ -50144,7 +50140,7 @@
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x465380",
-  "sym": "?GetClassID@BuildingTypeView_0045DD90@@UAGJPAU_GUID@@@Z",
+  "sym": "?GetClassID@BuildingTypeClass@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
   "name": "BuildingTypeClass::GetClassID",
   "status": "matched",
@@ -50171,7 +50167,7 @@
  {
   "tu": "match/tu039_building_type_class.cpp",
   "addr": "0x465960",
-  "sym": "?vf_48@BuildingTypeView_0045DD90@@UAEPAXXZ",
+  "sym": "?vf_48@BuildingTypeClass@@UAEPAXXZ",
   "len": "0x18d",
   "name": "BuildingTypeClass::vf_48",
   "status": "matched",
@@ -156199,6 +156195,15 @@
   "sym": "?FUN_004CD510@FlyLocomotionClass@@QAE_NXZ",
   "len": "0xee",
   "name": "FlyLocomotionClass::FUN_004CD510",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu039_building_type_class.cpp",
+  "addr": "0x45E580",
+  "sym": "??1BuildingTypeClass@@UAE@XZ",
+  "len": "0x1c9",
+  "name": "BuildingTypeClass::~BuildingTypeClass",
   "status": "matched",
   "pct": 100.0
  }

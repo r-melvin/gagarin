@@ -33,62 +33,6 @@ struct AbstractNoInit;
 // QueryInterface bodies compare against it. Declared, never defined here.
 extern "C" const IID IID_IRTTITypeInfo;
 
-// The CRC accumulator the CRC slots feed (read-only here).
-class TypesCrcView
-{
-public:
-    // FUNCTION: GAMEMD 0x4A1C10 (read-only here)
-    void AddByte(unsigned char value);
-    // FUNCTION: GAMEMD 0x4A1CA0 (read-only here)
-    void AddBool(bool value);
-    // FUNCTION: GAMEMD 0x4A1D50 (read-only here)
-    void AddInt(int value);
-    // FUNCTION: GAMEMD 0x4A1D90 (read-only here)
-    void AddDouble(double value);
-    // FUNCTION: GAMEMD 0x4A1DB0 (read-only here) - a NUL-terminated string.
-    void FUN_004A1DB0(const char* text);
-    // FUNCTION: GAMEMD 0x4A1DE0 (read-only here) - a byte run (pointer, length).
-    void AddBytes(const void* data, int length);
-};
-
-// The rules / art INI reader (read-only here). Every Read* is __thiscall with the section name and
-// the key first and the default value last.
-class TypesIniView
-{
-public:
-    // FUNCTION: GAMEMD 0x526B00 (read-only here) - clears the reader's two cached positions
-    void ClearCache();
-    // FUNCTION: GAMEMD 0x5276D0 (read-only here)
-    int ReadInt(const char* section, const char* key, int defaultValue);
-    // FUNCTION: GAMEMD 0x5283D0 (read-only here) - the double comes back in ST(0)
-    double ReadDouble(const char* section, const char* key, double defaultValue);
-    // FUNCTION: GAMEMD 0x5295F0 (read-only here)
-    bool ReadBool(const char* section, const char* key, bool defaultValue);
-    // FUNCTION: GAMEMD 0x474A90 (read-only here) - a colour scheme name read.
-    int ReadColorScheme(const char* section, const char* key, int defaultValue);
-    // FUNCTION: GAMEMD 0x4756F0 (read-only here) - a side name read.
-    int ReadSide(const char* section, const char* key, int defaultValue);
-    // FUNCTION: GAMEMD 0x475060 (read-only here) - a build category name read.
-    int ReadBuildCat(const char* section, const char* key, int defaultValue);
-    // FUNCTION: GAMEMD 0x474FA0 (read-only here) - an EVA event name read.
-    int ReadEvaEvent(const char* section, const char* key, int defaultValue);
-    // FUNCTION: GAMEMD 0x474FF0 (read-only here) - a factory type name read.
-    int ReadFactory(const char* section, const char* key, int defaultValue);
-    // FUNCTION: GAMEMD 0x474F50 (read-only here) - a super weapon name read.
-    int ReadSuperWeapon(const char* section, const char* key, int defaultValue);
-    // FUNCTION: GAMEMD 0x474DA0 (read-only here) - a foundation name read.
-    int ReadFoundation(const char* section, const char* key, int defaultValue);
-    // FUNCTION: GAMEMD 0x529CA0 (read-only here) - a coordinate triple; the result comes back through a
-    // hidden pointer and the default is passed by reference.
-    HBCoord ReadCoord(const char* section, const char* key, const HBCoord& defaultValue);
-    // FUNCTION: GAMEMD 0x529880 (read-only here) - a point pair, same convention.
-    struct TypesPoint2D ReadPoint(const char* section, const char* key, const struct TypesPoint2D& defaultValue);
-    // FUNCTION: GAMEMD 0x528A10 (read-only here) - the length read, 0 when the key is absent.
-    int ReadString(const char* section, const char* key, const char* defaultValue, char* buffer, int size);
-};
-
-
-
 // FUNCTION: GAMEMD 0x7258D0 (read-only here) - announces that a pointer is going away. __fastcall: the
 // object in ECX, the flag in DL. Every destructor calls it with 1 (the object is gone).
 void TypesAnnouncePointerExpired(void* object, bool removed);

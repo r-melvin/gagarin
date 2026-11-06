@@ -77,43 +77,4 @@ struct Ini_0044FE60
 // FUNCTION: GAMEMD 0x44FE60
 void FUN_0044FE60(Ini_0044FE60* ini);
 
-// ---------------------------------------------------------------------------
-// 0x45E520 — another constructor: base, five field initialisers, a secondary
-// vtable at +0x1784, then this class's four.
-//
-// `MOV [ESI+0x1791],AL` reuses the zero that `XOR EAX,EAX` produced for the
-// three word-sized clears, while +0x1790 gets an immediate 1 - so the zero is
-// materialised once and shared, which is what puts the `XOR` at the top.
-// ---------------------------------------------------------------------------
-extern char VT_007E4638;   // VTABLE: GAMEMD 0x7E4638
-extern char VT_007E4570;   // VTABLE: GAMEMD 0x7E4570
-extern char VT_007E4554;   // VTABLE: GAMEMD 0x7E4554
-extern char VT_007E454C;   // VTABLE: GAMEMD 0x7E454C
-extern char VT_007E4544;   // VTABLE: GAMEMD 0x7E4544
-
-struct Obj_0045E520
-{
-    char* vt0;         // +0x0000
-    char* vt1;         // +0x0004
-    char* vt2;         // +0x0008
-    char* vt3;         // +0x000C
-    char  _pad010[0xE00 - 0x10];
-    int   field_E00;   // +0x0E00
-    char  _padE04[0x1784 - 0xE04];
-    char* Secondary;   // +0x1784
-    int   field_1788;  // +0x1788
-    int   field_178C;  // +0x178C
-    char  field_1790;  // +0x1790
-    char  field_1791;  // +0x1791
-
-    // FUNCTION: GAMEMD 0x711840 — the base constructor, one stack argument.
-    void FUN_00711840(int value);
-
-    // FUNCTION: GAMEMD 0x45E520
-    Obj_0045E520* FUN_0045E520(int value);
-};
-GG_STATIC_ASSERT(offsetof(Obj_0045E520, field_E00) == 0xE00);
-GG_STATIC_ASSERT(offsetof(Obj_0045E520, Secondary) == 0x1784);
-GG_STATIC_ASSERT(offsetof(Obj_0045E520, field_1791) == 0x1791);
-
 #endif  // GG_MATCH_CORE_SMALL_MISC50_METHODS_H

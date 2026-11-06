@@ -161,7 +161,7 @@ bool UnitClass::vf_313()
     }
 
     BuildingTypeClass* deploysInto = type->DeploysInto;
-    if (!deploysInto || deploysInto->bools_16A4[0x20]) {
+    if (!deploysInto || deploysInto->TickTank) {
         return false;
     }
 

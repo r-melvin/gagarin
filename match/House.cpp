@@ -1894,7 +1894,7 @@ void HouseClass::UpdateAllSilos(int prevStorage, int prevTotalStorage)
         int count = this->Buildings.Count;
         for (int i = 0; i < count; i++) {
             BuildingClass* b = this->Buildings.Items[i];
-            if (b != 0 && !b->InLimbo && b->Type->bools_16A4[4]) {
+            if (b != 0 && !b->InLimbo && b->Type->SiloDamage) {
                 b->vf_73(2);
             }
         }
@@ -4615,7 +4615,7 @@ void HouseClass::FUN_00508F60()
     RecheckRadar = 0;
     for (i = 0; i < Buildings.Count; i++) {
         BuildingClass* building = Buildings.Items[i];
-        if (building != 0 && building->Type->bools_16A4[1] && !building->InLimbo && building->IsOnMap) {
+        if (building != 0 && building->Type->SpySat && !building->InLimbo && building->IsOnMap) {
             if (IsControlledByCurrentPlayer_0050E0E0(this) && !building->DiscoveredByCurrentPlayer
                 && Session_00A8B238.GameMode == 0) {
                 continue;
@@ -5073,7 +5073,7 @@ void HouseClass::FUN_0050A490(BuildingClass* building)
                         Base.unknown_04.Items[j].unknown_04 = DAT_00A8EF98;
                     }
                 }
-                if (building->Type->bools_1700[6] && Session_00A8B238.GameMode != 0) {
+                if (building->Type->IsBaseDefense && Session_00A8B238.GameMode != 0) {
                     Base.unknown_04.Items[i].unknown_00 = -1;
                     Base.unknown_04.Items[i].unknown_04 = DAT_00A8EF98;
                 }
@@ -5497,7 +5497,7 @@ bool HouseClass::FUN_0050CAD0(BaseNodeClass* node)
     if (type->GetWeapon(0)->WeaponType != 0) {
         return true;
     }
-    if (type->bools_1570[1]) {
+    if (type->Wall) {
         for (int facing = 0; facing < 8; facing++) {
             CellClass* cell = DAT_0087F7E8.FUN_005657A0(&node->unknown_04);
             BuildingClass* building = cell->GetNeighbourCell(facing)->GetBuilding();

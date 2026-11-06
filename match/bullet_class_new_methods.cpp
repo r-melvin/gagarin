@@ -625,7 +625,7 @@ void BulletClass::vf_23()
               collisionBuilding != 0) {
             buildingCollision = true;
             if (collisionBuilding == Owner ||
-                (collisionBuilding->Type->bools_16A4[0x16BF - 0x16A4] &&
+                (collisionBuilding->Type->LaserFence &&
                  collisionBuilding->LaserFenceFrame > 7)) {
               buildingCollision = false;
             }
@@ -1596,8 +1596,8 @@ GG_STATIC_ASSERT(offsetof(BulletTypeClass, AirburstWeapon) == 0x2b0);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->AirburstWeapon) == 4);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, ShrapnelWeapon) == 0x2b4);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->ShrapnelWeapon) == 4);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4) + 25 == 0x16BD);
-GG_STATIC_ASSERT(sizeof(((BuildingTypeClass*)0)->bools_16A4[25]) == 1);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, WeaponsFactory) == 0x16BD);
+GG_STATIC_ASSERT(sizeof(((BuildingTypeClass*)0)->WeaponsFactory) == 1);
 }
 
 // FUNCTION: GAMEMD 0x4690B0
@@ -1771,7 +1771,7 @@ void BulletClass::FUN_004690B0(const CoordStruct* impact)
 // native 0x469AA4.
 //
 // Narrow prerequisites for a future canonical integration:
-//   * BuildingTypeClass::bools_16A4[25] byte at +0x16BD (native TEST byte).
+//   * BuildingTypeClass::WeaponsFactory byte at +0x16BD (native TEST byte).
 //   * TechnoClass::FUN_0070FEE0(int) (ECX Owner, stack int, RET 4).
 //   * TechnoClass::FUN_00710000(RawBlock10, AbstractClass*) (ECX Owner,
 //     16-byte by-value value then target pointer, RET 0x14).
@@ -1834,7 +1834,7 @@ void BulletClass::FUN_004690B0(const CoordStruct* impact)
             // PUSH 0; MOV ECX,normalizedTarget; CALL 0x65AD30.
             AbstractClass* candidate = lookupTechno->FUN_0065AD30(0);
             if (candidate != 0 && candidate->vf_11() == 6 &&
-                static_cast<BuildingClass*>(candidate)->Type->bools_16A4[25]) {
+                static_cast<BuildingClass*>(candidate)->Type->WeaponsFactory) {
                 AbstractClass* currentTarget = Target; // reload at 0x469595
                 TechnoClass* currentTechno = currentTarget != 0 &&
                     currentTarget->vf_11() == 1

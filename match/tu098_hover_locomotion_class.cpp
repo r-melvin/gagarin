@@ -609,7 +609,7 @@ bool __stdcall HoverLocomotionClass::IsIonSensitive()
         LocoCoord location = HoverFoot(LinkedTo)->Location;
         building = DAT_0087F7E8.FUN_00565730(&location)->GetBuilding();
     }
-    if (building != 0 && building->Type->bools_16A4[25]) {
+    if (building != 0 && building->Type->WeaponsFactory) {
         LocoCoord buildingLocation = building->Location;
         HoverCellCoord buildingCell = CellOf(buildingLocation);
         LocoCoord footLocation = HoverFoot(LinkedTo)->Location;

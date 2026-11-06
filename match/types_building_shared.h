@@ -6,6 +6,7 @@
 #define GG_MATCH_ECONOMY_HOUSE_BUILDING_TYPES_BUILDING_SHARED_H
 
 #include "types_building_type_class.h"
+#include "ccini_class_methods.h"
 #include "_layout/obj_0069e430.h"
 #include "_layout/geometry2d.h"
 #include "_layout/cell.h"
@@ -18,7 +19,7 @@ class TypesMapView
 {
 public:
     // FUNCTION: GAMEMD 0x578080 (read-only here) - the floor height under a coordinate.
-    int GetFloorHeight(HBCoord* coord);
+    int GetFloorHeight(CoordStruct* coord);
 };
 // GLOBAL: GAMEMD 0x87F7E8
 extern TypesMapView TypesMap;
@@ -43,8 +44,8 @@ inline TypesStaticCell TypesMakeStaticCell(short x, short y)
 // GLOBAL: GAMEMD 0x89C8D0 - the all-zero coordinate the constructor copies into the coordinate members
 // (its first two dwords also serve as the zero point), and GLOBAL: GAMEMD 0x89C8A0 - the 16-byte object
 // copied into +0x1538.
-extern HBCoord TypesZeroCoord;
-extern TypesQuad TypesZeroQuad;
+extern CoordStructInit TypesZeroCoord;
+extern BuildingTypeQuad TypesZeroQuad;
 
 // GLOBAL: GAMEMD 0x89C900 / 0x89D368 - the per-foundation cell lists (0x78 bytes each, 22 entries) the
 // foundation slot and the outside list point into after a load. Defined in tu039_building_type_class.cpp.
@@ -52,69 +53,6 @@ extern FoundationCell TypesFoundationCells[22][30];
 extern FoundationCell TypesFoundationOutsideCells[22][30];
 
 #include "foundation_dimensions.h"
-
-// A type object whose cost slot (33, +0x84) the cost query calls, with the dock list's item pointer.
-class TypesCostTypeView
-{
-public:
-    virtual ~TypesCostTypeView();
-    virtual void vf_1();
-    virtual void vf_2();
-    virtual void vf_3();
-    virtual void vf_4();
-    virtual void vf_5();
-    virtual void vf_6();
-    virtual void vf_7();
-    virtual void vf_8();
-    virtual void vf_9();
-    virtual void vf_10();
-    virtual void vf_11();
-    virtual void vf_12();
-    virtual void vf_13();
-    virtual void vf_14();
-    virtual void vf_15();
-    virtual void vf_16();
-    virtual void vf_17();
-    virtual void vf_18();
-    virtual void vf_19();
-    virtual void vf_20();
-    virtual void vf_21();
-    virtual void vf_22();
-    virtual void vf_23();
-    virtual void vf_24();
-    virtual void vf_25();
-    virtual void vf_26();
-    virtual void vf_27();
-    virtual void vf_28();
-    virtual void vf_29();
-    virtual void vf_30();
-    virtual void vf_31();
-    virtual void vf_32();
-    virtual int GetCost(HouseClass* house);   // slot 33 (+0x84), receives House owner
-
-    unsigned char unknown_04[0x3EC - 4];   // +0x04..+0x3EB
-    BuildingTypeView_0045DD90** DockItems;         // +0x3EC  (Items of the TypeList at +0x3E8)
-};
-GG_STATIC_ASSERT(offsetof(TypesCostTypeView, DockItems) == 0x3EC);
-
-// The rules object (global pointer 0x8871E0; read-only here; only the members read are named).
-struct TypesRulesView
-{
-    unsigned char unknown_000[0xB5C];
-    TypesCostTypeView** PadAircraft;   // +0xB5C Items of the PadAircraft type list at +0xB58 (rules key 0x83C748, read at 0x66F9D8)
-    unsigned char unknown_B60[0x1518 - 0xB60];
-    double unknown_1518;                  // +0x1518
-    unsigned char unknown_1520[0x17D0 - 0x1520];
-    int  unknown_17D0;                    // +0x17D0
-    unsigned char unknown_17D4[0x17E8 - 0x17D4];
-    bool unknown_17E8;                    // +0x17E8
-};
-GG_STATIC_ASSERT(offsetof(TypesRulesView, PadAircraft) == 0xB5C);
-GG_STATIC_ASSERT(offsetof(TypesRulesView, unknown_1518) == 0x1518);
-GG_STATIC_ASSERT(offsetof(TypesRulesView, unknown_17D0) == 0x17D0);
-GG_STATIC_ASSERT(offsetof(TypesRulesView, unknown_17E8) == 0x17E8);
-// GLOBAL: GAMEMD 0x8871E0
-extern TypesRulesView* TypesRules;
 
 // The scenario object (global pointer 0xA8B230; read-only here); only the theater index is read.
 struct TypesScenarioView
@@ -181,14 +119,14 @@ GG_STATIC_ASSERT(offsetof(TypesFileView, unknown_64) == 0x64);
 GG_STATIC_ASSERT(sizeof(TypesFileView) == 0x6C);
 
 // GLOBAL: GAMEMD 0x887180 - the art INI reader (same interface as the rules reader).
-extern TypesIniView TypesArtIni;
+extern CCINIClass DAT_00887180;
 // FUNCTION: GAMEMD 0x7514D0 (read-only here) - looks up a sound by name, -1 when unknown. __fastcall.
 int TypesFindVoc(const char* name);
 // FUNCTION: GAMEMD 0x5FEC70 (read-only here) - looks up an overlay type by name. __fastcall.
-void* TypesFindOverlay(const char* name);
+OverlayTypeClass* TypesFindOverlay(const char* name);
 // FUNCTION: GAMEMD 0x466000 (read-only here) - finds or allocates a building type by name in an array.
 // __fastcall (name in ECX, array in EDX).
-void* TypesFindBuildingType(const char* name, void* array);
+BuildingTypeClass* TypesFindBuildingType(const char* name, void* array);
 // FUNCTION: GAMEMD 0x7E14B0 (import) - user32 wsprintfA.
 extern "C" __declspec(dllimport) int __cdecl wsprintfA(char* buffer, const char* format, ...);
 

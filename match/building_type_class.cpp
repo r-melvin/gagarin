@@ -22,8 +22,8 @@
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Foundation) == 0xEF0);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Buildup) == 0xE00);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BuildupLoaded) == 0xE04);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_1570) == 0x1570);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_1760) + 2 == 0x1762);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Bib) == 0x1570);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, FreeBuildup) == 0x1762);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, UndeploysInto) == 0x408);
 
 // Foundation enum dimensions, in cells. Native storage is writable .data.
@@ -55,7 +55,7 @@ int BuildingTypeClass::GetFoundationWidth() const
 int BuildingTypeClass::GetFoundationHeight(bool bIncludeBib) const
 {
     return FoundationHeight[this->Foundation]
-        + ((bIncludeBib && this->bools_1570[0]) ? 1 : 0);
+        + ((bIncludeBib && this->Bib) ? 1 : 0);
 }
 
 // ---------------------------------------------------------------------------
@@ -64,7 +64,7 @@ int BuildingTypeClass::GetFoundationHeight(bool bIncludeBib) const
 // ---------------------------------------------------------------------------
 void BuildingTypeClass::ClearBuildUp()
 {
-    if (this->bools_1760[2] && this->Buildup)
+    if (this->FreeBuildup && this->Buildup)
     {
         ::operator delete(this->Buildup);
         this->Buildup = 0;

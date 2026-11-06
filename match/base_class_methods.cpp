@@ -47,7 +47,7 @@ bool BaseClass::FUN_0042E780(int index)
     int type = unknown_04.Items[index].unknown_00;
     if (type >= 0) {
         BuildingTypeClass* buildingType = DAT_00A83C6C[type];
-        if (buildingType->bools_1570[1]) {
+        if (buildingType->Wall) {
             CellClass* cell = DAT_0087F7E8.FUN_005657A0(&unknown_04.Items[index].unknown_04);
             int overlay = buildingType->ToOverlay->ArrayIndex;
             if (cell->OverlayTypeIndex == overlay) {

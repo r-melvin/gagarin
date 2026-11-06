@@ -418,7 +418,7 @@ void __cdecl FUN_007315A0()
     for (int i = DAT_00A83D4C->Buildings.Count - 1; i >= 0; --i) {
         BuildingClass* object = DAT_00A83D4C->Buildings.Items[i];
         if (object && !object->InLimbo) {
-            if (object->Type->bools_16A4[0x15]) {
+            if (object->Type->ConstructionYard) {
                 second = object->vf_18();
                 if (object->IsPrimaryFactory) break;
             } else if (first.X == DAT_00B0FE10.X && first.Y == DAT_00B0FE10.Y && first.Z == DAT_00B0FE10.Z) {

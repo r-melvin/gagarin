@@ -232,7 +232,7 @@ BuildingClass* FootClass::FUN_004D4FC0()
     for (int i = 0; i < 8; i++) {
         CellStruct cell = FootStepCell(vf_110(), i & 7);
         BuildingClass* building = DAT_0087F7E8.FUN_005657A0(&cell)->GetBuilding();
-        if (building && building->Type->bools_1570[5]) {
+        if (building && building->Type->Overpowerable) {
             if (building->vf_15() == vf_15()) {
                 return building;
             }
@@ -372,7 +372,7 @@ bool FootClass::vf_38()
 {
     int kind = vf_11();
     if (kind > 0 && kind <= 2 && HasAnyLink()) {
-        if (FUN_0065AD40(0)->vf_11() == 6 && ((BuildingClass*)FUN_0065AD40(0))->Type->bools_16A4[5]) {
+        if (FUN_0065AD40(0)->vf_11() == 6 && ((BuildingClass*)FUN_0065AD40(0))->Type->UnitRepair) {
             if (Distance3DXZY(vf_18(), FUN_0065AD40(0)->vf_18()) < 0x80) {
                 return true;
             }
