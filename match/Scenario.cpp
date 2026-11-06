@@ -2466,12 +2466,9 @@ CellClass* ScenarioClass::FUN_0068BF70(int index)
 // FUNCTION: GAMEMD 0x68BF90
 const char* ScenarioClass::FUN_0068BF90()
 {
-    int i = 0;
-    for (CellStruct* cell = Waypoints; i < 702; ++i, ++cell) {
-        if (!(i < 702 && i >= 0 &&
-            (cell->X != WaypointUndefined.X || cell->Y != WaypointUndefined.Y))) {
+    for (int i = 0; i < 702; ++i) {
+        if (!IsDefinedWaypoint(i))
             return FUN_00763610(i);
-        }
     }
     return STR_00889F64;
 }

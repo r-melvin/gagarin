@@ -2989,8 +2989,11 @@ CoordStruct CellClass::vf_22()
 {
     if ((Flags & 0x100) != 0) {
         int zAdjustment = DAT_0089E7B4;
-        CoordStruct result = vf_18();
-        result.Z += zAdjustment;
+        CoordStruct center = vf_18();
+        CoordStruct result;
+        result.X = center.X;
+        result.Y = center.Y;
+        result.Z = zAdjustment + center.Z;
         return result;
     }
 

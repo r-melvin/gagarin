@@ -3948,11 +3948,16 @@ extern int DAT_007F5BF0;
 // GLOBAL: GAMEMD 0x7F5BF8 -- the design width the right-docked controls are measured against.
 extern int DAT_007F5BF8;
 
-// The margin that centres an 800 x 600 layout in a larger parent, or zero when
-// the session flag says the layout fills the parent.
-static inline int Inline_CentreMargin(bool bFills, int nExtent, int nDesign)
+// The centring margin of 0x60B550: zero when the session flag says the
+// layout fills the parent, else half the spare room, never negative.
+static inline unsigned Inline_DockMargin(bool bFills, int nParent, int nDesign)
 {
-    return bFills ? 0 : ((nExtent - nDesign) / 2 < 0 ? 0 : (nExtent - nDesign) / 2);
+    unsigned nMargin = 0;
+
+    if (!bFills)
+        nMargin = (nParent - nDesign) / 2 < 0 ? 0 : (nParent - nDesign) / 2;
+
+    return nMargin;
 }
 
 // FUNCTION: GAMEMD 0x60AF40  FUN_0060AF40 (__fastcall)
@@ -3971,23 +3976,11 @@ void FUN_0060AF50(GG_HWND hWnd, RectangleStruct* pRect)
     GG_RECT rcParent;
     GetWindowRect(hParent, &rcParent);
 
-    int nMarginX = Inline_CentreMargin(bFills, rcParent.right - rcParent.left, DAT_007F5BE4);
-    int nMarginY = Inline_CentreMargin(bFills, rcParent.bottom - rcParent.top, DAT_007F5BF0);
+    int nMarginX = Inline_DockMargin(bFills, rcParent.right - rcParent.left, DAT_007F5BE4);
+    int nMarginY = Inline_DockMargin(bFills, rcParent.bottom - rcParent.top, DAT_007F5BF0);
 
     MoveWindow(hWnd, pRect->X + nMarginX, pRect->Y + nMarginY, pRect->Width, pRect->Height, 0);
     InvalidateRect(hWnd, 0, 0);
-}
-
-// The centring margin of 0x60B550: zero when the session flag says the
-// layout fills the parent, else half the spare room, never negative.
-static inline unsigned Inline_DockMargin(bool bFills, int nParent, int nDesign)
-{
-    unsigned nMargin = 0;
-
-    if (!bFills)
-        nMargin = (nParent - nDesign) / 2 < 0 ? 0 : (nParent - nDesign) / 2;
-
-    return nMargin;
 }
 
 // FUNCTION: GAMEMD 0x0060B1D0  FUN_0060B1D0 (__fastcall)

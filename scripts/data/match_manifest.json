@@ -96564,9 +96564,9 @@
   "len": "0x48",
   "name": "ScenarioClass::FUN_0068BF90",
   "status": "partial",
-  "pct": 37.5,
-  "best_pct": 37.5,
-  "best_at": "cf203011"
+  "pct": 83.3,
+  "best_pct": 83.3,
+  "best_at": "81aa71d7"
  },
  {
   "tu": "match/Scenario.cpp",
@@ -103135,10 +103135,8 @@
   "sym": "?FUN_0060AF50@@YIXPAXPAURectangleStruct@@@Z",
   "len": "0xad",
   "name": "?FUN_0060AF50@@YIXPAXPAURectangleStruct@@@Z",
-  "status": "partial",
-  "pct": 47.9,
-  "best_pct": 47.9,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/ownrdraw.cpp",
@@ -106446,9 +106444,9 @@
   "len": "0x6b",
   "name": "CellClass::vf_22",
   "status": "partial",
-  "pct": 24.4,
-  "best_pct": 24.4,
-  "best_at": "cf203011"
+  "pct": 36.6,
+  "best_pct": 36.6,
+  "best_at": "81aa71d7"
  },
  {
   "tu": "match/foot_class_methods.cpp",
