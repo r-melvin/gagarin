@@ -16,6 +16,9 @@
 
 extern "C" const CLSID CLSID_Particle;
 
+// GLOBAL: GAMEMD 0xA8ED84 - the engine frame counter.
+extern int DAT_00A8ED84;
+
 // This by-value helper induces the temporary construction sequence used by the
 // function-local static initializer. It is a source-level code-generation aid,
 // not a claim about a retail standalone helper symbol.
@@ -122,6 +125,52 @@ ParticleClass::ParticleClass()
       unknown_12D(0), unknown_12E(0), unknown_12F(0), unknown_130(0), unknown_131(0)
 {
     DynamicVectorAddItemFree(&ParticleArray, this);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x62BCC0
+ParticleClass::~ParticleClass()
+{
+    vf_53();
+    ParticleAnnouncePointerExpired(this, true);
+    Type = 0;
+    ParticleArray.RemoveItem(this);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x62C540
+void ParticleClass::UpdateBehavior1()
+{
+    if (DAT_00A8ED84 & 1) {
+        if ((abs(ParticleScenario->Random.Random()) & 3) == 0) {
+            int dx = 0;
+            int dy = 0;
+            if ((abs(ParticleScenario->Random.Random()) & 1) == 0)
+                dx = abs(ParticleScenario->Random.Random()) % 3 - 1;
+            else
+                dy = abs(ParticleScenario->Random.Random()) % 3 - 1;
+            unknown_C0 += dx;
+            unknown_C4 += dy;
+            if (unknown_C0 < -5)
+                unknown_C0 = -5;
+            else if (unknown_C0 > 5)
+                unknown_C0 = 5;
+            if (unknown_C4 < -5)
+                unknown_C4 = -5;
+            else if (unknown_C4 > 5)
+                unknown_C4 = 5;
+        }
+        unknown_C8 = 0;
+    }
+
+    if (unknown_12E < Type->EndStateAI) {
+        if ((Fetch_ID() + (Type->MaxEC - (unsigned short)unknown_128)) % ((Fetch_ID() & 1) + Type->StateAIAdvance) == 0)
+            unknown_12E++;
+        if (unknown_12E == Type->EndStateAI && Type->DeleteOnStateLimit)
+            unknown_131 = 1;
+    }
+    if (Velocity > 3.0)
+        Velocity -= Type->Deacc;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

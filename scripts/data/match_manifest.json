@@ -155675,5 +155675,61 @@
   "name": "?FUN_005E3010@@YIXPAUHWND__@@H@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/anim_type_class_r21_methods.cpp",
+  "addr": "0x427A80",
+  "sym": "?vf_24@AnimTypeClass@@UAEXH@Z",
+  "len": "0xcb",
+  "name": "AnimTypeClass::vf_24",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/anim_type_class_r21_methods.cpp",
+  "addr": "0x427B50",
+  "sym": "?vf_40@AnimTypeClass@@UAEXH@Z",
+  "len": "0x13a",
+  "name": "AnimTypeClass::vf_40",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/anim_type_class_r21_methods.cpp",
+  "addr": "0x428800",
+  "sym": "?Load@AnimTypeClass@@UAGJPAUIStream@@@Z",
+  "len": "0x161",
+  "name": "AnimTypeClass::Load",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/anim_type_class_r21_methods.cpp",
+  "addr": "0x428C30",
+  "sym": "?vf_39@AnimTypeClass@@UAEPAXXZ",
+  "len": "0x1ac",
+  "name": "AnimTypeClass::vf_39",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu174_particle_class.cpp",
+  "addr": "0x62BCC0",
+  "sym": "??1ParticleClass@@UAE@XZ",
+  "len": "0x8a",
+  "name": "??1ParticleClass@@UAE@XZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu174_particle_class.cpp",
+  "addr": "0x62C540",
+  "sym": "?UpdateBehavior1@ParticleClass@@QAEXXZ",
+  "len": "0x195",
+  "name": "ParticleClass::UpdateBehavior1",
+  "status": "partial",
+  "pct": 82.6,
+  "best_pct": 82.6,
+  "best_at": "9dc06d1c"
  }
 ]

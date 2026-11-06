@@ -58,15 +58,10 @@ public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                  // 3   0x62D930
     virtual HRESULT __stdcall Load(IStream* pStm);                          // 5   0x62D7A0
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);        // 6   0x62D810
-    // Slot 8: the scalar deleting destructor 0x62D9A0 is compiler output; the destructor body is
-    // inline (it is expanded into that entry, and retail has no separate destructor).
-    virtual ~ParticleClass()
-    {
-        vf_53();
-        ParticleAnnouncePointerExpired(this, true);
-        Type = 0;
-        ParticleArray.RemoveItem(this);
-    }
+    // Slot 8: the scalar deleting destructor 0x62D9A0 is compiler output with the body expanded
+    // into it; the out-of-line destructor 0x62BCC0 has no callers.
+    // FUNCTION: GAMEMD 0x62BCC0
+    virtual ~ParticleClass();
     virtual int WhatAmI();                                                  // 11  0x62D980
     virtual int Size();                                                     // 12  0x62D970
     virtual int InWhichLayer();                                             // 30  0x62D770

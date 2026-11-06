@@ -45,11 +45,19 @@ public:
     AnimTypeClass(const char* id) throw();
     // The class factory's construction (TClassFactory<AnimTypeClass>): the same constructor with a default argument.
     AnimTypeClass(int unknown_arg0 = 0);
+    // The no-init construction Load re-runs through placement new (base 0x5F7320, then the vptrs).
+    AnimTypeClass(const AbstractNoInit& noInit) : ObjectTypeClass(noInit) {}
     // FUNCTION: GAMEMD 0x428EA0 -- scalar deleting form (slot 8).
     virtual ~AnimTypeClass();
     // Overrides of the slots ObjectTypeClass / AbstractClass leave pure (slots 3, 6, 11, 12, 32, 35).
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
+    // FUNCTION: GAMEMD 0x428800 (slot 5)
+    virtual HRESULT __stdcall Load(IStream* pStm);
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
+    // FUNCTION: GAMEMD 0x427A80 (slot 24)
+    virtual void vf_24(int idxTheater);
+    // FUNCTION: GAMEMD 0x428C30 (slot 39)
+    virtual void* vf_39();
     // FUNCTION: GAMEMD 0x428C10
     virtual void vf_10(void* target, bool removed);
     // FUNCTION: GAMEMD 0x428E60

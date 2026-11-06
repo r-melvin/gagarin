@@ -216,9 +216,9 @@ DynamicVectorClass<BulletClass*> DAT_00A8ED40;
 DynamicVectorClass<OverlayClass*> DAT_00A8EC50;
 
 // GLOBAL: GAMEMD 0x00A83DC8
-// SYNTHETIC: GAMEMD 0x004E69A0 -- exit-time destructor stub of DAT_00A83DC8
-// SYNTHETIC: GAMEMD 0x004E6960 -- initialiser of DAT_00A83DC8
-DynamicVectorClass<ParticleClass*> DAT_00A83DC8;
+// SYNTHETIC: GAMEMD 0x004E69A0 -- exit-time destructor stub of ParticleArray
+// SYNTHETIC: GAMEMD 0x004E6960 -- initialiser of ParticleArray
+DynamicVectorClass<ParticleClass*> ParticleArray;
 
 // GLOBAL: GAMEMD 0x00A8B1E0
 // SYNTHETIC: GAMEMD 0x004E6A20 -- exit-time destructor stub of DAT_00A8B1E0
