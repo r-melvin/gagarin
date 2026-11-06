@@ -73,7 +73,27 @@ extern void* DAT_00887310;
 class ConvertClass
 {
 public:
-    char _pad000[0x188];
+    // Slot 0: the scalar deleting destructor 0x491210 (vtable 0x7E5358, RTTI ConvertClass);
+    // the destructor body is 0x490400.
+    virtual ~ConvertClass();
+    int   unknown_04;            // +0x04 compared with 2 by 0x491100
+    char  _pad008[0x170 - 0x08];
+    unsigned short* unknown_170; // +0x170 table of 256 pixels (rewritten by 0x491100), freed by 0x490400
+    char  _pad174[0x178 - 0x174];
+    void* unknown_178;           // +0x178 freed by 0x490400
+    char  _pad17C[0x180 - 0x17C];
+    unsigned long unknown_180;   // +0x180 set by 0x491100 from the word at 0x8A0DE8
+    unsigned long unknown_184;   // +0x184 set by 0x491100 from the word at 0x8A0DEA
+
+    // FUNCTION: GAMEMD 0x490490 (decl; reloc) -- releases the +0x08/+0x0C/+0x10... blitter objects.
+    void FUN_00490490();
+    // FUNCTION: GAMEMD 0x48EBF0 (decl; reloc) -- rebuilds the blitter objects.
+    void FUN_0048EBF0();
+
+    // FUNCTION: GAMEMD 0x491100 -- re-encodes every type-2 convert's pixel table for a new
+    // display pixel format (the arguments are the per-channel shift pairs), then rebuilds its blitters.
+    static void __fastcall FUN_00491100(int redLeft, int redRight, int greenLeft, int greenRight,
+                                        int blueLeft, int blueRight);
 
     // FUNCTION: GAMEMD 0x48E740 (decl; reloc) — the constructor, spelled as an
     // ordinary __thiscall member returning `this` so the allocate/test/
@@ -88,6 +108,11 @@ public:
                                ColorStruct_0072ADE0*& pPalette,
                                ConvertClass*& pDestination);
 };
+GG_STATIC_ASSERT(offsetof(ConvertClass, unknown_04) == 0x04);
+GG_STATIC_ASSERT(offsetof(ConvertClass, unknown_170) == 0x170);
+GG_STATIC_ASSERT(offsetof(ConvertClass, unknown_178) == 0x178);
+GG_STATIC_ASSERT(offsetof(ConvertClass, unknown_180) == 0x180);
+GG_STATIC_ASSERT(offsetof(ConvertClass, unknown_184) == 0x184);
 GG_STATIC_ASSERT(sizeof(ConvertClass) == 0x188);
 
 #endif  // GG_MATCH_RENDERER_CONVERT_CLASS_CREATE_METHODS_H

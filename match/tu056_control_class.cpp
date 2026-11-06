@@ -410,6 +410,9 @@ template class RLEBlitTransXlatZReadWrite<unsigned char>;
 class ConvertClass;
 
 #include "_layout/staticvectorholder_0089ecf8.h"
+#include "convert_class_create_methods.h"
+#include "pixel_shift_view.h"
+#include "_layout/components.h"
 
 #include "trivial_tu056_methods.h"
 
@@ -483,6 +486,55 @@ int ControlClass::Draw(int forced)
 void Obj_0048E650::FUN_0048E650(int a1, int a2, int a3)
 {
 }
+
+// FUNCTION: GAMEMD 0x490400
+// The destructor: release the owned objects and tables, then drop this convert
+// from the global list of converts.
+ConvertClass::~ConvertClass()
+{
+    FUN_00490490();
+    FUN_007C8B3D(unknown_170);
+    unknown_170 = 0;
+    FUN_007C8B3D(unknown_178);
+    unknown_178 = 0;
+    StaticVectorHolder_0089ECF8::DAT_0089ECF8.RemoveItem(this);
+}
+
+// GLOBAL: GAMEMD 0x8A0DE8 / 0x8A0DEA
+extern unsigned short DAT_008A0DE8;
+extern unsigned short DAT_008A0DEA;
+
+// FUNCTION: GAMEMD 0x491100
+void __fastcall ConvertClass::FUN_00491100(int redLeft, int redRight, int greenLeft, int greenRight,
+                                           int blueLeft, int blueRight)
+{
+    DynamicVectorClass<ConvertClass*>& converts = StaticVectorHolder_0089ECF8::DAT_0089ECF8;
+    for (int i = 0; i < converts.Count; i++) {
+        ConvertClass* convert = converts.Items[i];
+        if (convert->unknown_04 == 2) {
+            unsigned short* table = convert->unknown_170;
+            for (int j = 0; j < 256; j++) {
+                unsigned short pixel = *table;
+                ColorStruct color;
+                color.R = (pixel >> redRight) << redLeft;
+                color.G = (pixel >> greenRight) << greenLeft;
+                color.B = (pixel >> blueRight) << blueLeft;
+                unsigned char red = color.R >> gg_b_translucent_pixel_format.loss0;
+                unsigned char green = color.G >> gg_b_translucent_pixel_format.loss1;
+                unsigned char blue = color.B >> gg_b_translucent_pixel_format.loss2;
+                *table++ = (green << gg_b_translucent_pixel_format.pos1) | (blue << gg_b_translucent_pixel_format.pos2) | (red << gg_b_translucent_pixel_format.pos0);
+            }
+            convert->unknown_180 = DAT_008A0DE8;
+            convert->unknown_184 = DAT_008A0DEA;
+            convert->FUN_00490490();
+            convert->FUN_0048EBF0();
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x491210
+// The scalar deleting destructor of ConvertClass (vtable 0x7E5358 slot 0), emitted with the
+// destructor above.
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x491390

@@ -155506,5 +155506,59 @@
   "name": "FUN_007283C0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/tu056_control_class.cpp",
+  "addr": "0x490400",
+  "sym": "??1ConvertClass@@UAE@XZ",
+  "len": "0x89",
+  "name": "ConvertClass::~ConvertClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu056_control_class.cpp",
+  "addr": "0x491100",
+  "sym": "?FUN_00491100@ConvertClass@@SIXHHHHHH@Z",
+  "len": "0x10c",
+  "name": "ConvertClass::FUN_00491100",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu056_control_class.cpp",
+  "addr": "0x491210",
+  "sym": "??_GConvertClass@@UAEPAXI@Z",
+  "len": "0x9d",
+  "name": "ConvertClass::scalar deleting destructor",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ion_blast_draw_methods.cpp",
+  "addr": "0x53CB10",
+  "sym": "??0IonBlastClass@@QAE@UCoordStruct@@@Z",
+  "len": "0x78",
+  "name": "IonBlastClass::IonBlastClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/streamer_open_methods.cpp",
+  "addr": "0x53E1D0",
+  "sym": "?FUN_0053E1D0@@YAXXZ",
+  "len": "0x1e8",
+  "name": "?FUN_0053E1D0@@YAXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ipx_address_class_compare_methods.cpp",
+  "addr": "0x53F0E0",
+  "sym": "?FUN_0053F0E0@IPXAddressClass@@QAEPADPBV1@@Z",
+  "len": "0x102",
+  "name": "IPXAddressClass::FUN_0053F0E0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

@@ -20,7 +20,10 @@
 // passes one four-byte network value and one six-byte node value.
 struct NetworkNumberType
 {
-    unsigned long Number;
+    union {
+        unsigned long Number;
+        unsigned char Bytes[4];  // 0x53F0E0 formats the number byte by byte
+    };
 };
 #pragma pack(push, 1)
 struct NodeAddressType
@@ -74,7 +77,7 @@ public:
     // FUNCTION: GAMEMD 0x53EE00 (decl; reloc).
     int IsBroadcast();
     // FUNCTION: GAMEMD 0x53F0E0 (decl; reloc).
-    char* FUN_0053F0E0(int a1);
+    char* FUN_0053F0E0(const IPXAddressClass* other);
     // FUNCTION: GAMEMD 0x53EDC0 (decl; reloc) -- copies the six bytes at +4 out; RET 4.
     void FUN_0053EDC0(NodeAddressType* node);
     // FUNCTION: GAMEMD 0x53EDE0 (decl; reloc) -- copies six bytes in at +4; RET 4.

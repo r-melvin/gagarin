@@ -57,6 +57,7 @@
 #include "_layout/wave_class.h"
 #include "taction_class_methods.h"
 #include "_layout/cell_class.h"
+#include "_layout/ion_blast_class.h"
 #include "_layout/gbl_0087f7e8.h"
 #include "_layout/building_class.h"
 #include "trivial_tu230_b_methods.h"
@@ -312,15 +313,6 @@ extern TechnoClass** DAT_00A8EC7C;
 extern ObjectClass** DAT_00A8020C;
 extern int DAT_00A80218;
 
-// A 0x14-byte object created at a map coordinate by 0x6E3380 (constructor 0x53CB10).
-class Obj_0053CB10
-{
-public:
-    unsigned char unknown_00[0x14];
-    // FUNCTION: GAMEMD 0x53CB10 (decl; reloc)
-    Obj_0053CB10(CoordStruct where);
-};
-GG_STATIC_ASSERT(sizeof(Obj_0053CB10) == 0x14);
 
 // One strip of the sidebar (stride 0xF94 from 0x880D2C); only the predicate is called here.
 struct Obj_00880D2C
@@ -2391,7 +2383,7 @@ bool TActionClass::FUN_006E3380(HouseClass* house, ObjectClass* object, TriggerC
     where.Y = wp.Y * 256 + 0x80;
     where.X = wp.X * 256 + 0x80;
     where.Z = MapInstance.FUN_00578080(&where);
-    new Obj_0053CB10(where);
+    new IonBlastClass(where);
     return true;
 }
 

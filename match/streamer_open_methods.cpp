@@ -4,6 +4,74 @@
 
 #include "streamer_thread_flush_methods.h"
 #include "runtime_misc_globals.h"
+#include "debug_window_list_methods.h"
+#include "leaf_accessor_methods.h"
+#include "small_misc25_methods.h"
+#include "module_tu002_stream.h"
+
+// GLOBAL: GAMEMD 0xAA0378 -- the streamer thread's parameter block (stop / completion words).
+extern StreamState_00407680 DAT_00AA0378;
+// GLOBAL: GAMEMD 0xAA03F8 -- the streamer thread handle.
+extern HANDLE DAT_00AA03F8;
+// GLOBAL: GAMEMD 0xAA0400 -- guards the two values shared with the thread (defined in small_leaf_r17_w1.cpp).
+extern CRITICAL_SECTION DAT_00AA0400;
+// GLOBAL: GAMEMD 0xAA0454 -- the critical sections exist.
+extern int DAT_00AA0454;
+// GLOBAL: GAMEMD 0xAA0458 -- the streamer thread was created.
+extern int DAT_00AA0458;
+// GLOBAL: GAMEMD 0xAA0460 -- the ring buffer whose pending bytes seed a new stream.
+extern Obj_00408E70* DAT_00AA0460;
+
+void __cdecl FUN_0053E5F0();
+
+// FUNCTION: GAMEMD 0x53E1D0
+// Shut the streamer down: flush and close the file, release the window table, stop and
+// join the thread, then free the rings and the stream and delete the critical sections.
+void __cdecl FUN_0053E1D0()
+{
+    if (DebugWindowListActive != 0) {
+        EnterCriticalSection(&DAT_00AA0418);
+        if (DAT_00AA0468 != 0 && DAT_00AA045C != 0 && DAT_00AA0444 == 1
+            && DAT_00AA0464 != 0) {
+            FUN_00409030(DAT_00AA0464, DAT_00AA0468, FUN_00409320(DAT_00AA0464), 0);
+            FUN_007CB19C(DAT_00AA0468);
+        }
+        LeaveCriticalSection(&DAT_00AA0418);
+        FUN_0053E5F0();
+    }
+    if (DebugWindowList != 0) {
+        delete DebugWindowList;
+        DebugWindowList = 0;
+    }
+    DebugWindowListCount = 0;
+    if (DAT_00AA0458 != 0) {
+        DAT_00AA0378.unknown_00 = 1;
+        while (!DAT_00AA0378.unknown_08) {
+            Sleep(0);
+        }
+        WaitForSingleObject(DAT_00AA03F8, 5000);
+        CloseHandle(DAT_00AA03F8);
+        DAT_00AA0458 = 0;
+    }
+    if (DAT_00AA0460 != 0) {
+        DAT_00AA0460->FUN_00408E70();
+        DAT_00AA0460 = 0;
+    }
+    if (DAT_00AA0464 != 0) {
+        DAT_00AA0464->FUN_00408E70();
+        DAT_00AA0464 = 0;
+    }
+    if (DAT_00AA045C != 0) {
+        DAT_00AA045C->FUN_00408840();
+        DAT_00AA045C = 0;
+    }
+    if (DAT_00AA0454 != 0) {
+        DeleteCriticalSection(&DAT_00AA0418);
+        DeleteCriticalSection(&DAT_00AA0400);
+        DAT_00AA0454 = 0;
+    }
+    DebugWindowListActive = 0;
+}
 
 // LIBRARY: GAMEMD 0x7CA845 (decl; reloc) -- CRT fopen.
 void* __cdecl FUN_007CA845(const char* path, const char* mode);
@@ -29,8 +97,6 @@ int __fastcall FUN_0053E4F0(const char* path)
     return 0;
 }
 
-// GLOBAL: GAMEMD 0xAA0460 -- the ring buffer whose pending bytes seed a new stream.
-extern void* DAT_00AA0460;
 // GLOBAL: GAMEMD 0xAA046C -- set when seeding the new stream failed.
 extern int DAT_00AA046C;
 
@@ -91,13 +157,21 @@ void __cdecl FUN_0053E5F0()
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xAA0418
-CriticalSection_0053E6B0 DAT_00AA0418;
+CRITICAL_SECTION DAT_00AA0418;
+// GLOBAL: GAMEMD 0xAA0378
+StreamState_00407680 DAT_00AA0378;
+// GLOBAL: GAMEMD 0xAA03F8
+HANDLE DAT_00AA03F8;
+// GLOBAL: GAMEMD 0xAA0454
+int DAT_00AA0454;
+// GLOBAL: GAMEMD 0xAA0458
+int DAT_00AA0458;
 // GLOBAL: GAMEMD 0xAA045C
-int DAT_00AA045C;
+Obj_00408D00* DAT_00AA045C;
 // GLOBAL: GAMEMD 0xAA0460
-void* DAT_00AA0460;
+Obj_00408E70* DAT_00AA0460;
 // GLOBAL: GAMEMD 0xAA0464
-void* DAT_00AA0464;
+Obj_00408E70* DAT_00AA0464;
 // GLOBAL: GAMEMD 0xAA0468
 void* DAT_00AA0468;
 // GLOBAL: GAMEMD 0xAA046C

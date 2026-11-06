@@ -2,11 +2,15 @@
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at 0x53F020..0x53F0B0.
 //
+#include <stdio.h>
 #include <string.h>
 #include "_layout/ipx_address_class.h"
 
 // GLOBAL: GAMEMD 0x828140 -- transport mode.
 extern int DAT_00828140;
+
+// GLOBAL: GAMEMD 0xAA047C -- the text buffer FUN_0053F0E0 formats into and returns.
+extern char DAT_00AA047C[64];
 
 // FUNCTION: GAMEMD 0x53ECE0
 // Build an address from its parts: the node always, then the network number
@@ -144,3 +148,30 @@ bool IPXAddressClass::operator<=(const IPXAddressClass& other) const
     return memcmp(this, &other, 10) <= 0;
 }
 
+
+// FUNCTION: GAMEMD 0x53F0E0
+// Format an address as text into a shared buffer: ten hex bytes in mode 1,
+// otherwise four decimal node bytes and a port. A null argument means this.
+char* IPXAddressClass::FUN_0053F0E0(const IPXAddressClass* other)
+{
+    if (other == 0) {
+        other = this;
+    }
+    NodeAddressType node = *(const NodeAddressType*)other->NodeAddress;
+    if (DAT_00828140 == 1) {
+        NetworkNumberType network;
+        network.Number = *(const unsigned long*)other->NetworkNumber;
+        sprintf(DAT_00AA047C, "%02X %02X %02X %02X : %02X %02X %02X %02X %02X %02X",
+                network.Bytes[0], network.Bytes[1], network.Bytes[2], network.Bytes[3],
+                node.Node[0], node.Node[1], node.Node[2], node.Node[3], node.Node[4], node.Node[5]);
+        return DAT_00AA047C;
+    }
+    sprintf(DAT_00AA047C, "%d.%d.%d.%d ; %d", node.Node[0], node.Node[1], node.Node[2], node.Node[3],
+            Port);
+    return DAT_00AA047C;
+}
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xAA047C
+char DAT_00AA047C[64];
+// END defined globals

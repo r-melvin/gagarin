@@ -14,20 +14,20 @@
 #include "_rt/gg_static_assert.h"
 #include "runtime_misc_globals.h"
 
-struct CriticalSection_0053E6B0 { char Opaque[0x18]; };
-GG_STATIC_ASSERT(sizeof(CriticalSection_0053E6B0) == 0x18);
-
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(CriticalSection_0053E6B0*);  // IAT 0x7E11E8
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(CriticalSection_0053E6B0*);  // IAT 0x7E11EC
+// The streamer's critical sections are the SDK type; Enter/Leave/DeleteCriticalSection are
+// IAT 0x7E11E8 / 0x7E11EC / 0x7E11E4.
+#include <windows.h>
 
 // GLOBAL: GAMEMD 0xAA0418 — the streamer's critical section.
-extern CriticalSection_0053E6B0 DAT_00AA0418;
+extern CRITICAL_SECTION DAT_00AA0418;
 // GLOBAL: GAMEMD 0xAA0444 — streamer state; 1 is the flushable state.
 extern int   DAT_00AA0444;
-// GLOBAL: GAMEMD 0xAA045C
-extern int   DAT_00AA045C;
+struct Obj_00408D00;
+struct Obj_00408E70;
+// GLOBAL: GAMEMD 0xAA045C -- the stream whose channel counters pace the drain.
+extern Obj_00408D00* DAT_00AA045C;
 // GLOBAL: GAMEMD 0xAA0464 — the ring buffer being drained.
-extern void* DAT_00AA0464;
+extern Obj_00408E70* DAT_00AA0464;
 // GLOBAL: GAMEMD 0xAA0468 — the CRT stream it drains into.
 extern void* DAT_00AA0468;
 

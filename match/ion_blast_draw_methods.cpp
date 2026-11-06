@@ -4,6 +4,16 @@
 //   from YRpp (name only).
 
 #include "ion_blast_draw_methods.h"
+#include "_layout/staticvectorholder_00aa0118.h"
+
+// FUNCTION: GAMEMD 0x53CB10
+IonBlastClass::IonBlastClass(CoordStruct where)
+{
+    Location = where;
+    unknown_0C = 0;
+    unknown_10 = 0;
+    StaticVectorHolder_00AA0118::DAT_00AA0118.AddItem(this);
+}
 
 // FUNCTION: GAMEMD 0x53D850
 //
