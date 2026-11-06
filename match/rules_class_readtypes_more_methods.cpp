@@ -36,6 +36,20 @@
 
 #include "rules_class_readtypes_more_methods.h"
 #include "type_find_or_allocate_family_methods.h"
+#include "_layout/vector_class.h"
+
+#include "vector_class_dynamic_copy.h"
+#include "rules_class_ini_support.h"
+#include "_layout/side_class.h"
+#include "_layout/house_type_class.h"
+#include "building_class_garrison_owner_methods.h"
+
+// FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- printf-style log sink.
+extern "C" void __cdecl FUN_004068E0(const char* format, ...);
+// GLOBAL: GAMEMD 0x8B4120 -- the side registry.
+extern DynamicVectorClass<SideClass*> DAT_008B4120;
+// GLOBAL: GAMEMD 0xA83C98 -- the house type registry.
+extern DynamicVectorClass<HouseTypeClass*> DAT_00A83C98;
 
 // Dispatch-only view of a team type's primary vtable: LoadFromINI is slot 25 (offset 0x64).
 struct ILoad_00672740 {
@@ -60,6 +74,51 @@ bool RulesClass::Read_Countries(CCINIClass* pINI)
                              "", buffer, 0x20) != 0)
         {
             HouseType_FindOrAllocate(buffer);
+        }
+    }
+    return count > 0;
+}
+
+// Position of a side in the side registry, or -1.
+static inline int IndexOfSide(SideClass* side)
+{
+    for (int k = 0; k < DAT_008B4120.Count; ++k)
+    {
+        if (DAT_008B4120.Items[k] == side)
+        {
+            return k;
+        }
+    }
+    return -1;
+}
+
+// FUNCTION: GAMEMD 0x672440
+// Read the [Sides] section: each key names a side (created when new) and lists the house types
+// that belong to it; every listed house type records the side's index.
+bool RulesClass::FUN_00672440(CCINIClass* pINI)
+{
+    int count = pINI->GetKeyCount(SidesSection);
+    FUN_004068E0("Processing sides.\n");
+    for (int i = 0; i < count; ++i)
+    {
+        const char* name = pINI->GetKeyName(SidesSection, i);
+        int index = FindSideIndex_00458200(name);
+        SideClass* side;
+        if (index == -1)
+        {
+            side = new SideClass(name);
+        }
+        else
+        {
+            side = DAT_008B4120.Items[index];
+        }
+        FUN_004068E0("Side %d: %s \n", i, side->ID.Data);
+        side->unknown_98 = pINI->ReadIntegerList(SidesSection, name, side->unknown_98);
+        for (int j = 0; j < side->unknown_98.Count; ++j)
+        {
+            int houseType = side->unknown_98.Items[j];
+            DAT_00A83C98.Items[houseType]->SideIndex = IndexOfSide(side);
+            FUN_004068E0("  %s\n", DAT_00A83C98.Items[houseType]->ID.Data);
         }
     }
     return count > 0;

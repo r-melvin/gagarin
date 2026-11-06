@@ -50,6 +50,7 @@ int ParticleSystemType_FindOrAllocate(const char* pID);
 // `MOV EAX,[0x7F0Cxx]`; the strings behind them are "Countries" (0x839E28) and
 // "BuildingTypes" (0x839DDC).
 extern char* CountriesSection;      // GLOBAL: GAMEMD 0x7F0CAC
+extern char* SidesSection;          // GLOBAL: GAMEMD 0x7F0CB8
 extern char* SuperWeaponTypesSection;  // GLOBAL: GAMEMD 0x7F0CBC
 extern char* BuildingTypesSection;  // GLOBAL: GAMEMD 0x7F0CC0
 extern char* TerrainTypesSection;   // GLOBAL: GAMEMD 0x7F0CC4

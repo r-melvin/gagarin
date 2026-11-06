@@ -155948,5 +155948,119 @@
   "pct": 83.2,
   "best_pct": 83.2,
   "best_at": "ad930565"
+ },
+ {
+  "tu": "match/audio_stream_slot_methods.cpp",
+  "addr": "0x411820",
+  "sym": "?FUN_00411820@@YAHPAUStreamSampleView@@HPAUStreamOpenParams@@H@Z",
+  "len": "0x2e0",
+  "name": "?FUN_00411820@@YAHPAUStreamSampleView@@HPAUStreamOpenParams@@H@Z",
+  "status": "partial",
+  "pct": 96.8,
+  "best_pct": 96.8,
+  "best_at": "ad930565"
+ },
+ {
+  "tu": "match/audio_stream_slot_methods.cpp",
+  "addr": "0x411B20",
+  "sym": "?FUN_00411b20@@YAHPAUStreamSampleView@@PAUStreamOpenParams@@H@Z",
+  "len": "0x1bf",
+  "name": "?FUN_00411b20@@YAHPAUStreamSampleView@@PAUStreamOpenParams@@H@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/audio_stream_slot_methods.cpp",
+  "addr": "0x411CE0",
+  "sym": "?FUN_00411ce0@@YAHPAUStreamSampleView@@@Z",
+  "len": "0x10f",
+  "name": "?FUN_00411ce0@@YAHPAUStreamSampleView@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/audio_stream_slot_methods.cpp",
+  "addr": "0x411DF0",
+  "sym": "?FUN_00411df0@@YAHPAUStreamSampleView@@@Z",
+  "len": "0x20f",
+  "name": "?FUN_00411df0@@YAHPAUStreamSampleView@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/exception_dialog_004c83e0.cpp",
+  "addr": "0x4C83E0",
+  "sym": "?lpDialogFunc_004C83E0@@YGHPAUHWND__@@IIJ@Z",
+  "len": "0xff",
+  "name": "?lpDialogFunc_004C83E0@@YGHPAUHWND__@@IIJ@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/exception_dialog_004c83e0.cpp",
+  "addr": "0x4C84E0",
+  "sym": "?FUN_004C84E0@@YIHXZ",
+  "len": "0xf7",
+  "name": "?FUN_004C84E0@@YIHXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/exception_dialog_004c83e0.cpp",
+  "addr": "0x4C8FE0",
+  "sym": "?FUN_004C8FE0@@YIHHPAX@Z",
+  "len": "0x165",
+  "name": "?FUN_004C8FE0@@YIHHPAX@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/exception_dialog_004c83e0.cpp",
+  "addr": "0x4C9160",
+  "sym": "?FUN_004C9160@@YI_NXZ",
+  "len": "0x50",
+  "name": "?FUN_004C9160@@YI_NXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/rules_class_radiation_methods.cpp",
+  "addr": "0x66CF70",
+  "sym": "?Read_Radiation@RulesClass@@QAE_NPAVCCINIClass@@@Z",
+  "len": "0x1d7",
+  "name": "RulesClass::Read_Radiation",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/rules_class_readtypes_more_methods.cpp",
+  "addr": "0x672440",
+  "sym": "?FUN_00672440@RulesClass@@QAE_NPAVCCINIClass@@@Z",
+  "len": "0x1ac",
+  "name": "RulesClass::FUN_00672440",
+  "status": "partial",
+  "pct": 94.2,
+  "best_pct": 94.2,
+  "best_at": "ad930565"
+ },
+ {
+  "tu": "match/rules_class_ground_types_methods.cpp",
+  "addr": "0x674000",
+  "sym": "?Read_GroundTypes@RulesClass@@QAE_NPAVCCINIClass@@@Z",
+  "len": "0x238",
+  "name": "RulesClass::Read_GroundTypes",
+  "status": "partial",
+  "pct": 83.1,
+  "best_pct": 83.1,
+  "best_at": "ad930565"
+ },
+ {
+  "tu": "match/ini_lookup_parse_family_methods.cpp",
+  "addr": "0x67B8F0",
+  "sym": "?FUN_0067B8F0@@YI?AV?$TypeList@PBVAircraftTypeClass@@@@PAVCCINIClass@@PBD1ABV1@@Z",
+  "len": "0x1d0",
+  "name": "?FUN_0067B8F0@@YI?AV?$TypeList@PBVAircraftTypeClass@@@@PAVCCINIClass@@PBD1ABV1@@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

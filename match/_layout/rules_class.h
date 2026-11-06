@@ -94,7 +94,7 @@ struct RulesClass
     // Declaration: GAMEMD 0x6722F0 -- thiscall, one INI pointer, RET4.
     bool Read_Countries(CCINIClass* pINI);
     // Declaration: GAMEMD 0x672440 -- thiscall, one INI pointer, RET4; logs "Processing sides." and reads the sides.
-    void FUN_00672440(CCINIClass* pINI);
+    bool FUN_00672440(CCINIClass* pINI);
     // Declaration: GAMEMD 0x6725F0 -- thiscall, one INI pointer, RET4.
     bool Read_SuperWeaponTypes(CCINIClass* pINI);
     // Declaration: GAMEMD 0x672660 -- thiscall, one INI pointer, RET4.
@@ -125,6 +125,10 @@ struct RulesClass
     bool Read_SpecialWeapons(CCINIClass* pINI);
     // FUNCTION: GAMEMD 0x66BBB0  RulesClass::Read_CombatDamage
     bool Read_CombatDamage(CCINIClass* pINI);
+    // FUNCTION: GAMEMD 0x66CF70  RulesClass::Read_Radiation
+    bool Read_Radiation(CCINIClass* pINI);
+    // FUNCTION: GAMEMD 0x674000  RulesClass::Read_GroundTypes (thiscall, one INI pointer, RET4)
+    bool Read_GroundTypes(CCINIClass* pINI);
     // GAMEMD 0x66D530  RulesClass::Read_General (declaration only; body not yet matched)
     bool Read_General(CCINIClass* pINI);
 

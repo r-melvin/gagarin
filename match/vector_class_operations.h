@@ -64,11 +64,7 @@ template<class T> inline VectorClass<T>& VectorClass<T>::operator=(const VectorC
     return *this;
 }
 
-template<class T> inline DynamicVectorClass<T>::DynamicVectorClass(const DynamicVectorClass<T>& other)
-    : VectorClass<T>(other), Count(other.Count), CapacityIncrement(other.CapacityIncrement)
-{
-}
-
+#include "vector_class_dynamic_copy.h"
 #include "vector_class_mutation.h"
 #include "vector_class_search.h"
 
