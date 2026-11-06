@@ -77,7 +77,6 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<unsigned short* >) == 0x18);
 
 
 
-void __cdecl FUN_00544DF0();
 bool __cdecl FUN_00544FF0();
 
 
@@ -286,11 +285,14 @@ struct IsoListCell_00AA0E3C
 };
 
 // FUNCTION: GAMEMD 0x544D30
+// SYNTHETIC: GAMEMD 0x544DF0 -- exit-time destructor stub of the function-local list below (`push 0x544DF0` @0x544D45)
 // The cell (column, row) of every present sub-tile of the tile set, followed by the 0x7FFF marker; the list is a
 // function-local static.
 CellStruct* IsometricTileTypeClass::FUN_00544D30(int)
 {
-    static IsoListCell_00AA0E3C List[124];
+    // Placeholder size: retail gives no count. 120 cells is the most that fits, the list at 0xAA0E3C runs into the
+    // next object, DAT_00AA101C (written at 0x545B2F).
+    static IsoListCell_00AA0E3C List[120];
     TileImageHeader* data = GetTileData();
     SubTileImage** tile = data->SubTiles;
     IsoListCell_00AA0E3C* out = List;
@@ -307,13 +309,6 @@ CellStruct* IsometricTileTypeClass::FUN_00544D30(int)
     end.Y = 0x7FFF;
     out->Value = end;
     return &List[0].Value;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x544DF0
-// Empty function.
-void __cdecl FUN_00544DF0()
-{
 }
 
 // GLOBAL: GAMEMD 0x885780 -- the second palette (defined in colour_table_statics.cpp)

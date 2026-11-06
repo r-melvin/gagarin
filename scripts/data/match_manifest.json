@@ -85358,9 +85358,9 @@
  {
   "tu": "match/tu110_isometric_tile_type_class.cpp",
   "addr": "0x544DF0",
-  "sym": "?FUN_00544DF0@@YAXXZ",
+  "sym": "_$E5",
   "len": "0x1",
-  "name": "FUN_00544DF0",
+  "name": "exit-time destructor stub (function-local list of FUN_00544D30)",
   "status": "matched",
   "pct": 100
  },

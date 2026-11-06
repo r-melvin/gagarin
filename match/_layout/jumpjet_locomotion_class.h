@@ -182,17 +182,16 @@ public:
 
     double      unknown_70;       // +0x70 ctor @0x0054AC87/@0x0054AC93 (=0). A double:
                                   //       `FLD QWORD PTR [ESI+0x70]` @0x0054D87B
-                                  //       (0x54D820). Read by Head_To_Coord's neighbours
-                                  //       only as a whole.
+                                  //       (0x54D820).
     double      unknown_78;       // +0x78 ctor @0x0054AC8A/@0x0054AC96 (=0); a double:
                                   //       `FSTP QWORD PTR [ESI+0x78]` @0x0054BBDC
                                   //       (0x54BA30)
     int         unknown_80;       // +0x80 ctor @0x0054AC99 (=0)
     int         unknown_84;       // +0x84 never written, never read - the gap
                                   //       before the 8-byte-aligned pair at 0x88
-    double      unknown_88;       // +0x88 ctor @0x0054AC8D/@0x0054AC9F (=0), stored with the
-                                  //       same low-halves-first pattern as the doubles at
-                                  //       0x70 and 0x78
+    double      unknown_88;       // +0x88 ctor @0x0054AC8D/@0x0054AC9F (=0). A double:
+                                  //       `FADD/FSTP QWORD PTR [ESI+0x88]` @0x0054D21E/@0x0054D224
+                                  //       (0x54D0F0), then passed by value to 0x4CACB0
     char        unknown_90;       // +0x90 ctor `MOV [ESI+0x90],BL` @0x0054ACA5
     char        unknown_91;       // +0x91 ctor @0x0054ACAB (=0)
     char        unknown_92[2];    // +0x92 alignment; no access at any width
