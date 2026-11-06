@@ -10,12 +10,50 @@
 //
 // SliderClass entries (layout and evidence: ui_gadget.h).
 #include "controls_views.h"
+#include "file_system_load_whole_methods.h"
 
 
 // FUNCTION: GAMEMD 0x558120
 int SliderClass::vf_38()
 {
     return unknown_4C;
+}
+
+static inline void ResizeThumb(SliderClass* slider, int size)
+{
+    slider->unknown_48 = size < slider->Maximum ? size : slider->Maximum;
+    slider->unknown_48 = slider->unknown_48 > 1 ? slider->unknown_48 : 1;
+    slider->MarkRedraw();
+    slider->SyncThumb();
+}
+
+// FUNCTION: GAMEMD 0x6B1B20
+// A gauge with a thumb. Unless `belt` is set, allocates the plus and minus
+// ShapeButtons beside it and peers them to the slider, then sizes the thumb for
+// a one-unit range.
+SliderClass::SliderClass(int id, int x, int y, int w, int h, int belt)
+    : GaugeClass(id, x, y, w, h)
+{
+    unknown_44 = belt != 0;
+    unknown_3C = 0;
+    unknown_40 = 0;
+    if (!unknown_44) {
+        unknown_3C = new ShapeButtonClass(id, FUN_005B40B0("BTN-PLUS.SHP", 0), X + Width + 2, Y, 0, 0, 0);
+        unknown_40 = new ShapeButtonClass(id, FUN_005B40B0("BTN-MINS.SHP", 0), X - 6, Y, 0, 0, 0);
+        if (unknown_3C) {
+            unknown_3C->SetPeer(this);
+            unknown_3C->Add(*this);
+            unknown_3C->MarkRedraw();
+        }
+        if (unknown_40) {
+            unknown_40->SetPeer(this);
+            unknown_40->Add(*this);
+            unknown_40->MarkRedraw();
+        }
+    }
+    ResizeThumb(this, 1);
+    SyncThumb();
+    unknown_2C = 0;
 }
 
 // FUNCTION: GAMEMD 0x6B1D00

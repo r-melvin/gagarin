@@ -154675,5 +154675,63 @@
   "name": "?FUN_00679EE0@@YIXXZ",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/slave_manager_r19_5.cpp",
+  "addr": "0x6AF1A0",
+  "sym": "??0SlaveManagerClass@@QAE@PAVTechnoClass@@PAVInfantryTypeClass@@HHH@Z",
+  "len": "0x1b8",
+  "name": "SlaveManagerClass::SlaveManagerClass(TechnoClass*, InfantryTypeClass*, int, int, int)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/slave_manager_r19_5.cpp",
+  "addr": "0x6AF4A0",
+  "sym": "??1SlaveManagerClass@@UAE@XZ",
+  "len": "0xd9",
+  "name": "SlaveManagerClass::~SlaveManagerClass",
+  "status": "partial",
+  "pct": 91.8,
+  "best_pct": 91.8,
+  "best_at": "7cf6fb49"
+ },
+ {
+  "tu": "match/slave_manager_r19_5.cpp",
+  "addr": "0x6B0750",
+  "sym": "?FUN_006B0750@SlaveManagerClass@@QAE?AVCell@@XZ",
+  "len": "0x121",
+  "name": "SlaveManagerClass::FUN_006B0750",
+  "status": "partial",
+  "pct": 85.9,
+  "best_pct": 85.9,
+  "best_at": "7cf6fb49"
+ },
+ {
+  "tu": "match/slave_manager_r19_5.cpp",
+  "addr": "0x6B0A90",
+  "sym": "?LostSlave@SlaveManagerClass@@QAEXH@Z",
+  "len": "0x48",
+  "name": "SlaveManagerClass::LostSlave(int)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/slave_manager_r19_5.cpp",
+  "addr": "0x6B0AE0",
+  "sym": "?FUN_006B0AE0@SlaveManagerClass@@QAEXPAVTechnoClass@@PAVHouseClass@@@Z",
+  "len": "0x196",
+  "name": "SlaveManagerClass::FUN_006B0AE0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/controls_slider.cpp",
+  "addr": "0x6B1B20",
+  "sym": "??0SliderClass@@QAE@HHHHHH@Z",
+  "len": "0x1d7",
+  "name": "SliderClass::SliderClass",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

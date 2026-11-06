@@ -181,8 +181,8 @@ public:
     }
 
 
-    GadgetClass*  unknown_3C;    // +0x3C  deleted by the destructor 0x6B1D00
-    GadgetClass*  unknown_40;   // +0x40
+    ControlClass* unknown_3C;    // +0x3C  deleted by the destructor 0x6B1D00; the constructor 0x6B1B20 calls slot 33 (SetPeer) on it
+    ControlClass* unknown_40;   // +0x40
     unsigned char unknown_44;    // +0x44  constructor flag; gates the box-and-thumb path in Draw
     unsigned char unknown_45[3];
     int           unknown_48;     // +0x48  in value units

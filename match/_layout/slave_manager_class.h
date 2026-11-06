@@ -15,6 +15,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "abstract_class.h"
 #include "frame_timer.h"
+#include "cell.h"
 #include "../vector_class.h"
 
 class TechnoClass;
@@ -36,6 +37,7 @@ public:
         InfantryClass* Slave;          // +0x00 ctor 0
         int            State;          // +0x04 SlaveControlStatus
         CDTimerClass   RespawnTimer;   // +0x08 StartTime = CurrentFrame, TimeLeft 0
+        SlaveControl() : RespawnTimer(0) {}
     };
 
     // FUNCTION: GAMEMD 0x6AF1A0 (declaration; constructor)
@@ -75,6 +77,10 @@ public:
     void GuardAllSlaves();
     // FUNCTION: GAMEMD 0x6B0A20 -- detaches a lost slave and restarts its timer.
     void LostSlave(SlaveObject* slave);
+    // FUNCTION: GAMEMD 0x6B0750 (decl; reloc) -- the cell north of the owner's far corner when it is the building standing there; RET 4.
+    Cell FUN_006B0750();
+    // FUNCTION: GAMEMD 0x6B0A90 -- LostSlave by node index.
+    void LostSlave(int index);
     // FUNCTION: GAMEMD 0x6B0AE0 (decl; reloc) -- __thiscall, RET 8: the killer, then a forced house (0 from 0x71A760).
     void FUN_006B0AE0(TechnoClass* killer, HouseClass* forced);
     // Order every live slave to go idle and set State = 1 / 4 (0x6B0CC0 / 0x6B0D10).
