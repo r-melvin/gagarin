@@ -55,11 +55,12 @@ public:
     void Activate();                     // target 0x65B580, thiscall RET 0
     int  GetRadLevel();                  // 0x65B510, thiscall
     void Deactivate();                   // 0x65BB50, thiscall
+    double FUN_0065B8F0(CellStruct* cell);   // 0x65B8F0, thiscall RET 4; radiation at a cell (st(0))
 
     void*        LightSource;         // +0x24 LightSourceClass*; ctor @0x0065B1EA
     CDTimerClass RadLevelTimer;       // +0x28 ctor StartTime=[0x00A8ED84] @0x0065B1F3, TimeLeft @0x0065B1F6
     CDTimerClass RadLightTimer;       // +0x34 ctor StartTime=[0x00A8ED84] @0x0065B202, TimeLeft @0x0065B1FF
-    CellStruct   BaseCell;            // +0x40 ctor word stores @0x0065B205/0x0065B209
+    CellStructInit BaseCell;          // +0x40 ctor word stores @0x0065B205/0x0065B209, ahead of the vptr stores (mem-init list)
     int          Spread;              // +0x44 ctor @0x0065B20D
     int          SpreadInLeptons;     // +0x48 ctor @0x0065B210
     int          RadLevel;            // +0x4C ctor @0x0065B213

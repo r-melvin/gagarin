@@ -56,6 +56,8 @@ public:
     virtual int vf_12();
     // FUNCTION: GAMEMD 0x425520 (slot 34; returns Type at +0xC8).
     virtual ObjectTypeClass* vf_34();
+    // FUNCTION: GAMEMD 0x425530 (slot 53).
+    virtual bool vf_53();
     // Slots 122-123, introduced by AnimClass (124 slots in all; retail table 0x7E3354).
     // Names are placeholders; slot 123 returns the dword read at Type+0x2C0.
     virtual void vf_122();                                         // 122 0x423930

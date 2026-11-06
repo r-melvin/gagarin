@@ -139693,11 +139693,11 @@
  {
   "tu": "match/leaf_sweep_w1c.cpp",
   "addr": "0x484AB0",
-  "sym": "?InRange@Obj_00484AB0@@QAEHXZ",
+  "sym": "?InRange@CellClass@@QAEHXZ",
   "len": "0x2b",
   "name": "InRange",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/leaf_sweep_w1c.cpp",
@@ -155446,6 +155446,64 @@
   "sym": "??1CaptureManagerClass@@UAE@XZ",
   "len": "0xa2",
   "name": "??1CaptureManagerClass@@UAE@XZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/anim_class_r21_methods.cpp",
+  "addr": "0x425530",
+  "sym": "?vf_53@AnimClass@@UAE_NXZ",
+  "len": "0x7e",
+  "name": "AnimClass::vf_53",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/w2_light_rad_dtors_r13.cpp",
+  "addr": "0x65B1E0",
+  "sym": "??0RadSiteClass@@QAE@XZ",
+  "len": "0xba",
+  "name": "RadSiteClass::RadSiteClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/rad_site_class_methods.cpp",
+  "addr": "0x65B8F0",
+  "sym": "?FUN_0065B8F0@RadSiteClass@@QAENPAUCellStruct@@@Z",
+  "len": "0xcd",
+  "name": "RadSiteClass::FUN_0065B8F0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/deleting_dtor_w3_methods.cpp",
+  "addr": "0x728200",
+  "sym": "?FUN_00728200@TubeClass@@SIXXZ",
+  "len": "0x71",
+  "name": "TubeClass::FUN_00728200",
+  "status": "partial",
+  "pct": 97.7,
+  "best_pct": 97.7,
+  "best_at": "11742d9d"
+ },
+ {
+  "tu": "match/deleting_dtor_w3_methods.cpp",
+  "addr": "0x728280",
+  "sym": "?FUN_00728280@@YIXPAVCCINIClass@@@Z",
+  "len": "0x140",
+  "name": "FUN_00728280",
+  "status": "partial",
+  "pct": 97.2,
+  "best_pct": 97.2,
+  "best_at": "11742d9d"
+ },
+ {
+  "tu": "match/deleting_dtor_w3_methods.cpp",
+  "addr": "0x7283C0",
+  "sym": "?FUN_007283C0@@YIXPAVCCINIClass@@@Z",
+  "len": "0x17c",
+  "name": "FUN_007283C0",
   "status": "matched",
   "pct": 100.0
  }

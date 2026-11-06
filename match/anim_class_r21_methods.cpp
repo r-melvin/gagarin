@@ -3,7 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at each address below
 //   (AnimClass slots read from the RTTI table at 0x7E3354).
 //
-//   Address index: 0x425150, 0x425410, 0x4255B0, 0x4260F0, 0x4261D0, 0x426270, 0x426300
+//   Address index: 0x425150, 0x425410, 0x425530, 0x4255B0, 0x4260F0, 0x4261D0, 0x426270, 0x426300
 
 #include "_layout/anim_class.h"
 #include "_layout/anim_type_class.h"
@@ -132,6 +132,22 @@ int AnimClass::vf_123()
 ObjectTypeClass* AnimClass::vf_34()
 {
     return Type;
+}
+
+// FUNCTION: GAMEMD 0x425530
+// Slot 53 of AnimClass: a veins animation clears the 0x20000 flag of the cell it sits
+// on; the object is then taken off the map when the base class removes it.
+bool AnimClass::vf_53()
+{
+    if (Type && Type->IsVeins) {
+        CoordStruct where = Location;
+        DAT_0087F7E8.FUN_00565730(&where)->Flags &= 0xFFFDFFFF;
+    }
+    if (ObjectClass::vf_53()) {
+        DAT_0087F7E8.FUN_004A9770(this);
+        return true;
+    }
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x4255B0

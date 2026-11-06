@@ -9,6 +9,7 @@
 // copies and short forwarders. Ordered ascending by retail address.
 #include <windows.h>
 #include "_layout/house_class.h"
+#include "_layout/cell_class.h"
 #include "_layout/player_ptr_00a83d4c.h"
 #include "_layout/session_class.h"
 #include <stddef.h>
@@ -107,23 +108,12 @@ bool FUN_0046D460()
     return all != 0;
 }
 
-struct Obj_00484AB0
-{
-    char  Pad_00[0xEC];
-    int   unknown_EC;
-    char  Pad_F0[0x116 - 0xF0];
-    short unknown_116;
-    // FUNCTION: GAMEMD 0x484AB0
-    int InRange();
-};
-GG_STATIC_ASSERT(offsetof(Obj_00484AB0, unknown_116) == 0x116);
-
 // FUNCTION: GAMEMD 0x484AB0
 // True when the +0x116 index is within 0..DAT_008B4148 and mode +0xEC is 10.
-int Obj_00484AB0::InRange()
+int CellClass::InRange()
 {
-    short index = unknown_116;
-    if (index >= 0 && index < TunnelArrayCount && unknown_EC == 10)
+    short index = TubeIndex;
+    if (index >= 0 && index < TunnelArrayCount && LandType == 10)
         return 1;
     return 0;
 }

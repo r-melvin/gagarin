@@ -99,6 +99,25 @@ LightSourceClass::LightSourceClass(const AbstractNoInit& noInit) : AbstractClass
 {
 }
 
+// FUNCTION: GAMEMD 0x65B1E0
+// Default constructor: clears the state, starts both timers and registers the site.
+RadSiteClass::RadSiteClass()
+    : LightSource(0), RadLevelTimer(0), RadLightTimer(0), BaseCell(0, 0), Spread(0), SpreadInLeptons(0), RadLevel(0), LevelSteps(0),
+      Intensity(0), IntensitySteps(0), IntensityDecrement(0), RadDuration(0), RadTimeLeft(0)
+{
+    DynamicVectorClass<RadSiteClass*>& v = DAT_00B04BD0;
+    if (v.Count >= v.Capacity) {
+        if ((v.IsAllocated || v.Capacity == 0) && v.CapacityIncrement > 0) {
+            if (!v.SetCapacity(v.CapacityIncrement + v.Capacity, 0))
+                return;
+        } else {
+            return;
+        }
+    }
+    int index = v.Count++;
+    v.Items[index] = this;
+}
+
 // FUNCTION: GAMEMD 0x65B2A0
 // No-init constructor: base no-init constructor, both timers restarted, the vtable pointers.
 RadSiteClass::RadSiteClass(const AbstractNoInit& noInit) : AbstractClass(noInit), RadLevelTimer(0), RadLightTimer(0)

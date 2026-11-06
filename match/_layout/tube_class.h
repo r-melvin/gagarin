@@ -27,6 +27,8 @@ public:
     virtual int vf_11();
     virtual int vf_12();
     virtual void vf_13(struct Obj_004A1D30* crc);                      // 13  0x728630
+    // Defined at GAMEMD 0x728200 -- static; drops tubes whose start cell no longer maps to them and renumbers the rest.
+    static void FUN_00728200();
     CellStruct StartCell;      // +0x24
     CellStruct EndCell;        // +0x28
     int Direction;           // +0x2C
