@@ -655,10 +655,6 @@ void MPCooperative::vf_9()
 // Make sure the campaign helper exists, reset it to the first record and find
 // the map entry whose name begins with the helper's name. Returns its index;
 // when none matches, calls virtual slot 4 and returns -1. -1 when the list is empty.
-//
-// PARTIAL (88.0%). Identical instruction multiset (75). Retail loads the 0xA8B8CC items pointer
-// before the name pointer; cl loads the name first. Tried: the loop index declared at the top
-// (2.7%), an entry local (88.0%, kept), strlen into a local (88.0%).
 int MPCooperative::FUN_005C1CC0()
 {
     int i = 0;
@@ -672,8 +668,8 @@ int MPCooperative::FUN_005C1CC0()
         unknown_40->FUN_0049CAF0(0);
         unknown_40->FUN_0049D070(&name, 0);
         for (; i < DAT_00A8B8D8; i++) {
-            Entry_00A8B8CC* entry = DAT_00A8B8CC[i];
-            if (_strnicmp(entry->Name, name, strlen(name)) == 0) {
+            const char* entryName = DAT_00A8B8CC[i]->Name;
+            if (_strnicmp(entryName, name, strlen(name)) == 0) {
                 return i;
             }
         }

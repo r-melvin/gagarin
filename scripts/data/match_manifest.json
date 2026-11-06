@@ -62410,10 +62410,8 @@
   "sym": "??0CaptureManagerClass@@QAE@PAVTechnoClass@@H_N@Z",
   "len": "0xBD",
   "name": "CaptureManagerClass::CaptureManagerClass",
-  "status": "partial",
-  "pct": 82.4,
-  "best_pct": 82.4,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/mission_class_dtor.cpp",
@@ -105642,10 +105640,8 @@
   "sym": "?vf_159@RadioClass@@UAEHHPAXPAV1@@Z",
   "len": "0x105",
   "name": "RadioClass::vf_159",
-  "status": "partial",
-  "pct": 89.3,
-  "best_pct": 89.3,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/tu189_radio_class.cpp",
@@ -138108,10 +138104,8 @@
   "sym": "?FUN_005896F0@RecordTable_005896F0@@QBE_NABU1@@Z",
   "len": "0x50",
   "name": "RecordTable_005896F0::FUN_005896F0",
-  "status": "partial",
-  "pct": 89.2,
-  "best_pct": 89.2,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/small_misc_w1_methods.cpp",
@@ -152713,10 +152707,8 @@
   "sym": "?FUN_005C1CC0@MPCooperative@@QAEHXZ",
   "len": "0xba",
   "name": "MPCooperative::FUN_005C1CC0",
-  "status": "partial",
-  "pct": 88.0,
-  "best_pct": 88.0,
-  "best_at": "e7787dd4"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/MPCoop.cpp",

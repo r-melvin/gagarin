@@ -61,15 +61,14 @@ int RadioClass::vf_159(int command, void* data, RadioClass* peer)
             reinterpret_cast<int>(FUN_0040DD70(this)),
             2,
             reinterpret_cast<int>(data));
-        if (response != 1) {
-            return 10;
+        if (response == 1) {
+            // Native stores this RadioClass* into VectorClass<TechnoClass*>::Items.
+            // The binary's object/RTTI contract places TechnoClass at RadioBase+0,
+            // and RadioLinks is proven to contain TechnoClass* elements.
+            RadioLinks.Items[slot] = static_cast<TechnoClass*>(peer);
+            return 1;
         }
-
-        // Native stores this RadioClass* into VectorClass<TechnoClass*>::Items.
-        // The binary's object/RTTI contract places TechnoClass at RadioBase+0,
-        // and RadioLinks is proven to contain TechnoClass* elements.
-        RadioLinks.Items[slot] = static_cast<TechnoClass*>(peer);
-        return 1;
+        return 10;
     }
 
     return peer->vf_101(

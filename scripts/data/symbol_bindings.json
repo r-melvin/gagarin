@@ -13027,6 +13027,7 @@
  "__strcmpi": "0x007C8D20",
  "__strdup": "0x007D5408",
  "__stricmp": "0x007C8D20",
+ "__strnicmp": "0x007CD680",
  "__strupr": "0x007DCFC4",
  "__swprintf": "0x007CA564",
  "__wcsdup": "0x007DDE13",

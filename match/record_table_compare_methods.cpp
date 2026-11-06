@@ -37,15 +37,13 @@ GG_STATIC_ASSERT(offsetof(RecordTable_005896F0, Enabled) == 0x0C);
 
 // FUNCTION: GAMEMD 0x5896F0
 // Same number of records, each with the same word and dword keys.
-// PARTIAL (89.2%): identical instruction multiset; retail loads the other table's
-// storage pointer before this table's, cl loads them the other way round. Tried:
-// swapped operands, split conditions, explicit walking pointers.
 bool RecordTable_005896F0::FUN_005896F0(const RecordTable_005896F0& other) const
 {
     if (Count == other.Count) {
         for (int i = 0; i < Count; ++i) {
-            if (Items[i].Key18 != other.Items[i].Key18
-                || Items[i].Key1C != other.Items[i].Key1C) {
+            const TableRecord_005896F0* theirs = &other.Items[i];
+            const TableRecord_005896F0* mine = &Items[i];
+            if (mine->Key18 != theirs->Key18 || mine->Key1C != theirs->Key1C) {
                 return false;
             }
         }
