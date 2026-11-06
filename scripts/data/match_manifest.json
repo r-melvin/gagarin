@@ -101405,10 +101405,8 @@
   "sym": "?SetCapacity@?$VectorClass@VWstring@@@@UAE_NHPAVWstring@@@Z",
   "len": "0x140",
   "name": "VectorClass<Wstring>::SetCapacity",
-  "status": "partial",
-  "pct": 48.5,
-  "best_pct": 48.5,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Session.cpp",
@@ -103893,10 +103891,8 @@
   "sym": "?FUN_006994F0@@YIXPBDPAGPAD2PA_NPAH4@Z",
   "len": "0x48d",
   "name": "Session map metadata",
-  "status": "partial",
-  "pct": 10.3,
-  "best_pct": 10.3,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/Session.cpp",
@@ -103938,9 +103934,9 @@
   "len": "0x86b",
   "name": "SessionClass::FUN_00699980",
   "status": "partial",
-  "pct": 2.4,
-  "best_pct": 2.4,
-  "best_at": "cf203011"
+  "pct": 53.1,
+  "best_pct": 53.1,
+  "best_at": "dbcfd3db"
  },
  {
   "tu": "match/message_list_class_lookup_methods.cpp",
@@ -104036,9 +104032,9 @@
   "len": "0x716",
   "name": "Session constructor",
   "status": "partial",
-  "pct": 87.9,
-  "best_pct": 87.9,
-  "best_at": "cf203011"
+  "pct": 97.8,
+  "best_pct": 97.8,
+  "best_at": "dbcfd3db"
  },
  {
   "tu": "match/string_class_methods.cpp",

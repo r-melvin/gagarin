@@ -22,6 +22,7 @@ class MultiplayerGameMode;
 class MultiMission;
 struct _iobuf;
 #include "node_name_type.h"
+#include "coord_struct.h"
 class CCINIClass;
 struct DisplayScCellObject;
 
@@ -152,8 +153,7 @@ struct SessionClass
     int unknown_28A4;
     char unknown_28A8[0x10]; // storage extent; logical capacity unknown
     char unknown_28B8[0x40]; // storage extent; logical capacity unknown
-    unsigned char unknown_28F8; // sender byte read at69B0CF fromA8DB30
-    char unknown_28F9[3];
+    int unknown_28F8; // 0x6970A0 stores a dword; 0x69B0CF reads its low byte (from A8DB30)
     DynamicVectorClass<PhoneEntryClass*> unknown_28FC;
     DynamicVectorClass<char*> unknown_2914;
     // Native 0x6977C3 receiver; RTTI table0x7ED1DC identifies the element type.
@@ -181,7 +181,9 @@ struct SessionClass
     int unknown_301C;
     // UTF16 storage region before3074; logical string capacity unconfirmed.
     wchar_t unknown_3020[0x4C / 2]; // 0x697EAB passes its address to_wcsicmp
-    unsigned short unknown_306C, unknown_306E, unknown_3070;
+    unsigned char unknown_306C; // 0x6970A0 stores one byte here
+    char unknown_306D;
+    unsigned short unknown_306E, unknown_3070;
     char unknown_3072[2];
     int unknown_3074; // 0x697E8E, -1 sentinel
     char unknown_3078[2];
@@ -197,7 +199,7 @@ struct SessionClass
     int unknown_30AC;
     int unknown_30B0;
     int unknown_30B4;
-    unsigned int unknown_30B8, unknown_30BC, unknown_30C0;
+    CoordStruct unknown_30B8; // 0x6970A0 copies a coordinate here
     int unknown_30C4;
     unsigned char unknown_30C8;
     char unknown_30C9[3];
@@ -345,7 +347,7 @@ GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_292C) == 0x18);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_18) == 0x18);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_18) == 0x12C);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_28F8) == 0x28F8);
-GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_28F8) == 1);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_28F8) == 4);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_300) == 0x300);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_300) == 0x4);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_314) == 0x314);
@@ -510,11 +512,7 @@ GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30A8) == 0x4);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30B4) == 0x30B4);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30B4) == 0x4);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30B8) == 0x30B8);
-GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30B8) == 0x4);
-GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30BC) == 0x30BC);
-GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30BC) == 0x4);
-GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30C0) == 0x30C0);
-GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30C0) == 0x4);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30B8) == 0xC);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_67C) == 0x67C);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_67C) == 0x1);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_67D) == 0x67D);
@@ -540,7 +538,8 @@ GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_23D8) == 0x2);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_25D8) == 0x25D8);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_25D8) == 0x2);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_306C) == 0x306C);
-GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_306C) == 0x2);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_306C) == 0x1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_306D) == 0x306D);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_306E) == 0x306E);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_306E) == 0x2);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_3070) == 0x3070);

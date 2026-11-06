@@ -725,9 +725,7 @@ SessionClass::SessionClass()
     unknown_30B0 = 0;
     unknown_30B4 = 0;
     // Preserve three global reads, even though initial image values are zero.
-    unknown_30B8 = DAT_00B07740.X;
-    unknown_30BC = DAT_00B07740.Y;
-    unknown_30C0 = DAT_00B07740.Z;
+    unknown_30B8 = DAT_00B07740;
     unknown_30C8 = 0; // Second native write retained.
     unknown_30CC = 0;
     unknown_30D0 = 0;
@@ -1710,11 +1708,12 @@ void __fastcall FUN_006994F0(const char* filename, wchar_t* description,
 {
     CCFileClass file(filename);
     if (!file.Exists(false) || !file.Open(1)) return;
+    int percent = 0;
     char* front = 0;
     char* end = 0;
     bool foundBasic = false;
-    int percent;
-    for (percent = 5; percent <= 100; percent += 5) {
+    do {
+        percent += 5;
         // Native signed32 multiplication happens BEFORE division by100.
         int length = file.GetFileSize() * percent / 100;
         if (front) delete[] front;
@@ -1726,24 +1725,23 @@ void __fastcall FUN_006994F0(const char* filename, wchar_t* description,
         char* begin = strstr(front, STR_0083F488); // [Basic]
         if (begin) {
             end = strstr(begin + 5, STR_0083F484); // raw marker is newline+'['
-            // Both successful strstr results lie in the same allocation.
-            // Keep a normal null check; any extra instruction is a future
-            // partial-match delta, not a reason for pointer/integer steering.
-            if (end != 0 && end > begin) {
-                end[1] = 0; // overwrite '[', retain preceding newline
-                FUN_004068E0(STR_0083F44C, percent);
+            if (end > begin) {
                 foundBasic = true;
                 break;
             }
         }
-    }
+    } while (percent < 100);
     if (!foundBasic) {
         delete[] front;
         return;
     }
+    end[1] = 0; // overwrite '[', retain preceding newline
+    FUN_004068E0(STR_0083F44C, percent);
+    percent = 0;
     char* back = 0;
     bool foundDigest = false;
-    for (percent = 1; percent <= 100; ++percent) {
+    do {
+        ++percent;
         int length = file.GetFileSize() * percent / 100;
         if (back) delete[] back;
         back = new char[length + 1];
@@ -1754,16 +1752,16 @@ void __fastcall FUN_006994F0(const char* filename, wchar_t* description,
         file.ReadBytes(back, length);
         back[length] = 0;
         if (strstr(back, STR_0083F440)) { // [Digest]
-            FUN_004068E0(STR_0083F408, percent);
             foundDigest = true;
             break;
         }
-    }
+    } while (percent < 100);
     if (!foundDigest) {
         delete[] front;
         delete[] back;
         return;
     }
+    FUN_004068E0(STR_0083F408, percent);
     CCINIClass basicIni;
     // Front stream starts at allocation beginning, not at '[Basic]'. Its
     // length excludes the newline at end, despite end[1] being the terminator.
@@ -1779,9 +1777,8 @@ void __fastcall FUN_006994F0(const char* filename, wchar_t* description,
     basicIni.FUN_00528A10(STR_0082BF9C, STR_00817854, STR_00829284, name, 0x40);
     FUN_00735060(description, name, -1);
     digestIni.FUN_00528A10(STR_0081BFE0, STR_00831898, STR_0083F3E4, digest, 0x20);
-    bool isOfficial = basicIni.FUN_005295F0(STR_0082BF9C, STR_0083DC5C, false);
-    *official = isOfficial;
-    FUN_004068E0(STR_0083F3BC, filename, *minimum, *maximum, isOfficial, name);
+    *official = basicIni.FUN_005295F0(STR_0082BF9C, STR_0083DC5C, false);
+    FUN_004068E0(STR_0083F3BC, filename, *minimum, *maximum, *official, name);
     FUN_004068E0(STR_0083F3A8, modes);
     // Deliberately before borrowed straw/INI destructors. Native order then:
     // digestStream, digestIni, basicStream, basicIni, file. No explicit dtors.
@@ -1817,10 +1814,14 @@ GG_STATIC_ASSERT(sizeof(((WIN32_FIND_DATAA*)0)->cFileName) == 260);
 GG_STATIC_ASSERT(sizeof(((WIN32_FIND_DATAA*)0)->cAlternateFileName) == 14);
 GG_STATIC_ASSERT(sizeof(WIN32_FIND_DATAA) == 0x140);
 
+// PARTIAL 53.1%. The INIClass is built with the inline index (as retail), and `official` is a
+// function-scope local initialised before the last search. Remaining: retail's frame is 0x5c4
+// (ours 0x5b8) and places the wide-character display buffer between the digest buffer and the
+// find-data record; the statement stream is otherwise aligned, so most of the delta is stack offsets.
 // FUNCTION: GAMEMD 0x699980
 void SessionClass::FUN_00699980()
 {
-    INIClass ini; // Native base vptr7EA5F4, NOT CCINIClass7E1AF4.
+    INIClass ini((INIClass::SectionIndexClass::InlineIndex())); // Native base vptr7EA5F4, NOT CCINIClass7E1AF4.
     unknown_690.Clear(); // Does not delete pointees; preserve separate cleanup.
     CCFileClass file(STR_0083F520);
     char section[64];
@@ -1921,6 +1922,7 @@ void SessionClass::FUN_00699980()
     ini.Clear(0, 0);
     file.Close();
 
+    bool official = false;
     search = FindFirstFileA(STR_0083F490, &found);
     if (search != INVALID_HANDLE_VALUE) {
         do {
@@ -1930,7 +1932,7 @@ void SessionClass::FUN_00699980()
                 ini.FUN_00528A10(STR_0082BF9C, STR_00817854, STR_00829284, section, 64);
                 ini.FUN_00528A10(STR_0081BFE0, STR_00831898, STR_0083F3E4, digest, 32);
                 FUN_00735060(description, section, -1);
-                bool official = ini.FUN_005295F0(STR_0082BF9C, STR_0083DC5C, false);
+                official = ini.FUN_005295F0(STR_0082BF9C, STR_0083DC5C, false);
                 int minimum = 2;
                 int maximum = 4;
                 FUN_006994F0(name, description, digest, modes, &official, &minimum, &maximum);
