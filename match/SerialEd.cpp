@@ -258,50 +258,47 @@ void SerialEdDialog_006956D0::FUN_006967B0()
         Text[0x3F] = 0;
         FUN_00727CF0(Text);
         _strupr(Text);
-        int data;
-        if (_stricmp(Text, "3F8") != 0) {
-            if (_stricmp(Text, "2F8") == 0) {
-                data = 1;
-            } else if (_stricmp(Text, "3E8") == 0) {
-                data = 2;
-            } else if (_stricmp(Text, "2E8") == 0) {
-                data = 3;
-            } else {
-                if (strncmp(Text, "COM", 3) == 0) {
-                    // Retail's jump table (0x69693C) sends '1'..'4' to the blocks of the 3F8/2F8/3E8/2E8 tests
-                    // (0x69691B, 0x696844, 0x696860, 0x69687C), so the cases share them.
-                    switch (Text[3]) {
-                    case '1':
-                        data = 0;
-                        goto selected;
-                    case '2':
-                        data = 1;
-                        goto selected;
-                    case '3':
-                        data = 2;
-                        goto selected;
-                    case '4':
-                        data = 3;
-                        goto selected;
-                    default:
-                        if (Text[3] > '9' || Text[3] <= '0') {
-                            Dialog_005D3490 dialog;
-                            dialog.FUN_005D3490(
-                                FUN_00734E60("TXT_INVALID_PORT_ADDRESS", 0, "D:\\ra2mdpost\\SerialEd.cpp", 0x440),
-                                FUN_00734E60("TXT_OK", 0, "D:\\ra2mdpost\\SerialEd.cpp", 0x440), 0, 0, 0);
-                            return;
-                        }
-                        Text[4] = 0;
-                        break;
-                    }
-                }
-                FUN_006969C0(0x657, 4, Text);
-                return;
-            }
-        } else {
+        // Any text the tests below do not place stays -1. VC6 threads the constant past the final test, so retail's
+        // jump table (0x69693C) enters the blocks of the 3F8/2F8/3E8/2E8 tests directly.
+        int data = -1;
+        if (_stricmp(Text, "3F8") == 0) {
             data = 0;
+        } else if (_stricmp(Text, "2F8") == 0) {
+            data = 1;
+        } else if (_stricmp(Text, "3E8") == 0) {
+            data = 2;
+        } else if (_stricmp(Text, "2E8") == 0) {
+            data = 3;
+        } else if (strncmp(Text, "COM", 3) == 0) {
+            switch (Text[3]) {
+            case '1':
+                data = 0;
+                break;
+            case '2':
+                data = 1;
+                break;
+            case '3':
+                data = 2;
+                break;
+            case '4':
+                data = 3;
+                break;
+            default:
+                if (Text[3] > '9' || Text[3] <= '0') {
+                    Dialog_005D3490 dialog;
+                    dialog.FUN_005D3490(
+                        FUN_00734E60("TXT_INVALID_PORT_ADDRESS", 0, "D:\\ra2mdpost\\SerialEd.cpp", 0x440),
+                        FUN_00734E60("TXT_OK", 0, "D:\\ra2mdpost\\SerialEd.cpp", 0x440), 0, 0, 0);
+                    return;
+                }
+                Text[4] = 0;
+                break;
+            }
         }
-    selected:
+        if (data == -1) {
+            FUN_006969C0(0x657, 4, Text);
+            return;
+        }
         int found = FUN_00776E10(combo, -1, data);
         SendMessageA(combo, 0x14E, found, 0);
     }
