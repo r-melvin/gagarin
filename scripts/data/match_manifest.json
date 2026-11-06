@@ -154487,5 +154487,63 @@
   "name": "ScenarioClass::UpdateLighting",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/jumpjet_locomotion.cpp",
+  "addr": "0x54AC40",
+  "sym": "??0JumpjetLocomotionClass@@QAE@XZ",
+  "len": "0xb9",
+  "name": "JumpjetLocomotionClass::JumpjetLocomotionClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/jumpjet_locomotion.cpp",
+  "addr": "0x54AD00",
+  "sym": "??1JumpjetLocomotionClass@@UAE@XZ",
+  "len": "0x30",
+  "name": "JumpjetLocomotionClass::~JumpjetLocomotionClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/jumpjet_locomotion.cpp",
+  "addr": "0x54AEC0",
+  "sym": "?Process@JumpjetLocomotionClass@@UAG_NXZ",
+  "len": "0x2dc",
+  "name": "JumpjetLocomotionClass::Process",
+  "status": "partial",
+  "pct": 94.7,
+  "best_pct": 94.7,
+  "best_at": "bf4574c8"
+ },
+ {
+  "tu": "match/jumpjet_locomotion.cpp",
+  "addr": "0x54B980",
+  "sym": "?FUN_0054B980@JumpjetLocomotionClass@@QAEXXZ",
+  "len": "0xaf",
+  "name": "JumpjetLocomotionClass::FUN_0054B980",
+  "status": "partial",
+  "pct": 85.5,
+  "best_pct": 85.5,
+  "best_at": "bf4574c8"
+ },
+ {
+  "tu": "match/jumpjet_locomotion.cpp",
+  "addr": "0x54D6D0",
+  "sym": "?FUN_0054D6D0@JumpjetLocomotionClass@@QAEPAUCoordStruct@@PAU2@PBU2@@Z",
+  "len": "0x14e",
+  "name": "JumpjetLocomotionClass::FUN_0054D6D0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/jumpjet_locomotion.cpp",
+  "addr": "0x54D820",
+  "sym": "?FUN_0054D820@JumpjetLocomotionClass@@QAEHXZ",
+  "len": "0x10e",
+  "name": "JumpjetLocomotionClass::FUN_0054D820",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

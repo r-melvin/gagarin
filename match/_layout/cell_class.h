@@ -178,6 +178,7 @@ public:
     void FUN_00485590();
     void CleanFog();
     bool TryAssignJumpjet(ObjectClass* object);   // GAMEMD 0x487D70
+    int FUN_00485080();                           // GAMEMD 0x485080 (decl; reloc): the floor height of the cell
     void MarkForRedraw();
     void ActivateVeins();                         // GAMEMD 0x486920
     const wchar_t* GetUIName() const;             // GAMEMD 0x484FF0

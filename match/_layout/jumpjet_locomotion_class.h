@@ -56,9 +56,10 @@ public:
     // No-init constructor (Load 0x54B750 re-runs it through placement new: it
     // stores only Piggybackee and the three vptrs).
     JumpjetLocomotionClass(int) : LocomotionClass(0), LocomotionFacing(AbstractNoInit()) {}
-    // Primary slot 8: inline, so the deleting wrapper 0x54DFA0 carries the body
-    // (releases Piggybackee, then ~LocomotionClass 0x55A6F0).
-    virtual ~JumpjetLocomotionClass() {}
+    // Primary slot 8. Defined out of line in jumpjet_locomotion.cpp as 0x54AD00 (re-seats the three
+    // vptrs, releases Piggybackee, then ~LocomotionClass 0x55A6F0); the deleting wrapper 0x54DFA0 carries
+    // the same body.
+    virtual ~JumpjetLocomotionClass();
 
     virtual HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);   // 0x54DC60
     virtual ULONG   __stdcall AddRef();                                   // 0x54DF50
@@ -87,6 +88,20 @@ public:
     virtual bool __stdcall IsOkToEnd();                                   // 5  0x54DB00
     virtual HRESULT __stdcall PiggybackCLSID(CLSID* out);                 // 6  0x54DB50
     virtual bool __stdcall IsPiggybacking();                              // 7  0x54DF70
+
+    // Non-virtual state handlers (thiscall on the class pointer), dispatched on the state word at 0x50 by Process
+    // 0x54AEC0 (jump table 0x54B19C); named by address.
+    void FUN_0054B980();                                   // state 0
+    void FUN_0054BA30();                                   // state 1
+    void FUN_0054BD30();                                   // state 2
+    void FUN_0054BFF0();                                   // state 3
+    void FUN_0054C550();                                   // state 4
+    void FUN_0054CA90();                                   // state 5
+    void FUN_0054D0F0();                                   // called by Process before the dispatch
+    // Resolves a cell-centre coordinate to the coordinate a jumpjet settles at (ground height and bridge offset);
+    // the out pointer comes back in EAX (RET 8).
+    CoordStruct* FUN_0054D6D0(CoordStruct* out, const CoordStruct* cell);
+    int FUN_0054D820();                                    // ground height under the client, blended with the cell ahead
 
     int         TurnRate;         // +0x1C <- TechnoTypeClass::JumpjetTurnRate
                                   //       (type+0xD70, read @0x0054AD49, stored
@@ -165,23 +180,19 @@ public:
                                   //       FacingClass and the 8-byte-aligned
                                   //       pair at 0x70
 
-    int         unknown_70;       // +0x70 ctor @0x0054AC87 (=0)
-    int         unknown_74;       // +0x74 ctor @0x0054AC93 (=0)
-    int         unknown_78;       // +0x78 ctor @0x0054AC8A (=0)
-    int         unknown_7C;       // +0x7C ctor @0x0054AC96 (=0). 0x70/0x74 and
-                                  //       0x78/0x7C are 8-byte-aligned pairs the
-                                  //       ctor zeroes low-halves-first exactly
-                                  //       as HoverLocomotionClass zeroes its
-                                  //       doubles, but here no store carries a
-                                  //       non-zero high word and no float read
-                                  //       was found, so they go in as four ints
-                                  //       rather than the two doubles YRpp
-                                  //       guesses.
+    double      unknown_70;       // +0x70 ctor @0x0054AC87/@0x0054AC93 (=0). A double:
+                                  //       `FLD QWORD PTR [ESI+0x70]` @0x0054D87B
+                                  //       (0x54D820). Read by Head_To_Coord's neighbours
+                                  //       only as a whole.
+    double      unknown_78;       // +0x78 ctor @0x0054AC8A/@0x0054AC96 (=0); a double:
+                                  //       `FSTP QWORD PTR [ESI+0x78]` @0x0054BBDC
+                                  //       (0x54BA30)
     int         unknown_80;       // +0x80 ctor @0x0054AC99 (=0)
     int         unknown_84;       // +0x84 never written, never read - the gap
                                   //       before the 8-byte-aligned pair at 0x88
-    int         unknown_88;       // +0x88 ctor @0x0054AC8D (=0)
-    int         unknown_8C;       // +0x8C ctor @0x0054AC9F (=0)
+    double      unknown_88;       // +0x88 ctor @0x0054AC8D/@0x0054AC9F (=0), stored with the
+                                  //       same low-halves-first pattern as the doubles at
+                                  //       0x70 and 0x78
     char        unknown_90;       // +0x90 ctor `MOV [ESI+0x90],BL` @0x0054ACA5
     char        unknown_91;       // +0x91 ctor @0x0054ACAB (=0)
     char        unknown_92[2];    // +0x92 alignment; no access at any width
@@ -209,7 +220,6 @@ GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, unknown_78)       == 0x78);
 GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, unknown_80)       == 0x80);
 GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, unknown_84)       == 0x84);
 GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, unknown_88)       == 0x88);
-GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, unknown_8C)       == 0x8C);
 GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, unknown_90)       == 0x90);
 GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, unknown_91)       == 0x91);
 GG_STATIC_ASSERT((size_t)&reinterpret_cast<const char&>(((JumpjetLocomotionClass*)0)->Piggybackee) == 0x94);
