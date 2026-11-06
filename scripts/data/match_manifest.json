@@ -154610,5 +154610,23 @@
   "name": "?FUN_0054A8C0@@YAXPBDZZ",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/MPLayer.cpp",
+  "addr": "0x5C6230",
+  "sym": "?FUN_005C6230@@YIIIPAE@Z",
+  "len": "0x74",
+  "name": "?FUN_005C6230@@YIIIPAE@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MPLayer.cpp",
+  "addr": "0x5C6490",
+  "sym": "?FUN_005C6490@@YIIPAEPBIH@Z",
+  "len": "0x6b",
+  "name": "?FUN_005C6490@@YIIPAEPBIH@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

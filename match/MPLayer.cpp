@@ -47,6 +47,23 @@ extern int DAT_00abf8c4;
 // GLOBAL: GAMEMD 0xABF8C8
 extern unsigned int DAT_00abf8c8[4];
 
+// FUNCTION: GAMEMD 0x5C6230
+// Writes a length in the one byte form (below 0x80) or as a count byte (0x80 | byte count) and the
+// big-endian bytes. Returns the number of bytes written.
+unsigned int __fastcall FUN_005C6230(unsigned int len, unsigned char* out)
+{
+    unsigned int i = 0;
+    if (len <= 0x7F) {
+        out[i++] = (unsigned char)len;
+    } else {
+        out[i++] = (unsigned char)BytePrecisionOf(len) | 0x80;
+        for (int j = BytePrecisionOf(len); j; --j) {
+            out[i++] = (unsigned char)(len >> ((j - 1) * 8));
+        }
+    }
+    return i;
+}
+
 // FUNCTION: GAMEMD 0x5C6370
 // Reads a tag-2 record (a one or two byte length, then the value bytes) and stores the value
 // big-endian bytes into the `words`-word little-endian buffer `out`, sign-extended.
@@ -80,6 +97,30 @@ void __fastcall FUN_005C6370(unsigned char* out, const unsigned char* in, int wo
         *--dst = *src++;
         len--;
     }
+}
+
+// FUNCTION: GAMEMD 0x5C6490
+// Writes the number `in` (n words) as the shortest sign-extending big-endian byte string.
+// Returns the byte count.
+unsigned int __fastcall FUN_005C6490(unsigned char* out, const unsigned int* in, int n)
+{
+    bool neg = (int)in[n - 1] < 0;
+    unsigned char fill = neg ? 0xFF : 0;
+    const unsigned char* lo = (const unsigned char*)in;
+    const unsigned char* p = lo + n - 1;
+    while (p > lo && *p == fill) {
+        p--;
+    }
+    unsigned int i = 0;
+    if (((*p & 0x80) && !neg) || (!(*p & 0x80) && neg)) {
+        out[0] = fill;
+        i = 1;
+    }
+    out[i++] = *p;
+    while (p != lo) {
+        out[i++] = *--p;
+    }
+    return i;
 }
 
 // Library helpers. Out-of-line copies exist in retail; /Ob2 also inlines
