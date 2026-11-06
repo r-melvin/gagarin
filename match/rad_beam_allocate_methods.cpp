@@ -4,6 +4,7 @@
 //   0x659CA0 and 0x659EE0 (the inline vector helpers below stand for the vector
 //   operators retail expands in 0x659A30 and 0x659EE0).
 
+#include "_layout/coord_struct_sum.h"
 #include "rad_beam_allocate_methods.h"
 #include "pixel_shift_view.h"
 #include "tactical_class_coords_to_client_methods.h"
@@ -61,15 +62,6 @@ static inline CoordStruct Divide(int x, int y, int z, int n)
         r.Y /= n;
         r.Z /= n;
     }
-    return r;
-}
-
-static inline CoordStruct Add(const CoordStruct& a, const CoordStruct& b)
-{
-    CoordStruct r;
-    r.X = a.X + b.X;
-    r.Y = a.Y + b.Y;
-    r.Z = a.Z + b.Z;
     return r;
 }
 
@@ -152,7 +144,7 @@ void RadBeam::FUN_00659EE0()
     unknown_80 = phase / (double)total * unknown_40;
 
     int travel = (int)((double)(unknown_50 * frame) * unknown_48);
-    unknown_5C = Add(unknown_5C, Scale(unknown_70, travel));
+    unknown_5C = unknown_5C + Scale(unknown_70, travel);
 
     unknown_68 = FUN_004CAC40((double)(unknown_5C.X * unknown_5C.X + unknown_5C.Y * unknown_5C.Y + unknown_5C.Z * unknown_5C.Z));
     int steps = (int)(unknown_68 / At_18);

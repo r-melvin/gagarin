@@ -27,6 +27,14 @@ struct CoordStruct
     // FUNCTION: GAMEMD 0x437160 (decl; reloc) -- writes this minus `rhs` into
     // `out` and returns it (__thiscall, RET 8).
     CoordStruct* FUN_00437160(CoordStruct* out, const CoordStruct* rhs);
+
+    // Component-wise sum, inlined at its users (e.g. AnimClass::vf_18 0x422BE0,
+    // BuildingClass 0x4500CB..0x4500E0). Declared here, defined inline in
+    // coord_struct_sum.h, which only the TUs that add coordinates include: any body
+    // placed in this header shifts the compiler's internal counters in every
+    // includer (label numbers, and in 8 TUs RTTI hierarchy attributes and one
+    // register choice), while a bare declaration shifts only the $L label names.
+    CoordStruct operator+(const CoordStruct& b) const;
 };
 GG_STATIC_ASSERT(offsetof(CoordStruct, X) == 0x00);
 GG_STATIC_ASSERT(offsetof(CoordStruct, Y) == 0x04);

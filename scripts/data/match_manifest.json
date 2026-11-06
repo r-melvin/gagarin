@@ -4632,10 +4632,8 @@
   "sym": "?vf_18@AnimClass@@UAE?AUCoordStruct@@XZ",
   "len": "0x85",
   "name": "AnimClass::vf_18",
-  "status": "partial",
-  "pct": 40.4,
-  "best_pct": 40.4,
-  "best_at": "e3815e72"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/const_return_stub_methods.cpp",

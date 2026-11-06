@@ -121,6 +121,7 @@
 //   primary BuildingClass table at 0x7E3EBC; every field offset below is the
 //   one the instruction at the cited retail address uses.
 
+#include "_layout/coord_struct_sum.h"
 #include "building_class_fog_methods.h"
 #include "display_objects_globals.h"
 #include "engine_core_globals.h"
@@ -534,17 +535,6 @@ static inline CoordStruct CoordSum(const CoordStruct& a, const CoordStruct& b)
     r.Y = a.Y + b.Y;
     r.Z = a.Z + b.Z;
     return r;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// Component addition inlined by the retail body at 0x4500CB..0x4500E0.
-static inline CoordStruct operator+(const CoordStruct& a, const CoordStruct& b)
-{
-    CoordStruct result;
-    result.X = a.X + b.X;
-    result.Y = a.Y + b.Y;
-    result.Z = a.Z + b.Z;
-    return result;
 }
 
 // BEGIN defined globals (define_globals.py)
@@ -5338,7 +5328,7 @@ CoordStruct BuildingClass::vf_45(int)
     if (type->ExitCoord.X != DAT_0089C848.X || type->ExitCoord.Y != DAT_0089C848.Y
         || type->ExitCoord.Z != DAT_0089C848.Z) {
         CoordStruct loc = Location;
-        return CoordSum(loc, type->ExitCoord);
+        return loc + type->ExitCoord;
     } else {
         return vf_18();
     }
@@ -5419,7 +5409,7 @@ void FUN_0044FE60(Ini_0044FE60* ini)
 CoordStruct BuildingClass::vf_41()
 {
     CoordStruct c = vf_18();
-    return c + Type->TargetCoordOffset;
+    return CoordSum(c, Type->TargetCoordOffset);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
