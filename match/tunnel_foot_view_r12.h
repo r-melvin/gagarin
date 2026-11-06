@@ -1,21 +1,23 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Address-local view of the unit a TunnelLocomotionClass is linked to: the slots and fields that the
-//   locomotor's state handlers read off retail gamemd.exe v1.001 (0x729AA0, 0x7294E0). Slot names are
+//   locomotor's state handlers read off retail gamemd.exe v1.001 (0x729AA0, 0x7294E0, 0x729370, 0x7298F0). Slot names are
 //   positional; the vtable offset is the name.
 #ifndef GG_MATCH_MOVEMENT_TUNNEL_FOOT_VIEW_R12_H
 #define GG_MATCH_MOVEMENT_TUNNEL_FOOT_VIEW_R12_H
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/coord_struct.h"
 
-struct TunnelCoord_r12
+// What the linked unit's slot 0x84 hands back; only the dword at +0x71C is read.
+class TunnelTypeView_r12
 {
-    int X;
-    int Y;
-    int Z;
+public:
+    char unknown_000[0x71C];
+    int unknown_71C;
 };
-GG_STATIC_ASSERT(sizeof(TunnelCoord_r12) == 0xC);
+GG_STATIC_ASSERT(offsetof(TunnelTypeView_r12, unknown_71C) == 0x71C);
 
 class TunnelFootView_r12
 {
@@ -53,7 +55,7 @@ public:
     virtual void vf_078();
     virtual void vf_07C();
     virtual void vf_080();
-    virtual void vf_084();
+    virtual TunnelTypeView_r12* vf_084();
     virtual void vf_088();
     virtual void vf_08C();
     virtual void vf_090();
@@ -92,7 +94,7 @@ public:
     virtual void vf_114();
     virtual void vf_118();
     virtual void vf_11C();
-    virtual void vf_120();
+    virtual void vf_120(int a, int b);
     virtual void vf_124(int a);
     virtual void vf_128();
     virtual void vf_12C();
@@ -129,12 +131,12 @@ public:
     virtual void vf_1A8();
     virtual void vf_1AC();
     virtual void vf_1B0();
-    virtual void vf_1B4(TunnelCoord_r12* where);
+    virtual void vf_1B4(CoordStruct* where);
     virtual void vf_1B8();
     virtual void vf_1BC();
     virtual void vf_1C0();
     virtual void vf_1C4();
-    virtual void vf_1C8();
+    virtual int vf_1C8();
     virtual void vf_1CC();
     virtual void vf_1D0();
     virtual void vf_1D4();
@@ -356,6 +358,8 @@ public:
     virtual void vf_534();
     virtual int vf_538();
     virtual void vf_53C();
+    virtual void vf_540();
+    virtual void vf_544(double a);
 
     char unknown_04[0x81 - 0x04];
     bool unknown_81;                    // +0x81
@@ -364,7 +368,7 @@ public:
     char unknown_8E[0x90 - 0x8E];
     bool unknown_90;                    // +0x90
     char unknown_91[0x9C - 0x91];
-    TunnelCoord_r12 Location;           // +0x9C
+    CoordStruct Location;           // +0x9C
 };
 GG_STATIC_ASSERT(offsetof(TunnelFootView_r12, unknown_81) == 0x81);
 GG_STATIC_ASSERT(offsetof(TunnelFootView_r12, unknown_8D) == 0x8D);

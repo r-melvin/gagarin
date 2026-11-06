@@ -95,6 +95,16 @@ struct Obj_00407F80
     int FUN_00407F80();
     // FUNCTION: GAMEMD 0x407F90
     int FUN_00407F90();
+    // FUNCTION: GAMEMD 0x407F40 (decl; reloc)
+    void FUN_00407F40();
+    // FUNCTION: GAMEMD 0x408070 (decl; reloc)
+    int  FUN_00408070() const;
+    // FUNCTION: GAMEMD 0x4080C0 (decl; reloc)
+    void FUN_004080C0();
+    // FUNCTION: GAMEMD 0x4080D0 (decl; reloc)
+    int  FUN_004080D0() const;
+    // FUNCTION: GAMEMD 0x4080F0 (decl; reloc)
+    void FUN_004080F0();
 };
 GG_STATIC_ASSERT(offsetof(Obj_00407F80, Links) == 0x0);
 GG_STATIC_ASSERT(offsetof(Obj_00407F80, unknown_0C) == 0x0C);

@@ -9,20 +9,13 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
-struct Obj_004790A0;
-
 // GLOBAL: GAMEMD 0x89E414
 extern unsigned int DAT_0089E414;
 
 // FUNCTION: GAMEMD 0x4A80D0 (declaration)
-void FUN_004A80D0(int, Obj_004790A0*);
+int __fastcall CD_GetCDNumber(int drive, int timeout);
 
-struct Obj_004790A0
-{
-    // FUNCTION: GAMEMD 0x4790A0
-    void FUN_004790A0();
-};
-
-
+// FUNCTION: GAMEMD 0x4790A0 (declaration)
+int __fastcall FUN_004790A0(int timeout);
 
 #endif  // GG_MATCH_CORE_TRIVIAL_TU048_METHODS_H

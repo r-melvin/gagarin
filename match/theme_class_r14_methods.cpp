@@ -19,13 +19,14 @@
 #include "theme_class_scan_methods.h"
 #include "theme_class_stop_methods.h"
 #include "scenario_session_globals.h"
+#include "theme_class_play_methods.h"
 
 struct ThemeSaveStream_00721010
 {
     virtual long __stdcall q0();
     virtual long __stdcall q1();
     virtual long __stdcall q2();
-    virtual long __stdcall q3();
+    virtual long __stdcall Read(void* buf, unsigned long cb, unsigned long* read);
     virtual long __stdcall Write(const void* buf, unsigned long cb, unsigned long* written);
 };
 
@@ -224,12 +225,96 @@ void ThemeClass::QueueSong(int theme)
     }
 }
 
+// FUNCTION: GAMEMD 0x720BB0
+//
+// Start a score. Gated like the other jukebox calls; a stream that is already
+// playing this score is left alone. Otherwise the current score is stopped,
+// and a real index is armed: the path is built from the entry's sound name,
+// handed to the stream and logged, and a repeating score (or jukebox) is also
+// re-queued. When there is no stream (or the engine probe fails) the global
+// jukebox is asked to queue the score instead. Returns the current score.
+int ThemeClass::PlaySong(int index)
+{
+    if (DAT_00A8EC74 && FUN_00407000() && !DAT_00A8ED64) {
+        bool playing = false;
+        if (this->Stream != 0) {
+            if (this->IsFading) {
+                if (this->Stream->FUN_004080D0() == 0)
+                    this->Stream->FUN_00407F40();
+            }
+            playing = this->Stream->FUN_00408070() != 0;
+        }
+        if (playing && this->LastTheme == index)
+            return this->CurrentTheme;
+
+        if (DAT_00A8EC74 && FUN_00407000() && !DAT_00A8ED64 && this->CurrentTheme != -1) {
+            // STRING: GAMEMD 0x84481C
+            FUN_004068E0("Theme::Stop(%d)\n", this->LastTheme);
+            if (this->Stream != 0)
+                this->Stream->FUN_00407F40();
+            this->CurrentTheme = -1;
+            this->LastTheme = -1;
+            this->QueuedTheme = -1;
+        }
+        this->IsFading = false;
+        if (index != -1 && index != -3) {
+            if (index > -1 && this->Volume > 0) {
+                this->LastTheme = index;
+                int ready = DAT_0089E3A0 ? 0 : FUN_004790A0(0);
+                if (ready > -1 && this->Stream != 0) {
+                    if ((unsigned int)index < (unsigned int)this->Themes.Count) {
+                        // STRING: GAMEMD 0x844768
+                        gg_makepath(DAT_00B0F1F8, 0, 0, this->Themes.Items[index]->Sound, ".WAV");
+                        this->Stream->FUN_00407B60(DAT_00B0F1F8, 1);
+                    } else {
+                        this->Stream->FUN_00407B60(STR_00889F64, 1);
+                    }
+                    this->CurrentTheme = index;
+                } else {
+                    this->CurrentTheme = -1;
+                    if (this->Stream != 0 && ready <= -1 && this->QueuedTheme == -1) {
+                        // The inlined DAT_00A83D10.QueueSong(index).
+                        if (DAT_00A8EC74 && FUN_00407000() && !DAT_00A8ED64) {
+                            DAT_00A83D10.QueuedTheme = index;
+                            if (index != -2 && index != DAT_00A83D10.LastTheme) {
+                                // STRING: GAMEMD 0x8447D4
+                                FUN_004068E0("Theme::QueueSong(%d)\n", index);
+                                bool queuedPlaying = false;
+                                if (DAT_00A83D10.Stream != 0) {
+                                    if (DAT_00A83D10.IsFading) {
+                                        if (DAT_00A83D10.Stream->FUN_004080D0() == 0)
+                                            DAT_00A83D10.Stream->FUN_00407F40();
+                                    }
+                                    queuedPlaying = DAT_00A83D10.Stream->FUN_00408070() != 0;
+                                }
+                                if (queuedPlaying == true) {
+                                    if (DAT_00A83D10.Stream != 0)
+                                        DAT_00A83D10.Stream->FUN_004080C0();
+                                    DAT_00A83D10.IsFading = true;
+                                }
+                            }
+                        }
+                    }
+                }
+                // STRING: GAMEMD 0x8447EC
+                FUN_004068E0("Theme::PlaySong(%d) - %s\n", this->LastTheme,
+                             (this->IsScoreRepeat == true || this->Themes.Items[index]->Repeat == true)
+                                 ? "Repeating" : "Playing");
+                if (!(this->IsScoreRepeat == true || this->Themes.Items[index]->Repeat == true))
+                    return this->CurrentTheme;
+            }
+            this->QueuedTheme = index;
+        }
+    }
+    return this->CurrentTheme;
+}
+
 // FUNCTION: GAMEMD 0x720E80
 //
 // Start fading the current stream out and flag the jukebox as fading.
 void ThemeClass::FadeStream()
 {
-    ThemeStream* stream = this->Stream;
+    Obj_00407F80* stream = this->Stream;
     if (stream != 0) {
         stream->FUN_004080C0();
     }
@@ -317,7 +402,7 @@ void ThemeClass::Suspend()
     }
     // STRING: GAMEMD 0x84484C
     FUN_004068E0("Theme::Suspend(%d)\n", this->LastTheme);
-    ThemeStream* stream = this->Stream;
+    Obj_00407F80* stream = this->Stream;
     if (stream != 0) {
         stream->FUN_00407F40();
     }
@@ -352,6 +437,45 @@ long ThemeClass::SaveIndexes(ThemeSaveStream_00721010* stm)
     long hr = stm->Write(&this->LastTheme, 4, 0);
     if (hr >= 0) {
         hr = stm->Write(&this->QueuedTheme, 4, 0);
+    }
+    return hr;
+}
+
+// FUNCTION: GAMEMD 0x721040
+//
+// Restore the two saved indexes: the first is played, the second queued.
+// The queue request is the global jukebox's QueueSong, expanded in place.
+long ThemeClass::FUN_00721040(ThemeSaveStream_00721010* stm)
+{
+    int playing;
+    int queued;
+    long hr = stm->Read(&playing, 4, 0);
+    if (hr >= 0) {
+        hr = stm->Read(&queued, 4, 0);
+        if (hr >= 0 && DAT_00A8EB60.InGameMusic) {
+            DAT_00A83D10.PlaySong(playing);
+            int theme = queued;
+            if (DAT_00A8EC74 && FUN_00407000() && !DAT_00A8ED64) {
+                DAT_00A83D10.QueuedTheme = theme;
+                if (theme != -1 && theme != -2 && theme != DAT_00A83D10.LastTheme) {
+                    // STRING: GAMEMD 0x8447D4
+                    FUN_004068E0("Theme::QueueSong(%d)\n", theme);
+                    bool queuedPlaying = false;
+                    if (DAT_00A83D10.Stream != 0) {
+                        if (DAT_00A83D10.IsFading) {
+                            if (DAT_00A83D10.Stream->FUN_004080D0() == 0)
+                                DAT_00A83D10.Stream->FUN_00407F40();
+                        }
+                        queuedPlaying = DAT_00A83D10.Stream->FUN_00408070() != 0;
+                    }
+                    if (queuedPlaying == true) {
+                        if (DAT_00A83D10.Stream != 0)
+                            DAT_00A83D10.Stream->FUN_004080C0();
+                        DAT_00A83D10.IsFading = true;
+                    }
+                }
+            }
+        }
     }
     return hr;
 }

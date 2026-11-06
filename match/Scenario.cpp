@@ -181,7 +181,6 @@ extern Obj_0069ACC0** DAT_00A8B8CC; // GLOBAL: GAMEMD 0x00A8B8CC
 extern int DAT_00A8DAB4; // GLOBAL: GAMEMD 0x00A8DAB4
 extern GameOptionsClass DAT_00A8EB60; // GLOBAL: GAMEMD 0x00A8EB60
 void __fastcall FUN_004790B0(int value); // GAMEMD 0x4790B0
-int __fastcall FUN_004790A0(int value); // GAMEMD 0x4790A0
 void __cdecl FUN_004B6C30(); // GAMEMD 0x4B6C30; external ABI-only declaration
 void __fastcall FUN_005BF260(int movie, int unused, int a, int b, int c); // GAMEMD 0x5BF260
 bool __fastcall FUN_00684620(const char* filename); // GAMEMD 0x684620
@@ -540,6 +539,7 @@ extern "C" Type_006A46D0** DAT_008B4124;
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "vector_add_item_free.h"
+#include "trivial_tu048_methods.h"
 
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;

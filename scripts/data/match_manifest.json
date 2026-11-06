@@ -84170,11 +84170,11 @@
  {
   "tu": "match/CD.cpp",
   "addr": "0x4790A0",
-  "sym": "?FUN_004790A0@Obj_004790A0@@QAEXXZ",
+  "sym": "?FUN_004790A0@@YIHH@Z",
   "len": "0xd",
-  "name": "Obj_004790A0::FUN_004790A0",
+  "name": "FUN_004790A0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/CD.cpp",
@@ -155899,5 +155899,54 @@
   "name": "BuildingLightClass::vf_13",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/tu185_particle_type_class.cpp",
+  "addr": "0x644E40",
+  "sym": "??1ParticleTypeClass@@UAE@XZ",
+  "len": "0x104",
+  "name": "??1ParticleTypeClass@@UAE@XZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/theme_class_r14_methods.cpp",
+  "addr": "0x720BB0",
+  "sym": "?PlaySong@ThemeClass@@QAEHH@Z",
+  "len": "0x260",
+  "name": "ThemeClass::PlaySong",
+  "status": "partial",
+  "pct": 89.9,
+  "best_pct": 89.9,
+  "best_at": "ad930565"
+ },
+ {
+  "tu": "match/theme_class_r14_methods.cpp",
+  "addr": "0x721040",
+  "sym": "?FUN_00721040@ThemeClass@@QAEJPAUThemeSaveStream_00721010@@@Z",
+  "len": "0xfb",
+  "name": "ThemeClass::FUN_00721040",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tunnel_locomotion_r12_methods.cpp",
+  "addr": "0x729370",
+  "sym": "?FUN_00729370@TunnelLocomotionClass@@QAEXXZ",
+  "len": "0x101",
+  "name": "TunnelLocomotionClass::FUN_00729370",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tunnel_locomotion_r12_methods.cpp",
+  "addr": "0x7298F0",
+  "sym": "?FUN_007298F0@TunnelLocomotionClass@@QAEXXZ",
+  "len": "0x1a9",
+  "name": "TunnelLocomotionClass::FUN_007298F0",
+  "status": "partial",
+  "pct": 83.2,
+  "best_pct": 83.2,
+  "best_at": "ad930565"
  }
 ]

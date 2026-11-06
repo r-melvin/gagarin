@@ -57,12 +57,8 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);        // 6   0x6457A0
     // Slot 8: the scalar deleting destructor 0x645950 is compiler output; the destructor body is
     // inline (it is expanded into that entry) and the base body 0x5F7400 is out of line.
-    virtual ~ParticleTypeClass()
-    {
-        ParticleAnnouncePointerExpired(this, true);
-        ParticleAbstractTypeArray.RemoveItem(this);
-        ParticleTypeArray.RemoveItem(this);
-    }
+    // FUNCTION: GAMEMD 0x644E40 -- the out-of-line body; the scalar deleting destructor expands it.
+    virtual ~ParticleTypeClass();
     virtual void PointerExpired(void* ptr, bool removed);                   // 10  0x6458B0
     virtual int WhatAmI();                                                  // 11  0x645920
     virtual int Size();                                                     // 12  0x645910

@@ -51,9 +51,11 @@ public:
     virtual bool __stdcall IsMovingNow();                // 32  0x728A60
     virtual int __stdcall CanFire();                     // 35  0x72A1C0
 
+    void FUN_00729370();                                 // 0x729370
     void FinishIfTimed();                                // 0x729480
     void FUN_00729AA0();                                 // 0x729AA0
     void FUN_007294E0();                                 // 0x7294E0
+    void FUN_007298F0();                                 // 0x7298F0
 
     int       State;       // +0x18 movement state word (0 = idle)
     LocoCoord DestCoord;   // +0x1C

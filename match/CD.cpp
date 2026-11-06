@@ -422,10 +422,11 @@ wchar_t* CCToolTip::GetToolTipText(unsigned int id)
 }
 
 // FUNCTION: GAMEMD 0x4790A0
-// Tail-calls a method on a member object.
-void Obj_004790A0::FUN_004790A0()
+// Tail-calls CD::GetCDNumber on the current drive. All six callers pass an int in ECX
+// (0x3C, or 0 at 0x720CA4) and five keep EAX, so this is a free fastcall returning int.
+int __fastcall FUN_004790A0(int timeout)
 {
-    FUN_004A80D0(DAT_0089E414, this);
+    return CD_GetCDNumber(DAT_0089E414, timeout);
 }
 
 // FUNCTION: GAMEMD 0x004790E0 (44 bytes, ending RET 4)

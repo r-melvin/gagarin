@@ -44,23 +44,8 @@ GG_STATIC_ASSERT(offsetof(ThemeControl, Repeat)   == 0x289);
 GG_STATIC_ASSERT(offsetof(ThemeControl, Exists)   == 0x28A);
 GG_STATIC_ASSERT(offsetof(ThemeControl, Side)     == 0x28C);
 
-// The playback stream object hanging off ThemeClass +0x2C. Methods are declared only (bodies live in
-// match/core).
-struct ThemeStream
-{
-    // FUNCTION: GAMEMD 0x407A90 (decl; reloc) -- final release, called by ThemeClass::Clear.
-    void FUN_00407A90();
-    // FUNCTION: GAMEMD 0x407F40 (decl; reloc)
-    void FUN_00407F40();
-    // FUNCTION: GAMEMD 0x408070 (decl; reloc)
-    int  FUN_00408070() const;
-    // FUNCTION: GAMEMD 0x4080C0 (decl; reloc)
-    void FUN_004080C0();
-    // FUNCTION: GAMEMD 0x4080D0 (decl; reloc)
-    int  FUN_004080D0() const;
-    // FUNCTION: GAMEMD 0x4080F0 (decl; reloc)
-    void FUN_004080F0();
-};
+// The playback stream object hanging off ThemeClass +0x2C (0x407A90 releases it).
+struct Obj_00407F80;
 
 struct ThemeSaveStream_00721010;
 
@@ -83,6 +68,8 @@ struct ThemeClass
     void           FadeStream();                         // GAMEMD 0x720E80
     void           Suspend();                            // GAMEMD 0x720F70
     long           SaveIndexes(ThemeSaveStream_00721010* stm); // GAMEMD 0x721010
+    // FUNCTION: GAMEMD 0x721040 -- restore the saved indexes: play the first, queue the second.
+    long FUN_00721040(ThemeSaveStream_00721010* stm);
     // FUNCTION: GAMEMD 0x7207F0 -- read each score's sound file and fill Length / Exists.
     void Scan();
     // FUNCTION: GAMEMD 0x7209D0
@@ -91,7 +78,7 @@ struct ThemeClass
     int GetRandomIndex(int index);
     // FUNCTION: GAMEMD 0x720BB0 (decl; reloc) -- start playing a score; its own trace string at
     // 0x8447EC names it Theme::PlaySong.
-    void PlaySong(int index);
+    int PlaySong(int index);
 
     int  CurrentTheme;    // +0x00
     int  LastTheme;       // +0x04
@@ -101,7 +88,7 @@ struct ThemeClass
     bool IsFading;        // +0x11
     bool IsScoreShuffle;  // +0x12
     DynamicVectorClass<ThemeControl*> Themes;  // +0x14
-    ThemeStream* Stream;  // +0x2C
+    Obj_00407F80* Stream; // +0x2C
 };
 
 #if GG_TARGET_ABI_32

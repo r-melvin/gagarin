@@ -427,6 +427,15 @@ ParticleTypeClass::ParticleTypeClass(const ParticleStandaloneInit& init)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x644E40
+ParticleTypeClass::~ParticleTypeClass()
+{
+    ParticleAnnouncePointerExpired(this, true);
+    ParticleAbstractTypeArray.RemoveItem(this);
+    ParticleTypeArray.RemoveItem(this);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x644F50
 // CAPPED: the frozen candidate remains partial at the recorded 22.4% positional instruction score.
 // Its current source is preserved; this annotation does not assert that all other instructions align.
