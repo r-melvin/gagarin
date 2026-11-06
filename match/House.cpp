@@ -875,11 +875,9 @@ struct ConvertView_00500B40
     unsigned char* Pixels;     // +0x174 bytes when Format is 1, words otherwise
     int Pixel(int index) const
     {
-        int format = Format;
-        unsigned char* pixels = Pixels;
-        if (format == 1)
-            return pixels[index];
-        return ((unsigned short*)pixels)[index];
+        if (Format == 1)
+            return Pixels[index];
+        return ((unsigned short*)Pixels)[index];
     }
 };
 GG_STATIC_ASSERT(offsetof(ConvertView_00500B40, Format) == 0x04);
@@ -3109,12 +3107,11 @@ int HouseClass::FUN_00500910(int rtti, bool naval)
 }
 
 // FUNCTION: GAMEMD 0x500B40
-// PARTIAL: 85.9% (instruction multiset identical, 427 of 427). The remaining delta is stack layout: retail
-// orders the three colour channel doubles B, R, G from the lowest slot (shared with the shift temporaries)
-// where this body gives R, G, B, which moves every access to them and the locals above; the registers of
-// the inlined pixel read also differ. Declaration order, assignment order and the zero-length branch order
-// do not change the slot order. The UI name buffer is 0x60 bytes: the retail frame is 0x40 bytes larger
-// than a 0x20 buffer gives.
+// PARTIAL: 98.1% (instruction multiset identical, 427 of 427). The colour doubles, the pixel shift temporaries,
+// the allies mask and the team timer temporary are block locals that share one stack region, as in retail.
+// The remaining delta is the inlined name copy and the UI name buffer sitting 4 bytes higher than retail
+// (0x48/0x68 against 0x44/0x64), which moves their accesses. The UI name buffer is 0x60 bytes: the retail
+// frame is 0x40 larger than a 0x20 buffer gives.
 // Reads the house's section: tech level, credits, player control, the UI name, team ratios, IQ, edge,
 // colour (with its laser colour), allies and the team delay timer.
 void HouseClass::FUN_00500B40(CCINIClass* ini)
@@ -3179,50 +3176,56 @@ void HouseClass::FUN_00500B40(CCINIClass* ini)
         ColorSchemeIndex = 5;
         scheme = DAT_00B054D4[5];
     }
-    unsigned short pixel = scheme->Convert->Pixel(scheme->PixelIndex);
-    ColorStruct shifted;
-    shifted.R = (pixel >> DAT_008A0DD0) << DAT_008A0DD4;
-    shifted.G = (pixel >> DAT_008A0DE0) << DAT_008A0DE4;
-    shifted.B = (pixel >> DAT_008A0DD8) << DAT_008A0DDC;
-    Color = shifted;
-    double blue;
-    double red;
-    double green;
-    red = Color.R;
-    green = Color.G;
-    blue = Color.B;
-    double length = Sqrt_004CAC40(red * red + green * green + blue * blue);
-    if (length == GG_ZERO) {
-        blue = 255.0;
-        green = 255.0;
-        red = 255.0;
-    } else {
-        red = red * 240.0 / length;
-        if (red > 255.0)
-            red = 255.0;
-        green = green * 240.0 / length;
-        if (green > 255.0)
-            green = 255.0;
-        blue = blue * 240.0 / length;
-        if (blue > 255.0)
-            blue = 255.0;
-        if (red < 96.0)
-            red = 0.0;
-        if (green < 96.0)
-            green = 0.0;
-        if (blue < 96.0)
-            blue = 0.0;
+    {
+        unsigned short pixel = scheme->Convert->Pixel(scheme->PixelIndex);
+        ColorStruct shifted;
+        shifted.R = (pixel >> DAT_008A0DD0) << DAT_008A0DD4;
+        shifted.G = (pixel >> DAT_008A0DE0) << DAT_008A0DE4;
+        shifted.B = (pixel >> DAT_008A0DD8) << DAT_008A0DDC;
+        Color = shifted;
     }
-    FUN_0050B920(&red, &green, &blue);
-    LaserColor.FUN_0050E430((unsigned char)(int)red, (unsigned char)(int)green, (unsigned char)(int)blue);
+    {
+        double blue;
+        double red;
+        double green;
+        red = Color.R;
+        green = Color.G;
+        blue = Color.B;
+        double length = Sqrt_004CAC40(red * red + green * green + blue * blue);
+        if (length == GG_ZERO) {
+            blue = 255.0;
+            green = 255.0;
+            red = 255.0;
+        } else {
+            red = red * 240.0 / length;
+            if (red > 255.0)
+                red = 255.0;
+            green = green * 240.0 / length;
+            if (green > 255.0)
+                green = 255.0;
+            blue = blue * 240.0 / length;
+            if (blue > 255.0)
+                blue = 255.0;
+            if (red < 96.0)
+                red = 0.0;
+            if (green < 96.0)
+                green = 0.0;
+            if (blue < 96.0)
+                blue = 0.0;
+        }
+        FUN_0050B920(&red, &green, &blue);
+        LaserColor.FUN_0050E430((unsigned char)(int)red, (unsigned char)(int)green, (unsigned char)(int)blue);
+    }
     AIGeneral = 0;
     FUN_004F9B70(DAT_00A8022C[ArrayIndex], false);
     // STRING: GAMEMD 0x824D5C
-    unsigned int allies = static_cast<HouseIniView*>(ini)->ReadHousesList(section, "Allies", 0);
-    for (int i = 0; i < DAT_00A80238; i++) {
-        HouseClass* other = DAT_00A8022C[i];
-        if (allies & (1 << other->ArrayIndex))
-            FUN_004F9B70(other, false);
+    {
+        unsigned int allies = static_cast<HouseIniView*>(ini)->ReadHousesList(section, "Allies", 0);
+        for (int i = 0; i < DAT_00A80238; i++) {
+            HouseClass* other = DAT_00A8022C[i];
+            if (allies & (1 << other->ArrayIndex))
+                FUN_004F9B70(other, false);
+        }
     }
     TeamDelayTimer = CDTimerClass(DAT_008871E0->TeamDelays.Items[AIDifficulty] + ArrayIndex * 175);
     Base.FUN_0042EBE0(ini, section);

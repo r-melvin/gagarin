@@ -435,10 +435,23 @@ ParticleTypeClass::~ParticleTypeClass()
     ParticleTypeArray.RemoveItem(this);
 }
 
+int FUN_00645430(const char* name);
+
+// Position of this exact object in the particle-type array, -1 when absent.
+static inline int IndexOfType(ParticleTypeClass* item)
+{
+    int count = ParticleTypeArray.Count;
+    for (int k = 0; k < count; k++) {
+        if (ParticleTypeArray.Items[k] == item)
+            return k;
+    }
+    return -1;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x644F50
-// CAPPED: the frozen candidate remains partial at the recorded 22.4% positional instruction score.
-// Its current source is preserved; this annotation does not assert that all other instructions align.
+// PARTIAL: 23.3% positional, 97.5% aligned. Retail calls the vector cleanup 0x478440 for the discarded
+// default colour list; this body expands it inline, which shifts the instructions after it.
 bool ParticleTypeClass::ReadINI(ParticleIniView* ini)
 {
     ini->ClearCache();
@@ -476,48 +489,15 @@ bool ParticleTypeClass::ReadINI(ParticleIniView* ini)
         FinalDamageState = (signed char)ini->ReadInt(ID, "FinalDamageState", EndStateAI);
 
         char name[0x20];
-        if (ini->ReadString(ID, "NextParticle", 0, name, 0x20)) {
-            int index = -1;
-            if (stricmp(name, "<none>") != 0) {
-                int i;
-                for (i = 0; i < ParticleTypeArray.Count; i++) {
-                    if (stricmp(name, ParticleTypeArray.Items[i]->ID) == 0)
-                        goto found;
-                }
-                {
-                    ParticleTypeClass* created = new ParticleTypeClass(name);
-                    i = ParticleTypeArray.FindItemIndex(created);
-                }
-            found:
-                index = i;
-            }
-            NextParticle = index;
-        }
+        if (ini->ReadString(ID, "NextParticle", 0, name, 0x20))
+            NextParticle = FUN_00645430(name);
 
         name[0] = 0;
         ini->ReadString(ID, "BehavesLike", 0, name, 0x20);
-        int behaves;
-        for (behaves = 0; behaves < 5; behaves++) {
-            if (stricmp(name, ParticleBehavesLikeNames[behaves]) == 0)
-                goto foundBehaves;
-        }
-        behaves = -1;
-    foundBehaves:
-        BehavesLike = behaves;
+        BehavesLike = FindBehavesLike(name);
         return true;
     }
     return false;
-}
-
-// Position of this exact object in the particle-type array, -1 when absent.
-static inline int IndexOfType(ParticleTypeClass* item)
-{
-    int count = ParticleTypeArray.Count;
-    for (int k = 0; k < count; k++) {
-        if (ParticleTypeArray.Items[k] == item)
-            return k;
-    }
-    return -1;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

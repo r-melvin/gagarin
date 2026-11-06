@@ -2735,13 +2735,15 @@ void Tactical::FUN_006D7840(const RectangleStruct* rectangle,
     unsigned int pitch = DAT_00887314->GetPitch();
     int x = rectangle->X + unknown_B0.unknown_00 - Viewport_00886FA0.X;
     int y = rectangle->Y + unknown_B0.unknown_04 - Viewport_00886FA0.Y;
-    Vector3D vector(x, y, 0.0f);
-    Vector3D transformed;
-    vector = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &vector);
-    Point2D world(vector.X, vector.Y);
     CellStruct base;
-    base.X = world.X / 256;
-    base.Y = world.Y / 256;
+    {
+        Vector3D vector(x, y, 0.0f);
+        Vector3D transformed;
+        vector = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &vector);
+        Point2D world(vector.X, vector.Y);
+        base.X = world.X / 256;
+        base.Y = world.Y / 256;
+    }
     int rows = rectangle->Height / 15 + 17;
     int columns = rectangle->Width / 60 + 4;
     base.X -= 2;
