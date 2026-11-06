@@ -18,7 +18,8 @@ A function is **matched** only when:
 
 - its compiled bytes equal retail at its annotated address (relocations
   normalised);
-- the vtables it relies on match slot for slot;
+- the vtables it relies on match slot for slot (each slot's address and pin equal retail; the bodies the slots point at
+  need not be matched yet);
 - the `GLOBAL`/`STRING` addresses it references agree with the binary;
 - every struct member offset it touches is confirmed against an instruction in
   the binary and pinned by an `offsetof`/`sizeof` static assert.
@@ -105,6 +106,18 @@ against an instruction in the binary before it lands as a repo fact.
   function's own retail instructions test `this` and branch in a form the helper cannot produce (the helper yields
   only its mask form). The row's comment must name the retail branch that proves it, and the helper must have been
   tried first.
+
+- Taking the address of a by-value call result (`&Call()`) is non-standard and dangles under a conforming compiler. It is
+  allowed only where the by-value, named-local and reference forms have been tried and do not match, on the line (or the
+  line directly above) carrying `// ADDRCALL: GAMEMD 0xADDR`, where 0xADDR is the retail instruction that reads through the
+  address the callee returned.
+
+- A callee body may carry redundant steps that raise its parse-tree cost only where natural forms have been tried and
+  retail's own call sites show the function was over the inline cap: it is called from callers where it stays out of line
+  and expanded only where it is the single candidate. The callee's bytes must stay exact. The body carries
+  `// COSTFORM: GAMEMD 0xCALLER calls N inlined M` with counts from the binary, and the steps are named in a comment. This
+  is a measured byte workaround, not a claim about the original statements. It never justifies a second spelling of a
+  shared inline.
 
 - Prefer a declared virtual destructor to a hand-written scalar deleting destructor. Longhand is accepted on a
   placeholder view until its class is recovered, and where retail shows the class has no vptr; the latter carries
