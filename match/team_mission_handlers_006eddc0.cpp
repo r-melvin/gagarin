@@ -7,6 +7,7 @@
 // offsets asserted below.
 #include <stddef.h>
 #include "_layout/house_class.h"
+#include "_layout/cell_class.h"
 #include "_rt/gg_static_assert.h"
 
 struct ActionArg_006EDDC0 {
@@ -75,25 +76,13 @@ struct CoordStruct_006EDF10 {
 };
 GG_STATIC_ASSERT(sizeof(CoordStruct_006EDF10) == 0xC);
 
-struct CellStruct_006EDF10 {
-    short unknown_00;   // +0x0000
-    short unknown_02;   // +0x0002
-};
-GG_STATIC_ASSERT(sizeof(CellStruct_006EDF10) == 0x4);
-
-struct CellView_006EE100 {
-    unsigned char unknown_00[0x140];
-    unsigned int unknown_140;   // +0x0140
-};
-GG_STATIC_ASSERT(offsetof(CellView_006EE100, unknown_140) == 0x140);
-
 struct MapView_006EDF10 {
     // FUNCTION: GAMEMD 0x57B790 (decl; reloc)
-    void FUN_0057B790(CellStruct_006EDF10* cell);
+    void FUN_0057B790(CellStruct* cell);
     // FUNCTION: GAMEMD 0x578080 (decl; reloc)
     int FUN_00578080(CoordStruct_006EDF10* coord);
     // FUNCTION: GAMEMD 0x565730 (decl; reloc)
-    CellView_006EE100* FUN_00565730(CoordStruct_006EDF10* coord);
+    CellClass* FUN_00565730(CoordStruct_006EDF10* coord);
 };
 
 struct TacticalView_006EE100 {
@@ -789,10 +778,10 @@ void Owner_006EDDC0::FUN_006EDF10(ActionArg_006EDDC0* a1, int a2)
     for (Member_006EDDC0* m = unknown_54; m != 0; m = m->unknown_5D8) {
         CoordStruct_006EDF10 tmp;
         CoordStruct_006EDF10* c = m->vf_018(&tmp);
-        CellStruct_006EDF10 cell;
-        cell.unknown_00 = (short)(c->unknown_00 / 256);
-        cell.unknown_02 = (short)(c->unknown_04 / 256);
-        CellStruct_006EDF10 where = cell;
+        CellStruct cell;
+        cell.X = (short)(c->unknown_00 / 256);
+        cell.Y = (short)(c->unknown_04 / 256);
+        CellStruct where = cell;
         DAT_0087F7E8.FUN_0057B790(&where);
     }
     unknown_80 = true;
@@ -805,8 +794,8 @@ void Owner_006EDDC0::FUN_006EE100(ActionArg_006EDDC0* a1, int a2)
     CoordStruct_006EDF10 tmp;
     CoordStruct_006EDF10 coord = *unknown_34->vf_018(&tmp);
     coord.unknown_08 = DAT_0087F7E8.FUN_00578080(&coord);
-    if ((DAT_0087F7E8.FUN_00565730(&coord)->unknown_140 & 0x100) != 0
-        || (DAT_0087F7E8.FUN_00565730(&coord)->unknown_140 & 0x400) != 0) {
+    if ((DAT_0087F7E8.FUN_00565730(&coord)->Flags & 0x100) != 0
+        || (DAT_0087F7E8.FUN_00565730(&coord)->Flags & 0x400) != 0) {
         coord.unknown_08 += DAT_00B0E99C;
     }
     DAT_00887324->FUN_006D2420(&coord, a1->unknown_04);

@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/cell.h"
 
 // FUNCTION: GAMEMD 0x0054EFC0
 // True for the three kinds 1, 2 and 4.
@@ -87,23 +88,18 @@ int Obj_0056CB80::FUN_0056CB80()
     return ((Packed >> 12) & 0xF) | (Packed & 0xF);
 }
 
-struct CellXY_0056D430 {
-    short X;
-    short Y;
-};
-
 struct Obj_0056D430 {
     unsigned char unknown_00[0xF4];
     int MinX;                   // +0xF4
     int MaxX;                   // +0xF8
-    int FUN_0056D430(const CellXY_0056D430* cell);
+    int FUN_0056D430(const CellStruct* cell);
 };
 GG_STATIC_ASSERT(offsetof(Obj_0056D430, MinX) == 0xF4);
 GG_STATIC_ASSERT(offsetof(Obj_0056D430, MaxX) == 0xF8);
 
 // FUNCTION: GAMEMD 0x0056D430
 // Linear cell index: row * (width) + column.
-int Obj_0056D430::FUN_0056D430(const CellXY_0056D430* cell)
+int Obj_0056D430::FUN_0056D430(const CellStruct* cell)
 {
     return (MaxX + MinX + 1) * cell->Y + cell->X;
 }
@@ -111,13 +107,13 @@ int Obj_0056D430::FUN_0056D430(const CellXY_0056D430* cell)
 struct Obj_005657E0 {
     unsigned char unknown_00[0x13C];
     int* Grid;                  // +0x13C
-    bool FUN_005657E0(const CellXY_0056D430* cell);
+    bool FUN_005657E0(const CellStruct* cell);
 };
 GG_STATIC_ASSERT(offsetof(Obj_005657E0, Grid) == 0x13C);
 
 // FUNCTION: GAMEMD 0x005657E0
 // Whether the 512-wide grid has a non-zero entry at the cell.
-bool Obj_005657E0::FUN_005657E0(const CellXY_0056D430* cell)
+bool Obj_005657E0::FUN_005657E0(const CellStruct* cell)
 {
     bool set = Grid[(cell->Y << 9) + cell->X] != 0;
     return set;
@@ -155,7 +151,7 @@ struct Obj_0056D3F0 {
     unsigned char unknown_70[0x84];
     int MinX;                       // +0xF4
     int MaxX;                       // +0xF8
-    int FUN_0056D3F0(const CellXY_0056D430* cell);
+    int FUN_0056D3F0(const CellStruct* cell);
 };
 GG_STATIC_ASSERT(offsetof(Obj_0056D3F0, Count) == 0x6C);
 GG_STATIC_ASSERT(offsetof(Obj_0056D3F0, MinX) == 0xF4);
@@ -163,7 +159,7 @@ GG_STATIC_ASSERT(offsetof(Obj_0056D3F0, MaxX) == 0xF8);
 
 // FUNCTION: GAMEMD 0x0056D3F0
 // Linear cell index clamped into [0, Count - 1].
-int Obj_0056D3F0::FUN_0056D3F0(const CellXY_0056D430* cell)
+int Obj_0056D3F0::FUN_0056D3F0(const CellStruct* cell)
 {
     int index = (MaxX + MinX + 1) * cell->Y + cell->X;
     if (index < 0) {

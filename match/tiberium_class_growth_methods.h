@@ -20,6 +20,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/cell_class.h"
 
 #include "_layout/cell.h"
 
@@ -31,19 +32,12 @@
 #include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
-// CellClass — only the overlay data byte is read.
-struct CellClass_007235A0
-{
-    char          _pad000[0x11E];   // +0x0000
-    unsigned char OverlayData;      // +0x011E
-};
-GG_STATIC_ASSERT(offsetof(CellClass_007235A0, OverlayData) == 0x11E);
 
 struct Map_007235A0
 {
     char opaque[4];
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass_007235A0* GetCellAt(const CellStruct& cell);
+    CellClass* GetCellAt(const CellStruct& cell);
 };
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer).
 extern Map_007235A0 DAT_0087F7E8;

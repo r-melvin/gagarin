@@ -15,6 +15,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/cell_class.h"
 #include "_rt/gg_vslot.h"
 
 #include "_layout/cell.h"
@@ -27,12 +28,11 @@ struct Coord_004DCFE0
 };
 GG_STATIC_ASSERT(sizeof(Coord_004DCFE0) == 0xC);
 
-struct CellClass_004DCFE0;
 
 struct Map_004DCFE0
 {
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass_004DCFE0* GetCellAt(CellStruct const& cell);
+    CellClass* GetCellAt(CellStruct const& cell);
 };
 
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer:
@@ -58,7 +58,7 @@ GG_STATIC_ASSERT(offsetof(Obj_004DCFE0, Destination) == 0x5A4);
 
 typedef Coord_004DCFE0* (Obj_004DCFE0::*Fn48_004DCFE0)(Coord_004DCFE0* out);
 typedef CellStruct* (Obj_004DCFE0::*Fn338_004DCFE0)(CellStruct* out, int radius, int scanClose);
-typedef void (Obj_004DCFE0::*Fn480_004DCFE0)(CellClass_004DCFE0* target, int flag);
+typedef void (Obj_004DCFE0::*Fn480_004DCFE0)(CellClass* target, int flag);
 
 struct Vtbl_004DCFE0
 {

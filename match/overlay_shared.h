@@ -9,6 +9,7 @@
 #define GG_MATCH_MAP_TERRAIN_OBJECTS_OVERLAY_SHARED_H
 
 #include "terrain_common_types.h"
+#include "_layout/player_ptr_00a83d4c.h"
 #include "_layout/cell.h"
 #include "terrain_common_vectors.h"
 #include "terrain_common_views.h"
@@ -143,15 +144,6 @@ GG_STATIC_ASSERT(offsetof(OverlayPaletteView, Convert) == 0x30C);
 // GLOBAL: GAMEMD 0xB054D4 - the palette array (a pointer to the array; read-only here).
 extern OverlayPaletteView** OverlayPalettes;
 
-// The session object (global pointer 0xA83D4C); only the palette index of the veins is read.
-struct OverlaySessionView
-{
-    char unknown_00[0x16054];
-    int  VeinsPalette;      // +0x16054
-};
-GG_STATIC_ASSERT(offsetof(OverlaySessionView, VeinsPalette) == 0x16054);
-// GLOBAL: GAMEMD 0xA83D4C
-extern OverlaySessionView* OverlaySession;
 
 // A tiberium type (partial; read-only here).
 struct OverlayTiberiumView

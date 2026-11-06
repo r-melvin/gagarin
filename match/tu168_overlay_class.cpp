@@ -11,6 +11,7 @@
 
 #include "FUNCTION.H"
 #include "overlay_class.h"
+#include "_layout/house_class.h"
 
 // Component-wise 16-bit cell addition (the original steps cells through an inline of this shape).
 inline MapObjCell OverlayCellAdd(const MapObjCell& a, const MapObjCell& b)
@@ -510,7 +511,7 @@ void OverlayClass::vf_70(Point2D* where, RectangleStruct* clip)
         if (Type->ArrayIndex == 0xA7)
             point.Y -= 0x26;
         MapObjCoord veinCoord = location;
-        OverlayPaletteView* palette = OverlayPalettes[OverlaySession->VeinsPalette];
+        OverlayPaletteView* palette = OverlayPalettes[DAT_00A83D4C->ColorSchemeIndex];
         OverlayDrawShapeInline(MapObjSurface, palette->Convert, shape, 0, &point, clip, 0xE00, 0,
                                -2 - height, 0, MapObjMap.GetCellAtCoord(veinCoord)->Light, 0, 0, 0, MapObjPoint(0, 0));
     } else {

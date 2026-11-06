@@ -5,6 +5,7 @@
 
 #include <stddef.h>
 #include "_layout/house_class.h"
+#include "_layout/cell.h"
 #include "_rt/gg_static_assert.h"
 
 extern int DAT_00ABC1D4;
@@ -31,14 +32,9 @@ int FUN_005AC1C0(int value)
     return 0;
 }
 
-struct CellXY_005AC230 {
-    short X;
-    short Y;
-};
-
 // FUNCTION: GAMEMD 0x005AC230
 // Whether the cell lies inside the diamond bounds held in two globals.
-bool FUN_005AC230(const CellXY_005AC230* cell)
+bool FUN_005AC230(const CellStruct* cell)
 {
     int x = cell->X;
     int y = cell->Y;

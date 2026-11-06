@@ -25,6 +25,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/cell_class.h"
 #include "_rt/gg_vslot.h"
 #include "mapobj_globals.h"
 
@@ -59,13 +60,6 @@ extern const CellStructInit UnsetCell_008B3C58;
 // GLOBAL: GAMEMD 0x8B3C78 — the engine's unset coordinate.
 extern const Coord_004CCFD0 UnsetCoord_008B3C78;
 
-// CellClass — only the flag dword @0x140 is touched, as `TEST CH,0x1`.
-struct CellClass_004CCFD0
-{
-    char _pad000[0x140];   // +0x0000
-    int  Flags;            // +0x0140
-};
-GG_STATIC_ASSERT(offsetof(CellClass_004CCFD0, Flags) == 0x140);
 
 // The object the global at 0x8871E0 points at; only +0xFA8 is read.
 // GLOBAL: GAMEMD 0x8871E0 — that object.
@@ -85,9 +79,9 @@ struct Map_004CCFD0
     CellStructInit* At_586AC0(CellStructInit* out, CellStructInit* cell,
                              int flag);
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCell(cell).
-    CellClass_004CCFD0* GetCell(CellStructInit* cell);
+    CellClass* GetCell(CellStructInit* cell);
     // FUNCTION: GAMEMD 0x565730 (decl; reloc) — MapClass::GetCellAt(coord).
-    CellClass_004CCFD0* GetCellAt(Coord_004CCFD0* coord, int flag);
+    CellClass* GetCellAt(Coord_004CCFD0* coord, int flag);
     // FUNCTION: GAMEMD 0x578080 (decl; reloc) — the ground height at a coord.
     int GetZHeightAt(const Coord_004CCFD0& coord);
     // FUNCTION: GAMEMD 0x56DC20 (decl; reloc) — find a free cell near one.
@@ -116,9 +110,9 @@ struct Foot_004CCFD0
     char           At_3D4;                   // +0x03D4
 
     // FUNCTION: GAMEMD 0x41A160 (decl; reloc) — the flyer's own parking cell.
-    CellClass_004CCFD0* FUN_0041A160();
+    CellClass* FUN_0041A160();
     // FUNCTION: GAMEMD 0x418E20 (decl; reloc) — pick a cell to settle on.
-    CellClass_004CCFD0* FUN_00418E20(CellClass_004CCFD0* cell);
+    CellClass* FUN_00418E20(CellClass* cell);
 };
 GG_STATIC_ASSERT(offsetof(Foot_004CCFD0, At_6C) == 0x6C &&
                  offsetof(Foot_004CCFD0, Location) == 0x9C &&
@@ -128,7 +122,7 @@ typedef int (Foot_004CCFD0::*FnInt_004CCFD0)();
 typedef char (Foot_004CCFD0::*FnChar_004CCFD0)();
 typedef void (Foot_004CCFD0::*FnOrder_004CCFD0)(int*, int, void*, int, int,
                                                 int, int);
-typedef void (Foot_004CCFD0::*FnSettle_004CCFD0)(CellClass_004CCFD0*);
+typedef void (Foot_004CCFD0::*FnSettle_004CCFD0)(CellClass*);
 
 struct FootVtbl_004CCFD0
 {

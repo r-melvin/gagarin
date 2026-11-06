@@ -116,11 +116,11 @@
  {
   "tu": "match/aircraft_tracker_update_methods.cpp",
   "addr": "0x4138C0",
-  "sym": "?Update@AircraftTracker_004138C0@@QAEXPAVTechno_004138C0@@UCellStruct_004138C0@@1@Z",
+  "sym": "?Update@AircraftTracker_004138C0@@QAEXPAVTechno_004138C0@@UCellStruct@@1@Z",
   "len": "0x16C",
   "name": "AircraftTrackerClass::Update",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -24058,7 +24058,7 @@
  {
   "tu": "match/map_class_recalculate_zones_methods.cpp",
   "addr": "0x56D5A0",
-  "sym": "?RecalculateZones@Map_0056D5A0@@QAEXAAUCellStruct_0056D5A0@@@Z",
+  "sym": "?RecalculateZones@Map_0056D5A0@@QAEXAAUCellStruct@@@Z",
   "len": "0x132",
   "name": "MapClass::RecalculateZones",
   "status": "partial",
@@ -136114,29 +136114,29 @@
  {
   "tu": "match/w2_leaf_methods_a.cpp",
   "addr": "0x56D430",
-  "sym": "?FUN_0056D430@Obj_0056D430@@QAEHPBUCellXY_0056D430@@@Z",
+  "sym": "?FUN_0056D430@Obj_0056D430@@QAEHPBUCellStruct@@@Z",
   "len": "0x23",
   "name": "FUN_0056D430",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/w2_leaf_methods_a.cpp",
   "addr": "0x56D3F0",
-  "sym": "?FUN_0056D3F0@Obj_0056D3F0@@QAEHPBUCellXY_0056D430@@@Z",
+  "sym": "?FUN_0056D3F0@Obj_0056D3F0@@QAEHPBUCellStruct@@@Z",
   "len": "0x36",
   "name": "FUN_0056D3F0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/w2_leaf_methods_a.cpp",
   "addr": "0x5657E0",
-  "sym": "?FUN_005657E0@Obj_005657E0@@QAE_NPBUCellXY_0056D430@@@Z",
+  "sym": "?FUN_005657E0@Obj_005657E0@@QAE_NPBUCellStruct@@@Z",
   "len": "0x20",
   "name": "FUN_005657E0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/w2_leaf_methods_a.cpp",
@@ -136168,11 +136168,11 @@
  {
   "tu": "match/w2_global_leaf_methods.cpp",
   "addr": "0x5AC230",
-  "sym": "?FUN_005AC230@@YI_NPBUCellXY_005AC230@@@Z",
+  "sym": "?FUN_005AC230@@YI_NPBUCellStruct@@@Z",
   "len": "0x35",
   "name": "FUN_005AC230",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/w2_global_leaf_methods.cpp",
@@ -143294,11 +143294,11 @@
  {
   "tu": "match/w2_leaf_r16.cpp",
   "addr": "0x660BE0",
-  "sym": "?FUN_00660BE0@@YIPAUCellXY_00660BE0@@PAU1@@Z",
+  "sym": "?FUN_00660BE0@@YIPAUCellStruct@@PAU1@@Z",
   "len": "0x6a",
   "name": "Step back one entry in the 8-slot position history",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/SerialEd.cpp",
@@ -146606,7 +146606,7 @@
   "addr": "0x486E30",
   "sym": "?FUN_00486E30@CellClass@@QAEHXZ",
   "len": "0x36",
-  "name": "Cell_00486E30::FUN_00486E30",
+  "name": "CellClass::FUN_00486E30",
   "status": "matched",
   "pct": 100.0
  },

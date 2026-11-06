@@ -61,7 +61,7 @@ bool VeinholeMonsterClass::IsCellEligibleForVeinHole(const CellStruct* cell)
             CellStruct spot;
             spot.X = cell->X + dx;
             spot.Y = cell->Y + dy;
-            CellClass_0074D670* c = MapInstance_0074D670.Cell(spot);
+            CellClass* c = MapInstance_0074D670.Cell(spot);
             if (c->SlopeIndex != 0 || c->LandType != 0 || c->Level != level)
                 return false;
         }

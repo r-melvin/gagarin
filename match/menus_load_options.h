@@ -19,6 +19,7 @@
 #include "_rt/gg_static_assert.h"
 #include "vector_class.h"
 #include "ui_common.h"
+#include "_layout/session_class.h"
 #include "_layout/load_options_class.h"
 #include "scenario_session_globals.h"
 
@@ -36,14 +37,6 @@ struct MenusSaveHeader
     char _pad[0x3F4];
 };
 
-// SessionClass::Instance (0xA8B238).
-struct MenusSession
-{
-    void Func_69BB40();
-};
-
-// GLOBAL: GAMEMD 0xA8B238 -- SessionClass::Instance.
-extern MenusSession MenusSessionInstance;
 // GLOBAL: GAMEMD 0xA8ED5C / 0xA8E378 -- two flag bytes cleared before a load.
 extern bool MenusLoadFlagA;
 // GLOBAL: GAMEMD 0x83D560 -- compared with the header's pad word.

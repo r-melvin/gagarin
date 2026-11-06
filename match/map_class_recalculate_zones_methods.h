@@ -27,14 +27,9 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/cell.h"
 #include "engine_core_globals.h"
 
-struct CellStruct_0056D5A0
-{
-    short X;                  // +0x0000
-    short Y;                  // +0x0002
-};
-GG_STATIC_ASSERT(sizeof(CellStruct_0056D5A0) == 4);
 
 // One entry of the zone array at MapClass +0x68.
 struct Zone_0056D5A0
@@ -64,7 +59,7 @@ struct Map_0056D5A0
     unsigned int FUN_0056C510();
 
     // FUNCTION: GAMEMD 0x56D5A0
-    void RecalculateZones(CellStruct_0056D5A0& cell);
+    void RecalculateZones(CellStruct& cell);
 };
 GG_STATIC_ASSERT(offsetof(Map_0056D5A0, ZoneRemap) == 0x18);
 GG_STATIC_ASSERT(offsetof(Map_0056D5A0, Zones) == 0x68);

@@ -91,12 +91,12 @@ void __stdcall FlyLocoStop::StopMoving()
         } else {
             Foot_004CCFD0* state = this->LinkedTo;
             if ((state->*state->Vtbl->At_184)() == 1) {
-                CellClass_004CCFD0* own = flyer->FUN_0041A160();
+                CellClass* own = flyer->FUN_0041A160();
                 Foot_004CCFD0* park = this->LinkedTo;
                 (park->*park->Vtbl->At_480)(own);
                 return;
             }
-            CellClass_004CCFD0* picked =
+            CellClass* picked =
                 flyer->FUN_00418E20(MapInstance_004CCFD0.GetCell(&cell));
             Foot_004CCFD0* park = this->LinkedTo;
             (park->*park->Vtbl->At_480)(picked);

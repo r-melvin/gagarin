@@ -19,6 +19,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/cell_class.h"
 #include "_rt/gg_vslot.h"
 
 // CellStruct — the user-declared constructor gives the by-value helper the
@@ -59,18 +60,12 @@ struct Facing_0054E3B0
 };
 GG_STATIC_ASSERT(sizeof(Facing_0054E3B0) == 0x18);
 
-// CellClass — only the neighbour lookup is called.
-struct CellClass_0054E3B0
-{
-    // FUNCTION: GAMEMD 0x481810 (decl; reloc) — CellClass::GetNeighbourCell.
-    CellClass_0054E3B0* GetNeighbourCell(int facing);
-};
 
 struct Map_0054E3B0
 {
     char opaque[4];
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass_0054E3B0* GetCellAt(const CellStructInit& cell);
+    CellClass* GetCellAt(const CellStructInit& cell);
 };
 // GLOBAL: GAMEMD 0x87F7E8 — the map instance.
 extern Map_0054E3B0 MapInstance_0054E3B0;
@@ -115,14 +110,14 @@ struct Techno_0054E3B0
     // The cell one step ahead along the aircraft's facing. Defined in the
     // class body so the inline expansion keeps its own callee-saved save;
     // its use of EDI is what puts retail's PUSH/POP EDI around that branch.
-    CellClass_0054E3B0* CellAhead();
+    CellClass* CellAhead();
 };
 GG_STATIC_ASSERT(offsetof(Techno_0054E3B0, Ammo)          == 0x2FC);
 GG_STATIC_ASSERT(offsetof(Techno_0054E3B0, PrimaryFacing) == 0x388);
 GG_STATIC_ASSERT(offsetof(Techno_0054E3B0, Type)          == 0x6C4);
 GG_STATIC_ASSERT(offsetof(Techno_0054E3B0, At_6CA)        == 0x6CA);
 
-typedef CellClass_0054E3B0* (Techno_0054E3B0::*Fn1BC_0054E3B0)();
+typedef CellClass* (Techno_0054E3B0::*Fn1BC_0054E3B0)();
 typedef void (Techno_0054E3B0::*Fn3DC_0054E3B0)(int arg);
 struct TechnoVtbl_0054E3B0
 {
@@ -134,10 +129,10 @@ struct TechnoVtbl_0054E3B0
 GG_STATIC_ASSERT(offsetof(TechnoVtbl_0054E3B0, GetCell) == 0x1BC);
 GG_STATIC_ASSERT(offsetof(TechnoVtbl_0054E3B0, Crash)   == 0x3DC);
 
-inline CellClass_0054E3B0* Techno_0054E3B0::CellAhead()
+inline CellClass* Techno_0054E3B0::CellAhead()
 {
     int facing = ((PrimaryFacing.Current().Raw >> 12) + 1 >> 1) & 7;
-    CellClass_0054E3B0* cell = (this->*Vptr->GetCell)();
+    CellClass* cell = (this->*Vptr->GetCell)();
     return cell->GetNeighbourCell(facing);
 }
 
@@ -145,7 +140,7 @@ inline CellClass_0054E3B0* Techno_0054E3B0::CellAhead()
 struct Node_0054E3B0
 {
     Techno_0054E3B0*     Item;   // +0x0000
-    CellClass_0054E3B0*  Cell;   // +0x0004
+    CellClass*  Cell;   // +0x0004
 };
 GG_STATIC_ASSERT(sizeof(Node_0054E3B0) == 8);
 

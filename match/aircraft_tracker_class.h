@@ -13,10 +13,9 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/cell.h"
 #include "display_objects_globals.h"
 
-struct CellStruct_004134A0 { short X; short Y; };
-GG_STATIC_ASSERT(sizeof(CellStruct_004134A0) == 4);
 
 // GLOBAL: GAMEMD 0x87F914 / 0x87F918 — map width / height in cells.
 extern int DAT_0087F914;
@@ -30,8 +29,8 @@ class TechnoView_004134A0
 public:
     TrackVtbl* Vptr;   // +0x00
 };
-typedef CellStruct_004134A0* (TechnoView_004134A0::*FnCell_004134A0)(CellStruct_004134A0* out);
-typedef void (TechnoView_004134A0::*FnSetCell_004134A0)(CellStruct_004134A0 cell);
+typedef CellStruct* (TechnoView_004134A0::*FnCell_004134A0)(CellStruct* out);
+typedef void (TechnoView_004134A0::*FnSetCell_004134A0)(CellStruct cell);
 struct TrackVtbl
 {
     char _pad000[0x1B8];                 // +0x0000

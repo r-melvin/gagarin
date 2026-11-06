@@ -308,7 +308,7 @@ bool LoadOptionsClass::Slot1(const char* fileName)
         MenusFocusOnWindow(dialog);
     MenusLoadFlagA = false;
     MenusLoadFlagB = false;
-    MenusSessionInstance.Func_69BB40();
+    Session_00A8B238.FUN_0069BB40();
     bool ok = MenusLoadGame(fileName);
     while (DAT_00887640->GetCursorCount() < cursorCount)
         DAT_00887640->ShowCursor();

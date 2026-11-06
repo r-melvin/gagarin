@@ -151,6 +151,12 @@ public:
     // FUNCTION: GAMEMD 0x4870B0 (decl; reloc) -- tests the bit for the given index in the word at +0x78; RET 4.
     bool FUN_004870B0(int index);
     bool FUN_004870D0(int index);
+    // FUNCTION: GAMEMD 0x4870F0 (decl; reloc) -- reads a word table at +0xAC indexed by the argument; true when positive.
+    bool FUN_004870F0(int index);
+    // FUNCTION: GAMEMD 0x4870F0 (decl; reloc) -- the same test fed an object's +0x30 link word (TechnoClass::vf_272).
+    bool FUN_004870F0(void* link);
+    // FUNCTION: GAMEMD 0x486900 (decl; reloc)
+    bool FUN_00486900();
     // FUNCTION: GAMEMD 0x47B3A0 (decl; reloc)
     int GetFloorHeight(const Point2D& subcoords) const;
     // FUNCTION: GAMEMD 0x4866D0 (decl; reloc)

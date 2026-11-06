@@ -34,16 +34,10 @@
 #include <stddef.h>
 #include "_layout/object_class.h"
 #include "_rt/gg_static_assert.h"
+#include "_layout/cell.h"
 #include "_rt/gg_vslot.h"
 #include "voc_class_play_global_methods.h"
 
-// 2D short cell coordinate, passed to the radar event by value.
-struct CellStruct_00458200
-{
-    short X;  // +0x00
-    short Y;  // +0x02
-};
-GG_STATIC_ASSERT(sizeof(CellStruct_00458200) == 4);
 
 // HouseTypeClass — only the side index the Civilian lookup matches on.
 struct HouseType_00458200
@@ -135,8 +129,8 @@ GG_STATIC_ASSERT(offsetof(BuildingClass_00458200, Owner)         == 0x21C &&
                  offsetof(BuildingClass_00458200, Type)          == 0x520 &&
                  offsetof(BuildingClass_00458200, OccupantItems) == 0x688);
 
-typedef CellStruct_00458200* (BuildingClass_00458200::*Fn1B8_00458200)(
-    CellStruct_00458200* out);
+typedef CellStruct* (BuildingClass_00458200::*Fn1B8_00458200)(
+    CellStruct* out);
 typedef void (BuildingClass_00458200::*Fn3D4_00458200)(House_00458200* house,
                                                        int announce);
 typedef int  (BuildingClass_00458200::*Fn408_00458200)();
@@ -167,7 +161,7 @@ struct RadarEventClass_00458200
 {
     // FUNCTION: GAMEMD 0x65FA70 (decl; reloc) — RadarEventClass::Create
     // (the cell goes on the stack; only the type reaches ECX).
-    static bool Create(int type, CellStruct_00458200 mapCoords);
+    static bool Create(int type, CellStruct mapCoords);
 };
 
 // STRING: GAMEMD 0x818164 — "Civilian".

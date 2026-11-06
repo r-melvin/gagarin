@@ -7,16 +7,16 @@
 class ApplicationClass;
 
 
-struct CellStruct_004134A0;
 
 
 struct CoordStruct;
+struct CellStruct;
 
 
 // GLOBAL: GAMEMD 0x887680 -- the coordinate slot 18 returns.
 extern CoordStruct DAT_00887680;
 // GLOBAL: GAMEMD 0x887850
-extern CellStruct_004134A0 DAT_00887850;
+extern CellStruct DAT_00887850;
 // GLOBAL: GAMEMD 0x89A29C
 extern ApplicationClass HouseMainObject;
 // GLOBAL: GAMEMD 0x89DDB8

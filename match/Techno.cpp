@@ -1435,13 +1435,6 @@ GG_STATIC_ASSERT(offsetof(FogView_00700600, unknown_28) == 0x28);
 GG_STATIC_ASSERT(offsetof(FogView_00700600, unknown_30) == 0x30);
 GG_STATIC_ASSERT(offsetof(FogView_00700600, unknown_74) == 0x74);
 
-// The cell, as far as the cursor routine reads it beyond CellClass.
-struct CellView_00700600
-{
-    // FUNCTION: GAMEMD 0x486900 (decl; reloc)
-    bool FUN_00486900();
-};
-
 // The overlay type record at an index.
 static inline OverlayTypeClass* OverlayAt(int index)
 {
@@ -1608,12 +1601,6 @@ void __fastcall FUN_007509E0(int index, const CoordStruct& where, int controller
 #include "_layout/overlay_type_class.h"
 // GLOBAL: GAMEMD 0xA83D84 -- table of type records indexed by a cell's overlay type.
 extern OverlayTypeClass** DAT_00A83D84;
-
-// FUNCTION: GAMEMD 0x4870F0 (decl; reloc) -- cell test taking an object's +0x30 link.
-class CellView_004870F0 {
-public:
-    bool FUN_004870F0(void* link);
-};
 
 #include "_layout/player_ptr_00a83d4c.h"
 
@@ -3344,7 +3331,7 @@ int TechnoClass::vf_28(CellStruct* cell, char a2, char a3)
     WeaponStruct* primary;
     if (Owner->IsControlledByCurrentPlayer() && (primary = GetPrimaryWeapon()) != 0 && primary->WeaponType) {
         int weapon = vf_185(DAT_0087F7E8.FUN_005657A0(cell));
-        bool unfriendly = ((CellView_00700600*)DAT_0087F7E8.FUN_005657A0(cell))->FUN_00486900();
+        bool unfriendly = DAT_0087F7E8.FUN_005657A0(cell)->FUN_00486900();
         if (unfriendly) {
             WeaponTypeClass* fireWeapon = GetPrimaryWeapon()->WeaponType;
             if (fireWeapon->Warhead->Fire) {
@@ -5671,7 +5658,7 @@ bool TechnoClass::vf_272(ObjectClass* a1)
                 return false;
             }
         } else {
-            CellView_004870F0* cell = (CellView_004870F0*)vf_111();
+            CellClass* cell = vf_111();
             if (vf_49() && cell && !cell->FUN_004870F0(a1->NextObject)) {
                 return false;
             }

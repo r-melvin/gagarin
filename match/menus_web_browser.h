@@ -17,6 +17,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "wonline.h"
+#include "_layout/session_class.h"
 
 typedef long MenusHResult;
 typedef unsigned long MenusULong;
@@ -130,13 +131,6 @@ struct MenusLoginFlags
 // FUNCTION: GAMEMD 0x789500 (decl; reloc) -- __fastcall(login ECX, password EDX, 1, profile word), RET 8.
 void MenusRegisterLogin(const char* login, const char* password, int one, int profileWord);
 
-// SessionClass::Instance (0xA8B238); only 0x6990A0 is called here.
-struct MenusWebSession
-{
-    void Func_6990A0();
-};
-// GLOBAL: GAMEMD 0xA8B238
-extern MenusWebSession MenusWebSessionInstance;
 
 // VTABLE: GAMEMD 0x7F743C
 class WebBrowser

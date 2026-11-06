@@ -44,7 +44,7 @@ void Kamikaze_0054E590::Remove(Abstract_0054E590* object)
         }
         if ((void*)object == (void*)this->Nodes.Items[i]->Cell) {
             Coord_0054E590 coord;
-            CellClass_0054E590* cell = DAT_0087F7E8.GetCellAt(
+            CellClass* cell = DAT_0087F7E8.GetCellAt(
                 CoordToCell_0054E590((object->*object->Vtbl->GetCoords)(&coord)));
             (this->Nodes.Items[i]->Item->*this->Nodes.Items[i]->Item->Vtbl->SetTarget)(cell);
             (this->Nodes.Items[i]->Item->*this->Nodes.Items[i]->Item->Vtbl->QueueMission)(1, 0);

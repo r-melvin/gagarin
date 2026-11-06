@@ -20,6 +20,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/cell_class.h"
 #include "_rt/gg_vslot.h"
 
 #include "_layout/cell.h"
@@ -32,12 +33,11 @@ struct Coord_0054E590
 };
 GG_STATIC_ASSERT(sizeof(Coord_0054E590) == 0xC);
 
-struct CellClass_0054E590;
 
 struct Map_0054E590
 {
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass_0054E590* GetCellAt(const CellStruct& cell);
+    CellClass* GetCellAt(const CellStruct& cell);
 };
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer).
 extern Map_0054E590 DAT_0087F7E8;
@@ -65,7 +65,7 @@ struct Techno_0054E590
     TechnoVtbl_0054E590* Vtbl;   // +0x00
 };
 typedef void (Techno_0054E590::*FnMission_0054E590)(int mission, int arg);
-typedef void (Techno_0054E590::*FnTarget_0054E590)(CellClass_0054E590* target);
+typedef void (Techno_0054E590::*FnTarget_0054E590)(CellClass* target);
 struct TechnoVtbl_0054E590
 {
     char               _pad000[0x1E8];            // +0x0000
@@ -80,7 +80,7 @@ GG_STATIC_ASSERT(offsetof(TechnoVtbl_0054E590, SetTarget) == 0x3C8);
 struct Node_0054E590
 {
     Techno_0054E590*    Item;   // +0x00
-    CellClass_0054E590* Cell;   // +0x04
+    CellClass* Cell;   // +0x04
 };
 GG_STATIC_ASSERT(sizeof(Node_0054E590) == 8);
 

@@ -7,7 +7,7 @@
 // The 20x20 bucket a cell falls into — the same expansion already confirmed
 // at 0x4134A0/0x4135D0; the two expansions here share one pair of divisors
 // because both spell the global division identically.
-static inline int TrackerBucket_004138C0(CellStruct_004138C0 cell)
+static inline int TrackerBucket_004138C0(CellStruct cell)
 {
     int x = cell.X < 0 ? 0 : cell.X;
     int y = cell.Y < 0 ? 0 : cell.Y;
@@ -27,8 +27,8 @@ static inline int TrackerBucket_004138C0(CellStruct_004138C0 cell)
 // bucket's vector (with the tail slid down in place) and appended to the new
 // one, growing that vector by its increment if it is full.
 void AircraftTracker_004138C0::Update(Techno_004138C0* techno,
-                                      CellStruct_004138C0 oldCell,
-                                      CellStruct_004138C0 newCell)
+                                      CellStruct oldCell,
+                                      CellStruct newCell)
 {
     (techno->*techno->Vptr->SetTrackedCoords)(newCell);
 

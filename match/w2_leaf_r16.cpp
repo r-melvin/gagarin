@@ -66,17 +66,10 @@ unsigned int __fastcall FUN_005E70D0(HWND hDlg, int value)
     return index;
 }
 
-struct CellXY_00660BE0
-{
-    short X;
-    short Y;
-    bool operator==(const CellXY_00660BE0& o) const { return X == o.X && Y == o.Y; }
-};
-
 // GLOBAL: GAMEMD 0xB04D48
-extern CellXY_00660BE0 DAT_00B04D48[8];
+extern CellStruct DAT_00B04D48[8];
 // GLOBAL: GAMEMD 0xB04D68
-extern CellXY_00660BE0 DAT_00B04D68;
+extern CellStruct DAT_00B04D68;
 // GLOBAL: GAMEMD 0xB04D88
 extern int DAT_00B04D88;
 // GLOBAL: GAMEMD 0xB04DD8
@@ -84,7 +77,7 @@ extern int DAT_00B04DD8;
 
 // FUNCTION: GAMEMD 0x660BE0
 // Step back one entry in the 8-slot position history; return the entry now current.
-CellXY_00660BE0* __fastcall FUN_00660BE0(CellXY_00660BE0* out)
+CellStruct* __fastcall FUN_00660BE0(CellStruct* out)
 {
     if (DAT_00B04D88 == -1) {
         *out = DAT_00B04D68;
@@ -95,12 +88,12 @@ CellXY_00660BE0* __fastcall FUN_00660BE0(CellXY_00660BE0* out)
         i += 8;
     }
     if (DAT_00B04D48[i] == DAT_00B04D68) {
-        CellXY_00660BE0 v = DAT_00B04D48[DAT_00B04D88];
+        CellStruct v = DAT_00B04D48[DAT_00B04D88];
         DAT_00B04DD8 = DAT_00B04D88;
         *out = v;
         return out;
     }
-    CellXY_00660BE0 v = DAT_00B04D48[i];
+    CellStruct v = DAT_00B04D48[i];
     DAT_00B04DD8 = i;
     *out = v;
     return out;

@@ -12,6 +12,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/cell_class.h"
 
 #include "_layout/cell.h"
 
@@ -30,26 +31,15 @@ extern Monster_0074D670** DAT_00B1D294;
 // GLOBAL: GAMEMD 0xB1D2A0 — VeinholeMonsterClass::Array.Count.
 extern int DAT_00B1D2A0;
 
-struct CellClass_0074D670
-{
-    char _pad0000[0xEC];          // +0x0000
-    int  LandType;                // +0x00EC
-    char _pad00F0[0x11B - 0xF0];  // +0x00F0
-    signed char Level;            // +0x011B
-    char SlopeIndex;              // +0x011C
-};
-GG_STATIC_ASSERT(offsetof(CellClass_0074D670, LandType) == 0xEC);
-GG_STATIC_ASSERT(offsetof(CellClass_0074D670, Level) == 0x11B);
-GG_STATIC_ASSERT(offsetof(CellClass_0074D670, SlopeIndex) == 0x11C);
 
 struct Map_0074D670
 {
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass_0074D670* GetCellAt(const CellStruct* cell);
+    CellClass* GetCellAt(const CellStruct* cell);
 
     // MapClass::operator[](CellStruct) as inlined: the by-value cell is copied
     // into the argument temporary and handed on by address.
-    CellClass_0074D670* Cell(CellStruct cell) { return GetCellAt(&cell); }
+    CellClass* Cell(CellStruct cell) { return GetCellAt(&cell); }
 };
 // GLOBAL: GAMEMD 0x87F7E8 — the map instance.
 extern Map_0074D670 MapInstance_0074D670;

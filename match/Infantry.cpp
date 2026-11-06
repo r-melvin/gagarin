@@ -805,21 +805,6 @@ void InfantryClass::vf_284()
 }
 
 
-// A cell record, as far as the one test the disguise check makes.
-struct CellView_005227F0
-{
-    // FUNCTION: GAMEMD 0x4870F0 (decl; reloc)
-    bool FUN_004870F0(int houseIndex);
-};
-
-// The map object, as far as the cell lookup.
-struct MapView_005227F0
-{
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc)
-    CellView_005227F0* FUN_005657A0(CellStruct* cell);
-};
-// GLOBAL: GAMEMD 0x87F7E8 -- the map object.
-extern MapView_005227F0 DAT_0087F7E8_005227F0;
 
 // A house, as far as its alliance test.
 struct HouseView_005227F0
@@ -843,7 +828,7 @@ bool InfantryClass::vf_50(HouseClass* house)
 {
     if (vf_49()) {
         CellStruct cell = CoordToCell_005227F0(vf_18());
-        CellView_005227F0* cellRecord = DAT_0087F7E8_005227F0.FUN_005657A0(&cell);
+        CellClass* cellRecord = DAT_0087F7E8.FUN_005657A0(&cell);
         if (!reinterpret_cast<HouseView_005227F0*>(Owner)->FUN_004F9A50(house) &&
             !cellRecord->FUN_004870F0(house->ArrayIndex)) {
             HouseClass* disguised = DisguisedAsHouse;

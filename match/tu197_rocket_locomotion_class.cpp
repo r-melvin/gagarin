@@ -395,10 +395,10 @@ bool __stdcall RocketLocomotionClass::Process()
         RocketCellCoord now = ((RocketFootView*)LinkedTo)->vf_1B8();
         if ((now.X != ((RocketFootView*)LinkedTo)->unknown_560.X || now.Y != ((RocketFootView*)LinkedTo)->unknown_560.Y)
             && ((RocketFootView*)LinkedTo)->unknown_090) {
-            CellStruct_004138C0 oldCell;
+            CellStruct oldCell;
             oldCell.X = ((RocketFootView*)LinkedTo)->unknown_560.X;
             oldCell.Y = ((RocketFootView*)LinkedTo)->unknown_560.Y;
-            CellStruct_004138C0 newCell;
+            CellStruct newCell;
             newCell.X = now.X;
             newCell.Y = now.Y;
             ((AircraftTracker_004138C0*)DAT_00887888)->Update((Techno_004138C0*)LinkedTo, oldCell, newCell);

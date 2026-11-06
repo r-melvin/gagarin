@@ -7661,7 +7661,7 @@ void BuildingClass_00458200::UpdateGarrisonOwner()
         if (Owner->IsControlledByCurrentPlayer()) {
             VocClass::PlayGlobal(RulesInstance_00458200->unknown_1C0,
                                  1.0f, 0x2000, 0);
-            CellStruct_00458200 here;
+            CellStruct here;
             if (RadarEventClass_00458200::Create(
                     0xF, *(this->*Vtbl->GetMapCoords)(&here))) {
                 VoxClass_00458200::Play(EvaStructureAbandoned_00458200, -1, -1);

@@ -18,6 +18,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/cell_class.h"
 
 #include "_layout/cell.h"
 
@@ -30,20 +31,9 @@ struct Rect_00578390
 };
 GG_STATIC_ASSERT(sizeof(Rect_00578390) == 0x10);
 
-struct CellClass_00578390
-{
-    char _pad0000[0x24];              // +0x0000
-    CellStruct MapCoords;          // +0x0024
-    char _pad0028[0x11B - 0x28];      // +0x0028
-    signed char Level;                // +0x011B
-    char SlopeIndex;                  // +0x011C
-};
-GG_STATIC_ASSERT(offsetof(CellClass_00578390, MapCoords) == 0x24);
-GG_STATIC_ASSERT(offsetof(CellClass_00578390, Level) == 0x11B);
-GG_STATIC_ASSERT(offsetof(CellClass_00578390, SlopeIndex) == 0x11C);
 
 // GLOBAL: GAMEMD 0xABDC50 — MapClass::InvalidCell (its MapCoords is 0xABDC74).
-extern CellClass_00578390 InvalidCell_00578390;
+extern CellClass InvalidCell_00578390;
 
 struct CellPos_00578390
 {
@@ -63,12 +53,10 @@ struct Map_00578390
     int VisibleRectWidth;             // +0x0104
     int VisibleRectHeight;            // +0x0108
     char _pad010C[0x13C - 0x10C];     // +0x010C
-    CellClass_00578390** Cells;       // +0x013C
+    CellClass** Cells;       // +0x013C
 
     // FUNCTION: GAMEMD 0x578390 — MapClass::InLocalRadar.
     int InLocalRadar(Rect_00578390* rect, bool checkLevel);
-    // FUNCTION: GAMEMD 0x578460 — MapClass::IsWithinUsableArea.
-    bool IsWithinUsableArea(CellStruct* cell, bool checkLevel);
     // FUNCTION: GAMEMD 0x578460 (decl) - is the cell inside the usable area.
     bool IsWithinUsableArea(const CellPos_00578390& cell, bool checkLevel);
 

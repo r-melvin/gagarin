@@ -19,6 +19,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/cell_class.h"
 #include "_rt/gg_vslot.h"
 #include "_layout/techno_class.h"   // TechnoClass (Veterancy @0x150, Owner @0x21C, Cloakable @0x3D2)
 
@@ -59,18 +60,12 @@ struct House_006FBC90
 };
 GG_STATIC_ASSERT(offsetof(House_006FBC90, ArrayIndex) == 0x30);
 
-struct CellClass_006FBC90
-{
-    // FUNCTION: GAMEMD 0x4870B0 (decl; reloc) — is this cell under the
-    // given house's sensors.
-    bool FUN_004870B0(int houseIndex);
-};
 
 struct Map_006FBC90
 {
     char opaque[4];
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass_006FBC90* GetCellAt(const CellStructInit& cell);
+    CellClass* GetCellAt(const CellStructInit& cell);
 };
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer).
 extern Map_006FBC90 DAT_0087F7E8;

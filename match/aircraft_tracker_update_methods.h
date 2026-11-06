@@ -23,10 +23,9 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/cell.h"
 #include "_rt/gg_vslot.h"
 
-struct CellStruct_004138C0 { short X; short Y; };
-GG_STATIC_ASSERT(sizeof(CellStruct_004138C0) == 4);
 
 // GLOBAL: GAMEMD 0x87F914 / 0x87F918 — map width / height in cells.
 extern int DAT_0087F914;
@@ -39,7 +38,7 @@ class Techno_004138C0
 public:
     TrackVtbl_004138C0* Vptr;   // +0x00
 };
-typedef void (Techno_004138C0::*FnSetCell_004138C0)(CellStruct_004138C0 cell);
+typedef void (Techno_004138C0::*FnSetCell_004138C0)(CellStruct cell);
 
 struct TrackVtbl_004138C0
 {
@@ -102,8 +101,8 @@ class AircraftTracker_004138C0
 {
 public:
     // FUNCTION: GAMEMD 0x4138C0 — AircraftTrackerClass::Update.
-    void Update(Techno_004138C0* techno, CellStruct_004138C0 oldCell,
-                CellStruct_004138C0 newCell);
+    void Update(Techno_004138C0* techno, CellStruct oldCell,
+                CellStruct newCell);
 
     DynVec_004138C0 TrackerVectors[20][20];  // +0x0000  (400 * 0x18)
     DynVec_004138C0 CurrentVector;           // +0x2580

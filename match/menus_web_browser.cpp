@@ -153,7 +153,7 @@ MenusHResult __stdcall WebBrowser::Slot16(const wchar_t* login, const wchar_t* p
     flags.Func_5175F0();
     if (flags.Func_5176B0()) {
         MenusRegisterLogin(loginName, passwordName, 1, profile.Ptr->Field10);
-        MenusWebSessionInstance.Func_6990A0();
+        Session_00A8B238.FUN_006990A0();
     }
     DAT_00B73E40 = loginName;
     DAT_00B7778C = passwordName;

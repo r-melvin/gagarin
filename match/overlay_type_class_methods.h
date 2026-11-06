@@ -8,6 +8,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/cell.h"
 #include "overlay_type_class.h"
 #include "shared_constants_globals.h"
 
@@ -29,10 +30,7 @@ GG_STATIC_ASSERT(offsetof(Theater_005FE620, Extension) == 0x4E);
 GG_STATIC_ASSERT(sizeof(Theater_005FE620) == 0x70);
 extern Theater_005FE620 DAT_007E1B78[];
 
-struct CellStruct_005FE530 { short X; short Y; };
-GG_STATIC_ASSERT(offsetof(CellStruct_005FE530, Y) == 0x02);
-GG_STATIC_ASSERT(sizeof(CellStruct_005FE530) == 0x04);
-extern CellStruct_005FE530 DAT_00AC1608;
+extern CellStruct DAT_00AC1608;
 extern OverlayTypeClass** DAT_00A83D84;
 extern int DAT_00A83D90;
 

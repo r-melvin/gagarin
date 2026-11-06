@@ -12,6 +12,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/cell.h"
 #include "_rt/gg_vslot.h"
 #include "_layout/object_class.h"   // ObjectClass: NextObject@0x30, Location@0x9C
 
@@ -39,13 +40,6 @@ GG_STATIC_ASSERT(offsetof(Vtbl_0047EA90, WhatAmI) == 0x2C);
 GG_STATIC_ASSERT(offsetof(Vtbl_0047EA90, At_C0)   == 0xC0);
 GG_STATIC_ASSERT(offsetof(Vtbl_0047EA90, At_F4)   == 0xF4);
 
-// CellStruct — a 16-bit map cell coordinate pair.
-struct CellStruct_0047EA90
-{
-    short X;   // +0x00
-    short Y;   // +0x02
-};
-GG_STATIC_ASSERT(sizeof(CellStruct_0047EA90) == 4);
 
 // CellClass — only the members RemoveContent touches.
 #include "_layout/cell_class.h"

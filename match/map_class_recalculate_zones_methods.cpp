@@ -69,7 +69,7 @@
 // number of epilogues agrees, and the compiled block order already matches,
 // so there are no merged return blocks to split. The residual is register
 // naming downstream of that, not a prologue hoist.
-void Map_0056D5A0::RecalculateZones(CellStruct_0056D5A0& cell)
+void Map_0056D5A0::RecalculateZones(CellStruct& cell)
 {
     int idx = (this->At_F8 + this->At_F4 + 1) * cell.Y + cell.X;
     if (idx < 0) {

@@ -19,7 +19,7 @@
 // (retail compares against the immediate 19 with the default already in
 // ESI); the row clamp is an in-place `if`. Written the other way round each
 // axis picks up the other's shape.
-static inline int TrackerBucket_004134A0(CellStruct_004134A0 cell)
+static inline int TrackerBucket_004134A0(CellStruct cell)
 {
     int x = cell.X < 0 ? 0 : cell.X;
     int y = cell.Y < 0 ? 0 : cell.Y;
@@ -36,8 +36,8 @@ static inline int TrackerBucket_004134A0(CellStruct_004134A0 cell)
 // on the techno so Remove can find the same bucket later.
 void AircraftTrackerClass::Add(TechnoClass* techno)
 {
-    CellStruct_004134A0 buf;
-    CellStruct_004134A0 cell = *(TRACKED(techno)->*TRACKED(techno)->Vptr->GetMapCoords)(&buf);
+    CellStruct buf;
+    CellStruct cell = *(TRACKED(techno)->*TRACKED(techno)->Vptr->GetMapCoords)(&buf);
     (TRACKED(techno)->*TRACKED(techno)->Vptr->SetTrackedCoords)(cell);
     int bucket = TrackerBucket_004134A0(cell);
     (&TrackerVectors[0][0])[bucket].AddItem(techno);
@@ -48,8 +48,8 @@ void AircraftTrackerClass::Add(TechnoClass* techno)
 // that memory to the "no cell" value.
 void AircraftTrackerClass::Remove(TechnoClass* techno)
 {
-    CellStruct_004134A0 buf;
-    CellStruct_004134A0 cell = *(TRACKED(techno)->*TRACKED(techno)->Vptr->GetTrackedCoords)(&buf);
+    CellStruct buf;
+    CellStruct cell = *(TRACKED(techno)->*TRACKED(techno)->Vptr->GetTrackedCoords)(&buf);
     (TRACKED(techno)->*TRACKED(techno)->Vptr->SetTrackedCoords)(DAT_00887850);
     int bucket = TrackerBucket_004134A0(cell);
     (&TrackerVectors[0][0])[bucket].RemoveItem(techno);

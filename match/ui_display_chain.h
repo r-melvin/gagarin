@@ -210,6 +210,7 @@ struct MapSubzoneRecord
     char unknown_02[8];         // +0x02
 };
 GG_STATIC_ASSERT(sizeof(MapSubzoneRecord) == 10);
+GG_STATIC_ASSERT(offsetof(MapSubzoneRecord, Value) == 0x00);
 
 // A four-byte record of the word table (two bytes set by the inline constructor).
 struct MapWordEntry
@@ -220,6 +221,7 @@ struct MapWordEntry
     MapWordEntry() : a(7), b(0) {}
 };
 GG_STATIC_ASSERT(sizeof(MapWordEntry) == 4);
+GG_STATIC_ASSERT(offsetof(MapWordEntry, Value) == 0x02);
 
 
 // ---- GScreenClass ------------------------------------------------------------------------------------------------
