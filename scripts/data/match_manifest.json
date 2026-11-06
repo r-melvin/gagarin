@@ -148188,9 +148188,9 @@
   "len": "0xaa",
   "name": "MapClass::vf_07",
   "status": "partial",
-  "pct": 42.9,
-  "best_pct": 42.9,
-  "best_at": "cf203011"
+  "pct": 61.2,
+  "best_pct": 61.2,
+  "best_at": "e3815e72"
  },
  {
   "tu": "match/trivial_tu127_methods.cpp",

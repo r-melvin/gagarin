@@ -194,6 +194,8 @@ extern bool DAT_00A8B261;
 
 // FUNCTION: GAMEMD 0x5659F0
 // Clears the depth and alpha buffers and every crate slot.
+// PARTIAL: retail keeps the inlined GetTimeLeft's own `CMP reg,-1` after the stop test, which VC6 folds away when the
+// stop is written as `if (StartTime != -1) { TimeLeft = GetTimeLeft(); ... }`; reading the time first keeps both tests.
 void MapClass::vf_07()
 {
     FUN_004068E0("MapClass::Init_Clear entry\n");
@@ -206,8 +208,9 @@ void MapClass::vf_07()
     for (int i = 0; i < 0x100; ++i) {
         CrateClass* crate = &Crates[i];
         crate->Location = DAT_00ABD480;
+        int left = crate->Timer.GetTimeLeft();
         if (crate->Timer.StartTime != -1) {
-            crate->Timer.TimeLeft = crate->Timer.GetTimeLeft();
+            crate->Timer.TimeLeft = left;
             crate->Timer.StartTime = -1;
         }
     }
