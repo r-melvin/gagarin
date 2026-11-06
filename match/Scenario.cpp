@@ -146,8 +146,8 @@ void __fastcall FUN_0055CF10(); // FUNCTION: GAMEMD 0x55CF10 (decl)
 void __fastcall FUN_0052FEC0(void*, unsigned char); // FUNCTION: GAMEMD 0x52FEC0 (decl)
 void __fastcall FUN_004C3E30(); // FUNCTION: GAMEMD 0x4C3E30 (decl)
 bool __fastcall FUN_005DB680(); // FUNCTION: GAMEMD 0x5DB680 (decl)
-int __fastcall FUN_005ADD10(ScenarioClass* scenario); // FUNCTION: GAMEMD 0x5ADD10 (decl)
-int __fastcall FUN_005ADE20(ScenarioClass* scenario, const char* filename); // FUNCTION: GAMEMD 0x5ADE20 (decl)
+char* __fastcall FUN_005ADD10(ScenarioClass* scenario); // FUNCTION: GAMEMD 0x5ADD10 (decl)
+const char* __fastcall FUN_005ADE20(ScenarioClass* scenario, const char* filename); // FUNCTION: GAMEMD 0x5ADE20 (decl)
 
 extern const char STR_0083DB24[]; // STRING: GAMEMD 0x83DB24
 extern const char STR_00829F14[]; // STRING: GAMEMD 0x829F14

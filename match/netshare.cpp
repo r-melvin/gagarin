@@ -28,6 +28,9 @@
 //   0x7C8B3D operator delete (all reloc).
 
 #include "netshare_slot_nodes.h"
+#include "wdt_rc_ptr_base.h"
+#include "world_domination_tour.h"
+#include "_layout/rules_class.h"
 #include "mathtbl_init_shapes.h"
 #include "_layout/session_class.h"
 #include "scenario_session_globals.h"
@@ -1304,6 +1307,63 @@ void FUN_005E2FA0()
     } else if (DAT_00A8B23C != 0) {
         DAT_00A8B23C->vf_37();
     }
+}
+
+// GLOBAL: GAMEMD 0xA8B240 -- the territory the lobby shows.
+extern int DAT_00A8B240;
+// GLOBAL: GAMEMD 0xA8B244
+extern int DAT_00A8B244;
+// FUNCTION: GAMEMD 0x7B0390 (decl; reloc) -- the territory with an identifier; hidden result in ECX.
+rc_ptr<WDTTerritory> FUN_007B0390(int id);
+// GLOBAL: GAMEMD 0x8871E0 -- RulesClass::Instance.
+extern RulesClass* RulesInstance;
+
+// FUNCTION: GAMEMD 0x5E3010
+// Set a lobby options page up (slot 36): on first use enable only the controls the selected territory allows and
+// set the slider ranges, then put the current option values on the sliders and check boxes.
+void FUN_005E3010(HWND dialog, int initialise)
+{
+    int units = GameModeOptions.UnitCount;
+    int money = GameModeOptions.Money;
+    int speed = GameModeOptions.GameSpeed;
+    if (initialise) {
+        rc_ptr<WDTTerritory> territory;
+        if (SessionKind == 4 && DAT_00A8B244 == 3) {
+            territory = FUN_007B0390(DAT_00A8B240);
+        }
+        if (territory.Get() != 0) {
+            EnableWindow(GetDlgItem(dialog, 0x544), 0);
+            EnableWindow(GetDlgItem(dialog, 0x6D4), 0);
+            if ((territory->unknown_3C & 0x20000) == 0) {
+                EnableWindow(GetDlgItem(dialog, 0x402), 0);
+            }
+            if ((territory->unknown_3C & 0x8000) == 0) {
+                EnableWindow(GetDlgItem(dialog, 0x54F), 0);
+            }
+            if ((territory->unknown_3C & 0x400) == 0) {
+                EnableWindow(GetDlgItem(dialog, 0x54E), 0);
+            }
+            if ((territory->unknown_3C & 0x20) == 0) {
+                EnableWindow(GetDlgItem(dialog, 1000), 0);
+            }
+            if ((territory->unknown_3C & 0x100) == 0) {
+                EnableWindow(GetDlgItem(dialog, 0x54D), 0);
+            }
+        }
+        SendDlgItemMessageA(dialog, 0x529, 0x406, 1, 0x60000);
+        SendDlgItemMessageA(dialog, 0x402, 0x406, 1, MAKELONG(RulesInstance->MinMoney, RulesInstance->MaxMoney));
+        SendDlgItemMessageA(dialog, 0x402, 0x4AB, 0, RulesInstance->MoneyIncrement);
+        SendDlgItemMessageA(dialog, 0x54F, 0x406, 1, MAKELONG(RulesInstance->MinUnitCount, RulesInstance->MaxUnitCount));
+    }
+    SendDlgItemMessageA(dialog, 0x529, 0x405, 1, 6 - speed);
+    SendDlgItemMessageA(dialog, 0x402, 0x405, 1, money);
+    SendDlgItemMessageA(dialog, 0x54F, 0x405, 1, units);
+    int check[2] = {0, 1};
+    SendDlgItemMessageA(dialog, 0x54E, 0xF1, check[GameModeOptions.ShortGame], 0);
+    SendDlgItemMessageA(dialog, 0x69A, 0xF1, check[GameModeOptions.SWAllowed], 0);
+    SendDlgItemMessageA(dialog, 0x69D, 0xF1, check[GameModeOptions.unknown_14], 0);
+    SendDlgItemMessageA(dialog, 1000, 0xF1, check[Session_00A8B238.unknown_18.MCVRedeploy], 0);
+    SendDlgItemMessageA(dialog, 0x54D, 0xF1, check[GameModeOptions.Crates], 0);
 }
 
 // FUNCTION: GAMEMD 0x5E32D0

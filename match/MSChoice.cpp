@@ -403,10 +403,10 @@ void MapStageList::ClearAll()
 
     Titles.Clear();
 
-    BoundsX = 0;
-    BoundsY = 0;
-    BoundsW = 640;
-    BoundsH = 400;
+    Bounds.X = 0;
+    Bounds.Y = 0;
+    Bounds.Width = 640;
+    Bounds.Height = 400;
 
     for (i = 0; i < Strings.GetCount(); ++i) {
         MSAnimEntry* text = Strings.Items[i];

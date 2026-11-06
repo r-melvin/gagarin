@@ -155610,5 +155610,70 @@
   "name": "FUN_006C6D00",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/MapSel.cpp",
+  "addr": "0x5ADD10",
+  "sym": "?FUN_005ADD10@@YIPADPAUScenarioClass@@@Z",
+  "len": "0x10c",
+  "name": "?FUN_005ADD10@@YIPADPAUScenarioClass@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MapSel.cpp",
+  "addr": "0x5ADE20",
+  "sym": "?FUN_005ADE20@@YIPBDPAUScenarioClass@@PBD@Z",
+  "len": "0xf7",
+  "name": "?FUN_005ADE20@@YIPBDPAUScenarioClass@@PBD@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MapSel.cpp",
+  "addr": "0x5ADF20",
+  "sym": "?FUN_005ADF20@MapSelect@@QAE_NPAUScenarioClass@@PAVWstring@@@Z",
+  "len": "0x1d8",
+  "name": "MapSelect::FUN_005ADF20",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MapSel.cpp",
+  "addr": "0x5AE100",
+  "sym": "?FUN_005AE100@MapSelect@@QAE_NPAUScenarioClass@@@Z",
+  "len": "0x11b",
+  "name": "MapSelect::FUN_005AE100",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MapSel.cpp",
+  "addr": "0x5AE220",
+  "sym": "?FUN_005AE220@MapSelect@@QAE_NPAUScenarioClass@@@Z",
+  "len": "0x234",
+  "name": "MapSelect::FUN_005AE220",
+  "status": "partial",
+  "pct": 89.7,
+  "best_pct": 89.7,
+  "best_at": "9dc06d1c"
+ },
+ {
+  "tu": "match/MapSel.cpp",
+  "addr": "0x5AE5A0",
+  "sym": "??_GMapSelect@@UAEPAXI@Z",
+  "len": "0x33",
+  "name": "??_GMapSelect@@UAEPAXI@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/netshare.cpp",
+  "addr": "0x5E3010",
+  "sym": "?FUN_005E3010@@YIXPAUHWND__@@H@Z",
+  "len": "0x2b4",
+  "name": "?FUN_005E3010@@YIXPAUHWND__@@H@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

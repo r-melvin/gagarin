@@ -102,16 +102,15 @@ int SessionExists();
 class MapStageList {
 public:
     DynamicVectorClass<MapStage*> Stages;
-    int BoundsX;
-    int BoundsY;
-    int BoundsW;
-    int BoundsH;
+    RectangleStruct Bounds;
     Wstring Name;
     DynamicVectorClass<MSAnimEntry*> Strings;
     DynamicVectorClass<MSSfxEntry*> Titles;
 
     MapStageList();                         // 5CEDD0
     ~MapStageList();                        // 5CEE60
+    // FUNCTION: GAMEMD 0x5CEEF0 (decl; reloc) -- load the stages for a side; false when none could be read.
+    bool FUN_005CEEF0(Wstring* side);
     void ClearAll();                        // 5CF5F0
     MapStage* FindByName(Wstring* key);       // 5CF6B0
     MapStage* FindByTitle(Wstring* key);      // 5CF760
@@ -120,10 +119,7 @@ public:
     Wstring* FindTitle(Wstring* key);        // 5CF840
 };
 GG_STATIC_ASSERT(offsetof(MapStageList, Stages) == 0);
-GG_STATIC_ASSERT(offsetof(MapStageList, BoundsX) == 0x18);
-GG_STATIC_ASSERT(offsetof(MapStageList, BoundsY) == 0x1C);
-GG_STATIC_ASSERT(offsetof(MapStageList, BoundsW) == 0x20);
-GG_STATIC_ASSERT(offsetof(MapStageList, BoundsH) == 0x24);
+GG_STATIC_ASSERT(offsetof(MapStageList, Bounds) == 0x18);
 GG_STATIC_ASSERT(offsetof(MapStageList, Name) == 0x28);
 GG_STATIC_ASSERT(offsetof(MapStageList, Strings) == 0x2C);
 GG_STATIC_ASSERT(offsetof(MapStageList, Titles) == 0x44);

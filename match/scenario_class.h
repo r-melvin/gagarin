@@ -233,7 +233,8 @@ struct ScenarioClass
     int unknown_357C, unknown_3580, unknown_3584, unknown_3588;
     char unknown_358C[0x3598 - 0x358C];
     bool unknown_3598;
-    char unknown_3599[0x35A2 - 0x3599];
+    char unknown_3599[0x35A0 - 0x3599];
+    unsigned short unknown_35A0;   // read/written by the map-select screen at 0x5ADF20 / 0x5AE100
     bool unknown_35A2;
     char unknown_35A3;
     int unknown_35A4, unknown_35A8, unknown_35AC;
@@ -316,6 +317,7 @@ GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34AA) == 0x34AA);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34CC) == 0x34CC);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_35A2) == 0x35A2);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0000) == 0x0000);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_35A0) == 0x35A0);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0218) == 0x0218);
 GG_STATIC_ASSERT(sizeof(((ScenarioClass*)0)->unknown_0218) == 0x3F4);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_11F4) == 0x11F4);
