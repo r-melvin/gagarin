@@ -1741,9 +1741,7 @@ bool TechnoClass::TryNextPlanningTokenNode()
 
 // FUNCTION: GAMEMD 0x6386E0
 //
-// PARTIAL: 95.5% (107/112) -- retail tests the gate's +0x1D byte through
-// MOVSX EAX,byte ptr / TEST EAX,EAX; plain `gate->At_01D == 0` compiles to
-// MOV AL,byte ptr / TEST AL,AL, which also shortens three forward jumps.
+// The gate byte is widened to an int local first, which gives retail's MOVSX/TEST EAX.
 //
 // TechnoClass::ClearPlanningTokens — tear down every planning node hanging off
 // the unit's planning token. Nothing happens without a token; the gating record
@@ -1769,7 +1767,11 @@ void Techno_006386E0::ClearPlanningTokens(Record_006386E0* gate)
 
     void* slot;
 
-    if ((gate == 0 || gate->At_01D == 0) && token->NodeCount > 0) {
+    int flag = 0;
+    if (gate != 0) {
+        flag = gate->At_01D;
+    }
+    if (flag == 0 && token->NodeCount > 0) {
         Token_006386E0* list = this->FUN_00705D20();
         if (list != 0) {
         int count = list->NodeCount;

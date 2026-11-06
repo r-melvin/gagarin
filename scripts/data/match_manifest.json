@@ -780,10 +780,8 @@
   "sym": "?ClearPlanningTokens@Techno_006386E0@@QAIXPAURecord_006386E0@@@Z",
   "len": "0x151",
   "name": "TechnoClass::ClearPlanningTokens",
-  "status": "partial",
-  "pct": 95.5,
-  "best_pct": 95.5,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/PlanMgr.cpp",
@@ -156131,10 +156129,8 @@
   "sym": "?FUN_0045E970@@YIXH@Z",
   "len": "0x252",
   "name": "FUN_0045E970",
-  "status": "partial",
-  "pct": 98.2,
-  "best_pct": 98.2,
-  "best_at": "0125be29"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/tu039_building_type_class.cpp",

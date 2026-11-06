@@ -703,8 +703,7 @@ void FUN_0045E8F0()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// PARTIAL (98.2%, 168/171): identical multiset. Three instructions of the buildup frame-count read use EAX
-// where retail holds the shape pointer in ECX; a local for the shape pointer does not change the allocation.
+// The rate local is declared before the frame count is read, which keeps the shape pointer out of EAX.
 // FUNCTION: GAMEMD 0x45E970
 void __fastcall FUN_0045E970(int theater)
 {
@@ -738,8 +737,8 @@ void __fastcall FUN_0045E970(int theater)
                 type->BuildupLoaded = 0;
             }
             if (type->Buildup != 0) {
-                int frames = ((Shp_004309D0*)type->Buildup)->Frames;
                 int rate = 1;
+                int frames = ((Shp_004309D0*)type->Buildup)->Frames;
                 if (frames != 0) {
                     rate = 0x4B / frames;
                 }
