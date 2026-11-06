@@ -947,6 +947,27 @@ class PartialBar(unittest.TestCase):
         self.assertFalse(any("best" in m for m in msgs(pct=30.0, best_pct=60.0)))        # a dip with best kept is fine
         self.assertFalse(any("best" in m for m in msgs(pct=70.0, best_pct=70.0)))        # a rise is fine
 
+    def test_rekey_keeps_the_old_row_as_prior(self):
+        cur = next(r for r in tree().by_addr.values() if r.get("status") == "matched")
+        old = dict(cur, status="partial", len="0x40", pct=10.0)
+        tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+        lt = pktlint.Lint(packet(tmp, {"match/x/a.cpp": HEADER}, []), tree(), D.MAIN_REPO)
+        lt.t = types_ns(by_addr={D.hx(old["addr"]): old})
+
+        def levels(**kw):
+            lt.findings = []
+            lt.ops = D.parse_delta([dict(old, **kw)])       # the delta parser moves "old" out of the row
+            lt.rows = [r for op, r, o in lt.ops]
+            lt.partial_bar()
+            return [x["level"] for x in lt.findings]
+        rekey = dict(sym="?new@@YAXXZ", op="change", old=dict(sym=old["sym"], status="partial"))
+        self.assertEqual(levels(**rekey), ["W"])                            # same pct: an existing partial
+        self.assertEqual(levels(pct=9.0, **rekey), ["E"])                   # a pct drop loses the prior, even with a kept best
+        self.assertEqual(levels(pct=9.0, best_pct=95.0, **rekey), ["E"])
+        self.assertEqual(levels(**dict(rekey, len="0x44")), ["E"])          # another len is another function
+        self.assertEqual(levels(**dict(rekey, old=dict(sym="?unrelated@@YAXXZ"))), ["E"])   # old.sym must name the tree row
+        self.assertEqual(levels(sym="?new@@YAXXZ"), ["E"])                  # no re-key: a new partial below the bar
+
     def test_moved_legacy_partial_is_not_new(self):
         cur = next(r for r in tree().by_addr.values() if r.get("status") == "matched")
         old = dict(cur, status="partial", pct=10.0)

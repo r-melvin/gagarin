@@ -849,10 +849,14 @@ class Lint:
     BAR_SMALL, BAR_SMALL_PCT, BAR_BIG_PCT = 0x400, 80.0, 60.0
 
     def partial_prior(self, r):
-        """The partial row already in the tree for the same function as R (address, sym and len; any tu), else None."""
+        """The partial row already in the tree for the same function as R (address, sym and len; any tu), else None.
+        An explicit re-key (R's old.sym names the tree row, same address and len) is the same function unless its
+        pct dropped: a re-key that loses score is judged as a new partial."""
         try:
             cur = self.t.by_addr.get(D.hx(r["addr"]))
-            same = cur and cur.get("sym") == r.get("sym") and D.hx(cur["len"]) == D.hx(r["len"])
+            rekey = next((old for op, x, old in self.ops if x is r and old), {})
+            same = cur and D.hx(cur["len"]) == D.hx(r["len"]) and (cur.get("sym") == r.get("sym") or (
+                rekey.get("sym") == cur.get("sym") and float(r["pct"]) >= float(cur["pct"])))
         except Exception:
             return None
         return cur if same and cur.get("status") == "partial" else None
