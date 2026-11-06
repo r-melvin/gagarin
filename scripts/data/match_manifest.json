@@ -71716,13 +71716,13 @@
  {
   "tu": "match/movie_play_methods.cpp",
   "addr": "0x5BED40",
-  "sym": "?Play_Movie@@YIXPBDHHHHH@Z",
+  "sym": "?Play_Movie@@YIXPBDHEEEE@Z",
   "len": "0x43b",
   "name": "Play_Movie",
   "status": "partial",
-  "pct": 9.6,
-  "best_pct": 9.6,
-  "best_at": "cf203011"
+  "pct": 64.0,
+  "best_pct": 64.0,
+  "best_at": "7e22100f"
  },
  {
   "tu": "match/movie_play_methods.cpp",
@@ -73727,9 +73727,9 @@
   "len": "0x3C2",
   "name": "TeleportLocomotionClass::FUN_007187A0",
   "status": "partial",
-  "pct": 26.4,
-  "best_pct": 26.4,
-  "best_at": "cf203011"
+  "pct": 27.8,
+  "best_pct": 27.8,
+  "best_at": "7e22100f"
  },
  {
   "tu": "match/tu240_teleport_locomotion_class.cpp",

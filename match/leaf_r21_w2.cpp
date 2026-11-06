@@ -10,7 +10,7 @@
 extern unsigned char DAT_00A8E960;
 
 // FUNCTION: GAMEMD 0x5BED40 (decl; reloc) - plays a movie by name.
-void Play_Movie(const char* name, int x, int a, int b, int c, int d);
+void Play_Movie(const char* name, int x, unsigned char a, unsigned char b, unsigned char c, unsigned char d);
 // FUNCTION: GAMEMD 0x52FEC0 (decl; reloc)
 void FUN_0052FEC0(void* a, unsigned char b);
 // FUNCTION: GAMEMD 0x48D080 (decl; reloc)

@@ -111,7 +111,7 @@ void FUN_00753620();                                     // GAMEMD 0x753620 (dec
 
 void FUN_004F4780(bool a, void* surface, int b);   // GAMEMD 0x4F4780 (decl; reloc)
 MovieHandle* FUN_005C07D0(const char* name, void* surface, int a);   // GAMEMD 0x5C07D0 (decl; reloc)
-void Play_Movie(const char* name, int x, int a, int b, int c, int d);
+void Play_Movie(const char* name, int x, unsigned char a, unsigned char b, unsigned char c, unsigned char d);
 
 // FUNCTION: GAMEMD 0x5BED20
 void FUN_005BED20(const char* name, int x, int a, int b, int c)
@@ -120,13 +120,14 @@ void FUN_005BED20(const char* name, int x, int a, int b, int c)
 }
 
 // FUNCTION: GAMEMD 0x5BED40
-// PARTIAL (9.6% positional, 90.1% aligned): one attempt. cl keeps the
-// constant 1 in ESI from the first call on, which shifts the register
-// assignment of the whole body.
+// PARTIAL (64.0% positional, 96.2% aligned). The four flags are bytes in
+// retail (cmp byte ptr [esp+..]). Remaining: the stretch height is
+// fild+fmul st,st(1) with the ratio popped later, cl emits fimul; three
+// spellings of the ratio did not change it.
 // Play a movie by name, full screen: Bink files through a local Bink player,
 // everything else through a VQ state block (stretched to the screen when
 // the options ask for it).
-void Play_Movie(const char* name, int x, int a, int b, int c, int d)
+void Play_Movie(const char* name, int x, unsigned char a, unsigned char b, unsigned char c, unsigned char d)
 {
     char buffer[256];
     if (!FUN_005C0640(name, buffer, true) || Session_00A8B238.GameMode != 0)
@@ -160,16 +161,16 @@ void Play_Movie(const char* name, int x, int a, int b, int c, int d)
         return;
     }
     DAT_0087F770->DoSomething();
-    RectangleStruct none;
-    none.X = 0;
-    none.Y = 0;
-    none.Width = 0;
-    none.Height = 0;
     RectangleStruct area;
     area.X = 0;
     area.Y = 0;
     area.Width = 0;
     area.Height = 0;
+    RectangleStruct none;
+    none.X = 0;
+    none.Y = 0;
+    none.Width = 0;
+    none.Height = 0;
     Obj_005C01A0* data = FUN_005BFAA0(buffer, DAT_00887310, none, area,
                                       (int)(DAT_00A8EB9C * 255.0), 1);
     if (data == 0)
@@ -186,7 +187,7 @@ void Play_Movie(const char* name, int x, int a, int b, int c, int d)
             int height = data->unknown_24.Height;
             if (height < DAT_00886FBC) {
                 data->unknown_34.Width = MouseViewOffset;
-                int newHeight = (int)(height * ((double)MouseViewOffset / width));
+                int newHeight = (int)((double)height * ((double)MouseViewOffset / width));
                 data->unknown_34.X = 0;
                 data->unknown_34.Height = newHeight;
                 data->unknown_34.Y = (DAT_00886FBC - newHeight) / 2;

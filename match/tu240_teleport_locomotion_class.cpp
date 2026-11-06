@@ -345,10 +345,11 @@ bool TeleportLocomotionClass::FUN_00718260(LocoCoord coord, bool flag)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x7187A0
-// PARTIAL 26.4% (aligned 77.1%). Retail shares one 4-byte slot for every cell
-// temporary and the damage value (frame 8 vs 0x14) and hoists 0x100 into EDI.
-// Tried: plain transcription (kept), a constructor-less cell (no change), one
-// reused cell local (25.7%).
+// PARTIAL 27.8% (aligned 82.0%). The cell temporaries are scoped so the frame
+// is 8 bytes as in retail. Remaining: retail hoists 0x100 into EDI and tests
+// the flag word with it (cl emits test ch,1), and the cell sits in a different
+// slot than the damage value. Tried: a named local for the flag (folded away),
+// a constructor-less cell (no change).
 void TeleportLocomotionClass::FUN_007187A0(LocoCoord coord)
 {
     for (TeleportFootView* object = DAT_0087F7E8.FUN_00565730(coord)->unknown_0E4; object;
@@ -370,6 +371,7 @@ void TeleportLocomotionClass::FUN_007187A0(LocoCoord coord)
             && !Foot()->unknown_21C->FUN_0050E1B0(Foot()->vf_084()))
             special = false;
     }
+    {
     TeleportCell cell = TeleportCellOf(coord);
     if (DAT_0087F7E8.FUN_005657A0(&cell)->unknown_0EC == 2 && !special
         && !Foot()->vf_084()->unknown_CCE && Foot()->WhatAmI() != 0xF
@@ -388,10 +390,19 @@ void TeleportLocomotionClass::FUN_007187A0(LocoCoord coord)
             Foot()->vf_0E4(Foot()->unknown_42C);
         return;
     }
-    TeleportCell here = TeleportCellOf(coord);
-    if (Foot()->vf_1AC(DAT_0087F7E8.FUN_005657A0(&here), -1, -1, 0, 1) == 7 || blocked) {
-        TeleportCell at = TeleportCellOf(coord);
-        if (DAT_0087F7E8.FUN_005657A0(&at)->FUN_004865D0() && Foot()->WhatAmI() != 0xF) {
+    }
+    bool hit;
+    {
+        TeleportCell here = TeleportCellOf(coord);
+        hit = Foot()->vf_1AC(DAT_0087F7E8.FUN_005657A0(&here), -1, -1, 0, 1) == 7 || blocked;
+    }
+    if (hit) {
+        bool detach;
+        {
+            TeleportCell at = TeleportCellOf(coord);
+            detach = DAT_0087F7E8.FUN_005657A0(&at)->FUN_004865D0() && Foot()->WhatAmI() != 0xF;
+        }
+        if (detach) {
             Foot()->unknown_3CD = 1;
             Foot()->vf_3A0();
             if (Foot()->unknown_2D8) {

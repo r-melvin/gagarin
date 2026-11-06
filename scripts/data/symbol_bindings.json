@@ -10849,7 +10849,7 @@
  "?PlayAnim@BuildingClass@@QAEXPBDHD_NH@Z": "0x00451890",
  "?PlayAtPos@VocClass@@SIPAUAudioEvent@@HPAUCoordStruct@@H@Z": "0x00750E20",
  "?PlaySong@ThemeClass@@QAEHH@Z": "0x00720BB0",
- "?Play_Movie@@YIXPBDHHHHH@Z": "0x005BED40",
+ "?Play_Movie@@YIXPBDHEEEE@Z": "0x005BED40",
  "?PlayerClosedLabel@@3PADA": "0x00831D20",
  "?PlayerColor@@3HA": "0x00A8B394",
  "?PlayerCount_00A8DA84@@3HA": "0x00A8DA84",
