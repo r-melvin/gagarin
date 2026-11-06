@@ -95,6 +95,8 @@ struct TiberiumLogic
     TiberiumQueue*     Queue;                     // +0x04
     unsigned char*     CellIndexesWithTiberium;   // +0x08
     TiberiumQueueNode* Nodes;                     // +0x0C
+
+    TiberiumLogic() : Count(0), Queue(0), CellIndexesWithTiberium(0), Nodes(0) {}
 };
 GG_STATIC_ASSERT(sizeof(TiberiumLogic) == 0x10);
 
@@ -102,8 +104,8 @@ class TiberiumClass : public AbstractTypeClass
 {
 public:
     virtual int vf_16();                    // 16  0x723700
-    // FUNCTION: GAMEMD 0x7216C0 (decl; reloc) -- constructor; the argument is unattested.
-    TiberiumClass(int unknown_arg0 = 0);
+    // FUNCTION: GAMEMD 0x7216C0 -- constructor; the argument is handed to AbstractTypeClass as the ID.
+    TiberiumClass(const char* id = 0);
     // Stream overrides (vtable 0x7F5728); bodies in core/stream_w3_methods.cpp.
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
     virtual HRESULT __stdcall Load(IStream* pStm);
@@ -134,6 +136,14 @@ public:
     TiberiumLogic  GrowthLogic;   // +0x10C
     CDTimerClass   GrowthTimer;   // +0x11C
 
+    // FUNCTION: GAMEMD 0x7221B0 -- run the spread step of each type whose spread timer ran out.
+    static void FUN_007221B0();
+    // FUNCTION: GAMEMD 0x722440 (decl; reloc) -- one spread step of this type.
+    void FUN_00722440();
+    // FUNCTION: GAMEMD 0x722C40 -- run the growth step of each type whose growth timer ran out.
+    static void FUN_00722C40();
+    // FUNCTION: GAMEMD 0x722F00 (decl; reloc) -- one growth step of this type.
+    void FUN_00722F00();
     // FUNCTION: GAMEMD 0x722A20 -- free the spread logic's queue and arrays.
     void FreeSpreadLogic();
     // FUNCTION: GAMEMD 0x722770 -- rebuild the spread logic's arrays, then refill them.

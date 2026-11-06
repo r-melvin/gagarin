@@ -155385,5 +155385,32 @@
   "name": "Obj_005BCC40::FUN_005BD490",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/tiberium_class_spread_methods.cpp",
+  "addr": "0x7216C0",
+  "sym": "??0TiberiumClass@@QAE@PBD@Z",
+  "len": "0x1be",
+  "name": "TiberiumClass::TiberiumClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tiberium_class_spread_methods.cpp",
+  "addr": "0x7221B0",
+  "sym": "?FUN_007221B0@TiberiumClass@@SIXXZ",
+  "len": "0x8b",
+  "name": "TiberiumClass::FUN_007221B0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tiberium_class_spread_methods.cpp",
+  "addr": "0x722C40",
+  "sym": "?FUN_00722C40@TiberiumClass@@SIXXZ",
+  "len": "0xbc",
+  "name": "TiberiumClass::FUN_00722C40",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

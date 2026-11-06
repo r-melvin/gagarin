@@ -6,13 +6,15 @@
 //   timer at +0x100; the growth logic at +0x10C repeats the same code (see the
 //   growth methods). Queue, node and logic types are in _layout/tiberium_class.h.
 //
-//   Address index: 0x722240, 0x722D00, 0x722E50, 0x723260, 0x7233A0, 0x722390, 0x722770, 0x7228B0, 0x722AF0.
+//   Address index: 0x7216C0, 0x7221B0, 0x722C40, 0x722240, 0x722D00, 0x722E50, 0x723260, 0x7233A0, 0x722390, 0x722770, 0x7228B0, 0x722AF0.
 
 #include "_layout/tiberium_class.h"
 #include "_layout/cell_class.h"
 #include "scenario_class_methods.h"
+#include "scenario_class.h"
 #include "frame_counter.h"
-#include "vector_class.h"
+#include "vector_class_dynamic_ctor.h"
+#include "vector_class_mutation.h"
 #include <stdlib.h>
 
 #include "_layout/scenario_ptr_00a8b230.h"
@@ -20,8 +22,30 @@
 // GLOBAL: GAMEMD 0xB0F4E8 -- TiberiumClass::Array.
 extern DynamicVectorClass<TiberiumClass*> DAT_00B0F4E8;
 
+// GLOBAL: GAMEMD 0x7E1718
+extern const double DAT_007E1718;
+// GLOBAL: GAMEMD 0x7E5138
+extern const double DAT_007E5138;
+
+// GLOBAL: GAMEMD 0xB0F670 -- registry of every abstract object.
+extern DynamicVectorClass<AbstractClass*> DAT_00B0F670;
+
 // FUNCTION: GAMEMD 0x42B1C0 (decl; reloc) -- the surface index of a cell.
 int __fastcall TiberiumCellSurfaceIndex(CellStruct* cell);
+
+// FUNCTION: GAMEMD 0x7216C0
+// Defaults: spread and growth percentages of 0.1, an empty debris list and idle logic and
+// timers; the type then takes its index in the tiberium array and joins the shared registry.
+TiberiumClass::TiberiumClass(const char* id)
+    : AbstractTypeClass(id), unknown_98(-1), Spread(0), SpreadPercentage(0.1), Growth(0),
+      GrowthPercentage(0.1), Value(0), Power(0), Color(0), unknown_E0(0), unknown_E4(0), unknown_E8(0),
+      unknown_EC(0), SpreadTimer(0), GrowthTimer(0)
+{
+    unknown_98 = DAT_00B0F4E8.Count;
+    DAT_00B0F4E8.AddItem(this);
+    Debris.Clear();
+    DAT_00B0F670.AddItem(this);
+}
 
 // 0x722A20 is retail's out-of-line copy of this body (no callers). VC6 only expands it
 // into the re-initialisers when it is declared inline, and an inline body is not emitted
@@ -44,6 +68,21 @@ inline void TiberiumClass::FreeSpreadLogic()
         SpreadLogic.CellIndexesWithTiberium = 0;
     }
     SpreadLogic.Count = 0;
+}
+
+// FUNCTION: GAMEMD 0x7221B0
+// When the scenario flag allows it, run the spread step of each tiberium type
+// whose spread timer ran out, then restart that timer.
+void TiberiumClass::FUN_007221B0()
+{
+    if (DAT_00A8B230->unknown_34A6) {
+        for (int i = 0; i < DAT_00B0F4E8.Count; i++) {
+            if (DAT_00B0F4E8[i]->SpreadTimer.GetTimeLeft() == 0) {
+                DAT_00B0F4E8[i]->FUN_00722440();
+                DAT_00B0F4E8[i]->SpreadTimer = CDTimerClass(DAT_00B0F4E8[i]->Spread);
+            }
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x722770
@@ -97,6 +136,22 @@ void TiberiumClass::RegisterForSpread(CellStruct* cell)
             (float)(CurrentFrame + abs(DAT_00A8B230->unknown_0218.Random()) % 50);
         SpreadLogic.Queue->Push(&SpreadLogic.Nodes[SpreadLogic.Count++]);
         SpreadLogic.CellIndexesWithTiberium[TiberiumCellSurfaceIndex(cell)] = 1;
+    }
+}
+
+// FUNCTION: GAMEMD 0x722C40
+// As 0x7221B0 for the growth step; the new delay is the type's Growth scaled
+// by one of two factors picked from the scenario flags.
+void TiberiumClass::FUN_00722C40()
+{
+    if (DAT_00A8B230->unknown_34A6) {
+        for (int i = 0; i < DAT_00B0F4E8.Count; i++) {
+            if (DAT_00B0F4E8[i]->GrowthTimer.GetTimeLeft() == 0) {
+                DAT_00B0F4E8[i]->FUN_00722F00();
+                DAT_00B0F4E8[i]->GrowthTimer = CDTimerClass(
+                    (int)(DAT_00B0F4E8[i]->Growth * ((DAT_00A8B230->unknown_0000 & 0x40) ? DAT_007E5138 : DAT_007E1718)));
+            }
+        }
     }
 }
 
