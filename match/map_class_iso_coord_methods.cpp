@@ -61,12 +61,10 @@ Point2D MapClass::FUN_00565520(const Point2D& in) const
 // The projection of FUN_00565470 on a cell coordinate.
 CellStruct* MapClass::FUN_00565580(CellStruct* out, const CellStruct* in) const
 {
-    int f = MapRect.Width;
-    int x = in->X;
-    int y = in->Y;
+    Point2D q = FUN_00565470(Point2D(in->X, in->Y));
     CellStruct r;
-    r.X = (short)(x + ((y + 1) >> 1));
-    r.Y = (short)(f + (y >> 1) - x);
+    r.X = (short)q.X;
+    r.Y = (short)q.Y;
     *out = r;
     return out;
 }
@@ -75,11 +73,10 @@ CellStruct* MapClass::FUN_00565580(CellStruct* out, const CellStruct* in) const
 // The projection of FUN_005654A0 on a cell coordinate.
 CellStruct* MapClass::FUN_005655C0(CellStruct* out, const CellStruct* in) const
 {
-    int x = in->X + LocalRect.X;
-    int y = in->Y + LocalRect.Y;
+    Point2D q = FUN_005654A0(Point2D(in->X, in->Y));
     CellStruct r;
-    r.X = (short)(x + ((y + 1) >> 1));
-    r.Y = (short)(MapRect.Width + (y >> 1) - x);
+    r.X = (short)q.X;
+    r.Y = (short)q.Y;
     *out = r;
     return out;
 }
@@ -103,13 +100,10 @@ CellStruct* MapClass::FUN_00565610(CellStruct* out, const CellStruct* in) const
 // The inverse projection of FUN_00565520 on a cell coordinate.
 CellStruct* MapClass::FUN_00565660(CellStruct* out, const CellStruct* in) const
 {
-    int f = MapRect.Width;
-    int x = in->X;
-    int y = in->Y;
-    int d = (f & 1) ? x - y + 1 : x - y;
+    Point2D q = FUN_00565520(Point2D(in->X, in->Y));
     CellStruct r;
-    r.X = (short)((d >> 1) + f / 2 - LocalRect.X);
-    r.Y = (short)(x + y - f - LocalRect.Y);
+    r.X = (short)q.X;
+    r.Y = (short)q.Y;
     *out = r;
     return out;
 }

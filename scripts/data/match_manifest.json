@@ -47027,9 +47027,9 @@
   "len": "0xbc",
   "name": "TerrainClass::Mark",
   "status": "partial",
-  "pct": 17.6,
-  "best_pct": 17.6,
-  "best_at": "cf203011"
+  "pct": 91.0,
+  "best_pct": 91.0,
+  "best_at": "81aa71d7"
  },
  {
   "tu": "match/tu242_terrain_class.cpp",
@@ -47078,9 +47078,9 @@
   "len": "0xd9",
   "name": "TerrainClass::vf_107",
   "status": "partial",
-  "pct": 15.1,
-  "best_pct": 15.1,
-  "best_at": "cf203011"
+  "pct": 94.5,
+  "best_pct": 94.5,
+  "best_at": "81aa71d7"
  },
  {
   "tu": "match/tu242_terrain_class.cpp",
@@ -62179,9 +62179,9 @@
   "len": "0x30",
   "name": "FUN_00753620",
   "status": "partial",
-  "pct": 46.2,
-  "best_pct": 46.2,
-  "best_at": "cf203011"
+  "pct": 69.2,
+  "best_pct": 69.2,
+  "best_at": "81aa71d7"
  },
  {
   "tu": "match/unowned_leaf_sweep_c.cpp",
@@ -75712,10 +75712,8 @@
   "sym": "?vf_88@TechnoClass@@UAE_NXZ",
   "len": "0x35",
   "name": "TechnoClass::vf_88",
-  "status": "partial",
-  "pct": 15.0,
-  "best_pct": 15.0,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/techno_class_slots_41bee0.cpp",
@@ -106842,10 +106840,8 @@
   "sym": "?FUN_005AE5E0@Matrix3D@@QAEAAU1@ABU1@@Z",
   "len": "0x21",
   "name": "Matrix3D::FUN_005AE5E0",
-  "status": "partial",
-  "pct": 26.7,
-  "best_pct": 26.7,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/voxel_animation_load.cpp",
@@ -148249,10 +148245,8 @@
   "sym": "?FUN_00565580@MapClass@@QBEPAUCellStruct@@PAU2@PBU2@@Z",
   "len": "0x39",
   "name": "MapClass::FUN_00565580",
-  "status": "partial",
-  "pct": 5.0,
-  "best_pct": 5.0,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/map_class_iso_coord_methods.cpp",
@@ -148261,9 +148255,9 @@
   "len": "0x49",
   "name": "MapClass::FUN_005655C0",
   "status": "partial",
-  "pct": 8.3,
-  "best_pct": 8.3,
-  "best_at": "cf203011"
+  "pct": 45.8,
+  "best_pct": 45.8,
+  "best_at": "81aa71d7"
  },
  {
   "tu": "match/map_class_iso_coord_methods.cpp",
@@ -148271,10 +148265,8 @@
   "sym": "?FUN_00565660@MapClass@@QBEPAUCellStruct@@PAU2@PBU2@@Z",
   "len": "0x6b",
   "name": "MapClass::FUN_00565660",
-  "status": "partial",
-  "pct": 0.0,
-  "best_pct": 0.0,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/trivial_tu127_methods.cpp",

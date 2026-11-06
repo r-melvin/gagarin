@@ -132,8 +132,7 @@ bool TerrainClass::vf_73(int arg)
         case 1:
         case 3: {
             MapObjMap.Func_5683C0(reinterpret_cast<const MapObjCell*>(&cell), reinterpret_cast<MapObjClassView*>(this));
-            CoordStruct coordinate = vf_43();
-            DAT_00887324->FUN_006D2140(&coordinate, &ScreenPos);
+            DAT_00887324->FUN_006D2140(vf_43(), &ScreenPos);
             Point2D off(DAT_00887324->unknown_B0.unknown_00, DAT_00887324->unknown_B0.unknown_04);
             Point2D cur = ScreenPos;
             ScreenPos = Point2D(cur.X + off.X, cur.Y + off.Y);
@@ -261,7 +260,7 @@ void TerrainClass::vf_70(Point2D* where, RectangleStruct* clip)
 int TerrainClass::vf_107(CellClass* who, int a2, int a3, int a4, bool a5)
 {
     MapObjCell* list = static_cast<MapObjCell*>(vf_66(0));
-    MapObjCell origin(who->MapCoords.X, who->MapCoords.Y);
+    MapObjCell origin = who->MapCoords;
     while (!(list->X == 0x7FFF && list->Y == 0x7FFF)) {
         if (Type->WaterBound) {
             MapObjCell cell = *list++ + origin;

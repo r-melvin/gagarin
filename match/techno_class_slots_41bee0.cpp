@@ -45,27 +45,11 @@ bool TechnoClass::vf_204()
     return false;
 }
 
-// Time left on a count-down timer, counted against the frame clock once the
-// timer has been started.
-static inline int TimerLeft(const CDTimerClass& t)
-{
-    int start = t.StartTime;
-    int left = t.TimeLeft;
-    if (start != -1) {
-        int passed = CurrentFrame - start;
-        left = (passed < left) ? left - passed : 0;
-    }
-    return left;
-}
-
 // FUNCTION: GAMEMD 0x41BF40
 // Is the iron-curtain timer still running?
-// PARTIAL 15%: retail keeps the time left in EAX and builds the bool in CL;
-// VC6 swaps the two. Variants tried: straight-line body, inline helper with
-// early returns, inline helper with a ternary, an extra bool wrapper.
 bool TechnoClass::vf_88()
 {
-    return TimerLeft(IronCurtainTimer) > 0;
+    return IronCurtainTimer.GetTimeLeft() > 0;
 }
 
 // FUNCTION: GAMEMD 0x41BF80

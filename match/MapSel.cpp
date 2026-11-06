@@ -281,7 +281,9 @@ void MSEngine::OnRedraw(MouseSurfaceView* surface)
 // FUNCTION: GAMEMD 0x5AE5E0
 Matrix3D& Matrix3D::FUN_005AE5E0(const Matrix3D& source)
 {
-    *this = source;
+    for (int i = 0; i < 12; i++) {
+        Row[0][i] = source.Row[0][i];
+    }
     return *this;
 }
 

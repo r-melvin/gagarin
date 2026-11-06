@@ -235,7 +235,9 @@ void FUN_00753620()
         DAT_00B1D4CC->FUN_00408000();
     }
     if (DAT_00B1D428 != 0) {
-        if (--DAT_00B1D428 < 0) {
+        int count = DAT_00B1D428 - 1;
+        DAT_00B1D428 = count;
+        if (count < 0) {
             DAT_00B1D428 = 0;
         }
     }
