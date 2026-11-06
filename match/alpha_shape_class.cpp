@@ -147,8 +147,8 @@ void AlphaShapeClass::vf_10(void* target, bool removed)
 
 // FUNCTION: GAMEMD 0x420E90
 // Delete every shape whose object has expired, after building the table.
-// PARTIAL (27.1%, aligned 83.1%): the sweep loop is exact; the residual is
-// the table build of 0x420960.
+// PARTIAL (67.8%): the sweep loop is exact; the residual is the table build of 0x420960 (retail
+// takes the low clamp as branches where the expanded ternary is a setl/dec/and sequence).
 void AlphaShapeClass::FUN_00420E90()
 {
     AlphaShape_BuildTable();

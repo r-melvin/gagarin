@@ -55,14 +55,12 @@ inline void AlphaShape_BuildTable()
     if (!DAT_0089A134) {
         DAT_0089A134 = true;
         for (int i = 0; i < 0x10000; i++) {
-            int value = (i % 256) * (i / 256) / 127;
+            int value = (i / 256) * (i % 256) / 127;
             if (value > 255) {
                 value = 255;
-            }
-            if (value < 0) {
-                value = 0;
-            } else if (value > 255) {
-                value = 255;
+            } else {
+                int low = value < 0 ? 0 : value;
+                value = low > 255 ? 255 : low;
             }
             DAT_0088A118[i] = (unsigned char)value;
         }

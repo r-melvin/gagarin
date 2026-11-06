@@ -28,6 +28,7 @@
 #include "building_b_shared.h"
 #include "_layout/house_class.h"
 #include "_layout/color_struct.h"
+#include "_layout/techno_type_class.h"
 #include "_layout/player_ptr_00a83d4c.h"
 
 class BuildingBView;
@@ -694,7 +695,7 @@ public:
     int Func_45EC90();
     int Func_45ECA0(int a);
     HBRect* Func_465570(HBRect* out);
-    int* Func_7177C0(int a);
+    WeaponStruct* Func_7177C0(int a);
     bool Func_465D40();
     char unknown_04[0x5C];   // +0x4
     int unknown_60;   // +0x60
@@ -822,9 +823,8 @@ class BuildingBOccupantTypeView
 {
 public:
     char unknown_00[0xE04];   // +0x0
-    int unknown_E04;   // +0xE04
-    char unknown_E08[0x18];   // +0xE08
-    int unknown_E20;   // +0xE20
+    WeaponStruct unknown_E04;   // +0xE04
+    WeaponStruct unknown_E20;   // +0xE20
 };
 GG_STATIC_ASSERT(offsetof(BuildingBOccupantTypeView, unknown_E04) == 0xE04);
 GG_STATIC_ASSERT(offsetof(BuildingBOccupantTypeView, unknown_E20) == 0xE20);
@@ -1088,7 +1088,7 @@ public:
     virtual void unused_slot_251();
     virtual void unused_slot_252();
     virtual void unused_slot_253();
-    virtual void vf_254(int a);   // slot 254 (+0x3F8)
+    virtual WeaponStruct* vf_254(int a);   // slot 254 (+0x3F8)
     char unknown_04[0x10];   // +0x4
     unsigned char unknown_14;   // +0x14
     char unknown_15[0x7B];   // +0x15
@@ -1365,7 +1365,7 @@ public:
     virtual void unused_slot_251();
     virtual void unused_slot_252();
     virtual void unused_slot_253();
-    virtual void vf_254(int a);   // slot 254 (+0x3F8)
+    virtual WeaponStruct* vf_254(int a);   // slot 254 (+0x3F8)
     virtual bool vf_255();   // slot 255 (+0x3FC)
     virtual bool vf_256();   // slot 256 (+0x400)
     virtual int vf_257();   // slot 257 (+0x404)
@@ -1449,7 +1449,7 @@ public:
     void Func_70C270(BuildingBCrcView* crc);
     int Func_703860(bool a, BuildingBTargetView* target);
     bool Func_701140();
-    void Func_70E140(int a);
+    WeaponStruct* Func_70E140(int a);
     HRESULT __stdcall Func_70BF50(IStream* pStm);
     HRESULT __stdcall Func_70C250(IStream* pStm, BOOL fClearDirty);
     HBCoord* Func_453BF0(HBCoord* out, int a, int b);

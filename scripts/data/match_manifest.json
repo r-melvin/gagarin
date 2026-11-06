@@ -49076,9 +49076,9 @@
   "len": "0x104",
   "name": "BuildingClass::vf_314",
   "status": "partial",
-  "pct": 4.7,
-  "best_pct": 4.7,
-  "best_at": "cf203011"
+  "pct": 48.1,
+  "best_pct": 48.1,
+  "best_at": "53529d7b"
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -49161,10 +49161,8 @@
   "sym": "?vf_242@BuildingClass@@UAEXPAVAbstractClass@@@Z",
   "len": "0xcf",
   "name": "BuildingClass::vf_242",
-  "status": "partial",
-  "pct": 17.1,
-  "best_pct": 17.1,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/building_a2_exit.cpp",
@@ -49236,10 +49234,8 @@
   "sym": "?vf_104@BuildingClass@@UAEXH@Z",
   "len": "0xf7",
   "name": "BuildingClass::vf_104",
-  "status": "partial",
-  "pct": 42.5,
-  "best_pct": 42.5,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -49584,13 +49580,11 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x4526F0",
-  "sym": "?vf_254@BuildingBView@@UAEXH@Z",
+  "sym": "?vf_254@BuildingBView@@UAEPAUWeaponStruct@@H@Z",
   "len": "0xd3",
   "name": "BuildingClass::vf_254",
-  "status": "partial",
-  "pct": 48.0,
-  "best_pct": 48.0,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -71087,13 +71081,12 @@
   "tu": "match/alpha_shape_class.cpp",
   "addr": "0x420960",
   "sym": "??0AlphaShapeClass@@QAE@PAVObjectClass@@HH@Z",
-  "len": "0x190",
+  "len": "0x18f",
   "name": "AlphaShapeClass::AlphaShapeClass",
   "status": "partial",
-  "pct": 76.0,
-  "best_pct": 76.0,
-  "best_at": "cf203011",
-  "note": "Exact through the vector appends; the residual is the inlined product-table build: retail keeps the product in EAX and moves it to ECX before the /127 multiply, and tests >255 before the 0..255 clamp (three compares); every source form tried folds to two (aligned 90.9%)."
+  "pct": 83.5,
+  "best_pct": 83.5,
+  "best_at": "53529d7b"
  },
  {
   "tu": "match/alpha_shape_class.cpp",
@@ -71102,10 +71095,9 @@
   "len": "0x15f",
   "name": "AlphaShapeClass::AlphaShapeClass (default)",
   "status": "partial",
-  "pct": 71.4,
-  "best_pct": 71.4,
-  "best_at": "cf203011",
-  "note": "Same table-build residual as 0x420960 (aligned 91.1%)."
+  "pct": 83.0,
+  "best_pct": 83.0,
+  "best_at": "53529d7b"
  },
  {
   "tu": "match/alpha_shape_class.cpp",
@@ -71177,10 +71169,9 @@
   "len": "0xaa",
   "name": "AlphaShapeClass::FUN_00420E90",
   "status": "partial",
-  "pct": 27.1,
-  "best_pct": 27.1,
-  "best_at": "cf203011",
-  "note": "The sweep loop is exact; the residual is the same inlined table build as 0x420960 (aligned 83.1%)."
+  "pct": 67.8,
+  "best_pct": 67.8,
+  "best_at": "53529d7b"
  },
  {
   "tu": "match/alpha_shape_class.cpp",
@@ -93987,10 +93978,8 @@
   "sym": "?FUN_006E0080@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x82",
   "name": "TActionClass::FUN_006E0080",
-  "status": "partial",
-  "pct": 45.3,
-  "best_pct": 45.3,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/TAction.cpp",
@@ -94292,10 +94281,8 @@
   "sym": "?FUN_006E3380@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x8d",
   "name": "TActionClass::FUN_006E3380",
-  "status": "partial",
-  "pct": 26.2,
-  "best_pct": 26.2,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/TAction.cpp",

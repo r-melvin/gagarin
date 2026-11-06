@@ -877,8 +877,7 @@ bool TActionClass::FUN_006E0080(HouseClass* house, ObjectClass* object, TriggerC
     for (int i = 0; i < DAT_00A80218; i++) {
         ObjectClass* o = DAT_00A8020C[i];
         if (o->IsAlive) {
-            CellStruct at = o->vf_110();
-            if (at.X == where.X && at.Y == where.Y) {
+            if (o->vf_110() == where) {
                 o->vf_62();
             }
         }
@@ -2380,10 +2379,7 @@ unsigned char Obj_006E3360::FUN_006E3360(Arg1_006E3360* a1, int a2, int a3, int 
 bool TActionClass::FUN_006E3380(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
     CellStruct wp = DAT_00A8B230->GetWaypointCoords(unknown_44);
-    CoordStruct where;
-    where.Z = 0;
-    where.Y = wp.Y * 256 + 0x80;
-    where.X = wp.X * 256 + 0x80;
+    CoordStruct where = TActionCellToCoord(wp);
     where.Z = MapInstance.FUN_00578080(&where);
     new IonBlastClass(where);
     return true;

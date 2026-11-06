@@ -2145,39 +2145,36 @@ int BuildingClass::vf_187()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x43ED40
 //
-// CAPPED at 10.1% (first transcription plus two reshapes). The facing from this building (plus the per-type
-// firing offset, a zero coordinate by default) to a target. Delta: retail keeps the offset in ESI/EDI with
-// the Z in a stack slot and reaches one shared transform call from both branches with different buffers;
-// the sequential, shared-pointer and branch-swapped forms differ in prologue, frame (0x18 vs 0x2c) and call order.
+// The facing from this building (plus the per-type firing offset, a zero coordinate by default) to a target.
+// PARTIAL (48.1%): the call tail is exact; remaining delta is the jump sense of the final offset test
+// (retail ends it with a `je`) and the dead store of the offset's Z.
 DirStruct BuildingClass::vf_314(AbstractClass* target)
 {
     CoordStruct off = DAT_0089C848;
     BuildingTypeClass* type = Type;
-    Point2D p;
-    Point2D buf;
-    if (type->PrimaryFirePixelOffset.X == 0xFFFF && type->PrimaryFirePixelOffset.Y == 0xFFFF) {
+    if (type->PrimaryFirePixelOffset.X != 0xFFFF || type->PrimaryFirePixelOffset.Y != 0xFFFF) {
+        Point2D p;
+        Point2D* r = DAT_00887324->FUN_006D2070(&p, &type->PrimaryFirePixelOffset);
+        off.X = r->X;
+        off.Y = r->Y;
+        off.Z = 0;
+    } else {
+        Point2D p;
         p.X = type->BuildingAnim[9].X;
         p.Y = type->BuildingAnim[9].Y;
         if (p.X != 0 || p.Y != 0) {
+            Point2D buf;
             Point2D* r = DAT_00887324->FUN_006D2070(&buf, &p);
             off.X = r->X;
             off.Y = r->Y;
             off.Z = 0;
         }
-    } else {
-        Point2D* r = DAT_00887324->FUN_006D2070(&p, &type->PrimaryFirePixelOffset);
-        off.X = r->X;
-        off.Y = r->Y;
-        off.Z = 0;
     }
-    const CoordStruct& c = vf_18();
-    int px = c.X + off.X;
-    int py = c.Y + off.Y;
-    const CoordStruct& t = target->vf_18();
-    int tx = t.X;
-    DirStruct d;
-    d.Raw = (short)((FUN_004CAE30((double)py - t.Y, (double)tx - px) - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
-    return d;
+    CoordStruct here = vf_18();
+    CoordStruct from;
+    from.X = here.X + off.X;
+    from.Y = here.Y + off.Y;
+    return DirectionTo(from, target->vf_18());
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -3211,26 +3208,22 @@ bool BuildingClass::vf_80(int mode, CellStruct* cell, int a3, int a4)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x443B90
-// CAPPED at 17.1%. Retail places the Base(0) fallback inline right after the first two tests and jumps back
-// to it from the later failures; the three shapes tried (target=0 else-if, if/else with a trailing call, early
-// returns) all put that block last. Instruction multiset differs by one jcc sense.
 void BuildingClass::vf_242(AbstractClass* target)
 {
-    if (CurrentMission != 0x13 && vf_212()) {
-        if (target && vf_254(0)->WeaponType && !vf_254(0)->WeaponType->Projectile->AA && !IsCloseEnoughToAttack(target)) {
-            TechnoClass::vf_242(0);
-            if (Type->TickTank || Type->Artillary) {
-                if (!Owner->IsControlledByHuman() && !IsUnderEMP()) {
-                    vf_122(0x13, 0);
-                    vf_123();
-                }
-            }
-            return;
-        }
-    } else {
+    if (CurrentMission == 0x13 || !vf_212()) {
         target = 0;
     }
-    TechnoClass::vf_242(target);
+    if (!target || !vf_254(0)->WeaponType || vf_254(0)->WeaponType->Projectile->AA || IsCloseEnoughToAttack(target)) {
+        TechnoClass::vf_242(target);
+        return;
+    }
+    TechnoClass::vf_242(0);
+    if (Type->TickTank || Type->Artillary) {
+        if (!Owner->IsControlledByHuman() && !IsUnderEMP()) {
+            vf_122(0x13, 0);
+            vf_123();
+        }
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -3479,42 +3472,41 @@ void BuildingClass::vf_103(int mode)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x447110
 //
-// CAPPED (see the report): retail is a three-case switch on the mode whose "nothing to do" exits jump to the
-// shared epilogue, which no switch/return/flag formulation tried here reproduces; the first-written
-// if-chain form below scores best.
 void BuildingClass::vf_104(int mode)
 {
-    if (!HasBuildUp) {
-        if (Type->FirestormWall) {
-            Type->vf_33(Owner);
-            Owner->IsControlledByHuman();
-            vf_53();
-            vf_62();
+    if (HasBuildUp) {
+        bool act = false;
+        switch (mode) {
+        case -1:
+            act = vf_97() != 0x13;
+            break;
+        case 0:
+            if (vf_97() != 0x13) {
+                return;
+            }
+            break;
+        case 1:
+            if (vf_97() == 0x13) {
+                return;
+            }
+            if (C4Applied) {
+                return;
+            }
+            act = true;
+            break;
         }
-        return;
-    }
-    bool act;
-    if (mode == -1) {
-        act = vf_97() != 0x13;
-    } else if (mode == 0) {
-        if (vf_97() != 0x13) {
-            return;
+        if (act) {
+            vf_122(0x13, 0);
+            vf_123();
         }
-        act = false;
-    } else if (mode == 1) {
-        if (vf_97() == 0x13 || C4Applied) {
-            return;
+        if (Owner->IsControlledByCurrentPlayer()) {
+            VocClass::PlayGlobal(RulesInstance->GenericClick, 1.0f, 0x2000, 0);
         }
-        act = true;
-    } else {
-        act = false;
-    }
-    if (act) {
-        vf_122(0x13, 0);
-        vf_123();
-    }
-    if (Owner->IsControlledByCurrentPlayer()) {
-        VocClass::PlayGlobal(RulesInstance->GenericClick, 1.0f, 0x2000, 0);
+    } else if (Type->FirestormWall) {
+        Type->vf_33(Owner);
+        Owner->IsControlledByHuman();
+        vf_53();
+        vf_62();
     }
 }
 
@@ -5984,30 +5976,34 @@ bool BuildingClass::FUN_00452670(BuildingTypeClass* upgrade, HouseClass* house)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4526F0
-// CAPPED at 48.0% (36 of 75 instructions; retail-only: 2 `add eax,imm` computing &Type->field after the load;
-// compiled differs in block layout). Retail loads the occupant type once, before the elite branch, and keeps the
-// elite/non-elite tests as `mov ecx,[eax+0xE20]; add eax,0xE20; test ecx,ecx`. Variants tried: the plain
-// per-branch form kept here, a hoisted `type` local ahead of the branch, a local `elite` bool.
-void BuildingBView::vf_254(int a)
+// The weapon slot for index `a`: the first upgrade whose slot has a weapon type, else the firing occupant's
+// occupy weapon (the occupant's own slot when the type has none), else the base lookup.
+WeaponStruct* BuildingBView::vf_254(int a)
 {
     if (UpgradeLevel) {
         for (int i = 0; i < UpgradeLevel; i++) {
-            if (Upgrades[i] && *Upgrades[i]->Func_7177C0(a))
-                return;
+            if (Upgrades[i]) {
+                WeaponStruct* weapon = Upgrades[i]->Func_7177C0(a);
+                if (weapon->WeaponType)
+                    return weapon;
+            }
         }
     }
     if (vf_256() && FiringOccupantIndex < Occupants.Count) {
         BuildingBOccupantView* occupant = Occupants.Items[FiringOccupantIndex];
         if (occupant->Veterancy.Func_750010()) {
-            if (occupant->Type->unknown_E20 == 0)
-                occupant->vf_254(0);
+            WeaponStruct* weapon = &occupant->Type->unknown_E20;
+            if (weapon->WeaponType == 0)
+                return occupant->vf_254(0);
+            return weapon;
         } else {
-            if (occupant->Type->unknown_E04 == 0)
-                occupant->vf_254(0);
+            WeaponStruct* weapon = &occupant->Type->unknown_E04;
+            if (weapon->WeaponType == 0)
+                return occupant->vf_254(0);
+            return weapon;
         }
-        return;
     }
-    Func_70E140(a);
+    return Func_70E140(a);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

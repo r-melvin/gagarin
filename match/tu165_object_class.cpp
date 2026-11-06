@@ -207,6 +207,7 @@ GG_STATIC_ASSERT(sizeof(ObjectHealthGetType) == 4);
 #include "object_class_level_methods.h"
 
 #include "trivial_tu165_methods.h"
+#include "object_flag_is_techno.h"
 
 #include "abstract_class_distance3d_methods.h"
 
@@ -568,17 +569,6 @@ void ObjectClass::vf_10(void* target, bool removed)
     if (target == Parachute) {
         Parachute = 0;
     }
-}
-
-// The checked techno test expanded inline: a null guard, then the flag-bit read, carried through a
-// result local (retail keeps that local's byte in the frame).
-static inline bool ObjectFlagIsTechno(ObjectClass* object)
-{
-    bool result = false;
-    if (object != 0) {
-        result = object->Flags.IsTechno;
-    }
-    return result;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
