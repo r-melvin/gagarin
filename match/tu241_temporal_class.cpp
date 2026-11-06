@@ -54,7 +54,8 @@ GG_STATIC_ASSERT(sizeof(TemporalClass*) == 4);
 #include "_layout/techno_type_class.h"
 #include "weapon_type_class.h"
 
-#include "temporal_class_let_go_methods.h"
+#include "_layout/building_class.h"
+#include "_layout/house_class.h"
 
 #include "_layout/building_class.h"
 #include "_layout/cell_class.h"
@@ -187,62 +188,62 @@ int TemporalClass::GetWarpPerStep(int nHelperCount) const
 // number of epilogues agrees, and the compiled block order already matches,
 // so there are no merged return blocks to split. The residual is register
 // naming downstream of that, not a prologue hoist.
-void Temporal_0071ABC0::LetGo()
+void TemporalClass::FUN_0071ABC0()
 {
-    Temporal_0071ABC0* next = NextTemporal;
-    Temporal_0071ABC0* prev = PrevTemporal;
+    TemporalClass* next = unknown_44;
+    TemporalClass* prev = unknown_40;
 
     if (prev == 0) {
-        Techno_0071ABC0* target = Target;
+        TechnoClass* target = Target;
         if (next != 0) {
             if (target != 0)
                 target->TemporalTargetingMe = next;
-            NextTemporal->PrevTemporal = 0;
-            NextTemporal->At_48 = At_48;
+            unknown_44->unknown_40 = 0;
+            unknown_44->unknown_48 = unknown_48;
             Target = 0;
-            NextTemporal = 0;
-            PrevTemporal = 0;
-            At_3C = 0;
-            At_38 = 0;
+            unknown_44 = 0;
+            unknown_40 = 0;
+            unknown_3C = 0;
+            unknown_38 = 0;
             return;
         }
         if (target != 0) {
             target->TemporalTargetingMe = 0;
             Target->BeingWarpedOut = 0;
-            if ((Target->*Target->Vptr->WhatAmI)() == 6) {
-                Techno_0071ABC0* building = Target;
-                building->Owner->PowerBlackoutWasActivated = 1;
-                building->FUN_00452210();
+            if (Target->vf_11() == 6) {
+                BuildingClass* building = (BuildingClass*)Target;
+                building->Owner->RecheckPower = 1;
+                building->EnableTemporal();
                 building->Owner->RecheckTechTree = 1;
             }
-            (Target->*Target->Vptr->Mark)(2);
+            Target->vf_73(2);
             Target = 0;
-            NextTemporal = 0;
-            PrevTemporal = 0;
-            At_3C = 0;
-            At_38 = 0;
+            unknown_44 = 0;
+            unknown_40 = 0;
+            unknown_3C = 0;
+            unknown_38 = 0;
             return;
         }
     } else if (next != 0) {
-        next->PrevTemporal = prev;
-        if (PrevTemporal != 0) {
-            PrevTemporal->NextTemporal = NextTemporal;
+        next->unknown_40 = prev;
+        if (unknown_40 != 0) {
+            unknown_40->unknown_44 = unknown_44;
             Target = 0;
-            NextTemporal = 0;
-            PrevTemporal = 0;
-            At_3C = 0;
-            At_38 = 0;
+            unknown_44 = 0;
+            unknown_40 = 0;
+            unknown_3C = 0;
+            unknown_38 = 0;
             return;
         }
     } else {
-        prev->NextTemporal = 0;
+        prev->unknown_44 = 0;
     }
 
     Target = 0;
-    NextTemporal = 0;
-    PrevTemporal = 0;
-    At_3C = 0;
-    At_38 = 0;
+    unknown_44 = 0;
+    unknown_40 = 0;
+    unknown_3C = 0;
+    unknown_38 = 0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

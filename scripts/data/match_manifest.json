@@ -2729,7 +2729,7 @@
  {
   "tu": "match/tu241_temporal_class.cpp",
   "addr": "0x71ABC0",
-  "sym": "?LetGo@Temporal_0071ABC0@@QAEXXZ",
+  "sym": "?FUN_0071ABC0@TemporalClass@@QAEXXZ",
   "len": "0xea",
   "name": "TemporalClass::LetGo",
   "status": "partial",
@@ -104658,15 +104658,15 @@
   "best_at": "cf203011"
  },
  {
-  "tu": "match/Tactical.cpp",
+  "tu": "match/tactical_class_vf_24_006DBB60.cpp",
   "addr": "0x6DBB60",
   "sym": "?vf_24@Tactical@@UAE_NPBUCoordStruct@@0I_N@Z",
   "len": "0x176",
   "name": "Tactical::vf_24",
   "status": "partial",
-  "pct": 1.1,
-  "best_pct": 1.1,
-  "best_at": "cf203011"
+  "pct": 12.6,
+  "best_pct": 12.6,
+  "best_at": "4e6c1721"
  },
  {
   "tu": "match/Tactical.cpp",
