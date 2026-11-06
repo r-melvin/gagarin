@@ -71079,12 +71079,13 @@
   "tu": "match/alpha_shape_class.cpp",
   "addr": "0x420960",
   "sym": "??0AlphaShapeClass@@QAE@PAVObjectClass@@HH@Z",
-  "len": "0x18f",
+  "len": "0x190",
   "name": "AlphaShapeClass::AlphaShapeClass",
   "status": "partial",
   "pct": 83.5,
   "best_pct": 83.5,
-  "best_at": "53529d7b"
+  "best_at": "53529d7b",
+  "note": "Exact through the vector appends; the residual is the inlined product-table build: retail keeps the product in EAX and moves it to ECX before the /127 multiply, and tests >255 before the 0..255 clamp (three compares); every source form tried folds to two (aligned 90.9%)."
  },
  {
   "tu": "match/alpha_shape_class.cpp",
@@ -71095,7 +71096,8 @@
   "status": "partial",
   "pct": 83.0,
   "best_pct": 83.0,
-  "best_at": "53529d7b"
+  "best_at": "53529d7b",
+  "note": "Same table-build residual as 0x420960 (aligned 91.1%)."
  },
  {
   "tu": "match/alpha_shape_class.cpp",
@@ -71169,7 +71171,8 @@
   "status": "partial",
   "pct": 67.8,
   "best_pct": 67.8,
-  "best_at": "53529d7b"
+  "best_at": "53529d7b",
+  "note": "The sweep loop is exact; the residual is the same inlined table build as 0x420960 (aligned 83.1%)."
  },
  {
   "tu": "match/alpha_shape_class.cpp",
