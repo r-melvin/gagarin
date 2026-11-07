@@ -539,6 +539,8 @@ public:
     // Methods reached from other units (__thiscall; bodies not recovered here).
     // FUNCTION: GAMEMD 0x50DEF0 (decl; reloc) -- a cell by value through a hidden pointer, RET 4.
     Cell FUN_0050DEF0() const;
+    // FUNCTION: GAMEMD 0x500200 (decl; reloc) -- a cell by value through a hidden pointer, one object argument, RET 8.
+    Cell FUN_00500200(TechnoClass* object);
     // FUNCTION: GAMEMD 0x50DF30 (decl; reloc) -- a coordinate by value through a hidden pointer, RET 4.
     CoordStruct FUN_0050DF30() const;
     // FUNCTION: GAMEMD 0x5051E0 (decl; reloc) -- the first buildable type of a rules type list, RET 4.

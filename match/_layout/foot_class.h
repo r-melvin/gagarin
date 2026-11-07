@@ -286,6 +286,8 @@ public:
     virtual void vf_307();                                         // 307 0x4DF3A0
     virtual bool vf_308();                                         // 308 0x4DF4B0
     virtual int vf_187();                                          // 187 0x4DAFC0
+    virtual int vf_140();                                          // 140 0x4DA2C0
+    virtual int vf_150();                                          // 150 0x4DDF90
     // GAMEMD 0x4D97A0 (RET 4): how strongly this object wants to attack `target`; 0 when it should not.
     int FUN_004D97A0(AbstractClass* target);
     // GAMEMD 0x4DBA50 (slot 177; RET 4): hands the centre of the lepton cell at `from`'s slot-19 point to slot 179.

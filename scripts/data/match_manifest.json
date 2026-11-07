@@ -156477,5 +156477,54 @@
   "pct": 96.7,
   "best_pct": 96.7,
   "best_at": "70f4b300"
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4D5070",
+  "sym": "?vf_135@FootClass@@UAEHXZ",
+  "len": "0x2d2",
+  "name": "FootClass::vf_135",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4D5350",
+  "sym": "?vf_138@FootClass@@UAEHXZ",
+  "len": "0x266",
+  "name": "FootClass::vf_138",
+  "status": "partial",
+  "pct": 95.2,
+  "best_pct": 95.2,
+  "best_at": "1a145394"
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4DA2C0",
+  "sym": "?vf_140@FootClass@@UAEHXZ",
+  "len": "0x217",
+  "name": "FootClass::vf_140",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4DBAD0",
+  "sym": "?vf_13@FootClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x2c2",
+  "name": "FootClass::vf_13",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4DDF90",
+  "sym": "?vf_150@FootClass@@UAEHXZ",
+  "len": "0x23e",
+  "name": "FootClass::vf_150",
+  "status": "partial",
+  "pct": 91.1,
+  "best_pct": 91.1,
+  "best_at": "1a145394"
  }
 ]

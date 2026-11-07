@@ -8,6 +8,8 @@
 //   FUNCTION: GAMEMD 0x4D4B20  FootClass::vf_133 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D4CB0  FootClass::vf_134 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D4FC0  FootClass::FUN_004D4FC0 (__thiscall)
+//   FUNCTION: GAMEMD 0x4D5070  FootClass::vf_135 (__thiscall)
+//   FUNCTION: GAMEMD 0x4D5350  FootClass::vf_138 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D7170  FootClass::vf_54 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D9720  FootClass::vf_55 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D97A0  FootClass::FUN_004D97A0 (__thiscall)
@@ -15,13 +17,16 @@
 //   FUNCTION: GAMEMD 0x4D9E70  FootClass::vf_38 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D9F70  FootClass::vf_104 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DA030  FootClass::FUN_004DA030 (__thiscall)
+//   FUNCTION: GAMEMD 0x4DA2C0  FootClass::vf_140 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DAFC0  FootClass::vf_187 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DBA50  FootClass::FUN_004DBA50 (__thiscall)
+//   FUNCTION: GAMEMD 0x4DBAD0  FootClass::vf_13 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DBED0  FootClass::vf_245 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DCE80  FootClass::FUN_004DCE80 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DD9F0  FootClass::FUN_004DD9F0 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DDC60  FootClass::vf_340 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DDDE0  FootClass::vf_28 (__thiscall)
+//   FUNCTION: GAMEMD 0x4DDF90  FootClass::vf_150 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DE670  FootClass::FUN_004DE670 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DE7B0  FootClass::vf_314 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DE940  FootClass::vf_315 (__thiscall)
@@ -65,6 +70,9 @@
 #include "_layout/session_class.h"
 #include "_layout/aircraft_class.h"
 #include "_layout/tag_class.h"
+#include "weapon_type_class.h"
+#include "_layout/warhead_type_class.h"
+#include "slave_manager_class_methods.h"
 
 // GLOBAL: GAMEMD 0x8B3D88 -- the "no cell" sentinel.
 extern CellStruct DAT_008B3D88;
@@ -253,6 +261,134 @@ BuildingClass* FootClass::FUN_004D4FC0()
     return 0;
 }
 
+// FUNCTION: GAMEMD 0x4D5070
+// Slot 135 (mission handler). A pending absorber, occupiable or garrison entry runs its slot (208, 210,
+// 211) and waits the mission rate. Otherwise without a target an object whose primary weapon has an
+// electric-assault warhead looks for a friendly building around it and attacks it, else it stands down;
+// with a target a hover type that has no hold on slot 114 heads for the nearby cell. Then an unmanned
+// C4 or ability-0xE infantryman that is not already in mission 0x11 and holds a building target goes to
+// mission 0x11. The wait is the rearm timer while it runs; a distributed-fire type with targets waits
+// none, any other the mission rate plus a random 0..2 frames.
+int FootClass::vf_135()
+{
+    if (ShouldEnterAbsorber) {
+        vf_208();
+        return (int)(FUN_005B3A00()->Rate * 900.0);
+    }
+    if (ShouldEnterOccupiable) {
+        vf_210();
+        return (int)(FUN_005B3A00()->Rate * 900.0);
+    }
+    if (ShouldGarrisonStructure) {
+        vf_211();
+        return (int)(FUN_005B3A00()->Rate * 900.0);
+    }
+    if (Target == 0) {
+        if (vf_254(1)->WeaponType != 0 && vf_254(1)->WeaponType->Warhead->ElectricAssault) {
+            BuildingClass* building = 0;
+            for (int i = 0; i < 8; i++) {
+                CellStruct cell = FootStepCell(vf_110(), i & 7);
+                building = DAT_0087F7E8.FUN_005657A0(&cell)->GetBuilding();
+                if (building && building->Type->Overpowerable) {
+                    if (building->vf_15() == vf_15()) {
+                        break;
+                    }
+                }
+                building = 0;
+            }
+            if (building != 0) {
+                vf_242(building);
+                unknown_bool_68E = 1;
+                vf_122(1, false);
+            } else {
+                vf_286();
+            }
+        } else {
+            vf_286();
+        }
+    } else if (vf_33()->HoverAttack) {
+        if (vf_114() == 0) {
+            SetDestination(DAT_0087F7E8.FUN_005657A0(NearbyLocation(this)), true);
+        }
+    }
+    int base = (int)(FUN_005B3A00()->Rate * 900.0);
+    // Retail tests this (0x4D523A, TEST ESI,ESI) and then compares the kind with a plain CMP EAX,0xF / JNE
+    // (0x4D5247), a branch the mask-form helper cannot produce: KindCast_00459F40 was tried first and scored 60.4%.
+    // THISNULL: GAMEMD 0x459F40
+    if (this != 0 && vf_11() == 0xF && !Owner->IsControlledByHuman()
+        && (((InfantryClass*)this)->Type->C4 || FUN_0070D0D0(0xE)) && vf_97() != 0x11
+        && Target != 0 && Target->vf_11() == 6) {
+        vf_122(0x11, false);
+    }
+    int result = 0;
+    if (RearmTimer.GetTimeLeft() != 0) {
+        result = RearmTimer.GetTimeLeft();
+    } else if (!(vf_33()->DistributedFire && CurrentTargets.Count > 0)) {
+        result = DAT_00A8B230->unknown_0218.RandomRanged(0, 2) + base;
+    }
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x4D5350
+// Slot 138 (mission handler). A type that is not a hunter with a place to stand: an infantryman who can
+// enter a building goes after the target (an engineer-only one takes it outright, a C4 or ability-0xE one
+// only when it is a building, a vehicle thief takes anything), others stand down; a non-infantry object
+// does the same. A hunter type or a spot refused by slot 231 sends a computer-run object in a campaign to
+// the player's start cell, guarding with its slaves first. Then wait the mission rate plus a random 0..2 frames.
+int FootClass::vf_138()
+{
+    bool spot = false;
+    if (!vf_33()->StupidHunt) {
+        CoordStruct here = Location;
+        if (vf_231(here, 0)) {
+            InfantryClass* infantry = vf_11() == 0xF ? (InfantryClass*)this : 0;
+            if (infantry != 0) {
+                if (infantry->Type->Engineer && !infantry->Type->C4 && !infantry->FUN_0070D0D0(0xE)) {
+                    SetDestination(Target, true);
+                    goto enter;   // retail 0x4D53F4: JMP 0x4D548F, the shared enter tail
+                }
+                if ((infantry->Type->C4 || infantry->FUN_0070D0D0(0xE)) && Target != 0 && Target->vf_11() == 6) {
+                    SetDestination(Target, true);
+                    vf_122(0x11, false);
+                    if (vf_128()) {
+                        vf_123();
+                    }
+                } else if (infantry->Type->VehicleThief) {
+                    SetDestination(Target, true);
+                  enter:
+                    vf_122(8, false);
+                    if (vf_128()) {
+                        vf_123();
+                    }
+                } else {
+                    SetDestination(0, true);
+                    vf_335(0);
+                }
+            } else {
+                vf_335(0);
+            }
+            spot = true;
+        }
+    }
+    if (!spot) {
+        if (!Owner->IsControlledByHuman() && Session_00A8B238.GameMode == 0) {
+            CellStruct spot = DAT_008B3D88;
+            spot = DAT_00A83D4C->FUN_0050DEF0();
+            if (spot.X != DAT_008B3D88.X || spot.Y != DAT_008B3D88.Y) {
+                if (SlaveManager != 0) {
+                    ((SlaveManagerView_006B0A20*)SlaveManager)->AllGuard();
+                }
+                SetDestination(DAT_0087F7E8.FUN_005657A0(&spot), true);
+                vf_122(2, true);
+            }
+        } else {
+            vf_286();
+        }
+    }
+    int base = (int)(FUN_005B3A00()->Rate * 900.0);
+    return base + DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
+}
+
 // FUNCTION: GAMEMD 0x4D7170
 // Slot 54. Places the object on the map through the base slot, then unlimbos the locomotor and powers it
 // down for an ion-sensitive one while the owner's ion sensitives are offline (up otherwise), clears the
@@ -427,6 +563,56 @@ void FootClass::FUN_004DA030()
     }
 }
 
+// FUNCTION: GAMEMD 0x4DA2C0
+// Slot 140 (mission handler). Status 0 with no destination picks a cell: with a team whose type names a
+// waypoint, the map-edge search from the team's waypoint; failing that, the same search with no waypoint.
+// The pick becomes the destination and status 1; a standing destination moves status 0 to 1 and status 1
+// with none back to 0. Then wait the mission rate plus a random 0..2 frames.
+int FootClass::vf_140()
+{
+    switch (MissionStatus) {
+    case 0:
+        if (Destination != 0) {
+            MissionStatus = 1;
+            break;
+        }
+        {
+            CellStruct pick;
+            pick.X = 0;
+            pick.Y = 0;
+            CellStruct here1;
+            CellStruct here2;
+            CellStruct buffer1;
+            CellStruct buffer2;
+            CellStruct scratch1;
+            CellStruct scratch2;
+            if (Team != 0) {
+                CellStruct* waypoint = Team->Type->GetWaypoint(&buffer1);
+                if (waypoint->X != DAT_008B3D88.X || waypoint->Y != DAT_008B3D88.Y) {
+                    here1 = CoordToCell(vf_18());
+                    pick = *DAT_0087F7E8.FUN_004AA440(&scratch1, Owner->FUN_0050DAA0(),
+                                                      Team->Type->GetWaypoint(&buffer2), &here1, vf_33()->SpeedType, 1, 0);
+                }
+            }
+            if (pick.X == DAT_008B3D88.X && pick.Y == DAT_008B3D88.Y) {
+                here2 = CoordToCell(vf_18());
+                pick = *DAT_0087F7E8.FUN_004AA440(&scratch2, Owner->FUN_0050DAA0(), &DAT_008B3D88, &here2,
+                                                  vf_33()->SpeedType, 1, 0);
+            }
+            SetDestination(DAT_0087F7E8.FUN_005657A0(&pick), true);
+            MissionStatus = 1;
+        }
+        break;
+    case 1:
+        if (Destination == 0) {
+            MissionStatus = 0;
+        }
+        break;
+    }
+    int base = (int)(FUN_005B3A00()->Rate * 900.0);
+    return base + DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
+}
+
 // FUNCTION: GAMEMD 0x4DAFC0
 // Slot 187. The base slot's value plus the largest of the type's four Z fudge terms, each scaled by its
 // measure of the cell around the object (bridge only when that cell flag is set), plus the locomotor's Z adjust.
@@ -467,6 +653,59 @@ void FootClass::FUN_004DBA50(TechnoClass* from)
     centre.Y = (cell.Y << 8) + 0x80;
     centre.Z = 0;
     vf_179(&centre);
+}
+
+// FUNCTION: GAMEMD 0x4DBAD0
+// Slot 13. Feeds the synchronised movement state to the checksum after the base slot: the threat
+// multiplier, the cell distance from the map origin, the tunnel distance, the speed pair, the ids of the
+// destination, the last destination, the team and the next team member, the two timers as the frames
+// they still have to run, the path wait time, the planning-point distance and a run of movement flags.
+void FootClass::vf_13(Obj_004A1D30* crc)
+{
+    TechnoClass::vf_13(crc);
+    crc->FUN_004A1D90(unknown_530);
+    double cellY = CurrentMapCoords.Y;
+    double cellX = CurrentMapCoords.X;
+    crc->FUN_004A1D30((int)FUN_004CAC40(cellY * cellY + cellX * cellX));
+    double tunnelZ = CurrentTunnelCoords.Z;
+    double tunnelY = CurrentTunnelCoords.Y;
+    double tunnelX = CurrentTunnelCoords.X;
+    crc->FUN_004A1D50((int)FUN_004CAC40(tunnelX * tunnelX + tunnelY * tunnelY + tunnelZ * tunnelZ));
+    crc->FUN_004A1D90(SpeedPercentage);
+    crc->FUN_004A1D90(SpeedMultiplier);
+    if (Destination != 0) {
+        crc->FUN_004A1D50(Destination->vf_rtti_4());
+    }
+    if (LastDestination != 0) {
+        crc->FUN_004A1D50(((AbstractClass*)LastDestination)->vf_rtti_4());
+    }
+    if (Team != 0) {
+        crc->FUN_004A1D50(Team->vf_rtti_4());
+    }
+    if (NextTeamMember != 0) {
+        crc->FUN_004A1D50(NextTeamMember->vf_rtti_4());
+    }
+    crc->FUN_004A1D50(PathDelayTimer.GetTimeLeft());
+    crc->FUN_004A1D50(PathWaitTimes);
+    crc->FUN_004A1D50(unknown_timer_650.GetTimeLeft());
+    double pointZ = unknown_point3d_678.Z;
+    double pointY = unknown_point3d_678.Y;
+    double pointX = unknown_point3d_678.X;
+    crc->FUN_004A1D50((int)FUN_004CAC40(pointX * pointX + pointY * pointY + pointZ * pointZ));
+    crc->FUN_004A1C10(TubeIndex);
+    crc->FUN_004A1C10(TubeFaceIndex);
+    crc->FUN_004A1CA0(IsScanLimited);
+    crc->FUN_004A1CA0(IsInitiated);
+    crc->FUN_004A1CA0(ShouldScanForTarget);
+    crc->FUN_004A1CA0(unknown_bool_68B);
+    crc->FUN_004A1CA0(IsDeploying);
+    crc->FUN_004A1CA0(IsFiring);
+    crc->FUN_004A1CA0(unknown_bool_6AF);
+    crc->FUN_004A1CA0(unknown_bool_6B0);
+    crc->FUN_004A1CA0(unknown_bool_6B1);
+    crc->FUN_004A1CA0(unknown_bool_6B2);
+    crc->FUN_004A1CA0(unknown_bool_6B3);
+    crc->FUN_004A1C10(unknown_bool_6B4);
 }
 
 // FUNCTION: GAMEMD 0x4DBED0
@@ -633,6 +872,62 @@ int FootClass::vf_28(CellStruct* cell, char a2, char a3)
         }
     }
     return action;
+}
+
+// FUNCTION: GAMEMD 0x4DDF90
+// Slot 150 (mission handler). Status 0 with a target stands down; without one it takes the cell under the
+// object as the archive target if there is none, looks around the archive target for something to attack
+// (and attacks it when it is within a range and a half of the archive target); with a target by then it waits
+// one frame; else the owner picks a spot for the object and the object heads there, or stands down when
+// there is none, with the archive target cleared. Status 1 with no destination clears the archive target and
+// goes to mission 0xB. Then wait the mission rate plus a random 0..2 frames.
+int FootClass::vf_150()
+{
+    CoordStruct here;
+    AbstractClass* found;
+    switch (MissionStatus) {
+    case 0:
+        if (Target != 0) {
+            vf_335(0);
+            break;
+        }
+        if (ArchiveTarget == 0) {
+            here = Location;
+            SetArchiveTarget(DAT_0087F7E8.FUN_00565730(&here));
+        }
+        IsScanLimited = 0;
+        // ADDRCALL: GAMEMD 0x4DE051 (the archive target's returned coordinate address is the slot-241 argument)
+        found = vf_241(0, &ArchiveTarget->vf_18(), false);
+        if (found != 0) {
+            double distance = Distance3D(found->vf_18(), ArchiveTarget->vf_18());
+            if (vf_199(1) * 1.5 > distance) {
+                vf_242(found);
+            }
+        }
+        if (Target != 0) {
+            return 1;
+        }
+        MissionStatus = 1;
+        {
+            CellStruct spot = Owner->FUN_00500200(this);
+            if (spot.X == DAT_008B3D88.X && spot.Y == DAT_008B3D88.Y) {
+                SetDestination(0, true);
+            } else {
+                SetDestination(DAT_0087F7E8.FUN_005657A0(&spot), true);
+            }
+        }
+        SetArchiveTarget(0);
+        break;
+    case 1:
+        if (Destination == 0) {
+            SetArchiveTarget(0);
+            vf_122(0xB, false);
+            vf_123();
+        }
+        break;
+    }
+    int base = (int)(FUN_005B3A00()->Rate * 900.0);
+    return base + DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
 }
 
 // FUNCTION: GAMEMD 0x4DE670
