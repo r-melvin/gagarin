@@ -98,6 +98,7 @@ public:
     int FUN_00480A80(int value); // GAMEMD 0x480A80 (decl; reloc), RET 4; returns the amount taken (UnitClass::FUN_0073D450 tests it)
     void RecalcAttributes_484680(); // GAMEMD 0x484680, __thiscall
     int FUN_00487D50(); // GAMEMD 0x487D50 (decl; reloc): Level + 4 * (Flags bit 7)
+    bool FUN_00484AE0(); // GAMEMD 0x484AE0 (decl; reloc)
     // FUNCTION: GAMEMD 0x480630 (decl; reloc) -- one byte argument.
     void FUN_00480630(char flag);
     // FUNCTION: GAMEMD 0x480CB0 (decl; reloc) -- one stack argument.

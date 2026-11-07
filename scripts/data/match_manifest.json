@@ -156904,5 +156904,32 @@
   "name": "AnimClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/Infantry.cpp",
+  "addr": "0x51B1F0",
+  "sym": "?vf_242@InfantryClass@@UAEXPAVAbstractClass@@@Z",
+  "len": "0x15b",
+  "name": "InfantryClass::vf_242",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Infantry.cpp",
+  "addr": "0x5221D0",
+  "sym": "?FUN_005221D0@InfantryClass@@QAE_NPAUCellStruct@@0@Z",
+  "len": "0x163",
+  "name": "InfantryClass::FUN_005221D0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Infantry.cpp",
+  "addr": "0x522FE0",
+  "sym": "?vf_322@InfantryClass@@UAE_NUCoordStruct@@@Z",
+  "len": "0x262",
+  "name": "InfantryClass::vf_322",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

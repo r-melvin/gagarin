@@ -197,6 +197,7 @@ MathTblZero4 DAT_00A8F1D0;
 // `_$E` numbers (measured: 73 matched, 0 regressed here; 59 matched, 14 regressed there). The two other new includes of
 // this wave, weapon_type_class.h and vox_class.h, move nothing and sit with the rest.
 #include "_layout/voc_class.h"
+#include "_layout/astar_00746000.h"
 
 // GLOBAL: GAMEMD 0xA83DE8 -- every InfantryClass joins this list.
 extern DynamicVectorClass<InfantryClass*> DAT_00A83DE8;
@@ -267,6 +268,52 @@ void InfantryClass::vf_10(void* a1, bool a2)
     if (this->Type == a1) {
         this->Type = 0;
     }
+}
+
+// FUNCTION: GAMEMD 0x51B1F0
+// Slot 242: a new target stops the current action (the deploy kinds undeploy, a crawler stands up, else idle);
+// the rocker link is dropped, then TechnoClass takes the target. An infiltrator that was given a building it
+// may capture (or spy on, for agents) is sent to it.
+void InfantryClass::vf_242(AbstractClass* target)
+{
+    if (target != Target) {
+        if (Health > 0) {
+            int s = SequenceAnim;
+            IsFiring = 0;
+            bool deploying = s == 0x1B || s == 0x1C || s == 0x1D || s == 0x1E;
+            if (deploying) {
+                this->vf_342(0x1C, 0, 0);
+            } else if (Crawling) {
+                this->vf_342(2, 0, 0);
+            } else {
+                this->vf_342(0, 0, 0);
+            }
+        }
+        if (target != Target) {
+            if (DirectRockerLinkedUnit) {
+                static_cast<TechnoClass*>(DirectRockerLinkedUnit)->DirectRockerLinkedUnit = 0;
+                DirectRockerLinkedUnit = 0;
+            }
+        }
+    }
+    int s = SequenceAnim;
+    if ((s == 0x1B || s == 0x1C || s == 0x1D || s == 0x1E) && !Type->DeployFire) {
+        return;
+    }
+    PathDirections[0] = -1;
+    TechnoClass::vf_242(target);
+    if (!Destination && Type->Infiltrate) {
+        BuildingClass* building = target && target->vf_11() == 6 ? static_cast<BuildingClass*>(target) : 0;
+        if (!Type->Agent && building && building->Type->Capturable) {
+            this->SetDestination(target, true);
+            unknown_bool_68E = 0;
+            return;
+        }
+        if (Type->Agent && building && building->Type->Spyable) {
+            this->SetDestination(target, true);
+        }
+    }
+    unknown_bool_68E = 0;
 }
 
 // FUNCTION: GAMEMD 0x51CBA0
@@ -879,6 +926,48 @@ bool InfantryClass::FUN_00522100()
     return IsEqualCLSID(id, DAT_007E9AC0);
 }
 
+// FUNCTION: GAMEMD 0x5221D0
+// Should a short hop between two cells be handed to the path search? An airborne infantryman (height above
+// zero), a failed pre-check, a far hop or an off-map endpoint all say yes; a house that cannot see ahead, a
+// blocked start cell, the same cell or an adjacent one say no. In between the search is run and only a
+// long result counts.
+bool InfantryClass::FUN_005221D0(CellStruct* from, CellStruct* to)
+{
+    // Retail makes this call first and drops the result (the second call below is the one tested).
+    this->vf_114();
+    if (Owner->IonSensitivesShouldBeOffline()) {
+        return false;
+    }
+    if (this->vf_114() > 0) {
+        return true;
+    }
+    if (Owner->IsControlledByHuman()) {
+        CellClass* cell = DAT_0087F7E8.FUN_005657A0(*from);
+        if (cell && cell->FUN_00484AE0()) {
+            return false;
+        }
+    }
+    if (DAT_0087F7E8.FUN_0056D100(from, to, 7, OnBridge, (DAT_0087F7E8.FUN_005657A0(*to)->Flags >> 8) & 1, 0)) {
+        if (from->X == to->X && from->Y == to->Y) {
+            return false;
+        }
+        int dy = abs(to->Y - from->Y);
+        int dx = abs(to->X - from->X);
+        int dist = dx > dy ? dx : dy;
+        if (dist == 1) {
+            return false;
+        }
+        if (dist < 4
+            && DAT_0087F7E8.FUN_00578460(from, true)
+            && DAT_0087F7E8.FUN_00578460(to, true)) {
+            int steps = DAT_0087E8B8.AttemptPath(
+                from, to, this, OnBridge, (DAT_0087F7E8.FUN_005657A0(*to)->Flags >> 8) & 1, 7);
+            return steps > 7;
+        }
+    }
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x522340
 // Slot 335: while deploying toward a target with a deploy-fire weapon the target is out of range of, the
 // infantryman undeploys (sequence 0x1F); while standing and the target is in range, it starts to deploy.
@@ -1279,6 +1368,37 @@ int InfantryClass::vf_137()
 bool InfantryClass::FUN_00522FC0()
 {
     return this->vf_97() == 10;
+}
+
+// GLOBAL: GAMEMD 0x007E9A90 -- CLSID of TeleportLocomotionClass.
+extern const CLSID DAT_007E9A90;
+
+// FUNCTION: GAMEMD 0x522FE0
+// Slot 322: the infantryman is moved to a coordinate by a teleport locomotor that piggybacks the current one.
+bool InfantryClass::vf_322(CoordStruct where)
+{
+    if (IsInAir() || vf_88() || IsImmobilized || vf_117() || vf_118()) {
+        return false;
+    }
+    Locomotor->MarkAllOccupationBits(0);
+    vf_61(&where);
+    FrozenStill = true;
+    SetDestination(DAT_0087F7E8.FUN_00565730(&where), true);
+    LocoCoord to = where;
+    Locomotor->ForceImmediateDestination(to);
+    LocomotorPtr teleport(DAT_007E9A90, 0, 7);
+    IPiggybackPtr piggyback(teleport);
+    if (DAT_0087F7E8.FUN_00565730(&where)->Flags & 0x100) {
+        where.Z += DAT_00A8F234;
+    }
+    teleport->LinkToObject(this);
+    piggyback->BeginPiggyback(Locomotor);
+    Locomotor = teleport;
+    IsImmobilized = true;
+    ChronoDestCoords = where;
+    SetDestination(DAT_0087F7E8.FUN_00565730(&where), true);
+    Locomotor->MarkAllOccupationBits(0);
+    return true;
 }
 
 // FUNCTION: GAMEMD 0x523250

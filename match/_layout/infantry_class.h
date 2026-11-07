@@ -90,6 +90,7 @@ public:
     // Native primary slot 288: two stack dwords, target pointer and flag.
     virtual void SetDestination(AbstractClass* target, bool a2);   // 288 0x51AA40
     virtual bool EnterIdleMode(bool initial, bool a2);             // 289 0x51CBA0
+    virtual bool vf_322(CoordStruct where);                        // 322 0x522FE0
     virtual void vf_326();                                         // 326 0x521C10
     virtual void vf_328(int a1);                                   // 328 0x521C60
     virtual CoordStruct vf_192(int a1);                            // 192 0x521D30
@@ -107,6 +108,8 @@ public:
     bool FUN_00522510();
     // FUNCTION: GAMEMD 0x520260 -- off-map while in the playfield: flag the team, run slots 232 and 62.
     bool FUN_00520260();
+    // FUNCTION: GAMEMD 0x5221D0 -- whether a short hop between two cells needs the path search (RET 8).
+    bool FUN_005221D0(CellStruct* from, CellStruct* to);
     // FUNCTION: GAMEMD 0x522C30 -- no use of this; the stack argument is a sequence index.
     bool FUN_00522C30(int sequence);
     // FUNCTION: GAMEMD 0x522C60 -- no use of this; the stack argument is a sequence index.
