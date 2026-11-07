@@ -98,6 +98,10 @@ public:
     void FUN_006EDB50(ScriptActionNode*, bool);
     // FUNCTION: GAMEMD 0x6EF610 (declaration; thiscall, RET 8).
     void FUN_006EF610(ScriptActionNode* action, bool enabled);
+    // FUNCTION: GAMEMD 0x6EFC70 (declaration; thiscall, RET 8).
+    void FUN_006EFC70(ScriptActionNode* action, bool enabled);
+    // FUNCTION: GAMEMD 0x6F0130 (declaration; thiscall, RET 8).
+    void FUN_006F0130(ScriptActionNode* action, bool enabled);
 
     // FUNCTION: GAMEMD 0x6EA4F0 -- AddMember with the flag set; RET 4.
     void FUN_006EA4F0(FootClass* member);
@@ -123,6 +127,8 @@ public:
     void FUN_006ECF10(int a1, int a2);
     // FUNCTION: GAMEMD 0x6ECF50
     void FUN_006ECF50(ActionArg_r14* a1, int a2);
+    // FUNCTION: GAMEMD 0x6ED7E0 (declaration; thiscall, RET 8).
+    void FUN_006ED7E0(ScriptActionNode* action, bool enabled);
     // FUNCTION: GAMEMD 0x6EDC70
     void FUN_006EDC70(int a1, int a2);
 

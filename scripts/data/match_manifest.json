@@ -84578,9 +84578,9 @@
  {
   "tu": "match/trivial_tu086_methods.cpp",
   "addr": "0x4DA020",
-  "sym": "?FUN_004DA020@@YGPAUArg1_004DA020@@PAU1@PAUArg2_004DA020@@@Z",
+  "sym": "?FUN_004DA020@FootClass@@QAEPAUCellStruct@@PAU2@0@Z",
   "len": "0xf",
-  "name": "FUN_004DA020",
+  "name": "FootClass::FUN_004DA020",
   "status": "matched",
   "pct": 100
  },
@@ -108137,9 +108137,9 @@
  {
   "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EF9E0",
-  "sym": "?FUN_006EF9E0@Member_006EDDC0@@QAE_NXZ",
+  "sym": "?FUN_006EF9E0@FootClass@@QAE_NXZ",
   "len": "0x2e",
-  "name": "Member_006EDDC0::FUN_006EF9E0",
+  "name": "FootClass::FUN_006EF9E0",
   "status": "matched",
   "pct": 100
  },
@@ -156304,5 +156304,36 @@
   "name": "AircraftClass::vf_54",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/tu235_team_class.cpp",
+  "addr": "0x6ED7E0",
+  "sym": "?FUN_006ED7E0@TeamClass@@QAEXPAUScriptActionNode@@_N@Z",
+  "len": "0x2af",
+  "name": "TeamClass::FUN_006ED7E0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu235_team_class.cpp",
+  "addr": "0x6EFC70",
+  "sym": "?FUN_006EFC70@TeamClass@@QAEXPAUScriptActionNode@@_N@Z",
+  "len": "0x1e2",
+  "name": "TeamClass::FUN_006EFC70",
+  "status": "partial",
+  "pct": 94.7,
+  "best_pct": 94.7,
+  "best_at": "b9ffad29"
+ },
+ {
+  "tu": "match/tu235_team_class.cpp",
+  "addr": "0x6F0130",
+  "sym": "?FUN_006F0130@TeamClass@@QAEXPAUScriptActionNode@@_N@Z",
+  "len": "0x272",
+  "name": "TeamClass::FUN_006F0130",
+  "status": "partial",
+  "pct": 90.5,
+  "best_pct": 90.5,
+  "best_at": "b9ffad29"
  }
 ]

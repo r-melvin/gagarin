@@ -9,26 +9,12 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
-struct Arg1_004DA020;
-struct Arg2_004DA020;
 struct Obj_004D94A0;
 struct Obj_004DA2A0;
 struct Obj_004DFA50;
 
 // FUNCTION: GAMEMD 0x5F6C30 (declaration)
 bool FUN_005F6C30(Obj_004DFA50*, int);
-
-struct Arg1_004DA020
-{
-    int unknown_00;   // +0x0000
-};
-GG_STATIC_ASSERT(offsetof(Arg1_004DA020, unknown_00) == 0x0);
-
-struct Arg2_004DA020
-{
-    int unknown_00;   // +0x0000
-};
-GG_STATIC_ASSERT(offsetof(Arg2_004DA020, unknown_00) == 0x0);
 
 struct Obj_004D94A0
 {
@@ -162,8 +148,6 @@ struct Obj_004DFA50
 GG_STATIC_ASSERT(offsetof(Obj_004DFA50, unknown_6AD) == 0x6AD);
 
 
-// FUNCTION: GAMEMD 0x4DA020
-Arg1_004DA020* __stdcall FUN_004DA020(Arg1_004DA020* a1, Arg2_004DA020* a2);
 // FUNCTION: GAMEMD 0x4DFA50
 unsigned char FUN_004DFA50(Obj_004DFA50* a1, int a2);
 // FUNCTION: GAMEMD 0x4E0C30

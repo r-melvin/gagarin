@@ -149,6 +149,10 @@ public:
 
     // FUNCTION: GAMEMD 0x4D4FC0 -- the first of the eight adjacent cells holding a building of the same owner with the type flag at +0x1575.
     BuildingClass* FUN_004D4FC0();
+    // FUNCTION: GAMEMD 0x4DA020 -- copies *in to *out and returns out; thiscall (this unused), RET 8.
+    CellStruct* FUN_004DA020(CellStruct* out, CellStruct* in);
+    // FUNCTION: GAMEMD 0x6EF9E0 -- team member usability test; tests `this`, AL result.
+    bool FUN_006EF9E0();
     // FUNCTION: GAMEMD 0x4DA030 -- with no destination, pop the first queued waypoint and make it the destination (re-queued when the loop flag is set).
     void FUN_004DA030();
 

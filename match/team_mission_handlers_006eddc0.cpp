@@ -492,8 +492,6 @@ struct Member_006EDDC0 {
     virtual void vf_326();
     virtual void vf_327();
     virtual void vf_328(int arg);
-    // FUNCTION: GAMEMD 0x6EF9E0
-    bool FUN_006EF9E0();
     unsigned char unknown_04[0x68];
     int unknown_6C;   // +0x006C
     unsigned char unknown_70[4];
@@ -907,13 +905,15 @@ int Owner_006EDDC0::FUN_006F03B0()
     return ((Rules_006F03B0*)DAT_008871E0)->unknown_171C;
 }
 
+#include "_layout/foot_class.h"
+
 // FUNCTION: GAMEMD 0x6EF9E0
 // True for a live, healthy member that is not hidden (or the global override is on).
-bool Member_006EDDC0::FUN_006EF9E0()
+bool FootClass::FUN_006EF9E0()
 {
     // Retail entry: test ecx,ecx / je 0x6EFA0B at 0x6EF9E0.
     // THISNULL: GAMEMD 0x6EF9E0
-    if (this != 0 && unknown_90 && unknown_6C != 0 && (DAT_00A8E7AC != 0 || !unknown_81)) {
+    if (this != 0 && IsAlive && Health != 0 && (DAT_00A8E7AC != 0 || !InLimbo)) {
         return true;
     }
     return false;

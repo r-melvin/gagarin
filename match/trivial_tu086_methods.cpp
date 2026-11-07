@@ -22,11 +22,11 @@ int FootClass::vf_329()
 }
 
 // FUNCTION: GAMEMD 0x4DA020
-// Stores its argument in a member; pops its stack arguments.
-Arg1_004DA020* __stdcall FUN_004DA020(Arg1_004DA020* a1, Arg2_004DA020* a2)
+// Copies *in to *out and returns out. A member: callers load ECX (0x6ED9E2) though the body does not use it.
+CellStruct* FootClass::FUN_004DA020(CellStruct* out, CellStruct* in)
 {
-    a1->unknown_00 = a2->unknown_00;
-    return a1;
+    *out = *in;
+    return out;
 }
 
 // FUNCTION: GAMEMD 0x4DA2A0

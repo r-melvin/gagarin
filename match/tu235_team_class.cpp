@@ -425,6 +425,8 @@ const char* FUN_0048E090(unsigned int index);
 extern const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x7F46F0
 extern const double DAT_007F46F0;
+// GLOBAL: GAMEMD 0x7E2AC8
+extern const float DAT_007E2AC8;
 // GLOBAL: GAMEMD 0xB0E950
 extern double DAT_00B0E950;
 
@@ -443,6 +445,7 @@ double DAT_00B0E988 = DAT_007E1718 / DAT_00B0E9A0;
 #include "_layout/ai_trigger_type_class.h"
 #include "_layout/team_type_class.h"
 #include "_layout/house_class.h"
+#include "_layout/super_class.h"
 #include "_layout/tag_class.h"
 #include "vector_class_operations.h"
 
@@ -695,6 +698,11 @@ void TeamClass::vf_10(void* target, bool removed)
 // GLOBAL: GAMEMD 0xA8E7AC
 extern int DAT_00A8E7AC;
 
+// FUNCTION: GAMEMD 0x645BB0 (decl; reloc) -- house_class_pick_target_methods.h declares it too, but its DAT_008B40E8 view clashes here.
+int FUN_00645BB0(int targetType);
+
+#include "map_class_area_methods.h"
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6EC130
 // Keep a member within the stray distance of the team's destination at +0x34.
@@ -845,6 +853,67 @@ void TeamClass::FUN_006ECF10(int a1, int a2)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6ED7E0
+//
+// Keep every member within the stray distance of the team's destination (the
+// body of 0x6EC130, expanded), then, for a member with no target and no
+// destination: when it is far from the destination (and the action is not
+// kind 0xB), send it to a cell next to the destination; otherwise put it in the
+// action's mission.
+void TeamClass::FUN_006ED7E0(ScriptActionNode* action, bool enabled)
+{
+    int mode = action->Argument;
+    for (FootClass* m = FirstUnit; m != 0; m = m->NextTeamMember) {
+        if (m != 0 && m->IsAlive && m->Health && (DAT_00A8E7AC || !m->InLimbo) && !m->IsInitiated) {
+            ScriptActionNode node;
+            int current = Target28->GetCurrentAction(&node)->Action;
+            int stray;
+            if (current == 0x36 || current == 0x35) stray = RulesInstance->RelaxedStray;
+            else stray = RulesInstance->Stray;
+            if (m->FUN_005F6360(Member34) > stray) {
+                if (m->Destination == 0) {
+                    m->vf_122(2, false);
+                    m->vf_242(0);
+                    m->SetDestination(Member34, true);
+                }
+            } else {
+                m->IsInitiated = 1;
+            }
+        }
+        if (m != 0 && m->IsAlive && m->Health && (DAT_00A8E7AC || !m->InLimbo) &&
+            (m->IsInitiated || m->vf_11() == 2)) {
+            if (m->Target != 0) {
+                continue;
+            }
+            if (m->Destination == 0) {
+                ScriptActionNode node;
+                int current = Target28->GetCurrentAction(&node)->Action;
+                int stray;
+                if (current == 0x36 || current == 0x35) stray = RulesInstance->RelaxedStray;
+                else stray = RulesInstance->Stray;
+                if (m->FUN_005F6360(Member34) > stray * 2 && mode != 0xB) {
+                    m->vf_122(2, false);
+                    m->SetDestination(Member34, true);
+                    m->vf_122(2, false);
+                    CellStruct cell = Coord2Cell(Member34->vf_18());
+                    CellStruct copy;
+                    CellStruct close = *m->FUN_004DA020(&copy, &cell);
+                    m->SetDestination(DAT_0087F7E8.FUN_005657A0(close), true);
+                    continue;
+                }
+            }
+            if (m->Target == 0 && m->Destination == 0) {
+                if (m->vf_97() != mode && !(mode == 5 && m->vf_97() == 0x10)) {
+                    m->SetArchiveTarget(0);
+                    m->vf_122(mode, false);
+                    m->vf_242(0);
+                    m->SetDestination(0, true);
+                }
+            }
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x6EDA90
 // Calls other functions.
 void Obj_006EDA90::FUN_006EDA90(Arg1_006EDA90* a1, int a2)
@@ -1104,6 +1173,119 @@ void TeamClass::FUN_006EF610(ScriptActionNode* action, bool enabled)
         }
     }
 
+    Done = true;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6EFC70
+//
+// Pick the usable member with the highest leadership rating, then use its
+// house's first super weapon of type 1: fire it at the team's destination
+// once it is ready and the house has enough power; otherwise finish unless
+// the weapon is still charging toward the minor-ready threshold.
+void TeamClass::FUN_006EFC70(ScriptActionNode* action, bool enabled)
+{
+    FootClass* m = FirstUnit;
+    FootClass* leader = m;
+    int best = -1;
+    for (; m != 0; m = m->NextTeamMember) {
+        int rating = m->vf_33()->LeadershipRating;
+        if (m->FUN_006EF9E0() && (m->IsInitiated || m->vf_11() == 2) && rating > best) {
+            leader = m;
+            best = rating;
+        }
+    }
+    if (leader == 0) {
+        Done = true;
+        return;
+    }
+    HouseClass* house = leader->Owner;
+    int count = house->Supers.Count;
+    SuperClass* super = 0;
+    for (int i = 0; i < count; i++) {
+        if (house->Supers.Items[i]->Type->Type == 1) {
+            super = house->Supers.Items[i];
+            break;
+        }
+    }
+    if (super == 0) {
+        Done = true;
+        return;
+    }
+    if (super->IsReady && house->GetPowerPercentage() >= DAT_007E1718) {
+        house->Fire_SW(super->Type->Type, Coord2Cell(Member34->vf_18()));
+        Done = true;
+        return;
+    }
+    int left = super->RechargeTimer.GetTimeLeft();
+    float total = (float)super->GetRechargeTime();
+    if (super->IsPresent) {
+        if ((float)left / total > DAT_007E2AC8 - RulesInstance->AIMinorSuperReadyPercent) {
+            Done = true;
+        }
+    } else {
+        Done = true;
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6F0130
+//
+// Like 0x6EFC70, for a house holding both a type 3 and a type 4 super weapon:
+// once the first is ready and the house has the power, search for a target of
+// the action's kind around the leader, fire both weapons (the first at the
+// team's destination, the second at the target) and aim the team at it.
+void TeamClass::FUN_006F0130(ScriptActionNode* action, bool enabled)
+{
+    FootClass* m = FirstUnit;
+    FootClass* leader = m;
+    int best = -1;
+    for (; m != 0; m = m->NextTeamMember) {
+        int rating = m->vf_33()->LeadershipRating;
+        if (m->FUN_006EF9E0() && (m->IsInitiated || m->vf_11() == 2) && rating > best) {
+            leader = m;
+            best = rating;
+        }
+    }
+    if (leader != 0) {
+        HouseClass* house = leader->Owner;
+        SuperClass* first = 0;
+        SuperClass* second = 0;
+        int count = house->Supers.Count;
+        if (count > 0) {
+            for (int i = 0; i < count; i++) {
+                SuperClass* super = house->Supers.Items[i];
+                int type = super->Type->Type;
+                if (type == 3) {
+                    first = super;
+                }
+                if (type == 4) {
+                    second = super;
+                }
+            }
+            if (first != 0 && second != 0) {
+                if (first->IsReady && house->GetPowerPercentage() >= DAT_007E1718) {
+                    int threat = FUN_00645BB0(action->Argument);
+                    CoordStruct where = leader->Location;
+                    AbstractClass* target = leader->vf_241(threat, &where, Type->OnlyTargetHouseEnemy);
+                    if (target != 0) {
+                        house->Fire_SW(first->Type->Type, Coord2Cell(Member34->vf_18()));
+                        house->Fire_SW(second->Type->Type, Coord2Cell(target->vf_18()));
+                        AssignMissionTarget(target);
+                    }
+                    Done = true;
+                    return;
+                }
+                int left = first->RechargeTimer.GetTimeLeft();
+                float total = (float)first->GetRechargeTime();
+                if (first->IsPresent) {
+                    if (!((float)left / total > DAT_007E2AC8 - RulesInstance->AIMinorSuperReadyPercent)) {
+                        return;
+                    }
+                }
+            }
+        }
+    }
     Done = true;
 }
 
