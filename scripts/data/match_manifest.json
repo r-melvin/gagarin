@@ -156295,5 +156295,14 @@
   "name": "FootClass::vf_331",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/aircraft_class_methods.cpp",
+  "addr": "0x414310",
+  "sym": "?vf_54@AircraftClass@@UAE_NABUCoordStruct@@H@Z",
+  "len": "0x196",
+  "name": "AircraftClass::vf_54",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

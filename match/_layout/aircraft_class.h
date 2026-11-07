@@ -48,6 +48,7 @@ public:
     virtual bool IsOnFloor() const; // 20 0x41B980
     virtual int vf_11();   // 11  0x41C180
     virtual int vf_12();   // 12  0x41C170
+    virtual bool vf_54(const CoordStruct& coord, int a2);   // 54  0x414310: places the aircraft on the map
     virtual void vf_9();   // 9   0x413F80: TechnoClass::vf_9 (0x6F3F40) first, then the type-driven setup; the constructor calls it
     // +0x6C0: IFlyControl vptr; ctor: MOV [ESI+0x6C0],0x7E2250 @0x00413DA2;
     //   RTTI COL base-offset 0x6C0 confirms it.
