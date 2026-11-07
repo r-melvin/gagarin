@@ -30,11 +30,13 @@ struct Obj_004A1D30;
 struct FoggedCoordInit : CoordStruct
 {
     FoggedCoordInit() { X = 0; Y = 0; Z = 0; }
+    FoggedCoordInit(const AbstractNoInit&) {}
     FoggedCoordInit& operator=(const CoordStruct& c) { X = c.X; Y = c.Y; Z = c.Z; return *this; }
 };
 struct FoggedRectInit : RectangleStruct
 {
     FoggedRectInit() { X = 0; Y = 0; Width = 0; Height = 0; }
+    FoggedRectInit(const AbstractNoInit&) {}
     FoggedRectInit& operator=(const RectangleStruct& r) { X = r.X; Y = r.Y; Width = r.Width; Height = r.Height; return *this; }
 };
 
@@ -66,6 +68,8 @@ public:
 
     // FUNCTION: GAMEMD 0x4D08B0 (default constructor)
     FoggedObjectClass();
+    // The no-initialisation constructor Load rebuilds the object with (expanded inline at 0x4D2510).
+    FoggedObjectClass(const AbstractNoInit& noInit) : AbstractClass(noInit), Coords(noInit), Bounds(noInit), DrawRecords(0, 0) {}
     // FUNCTION: GAMEMD 0x4D1650 (destructor body; slot 8 = 0x4D2910)
     virtual ~FoggedObjectClass();
 
@@ -90,7 +94,7 @@ public:
     unsigned char _pad_75[3];   // +0x75
 
     // FUNCTION: GAMEMD 0x4D28D0 -- the coordinate's X and Y scaled down by 256, packed as two shorts.
-    FoggedShortPair FUN_004D28D0() const;
+    virtual FoggedShortPair FUN_004D28D0() const;   // 24  0x4D28D0 (Load dispatches through [vtable+0x60])
 };
 GG_STATIC_ASSERT(offsetof(FoggedObjectClass, unknown_24) == 0x24);
 GG_STATIC_ASSERT(offsetof(FoggedObjectClass, unknown_28) == 0x28);

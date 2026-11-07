@@ -138050,7 +138050,7 @@
  {
   "tu": "match/small_misc_w1_methods.cpp",
   "addr": "0x4D28D0",
-  "sym": "?FUN_004D28D0@FoggedObjectClass@@QBE?AUFoggedShortPair@@XZ",
+  "sym": "?FUN_004D28D0@FoggedObjectClass@@UBE?AUFoggedShortPair@@XZ",
   "len": "0x37",
   "name": "FoggedObjectClass::FUN_004D28D0",
   "status": "matched",
@@ -156159,5 +156159,25 @@
   "name": "MapStageList::FUN_005CEEF0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/fogged_object_class.cpp",
+  "addr": "0x4D1650",
+  "sym": "??1FoggedObjectClass@@UAE@XZ",
+  "len": "0x236",
+  "name": "FoggedObjectClass::~FoggedObjectClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/fogged_object_class.cpp",
+  "addr": "0x4D2510",
+  "sym": "?Load@FoggedObjectClass@@UAGJPAUIStream@@@Z",
+  "len": "0x273",
+  "name": "FoggedObjectClass::Load",
+  "status": "partial",
+  "pct": 93.8,
+  "best_pct": 93.8,
+  "best_at": "7f422316"
  }
 ]
