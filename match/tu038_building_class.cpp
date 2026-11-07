@@ -1770,6 +1770,7 @@ int BuildingClass::vf_101(int a1, int message, int a3)
 // FUNCTION: GAMEMD 0x43CEA0
 // Redraws the part of the building that falls inside `rect`; returns whether
 // anything overlapped. Slot 65.
+// PARTIAL 82.2%: retail reads the draw flag as a byte and schedules the four extent sums ahead of the tests.
 bool BuildingClass::vf_65(RectangleStruct* rect, bool force, int draw)
 {
     if (DAT_00A8ED6B == 0 && DAT_00B73550 != 0) {
@@ -1781,17 +1782,19 @@ bool BuildingClass::vf_65(RectangleStruct* rect, bool force, int draw)
             return false;
     }
 
-    RectangleStruct extent;
     NeedsRedraw = false;
-    *rect = *FUN_00421B60(&extent, rect, &DAT_00886FA0, 0, 0);
+    {
+        RectangleStruct clipped;
+        *rect = *FUN_00421B60(&clipped, rect, &DAT_00886FA0, 0, 0);
+    }
 
     int clipX = DAT_00886FA0.X;
     int clipY = DAT_00886FA0.Y;
-    extent = vf_75();
-    int left = extent.X + clipX;
-    int top = extent.Y + clipY;
-    int right = left + extent.Width;
-    int bottom = top + extent.Height;
+    RectangleStruct* extent = &vf_75(); // ADDRCALL: GAMEMD 0x43CF3C
+    int left = extent->X + clipX;
+    int top = extent->Y + clipY;
+    int right = left + extent->Width;
+    int bottom = top + extent->Height;
 
     if (rect->X < right && rect->Y < bottom
         && rect->X + rect->Width > left && rect->Y + rect->Height > top) {
@@ -6802,15 +6805,11 @@ refuse:
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4556D0
-// CAPPED at 3.8% (4 of 105). Retail pushes one callee-saved register late (ahead of the loop nest) and gives the radius
-// ebx, the outer variable ebp, the inner variable esi and the squared outer variable edi; cl takes the radius in ebp and the
-// outer variable in edi. Cause unproven. Variants tried: declared loop variables, swapped field arithmetic, an operator+
-// cell sum, an operator== empty-cell test, R*R inline, a probe pointer to the cell, a hoisted outer-square local (kept;
-// it stopped cl caching the cell word and lifted 455980/455A80 from 10.8/7.9), loop variables declared up front, a deferred
-// radiusSq assignment, owner/radius declaration swap.
+// Retail copies the summed cell into a second 4-byte slot before the radius test (the address passed to the cell lookup is
+// that copy), and takes the outer square inline (dy * dy), so both the sum and the copy sit ahead of the test. Radius is a signed char in the type (movsx).
 void BuildingClass::vf_318(CellStruct cell)
 {
-    int radius = Type->CloakRadiusInCells;
+    signed char radius = Type->CloakRadiusInCells;
     int radiusSq = radius * radius;
     int owner = Owner->ArrayIndex;
     if (cell == BuildingBEmptyCell) {
@@ -6818,13 +6817,13 @@ void BuildingClass::vf_318(CellStruct cell)
         cell = BuildingBCellStructOf(vf_18());
     }
     for (int dy = -radius; dy < radius; dy++) {
-        int dySq = dy * dy;
         for (int dx = -radius; dx < radius; dx++) {
-            if (dx * dx + dySq < radiusSq) {
-                CellStruct c;
-                c.X = cell.X + dx;
-                c.Y = cell.Y + dy;
-                CellClass* target = DAT_0087F7E8.FUN_005657A0(&c);
+            CellStruct c;
+            c.X = cell.X + dx;
+            c.Y = cell.Y + dy;
+            CellStruct p = c;
+            if (dx * dx + dy * dy < radiusSq) {
+                CellClass* target = DAT_0087F7E8.FUN_005657A0(&p);
                 target->DecreaseSensorsOfHouse(owner);
                 for (ObjectClass* object = target->FirstObject; object; object = static_cast<ObjectClass*>(object->NextObject)) {
                     int kind = object->vf_11();
@@ -6839,12 +6838,8 @@ void BuildingClass::vf_318(CellStruct cell)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x455820
-// CAPPED at 24.3% (instruction multiset identical). Retail pushes one callee-saved register late (ahead of the loop nest) and gives the radius
-// ebx, the outer variable ebp, the inner variable esi and the squared outer variable edi; cl takes the radius in ebp and the
-// outer variable in edi. Cause unproven. Variants tried: declared loop variables, swapped field arithmetic, an operator+
-// cell sum, an operator== empty-cell test, R*R inline, a probe pointer to the cell, a hoisted outer-square local (kept;
-// it stopped cl caching the cell word and lifted 455980/455A80 from 10.8/7.9), loop variables declared up front, a deferred
-// radiusSq assignment, owner/radius declaration swap.
+// Retail copies the summed cell into a second 4-byte slot before the radius test (the address passed to the cell lookup is
+// that copy), and takes the outer square inline (dy * dy), so both the sum and the copy sit ahead of the test.
 void BuildingClass::vf_317(CellStruct cell)
 {
     if (!vf_212())
@@ -6857,13 +6852,13 @@ void BuildingClass::vf_317(CellStruct cell)
         cell = BuildingBCellStructOf(vf_18());
     }
     for (int dy = -radius; dy < radius; dy++) {
-        int dySq = dy * dy;
         for (int dx = -radius; dx < radius; dx++) {
-            if (dx * dx + dySq < radiusSq) {
-                CellStruct c;
-                c.X = cell.X + dx;
-                c.Y = cell.Y + dy;
-                CellClass* target = DAT_0087F7E8.FUN_005657A0(&c);
+            CellStruct c;
+            c.X = cell.X + dx;
+            c.Y = cell.Y + dy;
+            CellStruct p = c;
+            if (dx * dx + dy * dy < radiusSq) {
+                CellClass* target = DAT_0087F7E8.FUN_005657A0(&p);
                 target->IncreaseSensorsOfHouse(owner);
                 for (ObjectClass* object = target->FirstObject; object; object = static_cast<ObjectClass*>(object->NextObject)) {
                     int kind = object->vf_11();
@@ -6878,12 +6873,8 @@ void BuildingClass::vf_317(CellStruct cell)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x455980
-// CAPPED at 33.7% (multiset differs by 1 `mov`). Retail pushes one callee-saved register late (ahead of the loop nest) and gives the radius
-// ebx, the outer variable ebp, the inner variable esi and the squared outer variable edi; cl takes the radius in ebp and the
-// outer variable in edi. Cause unproven. Variants tried: declared loop variables, swapped field arithmetic, an operator+
-// cell sum, an operator== empty-cell test, R*R inline, a probe pointer to the cell, a hoisted outer-square local (kept;
-// it stopped cl caching the cell word and lifted 455980/455A80 from 10.8/7.9), loop variables declared up front, a deferred
-// radiusSq assignment, owner/radius declaration swap.
+// Retail copies the summed cell into a second 4-byte slot before the radius test (the address passed to the cell lookup is
+// that copy), and takes the outer square inline (dy * dy), so both the sum and the copy sit ahead of the test. PARTIAL 91.6%: the owner slot and the copy slot come out swapped against retail.
 void BuildingClass::vf_320(CellStruct cell)
 {
     int radius = Type->DetectDisguiseRange;
@@ -6894,13 +6885,13 @@ void BuildingClass::vf_320(CellStruct cell)
         cell = BuildingBCellStructOf(vf_18());
     }
     for (int dy = -radius; dy < radius; dy++) {
-        int dySq = dy * dy;
         for (int dx = -radius; dx < radius; dx++) {
-            if (dx * dx + dySq < radiusSq) {
-                CellStruct c;
-                c.X = cell.X + dx;
-                c.Y = cell.Y + dy;
-                DAT_0087F7E8.FUN_005657A0(&c)->DecreaseDisguiseSensorsOfHouse(owner);
+            CellStruct c;
+            c.X = cell.X + dx;
+            c.Y = cell.Y + dy;
+            CellStruct p = c;
+            if (dx * dx + dy * dy < radiusSq) {
+                DAT_0087F7E8.FUN_005657A0(&p)->DecreaseDisguiseSensorsOfHouse(owner);
             }
         }
     }
@@ -6909,12 +6900,8 @@ void BuildingClass::vf_320(CellStruct cell)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x455A80
-// CAPPED at 34.8% (multiset differs by 1 `mov`). Retail pushes one callee-saved register late (ahead of the loop nest) and gives the radius
-// ebx, the outer variable ebp, the inner variable esi and the squared outer variable edi; cl takes the radius in ebp and the
-// outer variable in edi. Cause unproven. Variants tried: declared loop variables, swapped field arithmetic, an operator+
-// cell sum, an operator== empty-cell test, R*R inline, a probe pointer to the cell, a hoisted outer-square local (kept;
-// it stopped cl caching the cell word and lifted 455980/455A80 from 10.8/7.9), loop variables declared up front, a deferred
-// radiusSq assignment, owner/radius declaration swap.
+// Retail copies the summed cell into a second 4-byte slot before the radius test (the address passed to the cell lookup is
+// that copy), and takes the outer square inline (dy * dy), so both the sum and the copy sit ahead of the test. PARTIAL 92.1%: the owner slot and the copy slot come out swapped against retail.
 void BuildingClass::vf_319(CellStruct cell)
 {
     if (!vf_212())
@@ -6927,13 +6914,13 @@ void BuildingClass::vf_319(CellStruct cell)
         cell = BuildingBCellStructOf(vf_18());
     }
     for (int dy = -radius; dy < radius; dy++) {
-        int dySq = dy * dy;
         for (int dx = -radius; dx < radius; dx++) {
-            if (dx * dx + dySq < radiusSq) {
-                CellStruct c;
-                c.X = cell.X + dx;
-                c.Y = cell.Y + dy;
-                DAT_0087F7E8.FUN_005657A0(&c)->IncreaseDisguiseSensorsOfHouse(owner);
+            CellStruct c;
+            c.X = cell.X + dx;
+            c.Y = cell.Y + dy;
+            CellStruct p = c;
+            if (dx * dx + dy * dy < radiusSq) {
+                DAT_0087F7E8.FUN_005657A0(&p)->IncreaseDisguiseSensorsOfHouse(owner);
             }
         }
     }

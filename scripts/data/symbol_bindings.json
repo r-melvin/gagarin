@@ -1819,6 +1819,7 @@
  "?Build@MSRectBuild@@QAEPAU1@HHHH@Z": "0x0042E410",
  "?Build@Obj_0049E3B0@@QAEXXZ": "0x0049DB00",
  "?Build@RectangleStruct@@QAEPAU1@HHHH@Z": "0x0042E410",
+ "?BuildingBEmptyCell@@3UCellStruct@@A": "0x0089C818",
  "?BuildingBEmptyCoord@@3UCoordStruct@@A": "0x0089C848",
  "?BuildingBFunc_456980@@YIXDDUCoordStruct@@UColorStruct@@MDD@Z": "0x00456980",
  "?BuildingBFunc_4CAC40@@YANN@Z": "0x004CAC40",

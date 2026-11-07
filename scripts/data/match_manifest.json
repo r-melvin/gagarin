@@ -49692,10 +49692,8 @@
   "sym": "?vf_318@BuildingClass@@UAEXUCellStruct@@@Z",
   "len": "0x145",
   "name": "BuildingClass::vf_318",
-  "status": "partial",
-  "pct": 4.8,
-  "best_pct": 4.8,
-  "best_at": "f10538e6"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -49703,10 +49701,8 @@
   "sym": "?vf_317@BuildingClass@@UAEXUCellStruct@@@Z",
   "len": "0x158",
   "name": "BuildingClass::vf_317",
-  "status": "partial",
-  "pct": 24.3,
-  "best_pct": 24.3,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -49715,9 +49711,9 @@
   "len": "0xf9",
   "name": "BuildingClass::vf_320",
   "status": "partial",
-  "pct": 33.7,
-  "best_pct": 33.7,
-  "best_at": "cf203011"
+  "pct": 91.6,
+  "best_pct": 91.6,
+  "best_at": "625cef81"
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -49726,9 +49722,9 @@
   "len": "0x10d",
   "name": "BuildingClass::vf_319",
   "status": "partial",
-  "pct": 34.8,
-  "best_pct": 34.8,
-  "best_at": "cf203011"
+  "pct": 92.1,
+  "best_pct": 92.1,
+  "best_at": "625cef81"
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -91960,9 +91956,9 @@
   "len": "0x183",
   "name": "BuildingClass::vf_65",
   "status": "partial",
-  "pct": 32.4,
-  "best_pct": 32.4,
-  "best_at": "cf203011"
+  "pct": 82.2,
+  "best_pct": 82.2,
+  "best_at": "625cef81"
  },
  {
   "tu": "match/tu038_building_class.cpp",
