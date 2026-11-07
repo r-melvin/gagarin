@@ -106,7 +106,7 @@ public:
     virtual void vf_337(double a1);                                // 337 0x4D3710
     virtual void vf_338();                                         // 338 0x4DBA30
     virtual void vf_339();                                         // 339 0x4DBA40
-    virtual void vf_340(int a1);                                   // 340 0x4DDC60
+    virtual bool vf_340(AbstractClass* target);                    // 340 0x4DDC60 (returns al: 0x4CD3BC tests it)
     // FUNCTION: GAMEMD 0x4CBC40
     // Searches square rings of growing radius around `center`, starting from
     // the side facing `from`, for the first cell the object may enter

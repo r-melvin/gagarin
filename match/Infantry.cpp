@@ -258,6 +258,70 @@ void InfantryClass::vf_10(void* a1, bool a2)
     }
 }
 
+// FUNCTION: GAMEMD 0x51CBA0
+// Slot 289 (EnterIdleMode): after FootClass's pass, an infantryman with nothing queued picks a
+// mission from its target, destination, owner and team, and switches to it.
+bool InfantryClass::EnterIdleMode(bool initial, bool a2)
+{
+    bool result = FootClass::EnterIdleMode(initial, a2);
+    if (this->vf_299()) {
+        return result;
+    }
+    if (this->vf_97() == 0x1C) {
+        return result;
+    }
+    int mission;
+    if (this->Target) {
+        mission = 1;
+        if (this->vf_97() == 0x11) {
+            mission = 0x11;
+        }
+        if (this->vf_97() == 8) {
+            mission = 8;
+        }
+    } else {
+        this->FUN_004DA030();
+        if (this->Destination) {
+            mission = 2;
+            if (this->vf_97() == 8) {
+                mission = 8;
+            }
+            if (this->vf_97() == 0x11) {
+                mission = 0x11;
+            }
+        } else {
+            if (this->vf_97() == 5 || this->vf_97() == 0xB) {
+                return false;
+            }
+            if (this->vf_97() != -1) {
+                if (this->FUN_005B3A00()->Zombie || this->FUN_005B3A00()->Paralyzed) {
+                    return false;
+                }
+            }
+            if (!this->Owner->IsControlledByHuman() && !this->Team) {
+                if (this->Owner->IQLevel2 < DAT_008871E0->unknown_1440 && this->CurrentMission != 0xB) {
+                    mission = 5;
+                } else if (this->SlaveOwner) {
+                    mission = 5;
+                } else if (!this->IsArmed() && !this->Type->Engineer && !this->Type->VehicleThief) {
+                    mission = 5;
+                } else {
+                    mission = 0xB;
+                }
+            } else if (this->CurrentMission != 0xB
+                       && (!(this->FUN_0070D0D0(0x10) || this->Type->DefaultToGuardArea) || this->Team)) {
+                mission = 5;
+            } else {
+                mission = 0xB;
+            }
+        }
+    }
+    if (this->CurrentMission != 0x19 && this->CurrentMission != 0xB && mission != -1) {
+        this->vf_122(mission, false);
+    }
+    return result;
+}
+
 // FUNCTION: GAMEMD 0x51DF10
 bool InfantryClass::vf_53()
 {

@@ -138,6 +138,12 @@ public:
     char FUN_004CFC40() const;
     // Declaration: GAMEMD 0x4CD510 -- complete-object __thiscall helper.
     bool FUN_004CD510();
+    // Declaration: GAMEMD 0x4CD2A0 -- complete-object __thiscall member (the per-frame driver Process calls).
+    char FUN_004CD2A0();
+    // Declaration: GAMEMD 0x4CE680 (decl; reloc) -- the approach steering.
+    char Approach();
+    // Declaration: GAMEMD 0x4CE840 (decl; reloc) -- the landing step.
+    void FUN_004CE840();
 
     char        AirportBound;     // +0x18 ctor `MOV BYTE [ESI+0x18],AL` @0x004CC9AD (=0);
                                   //       read as a byte @0x004CD9F5, @0x004CE99A, @0x004CE9B5

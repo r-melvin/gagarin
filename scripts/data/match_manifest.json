@@ -156110,5 +156110,25 @@
   "name": "CD::FUN_00479110",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/tu084_fly_locomotion_class.cpp",
+  "addr": "0x4CD2A0",
+  "sym": "?FUN_004CD2A0@FlyLocomotionClass@@QAEDXZ",
+  "len": "0x261",
+  "name": "FlyLocomotionClass::FUN_004CD2A0",
+  "status": "partial",
+  "pct": 83.0,
+  "best_pct": 83.0,
+  "best_at": "375caa17"
+ },
+ {
+  "tu": "match/Infantry.cpp",
+  "addr": "0x51CBA0",
+  "sym": "?EnterIdleMode@InfantryClass@@UAE_N_N0@Z",
+  "len": "0x20c",
+  "name": "InfantryClass::EnterIdleMode",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

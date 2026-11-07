@@ -8372,6 +8372,7 @@
  "?EncodeSecond@IniKeyBlockSource@@QBEHPAD@Z": "0x00631FE0",
  "?EndLooping@AudioController@@QAEXXZ": "0x00406060",
  "?EndPiggyback@TeleportLocomotionClass@@UAGJPAPAUILocomotion@@@Z": "0x00719EE0",
+ "?EnterIdleMode@FootClass@@UAE_N_N0@Z": "0x004D82B0",
  "?EnumConnections@ConnectionPointClass@@UAGJPAPAUIEnumConnections@@@Z": "0x004A0760",
  "?Equals@Obj_007B66D0_msanim_family_methods@@QAE_NPBG@Z": "0x007B6780",
  "?Equals_EF30@IPXAddressClass@@QAE_NAAV1@@Z": "0x0053EF30",

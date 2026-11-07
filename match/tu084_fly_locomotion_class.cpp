@@ -222,6 +222,69 @@ LocoCoord __stdcall FlyLocomotionClass::Destination()
     return result;
 }
 
+// FUNCTION: GAMEMD 0x4CD2A0
+// The flyer's mid-air transition step. An aircraft that cannot land is simply marked elevating.
+// Otherwise, while the client is alive and landing or taking off, the client is lifted off the
+// map, the landing and approach steps run, and when its layer changed it is re-seated: put into
+// the take-off state, or told to idle and re-link its radio contact. It goes back on the map.
+char FlyLocomotionClass::FUN_004CD2A0()
+{
+    FootClass* foot = LinkedTo;
+    if (foot && foot->vf_11() == 2 && !static_cast<AircraftClass*>(foot)->Type->Landable) {
+        IsElevating = 1;
+        IsLanding = 0;
+        IsTakingOff = 0;
+        FlightLevel = LinkedTo->vf_33()->vf_47();
+        return 0;
+    }
+    if (LinkedTo->Health > 0 && (IsLanding || IsTakingOff)) {
+        int layer = LinkedTo->vf_30();
+        LinkedTo->vf_73(0);
+        DAT_0087F7E8.FUN_004A9770(LinkedTo);
+        if (IsLanding) {
+            FUN_004CE840();
+        }
+        if (IsTakingOff) {
+            Approach();
+        }
+        if (layer != LinkedTo->vf_30()) {
+            bool seated = false;
+            if (LinkedTo->vf_30() == 2 && !IsTakingOff) {
+                CoordStruct where = LinkedTo->Location;
+                if (!LinkedTo->vf_340(DAT_0087F7E8.FUN_00565730(where))) {
+                    IsTakingOff = 1;
+                    LinkedTo->OnBridge = 0;
+                    LinkedTo->vf_73(0);
+                    LinkedTo->vf_115(LinkedTo->vf_114() + 10);
+                    LinkedTo->vf_73(1);
+                    seated = true;
+                }
+            }
+            if (!seated) {
+                if (LinkedTo->vf_30() == 2) {
+                    LinkedTo->SetDestination(0, true);
+                    LinkedTo->vf_157(0x18);
+                    LinkedTo->vf_291(0, 0, 0, 0);
+                    LinkedTo->vf_290(0, 0, 0, 0, 0);
+                    CoordStruct around = LinkedTo->Location;
+                    DAT_0087F7E8.FUN_00567DA0(&around, LinkedTo->LastSightRange - 3, LinkedTo->LastSightRange + 3, 0);
+                } else {
+                    LinkedTo->vf_157(0x19);
+                    if (LinkedTo->HasAnyLink() && LinkedTo->Destination) {
+                        FootClass* radioFoot = LinkedTo;
+                        if (radioFoot->Destination != radioFoot->FUN_0065AD30(0)) {
+                            radioFoot->vf_157(3);
+                        }
+                    }
+                }
+            }
+        }
+        DAT_0087F7E8.FUN_004A9720(LinkedTo);
+        LinkedTo->vf_73(1);
+    }
+    return 0;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4CD510
 bool FlyLocomotionClass::FUN_004CD510()
