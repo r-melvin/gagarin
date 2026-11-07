@@ -320,6 +320,8 @@ public:
     int FUN_0043EE50();
     // FUNCTION: GAMEMD 0x451F60 -- give every animation the lighting and tint, then push the translucency to all of them (RET 8).
     void FUN_00451F60(void* lightConvert, int tint);
+    // FUNCTION: GAMEMD 0x452000 -- refresh the animations' lighting and translucency.
+    void FUN_00452000();
     // FUNCTION: GAMEMD 0x4528A0 -- true when the target's centre is within PsychicDetectionRadius cells (RET 4).
     bool FUN_004528A0(AbstractClass* target);
     // FUNCTION: GAMEMD 0x4545D0 -- restart the power-dependent animations.

@@ -17,8 +17,10 @@
 #include "object_class.h"
 #include "facing_class.h"
 #include "../vector_class.h"
+#include "geometry2d.h"
 
 class CellClass;
+class TechnoClass;
 
 // The 0x18-byte facing-like member at +0x1D8; its constructor is the out-of-line routine at 0x4C91C0.
 struct WaveFacing_1D8 : public FacingClass
@@ -32,6 +34,14 @@ class WaveClass : public ObjectClass
 public:
     // FUNCTION: GAMEMD 0x75EBE0 (decl; reloc) -- default constructor, called by the class factory at 0x6BF0CF.
     WaveClass();
+    // FUNCTION: GAMEMD 0x75E950 -- places a wave between two coordinates (RET 0x14).
+    WaveClass(CoordStruct* from, CoordStruct* to, TechnoClass* owner, int type, void* a5);
+    // FUNCTION: GAMEMD 0x761640 (decl; reloc) -- builds the wave's path between two coordinates (RET 8).
+    void FUN_00761640(CoordStruct* from, CoordStruct* to);
+    // FUNCTION: GAMEMD 0x762070 (decl; reloc) -- the path for wave type 3 (RET 8).
+    void FUN_00762070(CoordStruct* from, CoordStruct* to);
+    // FUNCTION: GAMEMD 0x762AF0 (decl; reloc) -- per-step update of the wave's points.
+    void FUN_00762AF0();
     virtual HRESULT __stdcall GetClassID(CLSID *pClassID);      // 3  0x75F840: override (SDK declaration)
     virtual long __stdcall Load(struct IStream *);              // 5  0x75F650: override of ObjectClass
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);// 6  0x75F7D0: override (declaration from the base header)
@@ -47,7 +57,13 @@ public:
     virtual void vf_69(Point2D* point, RectangleStruct* clip);  // 69  0x75F9F0: override of ObjectClass (RET 8)
     void* unknown_AC;  // +0xAC store at 0x75E975; cleared by vf_10 when it expires (0x75F610)
     int unknown_B0;  // +0xB0 store at 0x75E97B
-    unsigned char unknown_B4[120];  // +0xB4
+    CoordStruct unknown_B4;  // +0xB4 the coordinate the constructor places the wave at (slot 54 argument, 0x75EB4F)
+    unsigned char unknown_C0[12];  // +0xC0
+    Point2D unknown_CC;  // +0xCC first screen point (0x75F230 argument, 0x75EB34)
+    Point2D unknown_D4;  // +0xD4 (copied to the +0x14C block at 0x75EBA2)
+    Point2D unknown_DC;  // +0xDC (copied to the +0x14C block at 0x75EB71)
+    Point2D unknown_E4;  // +0xE4 second screen point (0x75F230 argument, 0x75EB2E)
+    unsigned char unknown_EC[64];  // +0xEC
     unsigned char unknown_12C;  // +0x12C store at 0x75E981
     unsigned char unknown_12D;  // +0x12D store at 0x75E988
     unsigned char unknown_12E[2];  // +0x12E
@@ -58,7 +74,7 @@ public:
     int unknown_140;  // +0x140 store at 0x75E96F
     int unknown_144;  // +0x144 store at 0x75E9A4
     int unknown_148;  // +0x148 store at 0x75E9AA
-    int unknown_14C;  // +0x14C store at 0x75E9B0
+    Point2D* unknown_14C;  // +0x14C store at 0x75E9B0; points at three points the constructor fills for types 1 and 2 (0x75EB91..0x75EBC2)
     unsigned char unknown_150[80];  // +0x150
     int unknown_1A0;  // +0x1A0 store at 0x75E9B6
     int unknown_1A4;  // +0x1A4 store at 0x75E9BC
@@ -73,6 +89,12 @@ public:
 };
 GG_STATIC_ASSERT(offsetof(WaveClass, unknown_AC) == 0xAC);
 GG_STATIC_ASSERT(offsetof(WaveClass, unknown_B0) == 0xB0);
+GG_STATIC_ASSERT(offsetof(WaveClass, unknown_B4) == 0xB4);
+GG_STATIC_ASSERT(offsetof(WaveClass, unknown_CC) == 0xCC);
+GG_STATIC_ASSERT(offsetof(WaveClass, unknown_D4) == 0xD4);
+GG_STATIC_ASSERT(offsetof(WaveClass, unknown_DC) == 0xDC);
+GG_STATIC_ASSERT(offsetof(WaveClass, unknown_E4) == 0xE4);
+GG_STATIC_ASSERT(offsetof(WaveClass, unknown_EC) == 0xEC);
 GG_STATIC_ASSERT(offsetof(WaveClass, unknown_12C) == 0x12C);
 GG_STATIC_ASSERT(offsetof(WaveClass, unknown_12D) == 0x12D);
 GG_STATIC_ASSERT(offsetof(WaveClass, unknown_130) == 0x130);

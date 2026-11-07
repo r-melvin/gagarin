@@ -5700,6 +5700,47 @@ void BuildingClass::FUN_00451F60(void* lightConvert, int tint)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x452000
+// Refresh the lighting of every animation: the light-convert block and the cell's intensity give the tint (folded
+// through the effect tint while the iron curtain runs or an airstrike on this building is live), kept in LightTint,
+// then handed to the animations together with the translucency.
+void BuildingClass::FUN_00452000()
+{
+    void* value = vf_121();
+    CellClass* cell = vf_111();
+    int intensity = cell->Intensity_Normal;
+    int angle = vf_281(intensity);
+    if (vf_88() || (Airstrike && Airstrike->Target == static_cast<ObjectClass*>(KindCast_00459F40(6)))) {
+        angle = GetEffectTintIntensity(angle);
+    }
+    LightTint = (short)angle;
+    int tint = angle & 0xFFFF;
+    for (int i = 0; i < 0x15; i++) {
+        AnimClass* anim = Anims[i];
+        if (anim) {
+            if (anim->Type && anim->Type->ShouldUseCellDrawer) {
+                anim->LightConvert = value;
+                anim->TintColor = tint;
+            }
+            int level = Translucency;
+            if (level == 0xF && vf_26(0, 0) == 5)
+                level = 0x10;
+            for (int j = 0; j < 0x15; j++) {
+                if (Anims[j])
+                    Anims[j]->TranslucencyLevel = level;
+            }
+        }
+    }
+    int stamp = Translucency;
+    if (stamp == 0xF && vf_26(0, 0) == 5)
+        stamp = 0x10;
+    for (int k = 0; k < 0x15; k++) {
+        if (Anims[k])
+            Anims[k]->TranslucencyLevel = stamp;
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x452170
 void Obj_00452170::FUN_00452170(int value)

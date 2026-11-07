@@ -56,6 +56,8 @@ public:
     // reloc-normalised direct __thiscall calls.
     void BeginMission(ObjectClass* target);   // GAMEMD 0x41D860 (placeholder name)
     void ResetTarget(ObjectClass* target);    // GAMEMD 0x41DA20
+    // FUNCTION: GAMEMD 0x41D540 -- a pointer is about to go invalid (RET 4).
+    void FUN_0041D540(AbstractClass* invalid);
     // FUNCTION: GAMEMD 0x41DC60 (declaration)
     void FUN_0041DC60();
     // FUNCTION: GAMEMD 0x41DD10 (declaration)

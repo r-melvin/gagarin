@@ -313,6 +313,10 @@ struct Map_0087F7E8
     void FUN_006D04F0(int value);
     // FUNCTION: GAMEMD 0x6D0F00 (decl; reloc)
     void FUN_006D0F00();
+    // FUNCTION: GAMEMD 0x656E50 (decl; reloc) -- radar flag test, AL result.
+    bool FUN_00656E50();
+    // FUNCTION: GAMEMD 0x656E90 (decl; reloc) -- latch the forced flag; RET 4.
+    void FUN_00656E90(bool force);
     // FUNCTION: GAMEMD 0x6D1800 (decl; reloc) -- stdcall forwarder onto 0x6AC210 (one stack argument, RET 4).
     wchar_t* FUN_006D1800(unsigned int id);
 };

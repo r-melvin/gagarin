@@ -67,6 +67,8 @@ class CaptureManagerClass : public AbstractClass
 {
 public:
     void DrawLinks(); // 0x472160
+    // FUNCTION: GAMEMD 0x471F90 (decl; reloc) -- forget a node that points at the given object (one stack argument).
+    bool FUN_00471F90(void* key);
     // FUNCTION: GAMEMD 0x471890 (decl; reloc) -- default constructor.
     CaptureManagerClass();
     // FUNCTION: GAMEMD 0x4717D0 (declaration; constructor)

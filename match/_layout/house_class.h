@@ -188,6 +188,8 @@ class HouseClass : public AbstractClass, public IHouse, public IPublicHouse, pub
 public:
     // FUNCTION: GAMEMD 0x5025F0 (decl; reloc) -- thiscall, a TechnoClass and an int (RET 8).
     void FUN_005025F0(TechnoClass* techno, int a2);
+    // FUNCTION: GAMEMD 0x502A80 (decl; reloc) -- two stack arguments (RET 8).
+    void FUN_00502A80(TechnoClass* techno, bool a2);
     // FUNCTION: GAMEMD 0x4F9A90 (decl; reloc), ECX receiver, one AbstractClass*.
     bool FUN_004F9A90(AbstractClass* object);
     // FUNCTION: GAMEMD 0x4FDCE0 - runs IHouse slots 13 and 14 when the argument is 4.

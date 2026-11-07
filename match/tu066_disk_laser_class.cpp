@@ -83,6 +83,9 @@ GG_STATIC_ASSERT(sizeof(DiskLaserClass*) == 4);
 #include "_layout/temporal_class.h"
 
 #include "_layout/aircraft_class.h"
+#include "_layout/facing_class.h"
+#include "shared_constants_globals.h"
+#include "angle_from_points_methods.h"
 
 #include "vector_class_operations.h"
 
@@ -237,6 +240,45 @@ Pair_008A0180 DAT_008A0180[16] = {
     Pair_008A0180((int)(FUN_004CAD00(DAT_007E5ED0 * 235.0) * 240.0), (int)(FUN_004CACB0(DAT_007E5ED0 * 235.0) * 240.0)),
     Pair_008A0180((int)(FUN_004CAD00(DAT_007E5ED0 * 257.0) * 240.0), (int)(FUN_004CACB0(DAT_007E5ED0 * 257.0) * 240.0))
 };
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4A71A0
+void DiskLaserClass::FUN_004A71A0(AbstractClass* owner, AbstractClass* target, int a3, int a4)
+{
+    GgDiskLaserClassDynamicVectorClass* pending = reinterpret_cast<GgDiskLaserClassDynamicVectorClass*>(&DAT_00B0F698);
+    if (owner == 0) {
+        unknown_30 = -1;
+        pending->AddItem(this);
+        return;
+    }
+    if (target == 0) {
+        unknown_30 = -1;
+        pending->AddItem(this);
+        return;
+    }
+    if (a3 == 0) {
+        unknown_30 = -1;
+        pending->AddItem(this);
+        return;
+    }
+    Owner = owner;
+    Target = target;
+    unknown_2C = a3;
+    unknown_3C = a4;
+    // ADDRCALL: GAMEMD 0x4A72C3 (MOV ECX,[EBP+0] reads through the first result)
+    CoordStruct* to = &target->vf_18();
+    // ADDRCALL: GAMEMD 0x4A72C6 (MOV EDX,[EAX] reads through the second result)
+    CoordStruct* from = &owner->vf_18();
+    DirStruct dir;
+    int fromX = from->X;
+    int toX = to->X;
+    dir.Raw = (unsigned short)(int)((FUN_004CAE30(
+        (double)from->Y - to->Y, (double)toX - fromX) - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
+    int facing = (((dir.Whole >> 11) + 1) >> 1 & 0xF);
+    unknown_34 = (facing + 8) % 16;
+    unknown_30 = 0;
+    unknown_38 = 0;
+}
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4A7900  DiskLaserClass::PointerGotInvalid (__thiscall, ret 0x4)

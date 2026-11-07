@@ -37,6 +37,10 @@ public:
     virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x4A7B80
     virtual void vf_23();                                                 // 23  0x4A7340
 
+    // FUNCTION: GAMEMD 0x4A71A0 -- aim the laser from the owner at the target (RET 0x10); queues itself for
+    // deletion instead when the owner, the target or the third argument is missing.
+    void FUN_004A71A0(AbstractClass* owner, AbstractClass* target, int a3, int a4);
+
     void*        Owner;          // +0x24 ctor 0
     void*        Target;         // +0x28 ctor 0
     int          unknown_2C;     // +0x2C ctor 0

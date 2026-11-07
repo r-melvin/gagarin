@@ -8,6 +8,8 @@
 
 #include "_layout/wave_class.h"
 #include "vector_class_operations.h"
+#include "_layout/techno_class.h"
+#include "particle_shared.h"
 
 // GLOBAL: GAMEMD 0xA8EC38 -- WaveClass::Array, every live wave.
 extern DynamicVectorClass<WaveClass*> DAT_00A8EC38;
@@ -16,6 +18,63 @@ extern DynamicVectorClass<WaveClass*> DAT_00A8EC38;
 void __stdcall FUN_0075F020();
 // GLOBAL: GAMEMD 0xB725CC
 extern bool DAT_00B725CC;
+
+// GLOBAL: GAMEMD 0x7E5F78 -- the shortest path the constructor accepts.
+extern const double DAT_007E5F78;
+// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- square root, __cdecl.
+double __cdecl FUN_004CAC40(double value);
+
+// FUNCTION: GAMEMD 0x75E950
+WaveClass::WaveClass(CoordStruct* from, CoordStruct* to, TechnoClass* owner, int type, void* a5)
+    : unknown_138(0),
+      unknown_140(0),
+      unknown_AC(a5),
+      unknown_B0(type),
+      unknown_12C(1),
+      unknown_12D(0),
+      unknown_130(100),
+      unknown_134(0),
+      unknown_13C(0),
+      unknown_144(0),
+      unknown_148(0),
+      unknown_14C(0),
+      unknown_1A0(0),
+      unknown_1A4(0),
+      unknown_1A8(0),
+      unknown_1D0(0),
+      unknown_1D4(owner),
+      unknown_1F0(5)
+{
+    int dx = from->X - to->X;
+    int dy = from->Y - to->Y;
+    if (FUN_004CAC40((double)(dy * dy + dx * dx)) < DAT_007E5F78) {
+        vf_62();
+        return;
+    }
+    vf_rtti_5();
+    DAT_00A8EC38.AddItem(this);
+    if (!DAT_00B725CC) {
+        FUN_0075F020();
+    }
+    if (unknown_B0 == 3) {
+        FUN_00762070(from, to);
+    } else {
+        FUN_00761640(from, to);
+    }
+    unknown_1A8 = 0;
+    unknown_1CC = ParticleFacingBetween(reinterpret_cast<ParticleScreenPoint*>(&unknown_CC),
+                                        reinterpret_cast<ParticleScreenPoint*>(&unknown_E4));
+    vf_54(unknown_B4, 0);
+    if (unknown_B0 > 0 && unknown_B0 <= 2) {
+        unknown_138 = 0;
+        unknown_13C = 0x3FF00000;
+        unknown_1D0 = 0xA0;
+        unknown_14C[0] = unknown_DC;
+        unknown_14C[1] = unknown_D4;
+        unknown_14C[2] = unknown_E4;
+    }
+    FUN_00762AF0();
+}
 
 // FUNCTION: GAMEMD 0x75EBE0
 // PARTIAL: 81.7% -- identical instruction multiset; retail stores the scalar fields in the order

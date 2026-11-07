@@ -2248,6 +2248,84 @@ int Techno_006F3970::CombatDamage(int which)
     return total;
 }
 
+#include "_layout/parasite_class.h"
+#include "_layout/airstrike_class.h"
+#include "_layout/slave_manager_class.h"
+#include "_layout/spawn_manager_class.h"
+#include "_layout/capture_manager_class.h"
+#include "_layout/temporal_class.h"
+#include "_layout/foot_class.h"
+#include "_layout/warhead_type_class.h"
+#include "_layout/rules_class.h"
+
+// FUNCTION: GAMEMD 0x6F3F40
+// Brings a newly made object to life: the current-player flag, the planning token, then whichever helper
+// objects its type and weapon call for (spawn and slave managers, mind control, parasite, temporal, airstrike),
+// the permanent disguise, and the turret and barrel recoil blocks copied from the type.
+void TechnoClass::vf_9()
+{
+    if (Owner) {
+        if (CurrentPlayer == Owner) {
+            IsOwnedByCurrentPlayer = true;
+        } else {
+            IsOwnedByCurrentPlayer = false;
+        }
+    }
+    if (vf_33()) {
+        if (PlanningToken == 0) {
+            FUN_00638A80();
+        }
+        if (vf_33()->Spawns) {
+            SpawnManager = new SpawnManagerClass(this, vf_33()->Spawns, vf_33()->SpawnsNumber,
+                                                 vf_33()->SpawnRegenRate, vf_33()->SpawnReloadRate);
+        }
+        if (vf_33()->Enslaves) {
+            SlaveManager = new SlaveManagerClass(this, vf_33()->Enslaves, vf_33()->SlavesNumber,
+                                                 vf_33()->SlaveRegenRate, vf_33()->SlaveReloadRate);
+        }
+        if (vf_254(0)->WeaponType) {
+            if (vf_254(0)->WeaponType->Warhead->MindControl) {
+                CaptureManager = new CaptureManagerClass(this, vf_254(0)->WeaponType->Damage,
+                                                         vf_254(0)->WeaponType->InfiniteMindControl);
+            }
+        }
+        if (vf_11() != 6) {
+            if (vf_254(0)->WeaponType) {
+                if (vf_254(0)->WeaponType->Warhead->Parasite) {
+                    static_cast<FootClass*>(this)->ParasiteImUsing = new ParasiteClass(static_cast<FootClass*>(this));
+                }
+            }
+        }
+        if (vf_254(0)->WeaponType) {
+            if (vf_254(0)->WeaponType->Warhead->Temporal) {
+                TemporalImUsing = new TemporalClass(this);
+                TemporalImUsing->unknown_4C = vf_254(0)->WeaponType->Damage;
+            }
+        }
+        if (vf_33()->AirstrikeTeam > 0) {
+            Airstrike = new AirstrikeClass(this);
+        }
+        if (vf_33()->CanDisguise) {
+            if (vf_33()->PermaDisguise) {
+                Disguised = true;
+                DisguisedAsHouse = Owner;
+                int side = Owner->SideIndex;
+                if (side == 0) {
+                    Disguise = RulesInstance->AlliedDisguise;
+                } else if (side == 1) {
+                    Disguise = RulesInstance->SovietDisguise;
+                } else {
+                    Disguise = RulesInstance->ThirdDisguise;
+                }
+            }
+        }
+        TurretRecoil.Turret = vf_33()->TurretAnimData;
+        BarrelRecoil.Turret = vf_33()->BarrelAnimData;
+        IsTurretRotateSoundPlaying = 1;
+        TurretIsRotating = 0;
+    }
+}
+
 // FUNCTION: GAMEMD 0x6F4960
 // Mark this object discovered by a house. Returns false when it already was
 // or the base refuses; a computer house's discovery can switch a mission 14
@@ -2324,7 +2402,7 @@ bool TechnoClass::vf_73(int mode)
 #include "_layout/parasite_class.h"
 #include "_layout/aircraft_type_class.h"
 
-// Unclaimed (below partial bar), GAMEMD 0x6F4AB0
+// FUNCTION: GAMEMD 0x6F4AB0
 // Slot 101, the radio message handler of the techno layer. Messages are kept numeric; the result
 // is 1 for accepted, 10 for refused, 0x20/0x21 for the repair step (cannot pay / finished). The
 // slot keeps the base signature: a1 is the sender (TechnoClass*), a3 points at the in/out
@@ -2346,7 +2424,7 @@ int TechnoClass::vf_101(int a1, int message, int a3)
     }
     case 0x18:
         if (vf_11() == 2) {
-            if (static_cast<AircraftClass*>(this)->Type->AirportBound) {
+            if (static_cast<AircraftClass*>(KindCast_00459F40(2))->Type->AirportBound) {
                 break;
             }
         }
@@ -2413,10 +2491,10 @@ int TechnoClass::vf_101(int a1, int message, int a3)
                 }
                 Health += step;
                 EstimatedHealth += step;
-                FootClass* foot = Flags.IsFoot ? static_cast<FootClass*>(this) : 0;
-                if (foot && foot->ParasiteEatingMe) {
-                    static_cast<ParasiteClass*>(static_cast<FootClass*>(foot->ParasiteEatingMe)->ParasiteImUsing)->TimerA = CDTimerClass(0x32);
-                    static_cast<ParasiteClass*>(static_cast<FootClass*>(foot->ParasiteEatingMe)->ParasiteImUsing)->FUN_0062A4A0();
+                // THISNULL: GAMEMD 0x459F40 (retail tests `this` at 0x6F4D57, then the flag byte goes through a bool stack byte, 0x6F4D61..0x6F4D6A)
+                if (NullSafeIsFoot(this) && static_cast<FootClass*>(this)->ParasiteEatingMe) {
+                    static_cast<FootClass*>(this)->ParasiteEatingMe->ParasiteImUsing->TimerA = CDTimerClass(0x32);
+                    static_cast<FootClass*>(this)->ParasiteEatingMe->ParasiteImUsing->FUN_0062A4A0();
                 }
                 if ((GetHealthPercentage() > Rules->ConditionYellow || vf_114() < -10) && DamageParticleSystem) {
                     static_cast<ObjectClass*>(DamageParticleSystem)->vf_62();
@@ -3898,11 +3976,328 @@ void TechnoClass::vf_259()
     }
 }
 
+#include "_layout/unit_class.h"
+#include "_layout/map_0087f7e8.h"
+
+// FUNCTION: GAMEMD 0x7014A0
+// Hands this object to another house (nothing when it already belongs to it): it drops its orders, loses its
+// spawned children, is taken off the old owner's books (the old owner is credited the cost, and a kill is counted
+// for the new one) and off the cell threat map, then re-enters the world under the new owner with the cell threat
+// re-added, its mission restored and its radar and idle state refreshed.
+bool TechnoClass::vf_245(HouseClass* house, bool a2)
+{
+    if (house != Owner) {
+        if (Owner == CurrentPlayer && IsSelected) {
+            vf_84();
+        }
+        vf_242(0);
+        SetDestination(0, true);
+        // THISNULL: GAMEMD 0x459F40 (retail tests `this` at 0x7014EF before the unit cast)
+        if (this == 0 || vf_11() != 1 || !static_cast<UnitClass*>(KindCast_00459F40(1))->FUN_00746DB0()) {
+            ArchiveTarget = 0;
+        }
+        if (CurrentMission != 0x13) {
+            // THISNULL: GAMEMD 0x459F40 (retail tests `this` at 0x70152D)
+            if (this == 0 || vf_11() != 1
+                || !static_cast<UnitClass*>(KindCast_00459F40(1))->Type->IsSimpleDeployer
+                || CurrentMission != 0x10) {
+                vf_122(5, true);
+            }
+        }
+        if (SpawnManager) {
+            static_cast<SpawnManagerClass*>(SpawnManager)->KillNodes();
+        }
+        FUN_00638840();
+        if (!InLimbo) {
+            Owner->FUN_005025F0(this, 0);
+        }
+        vf_56(0);
+        house->PointTotal += vf_33()->vf_33(Owner);
+        Owner->RemoveTracking(this);
+        house->FUN_004FF700(this);
+        switch (vf_11()) {
+        case 6:
+            if (!vf_33()->DontScore) {
+                house->KilledBuildingsOfHouses[vf_14()]++;
+            }
+            break;
+        case 1:
+        case 2:
+        case 0xF:
+            if (!vf_33()->DontScore) {
+                house->KilledUnitsOfHouses[vf_14()]++;
+            }
+            break;
+        }
+        Owner->WhoLastHurtMe = house->Type->ArrayIndex2;
+        if (!InLimbo) {
+            vf_73(0);
+        }
+        BecomeUntargetable();
+        if (!InLimbo) {
+            vf_73(3);
+        }
+        CellClass* cell = 0;
+        if (!InLimbo) {
+            // THISNULL: GAMEMD 0x459F40 (retail tests `this` at 0x7016A8, then the flag byte goes through a bool stack byte, 0x7016AC..0x7016B5)
+            if (!NullSafeIsFoot(this)) {
+                CoordStruct where = Location;
+                cell = DAT_0087F7E8.FUN_00565730(where);
+            } else {
+                cell = DAT_0087F7E8.FUN_005657A0(&static_cast<FootClass*>(this)->LastMapCoords);
+            }
+            if (cell) {
+                cell->UpdateThreat(vf_14(), -ThreatPosed);
+                ThreatPosed = 0;
+            }
+            vf_291(0, 0, false, 0);
+        }
+        Owner = house;
+        IsOwnedByCurrentPlayer = (house == CurrentPlayer && CurrentPlayer != 0);
+        if (!InLimbo) {
+            if (cell) {
+                ThreatPosed = vf_176();
+                cell->UpdateThreat(vf_14(), ThreatPosed);
+            }
+            Owner->FUN_00502A80(this, true);
+        }
+        OriginallyOwnedByHouse = 0;
+        if (CurrentMission == 0x15 || QueuedMission == 0x15) {
+            vf_124(5);
+        }
+        if (!InLimbo) {
+            if (vf_11() != 6 || CurrentMission != 0x10
+                || !static_cast<BuildingClass*>(this)->Type->WeaponsFactory) {
+                bool atFactory = false;
+                if (FUN_0065AD30(0) != 0) {
+                    RadioClass* contact = FUN_0065AD30(0);
+                    if (contact->vf_11() == 6 && static_cast<BuildingClass*>(contact)->Type->WeaponsFactory) {
+                        atFactory = true;
+                    }
+                }
+                if (!atFactory) {
+                    SetDestination(0, true);
+                    vf_242(0);
+                    EnterIdleMode(false, true);
+                }
+            }
+            if (IsRadarTracked) {
+                vf_294();
+                vf_293();
+            }
+            vf_290(0, 0, 0, 0, 0);
+        }
+        return true;
+    }
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x7018C0
 void TechnoClass::FUN_007018C0(HouseClass* house)
 {
     this->Owner = house;
     this->IsOwnedByCurrentPlayer = (house == CurrentPlayer && CurrentPlayer != 0);
+}
+
+#include "_layout/infantry_class.h"
+#include "_layout/aircraft_class.h"
+#include "_layout/aircraft_type_class.h"
+#include "_layout/infantry_type_class.h"
+#include "_layout/unit_type_class.h"
+#include "_layout/unit_tracker_class.h"
+
+// FUNCTION: GAMEMD 0x702D40
+// The kill is booked for the killing object (slot 56): the same tag events and cost as FUN_00703230, then the
+// killer, or the transporter, spawner or occupant that stands for it, is credited the experience, and the
+// kill is added to the killer's side (last hurter, points, per-type and per-house counts).
+void TechnoClass::vf_56(void* source)
+{
+    TechnoClass* killer = static_cast<TechnoClass*>(source);
+    int counted = 0;
+    int points = vf_33()->vf_33(Owner);
+    if (IsAlive && AttachedTag && killer) {
+        AttachedTag->FUN_006E53A0(6, this, DAT_00B0EA50, false, 0);
+    }
+    if (IsAlive) {
+        if (AttachedTag && killer) {
+            AttachedTag->FUN_006E53A0(4, this, DAT_00B0EA50, false, 0);
+        }
+        if (IsAlive && vf_11() != 1) {
+            if (IsAlive) {
+                if (AttachedTag && killer) {
+                    AttachedTag->FUN_006E53A0(7, this, DAT_00B0EA50, false, 0);
+                }
+                if (IsAlive) {
+                    if (AttachedTag) {
+                        AttachedTag->FUN_006E53A0(0x30, this, DAT_00B0EA50, false, 0);
+                    }
+                    if (IsAlive && AttachedTag) {
+                        AttachedTag->FUN_006E53A0(0x1D, this, DAT_00B0EA50, false, 0);
+                    }
+                }
+            }
+        }
+    }
+    if (vf_33()->DontScore) {
+        return;
+    }
+    if (killer) {
+        if (killer->Owner->FUN_004F9A90(this)) {
+            points = 0;
+        } else if (Veterancy.FUN_0074FF90()) {
+            points += points;
+        } else if (Veterancy.FUN_00750010()) {
+            points = points * 3;
+        }
+        if (killer->InOpenToppedTransport && killer->Transporter
+            && static_cast<TechnoClass*>(killer->Transporter)->vf_33()->Trainable) {
+            static_cast<TechnoClass*>(killer->Transporter)->Veterancy.FUN_0074FF50(
+                static_cast<TechnoClass*>(killer->Transporter)->vf_33()->vf_33(Owner), points);
+        } else if (killer->vf_33()->Trainable) {
+            killer->Veterancy.FUN_0074FF50(killer->vf_33()->vf_33(Owner), points);
+        } else if (killer->vf_33()->MissileSpawn) {
+            if (killer->SpawnOwner && static_cast<TechnoClass*>(killer->SpawnOwner)->vf_33()->Trainable) {
+                static_cast<TechnoClass*>(killer->SpawnOwner)->Veterancy.FUN_0074FF50(
+                    static_cast<TechnoClass*>(killer->SpawnOwner)->vf_33()->vf_33(Owner), points);
+            }
+        } else if (killer->vf_256() && killer->vf_11() == 6) {
+            BuildingClass* building = static_cast<BuildingClass*>(killer->KindCast_00459F40(6));
+            InfantryClass* occupant = building->Occupants.Items[building->FiringOccupantIndex];
+            occupant->Veterancy.FUN_0074FF50(occupant->Type->vf_33(Owner), points);
+        }
+        Owner->WhoLastHurtMe = killer->vf_14();
+        killer->Owner->PointTotal += points;
+    }
+    switch (vf_11()) {
+    case 6:
+        if (vf_33()->Insignificant) {
+            return;
+        }
+        if (static_cast<BuildingClass*>(this)->OwnerCountryIndex != -1) {
+            Owner->TotalKilledBuildings++;
+        }
+        if (killer && !vf_33()->DontScore) {
+            killer->Owner->KilledBuildingTypes.IncrementUnitTotal(static_cast<BuildingClass*>(this)->Type->ArrayIndex);
+            killer->Owner->KilledBuildingsOfHouses[vf_14()]++;
+        }
+        if (DAT_0087F7E8.FUN_00656E50()) {
+            DAT_0087F7E8.FUN_00656E90(false);
+        }
+        return;
+    case 2:
+        if (killer) {
+            if (!vf_33()->DontScore) {
+                killer->Owner->KilledAircraftTypes.IncrementUnitTotal(static_cast<AircraftClass*>(this)->Type->ArrayIndex);
+                counted = 1;
+            }
+        }
+    case 0xF:
+        if (killer) {
+            if (!counted && !vf_33()->DontScore) {
+                killer->Owner->KilledInfantryTypes.IncrementUnitTotal(static_cast<InfantryClass*>(this)->Type->ArrayIndex);
+                counted = 1;
+            }
+        }
+    case 1:
+        if (killer && !counted && !vf_33()->DontScore) {
+            killer->Owner->KilledUnitTypes.IncrementUnitTotal(static_cast<UnitClass*>(this)->Type->ArrayIndex);
+        }
+        Owner->TotalKilledUnits++;
+        if (killer && !vf_33()->DontScore) {
+            killer->Owner->KilledUnitsOfHouses[vf_14()]++;
+        }
+        if (DAT_0087F7E8.FUN_00656E50()) {
+            DAT_0087F7E8.FUN_00656E90(false);
+        }
+        break;
+    }
+}
+
+// FUNCTION: GAMEMD 0x703230
+// The kill is booked: the object's own tag events fire while it lives (for the killer's side), the killer is
+// paid the cost (nothing from an ally, double or triple for a veteran or elite victim), becomes the owner's last
+// hurter, and the killer's per-type and per-house kill counts and the owner's totals are bumped.
+void TechnoClass::FUN_00703230(HouseClass* killer)
+{
+    int counted = 0;
+    int points = vf_33()->vf_33(Owner);
+    if (IsAlive && AttachedTag && killer) {
+        AttachedTag->FUN_006E53A0(6, this, DAT_00B0EA50, false, 0);
+    }
+    if (IsAlive) {
+        if (AttachedTag && killer) {
+            AttachedTag->FUN_006E53A0(4, this, DAT_00B0EA50, false, 0);
+        }
+        if (IsAlive && vf_11() != 1) {
+            if (IsAlive) {
+                if (AttachedTag && killer) {
+                    AttachedTag->FUN_006E53A0(7, this, DAT_00B0EA50, false, 0);
+                }
+                if (IsAlive) {
+                    if (AttachedTag) {
+                        AttachedTag->FUN_006E53A0(0x30, this, DAT_00B0EA50, false, 0);
+                    }
+                    if (IsAlive && AttachedTag) {
+                        AttachedTag->FUN_006E53A0(0x1D, this, DAT_00B0EA50, false, 0);
+                    }
+                }
+            }
+        }
+    }
+    if (killer) {
+        if (killer->FUN_004F9A90(this)) {
+            points = 0;
+        } else if (Veterancy.FUN_0074FF90()) {
+            points += points;
+        } else if (Veterancy.FUN_00750010()) {
+            points = points * 3;
+        }
+        Owner->WhoLastHurtMe = killer->ArrayIndex;
+        killer->PointTotal += points;
+    }
+    switch (vf_11()) {
+    case 6:
+        if (vf_33()->Insignificant) {
+            return;
+        }
+        if (static_cast<BuildingClass*>(this)->OwnerCountryIndex != -1) {
+            Owner->TotalKilledBuildings++;
+        }
+        if (killer && !vf_33()->DontScore) {
+            killer->KilledBuildingTypes.IncrementUnitTotal(static_cast<BuildingClass*>(this)->Type->ArrayIndex);
+            killer->KilledBuildingsOfHouses[vf_14()]++;
+        }
+        if (DAT_0087F7E8.FUN_00656E50()) {
+            DAT_0087F7E8.FUN_00656E90(false);
+        }
+        return;
+    case 2:
+        if (killer) {
+            if (!vf_33()->DontScore) {
+                killer->KilledAircraftTypes.IncrementUnitTotal(static_cast<AircraftClass*>(this)->Type->ArrayIndex);
+                counted = 1;
+            }
+        }
+    case 0xF:
+        if (killer) {
+            if (!counted && !vf_33()->DontScore) {
+                killer->KilledInfantryTypes.IncrementUnitTotal(static_cast<InfantryClass*>(this)->Type->ArrayIndex);
+                counted = 1;
+            }
+        }
+    case 1:
+        if (killer && !counted && !vf_33()->DontScore) {
+            killer->KilledUnitTypes.IncrementUnitTotal(static_cast<UnitClass*>(this)->Type->ArrayIndex);
+        }
+        Owner->TotalKilledUnits++;
+        if (killer && !vf_33()->DontScore) {
+            killer->KilledUnitsOfHouses[vf_14()]++;
+        }
+        if (DAT_0087F7E8.FUN_00656E50()) {
+            DAT_0087F7E8.FUN_00656E90(false);
+        }
+        break;
+    }
 }
 
 // FUNCTION: GAMEMD 0x703590
@@ -4301,6 +4696,179 @@ void TechnoClass::FUN_00707750(int a, DirStruct d)
     } else if (octant == 7) {
         this->unknown_3CA -= 12;
     }
+}
+
+#include "_layout/anim_class.h"
+#include "object_flag_is_techno.h"
+
+// FUNCTION: GAMEMD 0x7077C0
+// A pointer is going away (slot 10): every link this object holds to it is cleared, along with the helper
+// objects that reference it (drain, mind control, locomotor partners, spawn and capture managers, the airstrike),
+// and the target and threat lists lose it. When it was the current target the targeting timer is shortened and
+// the object drops the target (and resumes a suspended mission).
+void TechnoClass::vf_10(void* target, bool removed)
+{
+    RadioClass::vf_10(target, removed);
+    if (removed) {
+        Passengers.RemovePassenger(static_cast<FootClass*>(target));
+    }
+    bool stillThere = true;
+    if (target == SpawnOwner) {
+        SpawnOwner = 0;
+    }
+    if (target == OriginallyOwnedByHouse) {
+        OriginallyOwnedByHouse = 0;
+    }
+    if (target == MindControlledByHouse) {
+        MindControlledByHouse = 0;
+    }
+    if (target == TemporalTargetingMe) {
+        TemporalTargetingMe = 0;
+    }
+    if (target == Airstrike) {
+        Airstrike = 0;
+    }
+    if (target == BeingManipulatedBy) {
+        BeingManipulatedBy = 0;
+    }
+    if (target == BunkerLinkedItem && DAT_00A8E7AC != 0) {
+        BunkerLinkedItem = 0;
+    }
+    if (target == DrainTarget) {
+        if (DrainAnim) {
+            static_cast<ObjectClass*>(DrainAnim)->vf_62();
+            DrainAnim = 0;
+        }
+        if (DrainTarget) {
+            static_cast<TechnoClass*>(DrainTarget)->DrainingMe = 0;
+            if (static_cast<TechnoClass*>(DrainTarget)->Owner) {
+                static_cast<TechnoClass*>(DrainTarget)->Owner->RecheckPower = true;
+            }
+            DrainTarget = 0;
+        }
+        DrainTarget = 0;
+    }
+    TechnoClass* transporter = static_cast<TechnoClass*>(Transporter);
+    if (target == transporter && transporter
+        && (!transporter->IsAlive || transporter->Health == 0 || DAT_00A8E7AC != 0)) {
+        Transporter = 0;
+    }
+    TechnoClass* drainer = static_cast<TechnoClass*>(DrainingMe);
+    if (target == drainer) {
+        if (drainer->DrainAnim) {
+            static_cast<ObjectClass*>(drainer->DrainAnim)->vf_62();
+            drainer->DrainAnim = 0;
+        }
+        if (drainer->DrainTarget) {
+            static_cast<TechnoClass*>(drainer->DrainTarget)->DrainingMe = 0;
+            if (static_cast<TechnoClass*>(drainer->DrainTarget)->Owner) {
+                static_cast<TechnoClass*>(drainer->DrainTarget)->Owner->RecheckPower = true;
+            }
+            drainer->DrainTarget = 0;
+        }
+        DrainingMe = 0;
+    }
+    if (target == DrainAnim) {
+        DrainAnim = 0;
+    }
+    if (target == MindControlRingAnim) {
+        MindControlRingAnim = 0;
+    }
+    if (target == DeployAnim) {
+        DeployAnim = 0;
+    }
+    if (!removed && ObjectFlagIsTechno(static_cast<ObjectClass*>(target))) {
+        CellClass* cell = DAT_0087F7E8.FUN_00565730(static_cast<AbstractClass*>(target)->vf_18());
+        if (cell->FUN_004870D0(Owner->ArrayIndex)) {
+            stillThere = false;
+        }
+    }
+    if (Target == target && stillThere
+        && (removed || static_cast<AbstractClass*>(target)->vf_15() != Owner)) {
+        if (TargetingTimer.GetTimeLeft() > 10 && DAT_00A8E7AC == 0) {
+            TargetingTimer = CDTimerClass(DAT_00A8B230->unknown_0218.RandomRanged(4, 8));
+        }
+        vf_242(0);
+        if (vf_127()) {
+            vf_126();
+            if (vf_11() == 2 && CurrentMission == 0x19) {
+                MissionStatus = 0;
+                static_cast<AircraftClass*>(this)->IsLocked = false;
+            }
+        }
+    }
+    if (LastTarget == target && stillThere) {
+        LastTarget = 0;
+    }
+    if (Owner == target) {
+        Owner = 0;
+        IsOwnedByCurrentPlayer = false;
+    }
+    if (vf_49() && vf_52(true) == target) {
+        vf_284();
+    }
+    for (int i = 0; i < 8; i++) {
+        if (ParticleSystems[i] == target) {
+            ParticleSystems[i] = 0;
+        }
+    }
+    if (Wave == target) {
+        Wave = 0;
+    }
+    if (removed) {
+        if (QueueUpToEnter == target) {
+            QueueUpToEnter = 0;
+        }
+        if (ArchiveTarget == target) {
+            ArchiveTarget = 0;
+        }
+        if (CaptureManager) {
+            static_cast<CaptureManagerClass*>(CaptureManager)->FUN_00471F90(target);
+        }
+    }
+    if (SpawnManager) {
+        static_cast<SpawnManagerClass*>(SpawnManager)->UnlinkPointer(static_cast<AbstractClass*>(target));
+    }
+    if (TemporalImUsing) {
+        TemporalImUsing->FUN_0071AB60(target);
+    }
+    if (Airstrike && Airstrike->unknown_4C == this) {
+        Airstrike->FUN_0041D540(static_cast<AbstractClass*>(target));
+    }
+    if (target == DirectRockerLinkedUnit) {
+        static_cast<TechnoClass*>(DirectRockerLinkedUnit)->DirectRockerLinkedUnit = 0;
+        DirectRockerLinkedUnit = 0;
+    }
+    if (target == LocomotorTarget) {
+        FUN_0070FEE0(true);
+        if (LocomotorTarget) {
+            static_cast<TechnoClass*>(LocomotorTarget)->LocomotorSource = 0;
+            LocomotorTarget = 0;
+        }
+    }
+    if (target == LocomotorSource) {
+        static_cast<TechnoClass*>(LocomotorSource)->FUN_0070FEE0(true);
+        if (LocomotorSource) {
+            static_cast<TechnoClass*>(LocomotorSource)->LocomotorTarget = 0;
+            LocomotorSource = 0;
+        }
+    }
+    if (target == OldTeam) {
+        OldTeam = 0;
+    }
+    if (target == BehindAnim) {
+        BehindAnim = 0;
+    }
+    for (int k = 0; k < CurrentTargets.Count; k++) {
+        if (target == CurrentTargets.Items[k]) {
+            if (k != -1) {
+                CurrentTargetThreatValues.Delete(k);
+                CurrentTargets.RemoveItem(static_cast<AbstractClass*>(target));
+            }
+            break;
+        }
+    }
+    AttackedTargets.RemoveItem(static_cast<AbstractClass*>(target));
 }
 
 // FUNCTION: GAMEMD 0x707CB0  TechnoClass::KillPassengers (__thiscall, ret 0x4)
@@ -6176,6 +6744,165 @@ int TechnoView_0070E4B0::GetAirstrikeTintIntensity(int currentIntensity)
         result = 2000;
     }
     return result;
+}
+
+// FUNCTION: GAMEMD 0x4B4D70 (decl; reloc) -- frames left on a timer, as the out-of-line routine reports them.
+int __fastcall FUN_004B4D70(CDTimerClass* timer);
+
+// FUNCTION: GAMEMD 0x70E5A0
+// Steps the iron-curtain flash through its ten stages (fade in, hold, a jittered pulse, then a slow ramp that
+// waits on the curtain's own timer before fading out); with no curtain running the flash is reset.
+void TechnoClass::FUN_0070E5A0()
+{
+    if (vf_88()) {
+        switch (IronTintStage) {
+        case 0:
+            IronTintStage = 1;
+            IronTintTimer = CDTimerClass(6);
+            return;
+        case 1:
+            if (IronTintTimer.GetTimeLeft() == 0) {
+                IronTintStage = 2;
+                IronTintTimer = CDTimerClass(4);
+            }
+            return;
+        case 2:
+            if (IronTintTimer.GetTimeLeft() == 0) {
+                IronTintStage = 3;
+                int jitter = DAT_00A8B230->unknown_0218.RandomRanged(-5, 5);
+                IronTintTimer = CDTimerClass(jitter + 0x14);
+            }
+            return;
+        case 3:
+            if (IronTintTimer.GetTimeLeft() == 0) {
+                IronTintStage = 4;
+                IronTintTimer = CDTimerClass(8);
+            }
+            return;
+        case 4:
+            if (IronTintTimer.GetTimeLeft() == 0) {
+                IronTintStage = 5;
+                IronTintTimer = CDTimerClass(0x10);
+            }
+            return;
+        case 5:
+            if (IronTintTimer.GetTimeLeft() == 0) {
+                if (FUN_004B4D70(&IronCurtainTimer) < 0x36) {
+                    IronTintStage = 6;
+                    return;
+                }
+                IronTintStage = 4;
+                IronTintTimer = CDTimerClass(8);
+            }
+            return;
+        case 6:
+            if (FUN_004B4D70(&IronCurtainTimer) <= 0x1E) {
+                IronTintStage = 7;
+                IronTintTimer = CDTimerClass(6);
+            }
+            return;
+        case 7:
+            if (IronTintTimer.GetTimeLeft() == 0) {
+                IronTintStage = 8;
+                IronTintTimer = CDTimerClass(4);
+            }
+            return;
+        case 8:
+            if (IronTintTimer.GetTimeLeft() == 0) {
+                IronTintStage = 9;
+                IronTintTimer = CDTimerClass(0x14);
+            }
+            return;
+        case 9:
+            if (IronTintTimer.GetTimeLeft() == 0) {
+                IronTintStage = 10;
+            }
+            return;
+        default:
+            IronTintStage = 10;
+            return;
+        }
+    }
+    IronTintStage = 0;
+}
+
+// FUNCTION: GAMEMD 0x70E920
+// The same ten-stage flash for a building an airstrike is aimed at, run off the airstrike's own timer.
+void TechnoClass::FUN_0070E920()
+{
+    // THISNULL: GAMEMD 0x459F40 (retail tests `this` at 0x70E926)
+    if (this == 0 || vf_11() != 6 || Airstrike == 0
+        || Airstrike->Target != static_cast<ObjectClass*>(KindCast_00459F40(6))) {
+        AirstrikeTintStage = 0;
+        return;
+    }
+    switch (AirstrikeTintStage) {
+    case 0:
+        AirstrikeTintStage = 1;
+        AirstrikeTintTimer = CDTimerClass(6);
+        return;
+    case 1:
+        if (AirstrikeTintTimer.GetTimeLeft() == 0) {
+            AirstrikeTintStage = 2;
+            AirstrikeTintTimer = CDTimerClass(4);
+        }
+        return;
+    case 2:
+        if (AirstrikeTintTimer.GetTimeLeft() == 0) {
+            AirstrikeTintStage = 3;
+            int jitter = DAT_00A8B230->unknown_0218.RandomRanged(-5, 5);
+            AirstrikeTintTimer = CDTimerClass(jitter + 0x14);
+        }
+        return;
+    case 3:
+        if (AirstrikeTintTimer.GetTimeLeft() == 0) {
+            AirstrikeTintStage = 4;
+            AirstrikeTintTimer = CDTimerClass(0x40);
+        }
+        return;
+    case 4:
+        if (AirstrikeTintTimer.GetTimeLeft() == 0) {
+            AirstrikeTintStage = 5;
+            AirstrikeTintTimer = CDTimerClass(0x40);
+        }
+        return;
+    case 5:
+        if (AirstrikeTintTimer.GetTimeLeft() == 0) {
+            if (FUN_004B4D70(&AirstrikeTimer) < 0x9E) {
+                AirstrikeTintStage = 6;
+                return;
+            }
+            AirstrikeTintStage = 4;
+            AirstrikeTintTimer = CDTimerClass(0x40);
+        }
+        return;
+    case 6:
+        if (FUN_004B4D70(&AirstrikeTimer) <= 0x1E) {
+            AirstrikeTintStage = 7;
+            AirstrikeTintTimer = CDTimerClass(6);
+        }
+        return;
+    case 7:
+        if (AirstrikeTintTimer.GetTimeLeft() == 0) {
+            AirstrikeTintStage = 8;
+            AirstrikeTintTimer = CDTimerClass(4);
+        }
+        return;
+    case 8:
+        if (AirstrikeTintTimer.GetTimeLeft() == 0) {
+            AirstrikeTintStage = 9;
+            AirstrikeTintTimer = CDTimerClass(0x14);
+        }
+        return;
+    case 9:
+        if (AirstrikeTintTimer.GetTimeLeft() == 0) {
+            AirstrikeTintStage = 10;
+        }
+        return;
+    default:
+        AirstrikeTintStage = 10;
+        return;
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

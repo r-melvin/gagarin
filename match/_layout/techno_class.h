@@ -262,6 +262,18 @@ public:
     int FUN_0070DDF0();
     // FUNCTION: GAMEMD 0x705D20 (decl; reloc) -- the planning token this unit is on.
     PlanningTokenClass* FUN_00705D20();
+    // FUNCTION: GAMEMD 0x703230 -- books a kill for the killing house (one stack argument).
+    void FUN_00703230(HouseClass* killer);
+    // FUNCTION: GAMEMD 0x70E5A0 -- steps the iron-curtain flash stage.
+    void FUN_0070E5A0();
+    // FUNCTION: GAMEMD 0x70E920 -- steps the airstrike flash stage.
+    void FUN_0070E920();
+    // FUNCTION: GAMEMD 0x70D4A0 (decl; reloc) -- drops this object from every targeting list that still names it.
+    void BecomeUntargetable();
+    // FUNCTION: GAMEMD 0x638840 (decl; reloc) -- no stack arguments.
+    void FUN_00638840();
+    // FUNCTION: GAMEMD 0x638A80 (decl; reloc) -- makes the planning token.
+    void FUN_00638A80();
     // Declaration: GAMEMD 0x6385C0 -- AL result, ordinary thiscall receiver.
     bool TryNextPlanningTokenNode();
     // FUNCTION: GAMEMD 0x6FD570 -- fires the bolt for the weapon chosen against the target.
@@ -353,6 +365,7 @@ public:
     virtual int vf_26(bool a1, int a2);                           // 26  0x703860
     virtual int vf_90(int weapon);                                 // 90  0x7012C0: the range of a weapon, cut to the shortest passenger range when open-topped
     virtual void vf_99(int mark);                                  // 99  0x6F5090: the change notification, mark 2 = placed
+    virtual void vf_10(void* target, bool removed);               // 10  0x7077C0
     virtual int vf_101(int a1, int event, int a3);                 // 101 0x6F4AB0: the radio message handler
     virtual void vf_86();                                          // 86  0x70E340
     virtual bool vf_88();                                          // 88  0x41BF40: IronCurtainTimer running
