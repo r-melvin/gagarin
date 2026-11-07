@@ -15158,20 +15158,20 @@
   "pct": 100
  },
  {
-  "tu": "match/vector_ctor_pod_family_methods.cpp",
+  "tu": "match/vector_superclass_slot_methods.cpp",
   "addr": "0x510500",
-  "sym": "?Ctor@VectorClass_00510500@@QAEPAU1@IPAUPodElem4@@@Z",
+  "sym": "??0?$VectorClass@PAVSuperClass@@@@QAE@HPAPAVSuperClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass_00510500::Ctor",
+  "name": "VectorClass<SuperClass*>::VectorClass",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/vector_ctor_pod_family_methods.cpp",
+  "tu": "match/vector_buildingclass_methods.cpp",
   "addr": "0x510550",
-  "sym": "?Ctor@VectorClass_00510550@@QAEPAU1@IPAUPodElem4@@@Z",
+  "sym": "??0?$VectorClass@PAVBuildingClass@@@@QAE@HPAPAVBuildingClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass_00510550::Ctor",
+  "name": "VectorClass<BuildingClass*>::VectorClass",
   "status": "matched",
   "pct": 100
  },
@@ -15194,20 +15194,20 @@
   "pct": 100
  },
  {
-  "tu": "match/vector_ctor_pod_family_methods.cpp",
+  "tu": "match/vector_tagclass_methods.cpp",
   "addr": "0x510640",
-  "sym": "?Ctor@VectorClass_00510640@@QAEPAU1@IPAUPodElem4@@@Z",
+  "sym": "??0?$VectorClass@PAVTagClass@@@@QAE@HPAPAVTagClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass_00510640::Ctor",
+  "name": "VectorClass<TagClass*>::VectorClass",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/vector_ctor_pod_family_methods.cpp",
+  "tu": "match/House.cpp",
   "addr": "0x510690",
-  "sym": "?Ctor@VectorClass_00510690@@QAEPAU1@IPAUPodElem4@@@Z",
+  "sym": "??0?$VectorClass@PAUStartingTechnoStruct@HouseClass@@@@QAE@HPAPAUStartingTechnoStruct@HouseClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass_00510690::Ctor",
+  "name": "VectorClass<HouseClass::StartingTechnoStruct*>::VectorClass",
   "status": "matched",
   "pct": 100
  },

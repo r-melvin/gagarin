@@ -22,6 +22,8 @@ class SuperClass;
 // VectorClass<SuperClass*>::Slot5 (slot 5)
 // TEMPLATE: GAMEMD 0x4E98F0
 // DynamicVectorClass<SuperClass*>::FindItemIndex (slot 4)
+// TEMPLATE: GAMEMD 0x510500
+// VectorClass<SuperClass*>::VectorClass(int, SuperClass**)
 template class VectorClass<SuperClass*>;
 template class DynamicVectorClass<SuperClass*>;
 

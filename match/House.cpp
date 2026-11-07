@@ -4241,6 +4241,9 @@ void HouseClass::UpdateAngerNodes(int scoreAdd, HouseClass* house)
 // SYNTHETIC: GAMEMD 0x5100E0
 // DynamicVectorClass<HouseClass::StartingTechnoStruct*>::scalar deleting destructor
 
+// FUNCTION: GAMEMD 0x510690
+// VectorClass<HouseClass::StartingTechnoStruct*>::VectorClass(int, StartingTechnoStruct**)
+
 // VTABLE: GAMEMD 0x7EA964 -- VectorClass<HouseClass::StartingTechnoStruct*>.
 template class VectorClass<HouseClass::StartingTechnoStruct*>;
 typedef VectorClass<HouseClass::StartingTechnoStruct*> GgStartingtechnostructVectorClass;

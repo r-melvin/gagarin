@@ -45,6 +45,9 @@ class TagClass;
 // SYNTHETIC: GAMEMD 0x4EF530
 // DynamicVectorClass<TagClass*>::scalar deleting destructor
 
+// FUNCTION: GAMEMD 0x510640
+// VectorClass<TagClass*>::VectorClass(int, TagClass**)
+
 // VTABLE: GAMEMD 0x7EA5C4 -- VectorClass<TagClass*>.
 template class VectorClass<TagClass*>;
 typedef VectorClass<TagClass*> GgTagClassVectorClass;
