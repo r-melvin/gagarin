@@ -718,6 +718,8 @@ public:
 
     // FUNCTION: GAMEMD 0x70D0D0 (decl; reloc) -- does this object have the ability (one stack argument).
     bool FUN_0070D0D0(int ability);
+    // FUNCTION: GAMEMD 0x70D690 (decl) -- the death explosion; returns the damage dealt (one stack argument).
+    int FUN_0070D690(int extraDamage);
     // FUNCTION: GAMEMD 0x70DC70 (decl; reloc) -- set the unit's current weapon/mode index (one stack argument).
     void FUN_0070DC70(int mode);
     // FUNCTION: GAMEMD 0x70E2B0 (decl) -- start the invulnerability timer (duration, unused, force-shield flag).

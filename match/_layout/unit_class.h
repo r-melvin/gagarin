@@ -39,6 +39,12 @@ class UnitClass : public FootClass
 {
 public:
     virtual ObjectTypeClass* vf_34();                    // 34  0x741490
+    virtual BulletClass* vf_243(AbstractClass* target, int a2);   // 243 0x741340
+    virtual bool Notice(int id, int arg);                // INoticeSink slot 0 (+0x08 table): 0x746100
+    virtual int vf_335(bool a1);                         // 335 0x7414E0
+    void FUN_00739AC0();                                 // 0x739AC0: steps the deploy animation of a simple deployer
+    void FUN_00738680();                                 // 0x738680: spawns the unit's deploy-time animation
+    void FUN_00739CD0();                                 // 0x739CD0: steps the undeploy animation of a simple deployer
     // GAMEMD 0x7353C0. TClassFactory<UnitClass>::CreateInstance constructs with
     // (0, 0): PUSH 0; PUSH 0; MOV ECX,EAX; CALL 0x7353C0 @0x6C344D..0x6C3453.
     UnitClass(UnitTypeClass* type = 0, HouseClass* owner = 0);
@@ -100,6 +106,7 @@ public:
     bool FUN_007468C0();                                // 0x7468C0: keeps the disguise in step with the surroundings
     bool FUN_00746D10();                                // 0x746D10
     bool FUN_00746DB0();                                // 0x746DB0
+    virtual void vf_9();                               // 9   0x746810
     virtual void vf_10(void* target, bool removed);    // 10  0x7446E0
     virtual bool vf_245(HouseClass* house, bool a2);   // 245 0x7463A0
     virtual const wchar_t* vf_36();                    // 36  0x746B20

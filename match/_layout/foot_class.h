@@ -49,6 +49,8 @@ class FootClass : public TechnoClass
 public:
     // FUNCTION: GAMEMD 0x4D31E0 -- chains TechnoClass(owner), initialises 0x520..0x6B8, seats the four vtables.
     FootClass(HouseClass* owner);
+    // FUNCTION: GAMEMD 0x4D3590 (decl; external) -- the real destructor; the scalar-deleting slot-8 entry calls it.
+    virtual ~FootClass();
 
     // Overrides of inherited slots that FootClass defines.
     virtual void* vf_27();                                         // 27  0x4DED70: the image shown to the viewer (the object's own or its disguise stand-in)

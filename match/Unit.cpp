@@ -71,6 +71,7 @@ extern double DAT_00B1D0B0;
 #include "_layout/building_type_class_layout.h"
 #include "_layout/cell_class.h"
 #include "_layout/house_class.h"
+#include "_layout/house_type_class.h"
 #include "frame_counter.h"
 #include "_layout/ebolt_class.h"
 #include "_layout/player_ptr_00a83d4c.h"
@@ -84,6 +85,7 @@ extern double DAT_00B1D0B0;
 #include "_layout/team_class.h"
 #include "_layout/overlay_type_class.h"
 #include "_layout/anim_class.h"
+#include "_layout/anim_type_class.h"
 #include "terrain_type_class.h"
 #include "cell_step_tables.h"
 #include "_layout/infantry_class.h"
@@ -97,10 +99,14 @@ extern double DAT_00B1D0B0;
 #include "_layout/fogged_object_class.h"
 #include "loco_interfaces.h"
 #include "bullet_type_class.h"
+#include "_layout/bullet_class.h"
 #include "whatami_dispatch_methods.h"
 #include "mathtbl_init_shapes.h"
 #include "_layout/voc_class.h"
 #include "map_class_area_methods.h"
+#include "vector_class.h"
+#include "vector_class_operations.h"
+#include "abstract_index_cast_sweep.h"
 
 // GLOBAL: GAMEMD 0x8458B0 -- the stage of the visceroid animation for each of the eight facings.
 extern int DAT_008458B0[8];
@@ -137,6 +143,106 @@ void __cdecl FUN_00735350()
     DAT_00B1D0A4 = 0x80;
 }
 
+
+// The lookup as 0x735780 expands it: the probe key sits in a stack slot and is compared as the left operand.
+template<>
+inline IndexClass<int, AbstractClass*>::NodeElement* IndexClass<int, AbstractClass*>::SearchForNode(const int& id)
+{
+    if (IndexCount == 0) {
+        return 0;
+    }
+    if (!IsSorted) {
+        qsort(IndexTable, IndexCount, sizeof(NodeElement), Comparator);
+        Archive = 0;
+        IsSorted = true;
+    }
+    NodeElement node;
+    node.ID = id;
+    NodeElement* base = IndexTable;
+    for (int count = IndexCount; count > 0; ) {
+        int half = count / 2;
+        NodeElement* mid = base + half;
+        if (node.ID < mid->ID) {
+            count = half;
+        } else {
+            if (mid->ID == node.ID) {
+                return mid;
+            }
+            base = mid + 1;
+            count = count - 1 - half;
+        }
+    }
+    return 0;
+}
+
+// The removal shifts whole nodes down.
+template<>
+inline bool IndexClass<int, AbstractClass*>::RemoveIndex(const int& id)
+{
+    NodeElement* node = SearchForNode(id);
+    if (node != 0) {
+        int found = node - IndexTable;
+        if (found != -1) {
+            for (int i = found + 1; i < IndexCount; i++) {
+                IndexTable[i - 1] = IndexTable[i];
+            }
+            IndexCount--;
+            NodeElement zero;
+            zero.ID = 0;
+            zero.Data = 0;
+            IndexTable[IndexCount] = zero;
+            Archive = 0;
+            return true;
+        }
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x46B050 (decl; reloc) -- creates a bullet: projectile in ECX, target in EDX, then owner, damage,
+// warhead, speed and the bright flag on the stack.
+BulletClass* FUN_0046B050(BulletTypeClass* projectile, AbstractClass* target, TechnoClass* owner, int damage,
+                          WarheadTypeClass* warhead, int speed, char bright);
+
+// GLOBAL: GAMEMD 0xA8E9A0
+extern char DAT_00A8E9A0;
+// GLOBAL: GAMEMD 0xA8E7AC -- nonzero suppresses the EVA line.
+extern int DAT_00A8E7AC;
+// GLOBAL: GAMEMD 0x8B4108
+extern DynamicVectorClass<UnitClass*> DAT_008B4108;
+
+// FUNCTION: GAMEMD 0x735780
+// Releases the electric bolt, hands the house back its bookkeeping, frees the passengers,
+// lets go of a carried flag, then leaves the unit list and the abstract index.
+UnitClass::~UnitClass()
+{
+    if (ElectricBolt) {
+        ElectricBolt->DetachOwner();
+        ElectricBolt = 0;
+    }
+    if (DAT_00A8E9A0 && Type) {
+        if (Owner->FUN_004F7870(Type, false, false) == -1) {
+            Owner->RecheckTechTree = 1;
+        }
+        if (Team) {
+            Team->LiberateMember(this, -1, 0);
+            Team = 0;
+        }
+        Owner->RemoveTracking(this);
+        if (!DAT_00A8E7AC && Passengers.FirstPassenger) {
+            do {
+                FootClass* passenger = Passengers.RemoveFirstPassenger();
+                if (passenger) {
+                    delete passenger;
+                }
+            } while (Passengers.FirstPassenger);
+        }
+        vf_53();
+    }
+    AnnounceExpiredPointer(1);
+    DAT_008B4108.RemoveItem(this);
+    AbstractIndex.RemoveIndex(vf_rtti_4());
+    IsAlive = false;
+}
 
 // FUNCTION: GAMEMD 0x736990
 // Keeps the turret and body facing in step with the target. A unit that has a target turns its
@@ -663,6 +769,88 @@ struct UnitSlaveManagerView
 extern CellStruct DAT_00B1CFB8;
 
 
+// FUNCTION: GAMEMD 0x739AC0
+// Steps a simple deployer through its deploy animation: a grounded unit starts the animation (or
+// is deployed at once when its type has none), the running animation is followed to its last
+// frame, and the deploy sound is played at the unit's position.
+void UnitClass::FUN_00739AC0()
+{
+    if (Type->IsSimpleDeployer) {
+        if (vf_114() > 0 && !vf_33()->DeployToLand) {
+            return;
+        }
+        if (!Deployed) {
+            if (!InAir && vf_114() > 0) {
+                InAir = true;
+            }
+            if (Deploying && DeployAnim) {
+                AnimTypeClass* animType = static_cast<AnimClass*>(DeployAnim)->Type;
+                if (StageClass::Value >= animType->End + animType->Start - 1) {
+                    Deployed = true;
+                    Deploying = false;
+                }
+            } else if (!InAir) {
+                if (Type->DeployingAnim != 0) {
+                    if (DeployAnim == 0) {
+                        AnimClass* anim = new AnimClass(Type->DeployingAnim, CoordStruct(Location), 0, 1, 0x600, 0, false);
+                        DeployAnim = anim;
+                        anim->FUN_00424B50(this);
+                        static_cast<AnimClass*>(DeployAnim)->LightConvert = vf_121();
+                    }
+                    StageClass::Value = static_cast<AnimClass*>(DeployAnim)->Type->Start;
+                    SetRate(static_cast<AnimClass*>(DeployAnim)->Type->Rate);
+                    Deploying = true;
+                } else {
+                    Deployed = true;
+                }
+            }
+            if (vf_33()->DeploySound != -1) {
+                CoordStruct where = Location;
+                VocClass::PlayAt(vf_33()->DeploySound, where, 0);
+            }
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x739CD0
+// Steps a deployed unit through its undeploy animation: the animation is started, followed to
+// its last frame, and then the unit leaves its deployed state and (when its type lands) heads for
+// the nearest free cell; the undeploy sound is played at the unit's position.
+void UnitClass::FUN_00739CD0()
+{
+    if (Deployed) {
+        if (Undeploying && DeployAnim) {
+            AnimTypeClass* animType = static_cast<AnimClass*>(DeployAnim)->Type;
+            if (StageClass::Value >= animType->End + animType->Start - 2) {
+                Deployed = false;
+                Undeploying = false;
+                if (vf_33()->DeployToLand) {
+                    SetDestination(DAT_0087F7E8.FUN_005657A0(NearbyLocation(this)), true);
+                }
+            }
+        } else if (Type->DeployingAnim != 0) {
+            if (DeployAnim == 0) {
+                AnimClass* anim = new AnimClass(Type->DeployingAnim, CoordStruct(Location), 0, 1, 0x600, 0, true);
+                DeployAnim = anim;
+                anim->FUN_00424B50(this);
+                static_cast<AnimClass*>(DeployAnim)->LightConvert = vf_121();
+            }
+            StageClass::Value = static_cast<AnimClass*>(DeployAnim)->Type->Start;
+            SetRate(static_cast<AnimClass*>(DeployAnim)->Type->Rate);
+            Undeploying = true;
+        } else {
+            Deployed = false;
+        }
+        if (vf_49()) {
+            vf_284();
+        }
+        if (vf_33()->UndeploySound != -1) {
+            CoordStruct where = Location;
+            VocClass::PlayAt(vf_33()->UndeploySound, where, 0);
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x73B0B0
 // Refuses while the tethered contact (a building doing its unload or deploy changes) is busy;
 // otherwise the object handling, without the third argument.
@@ -1112,6 +1300,52 @@ int UnitClass::vf_240(AbstractClass* target, int a2, bool a3)
     return result;
 }
 
+// FUNCTION: GAMEMD 0x741340
+// Slot 243 (fire): when the weapon is ready, fires through TechnoClass, then restarts the reload
+// timer of a magazine unit, picks the firing-frame countdown and starts a scalable bullet.
+BulletClass* UnitClass::vf_243(AbstractClass* target, int a2)
+{
+    BulletClass* result = 0;
+    WeaponTypeClass* weapon = vf_254(a2)->WeaponType;
+    if (!weapon) {
+        return 0;
+    }
+    bool synced = false;
+    if (a2 == 0) {
+        int phase = CurrentBurstIndex % weapon->Burst;
+        int syncFrame;
+        if (phase < 2) {
+            syncFrame = Type->FiringSyncFrame[phase];
+        } else {
+            syncFrame = -1;
+        }
+        if (CurrentFiringFrame == -1 || syncFrame == -1) {
+            synced = false;
+        } else {
+            synced = true;
+        }
+    }
+    if (vf_240(target, a2, true) == 0) {
+        result = TechnoClass::vf_243(target, a2);
+        if (result) {
+            int ammo = Type->Ammo;
+            if (ammo > 0 && Ammo < ammo && !Type->ManualReload) {
+                StartReloading();
+            }
+            if (!synced && Type->FiringFrames > 0) {
+                CurrentFiringFrame = Type->FiringFrames * 2 - 1;
+            }
+            if (result->Type->Scalable) {
+                result->InitScalable();
+            }
+            if (Type->DisguiseWhenStill) {
+                DisguiseBlinkTimer = CDTimerClass(weapon->DisguiseFakeBlinkTime);
+            }
+        }
+    }
+    return result;
+}
+
 // FUNCTION: GAMEMD 0x741490
 // Member getter (dword). Vtable slot 34 of UnitClass (RTTI).
 ObjectTypeClass* UnitClass::vf_34()
@@ -1132,6 +1366,72 @@ double UnitClass::vf_173()
 
 // GLOBAL: GAMEMD 0xB1CFE8 -- the all-zero coordinate.
 extern MathTblZero3 DAT_00B1CFE8;
+
+// Null-safe casts of a target pointer, used by slot 335 (0x7414E0). Retail tests the pointer again
+// ahead of each flag test; written inline as a ternary the second test folds away (9.4% and 62.3%).
+static inline ObjectClass* TestAsTechno(AbstractClass* a)
+{
+    if (a == 0) {
+        return 0;
+    }
+    return a->Flags.IsTechno ? static_cast<ObjectClass*>(a) : 0;
+}
+
+static inline bool TestIsObject(AbstractClass* a)
+{
+    return a != 0 && a->Flags.unknown_14_1;
+}
+
+static inline ObjectClass* TestAsObject(AbstractClass* a)
+{
+    if (a == 0) {
+        return 0;
+    }
+    return a->Flags.unknown_14_1 ? static_cast<ObjectClass*>(a) : 0;
+}
+
+// FUNCTION: GAMEMD 0x7414E0
+// PARTIAL: 96.4% - identical instruction multiset; retail keeps the type pointer in EDX and the target in EAX
+// across the hover-attack test, this build uses ECX/EAX and ECX (5 instructions differ by register only).
+// Slot 335 (the crush check of the idle pass): a unit that can crush the thing it is aiming at,
+// and has the range to do so, drives over it instead of firing; otherwise the foot pass runs.
+int UnitClass::vf_335(bool a1)
+{
+    bool crush = false;
+    if (!Owner->IsControlledByHuman() && Target && !Destination) {
+        ObjectClass* techno = TestAsTechno(Target);
+        if (Type->Crusher || FUN_0070D0D0(0x11)) {
+            if (FUN_005F6360(Target) < DAT_008871E0->Crush && techno && techno->IsCrushable(this)) {
+                if (Type->AutoCrush || !Owner->IsControlledByHuman()) {
+                    crush = true;
+                }
+            }
+        }
+    }
+    if (!crush) {
+        if (Type->BalloonHover) {
+            WeaponTypeClass* weapon = vf_254(vf_185(Target))->WeaponType;
+            if (weapon && weapon->Projectile && weapon->Projectile->Vertical) {
+                if (!a1) {
+                    SetDestination(Target, true);
+                }
+                return (int)Target;
+            }
+        }
+        if (Type->OmniCrusher && Target && (!Owner->IsHumanPlayer || !ShouldLoseTargetNow) && TestIsObject(Target)) {
+            if (TestAsObject(Target)->IsCrushable(this)) {
+                crush = true;
+            }
+        }
+    }
+    if (crush) {
+        if (!a1) {
+            SetDestination(Target, true);
+        }
+        return (int)Target;
+    }
+    return FootClass::vf_335(false);
+}
 
 // FUNCTION: GAMEMD 0x7416A0
 // A crusher driving over a cell: with the cell argument set it only leaves the track marks
@@ -1603,6 +1903,73 @@ bool UnitClass::AStarAttempt(const CellStruct* from, const CellStruct* to)
     return true;
 }
 
+// FUNCTION: GAMEMD 0x746100
+// PARTIAL: 96.5% - identical instruction multiset; register naming only: the vtable pointer after the
+// death-weapon call (EDX in retail, EAX here), the health/strength load and the warhead load in the damage
+// computation (8 instructions differ by register only).
+// INoticeSink slot 0 (the +0x08 table). Notice 0x117B hands a jumpjet or balloon-hover unit that
+// is linked to something over to its archived target, or stops it; notice 0x117C lets a crashable
+// unit fall apart; otherwise a unit that is being attacked by a locomotor explodes with the death
+// weapon and the C4 warhead.
+bool UnitClass::Notice(int id, int arg)
+{
+    if ((Type->BalloonHover || Type->JumpJet) && id == 0x117B && HasAnyLink()) {
+        vf_157(8);
+        if (ArchiveTarget && ArchiveTarget != Destination) {
+            SetDestination(ArchiveTarget, true);
+            return true;
+        }
+        AbortMotion();
+        vf_93(DAT_00B1CFE8, true, false);
+        return true;
+    }
+    if (Type->Crashable && id == 0x117C) {
+        vf_115(0);
+        if (!Type->BalloonHover) {
+            FUN_00738680();
+            vf_62();
+            return true;
+        }
+        FUN_0070D690(0);
+        vf_62();
+        return true;
+    }
+    if (IsAttackedByLocomotor) {
+        RulesClass* rules = DAT_008871E0;
+        int damage = (int)((rules->CurrentStrengthDamage ? Health : Type->Strength) * rules->FallingDamageMultiplier);
+        if (damage < 0) {
+            damage = 0;
+        }
+        TechnoClass* owner = this;
+        if (BeingManipulatedBy) {
+            owner = static_cast<TechnoClass*>(BeingManipulatedBy);
+        }
+        BulletClass* bullet = FUN_0046B050(rules->DeathWeapon->Projectile, this, owner, damage, rules->CrushWarhead, 0, 1);
+        CoordStruct coord = vf_18();
+        coord.Z -= vf_114();
+        if (bullet) {
+            bullet->vf_53();
+            bullet->FUN_004690B0(&coord);
+            bullet->Release();
+        }
+        if (BeingManipulatedBy) {
+            vf_56(BeingManipulatedBy);
+        } else if (ChronoWarpedByHouse) {
+            vf_57(ChronoWarpedByHouse);
+        }
+        coord = vf_18();
+        bullet = FUN_0046B050(DAT_008871E0->DeathWeapon->Projectile, this, owner, damage, DAT_008871E0->C4Warhead, 0, 1);
+        if (bullet) {
+            bullet->vf_53();
+            bullet->FUN_004690B0(&coord);
+            bullet->Release();
+        }
+        vf_62();
+        return true;
+    }
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x7463A0
 // Change owner: hand the follower car over too, then do the FootClass change.
 bool UnitClass::vf_245(HouseClass* house, bool a2)
@@ -1771,6 +2138,32 @@ bool UnitView_r16::FUN_00746750(HouseClass* house)
         }
     }
     return false;
+}
+
+// FUNCTION: GAMEMD 0x746810
+// After the techno start-up, the unit takes a veteran promotion when its house lists the type as
+// a veteran unit, or when a trainable land type belongs to a house that has infiltrated a war
+// factory, and a gunner type sets up its gunner state.
+void UnitClass::vf_9()
+{
+    TechnoClass::vf_9();
+    if (Type) {
+        if (Owner) {
+            TypeList<const UnitTypeClass*>& list = Owner->Type->VeteranUnits;
+            for (int i = 0; i < list.Count; i++) {
+                if (list.Items[i] == Type) {
+                    Veterancy.FUN_00750090(1);
+                    break;
+                }
+            }
+        }
+        if (Owner && Owner->WarFactoryInfiltrated && !Type->Naval && Type->Trainable) {
+            Veterancy.FUN_00750090(1);
+        }
+        if (Type->Gunner) {
+            FUN_0070DC70(0);
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x7468C0
@@ -1983,6 +2376,8 @@ DirStruct UnitClass::vf_170()
     }
     return PrimaryFacing.FUN_004C93D0();
 }
+
+// SYNTHETIC: GAMEMD 0x746E80 -- compiler-generated scalar deleting destructor of ~UnitClass (slot 8).
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x746EA0
