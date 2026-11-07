@@ -17,6 +17,7 @@ class HouseClass;
 class ObjectClass;
 class BuildingClass;
 class BuildingTypeClass;
+class TechnoClass;
 template<class T> class DynamicVectorClass;
 class Point2D;
 struct CoordStruct;
@@ -152,6 +153,9 @@ struct Map_0087F7E8
     // FUNCTION: GAMEMD 0x5687F0 / 0x5683C0 (decl; reloc) -- the same two entries, for any placed object.
     void FUN_005687F0(CellStruct* cell, ObjectClass* object);
     void FUN_005683C0(CellStruct* cell, ObjectClass* object);
+    // The same two entries taking the cell by reference (a call result passed in place).
+    void FUN_005687F0(const CellStruct& cell, ObjectClass* object);
+    void FUN_005683C0(const CellStruct& cell, ObjectClass* object);
     // FUNCTION: GAMEMD 0x5678E0 (decl; reloc) -- reveal the map around a coordinate (five one-byte flags).
     void FUN_005678E0(const CoordStruct* where, int sight, HouseClass* house, char a, char b, char c, char d, char e);
     // The same entry point 0x5678E0, taking the coordinate by reference and the flags as ints.
@@ -216,6 +220,8 @@ struct Map_0087F7E8
     void FUN_0056D5A0(const CellStruct* cell);
     // FUNCTION: GAMEMD 0x56D6E0 (decl; reloc)
     void FUN_0056D6E0();
+    // FUNCTION: GAMEMD 0x6A5F20 (decl; reloc) -- the sidebar part of the map object forgets a techno (one stack argument, RET 4).
+    void FUN_006A5F20(TechnoClass* techno);
     // FUNCTION: GAMEMD 0x56DC20 (decl; reloc) -- the nearby-cell search: fifteen stack words (RET 0x3C), the first the hidden out pointer.
     CellStruct* FUN_0056DC20(CellStruct* out, const CellStruct& position,
                              int speedType, int a4, int movementZone, bool alt,

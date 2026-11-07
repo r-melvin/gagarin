@@ -419,6 +419,8 @@ extern SidebarView_004F9370 Sidebar_0087F7E8_004F9370;
 #include "_layout/super_class.h"
 #include "_layout/house_class.h"
 #include "_layout/house_class_allied_inline.h"
+#include "_layout/tiberium_class.h"
+#include "_layout/infantry_class.h"
 #include "_layout/house_type_class.h"
 #include "_layout/building_class.h"
 #include "_layout/placement_object.h"
@@ -3583,6 +3585,143 @@ HRESULT __stdcall HouseClass::FindConnectionPoint(REFIID riid, IConnectionPoint*
         }
     }
     return CONNECT_E_CANNOTCONNECT;
+}
+
+// GLOBAL: GAMEMD 0xB0F4EC -- TiberiumClass::Array.Items.
+extern TiberiumClass** DAT_00B0F4EC;
+
+// FUNCTION: GAMEMD 0x5025F0
+// Takes a techno off the house's books. Resource gatherer and destination counts go down, the map forgets the
+// techno, and a building that was registered as a powered-unit source gives the centre back. Then by kind: a
+// building gives back its war factory count, storage and (when told to) its stored tiberium, which is paid out as
+// score and credits; units, aircraft and infantry give back their cost from the matching running total; and each
+// kind except the ones the type excludes from scoring counts the type down.
+void HouseClass::FUN_005025F0(TechnoClass* techno, bool a2)
+{
+    if (techno->vf_33()->ResourceGatherer)
+        CountResourceGatherers--;
+    if (techno->vf_33()->ResourceDestination)
+        CountResourceDestinations--;
+    DAT_0087F7E8.FUN_006A5F20(techno);
+    if (techno->vf_33()->PowersUnit && techno && techno->vf_11() == 6
+        && static_cast<BuildingClass*>(techno->KindCast_00459F40(6))->RegisteredAsPoweredUnitSource) {
+        static_cast<BuildingClass*>(techno->KindCast_00459F40(6))->RegisteredAsPoweredUnitSource = 0;
+        TechnoTypeClass* poweredType = techno->vf_33()->PowersUnit;
+        if (--PoweredUnitCenters == 0 && poweredType != 0) {
+            bool found = false;
+            for (int i = DAT_00A8EC78.Count - 1; i >= 0; i--) {
+                Techno_0050E0E0* other = DAT_00A8EC78.Items[i];
+                if (other->Owner == this && (other->*other->Vtbl->GetTechnoType)() == poweredType && !other->InLimbo) {
+                    other->Deactivate();
+                    found = true;
+                }
+            }
+            if (found && DAT_00A8E9A0 && IsControlledByCurrentPlayer_0050E0E0(this) && DAT_00A8E7AC == 0)
+                Vox_0050E0E0::Play(STR_00824E4C, -1, -1);
+        }
+    }
+    switch (techno->vf_11()) {
+    case 6:
+        if (!techno->vf_33()->DontScore)
+            ActiveBuildingTypes.FUN_0049FA70(techno->vf_33()->vf_16());
+        if (techno) {
+            BuildingClass* building = static_cast<BuildingClass*>(techno);
+            if (building->Type->WeaponsFactory && !building->Type->Naval)
+                CountWarfactories--;
+            RecheckPower = 1;
+            TotalStorage -= building->Type->Storage;
+            if (a2) {
+                int index = techno->Tiberium.FUN_006C9820();
+                while (index != -1) {
+                    int amount = (int)techno->Tiberium.RemoveAmount(2147483648.0f, index);
+                    PointTotal = (int)(amount * 5.0f + PointTotal);
+                    Balance = (int)(DAT_00B0F4EC[index]->Value * Type->IncomeMult * amount + Balance);
+                    index = techno->Tiberium.FUN_006C9820();
+                }
+                return;
+            }
+            OwnedTiberium -= techno->Tiberium;
+            return;
+        }
+        break;
+    case 2:
+        TotalOwnedAircraftCost -= techno->vf_33()->vf_33(this);
+        if (!techno->vf_33()->DontScore) {
+            ActiveAircraftTypes.FUN_0049FA70(techno->vf_33()->vf_16());
+            return;
+        }
+        break;
+    case 0xF:
+        if (techno->vf_33()->ConsideredAircraft)
+            TotalOwnedAircraftCost -= techno->vf_33()->vf_33(this);
+        else
+            TotalOwnedInfantryCost -= techno->vf_33()->vf_33(this);
+        if (!techno->vf_33()->DontScore) {
+            ActiveInfantryTypes.FUN_0049FA70(techno->vf_33()->vf_16());
+            return;
+        }
+        break;
+    case 1:
+        if (!techno->vf_33()->ConsideredAircraft && !techno->vf_33()->Spawns)
+            TotalOwnedVehicleCost -= techno->vf_33()->vf_33(this);
+        else
+            TotalOwnedAircraftCost -= techno->vf_33()->vf_33(this);
+        if (!techno->vf_33()->DontScore)
+            ActiveUnitTypes.FUN_0049FA70(techno->vf_33()->vf_16());
+        break;
+    }
+}
+
+// FUNCTION: GAMEMD 0x502A80
+// Puts a techno on the house's books, the counterpart of 0x5025F0: gatherer and destination counts, then by kind. A
+// building counts a war factory, takes its power drain and storage and pools its stored tiberium; units, aircraft and
+// infantry add their cost to the matching running total; and each kind except the ones the type excludes from
+// scoring (technician infantry and units are not excluded this way) counts the type up.
+void HouseClass::FUN_00502A80(TechnoClass* techno, int a2)
+{
+    if (techno->vf_33()->ResourceGatherer)
+        CountResourceGatherers++;
+    if (techno->vf_33()->ResourceDestination)
+        CountResourceDestinations++;
+    switch (techno->vf_11()) {
+    case 6:
+        if (!techno->vf_33()->DontScore)
+            ActiveBuildingTypes.FUN_0049FA00(techno->vf_33()->vf_16());
+        if (techno && techno->vf_11() == 6) {
+            BuildingClass* building = static_cast<BuildingClass*>(techno);
+            if (building->Type->WeaponsFactory && !building->Type->Naval)
+                CountWarfactories++;
+            FUN_005018C0(building->GetPowerDrain());
+            TotalStorage += building->Type->Storage;
+            OwnedTiberium += techno->Tiberium;
+            return;
+        }
+        break;
+    case 2:
+        TotalOwnedAircraftCost += techno->vf_33()->vf_33(this);
+        if (!techno->vf_33()->DontScore) {
+            ActiveAircraftTypes.FUN_0049FA00(techno->vf_33()->vf_16());
+            return;
+        }
+        break;
+    case 0xF:
+        if (techno->vf_33()->ConsideredAircraft)
+            TotalOwnedAircraftCost += techno->vf_33()->vf_33(this);
+        else
+            TotalOwnedInfantryCost += techno->vf_33()->vf_33(this);
+        if (!static_cast<InfantryClass*>(techno)->Technician && !techno->vf_33()->DontScore) {
+            ActiveInfantryTypes.FUN_0049FA00(techno->vf_33()->vf_16());
+            return;
+        }
+        break;
+    case 1:
+        if (!techno->vf_33()->ConsideredAircraft && !techno->vf_33()->Spawns)
+            TotalOwnedVehicleCost += techno->vf_33()->vf_33(this);
+        else
+            TotalOwnedAircraftCost += techno->vf_33()->vf_33(this);
+        ActiveUnitTypes.FUN_0049FA00(techno->vf_33()->vf_16());
+        break;
+    }
 }
 
 // ---------------------------------------------------------------------------

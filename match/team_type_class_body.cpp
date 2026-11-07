@@ -11,6 +11,11 @@
 #include "team_type_class_instance_methods.h"
 #include "team_type_class_taskforce_methods.h"
 #include "ccini_class_methods.h"
+#include "mission_class_methods.h"
+#include "_layout/foot_class.h"
+#include "_layout/team_class.h"
+#include "_layout/house_class.h"
+#include "weapon_type_class.h"
 
 // FUNCTION: GAMEMD 0x510F60 (decl; reloc) -- is this country index a pseudo-house code?
 bool __fastcall FUN_00510F60(int code);
@@ -374,6 +379,25 @@ void TeamTypeClass::vf_13(Obj_004A1D30* crc)
     if (TaskForce) {
         crc->FUN_004A1D50(TaskForce->vf_rtti_4());
     }
+}
+
+// FUNCTION: GAMEMD 0x6F1E20
+// Whether the techno can fill a slot of a team of this type for the house: alive, on the map, not already in a team
+// of this type, unlinked and the house's own, on a recruitable mission, flagged recruitable the way the type's
+// autocreate flag asks, not in a team of higher priority, and (for a unit with a weapon) not out of ammo.
+bool TeamTypeClass::FUN_006F1E20(TechnoClass* techno, HouseClass* house)
+{
+    FootClass* foot = static_cast<FootClass*>(techno);
+    if ((!foot->Team || this != foot->Team->Type) && techno->Health > 0 && techno->IsAlive && !techno->InLimbo
+        && !techno->HasAnyLink() && techno->Owner == house
+        && (techno->vf_97() == -1 || MissionControlClass::IsRecruitableMission(techno->vf_97()))
+        && (techno->RecruitableA || Autocreate) && (techno->RecruitableB || !Autocreate)
+        && (!foot->Team || foot->Team->Type->Priority < Priority)) {
+        if (techno->vf_11() == 2 && techno->vf_254(0)->WeaponType && techno->Ammo == 0)
+            return false;
+        return true;
+    }
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x6F1F30

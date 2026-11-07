@@ -104,6 +104,10 @@ public:
     // FUNCTION: GAMEMD 0x6F0130 (declaration; thiscall, RET 8).
     void FUN_006F0130(ScriptActionNode* action, bool enabled);
 
+    // FUNCTION: GAMEMD 0x6EC300 (decl; reloc) -- thiscall, no stack arguments, bool result.
+    bool FUN_006EC300();
+    // FUNCTION: GAMEMD 0x6EC370 (decl; reloc) -- thiscall, no stack arguments, bool result.
+    bool FUN_006EC370();
     // FUNCTION: GAMEMD 0x6EA4F0 -- AddMember with the flag set; RET 4.
     void FUN_006EA4F0(FootClass* member);
     // FUNCTION: GAMEMD 0x6EA500 -- TeamClass::AddMember.

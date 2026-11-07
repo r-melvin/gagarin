@@ -53,9 +53,17 @@ public:
     virtual bool vf_80(int mode, CellStruct* cell, int a3, int a4);   // 80  0x417C80: forwards to FootClass::vf_80 (0x4D7D50)
     // FUNCTION: GAMEMD 0x41A160 (decl; reloc) -- the flyer's own parking cell (thiscall, no stack arguments).
     CellClass* FUN_0041A160();
+    // FUNCTION: GAMEMD 0x418E20 (decl; reloc) -- thiscall, one stack argument: the cell to settle on.
+    AbstractClass* FUN_00418E20(AbstractClass* target);
     // FUNCTION: GAMEMD 0x416AF0 (decl; reloc) -- thiscall, no stack arguments.
     void FUN_00416AF0();
+    virtual void vf_72(int a1, int a2);                     // 72 0x41ADF0
+    virtual bool vf_81(int a1, ObjectClass* a2, int a3);   // 81 0x417BD0
+    virtual int vf_107(CellClass* cell, int a2, int a3, int a4, bool a5);   // 107 0x4196B0
+    virtual bool EnterIdleMode(bool initial, bool a2);     // 289 0x4176F0
+    virtual int vf_138();                                   // 138 0x414A80: the out-of-ammo mission step
     virtual int vf_144();                                   // 144 0x419C80: the mission step for the carryall dock approach
+    virtual bool Notice(int id, int arg);                   // INoticeSink slot 0 (the +0x08 table), 0x41BC30
     virtual void vf_9();   // 9   0x413F80: TechnoClass::vf_9 (0x6F3F40) first, then the type-driven setup; the constructor calls it
     // +0x6C0: IFlyControl vptr; ctor: MOV [ESI+0x6C0],0x7E2250 @0x00413DA2;
     //   RTTI COL base-offset 0x6C0 confirms it.

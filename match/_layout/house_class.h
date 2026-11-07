@@ -245,6 +245,13 @@ public:
     // Declaration: GAMEMD 0x501640 -- ECX house at 0x64CA0D.
     static void AllyAIHouses();   // GAMEMD 0x501640; reads no receiver (no ECX setup at the callers)
     void FUN_00501210(CCINIClass* ini);    // GAMEMD 0x501210, RET 4
+    // FUNCTION: GAMEMD 0x5025F0 -- takes a techno off the house's books: gatherer, destination, powered-centre,
+    // factory and cost counters and the per-type tally (thiscall, RET 8).
+    void FUN_005025F0(TechnoClass* techno, bool a2);
+    // FUNCTION: GAMEMD 0x502A80 -- the counterpart of 0x5025F0: puts a techno on the house's books (thiscall, RET 8).
+    void FUN_00502A80(TechnoClass* techno, int a2);
+    // FUNCTION: GAMEMD 0x5018C0 (decl; reloc) -- takes a building's power drain into the house (one stack argument, RET 4).
+    void FUN_005018C0(int drain);
     void FUN_00505180();    // GAMEMD 0x505180
     Cell FUN_00506B90(BuildingTypeClass* upgrade); // GAMEMD 0x506B90, RET 4
     int __fastcall FUN_00505F80(CellStruct* cell, int score, int unused); // GAMEMD 0x505F80, RET 8

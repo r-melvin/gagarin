@@ -103,6 +103,29 @@ HRESULT CounterClass::Save(IStream* stream)
     return 0;
 }
 
+// FUNCTION: GAMEMD 0x49FBE0
+// Rebuilds the counter in place, then reads the total, the capacity and every slot; stops at the first failure, and
+// refuses with 8 when the vector cannot grow to the saved capacity.
+HRESULT CounterClass::Load(IStream* stream)
+{
+    new (this) CounterClass();
+    HRESULT hr = stream->Read(&Total, 4, 0);
+    if (hr < 0)
+        return hr;
+    int count;
+    hr = stream->Read(&count, 4, 0);
+    if (hr < 0)
+        return hr;
+    if (!SetCapacity(count, 0))
+        return 8;
+    for (int i = 0; i < count; i++) {
+        hr = stream->Read(&Items[i], 4, 0);
+        if (hr < 0)
+            return hr;
+    }
+    return 0;
+}
+
 // SYNTHETIC: GAMEMD 0x49FCE0
 // CounterClass::scalar deleting destructor -- slot 0 of retail vtable 0x007E5C54 (RTTI `.?AVCounterClass@@`); the
 // implicit destructor inlines the VectorClass<int> base destructor, emitted with the vtable by the constructor above.

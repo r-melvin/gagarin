@@ -157148,5 +157148,106 @@
   "name": "ZBuffer::FUN_007BCFB0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/aircraft_class_methods.cpp",
+  "addr": "0x413F80",
+  "sym": "?vf_9@AircraftClass@@UAEXXZ",
+  "len": "0xf1",
+  "name": "AircraftClass::vf_9",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/aircraft_class_methods.cpp",
+  "addr": "0x414A80",
+  "sym": "?vf_138@AircraftClass@@UAEHXZ",
+  "len": "0x12e",
+  "name": "AircraftClass::vf_138",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/aircraft_class_methods.cpp",
+  "addr": "0x4176F0",
+  "sym": "?EnterIdleMode@AircraftClass@@UAE_N_N0@Z",
+  "len": "0x4e0",
+  "name": "AircraftClass::EnterIdleMode",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/aircraft_class_methods.cpp",
+  "addr": "0x417BD0",
+  "sym": "?vf_81@AircraftClass@@UAE_NHPAVObjectClass@@H@Z",
+  "len": "0x89",
+  "name": "AircraftClass::vf_81",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/aircraft_class_methods.cpp",
+  "addr": "0x4196B0",
+  "sym": "?vf_107@AircraftClass@@UAEHPAVCellClass@@HHH_N@Z",
+  "len": "0x105",
+  "name": "AircraftClass::vf_107",
+  "status": "partial",
+  "pct": 93.5,
+  "best_pct": 93.5,
+  "best_at": "024cc6c9"
+ },
+ {
+  "tu": "match/aircraft_class_methods.cpp",
+  "addr": "0x41ADF0",
+  "sym": "?vf_72@AircraftClass@@UAEXHH@Z",
+  "len": "0x18e",
+  "name": "AircraftClass::vf_72",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/aircraft_class_methods.cpp",
+  "addr": "0x41BC30",
+  "sym": "?Notice@AircraftClass@@UAE_NHH@Z",
+  "len": "0x19c",
+  "name": "AircraftClass::Notice",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/counter_class_r13_methods.cpp",
+  "addr": "0x49FBE0",
+  "sym": "?Load@CounterClass@@QAEJPAUIStream@@@Z",
+  "len": "0x96",
+  "name": "CounterClass::Load",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/House.cpp",
+  "addr": "0x5025F0",
+  "sym": "?FUN_005025F0@HouseClass@@QAEXPAVTechnoClass@@_N@Z",
+  "len": "0x48b",
+  "name": "HouseClass::FUN_005025F0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/House.cpp",
+  "addr": "0x502A80",
+  "sym": "?FUN_00502A80@HouseClass@@QAEXPAVTechnoClass@@H@Z",
+  "len": "0x2af",
+  "name": "HouseClass::FUN_00502A80",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/team_type_class_body.cpp",
+  "addr": "0x6F1E20",
+  "sym": "?FUN_006F1E20@TeamTypeClass@@QAE_NPAVTechnoClass@@PAVHouseClass@@@Z",
+  "len": "0x101",
+  "name": "TeamTypeClass::FUN_006F1E20",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
