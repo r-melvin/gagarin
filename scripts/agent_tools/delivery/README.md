@@ -9,7 +9,7 @@ lander, `../tumigrate/cppsplit.py`, `../common.py`/`ctx.py` for the pinned PE an
 | file | role |
 |---|---|
 | `dlib.py` | shared model: patch splitting, tree facts (migrated TU windows, canonical classes, claims), delta forms incl. re-key deltas, chunk split/merge, binding derivation, compile/score helpers, the created-path ledger |
-| `pktlint.py` | READY-packet linter, 0.2-0.5 s per packet (`--strict` adds a compile + raw/strict proof of every matched row) |
+| `pktlint.py` | READY-packet linter, 0.2-0.5 s per packet (`--strict` adds a compile + raw/strict proof of every matched row). Rule `addrcall`: `&Call()` needs `// ADDRCALL: GAMEMD 0xADDR`. Rule `symexist`: after a declaration change, every manifest row it names (also rows outside the delta) must still define its symbol in its recompiled TU, else its binding is lost |
 | `pktrebase.py` | re-apply a packet onto the tip: remap moved files, merge new files into migrated TU files in address order, retire clashing local views under byte identity, re-key, re-point the delta, derive bindings, prove rows, precise conflict report |
 | `batchland.py` | lint -> rebase onto the growing prefix -> `land_bundle.py` (one full gate per batch, bisect, one commit per packet) -> optional incremental gate per commit |
 | `pkt.py` | worker CLI: `budget`, `init`, `span`, `score`, `bind`, `finish`, `done` (`--held` for a held-only packet: backs up the worktree diff first) |

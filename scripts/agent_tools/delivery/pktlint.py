@@ -29,6 +29,14 @@ enforces; nothing here needs a compiler except --strict.
   thisnull     E a real null test of `this` (`this == 0`, `!this`, `if (this)`, `this &&`); comparisons like `x != this &&` are fine (steering) unless the line or the one above carries `// THISNULL: GAMEMD 0xADDR`, a matched manifest row whose retail bytes test this
   views        E a NEW definition of a class that has a canonical header (w6 brief: never a
                  new per-TU view); W a new definition of a class already defined elsewhere (ODR debt); judged on the POST-patch tree
+  addrcall     E `&Name(...)` (the address of a by-value call result) on an added match/ line with no `// ADDRCALL: GAMEMD 0xADDR`
+                 on the line or the one above (AGENTS.md). A call result followed by `->`, `.` or `[` is a member address, not
+                 flagged; casts, `sizeof`, `offsetof`, `__uuidof` and `*_cast<>` are not calls; comments and strings are ignored
+  symexist     E a manifest row (matched or partial) outside the patch whose mangled symbol is no longer defined by its TU after
+                 the patch, when the patch changes a declaration (a removed function declaration, or a removed class/struct/enum
+                 head, that is not re-added identically) and the row's symbol names the declared function or type. A type or
+                 signature change re-mangles the row and silently drops its binding; the per-batch gates only cover delta rows.
+                 Compiles only the at-risk TUs (at most SYMEXIST_MAX_TUS, W beyond); needs the toolchain, W when it cannot run
   classkey     E class/struct keyword differs from the RTTI TypeDescriptor (hcfix rule)
   migrated     E a new .cpp whose rows fall inside an already-migrated original TU window (unless the file carries a measured
                  `// TUSPLIT: GAMEMD 0xCALLER same-file N% separate M%` line; see AGENTS.md)
@@ -127,6 +135,93 @@ THIS_NULL = re.compile(
     r"|!\s*this\b(?!\s*->)"
     r"|\b(?:if|while)\s*\(\s*this\s*\)"
     r"|(?:^|[(&|?,]|\breturn\b)\s*this\s*(?:&&|\|\||\?)")
+
+
+ADDRCALL_NOTE = re.compile(r"ADDRCALL:\s*GAMEMD\s+0x[0-9A-Fa-f]+")
+_ADDRCALL_RX = re.compile(r"&\s*((?:[A-Za-z_]\w*\s*(?:->|\.|::)\s*)*[A-Za-z_]\w*)\s*(?:<[^<>()]*>\s*)?\(")
+_ADDRCALL_SKIP = {"sizeof", "offsetof", "decltype", "__uuidof", "static_cast", "reinterpret_cast", "const_cast",
+                  "dynamic_cast", "defined", "typeid", "__declspec", "alignof"}
+
+
+def strip_code(text):
+    """A line without its // comment and with string/char literals emptied."""
+    text = re.sub(r'"(?:\\.|[^"\\])*"', '""', text)
+    text = re.sub(r"'(?:\\.|[^'\\])+'", "''", text)
+    return re.sub(r"//.*$", "", text)
+
+
+def addrcall_hits(code):
+    """Names called in `&Name(...)` (unary address-of a call result) on one stripped code line. Binary `a & F(x)` has an
+    operand before the `&`; `(T*)&F()` has `)` after `*`; a result used as `&F()->m`, `&F().m` or `&F()[i]` is the address
+    of a member, not of the temporary."""
+    hits = []
+    for m in _ADDRCALL_RX.finditer(code):
+        before = code[:m.start()].rstrip()
+        if before and not (before[-1] in "(,={?:;![" or re.search(r"\breturn$", before) or re.search(r"\*\s*\)$", before)):
+            continue
+        if before.endswith("&"):      # `&&`
+            continue
+        name = re.split(r"->|\.|::", m.group(1))[-1].strip()
+        if name in _ADDRCALL_SKIP or m.group(1).split("::")[0].strip() in _ADDRCALL_SKIP:
+            continue
+        depth, i = 1, m.end()
+        while i < len(code) and depth:
+            depth += (code[i] == "(") - (code[i] == ")")
+            i += 1
+        if depth:                     # call continues on the next line: cannot tell, stay quiet
+            continue
+        if re.match(r"\s*(->|\.|\[)", code[i:]):
+            continue
+        hits.append(name)
+    return hits
+
+
+SYMEXIST_MAX_TUS = 24
+_DECL_FN = re.compile(r"^\s*(?:virtual\s+|static\s+|inline\s+|extern\s+)*(?:[A-Za-z_][\w:<>,\s\*&]*?[\s\*&])?~?([A-Za-z_]\w*)\s*\(([^;{}=]*)\)\s*(?:const\s*)?(?:throw\s*\(\s*\)\s*)?(?:;|\{|$)")
+_DECL_TYPE = re.compile(r"^\s*(?:class|struct|union|enum)\s+([A-Za-z_]\w*)\b")
+_NOT_DECL = {"if", "while", "for", "switch", "return", "sizeof", "else", "do", "case", "delete", "new", "catch", "defined"}
+
+
+def changed_declarations(diffs):
+    """(function names, type names) whose declaration a patch removes without re-adding it identically. Only match/ C++
+    files are read. Detection errs towards more names: the check that follows is a compile, so a false name costs time."""
+    fns, types = set(), set()
+    for d in diffs:
+        if not d.path.startswith("match/") or not d.path.lower().endswith(L.HDR_EXT + L.SRC_EXT):
+            continue
+        rem, add = [], set()
+        for line in d.text.split("\n"):
+            if line.startswith("---") or line.startswith("+++"):
+                continue
+            if line[:1] == "-":
+                rem.append(strip_code(line[1:]))
+            elif line[:1] == "+":
+                add.add(" ".join(strip_code(line[1:]).split()))
+        for code in rem:
+            norm_line = " ".join(code.split())
+            if not norm_line or norm_line in add:
+                continue
+            m = _DECL_TYPE.match(code)
+            if m:
+                types.add(m.group(1))
+            m = _DECL_FN.match(code)
+            if m and m.group(1) not in _NOT_DECL:
+                fns.add(m.group(1))
+    return fns, types
+
+
+def at_risk_rows(rows, fns, types):
+    """Manifest rows whose mangled symbol names a changed function (`?Name@` or `?Name@..@@`) or type (`UName@@`, `VName@@`)."""
+    out = []
+    for r in rows:
+        sym = r.get("sym") or ""
+        if not sym.startswith("?") or r.get("status") not in ("matched", "partial"):
+            continue
+        if any(sym.startswith("?" + n + "@") or sym.startswith("??$" + n + "@") for n in fns) or \
+           any(re.search(r"[UVWT]%s@" % re.escape(t), sym) for t in types) or \
+           any(sym.startswith("?" + n + "@") for n in types):
+            out.append(r)
+    return out
 
 
 TUSPLIT = re.compile(r"^// TUSPLIT: GAMEMD 0x[0-9A-Fa-f]+ same-file [0-9.]+% separate [0-9.]+%", re.M)
@@ -819,6 +914,85 @@ class Lint:
             if why:
                 self.warn("rekeys", "%s: %s" % (f, why), file=f)
 
+    def addrcall(self):
+        """`&Name(...)` on an added line needs `// ADDRCALL: GAMEMD 0xADDR` on the line or the one above."""
+        post = self.post_files()
+        for d in self.diffs:
+            if not d.path.startswith("match/") or not d.path.lower().endswith(L.HDR_EXT + L.SRC_EXT):
+                continue
+            lines = (post.get(d.path) or "").split("\n")
+            for ln, text in d.added_lines():
+                if text.lstrip().startswith(("#define", "//", "*", "/*")):
+                    continue
+                hits = addrcall_hits(strip_code(text))
+                if not hits:
+                    continue
+                cur = text if lines[ln - 1:ln] != [text] else lines[ln - 1]
+                above = lines[ln - 2] if ln >= 2 and lines[ln - 1:ln] == [text] else ""
+                if ADDRCALL_NOTE.search(cur) or ADDRCALL_NOTE.search(above):
+                    continue
+                self.err("addrcall", "address of a by-value call result `&%s(...)` without `// ADDRCALL: GAMEMD 0xADDR` on the line or the one above: %s"
+                         % (hits[0], text.strip()[:100]), file=d.path, line=ln)
+
+    def symexist_report(self, tu, rows, defined):
+        """E for each row whose symbol is not among the names its TU's object defines."""
+        for r in rows:
+            if r["sym"] not in defined:
+                self.err("symexist", "row %s (%s): symbol %s is no longer defined by %s after the patch; a declaration change re-mangled it and its binding is lost"
+                         % (r["addr"], r.get("name", ""), r["sym"], tu), addr=r["addr"], file=tu)
+
+    def symexist(self):
+        """A patch that changes a declaration can re-mangle a row outside the delta; its binding is then lost without any
+        delta row failing. Compile the at-risk TUs after the patch and require every at-risk row's symbol to be defined."""
+        fns, types = changed_declarations(self.diffs)
+        if not (fns or types) or not self.diffs:
+            return
+        byaddr = dict(self.base_rows() or {})
+        if not byaddr:
+            try:
+                byaddr = {D.hx(x["addr"]): x for x in json.loads(self.t.text(D.MANIFEST) or "[]")}
+            except ValueError:
+                byaddr = {}
+        for op, r, old in self.ops:       # the delta's rows replace or drop the base's: judge the post-patch manifest
+            if op == "remove":
+                byaddr.pop(D.hx(r["addr"]), None)
+            elif r.get("sym"):
+                byaddr[D.hx(r["addr"])] = r
+        deleted = {d.path for d in self.diffs if d.is_delete}
+        risk = [r for r in at_risk_rows(list(byaddr.values()), fns, types) if r.get("tu") and r["tu"] not in deleted]
+        if not risk:
+            return
+        by_tu = {}
+        for r in risk:
+            by_tu.setdefault(r["tu"], []).append(r)
+        if len(by_tu) > SYMEXIST_MAX_TUS:
+            self.warn("symexist", "%d TUs hold rows named by changed declarations; checking the first %d" % (len(by_tu), SYMEXIST_MAX_TUS))
+        tus = sorted(by_tu)[:SYMEXIST_MAX_TUS]
+        work = D.scratch_dir("pktlint_symexist_")
+        wt = None
+        try:
+            wt = D.add_worktree(self.repo, os.path.join(work, "wt"), self.t.rev or "HEAD")
+            body = "".join(d.text for d in self.diffs if d.path != D.MANIFEST)
+            r = subprocess.run(["git", "-C", wt, "apply", "--3way", "--index", "--whitespace=nowarn", "-"], input=body, text=True, capture_output=True)
+            if r.returncode:
+                self.warn("symexist", "cannot apply the patch for the symbol check: " + r.stderr.strip()[:150])
+                return
+            def one(tu):
+                obj = os.path.join(work, "obj", os.path.splitext(tu)[0] + ".obj")
+                return tu, obj, D.compile_tu(wt, tu, obj)
+            with cf.ThreadPoolExecutor(4) as ex:
+                res = list(ex.map(one, tus))
+            for tu, obj, (ok, text) in res:
+                if not ok:
+                    self.warn("symexist", "%s does not compile after the patch, symbols not checked (%s)" % (
+                        tu, " | ".join(l for l in text.splitlines() if re.search(r"error|fatal", l, re.I))[:120]), file=tu)
+                    continue
+                self.symexist_report(tu, by_tu[tu], {n for n, sec, v, scl in D.coff_symbols(obj) if sec > 0})
+        finally:
+            if wt:
+                D.remove_worktree(self.repo, wt)
+            D.remove_dir(work)
+
     def rea(self):
         """The briefs require the REA skill/MCP as primary ground truth (ghidra CLI fallback,
         stated). Evidence IDs look like ev_18a3f84f; a packet citing none is flagged."""
@@ -1130,7 +1304,7 @@ class Lint:
 
     def run(self, do_strict=False, jobs=8, rules=None):
         order = ["shape", "paths", "c2probe", "stale", "words", "steering", "sdd", "flags", "thisnull", "views", "migrated", "inits", "delta_rules",
-                 "dupclaims", "dupaddr", "order", "includes", "provenance", "spans", "bindings", "rekeys", "rea", "partial_bar", "unclaimed_callee", "comdat"]
+                 "dupclaims", "dupaddr", "order", "includes", "provenance", "spans", "bindings", "rekeys", "addrcall", "symexist", "rea", "partial_bar", "unclaimed_callee", "comdat"]
         self.do_strict = do_strict
         for name in order:
             if rules and name.replace("_rules", "").replace("_", "-") not in rules:

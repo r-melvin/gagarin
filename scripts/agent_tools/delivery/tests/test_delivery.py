@@ -1375,5 +1375,65 @@ class ComdatLint(unittest.TestCase):
         self.assertEqual(self.C.check(["match/a.cpp"], {"match/a.cpp": new}, {}, own, own, {}, lambda tu, a: True), [])
 
 
+class AddrCallAndSymExist(unittest.TestCase):
+    def addrcall(self, body, name="a.cpp"):
+        src = HEADER + "// FUNCTION: GAMEMD 0x401000\nvoid Foo::f()\n{\n" + body + "\n}\n"
+        tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+        return [x for x in lint(packet(tmp, {"match/x/" + name: src}, []), {"addrcall"}) if x["rule"] == "addrcall"]
+
+    def test_addrcall_flags_unannotated_address_of_call_result(self):
+        for bad in ("    R* r = &GetRect();", "    f(a, &src->GetRect());", "    return g(&Loop());", "    p = (T*)&Make(1);",
+                    "    R* a = &x->GetRect(), *b = &GetRect();"):
+            self.assertTrue(self.addrcall(bad), bad)
+        self.assertEqual(self.addrcall("    R* r = &GetRect();")[0]["level"], "E")
+
+    def test_addrcall_quiet_on_non_calls_and_annotated(self):
+        for ok in ("    int x = a & Foo(b);", "    if (a && Foo(b)) return;", "    f(&b->vf_34()->Sub);", "    f(&Mk(1).Field);",
+                   "    f(&arr[Idx(2)]);", "    n = sizeof(T);", "    p = &static_cast<W*>(q)->m;", "    p = &obj;",
+                   "    R* r = &GetRect(); // ADDRCALL: GAMEMD 0x4BDFAA", "    // ADDRCALL: GAMEMD 0x4BDFAA\n    R* r = &GetRect();",
+                   "    // note: &GetRect() was tried", "    s = \"&GetRect()\";"):
+            self.assertEqual(self.addrcall(ok), [], ok)
+
+    def test_addrcall_hits_helper(self):
+        self.assertEqual(pktlint.addrcall_hits(pktlint.strip_code("x = &Call(1, f(2)); // c")), ["Call"])
+        self.assertEqual(pktlint.addrcall_hits("x = a & Call(1);"), [])
+        self.assertEqual(pktlint.addrcall_hits("x = a && Call(1);"), [])
+
+    def mkdiff(self, old, new, path="match/x/h.h"):
+        return D.split_patch("diff --git a/%s b/%s\n--- a/%s\n+++ b/%s\n@@ -1,1 +1,1 @@\n-%s\n+%s\n" % (path, path, path, path, old, new))
+
+    def test_changed_declarations(self):
+        fns, types = pktlint.changed_declarations(self.mkdiff("    void FUN_0057B790(const CellStruct* c);", "    void FUN_0057B790(const Cell* c);"))
+        self.assertIn("FUN_0057B790", fns)
+        fns, types = pktlint.changed_declarations(self.mkdiff("struct CellStruct", "class CellStruct"))
+        self.assertIn("CellStruct", types)
+        fns, types = pktlint.changed_declarations(self.mkdiff("    x = a + b;", "    x = a - b;"))
+        self.assertEqual((fns, types), (set(), set()))
+        same = D.split_patch("diff --git a/match/x/h.h b/match/x/h.h\n--- a/match/x/h.h\n+++ b/match/x/h.h\n@@ -1,2 +1,2 @@\n-void F(int a);\n-int y;\n+int y;\n+void F(int a);\n")
+        self.assertEqual(pktlint.changed_declarations(same), (set(), set()))      # moved, not changed
+
+    def test_at_risk_rows_and_report(self):
+        rows = [{"addr": "0x57B790", "sym": "?FUN_0057B790@MapClass@@QAEXPBUCellStruct@@@Z", "tu": "match/t.cpp", "status": "matched", "name": "MapClass::FUN_0057B790"},
+                {"addr": "0x401000", "sym": "?Other@Foo@@QAEXH@Z", "tu": "match/o.cpp", "status": "matched"},
+                {"addr": "0x402000", "sym": "?G@Foo@@QAEXPAUCellStruct@@@Z", "tu": "match/g.cpp", "status": "partial"},
+                {"addr": "0x403000", "sym": "?H@Foo@@QAEXPAUCellStructure@@@Z", "tu": "match/h.cpp", "status": "matched"},
+                {"addr": "0x404000", "sym": "?FUN_0057B790@MapClass@@QAEXXZ", "tu": "match/t.cpp", "status": "held"}]
+        risk = pktlint.at_risk_rows(rows, {"FUN_0057B790"}, {"CellStruct"})
+        self.assertEqual(sorted(r["addr"] for r in risk), ["0x402000", "0x57B790"])
+        self.assertEqual(pktlint.at_risk_rows(rows, set(), set()), [])
+        tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+        lt = pktlint.Lint(packet(tmp, {"match/x/a.cpp": HEADER + "int x;\n"}, []), tree(), D.MAIN_REPO)
+        lt.symexist_report("match/t.cpp", [rows[0]], {"?FUN_0057B790@MapClass@@QAEXPBVCellStruct@@@Z"})   # re-mangled: U -> V
+        self.assertEqual([(x["level"], x["rule"], x.get("addr")) for x in lt.findings], [("E", "symexist", "0x57B790")])
+        lt.findings.clear()
+        lt.symexist_report("match/t.cpp", [rows[0]], {rows[0]["sym"]})
+        self.assertEqual(lt.findings, [])
+
+    def test_symexist_is_quiet_without_declaration_changes(self):
+        tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+        p = packet(tmp, {"match/x/a.cpp": HEADER + "int x;\n"}, [])
+        self.assertEqual([x for x in lint(p, {"symexist"}) if x["rule"] == "symexist"], [])
+
+
 if __name__ == "__main__":
     unittest.main()
