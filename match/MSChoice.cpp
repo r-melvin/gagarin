@@ -379,6 +379,151 @@ MapStageList::~MapStageList()
     ClearAll();
 }
 
+#include "ccfile_class.h"
+#include "_layout/ini_class.h"
+
+// FUNCTION: GAMEMD 0x4068E0 (decl; reloc)
+void __cdecl MenusDebugLog(const char* format, ...);
+
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// FUNCTION: GAMEMD 0x5CEEF0
+// Reads MAPSELMD.INI: the numbered stages of the given side, then the animation
+// list, the text rectangle, the palette name, the animation entries and, when
+// sound is available, the sound entries.
+bool MapStageList::FUN_005CEEF0(Wstring* side)
+{
+    CCFileClass file;
+    INIClass ini((INIClass::SectionIndexClass::InlineIndex()));
+    Wstring animSection;
+    Wstring name;
+    ClearAll();
+    // Retail dispatches both through the vtable (0x5CEF6B, 0x5CEF78).
+    static_cast<FileClass&>(file).SetFileName("MAPSELMD.INI");
+    static_cast<FileClass&>(file).Open(1);
+    if (ini.FUN_00525A10(&file, 0) == 0) {
+        MenusDebugLog("Failed to load MAPSELMD.INI\n");
+        return false;
+    }
+    for (int stageIndex = 1; stageIndex <= 100; stageIndex++) {
+        bool missing;
+        {
+            Wstring fallback((const char*)0);
+            missing = ini.FUN_00528C00(side, &FUN_007B6290(stageIndex), &fallback, &name) == 0; // ADDRCALL: GAMEMD 0x5CEFBC
+        }
+        if (missing) {
+            break;
+        }
+        MapStage* stage = new MapStage(&ini, &name);
+        if (stage == 0) {
+            MenusDebugLog("MapSelect: Failed to create stage %s\n", name.unknown_00);
+            return false;
+        }
+        Stages.AddItem(stage);
+    }
+    if (Stages.Count == 0) {
+        MenusDebugLog("MapSelect: There isn't any stages!\n");
+        return false;
+    }
+    bool found;
+    {
+        Wstring fallback((const char*)0);
+        Wstring key("Anims");
+        found = ini.FUN_00528C00(side, &key, &fallback, &animSection) > 0;
+    }
+    if (found) {
+        bool hasRect;
+        {
+            Wstring fallback((const char*)0);
+            Wstring key("TextRect");
+            hasRect = ini.FUN_00528C00(&animSection, &key, &fallback, &name) > 0;
+        }
+        if (hasRect) {
+            Wstring token;
+            int cursor = name.FUN_007B5F10(0, ",", &token);
+            unsigned int length = token.Length();
+            if (length > 0) {
+                Bounds.X = token.FUN_007B6280();
+            }
+            cursor = name.FUN_007B5F10(cursor, ",", &token);
+            length = token.Length();
+            if (length > 0) {
+                Bounds.Y = token.FUN_007B6280();
+            }
+            cursor = name.FUN_007B5F10(cursor, ",", &token);
+            length = token.Length();
+            if (length > 0) {
+                Bounds.Width = token.FUN_007B6280();
+            }
+            name.FUN_007B5F10(cursor, ",", &token);
+            length = token.Length();
+            if (length > 0) {
+                Bounds.Height = token.FUN_007B6280();
+            }
+        }
+        bool hasPalette;
+        {
+            Wstring fallback((const char*)0);
+            Wstring key("Palette");
+            hasPalette = ini.FUN_00528C00(&animSection, &key, &fallback, &name) > 0;
+        }
+        if (hasPalette) {
+            Name = name;
+        }
+        for (int animIndex = 1; animIndex <= 100; animIndex++) {
+            bool missing;
+            {
+                Wstring fallback((const char*)0);
+                missing = ini.FUN_00528C00(&animSection, &FUN_007B6290(animIndex), &fallback, &name) == 0; // ADDRCALL: GAMEMD 0x5CF2DA
+            }
+            if (missing) {
+                break;
+            }
+            MSAnimEntry* anim = new MSAnimEntry(&name);
+            if (anim == 0) {
+                MenusDebugLog("Failed to create anim %s\n", name.unknown_00);
+                return false;
+            }
+            Strings.AddItem(anim);
+        }
+    }
+    if (SessionExists()) {
+        Wstring entryName;
+        bool hasSounds;
+        {
+            Wstring fallback((const char*)0);
+            Wstring key("Sounds");
+            hasSounds = ini.FUN_00528C00(side, &key, &fallback, &animSection) > 0;
+        }
+        if (hasSounds) {
+            int i = 0;
+            if (ini.FUN_00526A30(animSection) > 0) {
+                do {
+                    entryName = ini.FUN_00526D90(animSection, i);
+                    if (entryName.FUN_007B47F0(0)) {
+                        bool hasValue;
+                        {
+                            Wstring fallback((const char*)0);
+                            hasValue = ini.FUN_00528C00(&animSection, &entryName, &fallback, &name) > 0;
+                        }
+                        if (hasValue) {
+                            MSSfxEntry* sfx = new MSSfxEntry(&entryName, &name);
+                            if (sfx->Name.FUN_007B4710(0)) {
+                                if (sfx != 0) {
+                                    delete sfx;
+                                }
+                            } else if (sfx != 0) {
+                                Titles.AddItem(sfx);
+                            }
+                        }
+                    }
+                    i++;
+                } while (i < ini.FUN_00526A30(animSection));
+            }
+        }
+    }
+    return true;
+}
+
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
 // FUNCTION: GAMEMD 0x5CF5F0
 // Empty every list the container owns and put the drawing bounds back to the
@@ -805,9 +950,6 @@ void CallBack();
 void FUN_004A4830();
 // FUNCTION: GAMEMD 0x5D4D50 (decl; reloc)
 void __cdecl FUN_005D4D50();
-// FUNCTION: GAMEMD 0x4068E0 (decl; reloc)
-void __cdecl MenusDebugLog(const char* format, ...);
-
 // FUNCTION: GAMEMD 0x5D1AA0
 // Reserve room for twenty rectangles and start with no animations or sound effects.
 MSEngine::MSEngine()

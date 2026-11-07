@@ -785,13 +785,12 @@ int Wstring::FUN_007B60E0(int start, Wstring* out)
 }
 
 // FUNCTION: GAMEMD 0x7B6290
-// Formats `value` with "%d" into a new string held by `out`.
-Wstring* FUN_007B6290(Wstring* out, int value)
+// Formats `value` with "%d" into a new string, returned by value (hidden result in ECX, the value in EDX).
+Wstring FUN_007B6290(int value)
 {
     char text[16];
     sprintf(text, "%d", value);
-    InitText(out, text);
-    return out;
+    return Wstring(text);
 }
 
 // FUNCTION: GAMEMD 0x7B6320

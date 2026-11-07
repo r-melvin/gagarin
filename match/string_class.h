@@ -123,4 +123,7 @@ public:
 GG_STATIC_ASSERT(sizeof(Wstring) == 4);
 GG_STATIC_ASSERT(offsetof(Wstring, unknown_00) == 0);
 
+// FUNCTION: GAMEMD 0x7B6290 -- the decimal text of `value`, returned by value (hidden result in ECX, the value in EDX).
+Wstring FUN_007B6290(int value);
+
 #endif // GG_MATCH_CORE_STRING_CLASS_H

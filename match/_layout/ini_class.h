@@ -67,6 +67,9 @@ public:
     void FUN_00526470(struct SHAPipeLayout* sha);
     // Declaration: GAMEMD 0x526A30 -- section name as a Wstring, RET 4; key count.
     int FUN_00526A30(const Wstring& section);
+    // FUNCTION: GAMEMD 0x526D90 (decl; reloc) -- the name of the entry at `index` in a section named by a Wstring;
+    // hidden result pointer, two further stack words, RET 0xC.
+    Wstring FUN_00526D90(const Wstring& section, int index);
     // FUNCTION: GAMEMD 0x526B00
     void Reset();
     // FUNCTION: GAMEMD 0x526B10

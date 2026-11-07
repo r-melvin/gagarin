@@ -483,6 +483,119 @@ bool CD::FUN_00479110(int)
     return ok;
 }
 
+#include "mix_file_class.h"
+
+// GLOBAL: GAMEMD 0x884E2C, 0x87E738, 0x884DDC, 0x884DD8, 0x884E64, 0x884E60, 0x884E34 -- the mounted
+// disc-dependent archives (movies, themes, multi, multi (expansion), maps, maps (expansion), main).
+extern MixFileClass* DAT_00884E2C;
+extern MixFileClass* DAT_0087E738;
+extern MixFileClass* DAT_00884DDC;
+extern MixFileClass* DAT_00884DD8;
+extern MixFileClass* DAT_00884E64;
+extern MixFileClass* DAT_00884E60;
+extern MixFileClass* DAT_00884E34;
+// FUNCTION: GAMEMD 0x751C30 (decl; reloc) -- no arguments, bool result.
+bool FUN_00751C30();
+
+// FUNCTION: GAMEMD 0x4791F0
+// Disc swap: releases the disc-dependent archives and mounts them again for the new disc.
+bool CD::FUN_004791F0(int disc)
+{
+    FUN_004068E0("***** Swapping to disk %d *****\n", disc);
+    if (unknown_04 == -1) {
+        int theme = DAT_00A83D10.LastTheme;
+        if (theme == -1) {
+            theme = DAT_00A83D10.QueuedTheme;
+        }
+        unknown_04 = theme;
+    }
+    DAT_00A83D10.Stop(false);
+    if (DAT_00884E2C) {
+        FUN_004068E0("     Releasing %s\n", DAT_00884E2C->FileName);
+        delete DAT_00884E2C;
+        DAT_00884E2C = 0;
+    }
+    if (DAT_0087E738) {
+        FUN_004068E0("     Releasing %s\n", DAT_0087E738->FileName);
+        delete DAT_0087E738;
+        DAT_0087E738 = 0;
+    }
+    if (DAT_00884DDC) {
+        FUN_004068E0("     Releasing %s\n", DAT_00884DDC->FileName);
+        delete DAT_00884DDC;
+        DAT_00884DDC = 0;
+    }
+    if (DAT_00884DD8) {
+        FUN_004068E0("     Releasing %s\n", DAT_00884DD8->FileName);
+        delete DAT_00884DD8;
+        DAT_00884DD8 = 0;
+    }
+    if (DAT_00884E64) {
+        FUN_004068E0("     Releasing %s\n", DAT_00884E64->FileName);
+        delete DAT_00884E64;
+        DAT_00884E64 = 0;
+    }
+    if (DAT_00884E60) {
+        FUN_004068E0("     Releasing %s\n", DAT_00884E60->FileName);
+        delete DAT_00884E60;
+        DAT_00884E60 = 0;
+    }
+    if (DAT_00884E34) {
+        FUN_004068E0("     Releasing %s\n", DAT_00884E34->FileName);
+        delete DAT_00884E34;
+        DAT_00884E34 = 0;
+    }
+    if (!FUN_00751C30()) {
+        return true;
+    }
+    DAT_00884E34 = new MixFileClass("MAIN.MIX");
+    FUN_004068E0("     Initialized %s\n", DAT_00884E34->FileName);
+    disc++;
+    char name[0x40];
+    sprintf(name, "MAPSMD%02d.MIX", disc);
+    FUN_004068E0("     Initializing %s\n", name);
+    DAT_00884E60 = new MixFileClass(name);
+    sprintf(name, "MAPS%02d.MIX", disc);
+    FUN_004068E0("     Initializing %s\n", name);
+    DAT_00884E64 = new MixFileClass(name);
+    if (!DAT_00884E64) {
+        FUN_004068E0("     FAILED!\n");
+        return false;
+    }
+    FUN_004068E0("     Initializing New Multi.Mix\n");
+    DAT_00884DD8 = new MixFileClass("MULTIMD.MIX");
+    FUN_004068E0("     Initializing Multi.Mix\n");
+    DAT_00884DDC = new MixFileClass("MULTI.MIX");
+    if (!DAT_00884DDC) {
+        FUN_004068E0("     FAILED!\n");
+        return false;
+    }
+    bool hasThemeMd = CCFileClass("THEMEMD.MIX").Exists(false);
+    if (hasThemeMd) {
+        FUN_004068E0("     Initializing Themes.MIX\n");
+        DAT_0087E738 = new MixFileClass("THEMEMD.MIX");
+    } else {
+        FUN_004068E0("     Initializing Themes.MIX\n");
+        DAT_0087E738 = new MixFileClass("THEME.MIX");
+    }
+    DAT_00A83D10.Scan();
+    sprintf(name, "MOVMD%02d.MIX", disc);
+    bool hasMovMd = CCFileClass(name).Exists(false);
+    if (hasMovMd) {
+        FUN_004068E0("     Initializing %s\n", name);
+        DAT_00884E2C = new MixFileClass(name);
+    } else {
+        sprintf(name, "MOVIES%02d.MIX", disc);
+        FUN_004068E0("     Initializing %s\n", name);
+        DAT_00884E2C = new MixFileClass(name);
+    }
+    if (!DAT_00884E2C) {
+        FUN_004068E0("     FAILED!\n");
+        return false;
+    }
+    return FUN_00751C30();
+}
+
 struct CDGlobal_0089E3A8
 {
     int Words[26];

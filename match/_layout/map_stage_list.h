@@ -68,8 +68,12 @@ public:
 };
 GG_STATIC_ASSERT(offsetof(MapSelection, unknown_04) == 4);
 
+class INIClass;
+
 class MapStage {
 public:
+    // FUNCTION: GAMEMD 0x5CF8E0 (decl; reloc) -- reads one stage from the section named `name`.
+    MapStage(INIClass* ini, Wstring* name);
     Wstring Name;                    // +0, copy receiver 5CF6F0
     Wstring Title;                   // +4, copy receiver 5CF799
     Wstring unknown_08;              // +0x08 released by 5D0070

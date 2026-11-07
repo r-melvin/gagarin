@@ -151750,9 +151750,9 @@
  {
   "tu": "match/string_class_methods.cpp",
   "addr": "0x7B6290",
-  "sym": "?FUN_007B6290@@YIPAVWstring@@PAV1@H@Z",
+  "sym": "?FUN_007B6290@@YI?AVWstring@@H@Z",
   "len": "0x85",
-  "name": "?FUN_007B6290@@YIPAVWstring@@PAV1@H@Z",
+  "name": "?FUN_007B6290@@YI?AVWstring@@H@Z",
   "status": "matched",
   "pct": 100.0
  },
@@ -156141,5 +156141,23 @@
   "pct": 82.1,
   "best_pct": 82.1,
   "best_at": "7f422316"
+ },
+ {
+  "tu": "match/CD.cpp",
+  "addr": "0x4791F0",
+  "sym": "?FUN_004791F0@CD@@UAE_NH@Z",
+  "len": "0x4e8",
+  "name": "CD::FUN_004791F0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MSChoice.cpp",
+  "addr": "0x5CEEF0",
+  "sym": "?FUN_005CEEF0@MapStageList@@QAE_NPAVWstring@@@Z",
+  "len": "0x6fc",
+  "name": "MapStageList::FUN_005CEEF0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
