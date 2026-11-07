@@ -1748,7 +1748,6 @@ struct TechnoClass_00707000
     int CaptureTarget;       // +0x0140 (320)
     int Ammo;                // +0x0144 (324)
 
-    int GetCurrentTurret() const;   // 0x70DCF0
     int GetCaptureTarget() const;   // 0x70DDC0
     int GetAmmo() const;            // 0x70DDF0
 };
@@ -5163,7 +5162,7 @@ bool Obj_0070DCE0::FUN_0070DCE0() const
 }
 
 // FUNCTION: GAMEMD 0x0070DCF0
-int TechnoClass_00707000::GetCurrentTurret() const { return this->CurrentTurret; }
+int TechnoClass::GetCurrentTurret() const { return this->CurrentTurretNumber; }
 
 // FUNCTION: GAMEMD 0x0070DDC0
 int TechnoClass_00707000::GetCaptureTarget() const { return this->CaptureTarget; }

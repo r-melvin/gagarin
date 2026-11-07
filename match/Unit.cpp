@@ -31,6 +31,7 @@
 #include "trivial_tu258_methods.h"
 
 #include <stdlib.h>
+#include <wchar.h>
 #include "unit_class_astar_attempt_methods.h"
 
 #include "scenario_class_methods.h"
@@ -78,6 +79,22 @@ extern double DAT_00B1D0B0;
 #include "_layout/object_type_class.h"
 #include "weapon_type_class.h"
 #include "_layout/team_class.h"
+#include "_layout/overlay_type_class.h"
+#include "_layout/anim_class.h"
+#include "terrain_type_class.h"
+#include "cell_step_tables.h"
+#include "_layout/infantry_class.h"
+#include "_layout/infantry_type_class.h"
+#include "_layout/building_class.h"
+#include "_layout/unit_type_class.h"
+#include "_layout/techno_type_class.h"
+
+// GLOBAL: GAMEMD 0xA83D84 -- OverlayTypeClass::Array.Items.
+extern OverlayTypeClass** DAT_00A83D84;
+// GLOBAL: GAMEMD 0x8871E0 -- the rules.
+extern RulesClass* DAT_008871E0;
+// FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- localised string lookup, label and flags in registers, file and line on the stack.
+wchar_t* FUN_00734E60(const char* label, int flags, const char* file, int line);
 
 // GLOBAL: GAMEMD 0xA8B230 -- the scenario.
 extern ScenarioClass* DAT_00A8B230;
@@ -288,9 +305,6 @@ struct UnitSlaveManagerView
     void FUN_006B0CC0();
 };
 
-// GLOBAL: GAMEMD 0x8871E0 -- the rules.
-extern RulesClass* DAT_008871E0;
-
 // The mission control record (canonical view).
 #include "mission_class_methods.h"
 
@@ -317,6 +331,42 @@ bool UnitClass::vf_65(RectangleStruct* rect, bool force, int a3)
 
 
 
+
+// FUNCTION: GAMEMD 0x73D450
+// One harvesting step on the cell underfoot: a weeder clears the growth for one unit of
+// storage, a harvester takes what fits; either restarts the stage timer at the
+// harvest rate. Fails (and rests the timer) when it is not harvesting here.
+bool UnitClass::FUN_0073D450()
+{
+    CoordStruct location = this->Location;
+    CellClass* cell = Map_0087F7E8.FUN_00565730(location);
+    if (Destination) {
+        return true;
+    }
+    if (Type->Harvester && vf_173() < DAT_007E1718 && cell->LandType == 5) {
+        if (Type->Weeder) {
+            cell->FUN_00486E30();
+            Tiberium.AddAmount(1.0f, 0);
+            StageClass::Value = 0;
+            SetRate(DAT_008871E0->HarvesterLoadRate * 3);
+            return true;
+        }
+        int index = cell->GetContainedTiberiumIndex();
+        int taken = cell->FUN_00480A80((int)((float)Type->Storage - Tiberium.GetTotalAmount() > 1.0f
+                                                 ? 1.0f
+                                                 : (float)Type->Storage - Tiberium.GetTotalAmount()));
+        if (taken > 0) {
+            Tiberium.AddAmount((float)taken, index);
+            StageClass::Value = 0;
+            SetRate(DAT_008871E0->HarvesterLoadRate);
+            return true;
+        }
+        return false;
+    }
+    StageClass::Value = 0;
+    SetRate(0);
+    return false;
+}
 
 // FUNCTION: GAMEMD 0x73EFC0
 // A unit whose type deploys into something waits out the mission rate plus a little random
@@ -350,6 +400,68 @@ int UnitClass::vf_138()
         }
     }
     return FootClass::vf_138();
+}
+
+// FUNCTION: GAMEMD 0x740810
+// Mission rate for a unit that works or serves: wakes a due slave manager, sends a
+// harvester or weeder to its work, and lets a deployer that is allowed to build
+// deploy; anything else takes the foot delay.
+int UnitClass::vf_135()
+{
+    if (SlaveManager && DAT_008871E0->SlaveMinerKickFrameDelay + CurrentMissionStartTime < CurrentFrame) {
+        if (static_cast<UnitSlaveManagerView*>(SlaveManager)->FUN_006B1020()) {
+            static_cast<UnitSlaveManagerView*>(SlaveManager)->FUN_006B0CC0();
+            int delay = (int)(FUN_005B3A00()->Rate * 900.0);
+            return delay + DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
+        }
+    }
+    if (Type->Harvester || Type->Weeder) {
+        if (!Owner->IsControlledByHuman()) {
+            for (int i = 0; i < Type->Dock.Count; i++) {
+                if (Owner->OwnedBuildingTypes.FUN_0049FAE0(Type->Dock.Items[i]->ArrayIndex) > 0) {
+                    if (Type->Harvester && Owner->IsTiberiumShort) {
+                        break;
+                    }
+                    vf_122(10, false);
+                    return 1;
+                }
+            }
+        } else if (Type->Teleporter) {
+            CellClass* cell = vf_111();
+            for (int i = 0; i < 8; i++) {
+                BuildingClass* building = cell->GetNeighbourCell(i)->GetBuilding();
+                if (building && building->Type->Refinery && building->Owner == Owner) {
+                    vf_122(10, false);
+                    return 1;
+                }
+            }
+            if (vf_173() == DAT_007E1718 && Locomotor->IsMoving()) {
+                vf_122(10, false);
+                return 1;
+            }
+        }
+    }
+    BuildingTypeClass* deploysInto = Type->DeploysInto;
+    if (deploysInto) {
+        RulesClass* rules = DAT_008871E0;
+        bool listed = false;
+        for (int i = 0; i < rules->list_08AC.Count; i++) {
+            if (rules->list_08AC.Items[i] == deploysInto) {
+                listed = true;
+                break;
+            }
+        }
+        if (listed && Owner->AutoBaseBuilding && !Owner->IsControlledByHuman()) {
+            vf_122(0x10, false);
+            int delay = (int)(FUN_005B3A00()->Rate * 900.0);
+            return delay + DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
+        }
+    }
+    if (Type->Weeder && unknown_bool_6B8) {
+        unknown_bool_6B8 = 0;
+        vf_122(10, false);
+    }
+    return FootClass::vf_135();
 }
 
 // FUNCTION: GAMEMD 0x740A90
@@ -653,6 +765,54 @@ void UnitClass::UnmarkAllOccupationBits(CoordStruct const& coords)
     cell->OccupationFlags &= ~0x20;
 }
 
+// The cell a coordinate falls in: the inlined signed divide by 256 of X and Y.
+static inline CellStruct CoordToCell_00744270(CoordStruct coord)
+{
+    CellStruct cell;
+    cell.X = (short)(coord.X / 256);
+    cell.Y = (short)(coord.Y / 256);
+    return cell;
+}
+
+// FUNCTION: GAMEMD 0x744270
+// Whether the unit is ready to be worked on (for example by a weapons factory): not while it
+// is changing shape or unloading, nor while a contact it is tethered to still needs it, and
+// not when it waits directly below an untethered weapons factory.
+bool UnitClass::vf_128()
+{
+    if (CurrentMission == 6 || CurrentMission == 0x15 || Deploying || Undeploying || Unloading) {
+        return false;
+    }
+    if (QueuedMission != 7 && Locomotor->IsMovingNow() && vf_114() >= 0 && vf_97() != 5 &&
+        (vf_97() != 1 || Target)) {
+        if (!unknown_bool_B8) {
+            return false;
+        }
+    }
+    if (!UnloadTimer.FUN_004A51D0()) {
+        return false;
+    }
+    TechnoClass* contact = FUN_0065AD40(0);
+    if (contact) {
+        if (contact->vf_11() == 6 && static_cast<BuildingClass*>(contact)->Type->WeaponsFactory &&
+            QueuedMission != 2 && QueuedMission != 7) {
+            return false;
+        }
+    } else {
+        CoordStruct location = this->Location;
+        BuildingClass* building = Map_0087F7E8.FUN_00565730(location)->GetBuilding();
+        if (building && building->Type->WeaponsFactory) {
+            CellStruct buildingCell = CoordToCell_00744270(building->Location);
+            CellStruct myCell = CoordToCell_00744270(Location);
+            CellStruct delta = myCell - buildingCell;
+            if (delta.X == 0 && delta.Y == 1) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x744600
 // Free the attached electric bolt, then save as a FootClass.
 HRESULT __stdcall UnitClass::Save(IStream* pStm, BOOL fClearDirty)
@@ -939,6 +1099,45 @@ void UnitClass::FUN_00746630(ObjectTypeClass* type)
     }
 }
 
+// FUNCTION: GAMEMD 0x746670
+// Disguise as the given object: a unit takes on the type and house it presents, a
+// cell takes on its overlay, and a terrain object only its type. Retail leaves the
+// return value unset.
+#pragma warning(disable : 4716)
+unsigned long UnitClass::DisguiseAs(AbstractClass* target)
+{
+    TechnoClass* other = (TechnoClass*)target;
+    if (other) {
+        bool apply = false;
+        ObjectTypeClass* type;
+        switch (other->vf_11()) {
+        case 36:
+            type = other->vf_34();
+            apply = true;
+            break;
+        case 11:
+            if (vf_230(target)) {
+                type = DAT_00A83D84[((CellClass*)target)->OverlayTypeIndex];
+                apply = true;
+            }
+            break;
+        case 1:
+            if (other->vf_49()) {
+                Disguise = other->vf_51(true);
+                DisguisedAsHouse = other->vf_52(true);
+                TechnoClass::DisguiseAs(target);
+            }
+            break;
+        }
+        if (apply) {
+            Disguise = type;
+            DisguisedAsHouse = 0;
+            TechnoClass::DisguiseAs(target);
+        }
+    }
+}
+#pragma warning(default : 4716)
+
 // FUNCTION: GAMEMD 0x746720
 // Drop the disguise.
 void UnitClass::vf_284()
@@ -965,6 +1164,104 @@ bool UnitView_r16::FUN_00746750(HouseClass* house)
         }
     }
     return false;
+}
+
+// FUNCTION: GAMEMD 0x7468C0
+// Keep the disguise in step with what is around: a moving or disturbed unit drops it, a unit
+// that stands still with nobody linked to it may pick a fresh one when the blink timer has run
+// out, and the mind-control ring is hidden while the disguise is up for other players.
+bool UnitClass::FUN_007468C0()
+{
+    bool canBlink = false;
+    if (!vf_49()) {
+        if (!Locomotor->IsMoving()) {
+            if (Type->DisguiseWhenStill) {
+                if (!FUN_0065AD30(0)) {
+                    canBlink = true;
+                }
+            }
+        }
+    }
+    if (Locomotor->IsMoving()) {
+        goto drop;
+    }
+    if (CurrentFrame % 8 != 0) {
+        CellStruct cell = vf_110();
+        bool onBridge = vf_111()->IsBridgeTile();
+        for (int i = 0; i < 8; i++) {
+            CellStruct next = cell + DAT_0089F688[i & 7];
+            CellClass* neighbour = reinterpret_cast<CellClass*>(Map_0087F7E8.FUN_005657A0(&next));
+            InfantryClass* infantry = neighbour->GetInfantry(onBridge);
+            if (infantry && !Owner->IsAlliedWith(infantry)) {
+                goto found;
+            }
+        }
+    }
+    if (canBlink && InfantryBlinkTimer.GetTimeLeft() == 0) {
+        int index = DAT_00A8B230->unknown_0218.RandomRanged(0, DAT_008871E0->DefaultMirageDisguises.Count - 1);
+        int last = DAT_008871E0->DefaultMirageDisguises.Count - 1;
+        if (index >= last) {
+            index = last;
+        }
+        FUN_00746630(const_cast<TerrainTypeClass*>(DAT_008871E0->DefaultMirageDisguises.Items[index]));
+    }
+done:
+    if (MindControlRingAnim) {
+        if (vf_49() && !Owner->IsControlledByCurrentPlayer()) {
+            static_cast<AnimClass*>(MindControlRingAnim)->Invisible = 1;
+            return true;
+        }
+        static_cast<AnimClass*>(MindControlRingAnim)->Invisible = 0;
+    }
+    return false;
+    // Layout evidence: retail emits this block between the ring's return-true (0x746ADB) and the false arm (0x746B0B),
+    // entered by the jumps at 0x746942 (moving) and 0x7469F5 (enemy found) and left by a jump back to 0x746A9C. It
+    // cannot be written as a structured arm: nested and flag forms place it mid-function and score 25.3 / 68.4.
+found:
+    InfantryBlinkTimer = CDTimerClass(DAT_008871E0->InfantryBlinkDisguiseTime);
+drop:
+    vf_284();
+    goto done;
+}
+
+// FUNCTION: GAMEMD 0x746B20
+// The name shown for the unit. A disguise shows the disguise's name to the local player; a
+// turreted unit with an infantryman inside shows the turret's tip (or the rider's own name)
+// followed by the unit's name; any other unit shows its own name.
+const wchar_t* UnitClass::vf_36()
+{
+    if (vf_50(DAT_00A83D4C) && vf_51(true)) {
+        if (!vf_52(true)) {
+            return 0;
+        }
+        return vf_51(true)->UIName;
+    }
+    if (FUN_0070DC60() && FUN_0070DC50()) {
+        const wchar_t* name = 0;
+        FootClass* passenger = Passengers.GetFirstPassenger();
+        if (passenger && passenger->vf_11() == 0xF) {
+            bool own = false;
+            if (static_cast<InfantryClass*>(passenger)->Type->UseOwnName) {
+                own = true;
+            }
+            int turret = GetCurrentTurret();
+            if (turret == 0) {
+                name = FUN_00734E60("Tip:Rocket", 0, "D:\\ra2mdpost\\Unit.CPP", 0x2C90);
+            } else if (turret == 1 && !own) {
+                name = FUN_00734E60("Tip:MachineGun", 0, "D:\\ra2mdpost\\Unit.CPP", 0x2C94);
+            } else if (turret == 2) {
+                name = FUN_00734E60("Tip:Repair", 0, "D:\\ra2mdpost\\Unit.CPP", 0x2C98);
+            } else if (turret == 3 || own) {
+                name = passenger->vf_34()->UIName;
+            }
+        }
+        if (!name) {
+            name = FUN_00734E60("Tip:Rocket", 0, "D:\\ra2mdpost\\Unit.CPP", 0x2CBE);
+        }
+        swprintf(ToolTipText, L"%s %s", name, Type->UIName);
+        return ToolTipText;
+    }
+    return Type->UIName;
 }
 
 // FUNCTION: GAMEMD 0x746C90

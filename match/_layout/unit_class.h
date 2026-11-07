@@ -85,16 +85,21 @@ public:
     virtual HouseClass* vf_52(bool a1);                 // 52  0x7465F0
     virtual AbstractClass* vf_241(unsigned int threat, CoordStruct* coord, bool a3); // 241 0x743190
     virtual bool vf_54(const CoordStruct& coord, int a2); // 54  0x737BA0
+    virtual unsigned long DisguiseAs(AbstractClass* target); // 283 0x746670
     virtual void vf_284();                              // 284 0x746720
     virtual int vf_151();                               // 151 0x740B10
     virtual bool vf_53();                               // 53  0x7440B0
     virtual bool vf_80(int mode, CellStruct* cell, int a3, int a4); // 80  0x738910
     virtual bool vf_81(int a1, ObjectClass* a2, int a3);// 81  0x738890
     void FUN_00746630(ObjectTypeClass* type);           // 0x746630
+    bool FUN_0073D450();                                // 0x73D450: one harvesting step
+    bool FUN_007468C0();                                // 0x7468C0: keeps the disguise in step with the surroundings
     bool FUN_00746D10();                                // 0x746D10
     bool FUN_00746DB0();                                // 0x746DB0
     virtual void vf_10(void* target, bool removed);    // 10  0x7446E0
     virtual bool vf_245(HouseClass* house, bool a2);   // 245 0x7463A0
+    virtual const wchar_t* vf_36();                    // 36  0x746B20
+    virtual int vf_135();                              // 135 0x740810
     virtual int vf_138();                              // 138 0x73EFC0
     // FUNCTION: GAMEMD 0x738D30 (decl; reloc)
     bool FUN_00738D30();
@@ -110,6 +115,7 @@ public:
     virtual void vf_341(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8);         // 341 0x73B470
     virtual void vf_342(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8);         // 342 0x73C5F0
     virtual void vf_343(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9); // 343 0x73B140
+    virtual bool vf_128();                               // 128 0x744270
     virtual int vf_136();                                // 136 0x744100
     virtual int vf_147();                                // 147 0x740EF0
     virtual void vf_56(void* source);                    // 56  0x744720

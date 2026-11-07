@@ -282,6 +282,8 @@ public:
     bool FUN_0070DC50();
     // FUNCTION: GAMEMD 0x70DC60 (decl) -- non-virtual; the type's FUN_00717880.
     bool FUN_0070DC60();
+    // FUNCTION: GAMEMD 0x70DCF0 -- non-virtual; the current turret index.
+    int GetCurrentTurret() const;
     // FUNCTION: GAMEMD 0x70FED0 (decl) -- non-virtual; Drainable of the type.
     bool FUN_0070FED0();
     // FUNCTION: GAMEMD 0x70DE40 (decl) -- non-virtual; subtracts a1 from GattlingValue, flooring at 0.

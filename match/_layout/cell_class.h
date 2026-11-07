@@ -90,7 +90,7 @@ public:
     bool IsClearToMove(int speedType, bool ignoreInfantry, bool ignoreVehicles,
                        int zone, int movementZone, int level, bool isBridge);
     void FUN_0047D2B0(int value); // GAMEMD 0x47D2B0; caller0x684FAB
-    void FUN_00480A80(int value); // GAMEMD 0x480A80 (decl; reloc), RET 4
+    int FUN_00480A80(int value); // GAMEMD 0x480A80 (decl; reloc), RET 4; returns the amount taken (UnitClass::FUN_0073D450 tests it)
     void RecalcAttributes_484680(); // GAMEMD 0x484680, __thiscall
     int FUN_00487D50(); // GAMEMD 0x487D50 (decl; reloc): Level + 4 * (Flags bit 7)
     // FUNCTION: GAMEMD 0x480630 (decl; reloc) -- one byte argument.
