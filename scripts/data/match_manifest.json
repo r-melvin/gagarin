@@ -13165,9 +13165,9 @@
  {
   "tu": "match/tiny_leaf_methods.cpp",
   "addr": "0x454CE0",
-  "sym": "?FUN_00454CE0@@YAXXZ",
+  "sym": "?FUN_00454CE0@HouseClass@@QAEXXZ",
   "len": "0x1",
-  "name": "FUN_00454CE0",
+  "name": "HouseClass::FUN_00454CE0",
   "status": "matched",
   "pct": 100.0
  },
@@ -156803,6 +156803,33 @@
   "sym": "??_GFootClass@@UAEPAXI@Z",
   "len": "0x1e",
   "name": "FootClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/House.cpp",
+  "addr": "0x4F5190",
+  "sym": "??0HouseClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x301",
+  "name": "HouseClass::HouseClass(const AbstractNoInit&)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/House.cpp",
+  "addr": "0x508C30",
+  "sym": "?FUN_00508C30@HouseClass@@QAEXXZ",
+  "len": "0x1bd",
+  "name": "FUN_00508C30",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/House.cpp",
+  "addr": "0x508DF0",
+  "sym": "?FUN_00508DF0@HouseClass@@QAEXXZ",
+  "len": "0x168",
+  "name": "FUN_00508DF0",
   "status": "matched",
   "pct": 100.0
  }

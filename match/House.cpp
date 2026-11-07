@@ -899,9 +899,6 @@ extern int DAT_008A0DD4;
 extern int DAT_008A0DDC;
 extern int DAT_008A0DE4;
 
-// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- square root; __cdecl, one double.
-double __cdecl Sqrt_004CAC40(double value);
-
 // FUNCTION: GAMEMD 0x50B920 (decl; reloc) -- adjusts the three colour channels in place.
 void __fastcall FUN_0050B920(double* first, double* second, double* third);
 
@@ -1247,6 +1244,19 @@ HeaderCoordInit DAT_00A8F020(128, 128, 0);
 // SYNTHETIC: GAMEMD 0x004F5130 -- exit-time destructor stub of DAT_00A8EFC8, guard byte 0x00A8EF60 bit 0
 // SYNTHETIC: GAMEMD 0x004F50F0 -- initialiser of DAT_00A8EFC8
 DynamicVectorClass<HouseClass::BuildChoiceClass*> StaticVectorHolder_00A8EFC8::DAT_00A8EFC8;
+
+// FUNCTION: GAMEMD 0x4F5190
+// The no-init constructor the stream load re-runs through placement new: the abstract base takes
+// the argument on, every container and sub-object member constructs itself empty, and only the
+// repair timer is restarted. The interface tables are stored last.
+HouseClass::HouseClass(const AbstractNoInit& noInit)
+    : AbstractClass(noInit), RepairTimer(0), OwnedTiberium(noInit), OwnedWeed(noInit),
+      BuiltAircraftTypes(noInit), BuiltInfantryTypes(noInit), BuiltUnitTypes(noInit),
+      BuiltBuildingTypes(noInit), KilledAircraftTypes(noInit), KilledInfantryTypes(noInit),
+      KilledUnitTypes(noInit), KilledBuildingTypes(noInit), CapturedBuildings(noInit),
+      CollectedCrates(noInit), Base(noInit)
+{
+}
 
 // FUNCTION: GAMEMD 0x4F54A0
 HouseClusterView::HouseClusterView(HouseTypeView* type)
@@ -3193,7 +3203,7 @@ void HouseClass::FUN_00500B40(CCINIClass* ini)
         red = Color.R;
         green = Color.G;
         blue = Color.B;
-        double length = Sqrt_004CAC40(red * red + green * green + blue * blue);
+        double length = FUN_004CAC40(red * red + green * green + blue * blue);
         if (length == GG_ZERO) {
             blue = 255.0;
             green = 255.0;
@@ -4546,6 +4556,81 @@ void HouseClass::FUN_00508150()
     PredictionEnemyArmor = (float)vehicles / (float)total;
     PredictionEnemyAir = (float)aircraft / (float)total;
     PredictionEnemyInfantry = (float)infantry / (float)total;
+}
+
+// FUNCTION: GAMEMD 0x4CA6E0 (decl; reloc)
+void __fastcall FUN_004CA6E0(HouseClass* house);
+
+// FUNCTION: GAMEMD 0x508C30
+// Adds up the power output and drain of this house's buildings (counting only what the
+// player is allowed to see), notes whether a building that is being drained still has output,
+// zeroes the output while the power is blacked out or drained, and tells the house when its
+// low-power state changed.
+void HouseClass::FUN_00508C30()
+{
+    bool wasLow = !(PowerOutput >= PowerDrain || PowerDrain == 0 ||
+                    (PowerOutput != 0 && DAT_007E1718 <= (double)PowerOutput / PowerDrain));
+    RecheckPower = 0;
+    PowerOutput = 0;
+    PowerDrain = 0;
+    bool drained = false;
+    int count = Buildings.GetCount();
+    for (int i = 0; i < count; i++) {
+        BuildingClass* building = Buildings.Items[i];
+        if (building && !building->InLimbo && building->IsOnMap) {
+            if (IsControlledByCurrentPlayer() && !building->DiscoveredByCurrentPlayer &&
+                Session_00A8B238.GameMode == 0)
+                continue;
+            PowerOutput += building->GetPowerOutput();
+            PowerDrain += building->GetPowerDrain();
+            if (building->IsBeingDrained() && building->GetPowerOutput() > 0)
+                drained = true;
+        }
+    }
+    IsBeingDrained = drained;
+    if (PowerBlackoutTimer.GetTimeLeft() != 0 || drained)
+        PowerOutput = 0;
+    FUN_00454CE0();
+    FUN_004CA6E0(this);
+    if (wasLow != !(PowerOutput >= PowerDrain || PowerDrain == 0 ||
+                    (PowerOutput != 0 && DAT_007E1718 <= (double)PowerOutput / PowerDrain)))
+        FUN_0050AF10();
+    RecheckRadar = 1;
+}
+
+// FUNCTION: GAMEMD 0x508DF0
+// Recomputes the local player's radar: it is on unless the radar is blacked out; scenario
+// force-on turns it on; otherwise it needs enough power and a live, placed, discovered
+// radar building that is not being sold, EMP-locked or otherwise inoperative.
+// The map is told only when the answer changed.
+void HouseClass::FUN_00508DF0()
+{
+    RecheckRadar = 0;
+    if (this != CurrentPlayer)
+        return;
+    bool radarOn = false;
+    if (RadarBlackoutTimer.GetTimeLeft() == 0) {
+        if (DAT_00A8B230->unknown_34A4) {
+            radarOn = true;
+        } else if (!(PowerOutput < PowerDrain && PowerDrain != 0 &&
+                     (PowerOutput == 0 || (double)PowerOutput / PowerDrain < DAT_007E1718))) {
+            int count = Buildings.Count;
+            for (int i = 0; i < count; i++) {
+                BuildingClass* building = Buildings.Items[i];
+                if (building && building->HasPower && building->Type->Radar && !building->InLimbo &&
+                    building->IsOnMap &&
+                    ((Session_00A8B238.GameMode == 0 && !IsHumanPlayer && !IsInPlayerControl) ||
+                     building->DiscoveredByCurrentPlayer || Session_00A8B238.GameMode != 0) &&
+                    building->CurrentMission != 0x13 && building->QueuedMission != 0x13) {
+                    if (building->EMPLockRemaining == 0 && !building->vf_117())
+                        radarOn = true;
+                    break;
+                }
+            }
+        }
+    }
+    if (DAT_0087F7E8.FUN_00656DE0() != radarOn)
+        DAT_0087F7E8.FUN_00656DF0(radarOn);
 }
 
 // FUNCTION: GAMEMD 0x508F60

@@ -10,10 +10,14 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
+struct AbstractNoInit;
+
 struct UnitTrackerClass
 {
     // Native entry 0x748FD0; declaration only. (external constructor declaration only)
     UnitTrackerClass();
+    // The no-init form: the HouseClass no-init constructor 0x4F5190 leaves all ten blocks untouched.
+    UnitTrackerClass(const AbstractNoInit&) {}
     // Native entry 0x749020; declaration only.
     void IncrementUnitTotal(int unitType);
     // Native entry 0x749060; declaration only.

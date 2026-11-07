@@ -17,13 +17,15 @@
 //   IHouse slot 14 is stdcall (stack receiver, RET 4 at 0x501400), distinct
 //   from AbstractClass::vf_14 thiscall (0x410490); its placeholder is qualified
 //   by interface to permit both native contracts on one actual class.
+//   Both are novtable: the no-init constructor 0x4F5190 stores no interface table at +0x24/+0x28
+//   ahead of the final stores, as for the earlier HouseIHouseBase view.
 #ifndef GG_MATCH_LAYOUT_HOUSE_INTERFACES_H
 #define GG_MATCH_LAYOUT_HOUSE_INTERFACES_H
 
 #include <unknwn.h>
 #include <wtypes.h>
 
-struct IHouse : public IUnknown
+struct __declspec(novtable) IHouse : public IUnknown
 {
     virtual HRESULT __stdcall vf_03() = 0;                      // 3  0x4F6E60
     virtual BSTR __stdcall vf_04() = 0;                         // 4  0x4F6950
@@ -39,7 +41,7 @@ struct IHouse : public IUnknown
     virtual HRESULT __stdcall IHouse_vf_14() = 0;               // 14 0x501400
 };
 
-struct IPublicHouse : public IUnknown
+struct __declspec(novtable) IPublicHouse : public IUnknown
 {
     virtual HRESULT __stdcall vf_03() = 0;                      // 3 (shared with IHouse 3)
     virtual BSTR __stdcall vf_04() = 0;                         // 4 (shared with IHouse 4)

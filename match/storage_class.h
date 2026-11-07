@@ -20,10 +20,14 @@
 // FLD float[ESI] / FCOMP float[0x7E1748(=0.0)] per element. YRpp names them
 // Tiberium1..4; declared in exact retail order.
 // ---------------------------------------------------------------------------
+struct AbstractNoInit;
+
 struct StorageClass
 {
     // Declaration: GAMEMD 0x6C95E0 -- native writes four zero dwords, RET.
     StorageClass();
+    // The no-init form: the HouseClass no-init constructor 0x4F5190 leaves both stores untouched.
+    StorageClass(const AbstractNoInit&) {}
     // Declared ascending by retail address (reccmp/isle TU discipline).
     int   GetTotalValue() const;                     // GAMEMD 0x6C9600 __thiscall
     float GetTotalAmount() const;                    // GAMEMD 0x6C9650 __thiscall

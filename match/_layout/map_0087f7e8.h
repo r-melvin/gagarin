@@ -29,6 +29,10 @@ struct Map_0087F7E8
 {
     // FUNCTION: GAMEMD 0x4AE450 (decl; reloc)
     void FUN_004AE450();
+    // FUNCTION: GAMEMD 0x656DE0 (decl; reloc) -- whether the radar is switched on.
+    bool FUN_00656DE0();
+    // FUNCTION: GAMEMD 0x656DF0 (decl; reloc) -- switches the radar on or off; RET 4.
+    void FUN_00656DF0(bool on);
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc)
     CellClass* FUN_005657A0(const CellStruct* cell);
     // FUNCTION: GAMEMD 0x5657E0 (decl; reloc)

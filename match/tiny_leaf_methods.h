@@ -19,12 +19,11 @@
 
 extern "C" void __cdecl FUN_007C8B3D(void* block);
 
-// Six do-nothing functions. They are real entry points - almost certainly
+// Five do-nothing functions (0x454CE0, the sixth, is HouseClass::FUN_00454CE0). They are real entry points - almost certainly
 // virtual overrides that deliberately do nothing - not padding.
 void __cdecl FUN_004068E0();   // FUNCTION: GAMEMD 0x4068E0
 void __cdecl FUN_00408530();   // FUNCTION: GAMEMD 0x408530
 void __cdecl FUN_0040D300();   // FUNCTION: GAMEMD 0x40D300
-void __cdecl FUN_00454CE0();   // FUNCTION: GAMEMD 0x454CE0
 void __cdecl FUN_0045E750();   // FUNCTION: GAMEMD 0x45E750
 void __cdecl FUN_00465CB0();   // FUNCTION: GAMEMD 0x465CB0
 

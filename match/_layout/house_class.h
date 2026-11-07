@@ -757,6 +757,12 @@ public:
     void FUN_004FAA10(int kind, int value);
     // FUNCTION: GAMEMD 0x50AF10 (decl; reloc) -- no stack arguments.
     void FUN_0050AF10();
+    // FUNCTION: GAMEMD 0x508C30 (decl) -- sums the buildings' power output and drain into the house.
+    void FUN_00508C30();
+    // FUNCTION: GAMEMD 0x508DF0 (decl) -- switches the player's radar on or off.
+    void FUN_00508DF0();
+    // FUNCTION: GAMEMD 0x454CE0 (decl; reloc) -- an empty member (a lone RET; the callers pass the house in ECX).
+    void FUN_00454CE0();
 };
 
 GG_STATIC_ASSERT(offsetof(HouseClass, TechLevel) == 0x1D4); // 0x6886B0 accesses

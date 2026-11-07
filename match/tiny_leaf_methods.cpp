@@ -5,6 +5,7 @@
 // Ordered ascending by retail address.
 
 #include "tiny_leaf_methods.h"
+#include "_layout/house_class.h"
 
 // FUNCTION: GAMEMD 0x4065F0
 void AudioEventType::FUN_004065F0(float value) { MinVolume = value; }
@@ -60,7 +61,8 @@ int __stdcall FUN_00410220(Obj_00410200* obj) { return obj->unknown_0C; }
 void Obj_00434100::FUN_00434110(int value) { unknown_20 = value; }
 
 // FUNCTION: GAMEMD 0x454CE0
-void __cdecl FUN_00454CE0() { }
+// A HouseClass member: its callers pass the house in ECX.
+void HouseClass::FUN_00454CE0() { }
 
 // FUNCTION: GAMEMD 0x45E750
 void __cdecl FUN_0045E750() { }

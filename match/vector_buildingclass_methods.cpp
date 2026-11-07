@@ -45,7 +45,7 @@ class BuildingClass;
 // SYNTHETIC: GAMEMD 0x4EF5D0
 // DynamicVectorClass<BuildingClass*>::scalar deleting destructor
 
-// FUNCTION: GAMEMD 0x510550
+// TEMPLATE: GAMEMD 0x510550
 // VectorClass<BuildingClass*>::VectorClass(int, BuildingClass**)
 
 // VTABLE: GAMEMD 0x7E9E44 -- VectorClass<BuildingClass*>.
