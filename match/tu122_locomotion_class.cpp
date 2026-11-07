@@ -303,7 +303,7 @@ int __stdcall LocomotionClass::ZGradient()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55ABC0
-int __stdcall LocomotionClass::VisualCharacter(int)
+int __stdcall LocomotionClass::VisualCharacter(bool)
 {
     return 0;
 }

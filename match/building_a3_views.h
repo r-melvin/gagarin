@@ -22,6 +22,12 @@
 #include "building_b_shared.h"
 #include "_layout/tactical.h"
 #include "_layout/building_class.h"
+#include "_layout/anim_class.h"
+#include "_layout/bullet_class.h"
+#include "weapon_type_class.h"
+#include "_layout/cell_class.h"
+#include "mission_class_methods.h"
+#include "_layout/map_0087f7e8.h"
 #include "_layout/unit_type_class.h"
 #include "_layout/anim_type_class.h"
 #include "house_building_views.h"
@@ -32,10 +38,11 @@
 
 class BA3ObjView;
 struct BA3Chain1View;
-class BA3UnitTypeView;
 class BA3TechnoView;
-class BA3UnitView;
-struct BA3LightView;
+class LightSourceClass;
+class UnitClass;
+class AircraftClass;
+class AircraftTypeClass;
 class SuperClass;
 struct BA3SpotView;
 class BuildingTypeClass;
@@ -56,8 +63,8 @@ struct BA3TargetRef
     int           Value;   // +0x00
     unsigned char Tag;     // +0x04
     // FUNCTION: GAMEMD 0x6E6AB0 (read-only here) - the constructor from a building / from an object.
-    BA3TargetRef(BuildingA3View* b);
-    BA3TargetRef(BA3ObjView* o);
+    BA3TargetRef(BuildingClass* b);
+    BA3TargetRef(ObjectClass* o);
 };
 #pragma pack(pop)
 GG_STATIC_ASSERT(sizeof(BA3TargetRef) == 5);
@@ -182,100 +189,14 @@ GG_STATIC_ASSERT(offsetof(BA3ObjView, unknown_140) == 0x140);
 GG_STATIC_ASSERT(offsetof(BA3ObjView, unknown_2B0) == 0x2B0);
 GG_STATIC_ASSERT(offsetof(BA3ObjView, unknown_2B4) == 0x2B4);
 
-// An animation object (AnimClass, name YRpp-cross-checked; 0x1C8 bytes by the allocation in 0x4415F0; partial).
-class BA3AnimView
-{
-public:
-    virtual void vt_000();
-    virtual void vt_004();
-    virtual void vt_008();
-    virtual void vt_00C();
-    virtual void vt_010();
-    virtual void vt_014();
-    virtual void vt_018();
-    virtual void vt_01C();
-    virtual void vt_020();
-    virtual void vt_024();
-    virtual void vt_028();
-    virtual void vt_02C();
-    virtual void vt_030();
-    virtual void vt_034();
-    virtual void vt_038();
-    virtual void vt_03C();
-    virtual void vt_040();
-    virtual void vt_044();
-    virtual void vt_048();
-    virtual void vt_04C();
-    virtual void vt_050();
-    virtual void vt_054();
-    virtual void vt_058();
-    virtual void vt_05C();
-    virtual void vt_060();
-    virtual void vt_064();
-    virtual void vt_068();
-    virtual void vt_06C();
-    virtual void vt_070();
-    virtual void vt_074();
-    virtual void vt_078();
-    virtual void vt_07C();
-    virtual void vt_080();
-    virtual void vt_084();
-    virtual void vt_088();
-    virtual void vt_08C();
-    virtual void vt_090();
-    virtual void vt_094();
-    virtual void vt_098();
-    virtual void vt_09C();
-    virtual void vt_0A0();
-    virtual void vt_0A4();
-    virtual void vt_0A8();
-    virtual void vt_0AC();
-    virtual void vt_0B0();
-    virtual void vt_0B4();
-    virtual void vt_0B8();
-    virtual void vt_0BC();
-    virtual void vt_0C0();
-    virtual void vt_0C4();
-    virtual void vt_0C8();
-    virtual void vt_0CC();
-    virtual void vt_0D0();
-    virtual void vt_0D4();
-    virtual void vt_0D8();
-    virtual void vt_0DC();
-    virtual void vt_0E0();
-    virtual void vt_0E4();
-    virtual void vt_0E8();
-    virtual void vt_0EC();
-    virtual void vt_0F0();
-    virtual void vt_0F4();
-    virtual void vf_62();   // slot 62, +0xF8
-
-    char _pad_0004[0xD0];   // +0x0004
-    int unknown_D4;   // +0x00D4
-    char _pad_00D8[0x4];   // +0x00D8
-    char unknown_DC[0x20];   // +0x00DC
-    char _pad_00FC[0x4];   // +0x00FC
-    int unknown_100;   // +0x0100
-    char _pad_0104[0x99];   // +0x0104
-    unsigned char unknown_19D;   // +0x019D
-    char _pad_019E[0x2A];   // +0x019E
-    // FUNCTION: GAMEMD 0x424C90 (read-only here)
-    void FUN_00424C90(void* other);
-    // FUNCTION: GAMEMD 0x424CA0 (read-only here)
-    void FUN_00424CA0(HouseClass* owner);
-};
-GG_STATIC_ASSERT(offsetof(BA3AnimView, unknown_D4) == 0xD4);
-GG_STATIC_ASSERT(offsetof(BA3AnimView, unknown_DC) == 0xDC);
-GG_STATIC_ASSERT(offsetof(BA3AnimView, unknown_100) == 0x100);
-GG_STATIC_ASSERT(offsetof(BA3AnimView, unknown_19D) == 0x19D);
-GG_STATIC_ASSERT(sizeof(BA3AnimView) == 0x1C8);
-
 // Raw storage for one animation object; the constructor body is the member below.
 struct BA3AnimMem
 {
     char _pad_0000[0x1C8];   // +0x0000
     // FUNCTION: GAMEMD 0x421EA0 (read-only here) - the animation constructor, returns the object.
-    BA3AnimView* FUN_00421EA0(const AnimTypeClass* type, CoordStruct* where, int delay, int loops, int flags, int a, int b);
+    AnimClass* FUN_00421EA0(const AnimTypeClass* type, CoordStruct* where, int delay, int loops, int flags, int a, int b);
+    // The same callee for a coordinate that is a temporary (a by-value call result).
+    AnimClass* FUN_00421EA0(const AnimTypeClass* type, const CoordStruct& where, int delay, int loops, int flags, int a, int b);
 };
 GG_STATIC_ASSERT(sizeof(BA3AnimMem) == 0x1C8);
 
@@ -284,7 +205,7 @@ struct BA3ParticleMem
 {
     char _pad_0000[0x100];   // +0x0000
     // FUNCTION: GAMEMD 0x62DC50 (read-only here) - the particle system constructor, returns the object.
-    struct BA3ParticleView* FUN_0062DC50(const ParticleSystemTypeClass* type, CoordStruct* where, int a, BuildingA3View* owner, CoordStruct* b, int c);
+    struct BA3ParticleView* FUN_0062DC50(const ParticleSystemTypeClass* type, CoordStruct* where, int a, BuildingClass* owner, CoordStruct* b, int c);
 };
 GG_STATIC_ASSERT(sizeof(BA3ParticleMem) == 0x100);
 
@@ -301,39 +222,6 @@ struct BA3ParticleView
 {
 };
 
-// A map cell (partial).
-struct BA3MapCellView
-{
-    char _pad_0000[0x44];   // +0x0000
-    int unknown_44;   // +0x0044
-    // FUNCTION: GAMEMD 0x487190 (read-only here)
-    void FUN_00487190(int a, int b);
-};
-GG_STATIC_ASSERT(offsetof(BA3MapCellView, unknown_44) == 0x44);
-
-// The map object (partial).
-struct BA3MapView
-{
-    // FUNCTION: GAMEMD 0x578080 (read-only here)
-    void FUN_00578080(const CoordStruct& where);
-    // FUNCTION: GAMEMD 0x4F42F0 (read-only here)
-    void FUN_004F42F0(int arg);
-    // FUNCTION: GAMEMD 0x565730 (read-only here)
-    BA3MapCellView* FUN_00565730(CoordStruct* where);
-    // FUNCTION: GAMEMD 0x6A60E0 (read-only here)
-    void FUN_006A60E0(int arg);
-    // FUNCTION: GAMEMD 0x567DA0 (read-only here)
-    void FUN_00567DA0(CoordStruct* where, int a, int b, int c);
-    // FUNCTION: GAMEMD 0x56D230 (read-only here)
-    int FUN_0056D230(CellStruct* out, int zone, char flag);
-    // FUNCTION: GAMEMD 0x56DC20 (read-only here) - the cell search; 15 stack arguments.
-    CellStruct* FUN_0056DC20(CoordStruct* start, CellStruct* cell, int a, int b, int c, char d, int e, int f, char g, char h, char i, char j, CellStruct* k, char l, char m);
-    // FUNCTION: GAMEMD 0x5657A0 (read-only here)
-    BA3ObjView* FUN_005657A0(CellStruct* cell);
-    // FUNCTION: GAMEMD 0x4ACA10 (read-only here)
-    CoordStruct* FUN_004ACA10(CoordStruct* out, CoordStruct* in, char flag);
-};
-
 // Object behind the global at 0x8871E0 (partial).
 struct BA3RulesView
 {
@@ -348,7 +236,7 @@ struct BA3RulesView
     char _pad_06EC[0x2C];   // +0x06EC
     int unknown_718;   // +0x0718
     char _pad_071C[0x440];   // +0x071C
-    BA3UnitTypeView** unknown_B5C;   // +0x0B5C
+    AircraftTypeClass** unknown_B5C;   // +0x0B5C
     char _pad_0B60[0x448];   // +0x0B60
     int unknown_FA8;   // +0x0FA8
     char _pad_0FAC[0x55C];   // +0x0FAC
@@ -405,256 +293,22 @@ public:
 
 
 
-// A light / spotlight object (opaque); one method is reached.
-struct BA3LightView
-{
-    // FUNCTION: GAMEMD 0x554A60 (read-only here)
-    void FUN_00554A60(char arg);
-};
-
 // Raw storage for one light object (0x4C bytes by the allocation in 0x445F80).
 struct BA3LightMem
 {
     char _pad_0000[0x4C];   // +0x0000
     // FUNCTION: GAMEMD 0x554760 (read-only here) - the constructor, returns the object.
-    BA3LightView* FUN_00554760(CoordStruct where, int a, int b, int c, int d, int e);
+    LightSourceClass* FUN_00554760(CoordStruct where, int a, int b, int c, int d, int e);
 };
 GG_STATIC_ASSERT(sizeof(BA3LightMem) == 0x4C);
 
-// A unit type (the free unit of the building type; partial).
-class BA3UnitTypeView
-{
-public:
-    virtual void vt_000();
-    virtual void vt_004();
-    virtual void vt_008();
-    virtual void vt_00C();
-    virtual void vt_010();
-    virtual void vt_014();
-    virtual void vt_018();
-    virtual void vt_01C();
-    virtual void vt_020();
-    virtual void vt_024();
-    virtual void vt_028();
-    virtual void vt_02C();
-    virtual void vt_030();
-    virtual void vt_034();
-    virtual void vt_038();
-    virtual void vt_03C();
-    virtual void vt_040();
-    virtual void vt_044();
-    virtual void vt_048();
-    virtual void vt_04C();
-    virtual void vt_050();
-    virtual void vt_054();
-    virtual void vt_058();
-    virtual void vt_05C();
-    virtual void vt_060();
-    virtual void vt_064();
-    virtual void vt_068();
-    virtual void vt_06C();
-    virtual void vt_070();
-    virtual void vt_074();
-    virtual void vt_078();
-    virtual void vt_07C();
-    virtual void vt_080();
-    virtual void vt_084();
-    virtual void vt_088();
-    virtual void vt_08C();
-    virtual void vt_090();
-    virtual void vt_094();
-    virtual void vt_098();
-    virtual void vt_09C();
-    virtual void vt_0A0();
-    virtual void vt_0A4();
-    virtual void vt_0A8();
-    virtual int vf_43();   // slot 43, +0xAC
-    virtual void vt_0B0();
-    virtual void vt_0B4();
-    virtual int vf_46(HouseClass* owner, int flag);   // slot 46, +0xB8
-
-    char _pad_0004[0x5B0];   // +0x0004
-    int unknown_5B4;   // +0x05B4
-};
-GG_STATIC_ASSERT(offsetof(BA3UnitTypeView, unknown_5B4) == 0x5B4);
-
-// A unit object created for the building (partial).
-class BA3UnitView
-{
-public:
-    virtual void vt_000();
-    virtual void vt_004();
-    virtual void vt_008();
-    virtual void vt_00C();
-    virtual void vt_010();
-    virtual void vt_014();
-    virtual void vt_018();
-    virtual void vt_01C();
-    virtual void vf_8(int flag);   // slot 8, +0x20
-    virtual void vt_024();
-    virtual void vt_028();
-    virtual void vt_02C();
-    virtual void vt_030();
-    virtual void vt_034();
-    virtual void vt_038();
-    virtual void vt_03C();
-    virtual void vt_040();
-    virtual void vt_044();
-    virtual void vt_048();
-    virtual void vt_04C();
-    virtual void vt_050();
-    virtual void vt_054();
-    virtual void vt_058();
-    virtual void vt_05C();
-    virtual void vt_060();
-    virtual void vt_064();
-    virtual void vt_068();
-    virtual void vt_06C();
-    virtual void vt_070();
-    virtual void vt_074();
-    virtual void vt_078();
-    virtual void vt_07C();
-    virtual void vt_080();
-    virtual void vt_084();
-    virtual void vt_088();
-    virtual void vt_08C();
-    virtual void vt_090();
-    virtual void vt_094();
-    virtual void vt_098();
-    virtual void vt_09C();
-    virtual void vt_0A0();
-    virtual void vt_0A4();
-    virtual void vt_0A8();
-    virtual void vt_0AC();
-    virtual void vt_0B0();
-    virtual void vt_0B4();
-    virtual void vt_0B8();
-    virtual void vt_0BC();
-    virtual void vt_0C0();
-    virtual void vt_0C4();
-    virtual void vt_0C8();
-    virtual void vt_0CC();
-    virtual void vt_0D0();
-    virtual void vt_0D4();
-    virtual bool vf_54(const CoordStruct& where, int arg);   // slot 54, +0xD8
-    virtual void vt_0DC();
-    virtual void vt_0E0();
-    virtual void vt_0E4();
-    virtual void vt_0E8();
-    virtual void vt_0EC();
-    virtual void vt_0F0();
-    virtual void vt_0F4();
-    virtual void vt_0F8();
-    virtual void vt_0FC();
-    virtual void vt_100();
-    virtual void vt_104();
-    virtual void vt_108();
-    virtual void vt_10C();
-    virtual void vt_110();
-    virtual void vt_114();
-    virtual void vt_118();
-    virtual void vt_11C();
-    virtual void vt_120();
-    virtual void vt_124();
-    virtual void vt_128();
-    virtual void vt_12C();
-    virtual void vt_130();
-    virtual void vt_134();
-    virtual void vt_138();
-    virtual void vt_13C();
-    virtual void vt_140();
-    virtual void vt_144();
-    virtual void vt_148();
-    virtual void vt_14C();
-    virtual void vt_150();
-    virtual void vt_154();
-    virtual void vt_158();
-    virtual void vt_15C();
-    virtual void vt_160();
-    virtual void vt_164();
-    virtual void vt_168();
-    virtual void vt_16C();
-    virtual void vt_170();
-    virtual void vt_174();
-    virtual void vt_178();
-    virtual void vt_17C();
-    virtual void vt_180();
-    virtual void vt_184();
-    virtual void vt_188();
-    virtual void vt_18C();
-    virtual void vt_190();
-    virtual void vt_194();
-    virtual void vt_198();
-    virtual void vt_19C();
-    virtual void vt_1A0();
-    virtual void vt_1A4();
-    virtual void vt_1A8();
-    virtual void vt_1AC();
-    virtual void vt_1B0();
-    virtual void vt_1B4();
-    virtual void vt_1B8();
-    virtual void vt_1BC();
-    virtual void vt_1C0();
-    virtual void vt_1C4();
-    virtual void vt_1C8();
-    virtual void vf_115(int arg);   // slot 115, +0x1CC
-    virtual void vt_1D0();
-    virtual void vt_1D4();
-    virtual void vt_1D8();
-    virtual void vt_1DC();
-    virtual void vt_1E0();
-    virtual void vt_1E4();
-    virtual void vf_122(int mission, int arg);   // slot 122, +0x1E8
-    virtual void vf_123();   // slot 123, +0x1EC
-    virtual void vt_1F0();
-    virtual void vt_1F4();
-    virtual void vt_1F8();
-    virtual void vt_1FC();
-    virtual void vt_200();
-    virtual void vt_204();
-    virtual void vt_208();
-    virtual void vt_20C();
-    virtual void vt_210();
-    virtual void vt_214();
-    virtual void vt_218();
-    virtual void vt_21C();
-    virtual void vt_220();
-    virtual void vt_224();
-    virtual void vt_228();
-    virtual void vt_22C();
-    virtual void vt_230();
-    virtual void vt_234();
-    virtual void vt_238();
-    virtual void vt_23C();
-    virtual void vt_240();
-    virtual void vt_244();
-    virtual void vt_248();
-    virtual void vt_24C();
-    virtual void vt_250();
-    virtual void vt_254();
-    virtual void vt_258();
-    virtual void vt_25C();
-    virtual void vt_260();
-    virtual void vt_264();
-    virtual void vt_268();
-    virtual void vt_26C();
-    virtual void vt_270();
-    virtual void vt_274();
-    virtual int vf_158(int a, void* o);   // slot 158, +0x278
-
-    char _pad_0004[0x6C0];   // +0x0004
-    BA3UnitTypeView* unknown_6C4;   // +0x06C4
-    // FUNCTION: GAMEMD 0x417FD0 (read-only here)
-    int FUN_00417FD0();
-};
-GG_STATIC_ASSERT(offsetof(BA3UnitView, unknown_6C4) == 0x6C4);
 
 // Raw storage for one unit object (0x8E8 bytes by the allocation in 0x445F80).
 struct BA3UnitMem
 {
     char _pad_0000[0x8E8];   // +0x0000
     // FUNCTION: GAMEMD 0x7353C0 (read-only here) - the constructor, returns the object.
-    BA3UnitView* FUN_007353C0(UnitTypeClass* type, HouseClass* owner);
+    UnitClass* FUN_007353C0(UnitTypeClass* type, HouseClass* owner);
 };
 GG_STATIC_ASSERT(sizeof(BA3UnitMem) == 0x8E8);
 
@@ -663,7 +317,7 @@ struct BA3SpawnMem
 {
     char _pad_0000[0x6D8];   // +0x0000
     // FUNCTION: GAMEMD 0x413D20 (read-only here) - the constructor, returns the object.
-    BA3UnitView* FUN_00413D20(BA3UnitTypeView* type, HouseClass* owner);
+    AircraftClass* FUN_00413D20(AircraftTypeClass* type, HouseClass* owner);
 };
 GG_STATIC_ASSERT(sizeof(BA3SpawnMem) == 0x6D8);
 
@@ -1170,160 +824,14 @@ GG_STATIC_ASSERT(offsetof(BA3TechnoView, unknown_5A4) == 0x5A4);
 GG_STATIC_ASSERT(offsetof(BA3TechnoView, unknown_674) == 0x674);
 GG_STATIC_ASSERT(offsetof(BA3TechnoView, unknown_68F) == 0x68F);
 
-// Launch parameters of a super weapon (partial).
-struct BA3LaunchInfoView
-{
-    char _pad_0000[0xA0];   // +0x0000
-    int unknown_A0;   // +0x00A0
-    int unknown_A4;   // +0x00A4
-    char _pad_00A8[0x4];   // +0x00A8
-    int unknown_AC;   // +0x00AC
-};
-GG_STATIC_ASSERT(offsetof(BA3LaunchInfoView, unknown_A0) == 0xA0);
-GG_STATIC_ASSERT(offsetof(BA3LaunchInfoView, unknown_A4) == 0xA4);
-GG_STATIC_ASSERT(offsetof(BA3LaunchInfoView, unknown_AC) == 0xAC);
-
 // Entry of the table at 0xA8E334 (partial).
 struct BA3LaunchHolderView
 {
     char _pad_0000[0x9C];   // +0x0000
-    BA3LaunchInfoView* unknown_9C;   // +0x009C
+    WeaponTypeClass* unknown_9C;   // +0x009C
 };
 GG_STATIC_ASSERT(offsetof(BA3LaunchHolderView, unknown_9C) == 0x9C);
 
-// The missile object created for the launch (partial).
-class BA3MissileView
-{
-public:
-    virtual void vt_000();
-    virtual void vt_004();
-    virtual void __stdcall vf_2();   // slot 2, +0x8
-    virtual void vt_00C();
-    virtual void vt_010();
-    virtual void vt_014();
-    virtual void vt_018();
-    virtual void vt_01C();
-    virtual void vf_8(int flag);   // slot 8, +0x20
-    virtual void vt_024();
-    virtual void vt_028();
-    virtual void vt_02C();
-    virtual void vt_030();
-    virtual void vt_034();
-    virtual void vt_038();
-    virtual void vt_03C();
-    virtual void vt_040();
-    virtual void vt_044();
-    virtual void vt_048();
-    virtual void vt_04C();
-    virtual void vt_050();
-    virtual void vt_054();
-    virtual void vt_058();
-    virtual void vt_05C();
-    virtual void vt_060();
-    virtual void vt_064();
-    virtual void vt_068();
-    virtual void vt_06C();
-    virtual void vt_070();
-    virtual void vt_074();
-    virtual void vt_078();
-    virtual void vt_07C();
-    virtual void vt_080();
-    virtual void vt_084();
-    virtual void vt_088();
-    virtual void vt_08C();
-    virtual void vt_090();
-    virtual void vt_094();
-    virtual void vt_098();
-    virtual void vt_09C();
-    virtual void vt_0A0();
-    virtual void vt_0A4();
-    virtual void vt_0A8();
-    virtual void vt_0AC();
-    virtual void vt_0B0();
-    virtual void vt_0B4();
-    virtual void vt_0B8();
-    virtual void vt_0BC();
-    virtual void vt_0C0();
-    virtual void vt_0C4();
-    virtual void vt_0C8();
-    virtual void vt_0CC();
-    virtual void vt_0D0();
-    virtual void vf_53();   // slot 53, +0xD4
-    virtual void vt_0D8();
-    virtual void vt_0DC();
-    virtual void vt_0E0();
-    virtual void vt_0E4();
-    virtual void vt_0E8();
-    virtual void vt_0EC();
-    virtual void vt_0F0();
-    virtual void vt_0F4();
-    virtual void vt_0F8();
-    virtual void vt_0FC();
-    virtual void vt_100();
-    virtual void vt_104();
-    virtual void vt_108();
-    virtual void vt_10C();
-    virtual void vt_110();
-    virtual void vt_114();
-    virtual void vt_118();
-    virtual void vt_11C();
-    virtual void vt_120();
-    virtual void vt_124();
-    virtual void vt_128();
-    virtual void vt_12C();
-    virtual void vt_130();
-    virtual void vt_134();
-    virtual void vt_138();
-    virtual void vt_13C();
-    virtual void vt_140();
-    virtual void vt_144();
-    virtual void vt_148();
-    virtual void vt_14C();
-    virtual void vt_150();
-    virtual void vt_154();
-    virtual void vt_158();
-    virtual void vt_15C();
-    virtual void vt_160();
-    virtual void vt_164();
-    virtual void vt_168();
-    virtual void vt_16C();
-    virtual void vt_170();
-    virtual void vt_174();
-    virtual void vt_178();
-    virtual void vt_17C();
-    virtual void vt_180();
-    virtual void vt_184();
-    virtual void vt_188();
-    virtual void vt_18C();
-    virtual void vt_190();
-    virtual void vt_194();
-    virtual void vt_198();
-    virtual void vt_19C();
-    virtual void vt_1A0();
-    virtual void vt_1A4();
-    virtual void vt_1A8();
-    virtual void vt_1AC();
-    virtual void vt_1B0();
-    virtual void vt_1B4();
-    virtual void vt_1B8();
-    virtual void vt_1BC();
-    virtual void vt_1C0();
-    virtual void vt_1C4();
-    virtual void vt_1C8();
-    virtual void vt_1CC();
-    virtual void vt_1D0();
-    virtual void vt_1D4();
-    virtual void vt_1D8();
-    virtual void vt_1DC();
-    virtual void vt_1E0();
-    virtual void vt_1E4();
-    virtual void vt_1E8();
-    virtual void vt_1EC();
-    virtual bool vf_124(CoordStruct* from, double* velocity);   // slot 124, +0x1F0
-
-    // FUNCTION: GAMEMD 0x46B260 (read-only here)
-    void FUN_0046B260(BA3LaunchInfoView* info);
-};
 
 
 
@@ -1333,6 +841,12 @@ struct BA3ProbeView
     // FUNCTION: GAMEMD 0x48AB90 (read-only here)
     int FUN_0048AB90(double radius);
 };
+
+// 0x5F6360 returns a scalar in EAX and 0x48AB90 is entered with that scalar in ECX as `this`.
+inline BA3ProbeView* BA3ProbeOf(int scalar)
+{
+    return (BA3ProbeView*)scalar;
+}
 
 // A 0x20 byte member of BuildingClass (two of them at +0x3D8 / +0x3F8; partial).
 struct BA3RecoilView
@@ -1738,7 +1252,7 @@ public:
     char _pad_0534[0xC];   // +0x0534
     BA3ObjView* C4AppliedBy;   // +0x0540
     char _pad_0544[0x8];   // +0x0544
-    BA3AnimView* unknown_54C;   // +0x054C
+    AnimClass* unknown_54C;   // +0x054C
     char _pad_0550[0x2C];   // +0x0550
     int unknown_57C;   // +0x057C
     BA3SpotView* unknown_580;   // +0x0580
@@ -1746,12 +1260,12 @@ public:
     int unknown_588;   // +0x0588
     int unknown_58C;   // +0x058C
     char _pad_0590[0x38];   // +0x0590
-    BA3AnimView* DamageFireAnims[8];   // +0x05C8
+    AnimClass* DamageFireAnims[8];   // +0x05C8
     char _pad_05E8[0x10];   // +0x05E8
     int unknown_5F8;   // +0x05F8
     int unknown_5FC;   // +0x05FC
     char _pad_0600[0x14];   // +0x0600
-    BA3LightView* LightSource;   // +0x0614
+    LightSourceClass* LightSource;   // +0x0614
     char _pad_0618[0x8];   // +0x0618
     StageClass unknown_620;   // +0x0620
     char _pad_063C[0x2D];   // +0x063C
@@ -1919,7 +1433,6 @@ void FUN_0048DED0(int count);
 // FUNCTION: GAMEMD 0x750E20 (read-only here) - ECX/EDX in registers, one more on the stack.
 void FUN_00750E20(int a, CoordStruct* where, int b);
 // GLOBAL: GAMEMD 0x87F7E8 (the map object, its address is loaded into ECX), 0x8871E0 (rules), 0x887324.
-extern BA3MapView DAT_0087F7E8;
 extern BA3RulesView* RulesInstance;
 // GLOBAL: GAMEMD 0x7E1718 / 0x7E4418 / 0x7E4410 - double constants.
 extern const double DAT_007E1718;
@@ -1960,6 +1473,8 @@ extern "C" unsigned int __cdecl strlen(const char*);
 extern const double DAT_007E27F8;
 // FUNCTION: GAMEMD 0x7509E0 (read-only here) - plays a sound at a position.
 void FUN_007509E0(int sound, CoordStruct* where, void* unused);
+// The same callee for a coordinate that is a temporary (a by-value call result).
+void FUN_007509E0(int sound, const CoordStruct& where, void* unused);
 // STRING: GAMEMD 0x81905C / 0x819044 / 0x818F18 - EVA speech names.
 extern const char s_EVA_UnitRepaired_0081905C[];
 extern const char s_EVA_InsufficientFunds_00819044[];
@@ -1980,7 +1495,7 @@ extern const double DAT_007E2810;
 double __cdecl FUN_004CACB0(double a);
 double __cdecl FUN_004CAD00(double a);
 // FUNCTION: GAMEMD 0x46B050 (read-only here) - ECX/EDX in registers, five more on the stack; creates the missile.
-BA3MissileView* FUN_0046B050(int a, BA3ObjView* cell, BuildingA3View* owner, int b, int c, int speed, char flag);
+BulletClass* FUN_0046B050(BulletTypeClass* a, AbstractClass* cell, BuildingClass* owner, int b, WarheadTypeClass* c, int speed, char flag);
 // FUNCTION: GAMEMD 0x422B20 (read-only here) - looks an anim type up by name: one register argument.
 int FUN_00422B20(const char* name);
 // STRING: GAMEMD 0x81907C / 0x819070 - "PSIWARN" / "PULSBALL"

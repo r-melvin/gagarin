@@ -48124,7 +48124,7 @@
  {
   "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55ABC0",
-  "sym": "?VisualCharacter@LocomotionClass@@UAGHH@Z",
+  "sym": "?VisualCharacter@LocomotionClass@@UAGH_N@Z",
   "len": "0x5",
   "name": "LocomotionClass::VisualCharacter",
   "status": "matched",
@@ -49056,13 +49056,13 @@
  {
   "tu": "match/building_a3_body_43e940.cpp",
   "addr": "0x43E940",
-  "sym": "?vf_178@BuildingA3View@@UAE?AUDirStruct@@PAVBA3ObjView@@@Z",
+  "sym": "?vf_178@BuildingClass@@UAE?AUDirStruct@@PAVAbstractClass@@@Z",
   "len": "0x3f4",
   "name": "BuildingClass::vf_178",
   "status": "partial",
-  "pct": 12.1,
-  "best_pct": 12.1,
-  "best_at": "f10538e6"
+  "pct": 13.0,
+  "best_pct": 13.0,
+  "best_at": "93fa2a35"
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -49100,7 +49100,7 @@
  {
   "tu": "match/building_a3_body_4415f0.cpp",
   "addr": "0x4415F0",
-  "sym": "?vf_315@BuildingA3View@@UAEXHHDPAF@Z",
+  "sym": "?vf_315@BuildingClass@@UAEXHHDPAUCellStruct@@@Z",
   "len": "0x967",
   "name": "BuildingClass::vf_315",
   "status": "partial",
@@ -49115,9 +49115,9 @@
   "len": "0x9e7",
   "name": "BuildingClass::vf_91",
   "status": "partial",
-  "pct": 1.6,
-  "best_pct": 1.6,
-  "best_at": "cf203011"
+  "pct": 1.9,
+  "best_pct": 1.9,
+  "best_at": "93fa2a35"
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -49133,7 +49133,7 @@
  {
   "tu": "match/building_a3_body_443410.cpp",
   "addr": "0x443410",
-  "sym": "?vf_81@BuildingA3View@@UAE_NHPAVBA3ObjView@@H@Z",
+  "sym": "?vf_81@BuildingClass@@UAE_NHPAVObjectClass@@H@Z",
   "len": "0x2db",
   "name": "BuildingClass::vf_81",
   "status": "partial",
@@ -49204,15 +49204,15 @@
  {
   "tu": "match/building_a3_body_445f80.cpp",
   "addr": "0x445F80",
-  "sym": "?vf_311@BuildingA3View@@UAEXD@Z",
+  "sym": "?vf_311@BuildingClass@@UAEXD@Z",
   "len": "0x1068",
   "name": "BuildingClass::vf_311",
   "status": "partial",
-  "pct": 4.2,
-  "best_pct": 4.2,
-  "best_at": "cf203011",
-  "metric": "instruction-position",
-  "note": "scored on the code span 0x1040 (the jump tables after it are not scored)"
+  "pct": 10.5,
+  "best_pct": 10.5,
+  "best_at": "93fa2a35",
+  "note": "scored on the code span 0x1040 (the jump tables after it are not scored)",
+  "metric": "instruction-position"
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -49419,13 +49419,13 @@
  {
   "tu": "match/building_a3_body_44c980.cpp",
   "addr": "0x44C980",
-  "sym": "?vf_148@BuildingA3View@@UAEHXZ",
+  "sym": "?vf_148@BuildingClass@@UAEHXZ",
   "len": "0xc48",
   "name": "BuildingClass::vf_148",
   "status": "partial",
-  "pct": 2.1,
-  "best_pct": 2.1,
-  "best_at": "ca2773f6"
+  "pct": 3.0,
+  "best_pct": 3.0,
+  "best_at": "93fa2a35"
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -49593,13 +49593,13 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x453A70",
-  "sym": "?vf_192@BuildingBView@@UAEPAUCoordStruct@@PAU2@H@Z",
+  "sym": "?vf_192@BuildingClass@@UAE?AUCoordStruct@@H@Z",
   "len": "0x176",
   "name": "BuildingClass::vf_192",
   "status": "partial",
-  "pct": 11.2,
-  "best_pct": 11.2,
-  "best_at": "cf203011"
+  "pct": 12.0,
+  "best_pct": 12.0,
+  "best_at": "93fa2a35"
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -49660,22 +49660,22 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x4544A0",
-  "sym": "?vf_26@BuildingBView@@UAEH_NPAVBuildingBTargetView@@@Z",
+  "sym": "?vf_26@BuildingClass@@UAEH_NH@Z",
   "len": "0x130",
   "name": "BuildingClass::vf_26",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x454DB0",
-  "sym": "?vf_260@BuildingBView@@UAEX_N@Z",
+  "sym": "?vf_260@BuildingClass@@UAEX_N@Z",
   "len": "0x81c",
   "name": "BuildingClass::vf_260",
   "status": "partial",
-  "pct": 1.1,
-  "best_pct": 1.1,
-  "best_at": "f10538e6"
+  "pct": 2.0,
+  "best_pct": 2.0,
+  "best_at": "93fa2a35"
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -49689,7 +49689,7 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x4556D0",
-  "sym": "?vf_318@BuildingBView@@UAEXUCellStruct@@@Z",
+  "sym": "?vf_318@BuildingClass@@UAEXUCellStruct@@@Z",
   "len": "0x145",
   "name": "BuildingClass::vf_318",
   "status": "partial",
@@ -49700,7 +49700,7 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x455820",
-  "sym": "?vf_317@BuildingBView@@UAEXUCellStruct@@@Z",
+  "sym": "?vf_317@BuildingClass@@UAEXUCellStruct@@@Z",
   "len": "0x158",
   "name": "BuildingClass::vf_317",
   "status": "partial",
@@ -49711,7 +49711,7 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x455980",
-  "sym": "?vf_320@BuildingBView@@UAEXUCellStruct@@@Z",
+  "sym": "?vf_320@BuildingClass@@UAEXUCellStruct@@@Z",
   "len": "0xf9",
   "name": "BuildingClass::vf_320",
   "status": "partial",
@@ -49722,7 +49722,7 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x455A80",
-  "sym": "?vf_319@BuildingBView@@UAEXUCellStruct@@@Z",
+  "sym": "?vf_319@BuildingClass@@UAEXUCellStruct@@@Z",
   "len": "0x10d",
   "name": "BuildingClass::vf_319",
   "status": "partial",
@@ -49733,13 +49733,13 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x455C20",
-  "sym": "?vf_75@BuildingBView@@UAEPAURectangleStruct@@PAU2@@Z",
+  "sym": "?vf_75@BuildingClass@@UAE?AURectangleStruct@@XZ",
   "len": "0x12e",
   "name": "BuildingClass::vf_75",
   "status": "partial",
-  "pct": 75.3,
-  "best_pct": 75.3,
-  "best_at": "cf203011"
+  "pct": 91.0,
+  "best_pct": 91.0,
+  "best_at": "93fa2a35"
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -49771,7 +49771,7 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x456E00",
-  "sym": "?vf_82@BuildingBView@@UAEXH@Z",
+  "sym": "?vf_82@BuildingClass@@UAEXH@Z",
   "len": "0x180",
   "name": "BuildingClass::vf_82",
   "status": "partial",
@@ -49791,7 +49791,7 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x457020",
-  "sym": "?vf_201@BuildingBView@@UAE_NPAH@Z",
+  "sym": "?vf_201@BuildingClass@@UAE_NPAH@Z",
   "len": "0x1b8",
   "name": "BuildingClass::vf_201",
   "status": "partial",
@@ -68345,11 +68345,11 @@
  {
   "tu": "match/object_class_slots_426390.cpp",
   "addr": "0x4263A0",
-  "sym": "?vf_26@ObjectClass@@UAEHHH@Z",
+  "sym": "?vf_26@ObjectClass@@UAEH_NH@Z",
   "len": "0x5",
   "name": "ObjectClass::vf_26",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/object_class_slots_426390.cpp",
@@ -106705,7 +106705,7 @@
   "len": "0x254",
   "name": "ObjectTypeClass::FUN_005F9070",
   "status": "partial",
-  "pct": 3.8,
+  "pct": 5.5,
   "best_pct": 5.5,
   "best_at": "685ebdf1",
   "lowered_reason": "stored pct was stale; re-measured with diff_retail at base f10538e6"
@@ -143720,11 +143720,11 @@
  {
   "tu": "match/foot_class_r17_methods.cpp",
   "addr": "0x4DA4E0",
-  "sym": "?vf_26@FootClass@@UAEHHH@Z",
+  "sym": "?vf_26@FootClass@@UAEH_NH@Z",
   "len": "0x43",
   "name": "FootClass::vf_26",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/foot_class_r17_methods.cpp",
@@ -147818,11 +147818,11 @@
  {
   "tu": "match/Techno.cpp",
   "addr": "0x6FB740",
-  "sym": "?vf_260@TechnoClass@@UAEXH@Z",
+  "sym": "?vf_260@TechnoClass@@UAEX_N@Z",
   "len": "0x54a",
   "name": "TechnoClass::vf_260",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/rules_class_special_weapons_methods.cpp",

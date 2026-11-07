@@ -139,6 +139,8 @@ public:
     virtual bool vf_124(const CoordStruct& source,
                         const BulletVelocity& velocity);            // 124 0x468670
 
+    // FUNCTION: GAMEMD 0x46B260 (decl; reloc), BulletClass receiver, one weapon-type argument (RET 4).
+    void FUN_0046B260(WeaponTypeClass* weapon);
     // FUNCTION: GAMEMD 0x46B0C0 (decl; reloc), BulletClass receiver, RET 0x1C.
     void FUN_0046B0C0(const VoxelStruct* voxel, const Matrix3D& matrix,
                       Point2D* point, RectangleStruct* clip,

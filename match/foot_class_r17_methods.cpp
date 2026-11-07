@@ -56,23 +56,16 @@ bool FootClass::vf_200()
     return false;
 }
 
-// The TechnoClass body that slot 26 falls back to.
-struct TechnoView_004DA4E0 : TechnoClass
-{
-    // FUNCTION: GAMEMD 0x703860 (decl; reloc)
-    int FUN_00703860(int a1, int a2);
-};
-
 // FUNCTION: GAMEMD 0x4DA4E0
 // The locomotor's visual character for the argument when it has one, else the TechnoClass handling.
-int FootClass::vf_26(int a1, int a2)
+int FootClass::vf_26(bool a1, int a2)
 {
     if (Locomotor != 0) {
         int r = Locomotor->VisualCharacter(a1);
         if (r != 0)
             return r;
     }
-    return ((TechnoView_004DA4E0*)this)->FUN_00703860(a1, a2);
+    return TechnoClass::vf_26(a1, a2);
 }
 
 // FUNCTION: GAMEMD 0x4DE630

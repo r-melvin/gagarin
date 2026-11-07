@@ -124,7 +124,7 @@ public:
     // FUNCTION: GAMEMD 0x441F60 (decl; reloc)
     void FUN_00441F60();
     // FUNCTION: GAMEMD 0x442D90 (decl; reloc) -- one stack argument.
-    void FUN_00442D90(int unknownStackArg0);
+    void FUN_00442D90(InfantryClass* planter);
     // FUNCTION: GAMEMD 0x458750 -- restart the cash-production timer and pay out the first instalment.
     void FUN_00458750();
     // FUNCTION: GAMEMD 0x452670 -- whether an upgrade type may be attached for a house.
@@ -189,6 +189,8 @@ public:
     void FUN_00443860(CellStruct* cell, int flag);
     // FUNCTION: GAMEMD 0x449540 (decl; reloc) -- no stack arguments.
     void FUN_00449540();
+    // CALLEE: GAMEMD 0x458E50 -- thiscall, no stack arguments.
+    void FUN_00458E50();
 
     // More primary-table (0x7E3EBC) overrides of ObjectClass slots.
     virtual bool vf_65(RectangleStruct* rect, bool force, int a3);      // 65 0x43CEA0
@@ -198,16 +200,16 @@ public:
     // Names are placeholders; argument counts come from RET n, return types are not recovered.
     virtual Cell vf_309(ObjectClass* who, Cell preferred);          // 309 0x44EFB0: a free cell next to the building for `who`
     virtual int vf_310(AbstractClass* target);                     // 310 0x447E00: distance to `target` (its slot 18, our slot 42)
-    virtual void vf_311(int a1);                                   // 311 0x445F80
+    virtual void vf_311(char flag);                                // 311 0x445F80
     virtual void vf_312();                                         // 312 0x4456D0
     virtual void vf_313(Point2D* point, RectangleStruct* clip);    // 313 0x43DA80
     virtual DirStruct vf_314(AbstractClass* target);               // 314 0x43ED40 (0x44D7D0 returns its result for the target)
-    virtual void vf_315(int a1, int a2, int a3, int a4);           // 315 0x4415F0
+    virtual void vf_315(int unused, int a, char flag, CellStruct* list);       // 315 0x4415F0
     virtual char vf_316();                                         // 316 0x448160
-    virtual void vf_317(int a1);                                   // 317 0x455820
-    virtual void vf_318(int a1);                                   // 318 0x4556D0
-    virtual void vf_319(int a1);                                   // 319 0x455A80
-    virtual void vf_320(int a1);                                   // 320 0x455980
+    virtual void vf_317(CellStruct cell);                          // 317 0x455820
+    virtual void vf_318(CellStruct cell);                          // 318 0x4556D0
+    virtual void vf_319(CellStruct cell);                          // 319 0x455A80
+    virtual void vf_320(CellStruct cell);                          // 320 0x455980
     virtual int vf_321();                                          // 321 0x452250: returns 0
 
     // Overrides of base slots recovered in economy/house_building/building_a4_vf_*.cpp.
@@ -242,6 +244,18 @@ public:
     virtual void vf_13(Obj_004A1D30* crc);                         // 13  0x454260
     virtual void vf_295();                                         // 295 0x456640
     virtual CoordStruct vf_42(AbstractClass* target);              // 42  0x447B20
+    virtual bool vf_81(int mode, ObjectClass* target, int unused); // 81  0x443410
+    virtual int vf_148();                                          // 148 0x44C980
+    virtual DirStruct vf_178(AbstractClass* target);               // 178 0x43E940
+    virtual int vf_26(bool a, int target);                          // 26  0x4544A0
+    virtual CoordStruct vf_192(int a);                             // 192 0x453A70
+    // CALLEE: GAMEMD 0x453BF0 -- hidden result, two stack arguments (called from 0x453A70).
+    CoordStruct FUN_00453BF0(int a, int b);
+    // Sets the translucency level on every anim (retail expands it inline twice in 0x456E00).
+    void ApplyAnimLevel();
+    virtual RectangleStruct vf_75();                               // 75  0x455C20
+    virtual bool vf_201(int* flag);                                // 201 0x457020
+    virtual void vf_260(bool refresh);                             // 260 0x454DB0
 
 
     // Methods matched in economy/building_class.cpp. 0x4521C0 clears HasPower @0x660 and
@@ -367,8 +381,7 @@ public:
     StageClass     RepairProgress;        // +0x620 (0x1C) ctor @0x0043B7F5..0x0043B819 (Step = 1)
     RectangleStruct unknown_rect_63C;     // +0x63C (0x10) ctor LEA EDX,[ESI+0x63C] @0x0043B829
     CoordStruct    unknown_coord_64C;     // +0x64C (0xC)  ctor LEA EDX,[ESI+0x64C] @0x0043B856
-    int            unknown_int_658;       // +0x658 ctor @0x0043B876
-    unsigned int   unknown_65C;           // +0x65C ctor @0x0043B87C
+    Point2D        unknown_point_658;     // +0x658 (0x8) ctor @0x0043B876, 0x0043B87C; compared and stored by 0x455C20
     unsigned char  HasPower;              // +0x660 ctor MOV byte [ESI+0x660],1 @0x0043B882
     unsigned char  IsOverpowered;         // +0x661 ctor @0x0043B889
     unsigned char  RegisteredAsPoweredUnitSource; // +0x662 ctor @0x0043B88F
@@ -457,8 +470,7 @@ GG_STATIC_ASSERT(offsetof(BuildingClass, FirestormWallFrame)  == 0x61C);
 GG_STATIC_ASSERT(offsetof(BuildingClass, RepairProgress)      == 0x620);
 GG_STATIC_ASSERT(offsetof(BuildingClass, unknown_rect_63C)    == 0x63C);
 GG_STATIC_ASSERT(offsetof(BuildingClass, unknown_coord_64C)   == 0x64C);
-GG_STATIC_ASSERT(offsetof(BuildingClass, unknown_int_658)     == 0x658);
-GG_STATIC_ASSERT(offsetof(BuildingClass, unknown_65C)         == 0x65C);
+GG_STATIC_ASSERT(offsetof(BuildingClass, unknown_point_658)   == 0x658);
 GG_STATIC_ASSERT(offsetof(BuildingClass, HasPower)            == 0x660);
 GG_STATIC_ASSERT(offsetof(BuildingClass, IsOverpowered)       == 0x661);
 GG_STATIC_ASSERT(offsetof(BuildingClass, RegisteredAsPoweredUnitSource) == 0x662);

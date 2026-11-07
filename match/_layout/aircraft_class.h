@@ -40,6 +40,8 @@ public:
     // CALLEE: GAMEMD 0x00413D20 (decl; reloc) -- the constructor, RET 8: the type is stored at +0x6C4 and the owner
     // is handed to the FootClass constructor (0x4D31E0).
     AircraftClass(AircraftTypeClass* type = 0, HouseClass* owner = 0);
+    // CALLEE: GAMEMD 0x417FD0 -- thiscall, no stack arguments; reads a field of the global at 0x8871E0 (the receiver is unused).
+    int FUN_00417FD0();
     virtual HRESULT __stdcall Load(IStream* pStm);   // 5   0x41B430
     virtual ObjectTypeClass* vf_34(); // 34  0x41C200
     virtual const wchar_t* vf_36(); // 36  0x41C1D0

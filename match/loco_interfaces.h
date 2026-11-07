@@ -114,7 +114,7 @@ public:
     // Slot 12 +0x30. Returns a 2D point by value (hidden pointer, RET 8).
     virtual LocoPoint2D __stdcall ShadowPoint() = 0;
     // Slot 13 +0x34. One stack dword (an unused flag in the base).
-    virtual int __stdcall VisualCharacter(int unused) = 0;
+    virtual int __stdcall VisualCharacter(bool unused) = 0;
     // Slot 14 +0x38. Base 0.
     virtual int __stdcall ZAdjust() = 0;
     // Slot 15 +0x3C. Base 2.

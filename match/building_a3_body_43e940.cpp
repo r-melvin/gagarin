@@ -11,21 +11,21 @@
 // of the four locals (identical code), copy-constructor / constructor forms of the 4-byte direction return.
 
 #include "building_a3_views.h"
+#include "weapon_type_class.h"
 
 // FUNCTION: GAMEMD 0x43E940
-DirStruct BuildingA3View::vf_178(BA3ObjView* target)
+DirStruct BuildingClass::vf_178(AbstractClass* target)
 {
-    if (vf_254(0)->First->unknown_149) {
+    if (vf_254(0)->WeaponType->IsLaser) {
         vf_33();
         if (target) {
             CoordStruct c = FUN_0070BCB0();
             CoordStruct m;
-            m.Z = vf_254(0)->unknown_0C;
-            CoordStruct tmp;
-            CoordStruct* pm = vf_43(&tmp);
-            m.X = pm->X;
-            m.Y = pm->Y;
-            m.Z += pm->Z;
+            m.Z = vf_254(0)->FLH.Z;
+            const CoordStruct& pm = vf_43();
+            m.X = pm.X;
+            m.Y = pm.Y;
+            m.Z += pm.Z;
             Point2D out2;
             Point2D in2;
             in2.X = Type->BuildingAnim[9].X;
@@ -52,7 +52,7 @@ DirStruct BuildingA3View::vf_178(BA3ObjView* target)
             }
             return d;
         }
-        return Facing370.FUN_004C93D0();
+        return BarrelFacing.FUN_004C93D0();
     }
     if (Type->EMPulseCannon) {
         DAT_0087F7E8.FUN_00578080(target->vf_18());
@@ -63,7 +63,7 @@ DirStruct BuildingA3View::vf_178(BA3ObjView* target)
         zero.Z = 0;
         CoordStruct rc = vf_44(0, zero);
         FUN_004CAE30((double)rc.Y - t.Y, (double)t.X - rc.X);
-        int a = FUN_005F6360(target)->FUN_0048AB90((double)RulesInstance->unknown_16B8);
+        int a = BA3ProbeOf(FUN_005F6360(target))->FUN_0048AB90((double)RulesInstance->unknown_16B8);
         CoordStruct g = vf_192(0);
         CoordStruct pe = target->vf_18();
         CoordStruct e;
@@ -77,5 +77,5 @@ DirStruct BuildingA3View::vf_178(BA3ObjView* target)
         }
         return d;
     }
-    return FUN_006FDA00(target);
+    return TechnoClass::vf_178(target);
 }

@@ -221,6 +221,10 @@ public:
     void FUN_00709550();
     // GAMEMD 0x70D590 (body in Techno.cpp, unclaimed) -- thiscall, one stack argument (RET 4).
     bool FUN_0070D590(int weaponIndex);
+    // CALLEE: GAMEMD 0x70BCB0 -- thiscall, hidden CoordStruct result, no stack arguments.
+    CoordStruct FUN_0070BCB0();
+    // CALLEE: GAMEMD 0x707CB0 -- thiscall, one stack argument (RET 4); the TechnoClass body BuildingClass 0x4415F0 ends in.
+    void FUN_00707CB0(int arg);
     bool FUN_0043B150(); // ECX receiver, AL result, RET; render6D4766
     void FUN_004DC340(); // ECX receiver, RET; render6D478E
     // CALLEE: GAMEMD 0x70FEE0 -- existing matched Techno_0070FEE0 provider; one bool arg, RET 4.
@@ -333,6 +337,7 @@ public:
     virtual bool vf_73(int mode);                                  // 73  0x6F4A70
     virtual void vf_72(int a1, int a2);                            // 72  0x70ADC0: reveal the map around this object
     virtual void vf_82(int a1);                                    // 82  0x6F9DD0
+    virtual int vf_26(bool a1, int a2);                           // 26  0x703860
     virtual int vf_90(int weapon);                                 // 90  0x7012C0: the range of a weapon, cut to the shortest passenger range when open-topped
     virtual void vf_99(int mark);                                  // 99  0x6F5090: the change notification, mark 2 = placed
     virtual int vf_101(int a1, int event, int a3);                 // 101 0x6F4AB0: the radio message handler
@@ -372,7 +377,7 @@ public:
     virtual int vf_175();                                          // 175 0x70ADA0; the refund amount
     virtual int vf_176();                                          // 176 0x708B40
     virtual bool vf_177(int a1);                                   // 177 0x459D90
-    virtual void vf_178(int a1, int a2);                           // 178 0x6FDA00
+    virtual DirStruct vf_178(AbstractClass* target);               // 178 0x6FDA00 (hidden result pointer + one argument, RET 8)
     virtual bool vf_179(CoordStruct* where);                       // 179 0x707F60
     virtual int vf_180();                                          // 180 0x6F3950
     virtual int vf_181();                                          // 181 0x41BF00
@@ -395,7 +400,7 @@ public:
     virtual int vf_198(int a1);                                    // 198 0x6FCFA0
     virtual int vf_199(int a1);                                    // 199 0x707E60
     virtual bool vf_200();                                         // 200 0x459DD0
-    virtual void vf_201(int a1);                                   // 201 0x70D1D0
+    virtual bool vf_201(int* flag);                                // 201 0x70D1D0 (reads its pointer argument at +0x2C)
     virtual bool vf_202();                                         // 202 0x70D420
     virtual bool vf_203(HouseClass* a1);                           // 203 0x70D460
     virtual bool vf_204();                                         // 204 0x41BF30
@@ -455,7 +460,7 @@ public:
     virtual int vf_257();                                          // 257 0x41BFC0
     virtual int vf_258();                                          // 258 0x41BFD0
     virtual void vf_259();                                         // 259 0x701410
-    virtual void vf_260(int a1);                                   // 260 0x6FB740
+    virtual void vf_260(bool refresh);                             // 260 0x6FB740 (the argument is ignored here; BuildingClass 0x454DB0 reads it as a byte)
     virtual void vf_261();                                         // 261 0x6FB170
     virtual void vf_262();                                         // 262 0x6FB470
     virtual void vf_263();                                         // 263 0x70B570

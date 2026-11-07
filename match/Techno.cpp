@@ -2698,7 +2698,7 @@ void Techno_006FB080::StartReloading()
 
 // FUNCTION: GAMEMD 0x6FB740
 // Per-frame cloak update.
-void TechnoClass::vf_260(int)
+void TechnoClass::vf_260(bool)
 {
     if (CloakState == 0) {
         if (!IsCloakable() || IsUnderEMP() || vf_224() || vf_117() || vf_118()) {

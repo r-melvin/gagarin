@@ -56,7 +56,7 @@ int BuildingA3View::vf_143()
                     if (!farFree && first) {
                         goto restart;
                     }
-                    if (!(DAT_0087F7E8.FUN_005657A0(&copyA)->unknown_140 & 0x100)) {
+                    if (!(DAT_0087F7E8.FUN_005657A0(&copyA)->OccupationFlags & 0x100)) {
                         // The near cell is free: put the passenger there.
                         ++DAT_00A8E7AC;
                         CoordStruct where;
@@ -70,8 +70,9 @@ int BuildingA3View::vf_143()
                             CellStruct zero;
                             zero.X = 0;
                             zero.Y = 0;
+                            CellStruct foundBuf;
                             CellStruct found = *DAT_0087F7E8.FUN_0056DC20(
-                                &where, &copyA, passenger->vf_33()->unknown_67C, -1, 0, 0, 1, 1, 0, 0, 0, 1, &zero, 0, 0);
+                                &foundBuf, &copyA, passenger->vf_33()->unknown_67C, -1, 0, 0, 1, 1, 0, 0, 0, 1, &zero, 0, 0);
                             copyA = found;
                             CoordStruct centre = DAT_0087F7E8.FUN_005657A0(&copyA)->vf_18();
                             CellStruct back;
@@ -88,7 +89,7 @@ int BuildingA3View::vf_143()
                             goto failed;
                         }
                         if (Type->InfantryAbsorb) {
-                            FUN_007509E0(RulesInstance->unknown_274, &vf_18(), 0);
+                            FUN_007509E0(RulesInstance->unknown_274, vf_18(), 0);
                             if (passenger->unknown_21C->IsHumanPlayer) {
                                 passenger->unknown_68F = 0;
                             }

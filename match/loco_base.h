@@ -84,7 +84,7 @@ public:
     virtual Matrix3D __stdcall ShadowMatrix(unsigned int* key);       // 10  0x55A7D0
     virtual LocoPoint2D __stdcall DrawPoint();                           // 11  0x55ABD0
     virtual LocoPoint2D __stdcall ShadowPoint();                         // 12  0x55A8C0
-    virtual int __stdcall VisualCharacter(int unused);                    // 13  0x55ABC0
+    virtual int __stdcall VisualCharacter(bool unused);                    // 13  0x55ABC0
     virtual int __stdcall ZAdjust();                                      // 14  0x55ABA0
     virtual int __stdcall ZGradient();                                    // 15  0x55ABB0
     virtual bool __stdcall Process();                                     // 16  0x55AC60

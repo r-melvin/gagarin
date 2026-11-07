@@ -13,7 +13,7 @@ bool ObjectClass::vf_25()
 }
 
 // FUNCTION: GAMEMD 0x4263A0
-int ObjectClass::vf_26(int a1, int a2)
+int ObjectClass::vf_26(bool a1, int a2)
 {
     return 0;
 }

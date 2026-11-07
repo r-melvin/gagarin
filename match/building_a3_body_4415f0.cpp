@@ -15,6 +15,8 @@
 
 #include "building_a3_views.h"
 #include "_layout/building_class.h"
+#include "_layout/anim_class.h"
+#include "_layout/cell_class.h"
 
 // One cell of the 256-lepton grid as its centre lepton: the retail code divides by 256 (rounding towards zero),
 // narrows to 16 bits, and scales back.
@@ -30,7 +32,7 @@ inline const BA3ParticleTypeView* BA3ParticleType(const ParticleSystemTypeClass*
 }
 
 // FUNCTION: GAMEMD 0x4415F0
-void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
+void BuildingClass::vf_315(int unused, int a, char flag, CellStruct* list)
 {
     for (int i = 0; i < 8; ++i) {
         if (DamageFireAnims[i]) {
@@ -39,8 +41,8 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
         }
     }
 
-    if (unknown_210) {
-        unknown_210 = 0;
+    if (DisplayProductionTo) {
+        DisplayProductionTo = 0;
         if (Type->Radar) {
             Owner->RadarVisibleTo = 0;
             for (int i = 0; i < Owner->Buildings.Count; ++i) {
@@ -54,12 +56,12 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
     }
 
     if (Type->CloakGenerator) {
-        unknown_6EB = 0xFF;
-        if (!unknown_6EC) {
-            unknown_6EC = Type->CloakRadiusInCells;
+        HasCloakingData = 0xFF;
+        if (!CloakRadius) {
+            CloakRadius = Type->CloakRadiusInCells;
         }
-        unknown_80 = 1;
-        unknown_6EC = 1;
+        NeedsRedraw = 1;
+        CloakRadius = 1;
         vf_260(1);
     }
 
@@ -101,13 +103,12 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
     }
 
     CoordStruct scatter;
-    while (list[0] != 0x7FFF || list[1] != 0x7FFF) {
-        short* entry = list;
-        list += 2;
-        CoordStruct tmp;
-        CoordStruct* centre = vf_43(&tmp);
-        short x = (short)(centre->X / 256) + entry[0];
-        short y = entry[1] + (short)(centre->Y / 256);
+    while (list->X != 0x7FFF || list->Y != 0x7FFF) {
+        CellStruct* entry = list;
+        ++list;
+        const CoordStruct& centre = vf_43();
+        short x = (short)(centre.X / 256) + entry->X;
+        short y = entry->Y + (short)(centre.Y / 256);
         if (Type->Explosion.Count > 0) {
             CoordStruct at;
             at.X = (short)x * 256 + 0x80;
@@ -133,8 +134,8 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
         for (int* offset = DAT_00818CB8; offset < DAT_00818CB8 + 4; ++offset) {
             CoordStruct loc = Location;
             CoordStruct cellAt = *FUN_0049F550(&scatter, &loc, *offset);
-            if (DAT_0087F7E8.FUN_00565730(&cellAt)->unknown_44 != -1
-                && DAT_00A83D84[DAT_0087F7E8.FUN_00565730(&cellAt)->unknown_44]->unknown_2B0) {
+            if (DAT_0087F7E8.FUN_00565730(&cellAt)->OverlayTypeIndex != -1
+                && DAT_00A83D84[DAT_0087F7E8.FUN_00565730(&cellAt)->OverlayTypeIndex]->unknown_2B0) {
                 BA3AnimMem* mem = new BA3AnimMem;
                 if (mem) {
                     int delay = DAT_00A8B230->Counter.FUN_0065C7E0(1, 3);
@@ -144,9 +145,9 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
         }
     }
 
-    while (unknown_33C.FUN_006C9650() >= DAT_007E2AC8) {
-        int index = unknown_33C.FUN_006C9820();
-        unknown_33C.FUN_006C96B0(1.0f, index);
+    while (Tiberium.GetTotalAmount() >= DAT_007E2AC8) {
+        int index = Tiberium.FUN_006C9820();
+        Tiberium.RemoveAmount(1.0f, index);
         Owner->OwnedTiberium.RemoveAmount(1.0f, index);
         int distance = DAT_00A8B230->Counter.FUN_0065C7E0(0x100, 0x300);
         CoordStruct loc = Location;
@@ -160,14 +161,14 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
     }
 
     if (vf_97() == 0x13 || Type->Explodes) {
-        unknown_528.X = DAT_00A8ED84;
-        unknown_528.Z = 0;
-        unknown_100.X = DAT_00A8ED84;
-        unknown_100.Z = 0;
-        unknown_10C = 0;
+        C4Timer.StartTime = CurrentFrame;
+        C4Timer.TimeLeft = 0;
+        Timer.StartTime = CurrentFrame;
+        Timer.TimeLeft = 0;
+        Rate = 0;
     } else {
-        unknown_528.X = DAT_00A8ED84;
-        unknown_528.Z = 8;
+        C4Timer.StartTime = CurrentFrame;
+        C4Timer.TimeLeft = 8;
     }
 
     if (Type->DestroyAnim.Count > 0) {
@@ -175,17 +176,16 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
             Type->DestroyAnim.Items[DAT_00A8B230->Counter.FUN_0065C780() % Type->DestroyAnim.Count];
         if (animType) {
             BA3AnimMem* mem = new BA3AnimMem;
-            BA3AnimView* anim;
+            AnimClass* anim;
             if (mem) {
-                CoordStruct tmp;
-                anim = mem->FUN_00421EA0(animType, vf_43(&tmp), 0, 1, 0x600, 0, 0);
+                anim = mem->FUN_00421EA0(animType, vf_43(), 0, 1, 0x600, 0, 0);
             } else {
                 anim = 0;
             }
             if (vf_33()->Palette) {
-                anim->unknown_D4 = vf_121();
+                anim->LightConvert = vf_121();
                 if (Type->PaletteFile[0]) {
-                    strncpy(anim->unknown_DC, Type->PaletteFile, 0x20);
+                    strncpy(anim->PaletteName, Type->PaletteFile, 0x20);
                 }
             }
         }
@@ -198,7 +198,7 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
         }
     }
 
-    if (unknown_320 == 0 && systems.Count > 0 && vf_114() > -10) {
+    if (ParticleSystems[7] == 0 && systems.Count > 0 && vf_114() > -10) {
         CoordStruct offset = vf_33()->DestroySmokeOffset;
         BA3ParticleMem* mem = new BA3ParticleMem;
         BA3ParticleView* made;
@@ -212,12 +212,12 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
         } else {
             made = 0;
         }
-        unknown_320 = made;
+        ParticleSystems[7] = made;
     }
 
-    unknown_6C = 0;
+    Health = 0;
     if (flag) {
-        unknown_6E0 = 1;
+        NoCrew = 1;
     }
     FUN_00442D90(C4AppliedBy);
     FUN_00707CB0(a);

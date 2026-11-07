@@ -112,7 +112,7 @@ public:
     // return types from each base body's EAX/AL use.
     virtual void vf_24(void* a1);                              // 24  0x5F6DA0
     virtual bool vf_25();                                      // 25  0x426390: returns false
-    virtual int vf_26(int a1, int a2);                         // 26  0x4263A0: returns 0
+    virtual int vf_26(bool a1, int a2);                        // 26  0x4263A0: returns 0
     virtual void* vf_27();                                     // 27  0x5F3E30: forwards to the type's slot 39
     virtual int vf_28(CellStruct* cell, char a, char b);       // 28  0x5F4250: returns 0
     virtual int vf_29(ObjectClass* target, char flag);         // 29  0x5F4240: returns 0

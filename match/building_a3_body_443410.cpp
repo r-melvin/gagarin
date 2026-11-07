@@ -13,6 +13,7 @@
 // store order of the ring buffer (mode 4 uses head first, modes 0x37 / 1 count first).
 
 #include "building_a3_views.h"
+#include "_layout/bomb_class.h"
 // The 256-lepton cell a coordinate lies in.
 inline CellStruct BA3CellOf(const CoordStruct& where)
 {
@@ -22,7 +23,7 @@ inline CellStruct BA3CellOf(const CoordStruct& where)
     return cell;
 }
 // FUNCTION: GAMEMD 0x443410
-bool BuildingA3View::vf_81(int mode, BA3ObjView* target, int unused)
+bool BuildingClass::vf_81(int mode, ObjectClass* target, int unused)
 {
     if (mode == 5) {
         if (target) {
@@ -44,12 +45,13 @@ bool BuildingA3View::vf_81(int mode, BA3ObjView* target, int unused)
             return true;
         }
     } else if (mode == 0x37) {
-        BA3QueueEvent(BA3Event(unknown_38->unknown_28->unknown_30, 10, BA3TargetRef(this)));
+        BA3QueueEvent(BA3Event(AttachedBomb->OwnerHouse->ArrayIndex, 10, BA3TargetRef(this)));
         return true;
     } else if (mode == 1) {
         int kind = Type->Factory;
         if (kind == 0x10 || kind == 0x28 || kind == 3) {
-            FUN_00443860(BA3CellOf(target->vf_18()), 1);
+            CellStruct under = BA3CellOf(target->vf_18());
+            FUN_00443860(&under, 1);
             return true;
         }
         BA3QueueEvent(BA3Event(vf_14(), 0x1E, BA3TargetRef(this), BA3TargetRef(target)));

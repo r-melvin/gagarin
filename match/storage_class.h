@@ -30,6 +30,7 @@ struct StorageClass
     float GetAmount(int index) const;                // GAMEMD 0x6C9680 __thiscall
     float AddAmount(float amount, int index);        // GAMEMD 0x6C9690 __thiscall
     float RemoveAmount(float amount, int index);     // GAMEMD 0x6C96B0 __thiscall
+    int   FUN_006C9820();                            // GAMEMD 0x6C9820 __thiscall: the next index, or -1
     StorageClass operator+=(const StorageClass& other);        // GAMEMD 0x6C9740 __thiscall, hidden result
     StorageClass operator-=(const StorageClass& other);        // GAMEMD 0x6C97E0 __thiscall, hidden result
 

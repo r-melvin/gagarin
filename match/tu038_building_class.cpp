@@ -2526,7 +2526,7 @@ void BuildingClass::vf_23()
         if (C4Timer.GetTimeLeft() != 0)
             return;
         vf_53();
-        FUN_00442D90((int)C4AppliedBy);
+        FUN_00442D90(C4AppliedBy);
         vf_62();
         FUN_00441F60();
         return;
@@ -3001,7 +3001,7 @@ int BuildingClass::vf_91(int* damage, int distance, void* warheadArg, void* sour
             if (LightSource) {
                 LightSource->Deactivate(0);
             }
-            vf_315(0, reinterpret_cast<int>(attacker), ignoreDefenses, reinterpret_cast<int>(cells));
+            vf_315(0, reinterpret_cast<int>(attacker), ignoreDefenses, cells);
             {
                 int left = C4Timer.TimeLeft;
                 if (C4Timer.StartTime != -1) {
@@ -3288,10 +3288,10 @@ bool BuildingClass::vf_53()
         }
         if (!DAT_00A8E7AC) {
             if (Type->SensorArray) {
-                vf_318(DAT_0089C818.raw_dword);
+                vf_318(DAT_0089C818.cell);
             }
             if (Type->bools_D20[17]) {
-                vf_320(DAT_0089C818.raw_dword);
+                vf_320(DAT_0089C818.cell);
             }
             if ((!Type->UndeploysInto || !Type->ResourceGatherer) && !vf_32()) {
                 FUN_004561F0();
@@ -6146,9 +6146,8 @@ Coord_00453840* BuildingClass_00453840::FUN_00453840(
 // FUNCTION: GAMEMD 0x453A70
 // The shared tail (vf_43 plus the pixel offset) sits inside the first block in retail and is entered by a
 // goto from the type-offset path.
-CoordStruct* BuildingBView::vf_192(CoordStruct* out, int a)
+CoordStruct BuildingClass::vf_192(int a)
 {
-    CoordStruct tmp;
     Point2D* offset;
     int ox;
     int oy;
@@ -6158,22 +6157,20 @@ CoordStruct* BuildingBView::vf_192(CoordStruct* out, int a)
         ox = offset->X;
         oy = offset->Y;
 tail:
-        CoordStruct* c = vf_43(&tmp);
-        out->X = c->X + ox;
-        out->Y = c->Y + oy;
-        out->Z = c->Z;
-        return out;
+        CoordStruct c = vf_43();
+        c.X += ox;
+        c.Y += oy;
+        return c;
     }
     BuildingTypeClass* type = Type;
     if (type->PrimaryFirePixelOffset.X == 0xFFFF && type->PrimaryFirePixelOffset.Y == 0xFFFF) {
         if (type->BarrelAnimIsVoxel) {
-            *out = *Func_453BF0(&tmp, a, 0);
-            return out;
+            return FUN_00453BF0(a, 0);
         }
-        CoordStruct* c = Func_6F3D60(&tmp, a);
-        int x = c->X;
-        int y = c->Y;
-        int z = c->Z;
+        CoordStruct c = TechnoClass::vf_192(a);
+        int x = c.X;
+        int y = c.Y;
+        int z = c.Z;
         if (Type->TurretAnimIsVoxel) {
             Point2D q;
             q.X = Type->BuildingAnim[9].X;
@@ -6182,10 +6179,11 @@ tail:
             x += o->X;
             y += o->Y;
         }
-        out->X = x;
-        out->Y = y;
-        out->Z = z;
-        return out;
+        CoordStruct r;
+        r.X = x;
+        r.Y = y;
+        r.Z = z;
+        return r;
     }
     offset = BuildingBTactical->Func_6D2070(&pixel, &type->PrimaryFirePixelOffset);
     ox = offset->X;
@@ -6193,7 +6191,6 @@ tail:
     goto tail;
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x453D60
 void BuildingClass::vf_60(CoordStruct* coord)
@@ -6361,7 +6358,7 @@ void BuildingClass::vf_13(Obj_004A1D30* crc)
 // Both arms compute one flag and share a single `return 3` / `return 5` pair,
 // which is retail's layout (one block each). Returning from inside the arms
 // makes cl duplicate the `return 5` epilogue (70.1%).
-int BuildingBView::vf_26(bool a, BuildingBTargetView* target)
+int BuildingClass::vf_26(bool a, int target)
 {
     char level = Translucency;
     if (level != 0) {
@@ -6372,10 +6369,10 @@ int BuildingBView::vf_26(bool a, BuildingBTargetView* target)
                 if (target != 0) {
                     CoordStruct loc = Location;
                     CellStruct cell = BuildingBCellStructOf(loc);
-                    keep = DAT_0087F7E8.FUN_005657A0(&cell)->FUN_004870D0(target->unknown_30);
+                    keep = DAT_0087F7E8.FUN_005657A0(&cell)->FUN_004870D0(((HouseClass*)target)->ArrayIndex);
                 }
             } else {
-                keep = unknown_41A || vf_202() || BuildingBGlobal_00B73550 == 0
+                keep = IsOwnedByCurrentPlayer || vf_202() || BuildingBGlobal_00B73550 == 0
                     || (Session_00A8B238.GameMode != 0 && Owner != 0 && DAT_00A83D4C != 0
                         && DAT_00A83D4C->IsAlliedWith(Owner) && Owner->IsAlliedWith(DAT_00A83D4C));
             }
@@ -6385,7 +6382,7 @@ int BuildingBView::vf_26(bool a, BuildingBTargetView* target)
         }
         return (level > 5) + 1;
     }
-    return Func_703860(a, target);
+    return TechnoClass::vf_26(a, target);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -6591,12 +6588,12 @@ void Chain_00454D70::PokeAll()
 // against retail 0x44 and cl keeps `this` in ebp and zero in edi where retail keeps this in esi and zero in ebp, so
 // the position-based score collapses. Variants tried: per-use coordinate temporaries, one shared coordinate temporary
 // (kept), and wrapping the body in positive ifs instead of early returns.
-void BuildingBView::vf_260(bool refresh)
+void BuildingClass::vf_260(bool refresh)
 {
     if (Type != 0) {
-    CoordStruct tmp;
-    Cell cell = BuildingBCellStructOf(*vf_18(&tmp));
-    if (unknown_220 == 1) {
+    CoordStruct tmp = vf_18();
+    Cell cell = BuildingBCellStructOf(tmp);
+    if (CloakState == 1) {
         if (Translucency < 15) {
             char step = Translucency + 1;
             Translucency = step;
@@ -6610,14 +6607,14 @@ void BuildingBView::vf_260(bool refresh)
                     Anims[i]->TranslucencyLevel = level;
             }
             if (Translucency == 15) {
-                unknown_220 = 2;
-                if (unknown_30C) {
-                    unknown_30C->vf_8(1);
-                    unknown_30C = 0;
+                CloakState = 2;
+                if (NaturalParticleSystem) {
+                    static_cast<BuildingBParticleSystemView*>(NaturalParticleSystem)->vf_8(1);
+                    NaturalParticleSystem = 0;
                 }
             }
         }
-    } else if (unknown_220 == 3) {
+    } else if (CloakState == 3) {
         if (Translucency >= 0) {
             if (Translucency > 0)
                 Translucency = Translucency - 1;
@@ -6632,8 +6629,8 @@ void BuildingBView::vf_260(bool refresh)
                     Anims[i]->TranslucencyLevel = level;
             }
             if (Translucency == 0) {
-                unknown_220 = 0;
-                if (unknown_30C == 0) {
+                CloakState = 0;
+                if (NaturalParticleSystem == 0) {
                     CoordStruct offset = Type->NaturalParticleSystemLocation;
                     if (!(offset == BuildingBEmptyCoord)) {
                         BuildingBParticleSystemView* system = 0;
@@ -6642,15 +6639,15 @@ void BuildingBView::vf_260(bool refresh)
                         CellClass* under = DAT_0087F7E8.FUN_00565730(&here);
                         system = new BuildingBParticleSystemView(Type->NaturalParticleSystem, &where, under, 0,
                                                                  &BuildingBEmptyCoord, 0);
-                        unknown_30C = system;
+                        NaturalParticleSystem = system;
                     }
                 }
             }
         }
     }
-    if (unknown_220 == 2 && vf_169())
+    if (CloakState == 2 && vf_169())
         vf_279(0);
-    if (unknown_220 == 0 && vf_168())
+    if (CloakState == 0 && vf_168())
         vf_280(0);
     if (HasCloakingData && Type->CloakGenerator) {
     BuildingBSurfaceView* surface = BuildingBSurface;
@@ -6740,11 +6737,11 @@ void BuildingBView::vf_260(bool refresh)
             }
         }
         if (CloakRadius == 0) {
-            for (int i = 0; i < BuildingBBuildingCount; i++) {
-                BuildingBView* other = BuildingBBuildingItems[i];
+            for (int i = 0; i < DAT_00A8EB40.Count; i++) {
+                BuildingClass* other = DAT_00A8EB40.Items[i];
                 if (other->IsAlive && other != this && other->Type->CloakGenerator && other->vf_212()
                     && !other->HasCloakingData) {
-                                        CellStruct there = BuildingBCellStructOf(*other->vf_18(&tmp));
+                                        CellStruct there = BuildingBCellStructOf(other->vf_18());
                     short dx = cell.X - there.X;
                     short dy = cell.Y - there.Y;
                     int reach = Type->CloakRadiusInCells + 2;
@@ -6811,14 +6808,14 @@ refuse:
 // cell sum, an operator== empty-cell test, R*R inline, a probe pointer to the cell, a hoisted outer-square local (kept;
 // it stopped cl caching the cell word and lifted 455980/455A80 from 10.8/7.9), loop variables declared up front, a deferred
 // radiusSq assignment, owner/radius declaration swap.
-void BuildingBView::vf_318(CellStruct cell)
+void BuildingClass::vf_318(CellStruct cell)
 {
     int radius = Type->CloakRadiusInCells;
     int radiusSq = radius * radius;
     int owner = Owner->ArrayIndex;
     if (cell == BuildingBEmptyCell) {
         CoordStruct tmp;
-        cell = BuildingBCellStructOf(*vf_18(&tmp));
+        cell = BuildingBCellStructOf(vf_18());
     }
     for (int dy = -radius; dy < radius; dy++) {
         int dySq = dy * dy;
@@ -6848,7 +6845,7 @@ void BuildingBView::vf_318(CellStruct cell)
 // cell sum, an operator== empty-cell test, R*R inline, a probe pointer to the cell, a hoisted outer-square local (kept;
 // it stopped cl caching the cell word and lifted 455980/455A80 from 10.8/7.9), loop variables declared up front, a deferred
 // radiusSq assignment, owner/radius declaration swap.
-void BuildingBView::vf_317(CellStruct cell)
+void BuildingClass::vf_317(CellStruct cell)
 {
     if (!vf_212())
         return;
@@ -6857,7 +6854,7 @@ void BuildingBView::vf_317(CellStruct cell)
     int owner = Owner->ArrayIndex;
     if (cell == BuildingBEmptyCell) {
         CoordStruct tmp;
-        cell = BuildingBCellStructOf(*vf_18(&tmp));
+        cell = BuildingBCellStructOf(vf_18());
     }
     for (int dy = -radius; dy < radius; dy++) {
         int dySq = dy * dy;
@@ -6887,14 +6884,14 @@ void BuildingBView::vf_317(CellStruct cell)
 // cell sum, an operator== empty-cell test, R*R inline, a probe pointer to the cell, a hoisted outer-square local (kept;
 // it stopped cl caching the cell word and lifted 455980/455A80 from 10.8/7.9), loop variables declared up front, a deferred
 // radiusSq assignment, owner/radius declaration swap.
-void BuildingBView::vf_320(CellStruct cell)
+void BuildingClass::vf_320(CellStruct cell)
 {
     int radius = Type->DetectDisguiseRange;
     int radiusSq = radius * radius;
     int owner = Owner->ArrayIndex;
     if (cell == BuildingBEmptyCell) {
         CoordStruct tmp;
-        cell = BuildingBCellStructOf(*vf_18(&tmp));
+        cell = BuildingBCellStructOf(vf_18());
     }
     for (int dy = -radius; dy < radius; dy++) {
         int dySq = dy * dy;
@@ -6918,7 +6915,7 @@ void BuildingBView::vf_320(CellStruct cell)
 // cell sum, an operator== empty-cell test, R*R inline, a probe pointer to the cell, a hoisted outer-square local (kept;
 // it stopped cl caching the cell word and lifted 455980/455A80 from 10.8/7.9), loop variables declared up front, a deferred
 // radiusSq assignment, owner/radius declaration swap.
-void BuildingBView::vf_319(CellStruct cell)
+void BuildingClass::vf_319(CellStruct cell)
 {
     if (!vf_212())
         return;
@@ -6927,7 +6924,7 @@ void BuildingBView::vf_319(CellStruct cell)
     int owner = Owner->ArrayIndex;
     if (cell == BuildingBEmptyCell) {
         CoordStruct tmp;
-        cell = BuildingBCellStructOf(*vf_18(&tmp));
+        cell = BuildingBCellStructOf(vf_18());
     }
     for (int dy = -radius; dy < radius; dy++) {
         int dySq = dy * dy;
@@ -6966,10 +6963,10 @@ unsigned int BuildingClass::FUN_00455B90()
 // CAPPED at 75.3% (multiset identical, 89 instructions; the frame is 0x3C against retail 0x34, so every stack
 // offset after the prologue differs). Variants tried: field-by-field rect sums, an operator+ without the named
 // `shifted` temporary, an early-return hit path, and 40 declaration orders of the locals.
-RectangleStruct* BuildingBView::vf_75(RectangleStruct* out)
+RectangleStruct BuildingClass::vf_75()
 {
     CoordStruct tmp;
-    CoordStruct coord = *vf_43(&tmp);
+    CoordStruct coord = vf_43();
     Point2D point = BuildingBTactical->Offset;
     RectangleStruct rect;
     if (coord == unknown_coord_64C && point == unknown_point_658) {
@@ -6984,8 +6981,7 @@ RectangleStruct* BuildingBView::vf_75(RectangleStruct* out)
         unknown_point_658 = point;
         unknown_rect_63C = rect;
     }
-    *out = rect;
-    return out;
+    return rect;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -7224,22 +7220,33 @@ void __cdecl FUN_00456970()
 {
 }
 
+inline void BuildingClass::ApplyAnimLevel()
+{
+    int level = Translucency;
+    if (level == 0xF && vf_26(false, 0) == 5)
+        level = 0x10;
+    for (int i = 0; i < 21; i++) {
+        if (Anims[i])
+            Anims[i]->TranslucencyLevel = level;
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x456E00
 // CAPPED at 95.2% (multiset identical, vptr register naming only: retail loads the vf_88 vptr into eax, cl into edx).
 // Variants tried: ||-chain kept here, an if/goto form, a split frame declaration, a local for the vf_111 result.
-void BuildingBView::vf_82(int a)
+void BuildingClass::vf_82(int a)
 {
     if (a)
         NeedsRedraw = true;
-    Func_6F9DD0(a);
+    TechnoClass::vf_82(a);
     void* frame;
     frame = vf_121();
     CellClass* cell = vf_111();
     int base = vf_281(cell->Intensity_Normal);
-    if (vf_88() || (unknown_294 && unknown_294->unknown_50 == BuildingBCastBuilding(this)))
-        base = Func_70E360(base);
-    unknown_short_700 = base;
+    if (vf_88() || (Airstrike && Airstrike->Target == static_cast<ObjectClass*>(KindCast_00459F40(6))))
+        base = GetEffectTintIntensity(base);
+    LightTint = base;
     unsigned int mask = (unsigned short)base;
     for (int i = 0; i < 21; i++) {
         AnimClass* anim = Anims[i];
@@ -7317,17 +7324,17 @@ plain:
 // retail keeps `this` in edi, the two pixel offsets in ebx/ebp and &Location in
 // esi; cl keeps this in esi and the offsets in edi/ebx. Also tried: the corner
 // from the `here` copy (31.2%) and a &Location pointer local (no change).
-bool BuildingBView::vf_201(int* flag)
+bool BuildingClass::vf_201(int* flag)
 {
     if (Type->Invisible)
         return false;
     if (InLimbo)
         return false;
     if (Owner->IsControlledByCurrentPlayer())
-        return unknown_41B ? true : false;
+        return DiscoveredByCurrentPlayer ? true : false;
     {
         CoordStruct tmp;
-        Cell cell = BuildingBCellStructOf(*vf_18(&tmp));
+        Cell cell = BuildingBCellStructOf(vf_18());
         if (!DAT_0087F7E8.FUN_00578460(&cell, 1))
             return false;
     }
@@ -7347,7 +7354,7 @@ bool BuildingBView::vf_201(int* flag)
     } else {
         blocked = false;
     }
-    if (unknown_220 != 2 && Translucency != 0xF && !IsFogged && !blocked)
+    if (CloakState != 2 && Translucency != 0xF && !IsFogged && !blocked)
         return true;
     if (vf_202()) {
         if (!DAT_00A83D4C->IsAlliedWith(Owner) && !IsFogged && !blocked)
