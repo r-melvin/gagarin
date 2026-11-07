@@ -837,8 +837,8 @@ bool FUN_00600C70(GG_HWND hCtl, unsigned char bPrevious)
 // the sibling); the tail guard written as a bare call statement (worse, 233
 // bytes); /Ox, /O1, /Ob2, /Gf, and /O2 decomposed with and without /Og (only
 // /Og removes the fold, and without it the whole function regresses to 221
-// bytes). Recorded as the 8447-vs-8804 identical-tail cross-jump difference
-// already banked for 0x459C00 and 0x41EAF0.
+// bytes). Remaining delta: an identical-tail cross-jump (cause open, as for
+// 0x459C00 and 0x41EAF0).
 //
 // FUNCTION: GAMEMD 0x600CA0  FUN_00600CA0 (__fastcall)
 // The first of four sibling group-size lookups. The keyed object supplies a

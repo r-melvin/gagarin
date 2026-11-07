@@ -106698,7 +106698,8 @@
   "status": "partial",
   "pct": 3.8,
   "best_pct": 5.5,
-  "best_at": "685ebdf1"
+  "best_at": "685ebdf1",
+  "lowered_reason": "best 5.5 was measured at 685ebdf1, before the header changes of 3a37c7e0 (AbstractTypeClass text members retyped, ObjectTypeClass declarations added); the body has not changed since (only the path flatten) and now measures 3.8 at the base, with a large instruction-multiset delta either way, so the figure is positional alignment only"
  },
  {
   "tu": "match/voxel_resource_ctors.cpp",

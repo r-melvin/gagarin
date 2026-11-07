@@ -25,15 +25,15 @@
 // Replacing the Exists inline with a bare pointer test restores retail's
 // ECX/EDX choice in the first two groups (but loses the SETNZ/TEST AL
 // round-trip, 8 fewer matches), which pins the remaining delta on how the
-// materialised bool perturbs allocation in this compiler build. Variants
+// materialised bool perturbs allocation (cause open). Variants
 // tried on top of the Exists inline: a named `black` default local, the
 // pointer-form ReadColor with a caller buffer, the wrapper binding `&out` to
 // a pointer first, the YRpp call-then-return-local wrapper, a free __inline
 // wrapper, the wrapper with a `const ColorStruct*` default, assignment
 // instead of copy-init in the caller, a per-iteration `section` local, and
 // the probe as a bool local, an int local, `== true`, an early return and an
-// Exists body written through a local. Recorded as a candidate for the
-// 8447-vs-8804 list.
+// Exists body written through a local. The remaining
+// register-naming delta is open.
 //
 // TAIL-MERGE DIAGNOSTIC (eleventh-batch lever): does NOT apply here.
 // Retail's callee-saved pushes sit exactly where ours do (a single prologue

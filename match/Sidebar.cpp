@@ -1052,8 +1052,8 @@ void SidebarClass::FUN_006A6820(int tab)
 // redraw hook as pointer-to-member and as a real virtual; `up` as bool, char,
 // unsigned char and int; the function returning int. The remaining pattern
 // (an immediate hoisted above an unrelated load, temps preferring EDX over
-// EAX) matches the suspected 8447-vs-8804 scheduling class already recorded
-// in the methodology. Re-probed this pass: a `top` local bound inside the
+// EAX) is an open scheduling delta (cause not established, not a known
+// compiler-build difference). Re-probed this pass: a `top` local bound inside the
 // observer arm, and `top` plus a named `half` with the sum written
 // `half + top` (both 74.7%, the sum still lands in top's register), and the
 // sum-first compare `half + top < limit` with those locals (51.8%, the two

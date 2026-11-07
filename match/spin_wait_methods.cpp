@@ -32,8 +32,8 @@ void FUN_004070B0(Timer_00401000* self)
 // duplicates `TEST byte ptr [ESI+0xC],1; JNE` at the back edge, which also
 // hoists the flag byte load into the prologue and splits retail's
 // `ADC EDI,dword ptr [EAX+0x24]` into `MOV ECX,..; ADC EDI,ECX` — that whole
-// residual was one rotation, and it scored 28.1%. Earlier passes had recorded
-// it as the 8447-vs-8804 "loop-head duplication at a back edge" class after ten
+// residual was one rotation, and it scored 28.1%. Earlier passes had written
+// it off as an unsteerable "loop-head duplication at a back edge" delta after ten
 // phrasings (the inner pointer in a local, the flag as `char` and as `int`,
 // byte-cast and volatile-byte-cast reads, a `for (;;)` with individual breaks,
 // the reading hoisted into its own local, the addition the other way round, a

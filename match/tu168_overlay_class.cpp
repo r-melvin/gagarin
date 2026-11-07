@@ -103,8 +103,8 @@ OverlayClass::~OverlayClass()
 // CAPPED at 7.4% (863 of 863 instructions, multiset delta: retail has 2 `sub`, 1 `call`, 6 `cmp`, 2 `jne`,
 // 1 `lea`, 1 `jmp`, 2 `jle` that cl has as 5 `test`, 1 `je`, 3 `xor`, 1 `add`, 3 `or`, 2 `jge`). Retail keeps
 // 0 in EDI and -1 in EBX for the whole body (`XOR EDI,EDI` / `OR EBX,-1`), compares and pushes through them
-// and spills `this`; cl 8804 uses immediates, so every register after the prologue is named differently
-// and the stream shifts. This is the recorded 8447-vs-8804 constant-materialisation class. Variants
+// and spills `this`; we use immediates, so every register after the prologue is named differently
+// and the stream shifts. Remaining delta: constant materialisation (cause open). Variants
 // tried: plain returns (1.6%), abs() for the distances (0.9%), one shared failure exit with abs() (7.4%,
 // kept: it is the only form that merges the four `return false` epilogues as retail does).
 // Places (markType 1) or changes (markType 3) the overlay on its cell. Most types just stamp the cell;

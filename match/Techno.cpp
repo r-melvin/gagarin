@@ -2149,7 +2149,7 @@ int TechnoClass::vf_180()
 // tail trailing reproduces retail's own layout and every call, guard and
 // accumulation lines up.
 //
-// Residual, and it is two separate 8447-vs-8804 backend differences:
+// Residual, two open backend-output deltas (causes not established):
 //   * retail DUPLICATES the averaging tail into the burst arm and divides by
 //     a register holding one (`MOV EBX,1; ... CDQ; IDIV EBX`); cl 8804
 //     propagates the constant into the division and deletes it. Measured:
@@ -3624,7 +3624,7 @@ void TechnoClass::FUN_007018C0(HouseClass* house)
 // words as immediates and pushes every constant as an immediate, which
 // also drops the EBP save. The same materialised-constant shape appears at
 // every retail NearByLocation call site (0x4FBF60, 0x41A2C0) and is
-// recorded as a suspected 8447-vs-8804 difference. Tried: close-to cell
+// an open delta (cause not established). Tried: close-to cell
 // declared at the top (kept), after the cell, after the zone lookup; as a
 // two-argument constructor temporary and as an inline zero helper in the
 // argument list; the by-value NearByLocation wrapper (homes the bool

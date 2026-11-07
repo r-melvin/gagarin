@@ -86,9 +86,8 @@ GG_STATIC_ASSERT(offsetof(GgAlphaLightingRemapDynamicVector, CapacityIncrement) 
 // a free inline taking the house by reference and by pointer, per-arm
 // `return` instead of assignment, the comparator switch with per-case
 // returns / all-break / a memory-homed result bool, and the type and count
-// locals declared in both orders. Recorded as an 8447-vs-8804 difference
-// (identical-tail cross-jumping), sibling to the loop-head duplication
-// class already in the methodology.
+// locals declared in both orders. Remaining delta: identical-tail cross-jumping
+// (cause open, not a known compiler-build difference).
 bool AITriggerType_0041EAF0::EnemyHouseOwns(House_0041EAF0* calling, House_0041EAF0* target)
 {
     bool result = false;

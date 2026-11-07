@@ -7183,9 +7183,9 @@ void BuildingClass::vf_295()
 // `return range` (folded, 1.6%); a `zero` local used in the compares and the
 // returns (folded); `result = radius` in the positive branch with an
 // else-chain (15.6%: takes EBX but pays `MOV EBX,ECX`); `result = Range`
-// re-zeroed on the fall path (folded); /Ox and /O1 (no register). Same class
-// as "Zero not held in a register" in the methodology; the 8447-vs-8804
-// constant-register choice is the suspected cause.
+// re-zeroed on the fall path (folded); /Ox and /O1 (no register). Same delta
+// as "Zero not held in a register" in the methodology: retail keeps the zero
+// in a register and we fold it; cause open.
 //
 // TAIL-MERGE DIAGNOSTIC (eleventh-batch lever): does NOT apply. Both sides
 // emit five separate epilogues at the same five sites and push EBX/ESI/EDI in
@@ -8299,9 +8299,9 @@ void BuildingClass::vf_282()
 // the inverted early-return form alike. Both were tried.
 // Lift pass (2026-09-18): re-tried `if (!FUN_00465D40(...)) return;` and an
 // explicit `goto notify;` layout that spells retail's block order literally -
-// both 41.7% with a byte-identical stream. cl 8804 always cross-jumps the two
-// two-instruction `POP ESI; RET` epilogues into one; retail (8447) keeps both.
-// Recording as an 8447-vs-8804 cross-jump difference, not chased further.
+// both 41.7% with a byte-identical stream. Our compile always cross-jumps the two
+// two-instruction `POP ESI; RET` epilogues into one; retail keeps both.
+// Remaining delta: that cross-jump (cause open), not chased further.
 // FUNCTION: GAMEMD 0x459C00
 void BuildingClass_00459C00::FUN_00459C00()
 {

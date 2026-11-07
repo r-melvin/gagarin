@@ -4292,6 +4292,10 @@ long __stdcall FUN_007AA6D0(void* self, int code)
                 int scheme = GadgetClass::GetColorScheme();
                 DAT_00A8BC60.FUN_005D3BA0(NULL, 0, text, scheme, 0x16, int(Rules->MessageDelay * 900.0), false);
                 DAT_0087F7E8.FUN_004F42F0(0);
+                // Shape-only order: retail runs the two memsets first and then
+                // stores DAT_00B77DC2 / DAT_00B77DD0; source order here is the
+                // reverse because that is the form the compiler schedules
+                // closest to retail's stream (83.8 -> 88.6).
                 DAT_00B77DC2 = 1;
                 DAT_00B77DD0 = 0;
                 memset(DAT_00B76B10, 0, sizeof(DAT_00B76B10));
@@ -4306,6 +4310,8 @@ long __stdcall FUN_007AA6D0(void* self, int code)
             DAT_00B77DC0 = true;
             DAT_00B77DC2 = 1;
             SetEvent(DAT_00B73684[0]);
+            // Shape-only order, the reverse of retail (retail memsets first,
+            // then stores DAT_00B77DD0); see the ingame arm above.
             DAT_00B77DD0 = 0;
             memset(DAT_00B76B10, 0, sizeof(DAT_00B76B10));
             memset(DAT_00B73BE8, 0, sizeof(DAT_00B73BE8));

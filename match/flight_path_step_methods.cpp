@@ -35,7 +35,7 @@
 //     cl 12.00.8804 as `FILD n; FSTP tmp; FLD tmp; FMUL k` under /Op. Four of
 //     the six have no counterpart in retail, which is 8 extra instructions.
 //     /Op is required (see the flag note above) and rounds the conversion
-//     through memory; retail's 12.00.8447 backend does not. The first of them
+//     through memory; retail's stream does not, and the cause is open. The first of them
 //     lands at compiled offset 0xF8, early enough that the offset-aligned
 //     oracle scores everything after it as a miss -- which is why the
 //     percentage reads far worse than the body is.
@@ -59,10 +59,9 @@
 // change; /Ox identical to /O2. Operand order reversed on the radian
 // multiplies: no change.
 //
-// Next verification step: rebuild the same body under a 12.00.8447 cl (an
-// outstanding toolchain follow-up), and re-measure. If the FILD round trip is the backend difference
-// it looks like, that alone realigns the stream and the remaining work is the
-// two copy blocks.
+// The staged backend is retail's build (8447), so this is not a backend
+// difference; the FILD round trip is the open delta, and if it were removed
+// the remaining work would be the two copy blocks.
 int FlightPathStep(CoordStruct* coord, VelocityClass* velocity,
                    CoordStruct const* target, Dir16 const* turnRate,
                    char holdCourse, char isMissile, char isFast,

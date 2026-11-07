@@ -43,16 +43,17 @@ CoordStruct* CellView_00480A30::GetCellCoords(CoordStruct* pBuffer) const
 //     if (0.0 > level) { this->RadLevel = 0.0; } else { this->RadLevel = level; }
 // That form emits ALL 14 retail instructions in retail's order (multiset
 // retail-only {}), including both per-arm FSTPs, and leaves exactly ONE extra
-// instruction: cl 8804 materialises the 64-bit zero as `XOR EAX,EAX` plus two
+// instruction: our compile materialises the 64-bit zero as `XOR EAX,EAX` plus two
 // register stores where retail emits `MOV dword ptr [ECX+0xF0],0` /
 // `MOV dword ptr [ECX+0xF4],0`. That single insertion shifts every later offset
 // and scores 46.7%, below this variant's 50%, so the two-instruction-short form
 // below is what stays committed. Spellings tried for the zero, all identical:
 // `RadLevel = 0.0`, two `unsigned int` stores, two `volatile unsigned int`
 // stores, `*(__int64*)&RadLevel = 0`. An `__asm` pair does emit the immediates
-// but forces an EBP frame on the whole function (5.6%). Treat the zero
-// materialisation as the 8447-vs-8804 "constants into registers" class; the
-// control-flow shape above is the confirmed source shape.
+// but forces an EBP frame on the whole function (5.6%). The zero
+// materialisation is the open remaining delta (cause not established, not a
+// known compiler-build difference); the control-flow shape above is the
+// confirmed source shape.
 void CellView_00480A30::RadLevel_Decrease(double amount)
 {
     this->RadLevel -= amount;

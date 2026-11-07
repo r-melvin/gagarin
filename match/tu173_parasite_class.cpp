@@ -451,8 +451,8 @@ bool ParasiteClass_00629720::UpdateGrapple()
 // between the two randomizer calls to force retail's early FILD/FSTP (delta 3).
 // It does move the conversion, but costs the `MOV` and `FXCH` retail has and
 // drops to 28.0%; the kept form is still the inline-terms one at 31.2%.
-// Delta 1 (the unmergeable address-taken frame slot) is the banked
-// 8447-vs-8804 class and dominates the positional score.
+// Delta 1 (the unmergeable address-taken frame slot) is an open
+// delta (cause not established) and dominates the positional score.
 void FootClass::CreateWakes(int x, int y, int z)
 {
     DirStruct tmp;

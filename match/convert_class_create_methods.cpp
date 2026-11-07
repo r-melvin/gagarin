@@ -51,9 +51,9 @@
 // G-before-R member order in the temp (17.3%, identical bytes).
 // Lift pass 2 (2026-09-18): one more rejected - `volatile ColorStruct*` for the
 // fill cursor, to try to force retail's three immediate byte stores instead of
-// cl's `MOV byte ptr [..],BL`; identical stream, 17.3%. Delta 1 is the banked
-// 8447-vs-8804 shared-zero-register class (the inverse direction of the usual
-// one) and is not steerable from source; best form kept at 17.3%.
+// cl's `MOV byte ptr [..],BL`; identical stream, 17.3%. Delta 1 is a
+// shared-zero-register choice (retail stores immediates, we share a register),
+// open, cause not established, and not steered by any spelling tried; best form kept at 17.3%.
 //
 // TAIL-MERGE DIAGNOSTIC (eleventh-batch lever): this is the ONE function in
 // the register-residual sweep where the diagnostic fires positively. Retail's

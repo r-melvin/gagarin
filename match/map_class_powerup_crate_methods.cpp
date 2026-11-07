@@ -36,9 +36,9 @@ static inline CellClass* GetCellAt_0056BEC0(CellStruct cell)
 // argument group is merely shifted by the four retail-only `MOV EAX,1` /
 // `MOV ECX,EAX` pairs (one per arm). Retail keeps the repeated constant 1 in
 // EAX with a copy in ECX and pushes the registers; cl 12.00.8804 pushes three
-// `1` immediates instead. That is the already-recorded 8447-vs-8804
-// materialised-push-constant class at every NearByLocation call site
-// (0x4FBF60, 0x703590, 0x41A2C0) and is not reachable by phrasing: a named
+// `1` immediates instead. That is the same open materialised-push-constant delta seen at every
+// NearByLocation call site (0x4FBF60, 0x703590, 0x41A2C0), cause not
+// established, and not reached by phrasing: a named
 // `int one = 1` used for SpaceSizeX/SpaceSizeY/IgnoreOccupied is
 // constant-propagated straight back to immediates and scores identically.
 // Variants tried: one `closeTo` local shared by both arms (10.7% — cl hoists

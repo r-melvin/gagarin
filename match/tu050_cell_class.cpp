@@ -3278,8 +3278,8 @@ int CellClass::FUN_00486E30()
 // from that. Variants tried: all three getter results bound to named locals
 // (3.9%), the third one alone bound to a named local (18.9%), the client
 // rectangle declared ahead of the unions to claim an early slot (96.6%,
-// identical residual). This looks like the recorded 8447-vs-8804
-// frame-slot-merging class rather than a phrasing lever.
+// identical residual). Remaining delta: frame-slot merging (cause open),
+// not a phrasing lever.
 // FRAME-LAYOUT CENSUS: this is one of the four partials whose entire residual
 // is the frame reservation constant. Six further variants were measured against
 // a labelled control in one compile and none moves the slot: the second union's

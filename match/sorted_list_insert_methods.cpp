@@ -38,8 +38,8 @@
 // local `int zero` compared as `(N*)zero`, `((unsigned)cur | 0u) != 0u`, a
 // `__forceinline` predicate by value and by const reference, a second name
 // copied from the cursor, the clause hoisted out of the conjunction into its
-// own `if`, and advancing through a second name (2.4%). Treated as the
-// dominated-test-folding difference between cl 8447 and 8804.
+// own `if`, and advancing through a second name (2.4%). Remaining
+// delta: a dominated test we fold and retail keeps (cause open).
 int FUN_004072E0(Node_004072E0* list, Node_004072E0* node)
 {
     // The inserted node's key is read once, before the walk; left as

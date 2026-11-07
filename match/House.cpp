@@ -2341,18 +2341,20 @@ bool HouseClass::UpdateFlagCoords(AbstractClass* obj, bool clearCell)
 // which the two word stores force into a register), never needs EBP, and
 // saves EBX in the prologue. Every other retail NearByLocation call site
 // (0x41A2C0 with 3s, 0x4D6CE1) shows the same register-materialised
-// constants, so this is the compiler build, not the phrasing. Variants
+// constants. The cause is not established: the constant-caching rule is the
+// same in every backend build available here, so this is an open delta and
+// not a build limit. Variants
 // tried: the explicit out-pointer call with early returns and with the body
 // nested under the bounds check; `1`/`0` literals for the bool arguments;
 // `char` for the flag; the by-value wrapper inlined (both `return *ptr` and
 // `return outBuffer`, identical output); an aggregate-initialised close-to;
 // and the whole post-check body as an inline member (which costs the
 // parameter-slot reuse for the cell copy, 25.0% but structurally further).
-// Recorded as a candidate for the 8447-vs-8804 list.
-// Lift pass 2 (2026-09-18): confirmed as that class rather than a phrasing
-// problem. A flag bisection on the sibling site 0x74D490 (/O1, /O2 /Os, /Ox,
-// /O2 /Gs) never makes cl 8804 materialise a repeated push constant into a
-// register, so no switch reaches retail's shape. Best form kept at 23.9%.
+// Remaining delta: retail materialises the repeated constants in registers
+// and we push immediates; cause open, not attributed to a compiler build.
+// Lift pass 2 (2026-09-18): a flag bisection on the sibling site 0x74D490
+// (/O1, /O2 /Os, /Ox, /O2 /Gs) never makes cl materialise a repeated push
+// constant into a register, so no switch reaches retail's shape. Best form kept at 23.9%.
 bool HouseClass::DroppedFlag(const CellStruct& cell, bool dwUnk)
 {
     if (DAT_0087F7E8.FUN_00568300(cell)) {
@@ -4871,7 +4873,7 @@ void __stdcall FUN_00509CC0(int a1)
 // label instead is 22.2%, which is what establishes that the order is the
 // lever and not the gotos.
 //
-// Residual, and it is the banked 8447-vs-8804 constant-materialisation class:
+// Residual, an open constant-materialisation delta (cause not established):
 // at the NearByLocation call retail builds the constant 5 once and copies it
 // (`MOV EAX,5; MOV ECX,EAX; PUSH ECX; PUSH EAX`) and holds the zero in EDX,
 // where cl pushes both immediates and keeps the zero in EAX. Passing the 5

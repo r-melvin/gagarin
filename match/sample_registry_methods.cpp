@@ -54,8 +54,8 @@
 // a consequence of delta 1, since retail only needs EDX because EAX is taken.
 // Lift pass 2 (2026-09-18): classified, not re-chased. Everything through the
 // finished-bit test at 0x40600A is byte-exact and the sole real delta is the
-// single retail-only `MOV ECX,EAX`; this is the banked 8447-vs-8804
-// "receiver parked in EAX" class. Best measured form kept at 34.0% (17/50).
+// single retail-only `MOV ECX,EAX`; the remaining delta is a receiver
+// parked in EAX (cause open). Best measured form kept at 34.0% (17/50).
 void FUN_00405FD0(Handle_00405FD0* handle)
 {
     Voice_00405FD0* voice;

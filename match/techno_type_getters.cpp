@@ -58,7 +58,7 @@ struct ClientPoint_007178C0 { int X; int Y; };
 // sqrt call (`XOR EDX,EDX; MOV EBX,EDX`), keeps the projected X in EBP and Y
 // in EDI across both calls, and resolves the sign as `JGE; MOV EBX,EAX; JMP` /
 // `SUB EBX,EAX` -- i.e. `Z = 0; if (z < 0) Z += t; else Z -= t;` with the
-// zero never folded. cl 8804 folds every spelling of that to `NEG EAX` after
+// zero never folded. cl folds every spelling of that to `NEG EAX` after
 // `__ftol`, which also drops the EBP save and the zero. Everything up to the
 // projector call and the whole x87 sequence (`FILD; FLD ST0; FMUL ST1; FADD
 // ST0,ST0; FSTP; FSTP ST0`) is byte-identical. Variants tried (all 12.5%):
@@ -67,15 +67,15 @@ struct ClientPoint_007178C0 { int X; int Y; };
 // `Z = 0` then adjusted, stored whole and member-wise; a three-int
 // constructor `Coord3(x, y, 0)`; `iz = z10 - z10`; the client point copied
 // as a struct (this form) and read through the returned pointer with the
-// members adjusted in place. Same class as "Zero not held in a register"
-// (0x4566B0); the 8447-vs-8804 constant-register choice is the suspected
-// cause. Retail's 0x14 frame is in(8) + a 12-byte slot the projector's
+// members adjusted in place. Same delta as "Zero not held in a register"
+// (0x4566B0): retail keeps the zero in a register and we fold it; cause open. Retail's 0x14 frame is in(8) + a 12-byte slot the projector's
 // out-point and the result share, which the struct-copy form reproduces.
 // Lift pass 2 (2026-09-18): one more rejected - the result's Z written and
 // adjusted through a taken `int* pz = &r.Z;` so the calls sit between the zero
 // store and its reload (12.5%, identical stream). cl 8804 still constant-folds
-// the zero and emits NEG. Confirmed as the banked 8447-vs-8804 "constant zero
-// held in a callee-saved register" class; best measured form kept at 12.5%.
+// the zero and emits NEG. Remaining delta: a constant zero held in a callee-saved
+// register (cause open, not a known compiler-build difference); best measured
+// form kept at 12.5%.
 CoordStruct* TechnoTypeGetters::GetParticleSysOffset(CoordStruct* pBuffer) const
 {
     if (this->DamSmkOffScrnRel)

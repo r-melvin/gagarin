@@ -19,8 +19,8 @@
 // structurally identical; 16 lines are register-renamed and the 2 prologue
 // "diff" lines are just the resulting `push edi`/`mov <r>,ecx` ordering. This is
 // the documented unexplained-codegen register-allocation delta — phrasing-invariant
-// (verified across cap-hoist / self-pointer / split-decl rewrites), so it will
-// reach byte-exact under the genuine build-8447 compiler.
+// (verified across cap-hoist / self-pointer / split-decl rewrites), so the cause
+// is open (register-allocation order, not attributed to a compiler build).
 //
 // Lift pass (2026-09-18): diff_retail reports 55.6% (20/36) with an IDENTICAL
 // mnemonic multiset - "scheduling/register naming only". The swap is downstream
@@ -29,7 +29,8 @@
 // later reused for `&Nodes`); cl 8804 defers `PUSH EDI` to the register's first
 // use, which makes `this` the first-defined value and hands it ESI. The same
 // deferred-push shape shows up at 0x403530, 0x41C250 and 0x447AC0 in this pass,
-// so it is one 8447-vs-8804 prologue class rather than a local phrasing miss.
+// so it is one shared prologue-order delta rather than a local phrasing miss;
+// the cause is open.
 void Kamikaze::Clear()
 {
     for (int i = Nodes.Count - 1; i >= 0; --i)

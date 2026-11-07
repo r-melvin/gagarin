@@ -86,8 +86,9 @@ void FUN_004028B0(Member_00402860* self)
 // counter trios through one local is still 33.3%. The bumps here were already in retail's
 // registers; the residual really is only the block order.
 // Lift pass 2 (2026-09-18): re-tried the null-initialised result returned by
-// name from both guards (`return member;` twice) - 17.9%, worse again. This is
-// the banked 8447-vs-8804 "sunk constant-return tail" class; the combined
+// name from both guards (`return member;` twice) - 17.9%, worse again. The
+// remaining delta is a sunk constant-return tail (cause open, not a known
+// compiler-build difference); the combined
 // condition below stays as the best-measured form at 33.3% (12/36, the only
 // mnemonic delta being the JNE/JE polarity the sinking forces).
 Member_00402860* FUN_004034B0(Pool_00402860* self)
