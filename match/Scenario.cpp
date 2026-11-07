@@ -2581,11 +2581,11 @@ void* __fastcall FUN_0068C3B0(const void* hsv, PaletteClass* pal1, PaletteClass*
     static_cast<PaletteClass*>(palette)->FUN_006260D0(pal1);
     double saturation = saturationByte;
     double value = valueByte;
+    ScenarioHSVRecord color;
     for (int i = 0; i < 16; ++i) {
         double angle = i * DAT_007F0E98 + DAT_007F0E90;
         double other = i * DAT_007F0E88 + DAT_007F0E80;
         if (!i) angle = 0.19634954084936207;
-        ScenarioHSVRecord color;
         color.unknown_01 = (unsigned char)(int)(FUN_004CACB0(other) * saturation);
         color.unknown_02 = (unsigned char)(int)(FUN_004CAD00(angle) * value);
         color.unknown_00 = hue;
