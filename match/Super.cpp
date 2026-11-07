@@ -212,7 +212,7 @@ bool SuperClass::FUN_006CBCA0(bool isPlayer)
     }
     if (SpecialSoundDuration == 0) {
         SpecialSoundDuration = -1;
-        VocClass::PlayAt(Type->SpecialSound, &SpecialSoundLocation, 0);
+        VocClass::PlayAt(Type->SpecialSound, SpecialSoundLocation, 0);
     }
     if (DAT_008809A0 != 4 && Animation) {
         Animation->Invisible = true;

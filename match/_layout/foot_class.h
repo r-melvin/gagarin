@@ -103,7 +103,7 @@ public:
     virtual void* vf_332(void* a1, int a2, int a3);                // 332 0x4DEE50
     virtual void vf_333(int a1, int a2);                           // 333 0x41C130
     virtual int vf_334();                                          // 334 0x4DB1A0
-    virtual void vf_335(int a1);                                   // 335 0x4D5690
+    virtual int vf_335(bool a1);                                   // 335 0x4D5690
     virtual void vf_336(int a1);                                   // 336 0x41C140
     virtual void vf_337(double a1);                                // 337 0x4D3710
     virtual void vf_338();                                         // 338 0x4DBA30
@@ -240,7 +240,9 @@ public:
     virtual bool vf_53();                                          // 53  0x4DB260
     virtual bool vf_80(int mode, CellStruct* cell, int a3, int a4); // 80  0x4D7D50
     virtual bool vf_81(int a1, ObjectClass* a2, int a3);           // 81  0x4D74E0
+    virtual int vf_132();                                          // 132 0x4D4DC0
     virtual int vf_135();                                          // 135 0x4D5070
+    virtual int vf_143();                                          // 143 0x4DA2B0 (thunk to the mission default)
     virtual int vf_136();                                          // 136 0x4D6AA0
     virtual int vf_138();                                          // 138 0x4D5350
     virtual int vf_139();                                          // 139 0x4D4200

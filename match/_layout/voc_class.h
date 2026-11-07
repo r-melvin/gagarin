@@ -53,7 +53,7 @@ public:
     // FUNCTION: GAMEMD 0x750920
     static AudioEvent* PlayGlobal(int index, float volume, unsigned int pan, AudioController* controller);
     // FUNCTION: GAMEMD 0x7509E0
-    static AudioEvent* PlayAt(int index, CoordStruct* coords, AudioController* controller);
+    static AudioEvent* PlayAt(int index, const CoordStruct& coords, AudioController* controller);
     // FUNCTION: GAMEMD 0x750E20
     static AudioEvent* PlayAtPos(int index, CoordStruct* coords, int extra);
     // FUNCTION: GAMEMD 0x751620 (decl; reloc) -- write the live-voice count and one record per live voice

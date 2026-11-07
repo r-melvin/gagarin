@@ -21,7 +21,7 @@
 // coordinates in EBX; with the event declared first the coordinates take EDI
 // and the event EBX (63.9%, pure register naming).
 AudioEvent* VocClass::PlayAt(
-    int index, CoordStruct* coords, AudioController* controller)
+    int index, const CoordStruct& coords, AudioController* controller)
 {
     if (DAT_008464AC == 0)
         return 0;
@@ -43,7 +43,7 @@ AudioEvent* VocClass::PlayAt(
 
     if (event != 0) {
         int pan;
-        float volume = GetPositionalVolume(coords, &pan, event);
+        float volume = GetPositionalVolume(const_cast<CoordStruct*>(&coords), &pan, event);
         if (volume > 0.0f) {
             unsigned int vol = (unsigned int)(int)(volume * 16384.0f);
             if (vol >= 0x4000)

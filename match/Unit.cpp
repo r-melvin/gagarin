@@ -1184,7 +1184,7 @@ void UnitClass::vf_333(int a1, int a2)
                         shaken = true;
                     }
                     CoordStruct where = Location;
-                    VocClass::PlayAt(object->vf_34()->CrushSound, &where, 0);
+                    VocClass::PlayAt(object->vf_34()->CrushSound, where, 0);
                     object->vf_92();
                     object->vf_56(this);
                     object->vf_73(0);

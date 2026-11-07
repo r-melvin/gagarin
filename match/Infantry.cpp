@@ -33,6 +33,8 @@ extern const CLSID DAT_007E9680;
 
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;
+// GLOBAL: GAMEMD 0x7E2AC8 -- the cap on one visit's intake.
+extern const float DAT_007E2AC8;
 // GLOBAL: GAMEMD 0x7EAEE8
 extern const double DAT_007EAEE8;
 // GLOBAL: GAMEMD 0xA8F1E8
@@ -70,6 +72,8 @@ extern double DAT_00A8F238;
 #include "rules_class.h"
 #include "_layout/map_0087f7e8.h"
 #include "_layout/team_class.h"
+#include "weapon_type_class.h"
+#include "_layout/vox_class.h"
 
 // Offsets this TU relies on, each read from an instruction in the matched bodies.
 GG_STATIC_ASSERT(offsetof(CellClass, OccupationFlags)    == 0x124);  // 0x5217C0
@@ -92,6 +96,8 @@ public:
 };
 // GLOBAL: GAMEMD 0x87F7E8
 extern MapView_565730 MapClass_Instance;
+// GLOBAL: GAMEMD 0xA8E7AC -- nonzero suppresses the EVA line.
+extern int DAT_00A8E7AC;
 // GLOBAL: GAMEMD 0xA8F234 -- the height added to the floor before the bridge test.
 extern int DAT_00A8F234;
 
@@ -186,6 +192,11 @@ HeaderCoordInit DAT_00A8F228(128, 128, 0);
 // SYNTHETIC: GAMEMD 0x517A30
 // GLOBAL: GAMEMD 0xA8F1D0
 MathTblZero4 DAT_00A8F1D0;
+
+// Kept after the static initialisers: at the top of the file this header alone costs all 14 initialiser rows their
+// `_$E` numbers (measured: 73 matched, 0 regressed here; 59 matched, 14 regressed there). The two other new includes of
+// this wave, weapon_type_class.h and vox_class.h, move nothing and sit with the rest.
+#include "_layout/voc_class.h"
 
 // GLOBAL: GAMEMD 0xA83DE8 -- every InfantryClass joins this list.
 extern DynamicVectorClass<InfantryClass*> DAT_00A83DE8;
@@ -322,6 +333,31 @@ bool InfantryClass::EnterIdleMode(bool initial, bool a2)
     return result;
 }
 
+// FUNCTION: GAMEMD 0x51DAF0
+// Slot 320: the sequence slot (deploy kinds 0x1C, crawling 2, else 0) is selected, then whether the cell
+// ahead (the facing rounded to eight ways) can be entered is recorded before FootClass runs.
+bool InfantryClass::vf_320()
+{
+    int s = this->SequenceAnim;
+    bool deploying = s == 0x1B || s == 0x1C || s == 0x1D || s == 0x1E;
+    if (deploying) {
+        this->vf_342(0x1C, 0, 0);
+    } else if (this->Crawling) {
+        this->vf_342(2, 0, 0);
+    } else {
+        this->vf_342(0, 0, 0);
+    }
+    DirStruct facing;
+    int ahead = (((this->PrimaryFacing.FUN_004C93D0(&facing)->Whole >> 12) + 1) >> 1) & 7;
+    CoordStruct where = this->Location;
+    if (!this->vf_107(DAT_0087F7E8.FUN_00565730(where), ahead, this->GetCellLevel(), 0, true)) {
+        this->unknown_bool_6DC = false;
+    } else {
+        this->unknown_bool_6DC = true;
+    }
+    return FootClass::vf_320();
+}
+
 // FUNCTION: GAMEMD 0x51DF10
 bool InfantryClass::vf_53()
 {
@@ -344,6 +380,49 @@ BulletClass* InfantryClass::vf_243(AbstractClass* a1, int a2)
         }
     }
     return result;
+}
+
+inline CellStruct CoordToCell_005227F0(const CoordStruct& where)
+{
+    CellStruct result;
+    result.X = where.X / 256;
+    result.Y = where.Y / 256;
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x51DFF0
+// PARTIAL: 96.3% - identical instruction multiset; the two stores of the snapped X and Y into the local
+// coordinate are scheduled after the Z load here and between the loads in retail (3 instructions out of place).
+// Slot 54 (place on the map): a coordinate resting on the floor is snapped to the cell's sub-cell
+// position first. FootClass runs on the result; a position at or below the cell's floor level is then
+// registered through slot 60.
+bool InfantryClass::vf_54(const CoordStruct& coord, int a2)
+{
+    int floor = DAT_0087F7E8.FUN_00578080(coord);
+    CoordStruct where = coord;
+    bool ok = true;
+    if (where.Z == floor) {
+        CoordStruct snapped = DAT_0087F7E8.FUN_00565730(coord)->FindInfantrySubposition(coord,
+            DAT_00A8E7AC || !DAT_0087F7E8.FUN_00578460(CoordToCell_005227F0(coord), 1), false, false);
+        where.Y = snapped.Y;
+        where.X = snapped.X;
+        if (where.X == DAT_00A8F200.X && where.Y == DAT_00A8F200.Y && snapped.Z == DAT_00A8F200.Z) {
+            ok = false;
+        } else {
+            where.Z = floor;
+        }
+    }
+    if (ok && FootClass::vf_54(where, a2)) {
+        if (this->Type->Sight == 0) {
+            this->DiscoveredByCurrentPlayer = 0;
+        }
+        if (where.Z <= DAT_00A8F234 + floor) {
+            this->vf_60(&where);
+        }
+        this->unknown_int_6E8 = 2;
+        return true;
+    }
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x51F190
@@ -431,6 +510,38 @@ void InfantryClass::vf_266()
         EnterIdleMode(false, true);
 }
 
+// FUNCTION: GAMEMD 0x51F3E0
+// Slot 132: an infantryman that can demolish (or any computer-owned one that can occupy or infiltrate)
+// heads for a building target it can act on; a human-owned deployer mid-deploy waits out a random extra
+// delay. Everything else is FootClass's.
+int InfantryClass::vf_132()
+{
+    if ((this->Type->C4 || this->FUN_0070D0D0(0xE)) && this->Target && this->Target->vf_11() == 6
+        && static_cast<BuildingClass*>(this->Target)->Type->CanC4
+        && !static_cast<BuildingClass*>(this->Target)->Type->InvisibleInGame) {
+        this->SetDestination(this->Target, true);
+        this->vf_122(0x11, false);
+        return 1;
+    }
+    if (!this->Owner->IsControlledByHuman() && this->Target && this->Target->vf_11() == 6
+        && (this->Type->Infiltrate
+            || ((this->Type->Occupier || this->Type->Assaulter)
+                && static_cast<BuildingClass*>(this->Target)->CanBeOccupiedBy(this)))) {
+        this->SetDestination(this->Target, true);
+        this->vf_124(8);
+        return 1;
+    }
+    if (this->Owner->IsControlledByHuman()) {
+        int s = this->SequenceAnim;
+        if (s == 0x1B || s == 0x1C || s == 0x1D || s == 0x1E) {
+            this->vf_266();
+            int delay = (int)(this->FUN_005B3A00()->Rate * 900.0);
+            return delay + DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
+        }
+    }
+    return FootClass::vf_132();
+}
+
 // FUNCTION: GAMEMD 0x51F540
 int InfantryClass::vf_138()
 {
@@ -491,6 +602,42 @@ int InfantryClass::vf_139()
         }
     }
     return FootClass::vf_139();
+}
+
+// FUNCTION: GAMEMD 0x51F6E0
+// Slot 143: a deployer plays its undeploy or deploy sequence, drops its destination and reports how long
+// that takes; FootClass answers when it is not a deployer or no delay came out.
+int InfantryClass::vf_143()
+{
+    if (this->Type->Deployer) {
+        int result = -1;
+        int s = this->SequenceAnim;
+        bool deploying = s == 0x1B || s == 0x1C || s == 0x1D || s == 0x1E;
+        if (deploying) {
+            if (this->Type->UndeployDelay <= -1) {
+                this->vf_342(0x1F, 1, 0);
+            }
+        } else {
+            this->vf_342(0x1B, 1, 0);
+            WeaponStruct* weapon = this->vf_252();
+            if (this->FUN_0070E240(weapon) && weapon->WeaponType->AreaFire) {
+                if (this->FUN_005F3E50("DESO")) {
+                    result = this->Type->Sequence[0x1B].unknown_04 + 1;
+                } else {
+                    this->vf_242(DAT_0087F7E8.FUN_005657A0(this->vf_110()));
+                }
+            }
+            if (this->Type->UndeployDelay > -1) {
+                result = this->Type->UndeployDelay;
+            }
+        }
+        this->vf_124(5);
+        this->SetDestination(0, true);
+        if (result > -1) {
+            return result;
+        }
+    }
+    return FootClass::vf_143();
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -732,6 +879,40 @@ bool InfantryClass::FUN_00522100()
     return IsEqualCLSID(id, DAT_007E9AC0);
 }
 
+// FUNCTION: GAMEMD 0x522340
+// Slot 335: while deploying toward a target with a deploy-fire weapon the target is out of range of, the
+// infantryman undeploys (sequence 0x1F); while standing and the target is in range, it starts to deploy.
+// The delay FUN_00522550 reports is dropped. Anything else is FootClass's with the flag cleared.
+int InfantryClass::vf_335(bool a1)
+{
+    if (this->Target) {
+        int s = this->SequenceAnim;
+        bool deploying = s == 0x1B || s == 0x1C || s == 0x1D || s == 0x1E;
+        if (!deploying) {
+            return FootClass::vf_335(false);
+        }
+        if (!this->vf_15()->IsControlledByHuman() && this->Type->Deployer && this->Type->DeployFire) {
+            int weapon = this->Type->DeployFireWeapon;
+            bool inRange = this->vf_234(this->Target, weapon);
+            WeaponTypeClass* type = this->vf_254(weapon)->WeaponType;
+            if (type && !type->AreaFire) {
+                int now = this->SequenceAnim;
+                bool deployingNow = now == 0x1B || now == 0x1C || now == 0x1D || now == 0x1E;
+                if (deployingNow) {
+                    if (!inRange && !a1) {
+                        this->vf_342(0x1F, 0, 0);
+                        return 0;
+                    }
+                } else if (inRange && !a1) {
+                    this->FUN_00522550();
+                    return 0;
+                }
+            }
+        }
+    }
+    return 0;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5224D0
 // Vtable slot 204 of InfantryClass (RTTI). Member getter (byte) of the type.
@@ -877,14 +1058,6 @@ struct HouseView_005227F0
     bool FUN_004F9A50(HouseClass* other);
 };
 
-inline CellStruct CoordToCell_005227F0(const CoordStruct& where)
-{
-    CellStruct result;
-    result.X = where.X / 256;
-    result.Y = where.Y / 256;
-    return result;
-}
-
 
 // FUNCTION: GAMEMD 0x5227F0
 // Whether the house is fooled by this infantryman's disguise at its current cell.
@@ -932,11 +1105,67 @@ int InfantryClass::vf_341()
     return 0;
 }
 
+// FUNCTION: GAMEMD 0x522910
+// Enter a building: an occupier joins its occupants (announced once, for the first one, to the local
+// player); an assaulter instead clears the occupants out and takes the building's position.
+void InfantryClass::FUN_00522910(BuildingClass* building)
+{
+    if (this->Type->Occupier) {
+        this->vf_53();
+        building->Occupants.AddItem(this);
+        building->UpdateThreatInCell(building->vf_111());
+        if (building->Occupants.Count == 1) {
+            building->vf_73(2);
+            if (this->Owner->IsControlledByCurrentPlayer()) {
+                VoxClass::Play("EVA_StructureGarrisoned", -1, -1);
+                VocClass::PlayAt(DAT_008871E0->BuildingGarrisonedSound, this->vf_18(), 0);
+            }
+        }
+        if (this->Owner->IsHumanPlayer) {
+            this->ShouldGarrisonStructure = 0;
+            this->ShouldEnterOccupiable = 0;
+        }
+    } else if (this->Type->Assaulter) {
+        building->FUN_004585C0(this);
+        this->SetDestination(0, true);
+        this->vf_93(building->vf_18(), true, true);
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x522A50
 // Empty function that pops its stack arguments.
 void __stdcall FUN_00522A50(int a1)
 {
+}
+
+// FUNCTION: GAMEMD 0x522A60
+// INoticeSink slot 0 (the +0x08 table). Notice 0x117B hands a jumpjet or balloon-hover infantryman
+// that is linked to something over to its archived target, or stops it; notice 0x117C drops a
+// crashable one to the cell's height and starts sequence 0x24.
+bool InfantryClass::Notice(int id, int arg)
+{
+    if ((this->Type->BalloonHover || this->Type->JumpJet) && id == 0x117B && this->HasAnyLink()) {
+        this->vf_157(8);
+        if (this->ArchiveTarget && this->ArchiveTarget != this->Destination) {
+            this->SetDestination(this->ArchiveTarget, true);
+            return true;
+        }
+        this->AbortMotion();
+        this->vf_93(DAT_00A8F200, true, false);
+        return true;
+    }
+    if (this->Type->Crashable && id == 0x117C) {
+        CellClass* cell = DAT_0087F7E8.FUN_005657A0(CoordToCell_005227F0(this->vf_18()));
+        if (cell->Flags & 0x100) {
+            this->vf_115(DAT_00A8F234);
+        } else {
+            this->vf_115(0);
+        }
+        this->vf_342(0x24, 1, 0);
+        return true;
+    }
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x522BC0
@@ -1014,6 +1243,36 @@ bool InfantryClass::FUN_00522D30()
         return true;
     }
     return false;
+}
+
+// FUNCTION: GAMEMD 0x522E70
+// Slot 137: a harvesting infantryman standing on tiberium takes up as much as its storage has room for
+// (the amount per visit is capped), reports the type's harvest rate, and keeps harvesting. With no
+// storage, or off the ore, it stands down and goes back to mission 5.
+int InfantryClass::vf_137()
+{
+    if (this->Type->Storage == 0) {
+        this->vf_342(0, 0, 0);
+        this->vf_122(5, false);
+        return 1;
+    }
+    CellClass* cell = this->vf_111();
+    if (cell->IsLandType5() && this->vf_173() != DAT_007E1718) {
+        if (this->SequenceAnim != 0x26) {
+            this->vf_342(0x26, 0, 0);
+        }
+        int index = cell->GetContainedTiberiumIndex();
+        int taken = cell->FUN_00480A80((int)(((float)this->Type->Storage - this->Tiberium.GetTotalAmount()) > DAT_007E2AC8
+                                                 ? DAT_007E2AC8
+                                                 : ((float)this->Type->Storage - this->Tiberium.GetTotalAmount())));
+        if (taken > 0) {
+            this->Tiberium.AddAmount((float)taken, index);
+        }
+        return this->Type->HarvestRate;
+    }
+    this->vf_342(0, 0, 0);
+    this->vf_122(5, false);
+    return 1;
 }
 
 // FUNCTION: GAMEMD 0x522FC0

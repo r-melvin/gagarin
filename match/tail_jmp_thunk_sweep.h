@@ -29,16 +29,8 @@ void FUN_006A5000(void* self);   // GAMEMD 0x6A5000
 void FUN_007529E0(void* self);   // GAMEMD 0x7529E0
 void FUN_007B46F0(void* self);   // GAMEMD 0x7B46F0
 
-// PLACEHOLDER DELIBERATELY KEPT (whole-image RTTI sweep).
-// 0x4DA2B0 is slot 143 (byte-off 0x23C) of FootClass's own vtable 0x7E8C94 --
-// but it is a tail jump to 0x5B2EF0, and 0x5B2EF0 occupies slot 143 of
-// MissionClass (0x7EDCC0), RadioClass (0x7F0508) and TechnoClass (0x7F4960)
-// as well. MissionClass is the highest of those in the chain that has the slot
-// (ObjectClass's table is only 122 slots long), so the VIRTUAL is declared on
-// MissionClass and FootClass merely re-enters it through this thunk. Naming
-// this thunk `FootClass::...` would put a MissionClass method on FootClass, so
-// it keeps the raw name; the body is `void __fastcall(void*)` with no class.
-void FUN_004DA2B0(void* self);   // FUNCTION: GAMEMD 0x4DA2B0
+// 0x4DA2B0 is FootClass::vf_143 (_layout/foot_class.h): slot 143 of FootClass's own table 0x7E8C94 is this tail jump,
+// where MissionClass, RadioClass and TechnoClass hold 0x5B2EF0 itself, and InfantryClass 0x51F6E0 calls it as the base.
 void FUN_004DE620(void* self);   // FUNCTION: GAMEMD 0x4DE620
 void FUN_005BBED0(void* self);   // FUNCTION: GAMEMD 0x5BBED0
 void FUN_005D0580(void* self);   // FUNCTION: GAMEMD 0x5D0580

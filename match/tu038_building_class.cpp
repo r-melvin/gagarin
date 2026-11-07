@@ -8139,7 +8139,7 @@ void BuildingClass::ClearBunker()
         if (RulesInstance->BunkerWallsDownSound != -1)
         {
             CoordStruct coords = Location;
-            VocClass::PlayAt(RulesInstance->BunkerWallsDownSound, &coords, 0);
+            VocClass::PlayAt(RulesInstance->BunkerWallsDownSound, coords, 0);
         }
 
         const char* name;

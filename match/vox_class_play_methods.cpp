@@ -48,7 +48,7 @@ AudioEvent* VocClass::PlayAtPos(int index, CoordStruct* coords, int unk)
     node->Coords = *coords;
     node->Flags = unk;
 
-    AudioEvent* result = VocClass::PlayAt(index, &node->Coords, &node->Handle);
+    AudioEvent* result = VocClass::PlayAt(index, node->Coords, &node->Handle);
     (&DAT_00B1D320)->FUN_00407420(node);
 
     DAT_00B1D3A8++;

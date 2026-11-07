@@ -59,7 +59,7 @@ void BombListClass::FUN_00438E70(TechnoClass* owner, TechnoClass* target)
         UpdateDelay = 1;
         if (Rules->BombAttachSound != -1 && owner->Owner->IsControlledByCurrentPlayer()) {
             CoordStruct where = target->Location;
-            VocClass::PlayAt(Rules->BombAttachSound, &where, 0);
+            VocClass::PlayAt(Rules->BombAttachSound, where, 0);
         }
     }
 }

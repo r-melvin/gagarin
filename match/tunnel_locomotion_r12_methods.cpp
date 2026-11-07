@@ -47,7 +47,7 @@ void TunnelLocomotionClass::FUN_00729370()
     TunnelFootView_r12* foot = reinterpret_cast<TunnelFootView_r12*>(LinkedTo);
     {
         CoordStruct where = foot->Location;
-        VocClass::PlayAt(DAT_008871E0->DigSound, &where, 0);
+        VocClass::PlayAt(DAT_008871E0->DigSound, where, 0);
     }
     void* storage = ::operator new(sizeof(AnimClass));
     if (storage != 0) {
@@ -118,7 +118,7 @@ void TunnelLocomotionClass::FUN_007298F0()
         if (before <= -0x32 && reinterpret_cast<TunnelFootView_r12*>(LinkedTo)->vf_1C8() > -0x32) {
             {
                 CoordStruct at = reinterpret_cast<TunnelFootView_r12*>(LinkedTo)->Location;
-                VocClass::PlayAt(DAT_008871E0->DigSound, &at, 0);
+                VocClass::PlayAt(DAT_008871E0->DigSound, at, 0);
             }
             void* storage = ::operator new(sizeof(AnimClass));
             if (storage != 0) {

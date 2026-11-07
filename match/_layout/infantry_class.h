@@ -24,6 +24,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "foot_class.h"
 class HouseClass;
+class BuildingClass;
 #include "infantry_type_class.h"
 
 class InfantryClass : public FootClass
@@ -57,12 +58,15 @@ public:
     virtual ObjectTypeClass* vf_34();                            // 34  0x51FAF0
     virtual bool vf_204();                                         // 204 0x5224D0
     virtual void vf_325();                                         // 325 0x5220F0
+    virtual int vf_335(bool a1);                                   // 335 0x522340
     virtual void vf_338();                                         // 338 0x521B20
     virtual void vf_339();                                         // 339 0x521B40
     virtual void vf_10(void* a1, bool a2);                         // 10  0x51AA10
     virtual void vf_13(Obj_004A1D30* crc);                         // 13  0x521C90
     virtual const wchar_t* vf_36();                                // 36  0x51F2C0
     virtual bool vf_53();                                          // 53  0x51DF10
+    virtual bool vf_54(const CoordStruct& coord, int a2);          // 54  0x51DFF0
+    virtual bool vf_320();                                         // 320 0x51DAF0
     virtual bool vf_58(const CoordStruct& coord);                  // 58  0x521760
     virtual void vf_60(CoordStruct* coord);                        // 60  0x5217C0
     virtual void vf_61(CoordStruct* coord);                        // 61  0x521850
@@ -74,9 +78,13 @@ public:
     virtual HouseClass* vf_52(bool a1);                            // 52  0x5226C0
     virtual bool vf_80(int mode, CellStruct* cell, int a3, int a4); // 80  0x51F250
     virtual void vf_85(int a1, int a2, bool a3);                   // 85  0x522600
+    virtual int vf_132();                                          // 132 0x51F3E0
+    virtual int vf_143();                                          // 143 0x51F6E0
+    virtual int vf_137();                                          // 137 0x522E70
     virtual int vf_138();                                          // 138 0x51F540
     virtual void vf_226(int a1);                                   // 226 0x522C00
     virtual int vf_139();                                          // 139 0x51F660
+    virtual bool Notice(int id, int arg);                          // INoticeSink slot 0 (+0x08 table 0x7EB034): 0x522A60
     virtual bool vf_225();                                         // 225 0x522BC0
     virtual void vf_284();                                         // 284 0x522780
     // Native primary slot 288: two stack dwords, target pointer and flag.
@@ -93,6 +101,8 @@ public:
     virtual void vf_266();                                         // 266 0x51F330
 
     // Non-virtual members (bodies in match/Infantry.cpp).
+    // FUNCTION: GAMEMD 0x522910 -- enter the building: occupiers garrison it, assaulters clear it.
+    void FUN_00522910(BuildingClass* building);
     // FUNCTION: GAMEMD 0x522510 -- true for the four SequenceAnim values 0x1B-0x1E.
     bool FUN_00522510();
     // FUNCTION: GAMEMD 0x520260 -- off-map while in the playfield: flag the team, run slots 232 and 62.

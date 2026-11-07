@@ -5,11 +5,12 @@
 // The nine tail-jump thunks, ordered ascending by retail address.
 
 #include "tail_jmp_thunk_sweep.h"
+#include "_layout/foot_class.h"
 
 // FUNCTION: GAMEMD 0x4DA2B0
-void FUN_004DA2B0(void* self)
+int FootClass::vf_143()
 {
-    FUN_005B2EF0(self);
+    return MissionClass::vf_143();
 }
 
 // FUNCTION: GAMEMD 0x4DE620
