@@ -2705,6 +2705,61 @@ void Techno_006FB080::StartReloading()
     }
 }
 
+// FUNCTION: GAMEMD 0x6FB470
+// Stop generating a gap: take this object's cover out of every cell within the gap radius of its
+// (height-corrected) position. For the other side's cells the gap count drops, and with spy satellite
+// the shroud count follows, re-flagging the cell when both reach zero; for the local player's side and
+// allies the revealed-by-gap count drops. The map and the screen are then refreshed.
+void TechnoClass::vf_262()
+{
+    if (CurrentPlayer == 0 || !GeneratingGap) {
+        return;
+    }
+    if (GapRadius == 0) {
+        GapRadius = vf_33()->GapRadiusInCells;
+    }
+    GeneratingGap = false;
+    CoordStruct pos = Location;
+    int shiftX = Tactical::AdjustForZ(pos.Z) / -30;
+    pos.X += shiftX << 8;
+    int shiftY = Tactical::AdjustForZ(pos.Z) / -30;
+    pos.Y += shiftY << 8;
+    CellStruct center;
+    center.X = pos.X / 256;
+    center.Y = pos.Y / 256;
+    int radius = GapRadius;
+    for (int ox = -2 - radius; ox < radius + 2; ++ox) {
+        for (int oy = -2 - radius; oy < radius + 2; ++oy) {
+            if (oy * oy + ox * ox < (radius + 1) * (radius + 1)) {
+                CellStruct cell;
+                cell = center + CellStructInit(ox, oy);
+                if (!vf_15()->IsControlledByCurrentPlayer() && !Owner->IsAlliedWith(CurrentPlayer)
+                    && !CurrentPlayer->Defeated) {
+                    DAT_0087F7E8.FUN_005657A0(cell)->GapsCoveringThisCell--;
+                    if (CurrentPlayer->SpySatActive) {
+                        if (DAT_0087F7E8.FUN_005657A0(cell)->GapsCoveringThisCell <= 0) {
+                            DAT_0087F7E8.FUN_005657A0(cell)->ShroudCounter--;
+                            if (DAT_0087F7E8.FUN_005657A0(cell)->ShroudCounter <= 0) {
+                                DAT_0087F7E8.FUN_005657A0(cell)->AltFlags |= 8;
+                                DAT_0087F7E8.FUN_005657A0(cell)->AltFlags |= 0x10;
+                            }
+                        }
+                    }
+                }
+                if (vf_15()->IsControlledByCurrentPlayer() || Owner->IsAlliedWith(CurrentPlayer)
+                    || CurrentPlayer->Defeated) {
+                    DAT_0087F7E8.FUN_005657A0(cell)->unknown_13C--;
+                }
+            }
+        }
+    }
+    if (CurrentPlayer) {
+        CurrentPlayer->Visionary = 0;
+    }
+    DAT_0087F7E8.FUN_00657CE0();
+    DAT_0087F7E8.FUN_004F42F0(2);
+}
+
 // FUNCTION: GAMEMD 0x6FB740
 // Per-frame cloak update.
 void TechnoClass::vf_260(bool)
@@ -3707,6 +3762,75 @@ void TechnoClass::vf_280(bool silent)
 void TechnoClass::vf_63()
 {
     vf_279(0);
+}
+
+// GLOBAL: GAMEMD 0xA8ED6B
+extern unsigned char DAT_00A8ED6B;
+
+// CoordToCell with the coordinate taken by value: retail copies the height word to the stack here (0x7038BC).
+static inline CellStruct CoordToCellCopy_00703860(CoordStruct coord)
+{
+    CellStruct cell;
+    cell.X = (short)(coord.X / 256);
+    cell.Y = (short)(coord.Y / 256);
+    return cell;
+}
+
+// FUNCTION: GAMEMD 0x703860
+// How visible this object is to the local player, as a code: 0 not seen at all, 1..4 the stages of a
+// cloak fading in or out (4 and 5 the almost opaque ones), 3 seen through the cloak (the owner's or an
+// ally's, or revealed by a sensor), 5 hidden by it. An invisible type is only seen by its owner.
+int TechnoClass::vf_26(bool a1, int a2)
+{
+    if (vf_33()->Invisible && IsOwnedByCurrentPlayer) {
+        return 0;
+    }
+    if (vf_33()->Invisible && !IsOwnedByCurrentPlayer && !DAT_00A8ED6B) {
+        return 5;
+    }
+    if (CloakState == 0 || DAT_00A8ED6B || vf_11() == 6) {
+        return 0;
+    }
+    if (CloakState == 2) {
+        if (a1) {
+            if (a2 != 0 && DAT_0087F7E8.FUN_005657A0(CoordToCellCopy_00703860(Location))->FUN_004870D0(((HouseClass*)a2)->ArrayIndex)) {
+                return 3;
+            }
+        } else {
+            if (DAT_00B73550 == 0) {
+                return 3;
+            }
+            if (IsOwnedByCurrentPlayer) {
+                return 3;
+            }
+            if (DAT_0087F7E8.FUN_005657A0(CoordToCellCopy_00703860(Location))->FUN_004870D0(CurrentPlayer->ArrayIndex)) {
+                return 3;
+            }
+            if (Session_00A8B238.GameMode != 0 && Owner != 0 && CurrentPlayer != 0 && CurrentPlayer->IsAlliedWith(Owner)
+                && Owner->IsAlliedWith(CurrentPlayer)) {
+                return 3;
+            }
+        }
+        return 5;
+    }
+    int progress = CloakProgress.Value;
+    if (progress <= 0) {
+        return 0;
+    }
+    int step = (int)((double)progress / RulesInstance->CloakingStages * 256.0);
+    if (step < 0x40) {
+        return 1;
+    }
+    if (step < 0x80) {
+        return 2;
+    }
+    if (step < 0xC0) {
+        return 3;
+    }
+    if (!a1 && IsOwnedByCurrentPlayer) {
+        return 3;
+    }
+    return (step >= 0xFF) + 4;
 }
 
 // The cell one step from `here` at a facing.
@@ -4991,6 +5115,43 @@ int TechnoClass::vf_281(int a1)
     return a1;
 }
 
+// FUNCTION: GAMEMD 0x70D1D0
+// May the local player see this object. Invisible types, sinking, dead and limbo objects never; the local
+// player's own objects when discovered; otherwise the cell must be inside the usable area and the object must
+// be neither cloaked, hidden by shroud, nor (at low height) buried. The flag receives 1 or 2 when the object
+// is shown only by the allied reveal.
+bool TechnoClass::vf_201(int* flag)
+{
+    if (!vf_33()->Invisible && !IsSinking && IsAlive && !InLimbo) {
+        if (Owner->IsControlledByCurrentPlayer())
+            return DiscoveredByCurrentPlayer ? true : false;
+        if (DAT_0087F7E8.FUN_00578460(CoordToCell(vf_18()), 1)) {
+            int height = vf_114();
+            bool hasAbility = ((Techno_0070D0D0*)this)->HasAbility(11);
+            CoordStruct coord = Location;
+            bool hidden;
+            if (DAT_0087F7E8.IsLocationShrouded(coord) && DAT_00B73550)
+                hidden = true;
+            else
+                hidden = false;
+            bool fogged;
+            if ((DAT_00A8B230->unknown_0000 & 0x1000) && (coord = Location, DAT_0087F7E8.IsLocationFogged(&coord))) {
+                fogged = true;
+            } else {
+                fogged = false;
+                if (CloakState != 2 && height >= -20 && !hasAbility && !hidden)
+                    return true;
+            }
+            if (vf_202()) {
+                if (!CurrentPlayer->IsAlliedWith(Owner) && !hasAbility && !fogged && !hidden)
+                    *flag = (height < -20) + 1;
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x70D420
 bool TechnoClass::vf_202()
 {
@@ -5235,6 +5396,66 @@ bool TechnoClass::FUN_0070D8F0()
 // Vtable slot 184 of TechnoClass (RTTI). Empty.
 void TechnoClass::vf_184()
 {
+}
+
+#include "dsurface_class.h"
+
+// FUNCTION: GAMEMD 0x65FA70 (decl; reloc) -- raises a radar event of the given kind at a cell.
+bool FUN_0065FA70(int kind, CellStruct cell);
+
+// FUNCTION: GAMEMD 0x70D990
+// Keep the radar's idea of this object current: whether the local player has discovered it, its radar pixel
+// (a building that is not forced keeps its pixel), whether it is on screen or inside the usable area, and
+// the radar tracking registration. A seen object of the local player that flashes pings every flash interval.
+void TechnoClass::vf_296(bool a1)
+{
+    if (!DiscoveredByCurrentPlayer && Session_00A8B238.GameMode == 0) {
+        DiscoveredByCurrentPlayer = !DAT_0087F7E8.IsLocationShrouded(vf_18());
+    }
+    Point2D pixel;
+    if (vf_11() == 6 && !a1) {
+        pixel = RadarPosition;
+    } else {
+        // 0x6557F0 reads only the first two dwords of its point: retail hands it the whole coordinate copy.
+        CoordStruct coord = Location;
+        Point2D out;
+        pixel = *Map_0087F7E8.FUN_006557F0(&out, (const Point2D*)&coord, false);
+    }
+    int flag = 0;
+    bool visible = vf_201(&flag);
+    RectangleStruct rect = Map_0087F7E8.unknown_121C->GetRect();
+    if (flag != 0 && visible) {
+        // THISNULL: GAMEMD 0x459F40
+        if (!(NullSafeIsFoot(this) && ((FootClass*)this)->TubeIndex >= 0)) {
+            FUN_0065FA70(5, CoordToCellCopy_00703860(Location));
+        }
+    }
+    if (pixel.X >= rect.X && pixel.X < rect.X + rect.Width && pixel.Y >= rect.Y && pixel.Y < rect.Y + rect.Height) {
+    } else if (visible) {
+        visible = DAT_0087F7E8.FUN_00578540(vf_113(), 1);
+        if (visible) {
+            CoordStruct coord = Location;
+            Point2D out;
+            pixel = *Map_0087F7E8.FUN_006557F0(&out, (const Point2D*)&coord, true);
+        }
+    }
+    if (InLimbo && visible) {
+        visible = false;
+    }
+    if (IsRadarTracked) {
+        if (pixel.X != RadarPosition.X || pixel.Y != RadarPosition.Y || !visible) {
+            vf_294();
+        }
+    }
+    RadarPosition = pixel;
+    if (!IsRadarTracked && visible) {
+        vf_293();
+    }
+    if (Owner == CurrentPlayer) {
+        if (RadarFlashTimer.GetTimeLeft() > 0 && RadarFlashTimer.GetTimeLeft() % RulesInstance->FlashFrameTime == 0) {
+            vf_295();
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x70DC50
@@ -6113,6 +6334,61 @@ bool TechnoClass::FUN_0070FB50()
         return false;
     }
     return true;
+}
+
+// FUNCTION: GAMEMD 0x70F8F0
+// Find the nearest cell around this object holding the most tiberium: the object's own cell when it is
+// already of land type 5, else the best value on each ring out to the radius (stopping at the first ring
+// with any), or the global invalid cell when there is none.
+void TechnoClass::vf_206(CellStruct* out, int radius, int a3)
+{
+    CellStruct best = DAT_00B0EA50;
+    CellStruct center = CoordToCell(vf_18());
+    if (DAT_0087F7E8.FUN_005657A0(center)->LandType == 5) {
+        *out = center;
+        return;
+    }
+    int bestValue = -1;
+    for (int r = 1; r < radius; ++r) {
+        for (int d = -r; d <= r; ++d) {
+            CellStruct probe;
+            probe = CellStructInit(d, -r) + center;
+            if (DAT_0087F7E8.FUN_005657A0(probe)->IsLandType5()) {
+                int value = DAT_0087F7E8.FUN_005657A0(probe)->GetContainedTiberiumValue();
+                if (value > bestValue) {
+                    bestValue = value;
+                    best = probe;
+                }
+            }
+            probe = center + CellStructInit(d, r);
+            if (DAT_0087F7E8.FUN_005657A0(probe)->IsLandType5()) {
+                int value = DAT_0087F7E8.FUN_005657A0(probe)->GetContainedTiberiumValue();
+                if (value > bestValue) {
+                    bestValue = value;
+                    best = probe;
+                }
+            }
+            probe = center + CellStructInit(-r, d);
+            if (DAT_0087F7E8.FUN_005657A0(probe)->IsLandType5()) {
+                int value = DAT_0087F7E8.FUN_005657A0(probe)->GetContainedTiberiumValue();
+                if (value > bestValue) {
+                    bestValue = value;
+                    best = probe;
+                }
+            }
+            probe = center + CellStructInit(r, d);
+            if (DAT_0087F7E8.FUN_005657A0(probe)->IsLandType5()) {
+                int value = DAT_0087F7E8.FUN_005657A0(probe)->GetContainedTiberiumValue();
+                if (value > bestValue) {
+                    bestValue = value;
+                    best = probe;
+                }
+            }
+        }
+        if (bestValue != -1)
+            break;
+    }
+    *out = best;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

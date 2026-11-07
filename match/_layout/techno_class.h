@@ -413,7 +413,7 @@ public:
     virtual bool vf_203(HouseClass* a1);                           // 203 0x70D460
     virtual bool vf_204();                                         // 204 0x41BF30
     virtual void vf_205();                                         // 205 0x459DE0
-    virtual void vf_206(int a1, int a2, int a3);                   // 206 0x70F8F0
+    virtual void vf_206(CellStruct* out, int radius, int a3);                 // 206 0x70F8F0
     virtual bool vf_207();                                         // 207 0x459DF0
     virtual bool vf_208();                                         // 208 0x459E00
     virtual bool vf_209();                                         // 209 0x459E10
@@ -504,7 +504,7 @@ public:
     virtual void vf_293();                                         // 293 0x70CC90
     virtual void vf_294();                                         // 294 0x70CCC0
     virtual void vf_295();                                         // 295 0x70CCF0
-    virtual void vf_296(int a1);                                   // 296 0x70D990
+    virtual void vf_296(bool a1);                                  // 296 0x70D990
     virtual int vf_297(int a1);                                    // 297 0x70F000
     virtual void vf_298();                                         // 298 0x70F010
     virtual bool vf_299();                                         // 299 0x70F020

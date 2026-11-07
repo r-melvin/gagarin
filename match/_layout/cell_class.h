@@ -346,7 +346,7 @@ public:
     unsigned int    AltFlags;                // +0x12C ctor read-modify-write AND 0xFFFFFFE0
                                              //   @0x0047BC52..0x0047BC60 (a bitfield, low 5 bits cleared)
     int             ShroudCounter;           // +0x130 ctor MOV [ESI+0x130],1 @0x0047BD3A
-    unsigned int    GapsCoveringThisCell;    // +0x134 ctor @0x0047BD44
+    int             GapsCoveringThisCell;    // +0x134 ctor @0x0047BD44 (signed: TechnoClass 0x6FB470 tests it with JG)
     unsigned char   VisibilityChanged;       // +0x138 ctor @0x0047BD4A
     unsigned char   align_139[3];            // +0x139 (PROTECTED_PROPERTY)
     int             unknown_13C;             // +0x13C ctor @0x0047BD50 (read as signed at 0x5864A0)
