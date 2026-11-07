@@ -438,6 +438,51 @@ bool CD_004790E0::FUN_004790E0(int value)
     return FUN_004A8270(value);
 }
 
+#include "_layout/cd_callback.h"
+#include "_layout/theme_class.h"
+#include "input_manager_class_methods.h"
+#include "mouse_ww_mouse_class.h"
+
+// GLOBAL: GAMEMD 0xA83D10 -- the score jukebox.
+extern ThemeClass DAT_00A83D10;
+// FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- __fastcall label/flags in registers, file and line on the stack.
+wchar_t* FUN_00734E60(const char* label, int flags, const char* file, int line);
+// FUNCTION: GAMEMD 0x623CD0 (decl; reloc) -- __fastcall modal prompt, true when confirmed.
+bool __fastcall FUN_00623CD0(long text);
+
+// FUNCTION: GAMEMD 0x479110
+// Insert-CD prompt: remembers the playing score, stops it, shows the cursor and the
+// prompt, then queues the remembered score again when the prompt was declined.
+bool CD::FUN_00479110(int)
+{
+    if (unknown_04 == -1) {
+        int theme = DAT_00A83D10.LastTheme;
+        if (theme == -1) {
+            theme = DAT_00A83D10.QueuedTheme;
+        }
+        unknown_04 = theme;
+    }
+    DAT_00A83D10.Stop(false);
+    int hidden = WWMouseClassInstance->GetHideCount() < 0;
+    while (WWMouseClassInstance->GetHideCount() < 0) {
+        WWMouseClassInstance->vf_4();
+    }
+    DAT_0087F770->DoSomething();
+    bool ok = true;
+    if (!FUN_00623CD0((long)FUN_00734E60("TXT_INSERT_CD_DIALOG", 0, "D:\\ra2mdpost\\CD.CPP", 0xA4))) {
+        ok = false;
+    }
+    DAT_0087F770->DoSomething();
+    while (hidden--) {
+        WWMouseClassInstance->vf_3();
+    }
+    if (!ok && unknown_04 != -1) {
+        DAT_00A83D10.QueueSong(unknown_04);
+        unknown_04 = -1;
+    }
+    return ok;
+}
+
 struct CDGlobal_0089E3A8
 {
     int Words[26];

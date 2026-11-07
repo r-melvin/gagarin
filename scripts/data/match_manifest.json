@@ -156101,5 +156101,14 @@
   "name": "TiberiumClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/CD.cpp",
+  "addr": "0x479110",
+  "sym": "?FUN_00479110@CD@@UAE_NH@Z",
+  "len": "0xdd",
+  "name": "CD::FUN_00479110",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
