@@ -75914,11 +75914,11 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x459E50",
-  "sym": "?vf_247@TechnoClass@@UAE_NH@Z",
+  "sym": "?vf_247@TechnoClass@@UAE_NPAV1@@Z",
   "len": "0x5",
   "name": "TechnoClass::vf_247",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -107366,8 +107366,8 @@
  {
   "tu": "match/Techno.cpp",
   "addr": "0x70EE30",
-  "sym": "?vf_272@TechnoClass@@UAE_NPAVObjectClass@@@Z",
-  "len": "0xC3",
+  "sym": "?vf_272@TechnoClass@@UAE_NPAVHouseClass@@@Z",
+  "len": "0xc3",
   "name": "TechnoClass::vf_272",
   "status": "matched",
   "pct": 100.0
@@ -137888,9 +137888,9 @@
  {
   "tu": "match/object_distance_squared_methods.cpp",
   "addr": "0x5F6500",
-  "sym": "?FUN_005F6500@AbstractView_005F6500@@QAEHPAU1@@Z",
+  "sym": "?FUN_005F6500@AbstractClass@@QAEHPAV1@@Z",
   "len": "0x60",
-  "name": "AbstractView_005F6500::FUN_005F6500",
+  "name": "AbstractClass::FUN_005F6500",
   "status": "matched",
   "pct": 100
  },
@@ -156257,6 +156257,42 @@
   "sym": "?FUN_00709290@TechnoClass@@QAE_NXZ",
   "len": "0x1c5",
   "name": "TechnoClass::FUN_00709290",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4DDC60",
+  "sym": "?vf_340@FootClass@@UAE_NPAVAbstractClass@@@Z",
+  "len": "0x17e",
+  "name": "FootClass::vf_340",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4DEBB0",
+  "sym": "?vf_247@FootClass@@UAE_NPAVTechnoClass@@@Z",
+  "len": "0x1b2",
+  "name": "FootClass::vf_247",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4DED70",
+  "sym": "?vf_27@FootClass@@UAEPAXXZ",
+  "len": "0xdf",
+  "name": "FootClass::vf_27",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4DEE80",
+  "sym": "?vf_331@FootClass@@UAEPAXPAXHHPAH@Z",
+  "len": "0x1ba",
+  "name": "FootClass::vf_331",
   "status": "matched",
   "pct": 100.0
  }

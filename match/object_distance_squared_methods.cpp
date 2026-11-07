@@ -8,6 +8,8 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/abstract_class.h"
+#include "_layout/coord_struct.h"
 
 struct Coord3_005F6500
 {
@@ -39,19 +41,18 @@ struct AbstractView_005F6500
     virtual void vf_17();
     virtual Coord3_005F6500 GetCoords();   // slot 18, +0x48
 
-    int FUN_005F6500(AbstractView_005F6500* that);
     int FUN_005F6560(const Coord3_005F6500* coord);
 };
 
 // FUNCTION: GAMEMD 0x5F6500
 // Squared planar distance to another object; zero for a null object.
-int AbstractView_005F6500::FUN_005F6500(AbstractView_005F6500* that)
+int AbstractClass::FUN_005F6500(AbstractClass* that)
 {
     if (that == 0) {
         return 0;
     }
-    Coord3_005F6500 a = GetCoords();
-    Coord3_005F6500 b = that->GetCoords();
+    CoordStruct a = vf_18();
+    CoordStruct b = that->vf_18();
     int dx = a.X - b.X;
     int dy = a.Y - b.Y;
     return dy * dy + dx * dx;

@@ -51,6 +51,8 @@ public:
     FootClass(HouseClass* owner);
 
     // Overrides of inherited slots that FootClass defines.
+    virtual void* vf_27();                                         // 27  0x4DED70: the image shown to the viewer (the object's own or its disguise stand-in)
+    virtual bool vf_247(TechnoClass* killer);                      // 247 0x4DEBB0: kills the object off
     virtual bool vf_164();                                         // 164 0x41C050
     virtual CellStruct vf_189();                                   // 189 0x41C150
     virtual bool vf_47(AbstractClass* target);                     // 47  0x4DDC40

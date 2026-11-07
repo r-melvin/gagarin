@@ -20,10 +20,14 @@
 //   FUNCTION: GAMEMD 0x4DBED0  FootClass::vf_245 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DCE80  FootClass::FUN_004DCE80 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DD9F0  FootClass::FUN_004DD9F0 (__thiscall)
+//   FUNCTION: GAMEMD 0x4DDC60  FootClass::vf_340 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DDDE0  FootClass::vf_28 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DE670  FootClass::FUN_004DE670 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DE7B0  FootClass::vf_314 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DE940  FootClass::vf_315 (__thiscall)
+//   FUNCTION: GAMEMD 0x4DEBB0  FootClass::vf_247 (__thiscall)
+//   FUNCTION: GAMEMD 0x4DED70  FootClass::vf_27 (__thiscall)
+//   FUNCTION: GAMEMD 0x4DEE80  FootClass::vf_331 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DF320  FootClass::vf_306 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DF3A0  FootClass::vf_307 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DF4B0  FootClass::vf_308 (__thiscall)
@@ -59,6 +63,8 @@
 #include "_layout/player_ptr_00a83d4c.h"
 
 #include "_layout/session_class.h"
+#include "_layout/aircraft_class.h"
+#include "_layout/tag_class.h"
 
 // GLOBAL: GAMEMD 0x8B3D88 -- the "no cell" sentinel.
 extern CellStruct DAT_008B3D88;
@@ -71,6 +77,12 @@ extern CoordStruct DAT_008B3DA8;
 
 // GLOBAL: GAMEMD 0x887888
 extern AircraftTrackerClass AircraftTracker;
+
+// GLOBAL: GAMEMD 0xA8E390 -- the aircraft registry.
+extern DynamicVectorClass<AircraftClass*> DAT_00A8E390;
+
+// GLOBAL: GAMEMD 0x7E3570 -- one over the largest random draw.
+extern const double DAT_007E3570;
 
 // GLOBAL: GAMEMD 0xA8B230 -- ScenarioClass::Instance.
 extern ScenarioClass* DAT_00A8B230;
@@ -555,6 +567,47 @@ bool FootClass::FUN_004DD9F0(CellStruct* cell, short dx, short dy)
     return false;
 }
 
+// FUNCTION: GAMEMD 0x4DDC60
+// Slot 340. False for no target or a spot outside the usable map. With an object standing on the target's cell
+// it is acceptable when it is this object, this object's first radio link, or both this and that object are of
+// the spawned kind (or that one carries a spawn manager). On an empty cell the spot must be clear to move and
+// no other living, on-map object may already be heading for the target.
+bool FootClass::vf_340(AbstractClass* target)
+{
+    if (target == 0) {
+        return false;
+    }
+    CellStruct cell = CoordToCell(target->vf_18());
+    if (!DAT_0087F7E8.FUN_00578460(&cell, 1)) {
+        return false;
+    }
+    ObjectClass* found;
+    {
+        Point2D offset;
+        offset.X = 0;
+        offset.Y = 0;
+        found = DAT_0087F7E8.FUN_005657A0(&cell)->FindTechnoNearestTo(&offset, false, 0);
+    }
+    if (found) {
+        if (this != found && FUN_0065AD40(0) != found) {
+            if (!vf_33()->Spawned || (static_cast<TechnoClass*>(found)->SpawnManager == 0 && !found->vf_33()->Spawned)) {
+                return false;
+            }
+        }
+    } else {
+        if (!DAT_0087F7E8.FUN_005657A0(&cell)->IsClearToMove(1, false, false, -1, 0, -1, true)) {
+            return false;
+        }
+        for (int i = 0; i < DAT_00A8E390.Count; i++) {
+            AircraftClass* other = DAT_00A8E390.Items[i];
+            if (other->IsAlive && !other->InLimbo && other->Destination == target && other != this) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x4DDDE0
 // Slot 28. The base answer for the cell, kept as is unless the cell centre is shrouded and the answer is
 // nonzero: then a type with the flag at +0xC8D and a cell the map accepts answers 1 (0x33 stays 0x33), and
@@ -673,6 +726,104 @@ void FootClass::vf_315(CellStruct center)
             }
         }
     }
+}
+
+// FUNCTION: GAMEMD 0x4DEBB0
+// Slot 247. Refused (false) when slot 114 reports nothing to kill. A live object with a tag fires its
+// tag events (0x26 and 0x29 for a killer, 0x29 again while still alive); then slot 56 runs, the object
+// is set crashing, loses its health unless the locomotor is attacking it, and its passengers die. Outside
+// the scenario set-up a non-infantry object gets a random spin, and the pointer is announced as expired.
+bool FootClass::vf_247(TechnoClass* killer)
+{
+    if (vf_114() > 0) {
+        if (Health > 0) {
+            if (killer != 0 && AttachedTag != 0) {
+                AttachedTag->FUN_006E53A0(0x26, this, DAT_008B3D88, false, 0);
+            }
+            if (AttachedTag != 0 && IsAlive) {
+                AttachedTag->FUN_006E53A0(0x29, this, DAT_008B3D88, false, 0);
+            }
+            if (AttachedTag != 0 && IsAlive && killer != 0) {
+                AttachedTag->FUN_006E53A0(0x29, this, DAT_008B3D88, false, (int)killer);
+            }
+            if (!IsAlive) {
+                return true;
+            }
+            vf_56(killer);
+            if (!IsAlive) {
+                return true;
+            }
+            if (!IsAttackedByLocomotor) {
+                Health = 0;
+            }
+        }
+        IsCrashing = true;
+        vf_157(3);
+        vf_232();
+        KillPassengers(killer);
+        if (vf_11() != 0xF && !DAT_00A8E7AC) {
+            RockingSidewaysPerFrame = (float)(DAT_00A8B230->unknown_0218.RandomRanged(0, 0x7FFFFFFE) * DAT_007E3570 * 0.15 + 0.1);
+            if (DAT_00A8B230->unknown_0218.RandomRanged(0, 1) == 0) {
+                RockingSidewaysPerFrame = -RockingSidewaysPerFrame;
+            }
+            RockingForwardsPerFrame = (float)(DAT_00A8B230->unknown_0218.RandomRanged(0, 0x7FFFFFFE) * DAT_007E3570 * 0.1);
+        }
+        AnnounceExpiredPointer(false);
+        return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x4DED70
+// Slot 27. For a viewer who is not allied with the owner, a disguised object on a cell the viewer cannot see
+// into shows the type's image for flag 0, and any object that slot 272 hides from the viewer shows flag 1;
+// otherwise the base slot answers.
+void* FootClass::vf_27()
+{
+    CellStruct cell = CoordToCell(vf_18());
+    CellClass* where = DAT_0087F7E8.FUN_005657A0(&cell);
+    if (!Owner->IsAlliedWith(DAT_00A83D4C) && vf_49() && !where->FUN_004870F0(DAT_00A83D4C->ArrayIndex)) {
+        return vf_51(false)->Image;
+    }
+    if (!vf_272(DAT_00A83D4C)) {
+        return vf_51(true)->Image;
+    }
+    return ObjectClass::vf_27();
+}
+
+// FUNCTION: GAMEMD 0x4DEE80
+// Slot 331. Among the owner's buildings of the given type (the owner must have one), the first live one with
+// a free radio link (unless a3 is 1) that slot 158 accepts, and that this object can reach (anything but
+// an aircraft needs a path), keeps the nearest: the squared distance goes through a4, and the primary factory
+// always wins. Returns that building, or 0.
+void* FootClass::vf_331(void* a1, int a2, int a3, int* a4)
+{
+    BuildingTypeClass* type = static_cast<BuildingTypeClass*>(a1);
+    BuildingClass* best = 0;
+    if (Owner->OwnedBuildingTypes.FUN_0049FAE0(type->ArrayIndex)) {
+        int count = Owner->Buildings.Count;
+        for (int i = 0; i < count; i++) {
+            BuildingClass* building = Owner->Buildings.Items[i];
+            if (building != 0 && !building->InLimbo && building->Type == type &&
+                (a3 == 1 || building->HasFreeLinkFor(this))) {
+                if (vf_11() != 2) {
+                    CellStruct to = CoordToCell(building->vf_18());
+                    CellStruct from = CoordToCell(vf_19(0));
+                    if (!DAT_0087F7E8.FUN_0056D100(&from, &to, vf_33()->MovementZone, vf_47(0), 0, 0)) {
+                        continue;
+                    }
+                }
+                if (vf_158(0xF, building) == 1) {
+                    int distance = FUN_005F6500(building);
+                    if (*a4 == -1 || distance < *a4 || building->IsPrimaryFactory) {
+                        best = building;
+                        *a4 = distance;
+                    }
+                }
+            }
+        }
+    }
+    return best;
 }
 
 // FUNCTION: GAMEMD 0x4DF320

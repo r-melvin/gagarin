@@ -5761,7 +5761,7 @@ void RecoilData_0070ED10::Update()
 // started at DisguiseCreationFrame, or when the cell under this object refuses
 // the other object's +0x30 link. True otherwise, and always true while the blink
 // timer is running and the owner is not the current player.
-bool TechnoClass::vf_272(ObjectClass* a1)
+bool TechnoClass::vf_272(HouseClass* viewer)
 {
     if (DisguiseBlinkTimer.GetTimeLeft() == 0 || Owner->IsControlledByCurrentPlayer()) {
         if (Owner->IsControlledByCurrentPlayer() && vf_49()) {
@@ -5771,7 +5771,7 @@ bool TechnoClass::vf_272(ObjectClass* a1)
             }
         } else {
             CellClass* cell = vf_111();
-            if (vf_49() && cell && !cell->FUN_004870F0(a1->NextObject)) {
+            if (vf_49() && cell && !cell->FUN_004870F0(viewer->ArrayIndex)) {
                 return false;
             }
         }

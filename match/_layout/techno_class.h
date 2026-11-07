@@ -449,7 +449,7 @@ public:
     virtual bool vf_245(HouseClass* house, bool a2);               // 245 0x7014A0 (RET 8)
     // CALLEE: GAMEMD 0x70B280 -- slot 246, CoordStruct* / float / bool, RET 0xC.
     virtual void vf_246(const CoordStruct* coord, float unknown1, bool unknown2);
-    virtual bool vf_247(int a1);                                   // 247 0x459E50
+    virtual bool vf_247(TechnoClass* killer);                      // 247 0x459E50: returns false
     virtual bool vf_248();                                         // 248 0x70DD50
     virtual int vf_249();                                          // 249 0x70DD70
     virtual int vf_250();                                          // 250 0x70DD90
@@ -474,7 +474,7 @@ public:
     virtual bool vf_269(int a1);                                   // 269 0x41BFF0
     virtual void vf_270(int a1, int a2);                           // 270 0x459E60
     virtual int vf_271(int a1);                                    // 271 0x70ED80
-    virtual bool vf_272(ObjectClass* a1);                                 // 272 0x70EE30
+    virtual bool vf_272(HouseClass* viewer);                                 // 272 0x70EE30
     virtual void vf_273(VoxelStruct* voxel, int a2, int tint, IndexClass<int, void*>* cache, RectangleStruct* clip, Point2D* point, Matrix3D* matrix, int a8, int a9, int a10); // 273 0x706640
     virtual void vf_274(int a1, int a2);                           // 274 0x6F60C0
     virtual void vf_275(int a1, int a2, int a3);                   // 275 0x6F64A0

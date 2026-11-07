@@ -8368,7 +8368,7 @@ bool TechnoClass::vf_224()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459E50
-bool TechnoClass::vf_247(int a1)
+bool TechnoClass::vf_247(TechnoClass* killer)
 {
     return false;
 }

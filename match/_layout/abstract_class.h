@@ -126,6 +126,9 @@ public:
         return (vf_11() == kind) ? this : 0;
     }
 
+    // FUNCTION: GAMEMD 0x5F6500 -- the squared planar distance (slot 18 coordinates) to another object, 0 for none; RET 4.
+    int FUN_005F6500(AbstractClass* other);
+
     int   UniqueID;                 // +0x10
     // +0x14: the flag byte. Retail only ever touches it with byte operations:
     // the constructor clears bits 0-2 with MOV CL,[EAX+0x14]; AND CL,0xF8
