@@ -4497,26 +4497,22 @@
   "pct": 100
  },
  {
-  "tu": "match/tu038_building_class.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x45AEA0",
-  "sym": "?FUN_0045AEA0@ComHolder_0045AEA0@@QAEJPAPAUIUnk@@@Z",
+  "sym": "?_QueryInterface@?$_com_ptr_t@V?$_com_IIID@UIPersist@@$1?_GUID_0000010c_0000_0000_c000_000000000046@@3U__s_GUID@@A@@@@AAEJABV?$_com_ptr_t@V?$_com_IIID@UILocomotion@@$1?_GUID_070f3290_9841_11d1_b709_00a024ddafd1@@3U__s_GUID@@A@@@@@Z",
   "len": "0x75",
-  "name": "ComHolder::FUN_0045AEA0",
-  "status": "partial",
-  "pct": 86.8,
-  "best_pct": 86.8,
-  "best_at": "cf203011"
+  "name": "_com_ptr_t<IPersist>::_QueryInterface<FootClass::LocomotorPtr>",
+  "status": "matched",
+  "pct": 100.0
  },
  {
-  "tu": "match/tu038_building_class.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x45AF20",
-  "sym": "?FUN_0045AF20@ComHolder_0045AEA0@@QAEJPAPAUIUnk@@@Z",
+  "sym": "?_QueryInterface@?$_com_ptr_t@V?$_com_IIID@UIPiggyback@@$1?_GUID_92fea800_a184_11d1_b70a_00a024ddafd1@@3U__s_GUID@@A@@@@AAEJABV?$_com_ptr_t@V?$_com_IIID@UILocomotion@@$1?_GUID_070f3290_9841_11d1_b709_00a024ddafd1@@3U__s_GUID@@A@@@@@Z",
   "len": "0x75",
-  "name": "ComHolder::FUN_0045AF20",
-  "status": "partial",
-  "pct": 86.8,
-  "best_pct": 86.8,
-  "best_at": "cf203011"
+  "name": "_com_ptr_t<IPiggyback>::_QueryInterface<FootClass::LocomotorPtr>",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/com_member_release_family_methods.cpp",
@@ -156735,5 +156731,79 @@
   "pct": 95.2,
   "best_pct": 95.2,
   "best_at": "bcfb1d03"
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4D3810",
+  "sym": "?vf_179@FootClass@@UAE_NPAUCoordStruct@@@Z",
+  "len": "0x107",
+  "name": "FootClass::vf_179",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4D7330",
+  "sym": "?vf_91@FootClass@@UAEHPAHHPAX1_N21@Z",
+  "len": "0x1a9",
+  "name": "FootClass::vf_91",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4D94B0",
+  "sym": "?SetDestination@FootClass@@UAEXPAVAbstractClass@@_N@Z",
+  "len": "0x264",
+  "name": "FootClass::SetDestination",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4DB810",
+  "sym": "?vf_109@FootClass@@UAEXABUCoordStruct@@@Z",
+  "len": "0x85",
+  "name": "FootClass::vf_109",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4DD0A0",
+  "sym": "?vf_206@FootClass@@UAEXPAUCellStruct@@HH@Z",
+  "len": "0x244",
+  "name": "FootClass::vf_206",
+  "status": "partial",
+  "pct": 98.3,
+  "best_pct": 98.3,
+  "best_at": "65daf3ac"
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4DEAE0",
+  "sym": "?vf_85@FootClass@@UAEXHH_N@Z",
+  "len": "0xc9",
+  "name": "FootClass::vf_85",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4DF7F0",
+  "sym": "?vf_322@FootClass@@UAE_NUCoordStruct@@@Z",
+  "len": "0x259",
+  "name": "FootClass::vf_322",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/foot_class_methods.cpp",
+  "addr": "0x4E0170",
+  "sym": "??_GFootClass@@UAEPAXI@Z",
+  "len": "0x1e",
+  "name": "FootClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

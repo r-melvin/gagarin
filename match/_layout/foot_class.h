@@ -89,7 +89,7 @@ public:
     virtual bool vf_319(const CoordStruct& a1);                    // 319 0x4D55F0
     virtual bool vf_320();                                         // 320 0x4D55C0
     virtual bool vf_321();                                         // 321 0x4DB9B0
-    virtual void vf_322(int a1, int a2, int a3);                   // 322 0x4DF7F0
+    virtual bool vf_322(CoordStruct where);                        // 322 0x4DF7F0
     // Native slot 323 forwards 16 dwords to the typed TechnoClass helper at 0x41C090.
     virtual void vf_323(SHPStruct* a1, int a2, Point2D* a3, RectangleStruct* a4,
                         int a5, int a6, int a7, int a8, int a9, int a10,
@@ -292,6 +292,11 @@ public:
     virtual int vf_187();                                          // 187 0x4DAFC0
     virtual int vf_140();                                          // 140 0x4DA2C0
     virtual int vf_150();                                          // 150 0x4DDF90
+    virtual void vf_85(int a1, int a2, bool a3);                   // 85  0x4DEAE0
+    virtual void vf_206(CellStruct* out, int radius, int a3);      // 206 0x4DD0A0
+    virtual int vf_91(int* damage, int distance, void* warhead, void* source, bool a5, bool a6, void* house); // 91 0x4D7330: ReceiveDamage
+    virtual bool vf_179(CoordStruct* where);                       // 179 0x4D3810
+    virtual void vf_109(const CoordStruct& coord);                 // 109 0x4DB810
     // GAMEMD 0x4D97A0 (RET 4): how strongly this object wants to attack `target`; 0 when it should not.
     int FUN_004D97A0(AbstractClass* target);
     // GAMEMD 0x4DBA50 (slot 177; RET 4): hands the centre of the lepton cell at `from`'s slot-19 point to slot 179.

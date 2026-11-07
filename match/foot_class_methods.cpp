@@ -18,6 +18,7 @@
 //   FUNCTION: GAMEMD 0x4DEE50  FootClass::vf_332 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DF040  FootClass::vf_330 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DF0D0  FootClass::AbortMotion         (__thiscall)
+//   SYNTHETIC: GAMEMD 0x4E0170 FootClass scalar deleting destructor
 
 #include "foot_class_methods.h"
 #include "vector_class_dynamic_ctor.h"
@@ -240,3 +241,5 @@ void FootClass::AbortMotion()
     this->unknown_5A0 = 0;
     this->Destination = 0;
 }
+
+// SYNTHETIC: GAMEMD 0x4E0170 -- compiler-generated scalar deleting destructor of ~FootClass (slot 8; calls 0x4D3590).

@@ -5,12 +5,15 @@
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x4D3780  FootClass::vf_73 (__thiscall)
+//   FUNCTION: GAMEMD 0x4D3810  FootClass::vf_179 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D4B20  FootClass::vf_133 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D4CB0  FootClass::vf_134 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D4FC0  FootClass::FUN_004D4FC0 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D5070  FootClass::vf_135 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D5350  FootClass::vf_138 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D7170  FootClass::vf_54 (__thiscall)
+//   FUNCTION: GAMEMD 0x4D7330  FootClass::vf_91 (__thiscall)
+//   FUNCTION: GAMEMD 0x4D94B0  FootClass::SetDestination (__thiscall)
 //   FUNCTION: GAMEMD 0x4D9720  FootClass::vf_55 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D97A0  FootClass::FUN_004D97A0 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D98C0  FootClass::vf_238 (__thiscall)
@@ -19,10 +22,12 @@
 //   FUNCTION: GAMEMD 0x4DA030  FootClass::FUN_004DA030 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DA2C0  FootClass::vf_140 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DAFC0  FootClass::vf_187 (__thiscall)
+//   FUNCTION: GAMEMD 0x4DB810  FootClass::vf_109 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DBA50  FootClass::FUN_004DBA50 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DBAD0  FootClass::vf_13 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DBED0  FootClass::vf_245 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DCE80  FootClass::FUN_004DCE80 (__thiscall)
+//   FUNCTION: GAMEMD 0x4DD0A0  FootClass::vf_206 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DD9F0  FootClass::FUN_004DD9F0 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DDC60  FootClass::vf_340 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DDDE0  FootClass::vf_28 (__thiscall)
@@ -30,12 +35,14 @@
 //   FUNCTION: GAMEMD 0x4DE670  FootClass::FUN_004DE670 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DE7B0  FootClass::vf_314 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DE940  FootClass::vf_315 (__thiscall)
+//   FUNCTION: GAMEMD 0x4DEAE0  FootClass::vf_85 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DEBB0  FootClass::vf_247 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DED70  FootClass::vf_27 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DEE80  FootClass::vf_331 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DF320  FootClass::vf_306 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DF3A0  FootClass::vf_307 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DF4B0  FootClass::vf_308 (__thiscall)
+//   FUNCTION: GAMEMD 0x4DF7F0  FootClass::vf_322 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DFA70  FootClass::vf_207 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DFB70  FootClass::vf_208 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DFCB0  FootClass::vf_210 (__thiscall)
@@ -68,6 +75,7 @@
 #include "_layout/player_ptr_00a83d4c.h"
 
 #include "_layout/session_class.h"
+#include "_layout/parasite_class.h"
 #include "_layout/aircraft_class.h"
 #include "_layout/tag_class.h"
 #include "weapon_type_class.h"
@@ -76,6 +84,17 @@
 
 // GLOBAL: GAMEMD 0x8B3D88 -- the "no cell" sentinel.
 extern CellStruct DAT_008B3D88;
+
+// TEMPLATE: GAMEMD 0x45AEA0
+// _com_ptr_t<IPersist>::_QueryInterface from a FootClass::LocomotorPtr (comip.h; SetDestination, slot 288).
+// TEMPLATE: GAMEMD 0x45AF20
+// _com_ptr_t<IPiggyback>::_QueryInterface from a FootClass::LocomotorPtr (comip.h; slot 322).
+
+// GLOBAL: GAMEMD 0x7E9A40 -- CLSID of a locomotion class.
+extern const CLSID DAT_007E9A40;
+
+// GLOBAL: GAMEMD 0x7E9A90 -- CLSID of TeleportLocomotionClass.
+extern const CLSID DAT_007E9A90;
 
 // GLOBAL: GAMEMD 0x8B3DF4
 extern int DAT_008B3DF4;
@@ -101,6 +120,9 @@ extern int DAT_00A8E7AC;
 // FUNCTION: GAMEMD 0x65FA70 (decl; reloc) -- RadarEventClass::Create: event type in ECX, the cell by value.
 bool __fastcall FUN_0065FA70(int type, CellStruct cell);
 
+// FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) -- operator delete.
+extern "C" void __cdecl FUN_007C8B3D(void* block);
+
 // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- the square root.
 double __cdecl FUN_004CAC40(double value);
 
@@ -125,6 +147,12 @@ inline int Distance3DXZY(const CoordStruct& a, const CoordStruct& b)
     d.Y = a.Y - b.Y;
     d.Z = a.Z - b.Z;
     return (int)FUN_004CAC40((double)d.X * (double)d.X + (double)d.Z * (double)d.Z + (double)d.Y * (double)d.Y);
+}
+
+// Whether two coordinates differ.
+inline bool CoordsDiffer(const CoordStruct& a, CoordStruct b)
+{
+    return a.X != b.X || a.Y != b.Y || a.Z != b.Z;
 }
 
 // The cell holding a lepton coordinate.
@@ -167,6 +195,24 @@ bool FootClass::vf_73(int mode)
         return true;
     }
     return false;
+}
+
+// FUNCTION: GAMEMD 0x4D3810
+// Slot 179. True outright for a type with no movement zone. False for the "no cell" sentinel; otherwise
+// whether the cell holding this object reaches the cell holding the coordinate, the bridge flag of the
+// target cell and the slot 200 answer qualifying the check.
+bool FootClass::vf_179(CoordStruct* where)
+{
+    int zone = vf_33()->MovementZone;
+    if (zone == -1) {
+        return true;
+    }
+    CellStruct to = CoordToCell(*where);
+    if (to == DAT_008B3D88) {
+        return false;
+    }
+    CellStruct from = CoordToCell(vf_19(0));
+    return DAT_0087F7E8.FUN_0056D100(&from, &to, zone, vf_47(0), (DAT_0087F7E8.FUN_005657A0(&to)->Flags >> 8) & 1, vf_200());
 }
 
 // FUNCTION: GAMEMD 0x4D4B20
@@ -426,6 +472,111 @@ bool FootClass::vf_54(const CoordStruct& coord, int a2)
     return false;
 }
 
+// FUNCTION: GAMEMD 0x4D7330
+// Slot 91, ReceiveDamage. A hit by a warhead with the sonic flag lets go of the parasite on this object and
+// has the attacker (slot 242, argument 0) react. A hit harder than the host's suppression threshold, or any
+// healing, restarts the parasite's timer. The TechnoClass body decides the result: 5 is returned as is; a
+// team learns of a nonzero result; otherwise (not 0 or 4) a team whose type has the whiner flag and whose
+// owner is not human controlled switches to the attacker, and an attacker whose mission is a no-threat,
+// non-zombie one sends this object back to idle mode.
+int FootClass::vf_91(int* damage, int distance, void* warhead, void* source, bool a5, bool a6, void* house)
+{
+    WarheadTypeClass* hit = static_cast<WarheadTypeClass*>(warhead);
+    TechnoClass* attacker = static_cast<TechnoClass*>(source);
+    if (hit != 0 && hit->Sonic && ParasiteEatingMe != 0) {
+        ParasiteEatingMe->ParasiteImUsing->FUN_0062A4A0();
+        if (attacker != 0) {
+            attacker->vf_242(0);
+        }
+    }
+    if (ParasiteEatingMe != 0 && attacker != ParasiteEatingMe) {
+        if (*damage > ParasiteEatingMe->vf_33()->SuppressionThreshold) {
+            ParasiteEatingMe->ParasiteImUsing->TimerA = CDTimerClass(*damage * 2 - ParasiteEatingMe->vf_33()->SuppressionThreshold);
+        }
+    }
+    if (ParasiteEatingMe != 0 && *damage < 0) {
+        ParasiteEatingMe->ParasiteImUsing->TimerA = CDTimerClass(0x32);
+        ParasiteEatingMe->ParasiteImUsing->FUN_0062A4A0();
+    }
+    int result = FUN_00701900(damage, distance, warhead, source, a5, a6, house);
+    if (result == 5) {
+        return result;
+    }
+    if (result != 0 && Team != 0) {
+        Team->FUN_006EB380(this, result, attacker);
+        return result;
+    }
+    if (result != 4 && result != 0) {
+        if (Team != 0 && Team->Type->Whiner && !Owner->IsControlledByHuman()) {
+            if (attacker == 0) {
+                return result;
+            }
+            FUN_00708080(attacker);
+        }
+        if (attacker != 0 && FUN_005B3A00()->NoThreat && !FUN_005B3A00()->Zombie) {
+            EnterIdleMode(false, true);
+        }
+    }
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x4D94B0
+// Slot 288. Drops the pending step and refuses a destination while a locomotor holds this object, it rides an
+// open-topped transport or it is linked to a bunker. Otherwise it takes the destination (releasing a
+// locomotor that carries it, and the particle system when there is one), and a drive-class locomotor whose
+// path delay ran out restarts it. A destination sends the locomotor there; none stops it unless an
+// aircraft with an attack mission still has a target. The blockage and path timers restart.
+void FootClass::SetDestination(AbstractClass* target, bool a2)
+{
+    unknown_5A0 = 0;
+    if (IsAttackedByLocomotor && target != 0) {
+        return;
+    }
+    if (InOpenToppedTransport && target != 0) {
+        return;
+    }
+    if (BunkerLinkedItem != 0 && target != 0) {
+        return;
+    }
+    if (LocomotorTarget != 0 && target != 0) {
+        FUN_0070FEE0(true);
+    }
+    Destination = target;
+    if (target == 0 && IsAttackedByLocomotor && LocomotorSource != 0) {
+        static_cast<TechnoClass*>(LocomotorSource)->LocomotorTarget = 0;
+        LocomotorSource = 0;
+        IsLetGoByLocomotor = 1;
+    }
+    if (Destination != 0) {
+        if (ParticleSystems[0] != 0) {
+            static_cast<ObjectClass*>(ParticleSystems[0])->vf_62();
+            ParticleSystems[0] = 0;
+        }
+        IPersistPtr persist(Locomotor);
+        CLSID id;
+        persist->GetClassID(&id);
+        if (IsEqualCLSID(id, DAT_007E9A40)) {
+            if (PathDelayTimer.GetTimeLeft() == 0) {
+                PathDelayTimer = CDTimerClass(1);
+            }
+        }
+        if (unknown_bool_6AC) {
+            unknown_bool_6AC = 0;
+        } else {
+            LocoCoord to = Destination->vf_19(this);
+            Locomotor->MoveTo(to);
+        }
+    } else {
+        if (!(vf_11() == 2 && (CurrentMission == 1 || QueuedMission == 1) && Target != 0)) {
+            Locomotor->StopMoving();
+            Destination = target;
+        }
+    }
+    IsWaitingBlockagePath = 0;
+    BlockagePathTimer = CDTimerClass(Rules->BlockagePathDelay);
+    PathDelayTimer = CDTimerClass(0);
+}
+
 // FUNCTION: GAMEMD 0x4D9720
 // Slot 55. Leaving the map (flag set) lets go of the team first unless the scenario is still loading;
 // putting it back (flag clear) skips the slot-157 call for an allied radio link. Both end in the base slot.
@@ -642,6 +793,29 @@ int FootClass::vf_187()
     return TechnoClass::vf_187() + most + adjust;
 }
 
+// FUNCTION: GAMEMD 0x4DB810
+// Slot 109. Moves the object to the coordinate through the base slot (footprint off the cell map first and on
+// again after when it is on the map). An open-topped type whose position changed carries its passengers along.
+void FootClass::vf_109(const CoordStruct& coord)
+{
+    bool moved;
+    if (CoordsDiffer(coord, Location)) {
+        moved = true;
+    } else {
+        moved = false;
+    }
+    if (IsOnMap) {
+        vf_73(0);
+        ObjectClass::vf_109(coord);
+        vf_73(1);
+    } else {
+        ObjectClass::vf_109(coord);
+    }
+    if (moved && vf_33()->OpenTopped) {
+        UpdatePassengerCoords();
+    }
+}
+
 // FUNCTION: GAMEMD 0x4DBA50
 // Slot 177 (the retail table entry). The cell under the source's slot-19 coordinate for this object,
 // reduced to its centre point at height 0, goes to slot 179.
@@ -766,6 +940,67 @@ bool FootClass::FUN_004DCE80(CellStruct* cell)
         }
     }
     return false;
+}
+
+// PARTIAL: 98.3% (identical instruction multiset, 179 of 179). Remaining delta: the epilogue stores the best cell
+// through EAX = out / EDX = best where retail has EDX = out / EAX = best (two moves swapped, one store operand).
+// FUNCTION: GAMEMD 0x4DD0A0
+// Slot 206. The cell holding this object when it is of land type 5; otherwise a search over square rings
+// of growing radius (up to but not including `radius`) for the usable cell with the most tiberium, stopping
+// at the first ring that has any.
+void FootClass::vf_206(CellStruct* out, int radius, int a3)
+{
+    CellStruct best = DAT_008B3D88;
+    CellStruct center = CoordToCell(vf_18());
+    if (DAT_0087F7E8.FUN_005657A0(&center)->LandType == 5) {
+        *out = center;
+        return;
+    }
+    int bestValue = -1;
+    for (int r = 1; r < radius; ++r) {
+        for (int d = -r; d <= r; ++d) {
+            CellStruct probe;
+            CellStruct above;
+            above.X = d;
+            above.Y = -r;
+            probe = center + above;
+            if (FUN_004DCE80(&probe)) {
+                int value = DAT_0087F7E8.FUN_005657A0(&probe)->GetContainedTiberiumValue();
+                if (value > bestValue) {
+                    bestValue = value;
+                    best = probe;
+                }
+            }
+            probe = center + CellStructInit(d, r);
+            if (FUN_004DCE80(&probe)) {
+                int value = DAT_0087F7E8.FUN_005657A0(&probe)->GetContainedTiberiumValue();
+                if (value > bestValue) {
+                    bestValue = value;
+                    best = probe;
+                }
+            }
+            probe = center + CellStructInit(-r, d);
+            if (FUN_004DCE80(&probe)) {
+                int value = DAT_0087F7E8.FUN_005657A0(&probe)->GetContainedTiberiumValue();
+                if (value > bestValue) {
+                    bestValue = value;
+                    best = probe;
+                }
+            }
+            probe = center + CellStructInit(r, d);
+            if (FUN_004DCE80(&probe)) {
+                int value = DAT_0087F7E8.FUN_005657A0(&probe)->GetContainedTiberiumValue();
+                if (value > bestValue) {
+                    bestValue = value;
+                    best = probe;
+                }
+            }
+        }
+        if (bestValue != -1) {
+            break;
+        }
+    }
+    *out = best;
 }
 
 // FUNCTION: GAMEMD 0x4DD9F0
@@ -1023,6 +1258,25 @@ void FootClass::vf_315(CellStruct center)
     }
 }
 
+// FUNCTION: GAMEMD 0x4DEAE0
+// Slot 85. An organic type takes its full strength as C4 warhead damage. Any other type lets go of the parasite
+// on it (restarting the parasite's timer), clears its paralysis timer and passes the arguments to the
+// TechnoClass routine.
+void FootClass::vf_85(int a1, int a2, bool a3)
+{
+    if (vf_33()->Organic) {
+        int damage = vf_33()->Strength;
+        vf_91(&damage, 0, Rules->C4Warhead, 0, false, false, 0);
+        return;
+    }
+    if (ParasiteEatingMe != 0) {
+        ParasiteEatingMe->ParasiteImUsing->TimerA = CDTimerClass(0x32);
+        ParasiteEatingMe->ParasiteImUsing->FUN_0062A4A0();
+    }
+    ParalysisTimer = CDTimerClass(0);
+    FUN_0070E2B0(a1, a2, a3);
+}
+
 // FUNCTION: GAMEMD 0x4DEBB0
 // Slot 247. Refused (false) when slot 114 reports nothing to kill. A live object with a tag fires its
 // tag events (0x26 and 0x29 for a killer, 0x29 again while still alive); then slot 56 runs, the object
@@ -1196,6 +1450,39 @@ bool FootClass::vf_308()
         }
     }
     return result;
+}
+
+// FUNCTION: GAMEMD 0x4DF7F0
+// Slot 322, the chrono jump. Refused in the air, while iron-curtained, immobilised or in either of the two
+// slot 117 / 118 states. Otherwise a teleport locomotor is created and piggybacked on the current one, which
+// is first parked on the target (a bridge cell raises it) when slot 11 answers 1; the teleport locomotor
+// replaces the current one, the object is immobilised and heads for the destination cell.
+bool FootClass::vf_322(CoordStruct where)
+{
+    if (IsInAir() || vf_88() || IsImmobilized || vf_117() || vf_118()) {
+        return false;
+    }
+    LocomotorPtr teleport(DAT_007E9A90, 0, 7);
+    IPiggybackPtr piggyback(teleport);
+    if (DAT_0087F7E8.FUN_00565730(&where)->Flags & 0x100) {
+        where.Z += DAT_008B3DF4;
+    }
+    if (vf_11() == 1) {
+        Locomotor->MarkAllOccupationBits(0);
+        LocoCoord to = where;
+        Locomotor->ForceTrack(-1, to);
+        vf_61(&where);
+        FrozenStill = true;
+    }
+    SetDestination(DAT_0087F7E8.FUN_00565730(&where), true);
+    SetDestination(0, true);
+    teleport->LinkToObject(this);
+    piggyback->BeginPiggyback(Locomotor);
+    Locomotor = teleport;
+    IsImmobilized = true;
+    ChronoDestCoords = where;
+    SetDestination(DAT_0087F7E8.FUN_00565730(&where), true);
+    return true;
 }
 
 // FUNCTION: GAMEMD 0x4DFA70

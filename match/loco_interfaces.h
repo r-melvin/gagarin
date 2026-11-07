@@ -193,8 +193,10 @@ public:
 
 // VTABLE: GAMEMD 0x7E8254 — IPiggyback interface prefix (8 entries). The
 // DropPod table and the five other piggyback tables expose the same five
-// methods after IUnknown's three slots.
-struct __declspec(novtable) IPiggyback : public IUnknown
+// methods after IUnknown's three slots. The uuid gives __uuidof(IPiggyback) its own GUID copy, which
+// retail has at 0x819088 (beside IID_IPiggyback at 0x7E9B10; same 16 bytes): _QueryInterface 0x45AF20
+// pushes 0x819088.
+struct __declspec(uuid("92FEA800-A184-11D1-B70A-00A024DDAFD1")) __declspec(novtable) IPiggyback : public IUnknown
 {
 public:
     virtual HRESULT __stdcall BeginPiggyback(ILocomotion* locomotion) = 0;

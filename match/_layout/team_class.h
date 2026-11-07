@@ -14,6 +14,7 @@
 #include "frame_timer.h"
 
 class FootClass;
+class TechnoClass;
 class HouseClass;
 class TeamTypeClass;
 class TagClass;
@@ -115,6 +116,8 @@ public:
     bool FUN_006EA610(FootClass* member, int* slot, bool flag);
     // FUNCTION: GAMEMD 0x6EA870 (decl; reloc) -- TeamClass::LiberateMember.
     void LiberateMember(FootClass* foot, int idx, unsigned char count);
+    // FUNCTION: GAMEMD 0x6EB380 (decl; reloc) -- a member took damage: the result code and the attacker (RET 0xC).
+    void FUN_006EB380(FootClass* member, int result, TechnoClass* attacker);
     // FUNCTION: GAMEMD 0x6EBAD0 (decl; reloc)
     void FUN_006EBAD0();
     // FUNCTION: GAMEMD 0x6EA080

@@ -18,5 +18,7 @@
 _COM_SMARTPTR_TYPEDEF(ILocomotion, IID_ILocomotion);
 _COM_SMARTPTR_TYPEDEF(IPersist, __uuidof(IPersist));
 _COM_SMARTPTR_TYPEDEF(IPersistStream, __uuidof(IPersistStream));
+// IPiggybackPtr: the piggyback interface FootClass slot 322 queries (_QueryInterface 0x45AF20).
+_COM_SMARTPTR_TYPEDEF(IPiggyback, __uuidof(IPiggyback));
 
 #endif  // GG_MATCH_MOVEMENT_LOCOMOTION_LOCO_COM_H
