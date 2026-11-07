@@ -30,6 +30,9 @@ public:
     // The native constructor transports a type pointer; its original const qualification is unknown.
     // This const-qualified API preserves the type-list item qualification at this caller.
     VoxelAnimClass(const VoxelAnimTypeClass* type, const CoordStruct& location, int unknown_arg2);
+    // No separate entry: Load (0x74A970) starts the ObjectClass no-init chain and stores the four vtables;
+    // the two audio controllers are reset by Load itself, after the null test of the placement.
+    VoxelAnimClass(const AbstractNoInit& noInit);   // defined inline in voxel_anim_noinit.h
 
     // Primary-table override declarations retain canonical base signatures.
     // Their native targets are documented here; this header supplies no bodies.
@@ -63,7 +66,7 @@ public:
 
     int                unknown_100;       // +0x100
     VoxelAnimTypeClass* unknown_104;      // +0x104; pointer used as the type in ctor
-    int                unknown_108;       // +0x108
+    ObjectClass*       unknown_108;       // +0x108; released through slot 62 by the destructor 0x7499F0
     int                unknown_10C;       // +0x10C
     unsigned char      unknown_110;       // +0x110
     unsigned char      unknown_111[3];    // +0x111..+0x113

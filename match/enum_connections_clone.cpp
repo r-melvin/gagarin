@@ -2,16 +2,8 @@
 // /Ob2: retail Clone inlines its copy constructor, vector copying and sink retention.
 // Provenance: own-binary-via-Ghidra
 #include "_layout/enum_connections_class.h"
+#include "_layout/connection_point_class.h"
 #include <ocidl.h>
-// Native 0x4A0FA3 compares cookie and pointer for vector operations.
-inline bool operator==(const tagCONNECTDATA& left, const tagCONNECTDATA& right)
-{
-    return left.dwCookie == right.dwCookie && left.pUnk == right.pUnk;
-}
-inline bool operator!=(const tagCONNECTDATA& left, const tagCONNECTDATA& right)
-{
-    return !(left == right);
-}
 #include "vector_class_operations.h"
 #include <new.h>
 
@@ -70,4 +62,18 @@ EnumConnectionsClass::EnumConnectionsClass(const EnumConnectionsClass& other)
 EnumConnectionsClass::~EnumConnectionsClass() {
     for (int i = 0; i < Connections.GetCount(); ++i) Connections.Items[i].pUnk->Release();
     Connections.Clear();
+}
+
+// GLOBAL: GAMEMD 0x7F7CB0 - IID_IEnumConnections
+extern const GUID DAT_007F7CB0;
+
+// FUNCTION: GAMEMD 0x4A0760
+HRESULT __stdcall ConnectionPointClass::EnumConnections(IEnumConnections** ppEnum)
+{
+    if (ppEnum == 0)
+        return E_POINTER;
+    EnumConnectionsClass* e = new EnumConnectionsClass(Connections);
+    if (e == 0)
+        return E_OUTOFMEMORY;
+    return e->QueryInterface(DAT_007F7CB0, (void**)ppEnum);
 }

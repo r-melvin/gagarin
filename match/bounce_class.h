@@ -18,6 +18,8 @@
 // Engine integer world coordinate (3x int32). Filled by GetCoords.
 #include "_layout/coord_struct.h"
 
+struct AbstractNoInit;
+
 class BounceClass
 {
 public:
@@ -29,6 +31,10 @@ public:
     // Retail's constructors (inline in the AnimClass constructors 0x421EA0 / 0x422720) store zero over +0x00..+0x17
     // (three eight-byte members) and call the out-of-line quaternion constructor 0x645C30 for the two quaternions.
     BounceClass() : unknown_00(0.0), unknown_08(0.0), unknown_10(0.0), CurrentAngle(), unknown_40() {}
+
+    // No-init form (VoxelAnimClass::Load at 0x74A970 builds no bounce state): nothing is stored.
+    // Defined inline in _layout/voxel_anim_noinit.h.
+    BounceClass(const AbstractNoInit& noInit);
 
     double         unknown_00;       // +0x00; member semantics unconfirmed
     double         unknown_08;       // +0x08; qword loads at 0x439B00 and 0x74A7CE

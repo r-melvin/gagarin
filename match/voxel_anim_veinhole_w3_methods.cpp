@@ -5,6 +5,34 @@
 //   retail address order.
 
 #include "_layout/voxel_anim_class.h"
+#include "vector_class_operations.h"
+
+// GLOBAL: GAMEMD 0x887388 -- VoxelAnimClass::Array.
+extern DynamicVectorClass<VoxelAnimClass*> DAT_00887388;
+// GLOBAL: GAMEMD 0xB0F670 -- the registry every abstract object leaves when destroyed.
+extern DynamicVectorClass<AbstractClass*> DAT_00B0F670;
+// GLOBAL: GAMEMD 0xA8E9A0 -- set while the map is being torn down.
+extern bool DAT_00A8E9A0;
+
+// FUNCTION: GAMEMD 0x7499F0
+VoxelAnimClass::~VoxelAnimClass()
+{
+    AnnounceExpiredPointer(1);
+    DAT_00887388.RemoveItem(this);
+    if (unknown_108 != 0) {
+        unknown_108->vf_62();
+        unknown_108 = 0;
+    }
+    if (DAT_00A8E9A0) {
+        vf_53();
+    }
+    unknown_114.EndLooping();
+    unknown_128.EndLooping();
+    unknown_114.FUN_00405C00();
+    unknown_128.FUN_00405C00();
+    DAT_00B0F670.RemoveItem(this);
+    unknown_104 = 0;
+}
 
 // A map cell, as far as the flag word VoxelAnimClass::vf_65 tests.
 struct VoxelAnimCellView

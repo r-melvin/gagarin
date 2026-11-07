@@ -16,7 +16,19 @@ class Base64Straw : public Straw
 {
 public:
     // 0  0x52AEA0: deleting destructor; no destructor of its own is attested (calls the base destructor 0x6C9850 directly)
+    // FUNCTION: GAMEMD 0x42DF90
     virtual int FUN_006C98E0(void*, int);                         // 2  0x42DF90: override of Straw
+
+    int Control;         // +0x0C  0 = encode, otherwise decode (0x42DF90)
+    int Counter;         // +0x10  bytes of the current group not yet handed out
+    char CBuffer[4];     // +0x14  the four-character group
+    char PBuffer[3];     // +0x18  the three-byte group
+    char unknown_1B;     // +0x1B
 };
+GG_STATIC_ASSERT(offsetof(Base64Straw, Control) == 0x0C);
+GG_STATIC_ASSERT(offsetof(Base64Straw, Counter) == 0x10);
+GG_STATIC_ASSERT(offsetof(Base64Straw, CBuffer) == 0x14);
+GG_STATIC_ASSERT(offsetof(Base64Straw, PBuffer) == 0x18);
+GG_STATIC_ASSERT(sizeof(Base64Straw) == 0x1C);
 
 #endif  // GG_MATCH_LAYOUT_BASE64_STRAW_H

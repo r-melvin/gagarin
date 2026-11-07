@@ -37,6 +37,29 @@ void VeinholeMonsterClass::UpdateAllVeinholes()
     }
 }
 
+// FUNCTION: GAMEMD 0x74D5D0
+// Take damage through the object base, then react to its verdict: a kill starts the death
+// state and announces the pointer's expiry, anything short of a kill restarts the update timer.
+int VeinholeMonsterClass::vf_91(int* damage, int distance, void* warhead, void* source, bool a5, bool a6, void* house)
+{
+    int result = ObjectClass::vf_91(damage, distance, warhead, source, a5, a6, house);
+    switch (result) {
+    case 0:
+        break;
+    case 4:
+        NextState = 3;
+        AnnounceExpiredPointer(0);
+        break;
+    case 5:
+        return 5;
+    default:
+        NextState = 2;
+        UpdateStateTimer = CDTimerClass(0x78);
+        break;
+    }
+    return result;
+}
+
 // FUNCTION: GAMEMD 0x74D670
 // Reject a candidate that is too close to an existing monster or whose 3x3
 // cell neighborhood is not flat, above ground and of land type zero.

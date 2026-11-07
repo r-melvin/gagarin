@@ -7,6 +7,11 @@
 
 #include <string.h>
 #include "_layout/connection_point_class.h"
+#include "vector_class_operations.h"
+#include "_layout/scenario_ptr_00a8b230.h"
+
+// GLOBAL: GAMEMD 0xA8B230 -- the current scenario; 0x68BCB0 hands out the next advise cookie (its +0x214 counter).
+int FUN_0068BCB0(ScenarioClass* self);   // GAMEMD 0x68BCB0 (decl; reloc)
 
 
 // GLOBAL: GAMEMD 0x7F7CD0 - IID_IConnectionPointContainer (SDK import library).
@@ -45,6 +50,34 @@ HRESULT __stdcall ConnectionPointClass::GetConnectionInterface(IID* pIID)
 HRESULT __stdcall ConnectionPointClass::GetConnectionPointContainer(IConnectionPointContainer** ppCPC)
 {
     return Container->QueryInterface(IID_IConnectionPointContainer, (void**)ppCPC);
+}
+
+// FUNCTION: GAMEMD 0x4A0630
+HRESULT __stdcall ConnectionPointClass::Advise(IUnknown* pUnkSink, DWORD* pdwCookie)
+{
+    if (pUnkSink == 0 || pdwCookie == 0)
+        return E_POINTER;
+    tagCONNECTDATA data;
+    data.dwCookie = FUN_0068BCB0(DAT_00A8B230);
+    if (pUnkSink->QueryInterface(Iid, (void**)&data.pUnk) < 0)
+        return (HRESULT)0x80040202L; // CONNECT_E_CANNOTCONNECT
+    if (!Connections.AddItem(data))
+        return (HRESULT)0x80040201L; // CONNECT_E_ADVISELIMIT
+    *pdwCookie = data.dwCookie;
+    return S_OK;
+}
+
+// FUNCTION: GAMEMD 0x4A0700
+HRESULT __stdcall ConnectionPointClass::Unadvise(DWORD dwCookie)
+{
+    int count = Connections.Count;
+    for (int index = 0; index < count; ++index) {
+        if (Connections.Items[index].dwCookie == dwCookie) {
+            Connections.Delete(index);
+            return S_OK;
+        }
+    }
+    return (HRESULT)0x80040200L; // CONNECT_E_NOCONNECTION
 }
 
 // BEGIN defined globals (define_globals.py)

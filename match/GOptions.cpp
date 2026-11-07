@@ -407,6 +407,8 @@ GraphicMenu::~GraphicMenu()
     DAT_00887308->CopyFromWhole(DAT_0088730C, false, true);
 }
 
+// SYNTHETIC: GAMEMD 0x4F2830 -- compiler-generated scalar deleting destructor of ~GraphicMenu (slot 0; calls 0x4F21A0).
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4F2850
 // DynamicVectorClass<GraphicMenuItem*>::Clear

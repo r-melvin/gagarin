@@ -34,10 +34,15 @@ GG_STATIC_ASSERT(sizeof(Quaternion) == 0x10);
 // declared default-argument constructor produces: the inline Quaternion
 // constructors are expanded in place and a plain array would not push them.
 // A separate type keeps the inline Quaternion constructors of other users.
+struct AbstractNoInit;
 struct QuaternionEntry : Quaternion
 {
     // FUNCTION: GAMEMD 0x645C30 (decl; reloc) -- shared with the stored-four-words constructor there.
     QuaternionEntry(float x = 0.0f, float y = 0.0f, float z = 0.0f, float w = 1.0f);
+    // No-init form used by pointer-fixup loaders: leaves the four floats untouched. Defined inline in
+    // voxel_anim_noinit.h, which only the TUs that build such an object include (a body here would shift
+    // the compiler's counters in every includer).
+    QuaternionEntry(const AbstractNoInit&);
 };
 GG_STATIC_ASSERT(sizeof(QuaternionEntry) == 0x10);
 

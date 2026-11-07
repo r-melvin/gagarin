@@ -74,6 +74,7 @@ public:
     static void UpdateAllVeinholes();           // 0x74CDF0
     static void DestroyAll();                   // 0x74EA30
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty); // 6, 0x74EEE0
+    virtual int vf_91(int* damage, int distance, void* warhead, void* source, bool a5, bool a6, void* house); // 91, 0x74D5D0
     void RecalculateSpread();                  // 0x74E6B0
     void Recalculate();                        // 0x74E930
     VeinholeLogic GrowthLogic;                 // +0xAC (0x1C) see note

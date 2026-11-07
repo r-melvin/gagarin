@@ -57,8 +57,8 @@ public:
     virtual void vf_69(Point2D* point, RectangleStruct* clip);  // 69  0x75F9F0: override of ObjectClass (RET 8)
     void* unknown_AC;  // +0xAC store at 0x75E975; cleared by vf_10 when it expires (0x75F610)
     int unknown_B0;  // +0xB0 store at 0x75E97B
-    CoordStruct unknown_B4;  // +0xB4 the coordinate the constructor places the wave at (slot 54 argument, 0x75EB4F)
-    unsigned char unknown_C0[12];  // +0xC0
+    CoordStruct unknown_B4;  // +0xB4 the coordinate the constructor places the wave at (slot 54 argument, 0x75EB4F); 0x75F9F0 asks the map whether it is fogged
+    CoordStruct unknown_C0;  // +0xC0 second endpoint; 0x75F9F0 asks the map whether it is fogged
     Point2D unknown_CC;  // +0xCC first screen point (0x75F230 argument, 0x75EB34)
     Point2D unknown_D4;  // +0xD4 (copied to the +0x14C block at 0x75EBA2)
     Point2D unknown_DC;  // +0xDC (copied to the +0x14C block at 0x75EB71)
@@ -86,10 +86,19 @@ public:
     WaveFacing_1D8 unknown_1D8;  // +0x1D8 (0x18)
     DynamicVectorClass<CellClass*> unknown_1F0;  // +0x1F0 (0x18) vptr store at 0x75E9FE; Save writes Count entries of Items (0x75F7D0)
     unsigned char unknown_208[56];  // +0x208
+    // FUNCTION: GAMEMD 0x75F330 (decl; reloc) -- one stack argument
+    void FUN_0075F330(CoordStruct* coord);
+    // FUNCTION: GAMEMD 0x75FA90 (decl; reloc) -- draw arm for wave kind 0
+    void FUN_0075FA90(Point2D* point, RectangleStruct* clip);
+    // FUNCTION: GAMEMD 0x7602E0 (decl; reloc) -- draw arm for wave kind 3
+    void FUN_007602E0(Point2D* point, RectangleStruct* clip);
+    // FUNCTION: GAMEMD 0x7609E0 -- draw arm for wave kinds 1 and 2
+    void FUN_007609E0(Point2D* point, RectangleStruct* clip);
 };
 GG_STATIC_ASSERT(offsetof(WaveClass, unknown_AC) == 0xAC);
 GG_STATIC_ASSERT(offsetof(WaveClass, unknown_B0) == 0xB0);
 GG_STATIC_ASSERT(offsetof(WaveClass, unknown_B4) == 0xB4);
+GG_STATIC_ASSERT(offsetof(WaveClass, unknown_C0) == 0xC0);
 GG_STATIC_ASSERT(offsetof(WaveClass, unknown_CC) == 0xCC);
 GG_STATIC_ASSERT(offsetof(WaveClass, unknown_D4) == 0xD4);
 GG_STATIC_ASSERT(offsetof(WaveClass, unknown_DC) == 0xDC);

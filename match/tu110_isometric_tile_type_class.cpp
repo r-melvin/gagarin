@@ -580,6 +580,8 @@ int IsometricTileTypeClass::vf_16()
     return unknown_294;
 }
 
+// SYNTHETIC: GAMEMD 0x54A170 -- compiler-generated scalar deleting destructor of ~IsometricTileTypeClass (slot 8; calls 0x544A70).
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TEMPLATE: GAMEMD 0x54A1C0
 // DynamicVectorClass<unsigned short*>::Slot5 (slot 5)
