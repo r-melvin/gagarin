@@ -8,6 +8,12 @@
 #include "_layout/ebolt_class.h"
 #include "_layout/unit_class.h"
 #include "header_init_shapes.h"
+#include "vector_class_operations.h"
+#include "_layout/tactical.h"
+#include "_layout/tactical_viewport.h"
+#include "wwlib/surface/surface_class.h"
+
+void __cdecl operator delete(void*);
 
 // FUNCTION: GAMEMD 0x4C1E10
 //
@@ -24,6 +30,43 @@ EBolt::EBolt()
     Owner = 0;
     Point2 = z;
     WeaponSlot = 0;
+}
+
+// Draw one bolt when its end points fall on screen, count its phase and halve its life counter.
+static inline void DrawBolt(EBolt* bolt)
+{
+    if (bolt->At_28 != 0) {
+        Point2D a;
+        Point2D b;
+        DAT_00887324->CoordsToClient(&bolt->Point1, &a);
+        DAT_00887324->CoordsToClient(&bolt->Point2, &b);
+        if (ClipLine(&a, &b, &Viewport_00886FA0)) {
+            bolt->FUN_004C1F20(bolt->Point1, bolt->Point2, bolt->At_2C ? 5 : 10);
+        }
+        bolt->Phase++;
+    }
+    bolt->At_28 >>= 1;
+}
+
+// FUNCTION: GAMEMD 0x4C2830
+//
+// Step every live bolt, last to first: take the start point from the owner when it reports one, draw
+// it, and free it once its life counter reaches zero.
+void FUN_004C2830()
+{
+    for (int i = DAT_008A0E88.Count - 1; i >= 0; i--) {
+        EBolt* bolt = DAT_008A0E88.Items[i];
+        if (bolt->Owner != 0) {
+            CoordStruct start = bolt->Owner->vf_44(bolt->WeaponSlot, CoordStructInit(0, 0, 0));
+            if (start.X != DAT_008A0E50.X || start.Y != DAT_008A0E50.Y || start.Z != DAT_008A0E50.Z)
+                bolt->Point1 = start;
+        }
+        DrawBolt(bolt);
+        if (bolt->At_28 == 0) {
+            DAT_008A0E88.RemoveItem(bolt);
+            delete bolt;
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x4C2B40

@@ -298,6 +298,8 @@ public:
     int FUN_006F4AB0(int a1, int event, int a3);
     // FUNCTION: GAMEMD 0x63B550 (decl; reloc) -- no stack arguments.
     void FUN_0063B550();
+    // FUNCTION: GAMEMD 0x63BE60 (decl; reloc) -- no arguments.
+    void FUN_0063BE60();
     // FUNCTION: GAMEMD 0x70E260 (decl) -- non-virtual; true when the primary weapon slot names a type.
     int FUN_0070E260();
     // FUNCTION: GAMEMD 0x70DD00 (decl) -- non-virtual; latches CurrentTurretNumber into unknown_int_128 and reports a change.

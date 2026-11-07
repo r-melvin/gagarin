@@ -2690,6 +2690,55 @@ void FUN_0063B0A0()
     }
 }
 
+// FUNCTION: GAMEMD 0x63B150
+// Draw the planning overlay for the current player: each allied node's path, a box on each node's
+// marker, then each allied unit's own path.
+void FUN_0063B150()
+{
+    int nodes = PlanningLists::DAT_00AC4B30.Count;
+    int i = 0;
+    if (0 < nodes) {
+        do {
+            PlanningNodeClass* node = PlanningLists::DAT_00AC4B30.Items[i];
+            TechnoClass* first = node->Members.Items[0]->Owner;
+            if (first->Owner->IsAlliedWith(DAT_00A83D4C)) {
+                node->FUN_0063CAE0();
+            }
+            i++;
+        } while (i < nodes);
+    }
+    i = 0;
+    if (0 < nodes) {
+        do {
+            PlanningNodeClass* node = PlanningLists::DAT_00AC4B30.Items[i];
+            TechnoClass* first = node->Members.Items[0]->Owner;
+            if (first->Owner->IsAlliedWith(DAT_00A83D4C)) {
+                unsigned int color = node->FUN_00635830();
+                RectangleStruct tmp;
+                RectangleStruct clip = *FUN_0072AD20(&tmp);
+                CoordStruct coord = node->FUN_006343C0();
+                Point2D center;
+                RectangleStruct around;
+                RectangleStruct box = *FUN_00634510(&around, 8, *FUN_006339E0(&center, coord));
+                PlanningRectInflate(&box, -1);
+                DAT_0088731C->FillRectEx(&clip, &box, color);
+            }
+            i++;
+        } while (i < nodes);
+    }
+    int technos = DAT_00A8EC78.Count;
+    i = 0;
+    if (0 < technos) {
+        do {
+            TechnoClass* techno = DAT_00A8EC78.Items[i];
+            if (techno->Owner->IsAlliedWith(DAT_00A83D4C)) {
+                techno->FUN_0063BE60();
+            }
+            i++;
+        } while (i < technos);
+    }
+}
+
 #include "_layout/foot_class.h"
 
 // The checked foot test the callers of 0x63BE10 expand inline: a null guard, then the flag-bit read.

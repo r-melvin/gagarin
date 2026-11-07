@@ -16,6 +16,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "coord_struct.h"
 #include "../vector_class.h"
+#include "unit_class.h"
 
 class UnitClass;
 
@@ -24,6 +25,17 @@ class EBolt
 public:
     // FUNCTION: GAMEMD 0x4C1E10
     EBolt();
+    // Retail also keeps an out-of-line copy of this body at 0x4C1E50; the two deleters 0x4C29E0 and
+    // 0x4C2830 expand it.
+    ~EBolt()
+    {
+        if (Owner != 0) {
+            Owner->ElectricBolt = 0;
+            Owner = 0;
+        }
+    }
+    // FUNCTION: GAMEMD 0x4C1F20 (decl; reloc) -- draw the bolt between two end points with a line width (RET 0x1C).
+    void FUN_004C1F20(CoordStruct from, CoordStruct to, int width);
     // FUNCTION: GAMEMD 0x4C2A60
     void Fire(CoordStruct from, CoordStruct to, int color);
     // FUNCTION: GAMEMD 0x4C2B40
@@ -53,6 +65,9 @@ GG_STATIC_ASSERT(offsetof(EBolt, At_28) == 0x28);
 GG_STATIC_ASSERT(offsetof(EBolt, At_2C) == 0x2C);
 GG_STATIC_ASSERT(sizeof(EBolt) == 0x30);
 
+// FUNCTION: GAMEMD 0x4C2830 -- per-frame step of every live bolt: refresh the start from the owner, draw, halve the
+// life counter and free the bolt once it reaches zero.
+void FUN_004C2830();
 // GLOBAL: GAMEMD 0x8A0E88 -- the live-bolt list (EBolt::Array).
 extern DynamicVectorClass<EBolt*> DAT_008A0E88;
 // GLOBAL: GAMEMD 0x8A0E50 -- the zero coordinate (header_init_004c1b80.cpp).

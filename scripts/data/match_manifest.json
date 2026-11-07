@@ -157099,5 +157099,54 @@
   "name": "??_GRadioClass@@UAEPAXI@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/wwlib/surface/word_fill_methods.cpp",
+  "addr": "0x411330",
+  "sym": "?FUN_00411330@ABuffer@@QAEXURectangleStruct@@@Z",
+  "len": "0x179",
+  "name": "ABuffer::FUN_00411330",
+  "status": "partial",
+  "pct": 92.5,
+  "best_pct": 92.5,
+  "best_at": "024cc6c9"
+ },
+ {
+  "tu": "match/ebolt_class.cpp",
+  "addr": "0x4C2830",
+  "sym": "?FUN_004C2830@@YIXXZ",
+  "len": "0x1a9",
+  "name": "?FUN_004C2830@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/id_text_unit_004c4d00.cpp",
+  "addr": "0x4C4EF0",
+  "sym": "?FUN_004C4EF0@Obj_004C4F90@@QAEPAU1@PBD@Z",
+  "len": "0x9e",
+  "name": "Obj_004C4F90::FUN_004C4EF0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/PlanMgr.cpp",
+  "addr": "0x63B150",
+  "sym": "?FUN_0063B150@@YIXXZ",
+  "len": "0x19b",
+  "name": "?FUN_0063B150@@YIXXZ",
+  "status": "partial",
+  "pct": 91.0,
+  "best_pct": 91.0,
+  "best_at": "024cc6c9"
+ },
+ {
+  "tu": "match/wwlib/vqa/r25_3_fill_leaves.cpp",
+  "addr": "0x7BCFB0",
+  "sym": "?FUN_007BCFB0@ZBuffer@@QAEXURectangleStruct@@@Z",
+  "len": "0x173",
+  "name": "ZBuffer::FUN_007BCFB0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

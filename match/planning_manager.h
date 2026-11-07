@@ -145,6 +145,10 @@ public:
     void FUN_00635310();
     // FUNCTION: GAMEMD 0x63C690 (decl; reloc) -- no arguments.
     void FUN_0063C690();
+    // FUNCTION: GAMEMD 0x63CAE0 (decl; reloc) -- no arguments.
+    void FUN_0063CAE0();
+    // FUNCTION: GAMEMD 0x635830 (decl; reloc) -- the colour the node's marker is drawn in.
+    unsigned int FUN_00635830();
     // FUNCTION: GAMEMD 0x635350
     void FUN_00635350(unsigned int color);
     void FUN_00635560(unsigned int color);

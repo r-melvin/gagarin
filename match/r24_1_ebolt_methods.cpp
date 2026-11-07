@@ -16,13 +16,7 @@ void FUN_004C29E0()
 {
     for (int i = 0; i < DAT_008A0E88.Count; i++) {
         EBolt* bolt = DAT_008A0E88.Items[i];
-        if (bolt != 0) {
-            if (bolt->Owner != 0) {
-                bolt->Owner->ElectricBolt = 0;
-                bolt->Owner = 0;
-            }
-            delete bolt;
-        }
+        delete bolt;
     }
     DAT_008A0E88.Clear();
 }

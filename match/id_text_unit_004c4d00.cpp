@@ -11,6 +11,7 @@
 #include "_layout/obj_004c4f90.h"
 #include "_layout/obj_004a1d30.h"
 #include "header_tuning_globals.h"
+#include "ccini_class_techno_type_methods.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 
@@ -33,6 +34,35 @@ TuningCoordInit DAT_008A37F8(128, 128, 0);
 extern char DAT_008A37A0[];
 // STRING: GAMEMD 0x82085C
 // "%d,%s"
+
+// FUNCTION: GAMEMD 0x4C4EF0
+// Parses "<number>,<type ID>" into this entry; the type is looked up by ID in the aircraft, building
+// and infantry type arrays in turn.
+Obj_004C4F90* Obj_004C4F90::FUN_004C4EF0(const char* text)
+{
+    char name[0x40];
+    int  number;
+    int  index;
+
+    Amount = 0;
+    Type = 0;
+    sscanf(text, "%d,%s", &number, name);
+    Amount = number;
+    index = FUN_00523C90(name);
+    if (index != -1) {
+        Type = DAT_00A8E34C[index];
+    } else {
+        index = FUN_00747370(name);
+        if (index != -1) {
+            Type = DAT_00A83CE4[index];
+        } else {
+            index = FUN_0041CAA0(name);
+            if (index != -1)
+                Type = DAT_00A8B21C[index];
+        }
+    }
+    return this;
+}
 
 // FUNCTION: GAMEMD 0x4C4F90
 char* Obj_004C4F90::FUN_004C4F90() const
