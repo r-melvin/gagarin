@@ -156526,5 +156526,16 @@
   "pct": 91.1,
   "best_pct": 91.1,
   "best_at": "1a145394"
+ },
+ {
+  "tu": "match/aircraft_class_methods.cpp",
+  "addr": "0x419C80",
+  "sym": "?vf_144@AircraftClass@@UAEHXZ",
+  "len": "0x4BF",
+  "name": "AircraftClass::vf_144",
+  "status": "partial",
+  "pct": 99.0,
+  "best_pct": 99.0,
+  "best_at": "4527457e"
  }
 ]

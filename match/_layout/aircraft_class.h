@@ -33,6 +33,7 @@
 
 class AircraftTypeClass;
 class HouseClass;
+class CellClass;
 
 class AircraftClass : public FootClass, public IFlyControl
 {
@@ -49,6 +50,11 @@ public:
     virtual int vf_11();   // 11  0x41C180
     virtual int vf_12();   // 12  0x41C170
     virtual bool vf_54(const CoordStruct& coord, int a2);   // 54  0x414310: places the aircraft on the map
+    // FUNCTION: GAMEMD 0x41A160 (decl; reloc) -- the flyer's own parking cell (thiscall, no stack arguments).
+    CellClass* FUN_0041A160();
+    // FUNCTION: GAMEMD 0x416AF0 (decl; reloc) -- thiscall, no stack arguments.
+    void FUN_00416AF0();
+    virtual int vf_144();                                   // 144 0x419C80: the mission step for the carryall dock approach
     virtual void vf_9();   // 9   0x413F80: TechnoClass::vf_9 (0x6F3F40) first, then the type-driven setup; the constructor calls it
     // +0x6C0: IFlyControl vptr; ctor: MOV [ESI+0x6C0],0x7E2250 @0x00413DA2;
     //   RTTI COL base-offset 0x6C0 confirms it.
