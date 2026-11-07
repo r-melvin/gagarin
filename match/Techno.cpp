@@ -1557,6 +1557,18 @@ static inline bool IsFootObject(TechnoClass* object)
     return object && object->Flags.IsFoot;
 }
 
+// The same test as retail inlined it into 0x709290 (test esi,esi at 0x7092B3 and 0x709321): the flag goes through a bool
+// result kept in a stack byte (0x7092BF). IsFootObject folds to a TEST there (3.1%), and giving it this form regresses
+// TechnoClass::vf_232 and vf_240, so the two shapes are measured, not a choice.
+static inline bool NullSafeIsFoot(AbstractClass* object)
+{
+    bool result = false;
+    if (object) {
+        result = object->Flags.IsFoot;
+    }
+    return result;
+}
+
 static inline FootClass* AsFootByRtti(TechnoClass* object)
 {
     if (object && object->vf_11() == 1) {
@@ -3247,6 +3259,45 @@ EBolt* TechnoClass::FUN_006FD570(AbstractClass* target)
     return bolt;
 }
 
+// FUNCTION: GAMEMD 0x6FDB80
+// The damage this object's weapon does to a target after both sides' multipliers and rank
+// bonuses: the shooter's firepower and (with the combat ability) the veteran bonus, then
+// the target house's armor multiplier, the target's own armor ability bonus, and finally
+// the warhead's verses against the target's armor. Zero for no target or a weapon that
+// does not damage.
+int TechnoClass::FUN_006FDB80(TechnoClass* target, WeaponTypeClass* weapon)
+{
+    int damage = weapon->Damage;
+    if (target != 0 && !weapon->IsSonic && !weapon->UseFireParticles) {
+        if (damage <= 0) {
+            return damage;
+        }
+        int boosted = (int)(Owner->FirepowerMultiplier * FirepowerMultiplier * damage);
+        VeterancyStruct* vet = &Veterancy;
+        if (vet->FUN_0074FF90() || vet->FUN_00750010()) {
+            TechnoTypeClass* type = vf_33();
+            if ((vet->FUN_0074FF90() && type->VeteranAbilities._raw[2])
+                || (vet->FUN_00750010() && (type->VeteranAbilities._raw[2] || type->EliteAbilities._raw[2]))) {
+                boosted = (int)(boosted * RulesInstance->VeteranCombat);
+            }
+        }
+        int reduced = (int)(boosted / (target->Owner->GetArmorMultiplier(vf_33()) * ArmorMultiplier));
+        VeterancyStruct* targetVet = &target->Veterancy;
+        if (targetVet->FUN_0074FF90() || targetVet->FUN_00750010()) {
+            TechnoTypeClass* targetType = target->vf_33();
+            if ((targetVet->FUN_0074FF90() && targetType->VeteranAbilities._raw[1])
+                || (targetVet->FUN_00750010() && (targetType->VeteranAbilities._raw[1] || targetType->EliteAbilities._raw[1]))) {
+                reduced = (int)(reduced / RulesInstance->VeteranArmor);
+            }
+        }
+        if (reduced < 1) {
+            reduced = 1;
+        }
+        return MapClass::GetTotalDamage(reduced, weapon->Warhead, target->vf_34()->Armor, 0);
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x6FF950
 // Empty function.
 void __cdecl FUN_006FF950()
@@ -4288,6 +4339,68 @@ bool Obj_007091D0::CanPassiveAcquireTargets()
         }
     }
     return false;
+}
+
+#include "_layout/team_type_class.h"
+#include "planning_manager.h"
+
+// FUNCTION: GAMEMD 0x709290
+// May this object look for a new target. A foot object of a computer house that has no target
+// and sits on an aggressive, non-suicide team may while it guards (mission 2). Otherwise the
+// passive-acquire gate decides, and while guarding a balloon-hover type or a simple deployer
+// that already stands on its destination may retarget only when no planning token is in
+// progress. A type with opportunity fire always may; an object not attacking (mission 5)
+// never may; an attacking one may not retarget onto an area-fire weapon it already aims.
+bool TechnoClass::FUN_00709290()
+{
+    // THISNULL: GAMEMD 0x459F40
+    if (Target == 0 && !Owner->IsControlledByHuman() && NullSafeIsFoot(this)
+        && ((FootClass*)this)->Team && !((FootClass*)this)->Team->Type->Suicide
+        && ((FootClass*)this)->Team->Type->Aggressive && CurrentMission == 2) {
+        return true;
+    }
+    if (!((Obj_007091D0*)this)->CanPassiveAcquireTargets()) {
+        return false;
+    }
+    if (CurrentMission == 2) {
+        if (vf_33()->BalloonHover) {
+            // THISNULL: GAMEMD 0x459F40
+            if (!NullSafeIsFoot(this)) {
+                return false;
+            }
+            if (((FootClass*)this)->Destination == vf_111()) {
+                if (PlanningToken == 0 || ((PlanningTokenClass*)PlanningToken)->FUN_00636DC0() <= 0) {
+                    return true;
+                }
+            }
+        }
+    }
+    // Retail tests this itself and branches: test esi,esi / je 0x7093D5 at 0x70936E, then cmp eax,1 / jne 0x7093D5 on
+    // vf_11() at 0x709379. The helper yields only its mask form (0x709385); it was tried first and scored 41.1%.
+    // THISNULL: GAMEMD 0x459F40
+    if (CurrentMission == 2 && this && vf_11() == 1
+        && ((UnitTypeClass*)AsUnitByRtti(this)->Type)->IsSimpleDeployer) {
+        FootClass* foot = AsFootByFlag(this);
+        if (foot->Destination == vf_111()) {
+            if (PlanningToken == 0 || ((PlanningTokenClass*)PlanningToken)->FUN_00636DC0() <= 0) {
+                return true;
+            }
+        }
+    }
+    if (vf_33()->OpportunityFire) {
+        return true;
+    }
+    if (CurrentMission != 5) {
+        return false;
+    }
+    int weaponIndex = vf_249();
+    WeaponStruct* weapon = vf_254(weaponIndex);
+    bool areaFire = weapon && weapon->WeaponType && weapon->WeaponType->AreaFire;
+    bool sameWeapon = vf_185(Target) == weaponIndex;
+    if (areaFire && sameWeapon) {
+        return false;
+    }
+    return true;
 }
 
 // FUNCTION: GAMEMD 0x709460

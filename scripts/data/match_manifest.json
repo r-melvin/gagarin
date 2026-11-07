@@ -22613,7 +22613,7 @@
  {
   "tu": "match/House.cpp",
   "addr": "0x50BD30",
-  "sym": "?GetArmorMultiplier@HouseClass@@QAEMPAVTechnoClass@@@Z",
+  "sym": "?GetArmorMultiplier@HouseClass@@QAEMPAVTechnoTypeClass@@@Z",
   "len": "0xba",
   "name": "HouseClass::GetArmorMultiplier",
   "status": "matched",
@@ -24143,7 +24143,7 @@
  {
   "tu": "match/map_class_total_damage_methods.cpp",
   "addr": "0x489180",
-  "sym": "?GetTotalDamage@MapClass@@SIHHPAUWarheadType_00489180@@HH@Z",
+  "sym": "?GetTotalDamage@MapClass@@SIHHPAVWarheadTypeClass@@HH@Z",
   "len": "0xED",
   "name": "MapClass::GetTotalDamage",
   "status": "matched",
@@ -156237,6 +156237,26 @@
   "sym": "?vf_36@UnitClass@@UAEPBGXZ",
   "len": "0x165",
   "name": "UnitClass::vf_36",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Techno.cpp",
+  "addr": "0x6FDB80",
+  "sym": "?FUN_006FDB80@TechnoClass@@QAEHPAV1@PAVWeaponTypeClass@@@Z",
+  "len": "0x1c2",
+  "name": "TechnoClass::FUN_006FDB80",
+  "status": "partial",
+  "pct": 84.2,
+  "best_pct": 84.2,
+  "best_at": "b9ffad29"
+ },
+ {
+  "tu": "match/Techno.cpp",
+  "addr": "0x709290",
+  "sym": "?FUN_00709290@TechnoClass@@QAE_NXZ",
+  "len": "0x1c5",
+  "name": "TechnoClass::FUN_00709290",
   "status": "matched",
   "pct": 100.0
  }

@@ -298,7 +298,7 @@ GG_STATIC_ASSERT(offsetof(RadarArrayHolder, unknown_04) == 0x04);
 GG_STATIC_ASSERT(offsetof(RadarArrayHolder, unknown_08) == 0x08);
 GG_STATIC_ASSERT(offsetof(RadarArrayHolder, unknown_0C) == 0x0C);
 GG_STATIC_ASSERT(sizeof(RadarArrayHolder) == 0x10);
-struct WarheadType_00489180;    // map_class_total_damage_methods.cpp
+class WarheadTypeClass;
 struct RadarDiamond;    // Radar.cpp
 class Pipe;
 class Straw;
@@ -452,7 +452,7 @@ public:
     // FUNCTION: GAMEMD 0x56BCD0 -- threat posed at a cell to a house.
     int GetThreatPosed(const CellStruct& cell, HouseClass* pHouse) const;
     // FUNCTION: GAMEMD 0x489180 -- the damage after armour and distance.
-    static int GetTotalDamage(int damage, WarheadType_00489180* warhead, int armor, int distance);
+    static int GetTotalDamage(int damage, WarheadTypeClass* warhead, int armor, int distance);
 
     char  unknown_10[0x14 - 0x10];                   // +0x0010
     MapBucketTable<MapBucketA>* BucketsA;            // +0x0014

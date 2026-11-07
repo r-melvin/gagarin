@@ -628,7 +628,7 @@ public:
     bool GainedPoweredCenter(TechnoTypeClass* type);            // 0x50E1B0
     bool IsAlliedWith(int idxHouse) const;                      // 0x4F9A10
     bool IsAlliedWith(ObjectClass const* pObject) const;        // 0x4F9A90
-    float GetArmorMultiplier(TechnoClass* subject);             // 0x50BD30
+    float GetArmorMultiplier(TechnoTypeClass* subject);             // 0x50BD30
     void DestroyAll();                                          // 0x4FC6D0
     void DestroyAllBuildings();                                 // 0x4FC790
     void DestroyAllNonBuildingsNonNaval();                      // 0x4FC820

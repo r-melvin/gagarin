@@ -11,21 +11,6 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
-// Minimal WarheadTypeClass view: the per-armor multiplier table and the
-// spread/falloff pair.
-struct WarheadType_00489180
-{
-    char   _pad000[0xA0];            // +0x0000
-    double Verses[11];               // +0x00A0
-    char   _pad0F8[0x124 - 0xF8];    // +0x00F8
-    float  CellSpread;               // +0x0124
-    char   _pad128[4];               // +0x0128
-    float  PercentAtMax;             // +0x012C
-};
-GG_STATIC_ASSERT(offsetof(WarheadType_00489180, Verses) == 0xA0);
-GG_STATIC_ASSERT(offsetof(WarheadType_00489180, CellSpread) == 0x124);
-GG_STATIC_ASSERT(offsetof(WarheadType_00489180, PercentAtMax) == 0x12C);
-
 // Minimal RulesClass view: the damage cap.
 struct Rules_00489180
 {
@@ -46,6 +31,7 @@ extern Scenario_00489180* ScenarioInstance;
 // GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance.
 extern Rules_00489180* RulesInstance;
 
+#include "_layout/warhead_type_class.h"
 #include "ui_display_chain.h"
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_TOTAL_DAMAGE_METHODS_H

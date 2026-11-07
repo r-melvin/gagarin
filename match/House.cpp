@@ -5160,9 +5160,9 @@ void HouseClass::ReshroudMap()
 // this to a byte index table plus a jump table rather than a compare chain —
 // the labels 3, 7, 0x10 and 0x28 span a range dense enough for VC6 to prefer
 // it — so a `switch` is the construct that reproduces it (§4.6).
-float HouseClass::GetArmorMultiplier(TechnoClass* subject)
+float HouseClass::GetArmorMultiplier(TechnoTypeClass* subject)
 {
-    switch (TECHNO_WHAT_AM_I(subject))
+    switch (subject->vf_11())
     {
     case ABS_KIND_10:
         return ((HouseArmorRecord*)this->Type)->Mult_100;
