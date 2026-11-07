@@ -32,6 +32,7 @@ public:
     virtual int vf_11();                                                  // 11 0x4370B0
     virtual int vf_12();                                                  // 12 0x436900
     virtual int vf_30();                                                  // 30 0x4369F0
+    virtual void vf_23();                                                 // 23 0x4361D0
     virtual ObjectTypeClass* vf_34();                                     // 34 0x4369E0
 
     // FUNCTION: GAMEMD 0x436F40 -- slot 13, the synchronisation checksum.

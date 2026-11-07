@@ -7,21 +7,10 @@
 
 #include "_layout/building_light_class.h"
 #include "rules_class.h"
+#include "building_light_distance.h"
 
-// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- sqrt.
-extern "C" double __cdecl FUN_004CAC40(double value);
 // GLOBAL: GAMEMD 0x7E3A98 -- scale applied to the light's range.
 extern const double DAT_007E3A98;
-
-// The straight-line distance from `from` to `to`, expanded inline at both users.
-static inline int DistanceBetween_00436DA0(const CoordStruct& to, const CoordStruct& from)
-{
-    int dx = to.X - from.X;
-    int dy = to.Y - from.Y;
-    int dz = to.Z - from.Z;
-    double squared = (double)dy * dy + (double)dz * dz + (double)dx * dx;
-    return (int)FUN_004CAC40(squared);
-}
 
 // FUNCTION: GAMEMD 0x436DA0
 //
