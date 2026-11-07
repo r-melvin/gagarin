@@ -27,6 +27,7 @@
 
 // Returned by value from slots 18, 19 and 22 (defined in object_class.h).
 struct CoordStruct;
+struct DirStruct;
 class HouseClass;
 // The checksum sink slot 13 feeds (0x4A1CA0 / 0x4A1D50; _layout/obj_004a1d30.h).
 struct Obj_004A1D30;
@@ -128,6 +129,10 @@ public:
 
     // FUNCTION: GAMEMD 0x5F6500 -- the squared planar distance (slot 18 coordinates) to another object, 0 for none; RET 4.
     int FUN_005F6500(AbstractClass* other);
+    // FUNCTION: GAMEMD 0x5F3DB0 -- the direction to a target, through a hidden result pointer (RET 8).
+    DirStruct* FUN_005F3DB0(DirStruct* out, AbstractClass* target);
+    // FUNCTION: GAMEMD 0x5F6560 -- squared planar distance to a coordinate (by reference, RET 4).
+    int FUN_005F6560(const CoordStruct& coord);
 
     int   UniqueID;                 // +0x10
     // +0x14: the flag byte. Retail only ever touches it with byte operations:

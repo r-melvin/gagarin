@@ -2,6 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 
 #include "leaf_batch3_methods.h"
+#include "_layout/facing_class.h"
 
 // FUNCTION: GAMEMD 0x004C6320
 //
@@ -45,9 +46,9 @@ GgHresult PersistPayload_004C6320::SaveToStream(IStream_004C6320* stream)
 // has it. A by-value return of the four-byte class produces the same bytes, so
 // this is a case where the disassembly alone does not separate the two forms
 // and the call site does.
-Dir_004C9470* FacingSlot_004C9470::Read(Dir_004C9470* out)
+DirStruct* FacingClass::FUN_004C9470(DirStruct* out)
 {
-    *out = this->Value;
+    *out = this->DesiredFacing;
     return out;
 }
 

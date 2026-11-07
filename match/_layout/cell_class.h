@@ -42,6 +42,7 @@ class PixelFXClass;
 class LightConvertClass;
 
 class BuildingClass;
+class TechnoClass;
 class BuildingTypeClass;
 class HouseClass;
 class FoggedObjectClass;
@@ -73,6 +74,8 @@ public:
     bool FUN_00487C10();
     // Declaration: GAMEMD 0x484AB0 (defined in leaf_sweep_w1c.cpp) -- true when the tube index is within the registry and the land type is 10.
     bool InRange();
+    // FUNCTION: GAMEMD 0x484F10 -- whether the cell takes the unit: always (one stack argument, RET 4).
+    bool FUN_00484F10(TechnoClass* techno);
     RectangleStruct FUN_0047FB90(); // 0x47FB90
     RectangleStruct FUN_0047FDE0(); // 0x47FDE0
     // Declarations: point and clip pointers, RET8.
@@ -90,6 +93,8 @@ public:
     bool IsClearToMove(int speedType, bool ignoreInfantry, bool ignoreVehicles,
                        int zone, int movementZone, int level, bool isBridge);
     void FUN_0047D2B0(int value); // GAMEMD 0x47D2B0; caller0x684FAB
+    // FUNCTION: GAMEMD 0x481670 (decl; reloc) -- __thiscall, RET 0x10.
+    void FUN_00481670(const CoordStruct* coord, int a, int b, char c);
     int FUN_00480A80(int value); // GAMEMD 0x480A80 (decl; reloc), RET 4; returns the amount taken (UnitClass::FUN_0073D450 tests it)
     void RecalcAttributes_484680(); // GAMEMD 0x484680, __thiscall
     int FUN_00487D50(); // GAMEMD 0x487D50 (decl; reloc): Level + 4 * (Flags bit 7)

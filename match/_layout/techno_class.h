@@ -216,6 +216,12 @@ public:
 
     // FUNCTION: GAMEMD 0x6F3970 (decl; reloc) -- thiscall, one stack argument (RET 4): the weapon's damage for a weapon slot (-1: the current one).
     int CombatDamage(int which);
+    // FUNCTION: GAMEMD 0x70E240 -- whether the weapon slot holds a weapon (one stack argument, RET 4).
+    bool FUN_0070E240(WeaponStruct* weapon);
+    // FUNCTION: GAMEMD 0x70E000 -- steps the gattling stage down (one stack argument, RET 4).
+    void GattlingRateDown(int rate);
+    // FUNCTION: GAMEMD 0x70F6E0 -- restamp this object's threat contribution into the cell (one stack argument, RET 4).
+    void UpdateThreatInCell(CellClass* cell);
 
     // FUNCTION: GAMEMD 0x709550 -- thiscall, no stack arguments.
     void FUN_00709550();

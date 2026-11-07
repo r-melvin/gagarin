@@ -2536,7 +2536,7 @@ void __stdcall FUN_00484A90(Arg1_00484A90* a1)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x484F10
-bool __stdcall FUN_00484F10(int)
+bool CellClass::FUN_00484F10(TechnoClass*)
 {
     return true;
 }

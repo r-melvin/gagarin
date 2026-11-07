@@ -88,6 +88,10 @@ public:
     virtual unsigned long DisguiseAs(AbstractClass* target); // 283 0x746670
     virtual void vf_284();                              // 284 0x746720
     virtual int vf_151();                               // 151 0x740B10
+    virtual int vf_28(CellStruct* cell, char a2, char a3);       // 28  0x7404B0
+    virtual bool EnterIdleMode(bool initial, bool a2);           // 289 0x738970
+    virtual int vf_240(AbstractClass* target, int a2, bool a3); // 240 0x740FD0
+    virtual void vf_333(int a1, int a2);                // 333 0x7416A0
     virtual bool vf_53();                               // 53  0x7440B0
     virtual bool vf_80(int mode, CellStruct* cell, int a3, int a4); // 80  0x738910
     virtual bool vf_81(int a1, ObjectClass* a2, int a3);// 81  0x738890
@@ -108,6 +112,9 @@ public:
     virtual int vf_139();                              // 139 0x740A90
     int FUN_007438B0();                                // 0x7438B0
     void FUN_00740E60();                               // 0x740E60
+    void FUN_00736990();                               // 0x736990: keeps the turret and body facing in step with the target
+    void FUN_00737180();                               // 0x737180: the visceroid's wander
+    void FUN_00736DF0();                               // 0x736DF0: acts on the answer of slot 240 for the current target
     bool FUN_00736C10();                               // 0x736C10: crash-lands a unit that has left the map
     // Slots 341-343, introduced by UnitClass (344 slots in all; retail table 0x7F5C70).
     // Names are placeholders; argument counts come from RET n, return types are not recovered.

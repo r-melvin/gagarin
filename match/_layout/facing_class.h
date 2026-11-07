@@ -80,6 +80,8 @@ struct FacingClass
     void FUN_004C9300(const DirStruct* facing);
     // FUNCTION: GAMEMD 0x4C9680 (decl; reloc) -- sets the rotation rate (one stack argument, RET 4).
     void FUN_004C9680(int rate);
+    // FUNCTION: GAMEMD 0x4C9470 -- copies the desired facing out through the hidden pointer (one stack argument, RET 4).
+    DirStruct* FUN_004C9470(DirStruct* out);
     DirStruct FUN_004C9530() const;
     DirStruct FUN_004C95D0(const DirStruct* other) const;
 

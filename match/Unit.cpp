@@ -36,6 +36,7 @@
 
 #include "scenario_class_methods.h"
 #include "unit_class_occupation_methods.h"
+#include "_layout/map_0087f7e8.h"
 #include "ui_display_chain.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
@@ -58,6 +59,8 @@ extern int DAT_00B1D0A0;
 extern int DAT_00B1D0A4;
 // GLOBAL: GAMEMD 0xB1D0A8
 extern int DAT_00B1D0A8;
+// GLOBAL: GAMEMD 0xB1D0AC
+extern int DAT_00B1D0AC;
 // GLOBAL: GAMEMD 0xB1D0B0
 extern double DAT_00B1D0B0;
 
@@ -88,13 +91,28 @@ extern double DAT_00B1D0B0;
 #include "_layout/building_class.h"
 #include "_layout/unit_type_class.h"
 #include "_layout/techno_type_class.h"
+#include "_layout/spawn_manager_class.h"
+// The mission control record (canonical view).
+#include "mission_class_methods.h"
+#include "_layout/fogged_object_class.h"
+#include "loco_interfaces.h"
+#include "bullet_type_class.h"
+#include "whatami_dispatch_methods.h"
+#include "mathtbl_init_shapes.h"
+#include "_layout/voc_class.h"
+#include "map_class_area_methods.h"
 
+// GLOBAL: GAMEMD 0x8458B0 -- the stage of the visceroid animation for each of the eight facings.
+extern int DAT_008458B0[8];
 // GLOBAL: GAMEMD 0xA83D84 -- OverlayTypeClass::Array.Items.
 extern OverlayTypeClass** DAT_00A83D84;
 // GLOBAL: GAMEMD 0x8871E0 -- the rules.
 extern RulesClass* DAT_008871E0;
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- localised string lookup, label and flags in registers, file and line on the stack.
 wchar_t* FUN_00734E60(const char* label, int flags, const char* file, int line);
+
+// FUNCTION: GAMEMD 0x7DC720 (decl; reloc) -- the missing-pointer report of the smart-pointer dereference (E_POINTER).
+void __stdcall FUN_007DC720(unsigned int hr);
 
 // GLOBAL: GAMEMD 0xA8B230 -- the scenario.
 extern ScenarioClass* DAT_00A8B230;
@@ -119,6 +137,78 @@ void __cdecl FUN_00735350()
     DAT_00B1D0A4 = 0x80;
 }
 
+
+// FUNCTION: GAMEMD 0x736990
+// Keeps the turret and body facing in step with the target. A unit that has a target turns its
+// turret to it (or to the body facing when the weapon's turret is locked); a turretless unit
+// that stands still on the spot turns its body; a spinning turret keeps rotating; otherwise it
+// follows the destination (or the body) once the guard delay has passed. Records whether the
+// turret is still turning.
+void UnitClass::FUN_00736990()
+{
+    DirStruct dir;
+    if (Target && !unknown_bool_6AF) {
+        DirStruct scratch;
+        dir = *FUN_005F3DB0(&scratch, Target);
+        if (Type->Turret) {
+            WeaponStruct* weapon = GetPrimaryWeapon();
+            if (FUN_0070E240(weapon) && !weapon->WeaponType->OmniFire) {
+                if (weapon->TurretLocked) {
+                    SecondaryFacing.SetDesired(*PrimaryFacing.FUN_004C93D0(&scratch));
+                } else {
+                    SecondaryFacing.SetDesired(dir);
+                }
+            }
+        } else if (Type->SpeedType == 1 && !Destination) {
+            if (Locomotor == 0) {
+                FUN_007DC720(0x80004003);
+            }
+            if (!static_cast<ILocomotion*>(Locomotor)->IsMoving()) {
+                if (PrimaryFacing.FUN_004C93D0(&scratch)->Raw == dir.Raw) {
+                    PrimaryFacing.SetDesired(dir);
+                }
+            }
+        }
+    }
+    if (Type->TurretSpins) {
+        DirStruct scratch;
+        int index = ((SecondaryFacing.FUN_004C93D0(&scratch)->Whole >> 7) + 1) >> 1 & 0xFF;
+        dir.Raw = (unsigned short)((index + 8) << 8);
+        SecondaryFacing.SetDesired(dir);
+    } else {
+        unknown_bool_6AF = 0;
+        if (Type->Turret) {
+            if (SecondaryFacing.IsRotating()) {
+                if (!Type->TurretSpins) {
+                    unknown_bool_6AF = SecondaryFacing.IsRotating();
+                }
+            } else if (!Target) {
+                bool ready = true;
+                if (CurrentFrame - LastFireBulletFrame < DAT_008871E0->GuardAreaTargetingDelay + 5) {
+                    ready = false;
+                }
+                if (BunkerLinkedItem) {
+                    ready = false;
+                }
+                if (!(static_cast<UnitTypeClass*>(Type)->IsSimpleDeployer && Deployed) && ready) {
+                    DirStruct scratch;
+                    WeaponStruct* weapon = GetPrimaryWeapon();
+                    bool locked = FUN_0070E240(weapon) && weapon->TurretLocked;
+                    if (Destination && !locked) {
+                        if (!IsAttackedByLocomotor) {
+                            SecondaryFacing.SetDesired(*FUN_005F3DB0(&scratch, Destination));
+                        }
+                    } else {
+                        SecondaryFacing.SetDesired(*PrimaryFacing.FUN_004C93D0(&scratch));
+                    }
+                }
+            }
+        }
+    }
+    if (Type->Turret) {
+        TurretIsRotating = SecondaryFacing.IsRotating();
+    }
+}
 
 // The map singleton (GLOBAL 0x87F7E8), as far as the on-map test.
 struct MapView_00736C10
@@ -204,6 +294,159 @@ bool UnitClass::vf_313()
     CoordStruct location = this->Location;
     CellClass* cell = Map_0087F7E8.FUN_00565730(location);
     return cell->FUN_00487C10() ? true : false;
+}
+
+// FUNCTION: GAMEMD 0x736DF0
+// Acts on the answer of slot 240 for the current target, then keeps the gattling stage and the turret
+// animation frame in step. With nothing to shoot at only the gattling part runs.
+void UnitClass::FUN_00736DF0()
+{
+    if (Target && vf_254(0)->WeaponType) {
+        int weaponIndex = vf_185(Target);
+        int action = vf_240(Target, weaponIndex, true);
+        if ((action == 0 || action == 2) && vf_313()) {
+            vf_122(0x10, false);
+            return;
+        }
+        DirStruct scratch;
+        DirStruct turretScratch;
+        DirStruct bodyScratch;
+        DirStruct again;
+        switch (action) {
+        case 5:
+            if (CombatDamage(weaponIndex) < 0) {
+                AbstractClass* victim = Target;
+                if (victim && victim->Flags.unknown_14_1 && victim->vf_11() == 1) {
+                    if (!(static_cast<ObjectClass*>(victim)->GetHealthPercentage() < DAT_008871E0->unknown_16F8)) {
+                        vf_242(0);
+                    }
+                } else {
+                    vf_242(0);
+                }
+            }
+            break;
+        case 0:
+            if (!static_cast<UnitTypeClass*>(Type)->unknown_E10) {
+                IsFiring = 0;
+            }
+            if (static_cast<UnitTypeClass*>(Type)->LargeVisceroid || static_cast<UnitTypeClass*>(Type)->SmallVisceroid) {
+                int facing = (((FUN_005F3DB0(&scratch, Target)->Whole >> 12) + 1) >> 1) & 7;
+                StageClass::Value = DAT_008458B0[facing];
+                SetRate(5);
+            }
+            vf_243(Target, weaponIndex);
+            break;
+        case 2:
+            if (!static_cast<UnitTypeClass*>(Type)->HasTurret && static_cast<UnitTypeClass*>(Type)->Turret) {
+                SecondaryFacing.SetDesired(*FUN_005F3DB0(&turretScratch, Target));
+            } else if (!Destination) {
+                if (Locomotor == 0) {
+                    FUN_007DC720(0x80004003);
+                }
+                if (!static_cast<ILocomotion*>(Locomotor)->IsMoving()) {
+                    PrimaryFacing.SetDesired(*FUN_005F3DB0(&bodyScratch, Target));
+                    SecondaryFacing.SetDesired(*PrimaryFacing.FUN_004C9470(&again));
+                }
+            }
+            break;
+        case 9:
+            IsFiring = 0;
+            if (TechnoClass::vf_234(Target, weaponIndex)) {
+                vf_279(0);
+            }
+            break;
+        case 8:
+        case 11:
+            IsFiring = 0;
+            break;
+        case 6:
+            if (SpawnManager) {
+                static_cast<SpawnManagerClass*>(SpawnManager)->ResetTarget();
+            }
+            break;
+        }
+        if (Type->IsGattling && (action == 0 || action == 3 || action == 2 || action == 4)) {
+            FUN_0070DE70(1);
+        } else if (vf_33()->IsGattling) {
+            GattlingRateDown(1);
+        }
+        if (vf_33()->IsGattling) {
+            if (FUN_0070DDF0() > 0) {
+                TurretAnimFrame++;
+            }
+        } else if (action == 0 || action == 3) {
+            TurretAnimFrame++;
+        }
+    } else {
+        if (vf_33()->IsGattling) {
+            GattlingRateDown(1);
+        }
+        if (vf_33()->IsGattling && FUN_0070DDF0() > 0) {
+            TurretAnimFrame++;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x737180
+// The visceroid's wander. Late in its stage count it re-rolls the stage; a still unit looks for
+// a neighbouring small visceroid and calls it over, or else picks a free direction to step
+// into, remembering it between calls.
+void UnitClass::FUN_00737180()
+{
+    CellStruct here = vf_110();
+    CellStruct ahead;
+    if (StageClass::Value >= 0x5A) {
+        if (StageClass::Value % 5 == 4) {
+            StageClass::Value = DAT_00A8B230->unknown_0218.RandomRanged(0, 2) * 30;
+            SetRate(1);
+        }
+        return;
+    }
+    if (StageClass::Value % 30 == 29) {
+        StageClass::Value = DAT_00A8B230->unknown_0218.RandomRanged(0, 2) * 30;
+    }
+    SetRate(1);
+    if (Locomotor == 0) {
+        FUN_007DC720(0x80004003);
+    }
+    if (static_cast<ILocomotion*>(Locomotor)->IsMoving()) {
+        return;
+    }
+    bool called = false;
+    if (static_cast<UnitTypeClass*>(Type)->SmallVisceroid) {
+        int dir = 7;
+        for (int i = 0; i < 8; i++) {
+            dir = (dir + 1) & 7;
+            ahead = here + DAT_0089F688[dir & 7];
+            ObjectClass* other = DAT_0087F7E8.FUN_005657A0(&ahead)->FirstObject;
+            if (other && other->vf_11() == 1 && static_cast<UnitClass*>(other)->Type->SmallVisceroid) {
+                if (!static_cast<UnitClass*>(other)->Destination && !static_cast<UnitClass*>(other)->Target) {
+                    static_cast<UnitClass*>(other)->SetDestination(this, true);
+                }
+                called = true;
+                break;
+            }
+        }
+    }
+    if (!called) {
+        if (Destination || Target) {
+            return;
+        }
+        int wander;
+        if (unknown_int_6D4 != -1 && DAT_00A8B230->unknown_0218.RandomRanged(0, 2)) {
+            wander = unknown_int_6D4;
+        } else {
+            wander = DAT_00A8B230->unknown_0218.RandomRanged(0, 7);
+            unknown_int_6D4 = wander;
+        }
+        ahead = here + DAT_0089F688[wander & 7];
+        CellClass* cell = DAT_0087F7E8.FUN_005657A0(&ahead);
+        if (!vf_107(cell, wander, GetCellLevel(), (int)DAT_0087F7E8.FUN_005657A0(&here), true)) {
+            SetDestination(cell, true);
+            return;
+        }
+    }
+    unknown_int_6D4 = -1;
 }
 
 // FUNCTION: GAMEMD 0x737BA0
@@ -296,6 +539,117 @@ bool UnitClass::vf_80(int mode, CellStruct* cell, int a3, int a4)
 }
 
 
+// The centre of a cell on the ground, as retail inlined it for the position test.
+inline CoordStruct CellCenter_00738970(const CellStruct& cell)
+{
+    CoordStruct center;
+    center.X = cell.X * 256 + 128;
+    center.Y = cell.Y * 256 + 128;
+    center.Z = 0;
+    return center;
+}
+
+// FUNCTION: GAMEMD 0x738970
+// Slot 289 (EnterIdleMode): after FootClass's pass, a unit with nothing queued picks a mission from its
+// target, destination, type and owner, and switches to it.
+bool UnitClass::EnterIdleMode(bool initial, bool a2)
+{
+    bool result = FootClass::EnterIdleMode(initial, a2);
+    if (vf_299()) {
+        return result;
+    }
+    if (vf_97() == 0x1C) {
+        return result;
+    }
+    if (LocomotorTarget) {
+        FUN_0070FEE0(true);
+    }
+    if (vf_97() == 2 && !Destination) {
+        CoordStruct center = CellCenter_00738970(vf_110());
+        CoordStruct here = Location;
+        if (here.X == center.X && here.Y == center.Y && here.Z == center.Z) {
+            vf_157(3);
+        }
+    }
+    FUN_004DA030();
+    int mission;
+    if (Destination) {
+        mission = 2;
+    } else if (Type->Harvester || Type->Weeder) {
+        if (HasAnyLink()) {
+            return result;
+        }
+        if (vf_97() == 0xA) {
+            return result;
+        }
+        if (QueuedMission == 0xA) {
+            return result;
+        }
+        mission = 0xA;
+        if (!initial && Owner->IsControlledByHuman()) {
+            CoordStruct location = Location;
+            int landType = Map_0087F7E8.FUN_00565730(location)->LandType;
+            if (landType != (Type->Harvester ? 5 : 0xB)) {
+                mission = 5;
+            }
+        }
+        vf_242(0);
+        SetDestination(0, true);
+    } else if (!IsArmed()) {
+        if (Spawned && Type->Passengers > 0 && Passengers.FirstPassenger && !Team) {
+            mission = 0x10;
+        } else {
+            if (IsDeploying) {
+                return result;
+            }
+            if (CurrentMission == 0x10 && Type->DeploysInto) {
+                return result;
+            }
+            if (CurrentMission == 0xB) {
+                return result;
+            }
+            mission = 5;
+            vf_242(0);
+            SetDestination(0, true);
+        }
+    } else {
+        if (vf_97() == 5) {
+            return result;
+        }
+        if (vf_97() == 0xB) {
+            return result;
+        }
+        if (vf_97() != -1) {
+            if (FUN_005B3A00()->Paralyzed) {
+                return result;
+            }
+            if (FUN_005B3A00()->Zombie) {
+                return result;
+            }
+        }
+        if (Owner->IQLevel2 < DAT_008871E0->unknown_1440 && !FUN_0070D0D0(0x10) && !Type->DefaultToGuardArea) {
+            mission = 5;
+        } else if (Team || SlaveOwner || SlaveManager) {
+            mission = 5;
+        } else {
+            mission = 0xB;
+        }
+    }
+    if (mission == 0xB && BunkerLinkedItem) {
+        mission = 5;
+    }
+    TechnoClass* link = FUN_0065AD30(0);
+    if (CurrentMission == 7 && link && link->vf_11() == 6
+        && ((BuildingClass*)link->KindCast_00459F40(6))->Type->Bunker && vf_111()->GetBuilding() != link) {
+        return result;
+    }
+    if (CurrentMission == 0x19 || CurrentMission == 0xB || CurrentMission == 0x10 || CurrentMission == 9) {
+        return result;
+    }
+    vf_122(mission, false);
+    return result;
+}
+
 // The unit's slave manager, as far as the two calls the mission delay makes.
 struct UnitSlaveManagerView
 {
@@ -304,9 +658,6 @@ struct UnitSlaveManagerView
     // FUNCTION: GAMEMD 0x6B0CC0 (decl; reloc) -- wakes the manager.
     void FUN_006B0CC0();
 };
-
-// The mission control record (canonical view).
-#include "mission_class_methods.h"
 
 // GLOBAL: GAMEMD 0xB1CFB8 -- the cell passed with tag events when there is none.
 extern CellStruct DAT_00B1CFB8;
@@ -400,6 +751,98 @@ int UnitClass::vf_138()
         }
     }
     return FootClass::vf_138();
+}
+
+// FUNCTION: GAMEMD 0x7404B0
+// What the player's unit can do at a cell, as an action code: only a unit its house's player
+// controls answers. A healing weapon over a friendly occupant turns 5 into 0x3B; a harvester
+// or weeder may not enter what it cannot work, ore or gems on a cell with the wrong
+// overlay; a deployer standing deployed refuses the rest.
+int UnitClass::vf_28(CellStruct* cell, char a2, char a3)
+{
+    if (!Owner->IsControlledByCurrentPlayer()) {
+        return 0;
+    }
+    CellClass* target = DAT_0087F7E8.FUN_005657A0(cell);
+    int action = FootClass::vf_28(cell, a2, a3);
+    if (CombatDamage(-1) < 0 && Owner->IsControlledByCurrentPlayer() && action == 5) {
+        action = 0x3B;
+    }
+    int overlay = -1;
+    if (a2 && (DAT_00A8B230->unknown_0000 & 0x1000) && target->FoggedObjects) {
+        DynamicVectorClass<FoggedObjectClass*>* fogged = target->FoggedObjects;
+        for (int i = 0; i < fogged->Count; i++) {
+            FoggedObjectClass* object = fogged->Items[i];
+            if (object->unknown_74 && object->unknown_30 == 0x14) {
+                overlay = object->unknown_24;
+            }
+        }
+    }
+    CoordStruct coord;
+    coord.X = cell->X * 256 + 128;
+    coord.Y = cell->Y * 256 + 128;
+    coord.Z = 0;
+    coord.Z = DAT_0087F7E8.FUN_00578080(&coord);
+    if (DAT_0087F7E8.FUN_00565730(&coord)->Flags & 0x100) {
+        coord.Z += DAT_00B1D0AC;
+    }
+    bool moveCheck = false;
+    if (!DAT_0087F7E8.IsLocationShrouded(coord)) {
+        if (action == 1) {
+            moveCheck = true;
+            if (target->LandType == 5
+                || (overlay != -1 && DAT_00A83D84[overlay]->Tiberium && a2)) {
+                if (static_cast<UnitTypeClass*>(Type)->Harvester) {
+                    return 6;
+                }
+            }
+            if (target->LandType == 0xB || (overlay == 0x7E && target->OverlayData >= 0x30 && a2)) {
+                if (static_cast<UnitTypeClass*>(Type)->Weeder) {
+                    return 6;
+                }
+            }
+            if (target->LandType == 5
+                || (overlay != -1 && DAT_00A83D84[overlay]->Tiberium && a2)) {
+                if (Type->ResourceDestination && Type->ResourceGatherer) {
+                    return 6;
+                }
+            }
+        }
+    } else if (action == 1) {
+        moveCheck = true;
+    }
+    if (moveCheck) {
+        if (DAT_0087F7E8.FUN_005657A0(cell)->InRange()) {
+            return DAT_0087F7E8.FUN_005657A0(cell)->FUN_00484F10(this) ? 0x23 : 0x24;
+        }
+        if (Deployed || Deploying || Undeploying) {
+            action = 0;
+        }
+    }
+    if (Owner->IsControlledByCurrentPlayer() && static_cast<UnitTypeClass*>(Type)->IsSimpleDeployer && Deployed) {
+        if (action == 1) {
+            action = 2;
+        } else if (action == 5) {
+            if (Type->DeployFire) {
+                CoordStruct at;
+                at.X = cell->X * 256 + 128;
+                at.Y = cell->Y * 256 + 128;
+                at.Z = 0;
+                if (vf_89(at, vf_185(0))) {
+                    if (!vf_196()) {
+                        action = 0;
+                    }
+                    return action;
+                }
+            }
+            action = 2;
+        }
+    } else if (action == 5) {
+        if (!vf_196()) {
+            action = 0;
+        }
+    }
+    return action;
 }
 
 // FUNCTION: GAMEMD 0x740810
@@ -578,6 +1021,97 @@ DirStruct UnitClass::vf_194()
     return TechnoClass::vf_194();
 }
 
+// FUNCTION: GAMEMD 0x740FD0
+// Why this unit cannot use the weapon on the target, as a result code: the foot answer wins
+// when non-zero; a dying unit answers 6, one with launching spawns 10, one held by a rocker
+// 5, a deployer that has to deploy first 11; a unit that has to stop to fire answers 7,
+// and a turret that is not facing the target within half a quadrant (or a full one for a
+// homing projectile) answers 2.
+int UnitClass::vf_240(AbstractClass* target, int a2, bool a3)
+{
+    if (DeathFrameCounter >= 0) {
+        return 6;
+    }
+    if (SpawnManager && static_cast<SpawnManagerClass*>(SpawnManager)->CountLaunchingSpawns()) {
+        return 10;
+    }
+    if (DirectRockerLinkedUnit) {
+        return 5;
+    }
+    int result = TechnoClass::vf_240(target, a2, a3);
+    if (result == 0 || result == 2) {
+        CoordStruct location = this->Location;
+        CellClass* cell = Map_0087F7E8.FUN_00565730(location);
+        bool flag = cell->FUN_00487C10();
+        if (Type->DeployToFire && vf_313() && !flag) {
+            return 11;
+        }
+    }
+    if (result == 0) {
+        if (IsTether) {
+            if (FUN_0065AD40(0)->vf_11() == 6) {
+                return 6;
+            }
+        }
+        WeaponTypeClass* weapon = vf_254(a2)->WeaponType;
+        if (CombatDamage(-1) < 0) {
+            ObjectClass* object = (ObjectClass*)FUN_0040DD20((WhatAmIHolder*)target);
+            if (!object || !object->vf_32() || !(object->GetHealthPercentage() < DAT_008871E0->unknown_16F8)) {
+                return 5;
+            }
+        }
+        if (!Type->MobileFire && Destination) {
+            return 7;
+        }
+        if (!weapon->FireWhileMoving) {
+            if (!Type->BalloonHover && Destination) {
+                return 7;
+            }
+            if (Type->BalloonHover) {
+                if (Locomotor == 0) {
+                    FUN_007DC720(0x80004003);
+                }
+                if (static_cast<ILocomotion*>(Locomotor)->IsMovingNow()) {
+                    return 7;
+                }
+            }
+        }
+        if ((weapon->UseSparkParticles || weapon->UseFireParticles) && Destination) {
+            return 7;
+        }
+        if (TemporalImUsing && Destination) {
+            return 7;
+        }
+        if (!IsFiring && unknown_bool_6AF && !weapon->Projectile->ROT) {
+            return 4;
+        }
+        if (!weapon->OmniFire && !Type->LargeVisceroid && !Type->SmallVisceroid) {
+            DirStruct scratch;
+            DirStruct* facing;
+            if (Type->Turret) {
+                facing = SecondaryFacing.FUN_004C93D0(&scratch);
+            } else {
+                facing = PrimaryFacing.FUN_004C93D0(&scratch);
+            }
+            DirStruct current = *facing;
+            int limit = (weapon->Projectile->ROT != 0 ? 16 : 8);
+            DirStruct* toTarget = FUN_005F3DB0(&scratch, target);
+            short diff = (short)(current.Raw - toTarget->Raw);
+            if (abs((short)(limit << 8)) < abs(diff)) {
+                return 2;
+            }
+        }
+        if (Locomotor == 0) {
+            FUN_007DC720(0x80004003);
+        }
+        int fromLocomotor = static_cast<ILocomotion*>(Locomotor)->CanFire();
+        if (fromLocomotor != 0) {
+            return fromLocomotor;
+        }
+    }
+    return result;
+}
+
 // FUNCTION: GAMEMD 0x741490
 // Member getter (dword). Vtable slot 34 of UnitClass (RTTI).
 ObjectTypeClass* UnitClass::vf_34()
@@ -594,6 +1128,79 @@ double UnitClass::vf_173()
         return GG_ZERO;
     }
     return (double)Tiberium.GetTotalAmount() / static_cast<UnitTypeClass*>(this->Type)->Storage;
+}
+
+// GLOBAL: GAMEMD 0xB1CFE8 -- the all-zero coordinate.
+extern MathTblZero3 DAT_00B1CFE8;
+
+// FUNCTION: GAMEMD 0x7416A0
+// A crusher driving over a cell: with the cell argument set it only leaves the track marks
+// where something occupies the cell; otherwise it crushes what is crushable there, an
+// infantry thief aimed at this unit steals it instead, and a crusher that took something
+// down wakes up and starts to rock.
+void UnitClass::vf_333(int a1, int a2)
+{
+    CellClass* cell = DAT_0087F7E8.FUN_005657A0((CellStruct*)a1);
+    bool onBridge = false;
+    if (cell->Flags & 0x100) {
+        if (OnBridge) {
+            onBridge = true;
+        } else {
+            CellStruct above = Coord2Cell(vf_18());
+            if (DAT_0087F7E8.FUN_005657A0(&above)->Level == cell->Level + 4) {
+                onBridge = true;
+            }
+        }
+    }
+    if (Type->Crusher || FUN_0070D0D0(0x11)) {
+        if ((char)a2) {
+            if (onBridge) {
+                if (cell->AltOccupationBits & 0x1F) {
+                    cell->FUN_00481670(&DAT_00B1CFE8, 1, 0, 1);
+                }
+            } else if (cell->OccupationBits & 0x1F) {
+                cell->FUN_00481670(&DAT_00B1CFE8, 1, 0, 0);
+            }
+        } else {
+            ObjectClass* object = onBridge ? cell->AltObject : cell->FirstObject;
+            bool shaken = false;
+            bool crushed = false;
+            while (object) {
+                if (!object->IsCrushable(this) || (Owner->IsAlliedWith(object) && !Type->IsTrain)
+                    || FUN_005F6560(object->vf_18()) >= 0x4000 || object->IsFallingDown) {
+                    object = (ObjectClass*)object->NextObject;
+                } else if (object->vf_11() == 0xF && static_cast<InfantryClass*>(object)->Type->VehicleThief
+                           && static_cast<InfantryClass*>(object)->Destination == this && !Type->IsTrain) {
+                    ObjectClass* next = (ObjectClass*)object->NextObject;
+                    IsOwnedByCurrentPlayer = static_cast<InfantryClass*>(object)->IsOwnedByCurrentPlayer;
+                    vf_55(0);
+                    vf_245(static_cast<InfantryClass*>(object)->Owner, 1);
+                    object->vf_62();
+                    object = next;
+                } else {
+                    ObjectClass* next = (ObjectClass*)object->NextObject;
+                    crushed = true;
+                    if (object->vf_11() == 1) {
+                        shaken = true;
+                    }
+                    CoordStruct where = Location;
+                    VocClass::PlayAt(object->vf_34()->CrushSound, &where, 0);
+                    object->vf_92();
+                    object->vf_56(this);
+                    object->vf_73(0);
+                    object->vf_53();
+                    object->vf_62();
+                    object = next;
+                }
+            }
+            if (crushed) {
+                vf_279(object);
+                if (shaken && RockingForwardsPerFrame == 0.0f) {
+                    RockingForwardsPerFrame = -0.05f;
+                }
+            }
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x743190

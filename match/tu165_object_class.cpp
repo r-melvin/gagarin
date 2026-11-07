@@ -378,14 +378,10 @@ void Obj_005F3D90::FUN_005F3D90()
 // too drops the four moves and shrinks the frame to 0x18 (30.0%); declaring
 // the locals target-first swaps ECX/EDX (90.0%); self-first is exact. The
 // target's X lands in the dead `target` parameter slot.
-Dir_005F3DB0* Obj_005F3DB0::FUN_005F3DB0(Dir_005F3DB0* result,
-                                         Obj_005F3DB0* target)
+DirStruct* AbstractClass::FUN_005F3DB0(DirStruct* result, AbstractClass* target)
 {
-    Coord_005F3DB0 targetBuf;
-    Coord_005F3DB0 selfBuf;
-
-    Coord_005F3DB0* t = (target->*target->Vtbl->At_48)(&targetBuf);
-    Coord_005F3DB0* s = (this->*this->Vtbl->At_48)(&selfBuf);
+    CoordStruct* t = &target->vf_18(); // ADDRCALL: GAMEMD 0x5F3DD3
+    CoordStruct* s = &vf_18(); // ADDRCALL: GAMEMD 0x5F3DD5
 
     int sx = s->X;
     int tx = t->X;
@@ -393,9 +389,9 @@ Dir_005F3DB0* Obj_005F3DB0::FUN_005F3DB0(Dir_005F3DB0* result,
     double radians = FUN_004CAE30((double)s->Y - t->Y,
                                   (double)tx - sx);
 
-    Dir_005F3DB0 dir;
+    DirStruct dir;
 
-    dir.Value = (short)((radians - 1.5707963267948966) * -10430.060040584269);
+    dir.Raw = (unsigned short)(short)((radians - 1.5707963267948966) * -10430.060040584269);
 
     *result = dir;
 

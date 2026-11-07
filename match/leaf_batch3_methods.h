@@ -50,28 +50,6 @@ struct PersistPayload_004C6320 {
 };
 GG_STATIC_ASSERT(sizeof(PersistPayload_004C6320) == 0x44);
 
-// The four-byte value 0x004C9470 copies out. Only the low sixteen bits are
-// ever written by the slot's writers, so the payload is a short beside an
-// unwritten neighbour; the reader copies the whole dword regardless. The same
-// shape is declared as a callee stand-in by the fly-locomotion headers
-// (`Dir_004CE680`); this is the definition side of the same retail body.
-struct Dir_004C9470 {
-    short Raw;         // +0x00
-    short Unknown02;   // +0x02
-};
-GG_STATIC_ASSERT(sizeof(Dir_004C9470) == 4);
-
-// FUNCTION: GAMEMD 0x004C9470
-// The facing slot the value lives in. The body reads the dword at [ECX] with
-// no displacement, so the value sits at offset zero.
-struct FacingSlot_004C9470 {
-    Dir_004C9470 Value;  // +0x00
-
-    // FUNCTION: GAMEMD 0x004C9470
-    Dir_004C9470* Read(Dir_004C9470* out);
-};
-GG_STATIC_ASSERT(offsetof(FacingSlot_004C9470, Value) == 0x00);
-
 // FUNCTION: GAMEMD 0x004C9C50
 // The locomotion-ish object whose byte flag at +0x5C the getter returns. Its
 // sole caller at 0x006A8F99 tests AL, and the neighbouring reader at

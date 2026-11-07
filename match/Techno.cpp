@@ -571,7 +571,6 @@ extern RulesClass* DAT_008871E0;
 
 #include "techno_class_combat_damage_methods.h"
 
-#include "techno_class_gattling_rate_methods.h"
 
 #include "techno_class_nearby_location_methods.h"
 
@@ -1741,7 +1740,6 @@ GG_STATIC_ASSERT(offsetof(Techno_0070FE50, DrainAnim) == 0x1D4);
 #include "_layout/techno_type_class.h"
 #include "_layout/capture_manager_class.h"
 
-#include "techno_class_threat_methods.h"
 
 #include "techno_class_weapon_methods.h"
 
@@ -5434,12 +5432,12 @@ void TechnoClass::FUN_0070DE70(int a)
 // re-selected and, when the value has fallen below the stage's threshold
 // (elite or normal table), the stage steps down and the spin-down sound
 // stops.
-void Techno_0070E000::GattlingRateDown(int rate)
+void TechnoClass::GattlingRateDown(int rate)
 {
     GattlingSoundController.EndLooping();
     IsGattlingSoundPlaying = 0;
 
-    int step = (this->*Vptr->GetTechnoType)()->RateDown * rate;
+    int step = vf_33()->RateDown * rate;
     GattlingValue -= step;
     if (GattlingValue < 0 || step == 0) {
         GattlingValue = 0;
@@ -5455,20 +5453,20 @@ void Techno_0070E000::GattlingRateDown(int rate)
             IsGattlingSoundPlaying = 0;
         }
     } else {
-        (this->*Vptr->GetWeapon)(stage * 2);
+        vf_254(stage * 2);
         if (stage > 0) {
             int threshold;
             if (FUN_00750010(&Veterancy)) {
-                threshold = (this->*Vptr->GetTechnoType)()->EliteStage[stage - 1];
+                threshold = vf_33()->EliteStage[stage - 1];
             } else {
-                threshold = (this->*Vptr->GetTechnoType)()->WeaponStage[stage - 1];
+                threshold = vf_33()->WeaponStage[stage - 1];
             }
             if (value < threshold) {
                 stage--;
                 if (stage >= 0) {
                     CurrentGattlingStage = stage;
                 }
-                (this->*Vptr->GetWeapon)(stage * 2);
+                vf_254(stage * 2);
                 UnusedGattlingSoundController.Stop();
                 IsUnusedGattlingSoundPlaying = 0;
             }
@@ -5534,10 +5532,10 @@ int TechnoClass::FUN_0070E1E0(int a1)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0070E240
-// True when `slot` is non-null and holds a non-zero value.
-bool __stdcall FUN_0070E240(const int* slot)
+// True when the weapon slot is non-null and holds a weapon.
+bool TechnoClass::FUN_0070E240(WeaponStruct* weapon)
 {
-    return slot != NULL && *slot != 0;
+    return weapon != NULL && weapon->WeaponType != 0;
 }
 
 // FUNCTION: GAMEMD 0x70E260
@@ -5998,16 +5996,16 @@ void VelocitySource_0070F670::RemoveVelocity(Mover_0070F670* mover)
 // FUNCTION: GAMEMD 0x70F6E0  (__thiscall)
 // Re-stamp this object's threat contribution into a cell's per-house threat
 // map: take the old contribution out, recompute it, and put the new one in.
-void TechnoView_0070F6E0::UpdateThreatInCell(CellClass* Cell)
+void TechnoClass::UpdateThreatInCell(CellClass* Cell)
 {
     if (Cell != 0) {
-        Cell->AddThreat((this->*this->Vfptr->At_38)(), -this->ThreatPosed);
-        this->ThreatPosed = 0;
+        Cell->AddThreat((HouseClass*)vf_14(), -(int)ThreatPosed);
+        ThreatPosed = 0;
 
-        int threat = (this->*this->Vfptr->At_2C0)();
+        int threat = vf_176();
 
-        this->ThreatPosed = threat;
-        Cell->AddThreat((this->*this->Vfptr->At_38)(), threat);
+        ThreatPosed = threat;
+        Cell->AddThreat((HouseClass*)vf_14(), threat);
     }
 }
 

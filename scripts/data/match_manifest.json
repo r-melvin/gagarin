@@ -2655,7 +2655,7 @@
  {
   "tu": "match/Techno.cpp",
   "addr": "0x70E000",
-  "sym": "?GattlingRateDown@Techno_0070E000@@QAEXH@Z",
+  "sym": "?GattlingRateDown@TechnoClass@@QAEXH@Z",
   "len": "0x119",
   "name": "TechnoClass::GattlingRateDown",
   "status": "matched",
@@ -2886,9 +2886,9 @@
  {
   "tu": "match/tu165_object_class.cpp",
   "addr": "0x5F3DB0",
-  "sym": "?FUN_005F3DB0@Obj_005F3DB0@@QAEPAUDir_005F3DB0@@PAU2@PAU1@@Z",
+  "sym": "?FUN_005F3DB0@AbstractClass@@QAEPAUDirStruct@@PAU2@PAV1@@Z",
   "len": "0x7a",
-  "name": "AbstractClass::GetTargetDirection",
+  "name": "AbstractClass::FUN_005F3DB0",
   "status": "matched",
   "pct": 100.0
  },
@@ -8196,9 +8196,9 @@
  {
   "tu": "match/leaf_batch3_methods.cpp",
   "addr": "0x004C9470",
-  "sym": "?Read@FacingSlot_004C9470@@QAEPAUDir_004C9470@@PAU2@@Z",
+  "sym": "?FUN_004C9470@FacingClass@@QAEPAUDirStruct@@PAU2@@Z",
   "len": "0xB",
-  "name": "FacingSlot::Read",
+  "name": "FacingClass::FUN_004C9470",
   "status": "matched",
   "pct": 100
  },
@@ -8457,9 +8457,9 @@
  {
   "tu": "match/tu050_cell_class.cpp",
   "addr": "0x484F10",
-  "sym": "?FUN_00484F10@@YG_NH@Z",
+  "sym": "?FUN_00484F10@CellClass@@QAE_NPAVTechnoClass@@@Z",
   "len": "0x5",
-  "name": "FUN_00484F10",
+  "name": "CellClass::FUN_00484F10",
   "status": "matched",
   "pct": 100.0
  },
@@ -12922,9 +12922,9 @@
  {
   "tu": "match/Techno.cpp",
   "addr": "0x70F6E0",
-  "sym": "?UpdateThreatInCell@TechnoView_0070F6E0@@QAEXPAVCellClass@@@Z",
+  "sym": "?UpdateThreatInCell@TechnoClass@@QAEXPAVCellClass@@@Z",
   "len": "0x51",
-  "name": "UpdateThreatInCell",
+  "name": "TechnoClass::UpdateThreatInCell",
   "status": "matched",
   "pct": 100
  },
@@ -62037,9 +62037,9 @@
  {
   "tu": "match/Techno.cpp",
   "addr": "0x70E240",
-  "sym": "?FUN_0070E240@@YG_NPBH@Z",
+  "sym": "?FUN_0070E240@TechnoClass@@QAE_NPAUWeaponStruct@@@Z",
   "len": "0x1a",
-  "name": "FUN_0070E240",
+  "name": "TechnoClass::FUN_0070E240",
   "status": "matched",
   "pct": 100.0
  },
@@ -137897,9 +137897,9 @@
  {
   "tu": "match/object_distance_squared_methods.cpp",
   "addr": "0x5F6560",
-  "sym": "?FUN_005F6560@AbstractView_005F6500@@QAEHPBUCoord3_005F6500@@@Z",
+  "sym": "?FUN_005F6560@AbstractClass@@QAEHABUCoordStruct@@@Z",
   "len": "0x3e",
-  "name": "AbstractView_005F6500::FUN_005F6560",
+  "name": "AbstractClass::FUN_005F6560",
   "status": "matched",
   "pct": 100
  },
@@ -156355,5 +156355,78 @@
   "pct": 94.7,
   "best_pct": 94.7,
   "best_at": "b9ffad29"
+ },
+ {
+  "tu": "match/Unit.cpp",
+  "addr": "0x736990",
+  "sym": "?FUN_00736990@UnitClass@@QAEXXZ",
+  "len": "0x27f",
+  "name": "UnitClass::FUN_00736990",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Unit.cpp",
+  "addr": "0x736DF0",
+  "sym": "?FUN_00736DF0@UnitClass@@QAEXXZ",
+  "len": "0x357",
+  "name": "UnitClass::FUN_00736DF0",
+  "status": "partial",
+  "pct": 96.3,
+  "best_pct": 96.3,
+  "best_at": "d68779a3"
+ },
+ {
+  "tu": "match/Unit.cpp",
+  "addr": "0x737180",
+  "sym": "?FUN_00737180@UnitClass@@QAEXXZ",
+  "len": "0x2a7",
+  "name": "UnitClass::FUN_00737180",
+  "status": "partial",
+  "pct": 85.9,
+  "best_pct": 85.9,
+  "best_at": "d68779a3"
+ },
+ {
+  "tu": "match/Unit.cpp",
+  "addr": "0x738970",
+  "sym": "?EnterIdleMode@UnitClass@@UAE_N_N0@Z",
+  "len": "0x3bf",
+  "name": "UnitClass::EnterIdleMode",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Unit.cpp",
+  "addr": "0x7404B0",
+  "sym": "?vf_28@UnitClass@@UAEHPAUCellStruct@@DD@Z",
+  "len": "0x35f",
+  "name": "UnitClass::vf_28",
+  "status": "partial",
+  "pct": 83.0,
+  "best_pct": 83.0,
+  "best_at": "d68779a3"
+ },
+ {
+  "tu": "match/Unit.cpp",
+  "addr": "0x740FD0",
+  "sym": "?vf_240@UnitClass@@UAEHPAVAbstractClass@@H_N@Z",
+  "len": "0x365",
+  "name": "UnitClass::vf_240",
+  "status": "partial",
+  "pct": 94.4,
+  "best_pct": 94.4,
+  "best_at": "d68779a3"
+ },
+ {
+  "tu": "match/Unit.cpp",
+  "addr": "0x7416A0",
+  "sym": "?vf_333@UnitClass@@UAEXHH@Z",
+  "len": "0x2c7",
+  "name": "UnitClass::vf_333",
+  "status": "partial",
+  "pct": 95.8,
+  "best_pct": 95.8,
+  "best_at": "d68779a3"
  }
 ]
