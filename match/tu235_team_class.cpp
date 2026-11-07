@@ -37,6 +37,9 @@
 #include "FUNCTION.H"
 #include <stddef.h>
 #include "_layout/foot_class.h"
+#include "_layout/techno_type_class.h"
+#include "_layout/team_type_class.h"
+#include "whatami_dispatch_methods.h"
 #include "_layout/player_ptr_00a83d4c.h"
 #include "loco_interfaces.h"
 #include "_rt/gg_static_assert.h"
@@ -693,6 +696,47 @@ void TeamClass::vf_10(void* target, bool removed)
     if (unknown_38 == target) unknown_38 = 0;
     if (unknown_44 == target) unknown_44 = 0;
     if (unknown_30 == target) unknown_30 = 0;
+}
+
+// FUNCTION: GAMEMD 0x6EB380
+// A member took damage (the third argument is the attacker; the first is unused): unless the team is
+// suicidal or the object already belongs to it, reset the team's destination or notify the object.
+void TeamClass::FUN_006EB380(FootClass* member, int result, TechnoClass* attacker)
+{
+    if (attacker == 0 || result == 0) return;
+    if (Type->Suicide) return;
+    if (!Flag7F) {
+        Member34 = 0;
+        Flag75 = 1;
+        Flag7B = 1;
+        return;
+    }
+    FootClass* it = FirstUnit;
+    while (it) {
+        if (it == attacker) return;
+        it = it->NextTeamMember;
+    }
+    if (FirstUnit == 0) return;
+    if (FirstUnit->vf_11() == 2) return;
+    if (FirstUnit->vf_254(0)->WeaponType == 0) return;
+    void* focus = unknown_40;
+    if (focus == attacker) return;
+    if (Type->Annoyance) {
+        Member34 = 0;
+        Flag75 = 1;
+        Flag7B = 1;
+    }
+    if (focus) {
+        TechnoClass* techno = FUN_0040DD70((AbstractClass*)focus);
+        if (techno) {
+            if (techno->vf_254(0)->WeaponType) {
+                if (Member34 == 0) return;
+                // ADDRCALL: GAMEMD 0x6EB465 (vf_18's returned address is pushed on; named-local and reference forms add a temporary, frame 0x18 vs 0xC)
+                if (techno->vf_236(&Member34->vf_18())) return;
+            }
+        }
+    }
+    attacker->vf_11();
 }
 
 // GLOBAL: GAMEMD 0xA8E7AC

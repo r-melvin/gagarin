@@ -2788,10 +2788,10 @@ bool TechnoClass::vf_237(AbstractClass* target)
 }
 
 // FUNCTION: GAMEMD 0x6F7930
-void TechnoClass::vf_236(CoordStruct* a1)
+bool TechnoClass::vf_236(CoordStruct* a1)
 {
     CellClass* cell = MapClass_Instance.GetTargetCell(*a1);
-    this->vf_234(cell, this->vf_185(cell));
+    return this->vf_234(cell, this->vf_185(cell));
 }
 
 // FUNCTION: GAMEMD 0x6F7970

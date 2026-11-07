@@ -93417,7 +93417,7 @@
  {
   "tu": "match/Techno.cpp",
   "addr": "0x6F7930",
-  "sym": "?vf_236@TechnoClass@@UAEXPAUCoordStruct@@@Z",
+  "sym": "?vf_236@TechnoClass@@UAE_NPAUCoordStruct@@@Z",
   "len": "0x31",
   "name": "TechnoClass::vf_236",
   "status": "matched",
@@ -157034,5 +157034,23 @@
   "pct": 89.4,
   "best_pct": 89.4,
   "best_at": "bef1b54e"
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4D8FB0",
+  "sym": "?vf_101@FootClass@@UAEHHHH@Z",
+  "len": "0x2d7",
+  "name": "FootClass::vf_101",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu235_team_class.cpp",
+  "addr": "0x6EB380",
+  "sym": "?FUN_006EB380@TeamClass@@QAEXPAVFootClass@@HPAVTechnoClass@@@Z",
+  "len": "0x103",
+  "name": "TeamClass::FUN_006EB380",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

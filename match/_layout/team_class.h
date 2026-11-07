@@ -69,7 +69,7 @@ public:
     CDTimerClass    unknown_64;          // +0x64, inline countdown6EC643
     TagClass*       unknown_70;          // +0x70
     bool            unknown_74;
-    char            _pad_75;
+    bool            Flag75;              // +0x75 (set with Flag7B by FUN_006EB380)
     bool            unknown_76;
     bool            Flag77;              // +0x77
     bool            Flag78;              // +0x78

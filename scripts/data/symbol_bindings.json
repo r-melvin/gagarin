@@ -12319,6 +12319,7 @@
  "?vf_100@ParticleObjectView@@UAEXXZ": "0x005F5C20",
  "?vf_101@ParticleObjectView@@UAEXXZ": "0x005F5320",
  "?vf_101@RadioClass@@UAEHHHH@Z": "0x0065A820",
+ "?vf_101@TechnoClass@@UAEHHHH@Z": "0x006F4AB0",
  "?vf_102@ObjectClass@@UAE_NPAVHouseClass@@@Z": "0x005F5930",
  "?vf_102@ParticleObjectView@@UAEXXZ": "0x005F5930",
  "?vf_102@TechnoClass@@UAE_NPAVHouseClass@@@Z": "0x006F4960",

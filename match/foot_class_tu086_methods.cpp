@@ -81,6 +81,7 @@
 #include "weapon_type_class.h"
 #include "_layout/warhead_type_class.h"
 #include "slave_manager_class_methods.h"
+#include "map_class_area_methods.h"
 
 // GLOBAL: GAMEMD 0x8B3D88 -- the "no cell" sentinel.
 extern CellStruct DAT_008B3D88;
@@ -518,6 +519,77 @@ int FootClass::vf_91(int* damage, int distance, void* warhead, void* source, boo
         }
     }
     return result;
+}
+
+// FUNCTION: GAMEMD 0x4D8FB0
+// Slot 101, the radio message handler of the foot layer; the sender is a1 and a3 points at the in/out object.
+// 0x11 is taken once a mission of 7 is current or queued; 0x12 (move here) answers 0x14 when the sender's cell is
+// already ours, else heads for it; 0x13 reports the destination and refuses (10) while the locomotor is moving;
+// 0x17 drops a destination shared with the linked object and falls back to a guard-style mission; 0x1c refuses
+// while a destination is held; 0x23 asks whether the building under this cell is the sender.
+int FootClass::vf_101(int a1, int event, int a3)
+{
+    AbstractClass** param = reinterpret_cast<AbstractClass**>(a3);
+    switch (event) {
+    case 0x23:
+        if (DAT_0087F7E8.FUN_00565730(vf_18())->GetBuilding() != reinterpret_cast<BuildingClass*>(a1)) {
+            return 10;
+        }
+        return 1;
+    case 0x1c:
+        if (Destination) {
+            return 10;
+        }
+        break;
+    case 0x17:
+        if (HasAnyLink() && Destination == FUN_0065AD30(0)) {
+            SetDestination(0, true);
+        }
+        if (vf_97() == 0) {
+            vf_122(5, false);
+            if (vf_128()) {
+                vf_123();
+            }
+        }
+        if (vf_97() == 7) {
+            vf_122(5, false);
+        }
+        if (!unknown_bool_6AF && !Destination) {
+            vf_93(DAT_008B3DA8, true, true);
+        }
+        break;
+    case 0x13:
+        *param = Destination;
+        if (Destination) {
+            if (Locomotor->IsMoving()) {
+                return 10;
+            }
+        }
+        return 1;
+    case 0x12:
+        if (*param) {
+            CellStruct goal = Coord2Cell((*param)->vf_18());
+            if (vf_110() == goal) {
+                return 0x14;
+            }
+        }
+        if (vf_97() == 5 && QueuedMission == -1) {
+            vf_122(2, false);
+        }
+        if (QueuedMission == 7 && vf_128()) {
+            vf_123();
+        }
+        SetDestination(*param, true);
+        UpdateTimer = CDTimerClass(0);
+        return 1;
+    case 0x11:
+        if (vf_97() == 7 || QueuedMission == 7) {
+            TechnoClass::vf_101(a1, event, a3);
+            return 1;
+        }
+        break;
+    }
+    return TechnoClass::vf_101(a1, event, a3);
 }
 
 // FUNCTION: GAMEMD 0x4D94B0

@@ -461,7 +461,7 @@ public:
     virtual bool vf_233(AbstractClass* target);                             // 233 0x6F7660
     virtual bool vf_234(AbstractClass* target, int weapon);            // 234 0x6F77B0: is the target in that weapon's range
     virtual bool IsCloseEnoughToAttack(AbstractClass* target);     // 235 0x6F7780
-    virtual void vf_236(CoordStruct* a1);                                // 236 0x6F7930
+    virtual bool vf_236(CoordStruct* a1);                                // 236 0x6F7930
     virtual bool vf_237(AbstractClass* target);                                 // 237 0x6F78D0
     virtual void vf_238(void* arg);                                // 238 BuildingClass 0x44D760 (the base slot target 0x4C9150 is a bare stub)
     virtual int vf_239(AbstractClass* target, int weapon);         // 239 0x6FC090
