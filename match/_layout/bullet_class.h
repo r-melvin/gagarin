@@ -65,10 +65,8 @@ struct BulletData
 {
     Obj_0046B600 unknown_00;          // +0x00..+0x0B, frame/time-left block
     Obj_0046B600 unknown_0C;          // +0x0C..+0x17, frame/time-left block
-    unsigned int unknown_18;
-    unsigned int unknown_1C;
-    unsigned int unknown_20;
-    unsigned int unknown_24;
+    CoordStruct unknown_18;           // +0x18..+0x23, copied whole by 0x4E1130
+    int unknown_24;
 
     BulletData();
     BulletData(const AbstractNoInit&) : unknown_00(0), unknown_0C(0) {}
@@ -81,8 +79,6 @@ struct BulletData
 GG_STATIC_ASSERT(offsetof(BulletData, unknown_00) == 0x00);
 GG_STATIC_ASSERT(offsetof(BulletData, unknown_0C) == 0x0C);
 GG_STATIC_ASSERT(offsetof(BulletData, unknown_18) == 0x18);
-GG_STATIC_ASSERT(offsetof(BulletData, unknown_1C) == 0x1C);
-GG_STATIC_ASSERT(offsetof(BulletData, unknown_20) == 0x20);
 GG_STATIC_ASSERT(offsetof(BulletData, unknown_24) == 0x24);
 GG_STATIC_ASSERT(sizeof(BulletData) == 0x28);
 #endif

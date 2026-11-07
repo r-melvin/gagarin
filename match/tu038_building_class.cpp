@@ -5423,6 +5423,92 @@ CoordStruct BuildingClass::vf_41()
     return CoordSum(c, Type->TargetCoordOffset);
 }
 
+// FUNCTION: GAMEMD 0x4500F0
+void BuildingClass::FUN_004500F0()
+{
+    if (Factory && Factory->IsDone()) {
+        if (FactoryRetryTimer.GetTimeLeft() == 0) {
+            ObjectClass* made = Factory->FUN_004CA160();
+            switch (vf_64(reinterpret_cast<int>(made), DAT_0089C818.raw_dword)) {
+            case 0:
+                if (made->vf_11() == 6 && static_cast<BuildingClass*>(made)->Type->Naval) {
+                    made->vf_15()->NodeLogic_1F0 = 0;
+                }
+                Factory->AbandonProduction();
+                delete Factory;
+                Factory = 0;
+                break;
+            case 1: {
+                double delay = Rules->PlacementDelay;
+                FactoryRetryTimer = CDTimerClass((int)(delay * DAT_007E27F8));
+                break;
+            }
+            case 2: {
+                CoordStruct where = Location;
+                FUN_00750E20(Type->CreateUnitSound, &where, 0);
+                Owner->RegisterJustBuilt(static_cast<TechnoClass*>(made));
+                Factory->CompletedProduction();
+                delete Factory;
+                Factory = 0;
+                break;
+            }
+            }
+        }
+    }
+    if (!Owner->Production) {
+        return;
+    }
+    if (vf_97() == 0x12 || vf_97() == 0x13) {
+        return;
+    }
+    if (Type->Factory == 0) {
+        return;
+    }
+    FactoryClass* factory = Factory;
+    if (factory) {
+        if (FactoryRetryTimer.GetTimeLeft() != 0) {
+            return;
+        }
+        if (factory->Production.Rate != 0 && !factory->IsSuspended) {
+            return;
+        }
+        factory->AbandonProduction();
+        delete Factory;
+        Factory = 0;
+    } else {
+        if (!Owner->Production) {
+            return;
+        }
+        if (Owner->vf_06() <= 10) {
+            return;
+        }
+        TechnoTypeClass* item = static_cast<TechnoTypeClass*>(Owner->FUN_004FBD80(Type->Factory, 0));
+        if (!item) {
+            return;
+        }
+        if (item->vf_11() == 0x28) {
+            bool mine = Type->Naval;
+            if (mine && !item->Naval) {
+                return;
+            }
+            if (item->Naval && !mine) {
+                return;
+            }
+        }
+        Factory = new FactoryClass;
+        if (!Factory) {
+            return;
+        }
+        if (Factory->FUN_004C9C70(item, Owner, false)) {
+            Owner->FUN_004FF540(Factory->FUN_004CA160());
+            Factory->Unsuspend(false);
+            return;
+        }
+        delete Factory;
+        Factory = 0;
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4503E0

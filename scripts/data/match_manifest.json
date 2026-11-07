@@ -157052,5 +157052,52 @@
   "name": "TeamClass::FUN_006EB380",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/tu038_building_class.cpp",
+  "addr": "0x4500F0",
+  "sym": "?FUN_004500F0@BuildingClass@@QAEXXZ",
+  "len": "0x2e1",
+  "name": "BuildingClass::FUN_004500F0",
+  "status": "partial",
+  "pct": 92.7,
+  "best_pct": 92.7,
+  "best_at": "024cc6c9"
+ },
+ {
+  "tu": "match/unowned_leaf_sweep_a.cpp",
+  "addr": "0x4E1130",
+  "sym": "?FUN_004E1130@BulletData@@QAEXABUCoordStruct@@0HH@Z",
+  "len": "0xbc",
+  "name": "BulletData::FUN_004E1130",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/unowned_leaf_sweep_a.cpp",
+  "addr": "0x4E11F0",
+  "sym": "?FUN_004E11F0@BulletData@@QAEHABUCoordStruct@@@Z",
+  "len": "0xbd",
+  "name": "BulletData::FUN_004E11F0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu189_radio_class.cpp",
+  "addr": "0x65A820",
+  "sym": "?vf_101@RadioClass@@UAEHHHH@Z",
+  "len": "0x149",
+  "name": "RadioClass::vf_101",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu189_radio_class.cpp",
+  "addr": "0x65AEB0",
+  "sym": "??_GRadioClass@@UAEPAXI@Z",
+  "len": "0x98",
+  "name": "??_GRadioClass@@UAEPAXI@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

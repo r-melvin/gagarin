@@ -185,11 +185,64 @@ extern "C" double __cdecl FUN_004CAD50(double value)
 
 // FUNCTION: GAMEMD 0x004E1100
 BulletData::BulletData()
-    : unknown_18(0), unknown_1C(0), unknown_20(0), unknown_24(0)
 {
+    unknown_18.X = 0;
+    unknown_18.Y = 0;
+    unknown_18.Z = 0;
+    unknown_24 = 0;
     // The two timer members initialize to CurrentFrame/zero through their
     // binary-supported inline default construction; the trailing dwords are
     // explicitly zeroed here as observed at +0x18..+0x24.
+}
+
+// FUNCTION: GAMEMD 0x004E1130
+void BulletData::FUN_004E1130(const CoordStruct& from, const CoordStruct& to,
+                              int value, int limit)
+{
+    int longer = limit > value ? limit : value;
+    Obj_0046B600 t0;
+    t0.unknown_00 = CurrentFrame;
+    t0.unknown_08 = longer;
+    unknown_00 = t0;
+    Obj_0046B600 t1;
+    t1.unknown_00 = CurrentFrame;
+    t1.unknown_08 = value;
+    unknown_0C = t1;
+    unknown_18 = to;
+    CoordStruct d;
+    d.X = from.X - to.X;
+    d.Y = from.Y - to.Y;
+    d.Z = from.Z - to.Z;
+    double fy = (double)d.Y;
+    double fz = (double)d.Z;
+    double fx = (double)d.X;
+    unknown_24 = (int)FUN_004CAC40(fx * fx + fy * fy + fz * fz);
+}
+
+// FUNCTION: GAMEMD 0x004E11F0
+int BulletData::FUN_004E11F0(const CoordStruct& where)
+{
+    int timeLeft = unknown_0C.GetTimeLeft();
+    if (timeLeft != 0) {
+        return 0;
+    }
+
+    CoordStruct d;
+    d.X = where.X - unknown_18.X;
+    d.Y = where.Y - unknown_18.Y;
+    d.Z = where.Z - unknown_18.Z;
+    double fz = (double)d.Z;
+    double fy = (double)d.Y;
+    double fx = (double)d.X;
+    int half = (int)FUN_004CAC40(fx * fx + fy * fy + fz * fz) / 2;
+    if (half < 0x20) {
+        return 1;
+    }
+    if (half < 0x100 && half > unknown_24) {
+        return 2;
+    }
+    unknown_24 = half;
+    return 0;
 }
 
 struct Obj_004D2790;

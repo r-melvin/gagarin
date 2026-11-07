@@ -65,6 +65,9 @@ public:
     RadioClass();
     // FUNCTION: GAMEMD 0x65A7E0 (no-init constructor)
     RadioClass(const AbstractNoInit& noInit);
+    // Primary slot 8. Retail has no out-of-line body: the user-written empty destructor expands into the
+    // scalar deleting destructor 0x65AEB0 (with ~VectorClass of RadioLinks and ~MissionClass inline).
+    virtual ~RadioClass();
 
     int         LastCommands[3];   // +0xD4  (RadioCommand enum x3)
     VectorClass<TechnoClass*> RadioLinks;        // +0xE0  (0x10; docked units etc.)

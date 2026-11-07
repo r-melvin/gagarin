@@ -23,6 +23,60 @@ RadioClass::RadioClass()
 }
 
 // TU-WINDOW: past the proven header-initializer end 0x65A746.
+// FUNCTION: GAMEMD 0x65A820
+// The radio-message handler: records the command history, and for a release
+// (3) or a contact request (2) updates the link table before the base handler.
+int RadioClass::vf_101(int a1, int event, int a3)
+{
+    int prev = LastCommands[0];
+    if (event != prev) {
+        LastCommands[2] = LastCommands[1];
+        LastCommands[1] = prev;
+        LastCommands[0] = event;
+    }
+
+    if (event == 3) {
+        for (int i = 0; i < RadioLinks.Capacity; i++) {
+            if (a1 == reinterpret_cast<int>(RadioLinks.Items[i])) {
+                ObjectClass::vf_101(a1, 3, a3);
+                RadioLinks.Items[i] = 0;
+                return 1;
+            }
+        }
+    } else if (event == 2 && Health != 0) {
+        TechnoClass* caller = reinterpret_cast<TechnoClass*>(a1);
+        if (!caller->Owner->IsAlliedWith(this)) {
+            return 10;
+        }
+        // Retail 0x65A8B8 tests ESI (this) before the IsTechno bit; KindCast_00459F40 compares WhatAmI, not that bit.
+        // THISNULL: GAMEMD 0x459F40
+        if (this && Flags.IsTechno && !static_cast<TechnoClass*>(this)->Owner->IsAlliedWith(caller)) {
+            return 10;
+        }
+        if (caller != 0) {
+            int found = -1;
+            for (int i = 0; i < RadioLinks.Capacity; i++) {
+                if (RadioLinks.Items[i] == caller) {
+                    found = i;
+                    break;
+                }
+            }
+            if (found != -1) {
+                return 1;
+            }
+        }
+        for (int i = 0; i < RadioLinks.Capacity; i++) {
+            if (RadioLinks.Items[i] == 0) {
+                RadioLinks.Items[i] = caller;
+                return 1;
+            }
+        }
+        return 10;
+    }
+    return ObjectClass::vf_101(a1, event, a3);
+}
+
+// TU-WINDOW: past the proven header-initializer end 0x65A746.
 // FUNCTION: GAMEMD 0x0065A970
 int RadioClass::vf_159(int command, void* data, RadioClass* peer)
 {
@@ -282,3 +336,16 @@ void RadioClass::SetLinkCount(int count)
             this->RadioLinks.Items[i] = 0;
     }
 }
+
+inline MissionClass::~MissionClass()
+{
+}
+
+// SYNTHETIC: GAMEMD 0x65AEB0 -- this empty body is only ever expanded into the scalar deleting destructor.
+RadioClass::~RadioClass()
+{
+}
+
+// FUNCTION: GAMEMD 0x65AEB0
+// SYNTHETIC: GAMEMD 0x65AEB0 -- RadioClass scalar deleting destructor, emitted by the compiler from the
+// implicit virtual destructor (slot 8); the ~RadioClass and ~MissionClass bodies expand into it.

@@ -58,6 +58,8 @@ public:
     void FUN_004C9E10(TechnoClass* object);
     // FUNCTION: GAMEMD 0x4C9FF0 (decl; reloc) -- gives up the current production.
     bool AbandonProduction();
+    // FUNCTION: GAMEMD 0x4C9C70 (decl; reloc) -- starts producing `type` for `owner`; true when it began (RET 0xC).
+    bool FUN_004C9C70(TechnoTypeClass* type, HouseClass* owner, bool a3);
     // FUNCTION: GAMEMD 0x4C9EA0 (decl; reloc) -- resumes a suspended production (defined on the unsuspend view).
     bool Unsuspend(bool manual);
 

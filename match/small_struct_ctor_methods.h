@@ -100,6 +100,19 @@ struct Obj_0046B600
     Obj_0046B600() : unknown_00(CurrentFrame), unknown_08(0) {}
     // FUNCTION: GAMEMD 0x46B640
     Obj_0046B600(int value);
+    // Frames left, as the inline timer read at 0x4E11F0 computes them (-1 start: not running).
+    int GetTimeLeft() const
+    {
+        int timeLeft = unknown_08;
+        if (unknown_00 != -1) {
+            int elapsed = CurrentFrame - unknown_00;
+            if (elapsed < timeLeft) {
+                return timeLeft - elapsed;
+            }
+            return 0;
+        }
+        return timeLeft;
+    }
 };
 GG_STATIC_ASSERT(offsetof(Obj_0046B600, unknown_00) == 0x00);
 GG_STATIC_ASSERT(offsetof(Obj_0046B600, unknown_08) == 0x08);

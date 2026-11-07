@@ -580,6 +580,8 @@ public:
     void FUN_004FA2E0(int index, int amount);
     // FUNCTION: GAMEMD 0x4FBD00 (decl) -- any other non-allied house with that building type active; RET 4.
     bool FUN_004FBD00(int typeIndex);
+    // FUNCTION: GAMEMD 0x4FF540 (decl; reloc) -- takes the object a factory has just produced; RET 4.
+    void FUN_004FF540(ObjectClass* object);
     // FUNCTION: GAMEMD 0x4FBD80 (decl) -- the type object this house is producing for an RTTI class; RET 8.
     void* FUN_004FBD80(int rtti, int unused);
     // FUNCTION: GAMEMD 0x5005B0 (decl) -- set the per-class flag for an RTTI class; RET 0xC.

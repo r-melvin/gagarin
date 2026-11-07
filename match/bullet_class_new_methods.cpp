@@ -1299,12 +1299,12 @@ void BulletClass::FUN_00468D80(int mode)
         if (!warhead->EMEffect && !Type->Airburst &&
             static_cast<unsigned char>(mode) == 0 && !Type->Arcing &&
             Type->ROT <= 0 &&
-            (Data.unknown_18 != DAT_0089DE30.X ||
-             Data.unknown_1C != DAT_0089DE30.Y ||
-             Data.unknown_20 != DAT_0089DE30.Z)) {
-            effectPosition.X = Data.unknown_18;
-            effectPosition.Y = Data.unknown_1C;
-            effectPosition.Z = Data.unknown_20;
+            (Data.unknown_18.X != DAT_0089DE30.X ||
+             Data.unknown_18.Y != DAT_0089DE30.Y ||
+             Data.unknown_18.Z != DAT_0089DE30.Z)) {
+            effectPosition.X = Data.unknown_18.X;
+            effectPosition.Y = Data.unknown_18.Y;
+            effectPosition.Z = Data.unknown_18.Z;
         }
 
         if (!warhead->EMEffect && !Type->Airburst) {
