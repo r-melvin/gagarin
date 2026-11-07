@@ -4786,6 +4786,31 @@ HBDir* BuildingAView::vf_194(HBDir* out)
     return out;
 }
 
+// FUNCTION: GAMEMD 0x44E3A0
+// True when another object occupies one of the cells under this building's foundation.
+bool BuildingClass::FUN_0044E3A0()
+{
+    CellStruct base = vf_110();
+    CellStruct* fd = static_cast<CellStruct*>(vf_66(0));
+    bool found = false;
+    while (fd->X != 0x7FFF || fd->Y != 0x7FFF) {
+        CellStruct sum;
+        sum.X = fd->X + base.X;
+        sum.Y = fd->Y + base.Y;
+        CellStruct cell = sum;
+        ++fd;
+        ObjectClass* obj = DAT_0087F7E8.FUN_005657A0(&cell)->FirstObject;
+        while (obj) {
+            if (this != obj) {
+                found = true;
+                break;
+            }
+            obj = static_cast<ObjectClass*>(obj->NextObject);
+        }
+    }
+    return found;
+}
+
 // Moved from building_a2_state.cpp. CAPPED (partial, readable): 95.2% of the retail instructions align (96.9% with registers ignored); the positional
 // score is lower (66.7%) because of two small shifts. Remaining delta: (1) in the state-2 countdown retail keeps the
 // elapsed ticks in ECX and the remaining ticks in EAX, our register choice is the other way round (4 instructions);
@@ -6041,6 +6066,42 @@ void BuildingClass::FUN_004529E0()
         FUN_00452DC0(4);
         FUN_00452DC0(6);
         CreateEndPost(true);
+    }
+}
+
+// GLOBAL: GAMEMD 0x818CA0 -- the four side bits 1, 2, 4, 8.
+extern int DAT_00818CA0[4];
+
+// FUNCTION: GAMEMD 0x452A40
+// A laser fence post that has just been placed or removed: for each of the four sides, a neighbouring fence post of
+// the same owner that faces back along that side takes the side bit.
+void BuildingClass::FUN_00452A40(int a)
+{
+    if (ScenarioInit_00A8E7AC == 0 && Type->LaserFencePost) {
+        bool flag = false;
+        if (a == 1)
+            flag = true;
+        int dir = 0;
+        const CoordStruct* here = &vf_18(); // ADDRCALL: GAMEMD 0x452A98
+        CellStruct cell;
+        cell.X = here->X / 256;
+        cell.Y = here->Y / 256;
+        for (int i = 0; i < 4; i++) {
+            const CellStruct& step = DAT_0089F688[dir & 7];
+            CellStruct sum;
+            sum.X = step.X + cell.X;
+            sum.Y = step.Y + cell.Y;
+            CellStruct at = sum;
+            BuildingClass* other = DAT_0087F7E8.FUN_005657A0(&at)->GetBuilding();
+            if (other && other->Type->LaserFence && other->vf_14() == vf_14()) {
+                unsigned int raw = other->PrimaryFacing.FUN_004C93D0().Whole;
+                if (((((raw >> 12) + 1) >> 1) & 3) == (dir & 3)) {
+                    LaserFenceFrame |= DAT_00818CA0[i];
+                    FUN_00453060(dir, flag);
+                }
+            }
+            dir = (dir + 2) & 7;
+        }
     }
 }
 

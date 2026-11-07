@@ -328,6 +328,8 @@ public:
     void FUN_004547C0();
     // FUNCTION: GAMEMD 0x452A40 -- one stack argument (RET 4).
     void FUN_00452A40(int a);
+    // FUNCTION: GAMEMD 0x453060 -- two stack arguments (RET 8): a direction and a flag byte (bool).
+    void FUN_00453060(int dir, bool flag);
     // FUNCTION: GAMEMD 0x4561F0
     void FUN_004561F0();
     // FUNCTION: GAMEMD 0x457AA0 -- three stack arguments (RET 0xC).

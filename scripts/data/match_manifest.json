@@ -106696,10 +106696,9 @@
   "len": "0x254",
   "name": "ObjectTypeClass::FUN_005F9070",
   "status": "partial",
-  "pct": 5.5,
+  "pct": 3.8,
   "best_pct": 5.5,
-  "best_at": "685ebdf1",
-  "lowered_reason": "stored pct was stale; re-measured with diff_retail at base f10538e6"
+  "best_at": "685ebdf1"
  },
  {
   "tu": "match/voxel_resource_ctors.cpp",
@@ -156334,6 +156333,26 @@
   "status": "partial",
   "pct": 90.5,
   "best_pct": 90.5,
+  "best_at": "b9ffad29"
+ },
+ {
+  "tu": "match/tu038_building_class.cpp",
+  "addr": "0x44E3A0",
+  "sym": "?FUN_0044E3A0@BuildingClass@@QAE_NXZ",
+  "len": "0x9c",
+  "name": "BuildingClass::FUN_0044E3A0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu038_building_class.cpp",
+  "addr": "0x452A40",
+  "sym": "?FUN_00452A40@BuildingClass@@QAEXH@Z",
+  "len": "0x16a",
+  "name": "BuildingClass::FUN_00452A40",
+  "status": "partial",
+  "pct": 94.7,
+  "best_pct": 94.7,
   "best_at": "b9ffad29"
  }
 ]
