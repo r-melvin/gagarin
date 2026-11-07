@@ -79,16 +79,9 @@ void FUN_005BF450();
 #include "tooltip_manager_shared.h"
 
 // GLOBAL: GAMEMD 0x8809F4 -- clip rectangle, copied from the object at 0xB07DC8.
-struct SidebarClipRect
-{
-    int X;
-    int Y;
-    int Width;
-    int Height;
-};
-extern SidebarClipRect ClipRect_008809F4;
+extern RectangleStruct ClipRect_008809F4;
 // GLOBAL: GAMEMD 0xB07DC8 -- source of the clip rectangle.
-extern SidebarClipRect BackdropRect_00B07DC8;
+extern RectangleStruct BackdropRect_00B07DC8;
 // GLOBAL: GAMEMD 0xB0B518 -- accumulated "something was redrawn" flag.
 // (DAT_00B0B518 in the layout header.)
 
@@ -404,6 +397,10 @@ SidebarSelectClass SidebarButtonStatics::SelectArray_00B07E80[240];
 // REA Evidence: ev_2ae381b14ec2843cc91bb4231572d98ff6eb01c68dc88b2d17c3a381358b4d14
 // CFG-closed retail span [0x6A4E60, 0x6A4F11), 0xB1 bytes. TabClass constructor 0x6CFE20
 // calls this with its original ECX receiver before initializing the TabClass subobject.
+// PARTIAL (88.7%): the strip initialiser is reached through a pointer test (retail's CMP ESI,EBX / JZ before each
+// CALL 0x6A80A0, the shape of an array placement-new). Residual: VC6 issues the +0x53A6 store after the vptr store
+// where retail has it before, and the loop counter register (EBP vs EBX); moving the +0x53A6 store anywhere else in
+// the body lowers the score.
 // FUNCTION: GAMEMD 0x6A4E60
 SidebarClass::SidebarClass()
 {
@@ -411,14 +408,16 @@ SidebarClass::SidebarClass()
     At_53A0 = 0;
     unknown_53A4 = false;
     At_53A5 = false;
-    At_53A6 = true;
     unknown_53A8[0] = 0;
     At_5514 = 0;
     At_5515 = 0;
+    At_53A6 = true;
 
     unsigned char local;
     for (int i = 0; i < 4; ++i) {
-        Strips[i].FUN_006A80A0(&local);
+        StripClass* strip = &Strips[i];
+        if (strip)
+            strip->FUN_006A80A0(&local);
     }
 }
 
@@ -1555,22 +1554,22 @@ int __fastcall FUN_006A8090(int index)
     return RowStep_00B0B500 * index + 1;
 }
 
+// PARTIAL (50.0%): identical instruction multiset. Two corrections to the earlier body: the cameo timer start frame
+// and time left were swapped (retail stores 0 to +0x24 and the frame to +0x1C), and the second loop's +0x04 store is one
+// dword. Residual: the second loop's induction base (retail +0x5C, ours +0x58) and the zero/frame register roles.
 // FUNCTION: GAMEMD 0x6A80A0
 StripClass* StripClass::FUN_006A80A0(void* unknown_00)
 {
     this->unknown_00 = 0;
     this->unknown_04 = false;
     int currentFrame = CurrentFrame_00A8ED84;
-    this->unknown_14 = 0;
-    this->Timer.StartFrame = currentFrame;
     this->Timer.TimeLeft = 0;
+    this->Timer.StartFrame = currentFrame;
+    this->unknown_14 = 0;
     this->unknown_18 = 1;
     this->At_20 = 0;
     this->At_24 = 0;
-    this->Rect.X = BackdropRect_00B07DC8.X;
-    this->Rect.Y = BackdropRect_00B07DC8.Y;
-    this->Rect.Width = BackdropRect_00B07DC8.Width;
-    this->Rect.Height = BackdropRect_00B07DC8.Height;
+    this->Rect = BackdropRect_00B07DC8;
     this->RowBase = 0;
     this->At_3C = 1;
     this->unknown_3D = 0;
@@ -1583,27 +1582,22 @@ StripClass* StripClass::FUN_006A80A0(void* unknown_00)
     this->unknown_50 = 0;
     this->CameoCount = 0;
 
+    for (int i = 0; i < 0x4B; i++) {
+        SidebarCameo* cameo = &Cameos[i];
+        cameo->unknown_14 = 0;
+        cameo->unknown_18.Bytes.Low = 0;
+        int frame = CurrentFrame_00A8ED84;
+        cameo->Timer.TimeLeft = 0;
+        cameo->Timer.StartFrame = frame;
+        cameo->unknown_28 = 0;
+        cameo->unknown_2C = 1;
+    }
+
     SidebarCameo* cameo = Cameos;
     int count = 0x4B;
     do {
-        cameo->unknown_14 = 0;
-        cameo->unknown_18.Bytes.Low = 0;
-        cameo->Timer.StartFrame = 0;
-        cameo->Timer.TimeLeft = CurrentFrame_00A8ED84;
-        cameo->unknown_28 = 0;
-        cameo->unknown_2C = 1;
-        ++cameo;
-        --count;
-    } while (count != 0);
-
-    cameo = Cameos;
-    count = 0x4B;
-    do {
         cameo->unknown_00 = 0;
-        cameo->unknown_04.Bytes[0] = 0;
-        cameo->unknown_04.Bytes[1] = 0;
-        cameo->unknown_04.Bytes[2] = 0;
-        cameo->unknown_04.Bytes[3] = 0;
+        cameo->unknown_04.Word = 0;
         cameo->unknown_08 = 0;
         cameo->Pointer = 0;
         ++cameo;

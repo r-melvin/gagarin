@@ -96744,10 +96744,10 @@
   "len": "0xb8",
   "name": "StripClass::FUN_006A80A0",
   "status": "partial",
-  "pct": 3.1,
-  "best_pct": 3.1,
-  "best_at": "cf203011",
-  "note": "Pointer-return receiver ABI is a conservative model of observed EAX=this at RET 4, not proof of original source return type or constructor identity. Caller 0x6A4E60 passes a local-byte pointer. Retail stores -1 at +0x40 and clears +0x44; the corrected layout is recorded. Three materially distinct formulations remain capped: current compile has 65 instructions and 2/60 exact."
+  "pct": 50.0,
+  "best_pct": 50.0,
+  "best_at": "625cef81",
+  "note": "Pointer-return receiver ABI is a conservative model of observed EAX=this at RET 4, not proof of original source return type or constructor identity. Caller 0x6A4E60 passes a local-byte pointer. Retail stores -1 at +0x40 and clears +0x44; the corrected layout is recorded."
  },
  {
   "tu": "match/Sidebar.cpp",
@@ -99505,9 +99505,9 @@
   "len": "0xB1",
   "name": "SidebarClass::SidebarClass",
   "status": "partial",
-  "pct": 58.5,
-  "best_pct": 58.5,
-  "best_at": "cf203011"
+  "pct": 88.7,
+  "best_pct": 88.7,
+  "best_at": "625cef81"
  },
  {
   "tu": "match/Sidebar.cpp",

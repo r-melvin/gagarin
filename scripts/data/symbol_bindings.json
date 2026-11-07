@@ -1801,7 +1801,7 @@
  "?AttemptPath@AStar_00746000@@QAEHPBUCellStruct@@0PAVFootClass@@_N2H@Z": "0x0042D170",
  "?AudioIDXData_Instance@@3PAUAudioIDXData@@A": "0x0087E294",
  "?AudioTimeHook@@3P6I_JXZA": "0x0087E848",
- "?BackdropRect_00B07DC8@@3USidebarClipRect@@A": "0x00B07DC8",
+ "?BackdropRect_00B07DC8@@3URectangleStruct@@A": "0x00B07DC8",
  "?BaseCtor@Host_0043B680@@QAEXH@Z": "0x006F4300",
  "?BaseCtor@NarrowVector_0042F1E0@@QAEXIPBX@Z": "0x0042FCB0",
  "?BaseCtor@Obj_0041D300@@QAEXXZ": "0x00410170",
