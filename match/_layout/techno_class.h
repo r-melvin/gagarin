@@ -216,6 +216,11 @@ public:
 
     // FUNCTION: GAMEMD 0x6F3970 (decl; reloc) -- thiscall, one stack argument (RET 4): the weapon's damage for a weapon slot (-1: the current one).
     int CombatDamage(int which);
+    // FUNCTION: GAMEMD 0x6F8960 -- thiscall, seven stack arguments (RET 0x1C): look through a cell's object list for a
+    // target to attack; the found object goes to outTarget, the result is whether the attack was started.
+    bool FUN_006F8960(int a1, int a2, CellStruct* cell, int* a4, TechnoClass** outTarget, int* outZero, unsigned int zone);
+    // CALLEE: GAMEMD 0x6F7CA0 -- thiscall, seven stack arguments (RET 0x1C); the AL result is the attack result.
+    bool FUN_006F7CA0(int a1, int a2, int* a4, TechnoClass* target, int* a6, int a7, CoordStruct* where);
     // FUNCTION: GAMEMD 0x70E240 -- whether the weapon slot holds a weapon (one stack argument, RET 4).
     bool FUN_0070E240(WeaponStruct* weapon);
     // FUNCTION: GAMEMD 0x70E000 -- steps the gattling stage down (one stack argument, RET 4).
@@ -486,7 +491,7 @@ public:
     virtual void vf_275(int a1, int a2, int a3);                   // 275 0x6F64A0
     virtual void vf_276(int a1, int a2, int a3);                   // 276 0x709A90
     virtual void vf_277(Point2D* where, RectangleStruct* clip);    // 277 0x70A990: draws the rank pip
-    virtual void vf_278(int a1, int a2, int a3);                   // 278 0x70AA60
+    virtual void vf_278(int a1, Point2D* where, RectangleStruct* clip);   // 278 0x70AA60: draws the power drain and primary labels
     virtual void vf_279(bool a1);                                   // 279 0x7036C0
     virtual void vf_280(bool a1);                                   // 280 0x703770
     virtual int vf_281(int a1);                                    // 281 0x70D190

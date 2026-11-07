@@ -986,8 +986,9 @@ extern "C" const char DAT_0084314C[];
 
 // GLOBAL: GAMEMD 0xAC147C -- the pip shape file.
 extern SHPStruct* DAT_00AC147C;
+#include "wwlib/surface/surface_class.h"
 // GLOBAL: GAMEMD 0x887314 -- the surface drawn to.
-extern void* DAT_00887314;
+extern Surface* DAT_00887314;
 // GLOBAL: GAMEMD 0x87F6C4 -- the palette conversion drawn with.
 extern void* DAT_0087F6C4;
 #include "shape_blit_004aed70.h"
@@ -1028,6 +1029,50 @@ void TechnoClass::vf_277(Point2D* where, RectangleStruct* clip)
     Point2D zero(0, 0);
     FUN_004AED70(DAT_00887314, DAT_0087F6C4, pips, frame, &at, clip,
         0xE00, 0, -2, 0, 1000, 0, 0, 0, zero);
+}
+
+#include <wchar.h>
+#include "_layout/rectangle_operations.h"
+#include "pixel_pack_methods.h"
+// FUNCTION: GAMEMD 0x4A59E0 (decl; reloc) -- the rectangle a line of text takes at a position, ECX the result.
+RectangleStruct* __fastcall FUN_004A59E0(RectangleStruct* out, const unsigned short* text, int x, int y, int flags,
+                                          int a6, int a7);
+// FUNCTION: GAMEMD 0x4A5EB0 (decl; reloc) -- prints one line of text and answers where the pen ended.
+Point2D FUN_004A5EB0(const unsigned short* text, Surface* surface, RectangleStruct* clip, Point2D* pos, int color,
+                     int background, int flags, int extra);
+// FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- __fastcall string-table lookup.
+wchar_t* FUN_00734E60(const char* label, int flags, const char* file, int line);
+
+// FUNCTION: GAMEMD 0x70AA60
+// Draw the labels on a building: the power drain of a powered one that is not the primary factory, in a
+// framed box, and the "primary" label of the primary factory (the short form for a one-cell foundation).
+void TechnoClass::vf_278(int a1, Point2D* where, RectangleStruct* clip)
+{
+    if (vf_11() == 6 && ((BuildingClass*)this)->Type->PowerBonus > 0 && !IsPrimaryFactory) {
+        wchar_t text[0x80];
+        swprintf(text, FUN_00734E60("TXT_POWER_DRAIN2", 0, "D:\\ra2mdpost\\Techno.CPP", 0x3C7B), Owner->IHouse_vf_08(),
+                 Owner->vf_09());
+        RectangleStruct temporary;
+        RectangleStruct box = *FUN_004A59E0(&temporary, (const unsigned short*)text, where->X, where->Y, 0x149, 4, 2);
+        box = *FUN_00421B60(&temporary, &box, clip, 0, 0);
+        unsigned int color = PackPixel(Owner->Color);
+        DAT_00887314->FillRect(&box, 0);
+        DAT_00887314->DrawRect(&box, color);
+        FUN_004A5EB0((const unsigned short*)text, DAT_00887314, clip, where, color, 0, 0x149, 1);
+    }
+    if (IsPrimaryFactory) {
+        const wchar_t* label = FUN_00734E60("TXT_PRIMARY", 0, "D:\\ra2mdpost\\Techno.CPP", 0x3C8E);
+        if (vf_11() == 6 && ((BuildingClass*)this)->Type->GetFoundationWidth() == 1) {
+            label = FUN_00734E60("TXT_PRI", 0, "D:\\ra2mdpost\\Techno.CPP", 0x3C90);
+        }
+        RectangleStruct temporary;
+        RectangleStruct box = *FUN_004A59E0(&temporary, (const unsigned short*)label, where->X, where->Y, 0x149, 4, 2);
+        box = *FUN_00421B60(&temporary, &box, clip, 0, 0);
+        unsigned int color = PackPixel(Owner->Color);
+        DAT_00887314->FillRect(&box, 0);
+        DAT_00887314->DrawRect(&box, color);
+        FUN_004A5EB0((const unsigned short*)label, DAT_00887314, clip, where, color, 0, 0x149, 1);
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -2470,6 +2515,73 @@ void TechnoClass::vf_274(int a1, int a2)
 {
 }
 
+// GLOBAL: GAMEMD 0x87F5D8
+extern BombListClass DAT_0087F5D8;
+
+// FUNCTION: GAMEMD 0x6F6AC0
+// Take this object off the map: reveal around it once, stop a gap generator and a bomb detector, let the
+// passengers go, give up its threat in its cell and silence its looping sounds, then the base removal.
+bool TechnoClass::vf_53()
+{
+    if (!InLimbo && vf_33()) {
+        if (vf_33()->RevealToAll) {
+            vf_291(0, 0, true, CurrentPlayer);
+        } else {
+            vf_291(0, 0, false, 0);
+        }
+        CoordStruct where = Location;
+        DAT_0087F7E8.FUN_00567DA0(&where, LastSightRange - 3, LastSightRange + 3, 0);
+        if (vf_33()->GapGenerator) {
+            vf_262();
+        }
+        if (vf_33()->BombSight) {
+            DAT_0087F5D8.RemoveDetector(this);
+        }
+        if (vf_33()->OpenTopped) {
+            FootClass* passenger = Passengers.GetFirstPassenger();
+            if (passenger) {
+                do {
+                    passenger->vf_242(0);
+                    passenger = foot_cast_007104C0(passenger->NextObject);
+                } while (passenger);
+            }
+        }
+        Owner->FUN_005025F0(this, 0);
+        // Retail 0x6F6B3E..0x6F6C35: both arms test the cell (je 0x6F6C35 at 0x6F6C03 and 0x6F6C15); the two
+        // threat releases below merge into one tail.
+        if (vf_176() > 0) {
+            CellClass* cell;
+            FootClass* foot = foot_cast_007104C0(this);
+            if (foot) {
+                cell = DAT_0087F7E8.FUN_005657A0(&foot->LastMapCoords);
+                if (cell) {
+                    cell->AddThreat((HouseClass*)vf_14(), -(int)ThreatPosed);
+                    ThreatPosed = 0;
+                }
+            } else {
+                cell = vf_111();
+                if (cell) {
+                    cell->AddThreat((HouseClass*)vf_14(), -(int)ThreatPosed);
+                    ThreatPosed = 0;
+                }
+            }
+        }
+        if (IsRadarTracked) {
+            vf_294();
+        }
+        TurretRotateSoundController.EndLooping();
+        IsTurretRotateSoundPlaying = 1;
+        TurretIsRotating = 0;
+        GattlingSoundController.EndLooping();
+        IsGattlingSoundPlaying = 0;
+        unknown_4BC = 0;
+        UnusedGattlingSoundController.EndLooping();
+        IsUnusedGattlingSoundPlaying = 0;
+        unknown_4D8 = 0;
+    }
+    return RadioClass::vf_53();
+}
+
 // FUNCTION: GAMEMD 0x6F6F40
 int __stdcall FUN_006F6F40(Record_006F6F40* record)
 {
@@ -2610,6 +2722,87 @@ bool TechnoClass::vf_89(const CoordStruct& coord, int weapon)
     return this->vf_234(MapClass_Instance.GetTargetCell(coord), weapon);
 }
 
+// FUNCTION: GAMEMD 0x6F8960
+// Look through the objects standing in a cell for a target to attack. The cell must lie in the zone asked
+// for (-1: any). The first techno that is worth attacking is stored through outTarget (a hurt friend to
+// repair, an enemy, or for a berserk or friendly-fire attacker anyone), and the attack is started on it
+// unless this object is a plain infantryman that does not need to.
+bool TechnoClass::FUN_006F8960(int a1, int a2, CellStruct* cell, int* a4, TechnoClass** outTarget, int* outZero,
+                               unsigned int zone)
+{
+    *outTarget = 0;
+    *outZero = 0;
+    CellClass* cellObj = DAT_0087F7E8.FUN_005657A0(cell);
+    if (zone != 0xFFFFFFFF) {
+        if (DAT_0087F7E8.FUN_0056D230(*cell, vf_33()->MovementZone, true) != zone) {
+            return false;
+        }
+    }
+    ObjectClass* obj = cellObj->AltObject;
+    TechnoClass* found = 0;
+    if (!obj) {
+        obj = cellObj->FirstObject;
+    }
+    bool hasController = false;
+    HouseClass* controllerOwner = 0;
+    if (Transporter && static_cast<TechnoClass*>(Transporter)->vf_33()->OpenTopped) {
+        TechnoClass* controller = static_cast<TechnoClass*>(static_cast<TechnoClass*>(Transporter)->MindControlledBy);
+        if (controller) {
+            controllerOwner = controller->Owner;
+            hasController = true;
+        }
+    }
+    while (obj) {
+        if (obj != this) {
+            found = (obj != 0 && obj->Flags.IsTechno) ? static_cast<TechnoClass*>(obj) : 0;
+            if (found) {
+                if (CombatDamage(-1) < 0) {
+                    if (obj->GetHealthPercentage() < RulesInstance->unknown_16F8 && Owner->IsAlliedWith(obj)) {
+                        break;
+                    }
+                } else {
+                    if (!Owner->IsAlliedWith(obj) && !hasController) {
+                        break;
+                    }
+                    if (vf_33()->AttackFriendlies || Berzerk) {
+                        break;
+                    }
+                    if (hasController && controllerOwner && controllerOwner->IsAlliedWith(obj)) {
+                        break;
+                    }
+                    if (vf_11() == 0xF) {
+                        InfantryClass* infantry = static_cast<InfantryClass*>(this);
+                        if (infantry->PermanentBerzerk) {
+                            break;
+                        }
+                        if (infantry->Type->Engineer && CurrentMission == 0xB
+                            && obj->GetHealthPercentage() <= RulesInstance->ConditionRed && obj->vf_11() == 6
+                            && static_cast<BuildingClass*>(obj)->Type->vf_33(found->Owner) > 0) {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        obj = static_cast<ObjectClass*>(obj->NextObject);
+    }
+    if (!found) {
+        return false;
+    }
+    *outTarget = found;
+    bool result = false;
+    if (!Owner->IsAlliedWith(found) || CombatDamage(-1) < 0
+        // Retail branches on `this` at 0x6F8B8A (TEST ESI,ESI; JZ) and on the kind at 0x6F8B98 (CMP EAX,0xF; JNZ)
+        // before the mask-form cast; KindCast_00459F40 alone gives only the mask form (66.2%).
+        // THISNULL: GAMEMD 0x459F40
+        || (!Owner->IsControlledByHuman() && this && vf_11() == 0xF
+            && ((InfantryClass*)KindCast_00459F40(0xF))->Type->Engineer)
+        || vf_33()->AttackFriendlies || Berzerk || hasController) {
+        result = FUN_006F7CA0(a1, a2, a4, found, outZero, -1, &DAT_00B0EA90);
+    }
+    return result;
+}
+
 // FUNCTION: GAMEMD 0x6F9DB0
 // Vtable slot 14 of TechnoClass (RTTI). The owning house's array index.
 int TechnoClass::vf_14()
@@ -2703,6 +2896,61 @@ void Techno_006FB080::StartReloading()
         this->ReloadTimer = CDTimer_006FB080(
             (this->*this->Vtbl->GetTechnoType)()->Reload + extra);
     }
+}
+
+// FUNCTION: GAMEMD 0x6FB170
+// Start generating a gap: put this object's cover over every cell within the gap radius of its
+// (height-corrected) position. For the other side's cells the gap count rises, and the shroud count with
+// it while it is not negative, clearing the cell's gap flags once it holds; for the local player's side and
+// allies the revealed-by-gap count rises. The map and the screen are then refreshed.
+void TechnoClass::vf_261()
+{
+    if (CurrentPlayer == 0 || GeneratingGap || !vf_212()) {
+        return;
+    }
+    if (GapRadius == 0) {
+        GapRadius = vf_33()->GapRadiusInCells;
+    }
+    GeneratingGap = true;
+    CoordStruct pos = Location;
+    int shiftX = Tactical::AdjustForZ(pos.Z) / -30;
+    pos.X += shiftX << 8;
+    int shiftY = Tactical::AdjustForZ(pos.Z) / -30;
+    pos.Y += shiftY << 8;
+    CellStruct center;
+    center.X = pos.X / 256;
+    center.Y = pos.Y / 256;
+    int radius = GapRadius;
+    for (int ox = -2 - radius; ox < radius + 2; ++ox) {
+        for (int oy = -2 - radius; oy < radius + 2; ++oy) {
+            if (oy * oy + ox * ox < (radius + 1) * (radius + 1)) {
+                CellStruct cell;
+                cell = center + CellStructInit(ox, oy);
+                if (!vf_15()->IsControlledByCurrentPlayer() && !Owner->IsAlliedWith(CurrentPlayer)
+                    && !CurrentPlayer->Defeated) {
+                    if (DAT_0087F7E8.FUN_005657A0(cell)->ShroudCounter != 1) {
+                        if (DAT_0087F7E8.FUN_005657A0(cell)->ShroudCounter >= 0) {
+                            DAT_0087F7E8.FUN_005657A0(cell)->ShroudCounter++;
+                        }
+                    }
+                    DAT_0087F7E8.FUN_005657A0(cell)->GapsCoveringThisCell++;
+                    if (DAT_0087F7E8.FUN_005657A0(cell)->ShroudCounter >= 1) {
+                        DAT_0087F7E8.FUN_005657A0(cell)->AltFlags &= ~0x10;
+                        DAT_0087F7E8.FUN_005657A0(cell)->AltFlags &= ~8;
+                    }
+                }
+                if (vf_15()->IsControlledByCurrentPlayer() || Owner->IsAlliedWith(CurrentPlayer)
+                    || CurrentPlayer->Defeated) {
+                    DAT_0087F7E8.FUN_005657A0(cell)->unknown_13C++;
+                }
+            }
+        }
+    }
+    if (CurrentPlayer) {
+        CurrentPlayer->Visionary = 0;
+    }
+    DAT_0087F7E8.FUN_00657CE0();
+    DAT_0087F7E8.FUN_004F42F0(2);
 }
 
 // FUNCTION: GAMEMD 0x6FB470
@@ -4179,6 +4427,21 @@ int TechnoClass::vf_199(int mode)
         }
     }
     return range;
+}
+
+// FUNCTION: GAMEMD 0x707F60
+// Is the cell reachable from where this object stands: true when the type has no movement zone or the
+// coordinate is the null coordinate, otherwise the path query between this object's cell and that cell.
+bool TechnoClass::vf_179(CoordStruct* where)
+{
+    int zone = vf_33()->MovementZone;
+    if (zone == -1
+        || (where->X == DAT_00B0EA90.X && where->Y == DAT_00B0EA90.Y && where->Z == DAT_00B0EA90.Z)) {
+        return true;
+    }
+    CellStruct to = CoordToCell(*where);
+    CellStruct from = CoordToCell(vf_19(0));
+    return DAT_0087F7E8.FUN_0056D100(&from, &to, zone, vf_47(0), (DAT_0087F7E8.FUN_005657A0(&to)->Flags >> 8) & 1, vf_200());
 }
 
 // FUNCTION: GAMEMD 0x708B30
