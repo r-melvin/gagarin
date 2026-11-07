@@ -61035,10 +61035,8 @@
   "sym": "?Remove@?$ChainedHashTable@UHashKeyHandle@@UHashValue6C@@@@QAE_NABUHashKeyHandle@@PAUHashValue6C@@@Z",
   "len": "0x291",
   "name": "?Remove@?$ChainedHashTable@UHashKeyHandle@@UHashValue6C@@@@QAE_NABUHashKeyHandle@@PAUHashValue6C@@@Z",
-  "status": "partial",
-  "pct": 30.2,
-  "best_pct": 30.2,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/wonline.cpp",
@@ -76935,11 +76933,8 @@
   "sym": "?FUN_0077D4C0@@YI_NPAUEntry_00B77908@@@Z",
   "len": "0x243",
   "name": "FUN_0077D4C0",
-  "status": "partial",
-  "pct": 5.2,
-  "best_pct": 5.2,
-  "best_at": "cf203011",
-  "note": "75.0% aligned; extra frame slot and duplicated epilogues"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/wonline.cpp",
@@ -148354,9 +148349,9 @@
   "len": "0x19d",
   "name": "?FUN_007AA6D0@@YGJPAXH@Z",
   "status": "partial",
-  "pct": 83.8,
-  "best_pct": 83.8,
-  "best_at": "cf203011"
+  "pct": 88.6,
+  "best_pct": 88.6,
+  "best_at": "625cef81"
  },
  {
   "tu": "match/anim_type_class_ini_427d00.cpp",

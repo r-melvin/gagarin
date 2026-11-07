@@ -176,25 +176,45 @@ struct ChainedHashTable
 
     void Shrink()
     {
-        Node** old = Buckets;
-        int oldCount = BucketCount;
-        BucketCount = (unsigned)oldCount >> 1;
-        Bits--;
-        Buckets = (Node**)operator new(BucketCount * sizeof(Node*));
-        memset(Buckets, 0, BucketCount * sizeof(Node*));
-        Node** slot = old;
-        for (int i = oldCount; i > 0; i--) {
-            for (Node* node = *slot; node; ) {
-                unsigned index = ((1 << Bits) - 1) & Hash(node->unknown_00);
-                Node* head = Buckets[index];
-                Buckets[index] = node;
-                Node* next = node->Next;
-                node->Next = head;
-                node = next;
+        unsigned count = BucketCount;
+
+        if (count <= MinBuckets) return;
+        if (FixedSize == true) return;
+
+        {
+            Node** old = Buckets;
+            Node** fresh;
+
+            BucketCount = count >> 1;
+            Bits = Bits - 1;
+            fresh = new Node*[count >> 1];
+            Buckets = fresh;
+            memset(fresh, 0, BucketCount * sizeof(Node*));
+
+            if ((int)count > 0) {
+                Node** p = old;
+                unsigned n = count;
+
+                do {
+                    Node* node = *p;
+
+                    while (node != 0) {
+                        int hash = Hash(node->unknown_00);
+                        unsigned idx = ((1 << Bits) - 1) & hash;
+                        Node* head = Buckets[idx];
+                        Buckets[idx] = node;
+                        Node* next = node->Next;
+                        node->Next = head;
+                        node = next;
+                    }
+
+                    p++;
+                    n--;
+                } while (n != 0);
             }
-            slot++;
+
+            delete[] old;
         }
-        operator delete(old);
     }
     bool Remove(const Key& key, Value* value);
 };
@@ -205,8 +225,10 @@ bool ChainedHashTable<Key, Value>::Remove(const Key& key, Value* value)
     if (Count == 0) {
         return false;
     }
-    float load = (float)(Count - 1) / BucketCount;
-    unsigned index = ((1 << Bits) - 1) & Hash(key);
+    float load = (float)(Count - 1);
+    load /= BucketCount;
+    int hash = Hash(key);
+    unsigned index = ((1 << Bits) - 1) & hash;
     Node* prev = Buckets[index];
     if (!prev) {
         return false;
@@ -219,7 +241,7 @@ bool ChainedHashTable<Key, Value>::Remove(const Key& key, Value* value)
         delete node;
         Buckets[index] = next;
         Count--;
-        if (load <= ShrinkLoad && BucketCount > MinBuckets && FixedSize != true) {
+        if (load <= ShrinkLoad) {
             Shrink();
         }
         return true;
@@ -237,7 +259,7 @@ bool ChainedHashTable<Key, Value>::Remove(const Key& key, Value* value)
         }
         prev = node;
     }
-    if (load <= ShrinkLoad && BucketCount > MinBuckets && FixedSize != true) {
+    if (load <= ShrinkLoad) {
         Shrink();
     }
     return found;
@@ -1600,9 +1622,9 @@ void FUN_0077D210(char* text)
     }
 }
 
-// FUNCTION: GAMEMD 0x77D240
 // Index of the record whose +0x24 name equals `name` (case-insensitive), or -1.
-int FUN_0077D240(Wstring* name)
+// The body of 0x77D240, inlined into 0x77D4C0.
+static inline int FindEntry_0077D240(Wstring* name)
 {
     Entry_00B77908* entry = NULL;
 
@@ -1615,6 +1637,12 @@ int FUN_0077D240(Wstring* name)
         }
     }
     return -1;
+}
+
+// FUNCTION: GAMEMD 0x77D240
+int FUN_0077D240(Wstring* name)
+{
+    return FindEntry_0077D240(name);
 }
 
 // FUNCTION: GAMEMD 0x77D2A0
@@ -1647,35 +1675,40 @@ bool FUN_0077D350(void* target)
 }
 
 // FUNCTION: GAMEMD 0x77D4C0
-//   Not exact (75% aligned): retail keeps one 4-byte frame slot and shares the
-//   exits; this build allocates two slots and duplicates the epilogues.
+// The unrestricted case (neither list nor lookup applies) falls out of the one
+// guarded block to the single trailing `return true`.
 bool FUN_0077D4C0(Entry_00B77908* entry)
 {
-    if (!DAT_00B76AF0 && !DAT_00B73AD0) return true;
-    if (!FUN_00775940(0x113)) return true;
+    if ((DAT_00B76AF0 || DAT_00B73AD0) && FUN_00775940(0x113)) {
+        int index = FindEntry_0077D240(&DAT_00B73E40);
+        Entry_00B77908* found = NULL;
+        if (index >= 0) {
+            if (index < DAT_00B77900.count) found = &DAT_00B77908[index];
 
-    int index = FUN_0077D240(&DAT_00B73E40);
-    Entry_00B77908* found = NULL;
-    if (index < 0) return true;
-    if (index < DAT_00B77900.count) found = &DAT_00B77908[index];
-
-    if (DAT_00B76AF0) {
-        if (DAT_00B73AD0) {
-            if (found != NULL) {
-                if (entry == NULL) return false;
-                if (_stricmp(found->unknown_2E, entry->unknown_2E) == 0) return true;
+            if (DAT_00B76AF0) {
+                if (DAT_00B73AD0) {
+                    if (found != NULL && entry != NULL
+                        && _stricmp(found->unknown_2E, entry->unknown_2E) == 0) {
+                        return true;
+                    }
+                    if (entry != NULL) {
+                        if (FUN_0077D4C0_InList(entry)) return true;
+                    }
+                    return false;
+                }
+                if (entry != NULL) {
+                    if (FUN_0077D4C0_InList(entry)) return true;
+                }
+                return false;
             }
-            if (entry == NULL) return false;
-            return FUN_0077D4C0_InList(entry);
+            if (DAT_00B73AD0 && found != NULL && entry != NULL
+                && _stricmp(found->unknown_2E, entry->unknown_2E) == 0) {
+                return true;
+            }
+            return false;
         }
-        if (entry == NULL) return false;
-        return FUN_0077D4C0_InList(entry);
     }
-    if (DAT_00B73AD0 && found != NULL && entry != NULL
-        && _stricmp(found->unknown_2E, entry->unknown_2E) == 0) {
-        return true;
-    }
-    return false;
+    return true;
 }
 
 // FUNCTION: GAMEMD 0x77D710
@@ -4259,10 +4292,10 @@ long __stdcall FUN_007AA6D0(void* self, int code)
                 int scheme = GadgetClass::GetColorScheme();
                 DAT_00A8BC60.FUN_005D3BA0(NULL, 0, text, scheme, 0x16, int(Rules->MessageDelay * 900.0), false);
                 DAT_0087F7E8.FUN_004F42F0(0);
-                memset(DAT_00B76B10, 0, sizeof(DAT_00B76B10));
-                memset(DAT_00B73BE8, 0, sizeof(DAT_00B73BE8));
                 DAT_00B77DC2 = 1;
                 DAT_00B77DD0 = 0;
+                memset(DAT_00B76B10, 0, sizeof(DAT_00B76B10));
+                memset(DAT_00B73BE8, 0, sizeof(DAT_00B73BE8));
                 FUN_004068E0("NetStatus disconnect ingame\n");
                 return 0;
             }
@@ -4273,9 +4306,9 @@ long __stdcall FUN_007AA6D0(void* self, int code)
             DAT_00B77DC0 = true;
             DAT_00B77DC2 = 1;
             SetEvent(DAT_00B73684[0]);
+            DAT_00B77DD0 = 0;
             memset(DAT_00B76B10, 0, sizeof(DAT_00B76B10));
             memset(DAT_00B73BE8, 0, sizeof(DAT_00B73BE8));
-            DAT_00B77DD0 = 0;
             FUN_004068E0("NetStatus disconnect not in game \n");
         }
     }
