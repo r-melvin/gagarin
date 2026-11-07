@@ -6,7 +6,7 @@
 //   timer at +0x100; the growth logic at +0x10C repeats the same code (see the
 //   growth methods). Queue, node and logic types are in _layout/tiberium_class.h.
 //
-//   Address index: 0x7216C0, 0x7221B0, 0x722C40, 0x722240, 0x722D00, 0x722E50, 0x723260, 0x7233A0, 0x722390, 0x722770, 0x7228B0, 0x722AF0.
+//   Address index: 0x7216C0, 0x721880, 0x723710, 0x7221B0, 0x722C40, 0x722240, 0x722D00, 0x722E50, 0x723260, 0x7233A0, 0x722390, 0x722770, 0x7228B0, 0x722AF0.
 
 #include "_layout/tiberium_class.h"
 #include "_layout/cell_class.h"
@@ -16,6 +16,7 @@
 #include "frame_counter.h"
 #include "vector_class_dynamic_ctor.h"
 #include "vector_class_mutation.h"
+#include "vector_class_operations.h"
 #include <stdlib.h>
 
 #include "_layout/scenario_ptr_00a8b230.h"
@@ -46,6 +47,24 @@ TiberiumClass::TiberiumClass(const char* id)
     DAT_00B0F4E8.AddItem(this);
     Debris.Clear();
     DAT_00B0F670.AddItem(this);
+}
+
+// The destructor (0x721880) and its scalar deleting form (0x723710). Leave the registries,
+// then release the spread arrays and free the growth logic.
+// FUNCTION: GAMEMD 0x721880
+// FUNCTION: GAMEMD 0x723710
+TiberiumClass::~TiberiumClass()
+{
+    AnnounceExpiredPointer(1);
+    DAT_00B0F670.RemoveItem(this);
+    DAT_00B0F4E8.RemoveItem(this);
+    delete SpreadLogic.Nodes;
+    SpreadLogic.Nodes = 0;
+    delete SpreadLogic.CellIndexesWithTiberium;
+    SpreadLogic.CellIndexesWithTiberium = 0;
+    delete SpreadLogic.Queue;
+    SpreadLogic.Queue = 0;
+    FreeGrowthLogic();
 }
 
 // 0x722A20 is retail's out-of-line copy of this body (no callers). VC6 only expands it

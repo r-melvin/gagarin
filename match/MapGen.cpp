@@ -327,6 +327,44 @@ int FUN_0058D100(const GridCell* cell)
     return GRID_REC(*cell).unknown_3C;
 }
 
+#include "ccfile_class.h"
+#include "_layout/ini_class.h"
+#include "_layout/generic_list_ctor_inline.h"
+
+// FUNCTION: GAMEMD 0x597760
+// Write the random-map settings (and the description, when given) to a map seed file.
+bool MapSeedClass::Slot2(char const* name, unsigned short const* description)
+{
+    if (name) {
+        FUN_004068E0("Saving random map: %s - %ls\n", name, description);
+        CCFileClass file(name);
+        INIClass ini((INIClass::SectionIndexClass::InlineIndex()));
+        if (description) {
+            wcscpy(&unknown_78, description);
+        }
+        ini.FUN_00528E00("RandomMap", "Description", description);
+        ini.WriteInteger("RandomMap", "Width", unknown_64, 0);
+        ini.WriteInteger("RandomMap", "Height", unknown_68, 0);
+        ini.WriteInteger("RandomMap", "NumPlayers", unknown_50, 0);
+        ini.WriteInteger("RandomMap", "Seed", unknown_74, 0);
+        ini.WriteInteger("RandomMap", "MapType", unknown_3C, 0);
+        ini.WriteInteger("RandomMap", "Theater", unknown_38, 0);
+        ini.WriteInteger("RandomMap", "Time", unknown_48, 0);
+        ini.WriteInteger("RandomMap", "RegionSize", unknown_70, 0);
+        ini.WriteInteger("RandomMap", "Ruggedness", unknown_44, 0);
+        ini.WriteInteger("RandomMap", "Accessibility", unknown_6C, 0);
+        ini.WriteInteger("RandomMap", "WaterAmount", unknown_4C, 0);
+        ini.WriteInteger("RandomMap", "Tiberium", unknown_54, 0);
+        ini.WriteInteger("RandomMap", "TiberiumLayout", unknown_58, 0);
+        ini.WriteInteger("RandomMap", "Vegetation", unknown_5C, 0);
+        ini.WriteInteger("RandomMap", "UrbanPresence", unknown_60, 0);
+        ini.WriteInteger("RandomMap", "Resources", unknown_40, 0);
+        ini.FUN_00526420(&file);
+        return true;
+    }
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x5A0090
 // Store the +0x38 field of the cell's record, once the grid exists.
 void __stdcall FUN_005A0090(const GridCell* cell, int value)

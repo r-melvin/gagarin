@@ -106,6 +106,8 @@ public:
     virtual int vf_16();                    // 16  0x723700
     // FUNCTION: GAMEMD 0x7216C0 -- constructor; the argument is handed to AbstractTypeClass as the ID.
     TiberiumClass(const char* id = 0);
+    // FUNCTION: GAMEMD 0x721880 -- destructor; 0x723710 is its scalar deleting form.
+    virtual ~TiberiumClass();
     // Stream overrides (vtable 0x7F5728); bodies in core/stream_w3_methods.cpp.
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
     virtual HRESULT __stdcall Load(IStream* pStm);

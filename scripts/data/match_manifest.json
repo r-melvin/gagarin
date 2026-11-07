@@ -156065,5 +156065,41 @@
   "pct": 97.4,
   "best_pct": 97.4,
   "best_at": "375caa17"
+ },
+ {
+  "tu": "match/light_convert_class_methods.cpp",
+  "addr": "0x556520",
+  "sym": "??_GLightConvertClass@@UAEPAXI@Z",
+  "len": "0x24",
+  "name": "LightConvertClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/MapGen.cpp",
+  "addr": "0x597760",
+  "sym": "?Slot2@MapSeedClass@@UAE_NPBDPBG@Z",
+  "len": "0x2a5",
+  "name": "MapSeedClass::Slot2",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tiberium_class_spread_methods.cpp",
+  "addr": "0x721880",
+  "sym": "??1TiberiumClass@@UAE@XZ",
+  "len": "0x1c4",
+  "name": "TiberiumClass::~TiberiumClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tiberium_class_spread_methods.cpp",
+  "addr": "0x723710",
+  "sym": "??_GTiberiumClass@@UAEPAXI@Z",
+  "len": "0x1e",
+  "name": "TiberiumClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
