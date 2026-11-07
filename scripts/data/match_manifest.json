@@ -156054,5 +156054,16 @@
   "name": "FUN_00479B50",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/tu218_spawn_manager_class.cpp",
+  "addr": "0x6B7010",
+  "sym": "??1SpawnManagerClass@@UAE@XZ",
+  "len": "0xe7",
+  "name": "SpawnManagerClass::~SpawnManagerClass",
+  "status": "partial",
+  "pct": 97.4,
+  "best_pct": 97.4,
+  "best_at": "375caa17"
  }
 ]

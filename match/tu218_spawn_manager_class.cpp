@@ -239,6 +239,32 @@ SpawnManagerClass::SpawnManagerClass(const AbstractNoInit& noInit)
 }
 
 
+// GLOBAL: GAMEMD 0xA8E9A0 -- Unsorted::IsActive (byte).
+extern unsigned char DAT_00A8E9A0;
+
+// FUNCTION: GAMEMD 0x6B7010
+// Destructor body: kill the nodes while the game is active, free every node,
+// empty the node list, leave the global manager array, then the members and
+// AbstractClass unwind.
+//
+// PARTIAL: 97.4% -- instruction multiset identical; retail loads Capacity after `mov ecx,esi`
+// through the vector's address in ESI, ours loads it before through EDI. A pointer to
+// SpawnedNodes reaches 100% but is steering, so the plain form is kept.
+SpawnManagerClass::~SpawnManagerClass()
+{
+    if (DAT_00A8E9A0 != 0)
+        KillNodes();
+    for (int i = SpawnedNodes.Count - 1; i >= 0; --i) {
+        SpawnControl* node = SpawnedNodes.Items[i];
+        if (node != 0)
+            delete node;
+    }
+    int capacity = SpawnedNodes.Capacity;
+    SpawnedNodes.Clear();
+    SpawnedNodes.SetCapacity(capacity, 0);
+    DAT_00B0B880.RemoveItem(this);
+}
+
 // FUNCTION: GAMEMD 0x6B7100
 //
 // Kill every spawned unit and put its node into the dead state with a fresh
