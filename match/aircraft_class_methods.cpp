@@ -44,6 +44,13 @@ bool AircraftClass::vf_54(const CoordStruct& coord, int a2)
     return false;
 }
 
+// FUNCTION: GAMEMD 0x417C80
+// Slot 80 forwards its four arguments to the foot body.
+bool AircraftClass::vf_80(int mode, CellStruct* cell, int a3, int a4)
+{
+    return FootClass::vf_80(mode, cell, a3, a4);
+}
+
 // The carryall hands its first passenger over to its radio link. Retail saves EBP only around this block (a local
 // PUSH/POP EBP in the arm and at each of its exits) where a body in the function proper saves it in the prologue, so
 // it is kept as an inline function.

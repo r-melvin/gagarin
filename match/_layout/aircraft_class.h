@@ -50,6 +50,7 @@ public:
     virtual int vf_11();   // 11  0x41C180
     virtual int vf_12();   // 12  0x41C170
     virtual bool vf_54(const CoordStruct& coord, int a2);   // 54  0x414310: places the aircraft on the map
+    virtual bool vf_80(int mode, CellStruct* cell, int a3, int a4);   // 80  0x417C80: forwards to FootClass::vf_80 (0x4D7D50)
     // FUNCTION: GAMEMD 0x41A160 (decl; reloc) -- the flyer's own parking cell (thiscall, no stack arguments).
     CellClass* FUN_0041A160();
     // FUNCTION: GAMEMD 0x416AF0 (decl; reloc) -- thiscall, no stack arguments.

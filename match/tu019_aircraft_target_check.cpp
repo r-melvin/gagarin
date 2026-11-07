@@ -64,3 +64,10 @@ int AircraftClass::FUN_0041A9E0(AbstractClass* target, int a2, bool a3)
     }
     return 0;
 }
+
+// SYNTHETIC: GAMEMD 0x41C640 -- compiler-generated IRTTITypeInfo QI adjustor thunk (this -= 0x4).
+// SYNTHETIC: GAMEMD 0x41C650 -- compiler-generated IRTTITypeInfo AddRef adjustor thunk (this -= 0x4).
+// SYNTHETIC: GAMEMD 0x41C660 -- compiler-generated IRTTITypeInfo Release adjustor thunk (this -= 0x4).
+// SYNTHETIC: GAMEMD 0x41C670 -- compiler-generated IFlyControl QI adjustor thunk (this -= 0x6C0).
+// SYNTHETIC: GAMEMD 0x41C680 -- compiler-generated IFlyControl AddRef adjustor thunk (this -= 0x6C0).
+// SYNTHETIC: GAMEMD 0x41C690 -- compiler-generated IFlyControl Release adjustor thunk (this -= 0x6C0).

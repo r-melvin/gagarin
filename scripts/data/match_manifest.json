@@ -156832,5 +156832,77 @@
   "name": "FUN_00508DF0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/aircraft_class_methods.cpp",
+  "addr": "0x417C80",
+  "sym": "?vf_80@AircraftClass@@UAE_NHPAUCellStruct@@HH@Z",
+  "len": "0x1c",
+  "name": "AircraftClass::vf_80",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu019_aircraft_target_check.cpp",
+  "addr": "0x41C640",
+  "sym": "?QueryInterface@AircraftClass@@W3AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "AircraftClass::QueryInterface (IRTTITypeInfo adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu019_aircraft_target_check.cpp",
+  "addr": "0x41C650",
+  "sym": "?AddRef@AircraftClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "AircraftClass::AddRef (IRTTITypeInfo adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu019_aircraft_target_check.cpp",
+  "addr": "0x41C660",
+  "sym": "?Release@AircraftClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "AircraftClass::Release (IRTTITypeInfo adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu019_aircraft_target_check.cpp",
+  "addr": "0x41C670",
+  "sym": "?QueryInterface@AircraftClass@@WGMA@AGJABU_GUID@@PAPAX@Z",
+  "len": "0xd",
+  "name": "AircraftClass::QueryInterface (IFlyControl adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu019_aircraft_target_check.cpp",
+  "addr": "0x41C680",
+  "sym": "?AddRef@AircraftClass@@WGMA@AGKXZ",
+  "len": "0xd",
+  "name": "AircraftClass::AddRef (IFlyControl adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu019_aircraft_target_check.cpp",
+  "addr": "0x41C690",
+  "sym": "?Release@AircraftClass@@WGMA@AGKXZ",
+  "len": "0xd",
+  "name": "AircraftClass::Release (IFlyControl adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/anim_class_r21_methods.cpp",
+  "addr": "0x426590",
+  "sym": "??_GAnimClass@@UAEPAXI@Z",
+  "len": "0x1e",
+  "name": "AnimClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

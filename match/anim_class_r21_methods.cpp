@@ -339,3 +339,5 @@ int AnimClass::vf_11()
 {
     return 4;
 }
+
+// SYNTHETIC: GAMEMD 0x426590 -- compiler-generated scalar deleting destructor.
