@@ -2,8 +2,7 @@
 
 
 
-# NOTICE
-Please see https://github.com/gibbo101/ra2-decomp for a more complete decomp! 
+# NOTICE: Please see https://github.com/gibbo101/ra2-decomp for a more complete decomp! 
 
 
 
