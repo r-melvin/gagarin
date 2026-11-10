@@ -1,6 +1,12 @@
-# gagarin
+# gagarin - Archived
 
-[![Progress](https://bytematch.dev/r-melvin/gagarin.svg)](https://bytematch.dev/r-melvin/gagarin)
+
+
+# NOTICE
+Please see https://github.com/gibbo101/ra2-decomp for a more complete decomp! 
+
+
+
 
 **gagarin** is reconstructing the *Command & Conquer: Red Alert 2 — Yuri's
 Revenge* engine from retail `gamemd.exe` v1.001. The aim is a buildable,
